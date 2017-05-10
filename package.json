@@ -1,0 +1,24 @@
+{
+  "name": "js-shop",
+  "version": "1.0.0",
+  "description": "shop and admin panel for user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/sidorovdenis/js-shop.git"
+  },
+  "keywords": [
+    "shop",
+    "reacr",
+    "redux",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "Denis Sidorov",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme"
+}
