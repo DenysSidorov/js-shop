@@ -1,5 +1,5 @@
 {
-  "name": "js-shop",
+  "name":  "js-shop",
   "version": "1.0.0",
   "description": "shop and admin panel for user",
   "main": "index.js",
