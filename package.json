@@ -1,10 +1,12 @@
 {
-  "name":  "js-shop",
-  "version":  "1.0.0",
-  "description":  "shop and admin panel for user",
+  "name": "js-shop",
+  "version": "1.0.0",
+  "description": "shop and admin panel for user",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "production": "webpack -p",
+    "dev-server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -12,7 +14,7 @@
   },
   "keywords": [
     "shop",
-    "reacr",
+    "react",
     "redux",
     "node",
     "express",
@@ -20,5 +22,16 @@
   ],
   "author": "Denis Sidorov",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme"
+  "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.5",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
+    "postcss-loader": "^2.0.5",
+    "style-loader": "^0.17.0"
+  }
 }
