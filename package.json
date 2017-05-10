@@ -1,7 +1,7 @@
 {
   "name":  "js-shop",
   "version":  "1.0.0",
-  "description": "shop and admin panel for user",
+  "description":  "shop and admin panel for user",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
