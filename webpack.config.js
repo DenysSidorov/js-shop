@@ -1,6 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
+// TODO postcss autoprefixer
+// TODO devServer
+// TODO CDN
+// TODO product/ develop режим
+// TODO Создать тестовые js, less, import less/css in js, и посмотреть как отображается
+// TODO для лучшего понимания - посмотреть Кантора
 module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
