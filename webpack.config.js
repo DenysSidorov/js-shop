@@ -1,12 +1,16 @@
 const path = require('path');
-const webpack = require('webpack');
+const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
 // TODO postcss autoprefixer
 // TODO devServer
-// TODO CDN
+
 // TODO product/ develop режим
 // TODO Создать тестовые js, less, import less/css in js, и посмотреть как отображается
 // TODO для лучшего понимания - посмотреть Кантора
+
+const NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('Production state is ' + NODE_ENV);
+
 module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: {
@@ -17,22 +21,33 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './www'),
         filename: '[name].b.js',
-        publicPath: '/assets', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
+        publicPath:  /* CDN link here */ '/www/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
     },
     module: {
         rules: [
+            // images in js/css like base64
+            {
+                test: /\.(png|jpg|gif)$/,
+                include: path.resolve(__dirname, 'src'),
+                use: [{
+                    loader: 'url-loader',
+                    options: { limit: 10000 } // Convert images < 10k to base64 strings
+                }]
+            },
             // js es6
             {
                 test: /\.js$/,
+                include: path.resolve(__dirname, 'src'),
                 exclude: /(node_modules|bower_components)/,
                 use: [{
                     loader: 'babel-loader',
-                    options: {presets: ['es2015']},
+                    options: {presets: ['es2015', "es2016", "es2017",  'react'] },
                 }],
             },
            // css
             {
                 test: /\.css$/,
+                include: path.resolve(__dirname, 'src'),
                 loader: ExtractTextPlugin.extract({
                     exclude: /node_modules/,
                     fallbackLoader: 'style-loader',
@@ -59,10 +74,16 @@ module.exports = {
             filename: 'commons.b.js',  // сборка в файл commons.js
             minChunks: 2, // повторение боле чем n раз будет в commons.js
         }),
-        new ExtractTextPlugin("[name].css")
+        new ExtractTextPlugin("[name].b.css"),
+
+        // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
+        new webpack.DefinePlugin({
+            'NODE_ENV': JSON.stringify('production')
+        }),
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, './src'),  // TODO не запускается - посмотреть
+        contentBase: path.resolve(__dirname, './www'),
     },
+    devtool: NODE_ENV == 'development' ?  "cheap-module-inline-source-map" : null,
 
 };

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "production": "webpack -p",
-    "dev-server": "webpack-dev-server"
+    "start": "webpack-dev-server --inline --hot",
+    "watch": "webpack --watch",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -24,14 +26,21 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme",
   "devDependencies": {
-    "babel-core":  "^6.24.1",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.5",
+    "file-loader": "^0.11.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
     "postcss-loader": "^2.0.5",
-    "style-loader": "^0.17.0"
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "webpack-dev-server": "^2.2.0-rc.0"
   }
 }
