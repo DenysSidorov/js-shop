@@ -1,1 +1,1 @@
-export default a =5;
+export default 5;

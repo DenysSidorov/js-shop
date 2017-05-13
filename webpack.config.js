@@ -79,8 +79,8 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         // общие скрипты, которые использ в нескольких местах
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'commons',
-            filename: 'commons.b.js',  // сборка в файл commons.js
+            name: 'common',
+            filename: '[name].b.js',  // сборка в файл commons.js
             minChunks: 2, // повторение боле чем n раз будет в commons.js
         }),
         // собирает все в один .css
