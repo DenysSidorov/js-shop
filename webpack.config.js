@@ -1,4 +1,4 @@
-console.log(555667);
+console.log(5575667);
 
 const path = require('path');
 const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
