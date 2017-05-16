@@ -1,3 +1,5 @@
+console.log(55);
+
 const path = require('path');
 const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
