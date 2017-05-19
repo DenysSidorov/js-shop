@@ -29,17 +29,17 @@ var config = {
         filename: '[name].[chunkhash].b.js', // точки входа
         chunkFilename: '[id].[chunkhash].js', // только для require.ensure ajax подгрузке js
         library: '[name]',
-        publicPath:  /* CDN link here */ '/assets/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
+        publicPath: /* CDN link here */ '/assets/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
     },
 
     resolve: {
-        extensions: [ '.js', '.jsx', '.css', '.less'], // какие файлы ищет в модулях
+        extensions: ['.js', '.jsx', '.css', '.less'], // какие файлы ищет в модулях
     },
     module: {
         rules: [
             // https://www.npmjs.com/package/pug-loader - использование, описание
             {
-                test:   /\.(jade|pug)$/,
+                test: /\.(jade|pug)$/,
                 loader: "pug-loader"
             },
             // images in js/css like base64
@@ -48,7 +48,7 @@ var config = {
                 include: path.resolve(__dirname, 'src'),
                 use: [{
                     loader: 'url-loader?name=[path][name].[hash:6][ext]',
-                    options: { limit: 10000 } // Convert images < 10k to base64 strings
+                    options: {limit: 10000} // Convert images < 10k to base64 strings
                 }]
             },
             // js es6
@@ -58,11 +58,11 @@ var config = {
                 exclude: /(node_modules|bower_components)/,
                 use: [{
                     loader: 'babel-loader',
-                    options: {presets: ['es2015', "es2016", "es2017",  'react'] },
+                    options: {presets: ['es2015', "es2016", "es2017", 'react']},
 
                 }],
             },
-           //css
+            //css
             {
                 test: /\.css$/,
                 //include: path.resolve(__dirname, 'src'),
@@ -112,7 +112,7 @@ var config = {
             minChunks: 2, // повторение боле чем n раз будет в commons.js
         }),
         // собирает все в один .css
-        new ExtractTextPlugin({ filename: "[name].[contenthash].b.css", allChunks: true}),
+        new ExtractTextPlugin({filename: "[name].[contenthash].b.css", allChunks: true}),
 
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
@@ -146,10 +146,10 @@ var config = {
         }]
     },
     // source-maps
-    devtool: NODE_ENV == 'development' ?  "cheap-module-inline-source-map" : "source-map",
+    devtool: NODE_ENV == 'development' ? "cheap-module-inline-source-map" : "source-map",
 };
 
-if(isProduction) {
+if (isProduction) {
     // the path(s) that should be cleaned
     let pathsToClean = [
         'dist',
@@ -158,10 +158,10 @@ if(isProduction) {
 
 // the clean options to use
     let cleanOptions = {
-        root:     '/full/webpack/root/path',
-        exclude:  ['shared.js'],
-        verbose:  true,
-        dry:      false,
+        root: '/full/webpack/root/path',
+        exclude: ['shared.js'],
+        verbose: true,
+        dry: false,
     }
 }
 module.exports = config;
