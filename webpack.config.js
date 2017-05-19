@@ -19,12 +19,12 @@ module.exports = {
         app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
         startToo: './startToo.js', // другая точка входа
         vendor: ['react', 'react-dom'], // если вручную не писать './', а просто 'react'
-        globalStyles: ['./less/test1'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
+        common_css: ['./less/test1'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
     },
     output: {
         path: path.resolve(__dirname, './www/assets'),
-        filename: '[name].b.js', // точки входа
-        chunkFilename: '[id].js', // только для require.ensure ajax подгрузке js
+        filename: '[name].[chunkhash].b.js', // точки входа
+        chunkFilename: '[id].[chunkhash].js', // только для require.ensure ajax подгрузке js
         library: '[name]',
         publicPath:  /* CDN link here */ '/assets/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
     },
@@ -95,17 +95,21 @@ module.exports = {
             'window.jQuery': 'jquery'
         }),
 
+        // enable HMR globally
         new webpack.HotModuleReplacementPlugin(),
+        // prints more readable module names in the browser console on HMR updates
+        new webpack.NamedModulesPlugin(),
+
         //  Если в консоли при сборке были ошибkи - бандлы не будут собраны!
         new webpack.NoEmitOnErrorsPlugin(),
         // общие скрипты, которые использ в нескольких местах
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: '[name].b.js',  // сборка в файл commons.js
+            filename: '[name].[hash].b.js',  // сборка в файл commons.js
             minChunks: 2, // повторение боле чем n раз будет в commons.js
         }),
         // собирает все в один .css
-        new ExtractTextPlugin({ filename: "[name].b.css", allChunks: true}),
+        new ExtractTextPlugin({ filename: "[name].[contenthash].b.css", allChunks: true}),
 
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
@@ -119,12 +123,16 @@ module.exports = {
         })
     ],
     devServer: {
+        hot: true,
+        // enable HMR on the server
         host: "localhost", // default
         port: 8080, // default
         contentBase: path.resolve(__dirname, './www'), // отдает по умолчанию(можн указ люб папку), есди нет бандлов
-
+        proxy: [{
+            path: '*',
+            target: 'http://localhost:3000'
+        }]
     },
     // source-maps
     devtool: NODE_ENV == 'development' ?  "cheap-module-inline-source-map" : "source-map",
-
 };
