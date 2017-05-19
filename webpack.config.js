@@ -13,7 +13,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит па
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 var isProduction = NODE_ENV != 'development';
-console.log('Production state is ' + inProduction, ' ', NODE_ENV.toUpperCase());
+console.log('Production state is ' + isProduction, ' ', NODE_ENV.toUpperCase());
 
 var config = {
     context: path.resolve(__dirname, './src'),
@@ -65,7 +65,7 @@ var config = {
             //css
             {
                 test: /\.css$/,
-                //include: path.resolve(__dirname, 'src'),
+                include: path.resolve(__dirname, 'src'),
                 //use: extractCSS.extract([ 'css-loader', 'postcss-loader' ])
                 loader: ExtractTextPlugin.extract({
                     exclude: /node_modules/,
@@ -76,6 +76,7 @@ var config = {
             //less
             {
                 test: /\.less$/,
+                include: path.resolve(__dirname, 'src'),
                 loader: ExtractTextPlugin.extract({
                     exclude: /node_modules/,
                     fallbackLoader: 'style-loader',
@@ -146,22 +147,24 @@ var config = {
         }]
     },
     // source-maps
-    devtool: NODE_ENV == 'development' ? "cheap-module-inline-source-map" : "source-map",
+    devtool: isProduction ? "cheap-module-inline-source-map" : false,
 };
-
+// Если продакшн - чистим консоль, код, папки и т.д.
 if (isProduction) {
     // the path(s) that should be cleaned
     let pathsToClean = [
-        'dist',
-        'build'
+        path.resolve(__dirname, './www/assets')
     ]
 
 // the clean options to use
     let cleanOptions = {
-        root: '/full/webpack/root/path',
+        //root: '/',
         exclude: ['shared.js'],
-        verbose: true,
-        dry: false,
+        verbose: true, // clean console.log
+        dry: false, // просто эмулирует удаление
     }
+    // очистка папки https://github.com/johnagan/clean-webpack-plugin
+    var cleanPlugin = new CleanWebpackPlugin(pathsToClean, cleanOptions);
+    config.plugins.push(cleanPlugin);
 }
 module.exports = config;
