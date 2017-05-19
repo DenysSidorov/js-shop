@@ -1,3 +1,4 @@
-import a from './test';
-import style from './less/test.less';
-console.log(a,'Hello222222');
+import a from './components/test';
+
+console.log(a,'333');
+var af = 5;
