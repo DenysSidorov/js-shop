@@ -2,6 +2,8 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
+var AssetsPlugin = require('assets-webpack-plugin'); // создает json с зависимостями
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит папку с бандлами
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
 //const extractLESS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 
@@ -10,9 +12,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собир�
 // TODO для лучшего понимания - посмотреть Кантора   // IN PROGRESS
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log('Production state is ' + NODE_ENV);
+var isProduction = NODE_ENV != 'development';
+console.log('Production state is ' + inProduction, ' ', NODE_ENV.toUpperCase());
 
-module.exports = {
+var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
         main: ["webpack-dev-server/client"],
@@ -120,6 +123,15 @@ module.exports = {
             options: {
                 postcss: [autoprefixer()]
             }
+        }),
+        // генерит json со всеми зависямостями
+        // если html всегда статичен (SPA), можно использовать другой плагин(HtmlWebpackPlugin), который сам создает
+        // index.html с уже подключенными бандлами
+        // https://www.youtube.com/watch?v=kxxFQZx3KOk
+        new AssetsPlugin({
+            filename: 'assets.json',
+            path: __dirname + '/app-server', // где его хранить
+
         })
     ],
     devServer: {
@@ -136,3 +148,20 @@ module.exports = {
     // source-maps
     devtool: NODE_ENV == 'development' ?  "cheap-module-inline-source-map" : "source-map",
 };
+
+if(isProduction) {
+    // the path(s) that should be cleaned
+    let pathsToClean = [
+        'dist',
+        'build'
+    ]
+
+// the clean options to use
+    let cleanOptions = {
+        root:     '/full/webpack/root/path',
+        exclude:  ['shared.js'],
+        verbose:  true,
+        dry:      false,
+    }
+}
+module.exports = config;
