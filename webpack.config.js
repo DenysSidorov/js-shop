@@ -5,15 +5,17 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собир�
 var AssetsPlugin = require('assets-webpack-plugin'); // создает json с зависимостями
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит папку с бандлами
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
-//const extractLESS = new ExtractTextPlugin('stylesheets/[name]-two.css');
-
-
-// TODO Создать тестовые js, less, import less/css in js, и посмотреть как отображается // IN PROGRESS
-// TODO для лучшего понимания - посмотреть Кантора   // IN PROGRESS
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
-var isProduction = NODE_ENV != 'development';
+
+var isProduction = NODE_ENV == 'production';
 console.log('Production state is ' + isProduction, ' ', NODE_ENV.toUpperCase());
+
+// Добавление hash если режим production
+function addHash(template, hash) {
+    return NODE_ENV == 'production' ?
+        template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`;
+}
 
 var config = {
     context: path.resolve(__dirname, './src'),
@@ -26,8 +28,8 @@ var config = {
     },
     output: {
         path: path.resolve(__dirname, './www/assets'),
-        filename: '[name].[chunkhash].b.js', // точки входа
-        chunkFilename: '[id].[chunkhash].js', // только для require.ensure ajax подгрузке js
+        filename: addHash('[name].b.js', 'chunkhash'), /*'[name].[chunkhash].b.js'*/  // точки входа
+        chunkFilename: addHash('[id].js', 'chunkhash'), /*'[id].[chunkhash].js',*/  // только для require.ensure ajax подгрузке js
         library: '[name]',
         publicPath: /* CDN link here */ '/assets/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
     },
@@ -35,6 +37,7 @@ var config = {
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.less'], // какие файлы ищет в модулях
     },
+
     module: {
         rules: [
             // https://www.npmjs.com/package/pug-loader - использование, описание
@@ -47,7 +50,8 @@ var config = {
                 test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
                 include: path.resolve(__dirname, 'src'),
                 use: [{
-                    loader: 'url-loader?name=[path][name].[hash:6][ext]',
+                    /*'url-loader?name=[path][name].[hash:6][ext]',*/
+                    loader: addHash('url-loader?name=[path][name].[ext]', 'hash:6'),
                     options: {limit: 10000} // Convert images < 10k to base64 strings
                 }]
             },
@@ -89,6 +93,12 @@ var config = {
     },
     // …
     plugins: [
+        // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(true),
+            'NODE_ENV': JSON.stringify('production')
+        }),
+
         // Автоматически загружаемые модули
         // Модуль (значение) автоматически загружается, если идентификатор (ключ) используется в модуле в виде переменной
         // Содержимое модуля экспортируется в переменную с именем, соответствующим ключу
@@ -109,15 +119,13 @@ var config = {
         // общие скрипты, которые использ в нескольких местах
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: '[name].[hash].b.js',  // сборка в файл commons.js
+            filename: addHash('[name].b.js', 'hash'), /*'[name].[hash].b.js',*/  // сборка в файл commons.js
             minChunks: 2, // повторение боле чем n раз будет в commons.js
         }),
         // собирает все в один .css
-        new ExtractTextPlugin({filename: "[name].[contenthash].b.css", allChunks: true}),
-
-        // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
-        new webpack.DefinePlugin({
-            'NODE_ENV': JSON.stringify('production')
+        new ExtractTextPlugin({
+            filename: addHash('[name].b.css', 'contenthash'), /*"[name].[contenthash].b.css",*/
+            allChunks: true
         }),
         // postcss autoprefixer
         new webpack.LoaderOptionsPlugin({
@@ -149,8 +157,10 @@ var config = {
     // source-maps
     devtool: isProduction ? "cheap-module-inline-source-map" : false,
 };
-// Если продакшн - чистим консоль, код, папки и т.д.
-if (isProduction) {
+
+// Если продакшн - чистим консоль, код, папки и т.д
+// isProduction
+if (true) {
     // the path(s) that should be cleaned
     let pathsToClean = [
         path.resolve(__dirname, './www/assets')
@@ -160,11 +170,12 @@ if (isProduction) {
     let cleanOptions = {
         //root: '/',
         exclude: ['shared.js'],
-        verbose: true, // clean console.log
+        verbose: isProduction, // clean console.log
         dry: false, // просто эмулирует удаление
     }
     // очистка папки https://github.com/johnagan/clean-webpack-plugin
     var cleanPlugin = new CleanWebpackPlugin(pathsToClean, cleanOptions);
     config.plugins.push(cleanPlugin);
 }
+
 module.exports = config;
