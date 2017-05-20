@@ -1,3 +1,3 @@
 import st from './test.less';
 import img from './photo.jpg';
-export default 44;
+export default 4434;
