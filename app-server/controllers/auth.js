@@ -1,6 +1,6 @@
 import User from '../models/user';
 import jwt from 'jsonwebtoken'; // Генерация токена
-import config from '../config/index';
+import config from '../../config/index';
 
 export const singup = (req, resp, next) => {
     let credentials = req.body; // Вытащим данные от юзера из формы.
@@ -10,7 +10,7 @@ export const singup = (req, resp, next) => {
     // --- НЕ ЗАВЕЛОСЬ =(((
     // Используем try/catch - т.к используем async/await
     //  try {
-    //     await User.create(credentials); // т.к тут асинхронный код - исп. await
+    //     await User.create(config); // т.к тут асинхронный код - исп. await
     // } catch (err){
     //     next(err); // Если ощибка - прокидываем ее дальше, возможно express ее перехватит
     // Мы не используем callback - т.к как испоьзуем async/await
@@ -47,7 +47,7 @@ export const singin = async(req, resp, next) => {
                 // req.session.userId = user._id;
                 // resp.json(user);
 
-                const token = jwt.sign({_id: user._id}, config.secret);
+                const token = jwt.sign({_id: user._id}, config.backend.secretWord);
                 console.log(token);
                 resp.json(token);
 
@@ -59,7 +59,7 @@ export const singin = async(req, resp, next) => {
             } else {
                 next({
                     status: 400,
-                    message: 'Bad credentials'
+                    message: 'Bad config'
                 })
             }
         }).catch(err => {

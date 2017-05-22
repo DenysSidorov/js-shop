@@ -6,10 +6,12 @@ import session from 'express-session';
 import bodyParse from 'body-parser';
 import morgan from 'morgan'; //  Логирование
 
-import config from './app-server/config'; // Конфигурация
+import config from './config/index';
+// import config from './app-server/config'; // Конфигурация
 import authRoute from './app-server/routes/auth';
 import userRoute from './app-server/routes/user';
 import pageRoute from './app-server/routes/page';
+import errorMiddleWare from './app-server/middlewares/errors';
 
 import getUser from './app-server/middlewares/getUser'; // Проверка налисия токена
 import checkToken from './app-server/middlewares/checkToken'; // Проверка налисия токена
@@ -19,15 +21,15 @@ const app = express(); // Запуск приложения
 
 /** Подключение к базе данных mongodb*/
 mongoose.Promise = require('bluebird'); // Для асинхронного кода
-mongoose.connect(config.database, {}, err => {
+mongoose.connect(config.backend.database, {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
 
 /** Запуск приожения на порте*/
-app.listen(config.port, (err)=>{
+app.listen(config.backend.port, (err)=>{
     if (err) throw err;
-    console.log('Server listening on port ' + config.port );
+    console.log('Server listening on port ' + config.backend.port );
 });
 
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
@@ -37,7 +39,7 @@ app.use(bodyParse.urlencoded({extend: true}));
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: config.secret
+    secret: config.backend.secretWord
 }));
 
 app.use('/api', authRoute); // singin singup
@@ -49,7 +51,7 @@ app.get('/test', checkToken, (req, resp)=>{ // check token in headers
 });
 
 
-app.use(require('./app-server/middlewares/errors') ); // Обработчик ошибок должен быть последним
+app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 
 
 

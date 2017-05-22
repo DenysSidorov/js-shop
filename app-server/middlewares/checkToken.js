@@ -1,4 +1,4 @@
-import config from '../config/index';
+import config from '../../config/index';
 import jwt from 'jsonwebtoken';
 
 // Создадим middleware проверяющие наличие токена
@@ -16,7 +16,7 @@ export default (req, resp, next)=>{
     }
 
     // Если токен есть - проверяем его с секретным словом
-    jwt.verify(token, config.secret , function(err, decoded) {
+    jwt.verify(token, config.backend.secretWord, function(err, decoded) {
         if(err){
             const {message} = err;
             return next({

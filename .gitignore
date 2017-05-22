@@ -6,6 +6,8 @@ dist/bundle.js
 app-server/assets.json
 www/assert/*
 credentials/*
+app-server/config/*
+config/*
 PLANS.TXT
 .idea/workspace.xml
 
