@@ -5,7 +5,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собир�
 var AssetsPlugin = require('assets-webpack-plugin'); // создает json с зависимостями
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит папку с бандлами
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
-
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 var isProduction = NODE_ENV == 'production';
@@ -16,7 +15,7 @@ function addHash(template, hash) {
     return NODE_ENV == 'production' ?
         template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`;
 }
-
+console.log(S,'S');
 var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
@@ -155,7 +154,7 @@ var config = {
         }]
     },
     // source-maps
-    devtool: isProduction ? "cheap-module-inline-source-map" : false,
+    devtool: isProduction ? false : "cheap-module-inline-source-map",
 };
 
 // Если продакшн - чистим консоль, код, папки и т.д
