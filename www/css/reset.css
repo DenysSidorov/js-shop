@@ -1,0 +1,65 @@
+
+body, html{
+    margin: 0;  /*внешний отступ*/
+    padding: 0; /*внутренний отступ*/
+}
+a{
+    text-decoration: none;  /*нет подчеркивания*/
+}
+a:hover{
+    text-decoration: none; /*нет подчеркивания*/
+}
+a:focus{
+    text-decoration: none; /*нет подчеркивания*/
+    outline: none;   /*внешняя граница невидна*/
+}
+img{
+    outline: none; /*внешняя граница невидна*/
+}
+ul{
+    margin: 0; /*внешний отступ*/
+    padding: 0; /*внутренний отступ*/
+    list-style: none; /*без маркеров*/
+}
+*{
+    -webkit-box-sizing: border-box; /*фиксирована ширина компонента*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:after{
+    -webkit-box-sizing: border-box; /*фиксирована ширина компонента*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:before{
+    -webkit-box-sizing: border-box;/*фиксирована ширина компонента*/
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:focus{
+    outline: none; /*внешняя граница невидна*/
+}
+button, button:focus, button:active, button:hover {
+    border: none;/*нет границ */
+    outline: none; /*внешняя граница невидна*/
+    cursor: pointer; /*делает курсор невидимым*/
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+    font-weight: normal; /*жирность шрифта*/
+}
+input:-webkit-autofill, textarea:-webkit-autofill{
+    transition: background-color 5000s ease-in-out 0s;
+}
+button, input, select{
+    -webkit-appearance: none;
+}
+p{
+    margin: 0;
+}
+input, textarea {
+    -webkit-border-radius: 0; /*радиус убираем*/
+    -moz-border-radius: 0;
+    border-radius: 0;
+}

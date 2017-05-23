@@ -15,7 +15,7 @@ function addHash(template, hash) {
     return NODE_ENV == 'production' ?
         template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`;
 }
-console.log(S,'S');
+
 var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
@@ -162,7 +162,7 @@ var config = {
 if (true) {
     // the path(s) that should be cleaned
     let pathsToClean = [
-        path.resolve(__dirname, './www/assets')
+        path.resolve(__dirname, './www/assets/*')
     ]
 
 // the clean options to use
