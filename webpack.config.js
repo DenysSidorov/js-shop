@@ -44,16 +44,30 @@ var config = {
                 test: /\.(jade|pug)$/,
                 loader: "pug-loader"
             },
-            // images in js/css like base64
             {
-                test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
-                include: path.resolve(__dirname, 'src'),
-                use: [{
-                    /*'url-loader?name=[path][name].[hash:6][ext]',*/
-                    loader: addHash('url-loader?name=[path][name].[ext]', 'hash:6'),
-                    options: {limit: 10000} // Convert images < 10k to base64 strings
-                }]
+                test: /\.(png|jpg|gif)$/,
+                loader: addHash('file-loader?name=../img/[name].[ext]', 'hash:6')
             },
+            {
+                test: /\.(svg|ttf|eot|woff|woff2)$/,
+                loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
+            },
+            // base64 - images in js/css like base64
+            // {
+            //     test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
+            //     include: path.resolve(__dirname, 'src'),
+            //     use: [{
+            //         /*'url-loader?name=[path][name].[hash:6][ext]',*/
+            //         loader: addHash('url-loader?name=../img/[name].[ext]', 'hash:6'),
+            //         options: {limit: 10000} // Convert images < 10k to base64 strings
+            //     }]
+            // },
+            { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=../fonts/[name].[ext]' },
+            { test: /\.woff$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff&name=../fonts/[name].[ext]' },
+            { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=../fonts/[name].[ext]' },
+            { test: /\.[ot]tf$/, loader: 'url-loader?limit=65000&mimetype=application/octet-stream&name=./fonts/[name].[ext]' },
+            { test: /\.eot$/, loader: 'url-loader?limit=65000&mimetype=application/vnd.ms-fontobject&name=../fonts/[name].[ext]' },
+
             // js es6
             {
                 test: /\.js$/,
@@ -73,7 +87,7 @@ var config = {
                 loader: ExtractTextPlugin.extract({
                     exclude: /node_modules/,
                     fallbackLoader: 'style-loader',
-                    loader: ['css-loader', 'postcss-loader']
+                    loader: ['css-loader?sourceMap', 'postcss-loader']
                 })
             },
             //less
@@ -83,7 +97,7 @@ var config = {
                 loader: ExtractTextPlugin.extract({
                     exclude: /node_modules/,
                     fallbackLoader: 'style-loader',
-                    loader: ['css-loader', 'less-loader', 'postcss-loader'],
+                    loader: ['css-loader?sourceMap', 'less-loader', 'postcss-loader'],
                 })
             }
 
