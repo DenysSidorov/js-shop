@@ -19,11 +19,11 @@ function addHash(template, hash) {
 var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
-        main: ["webpack-dev-server/client"],
-        app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
-        startToo: './startToo.js', // другая точка входа
-        vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
-        common_css: ['./less/test1'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
+        //main: ["webpack-dev-server/client"],
+        //app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
+        //startToo: './startToo.js', // другая точка входа
+        //vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
+        common_css: ['./less/test'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
     },
     output: {
         path: path.resolve(__dirname, './www/assets'),
@@ -46,12 +46,12 @@ var config = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: addHash('file-loader?name=../img/[name].[ext]', 'hash:6')
+                loader: addHash('url-loader?limit=3000&name=../img/[name].[ext]', 'hash:6')
             },
-            {
-                test: /\.(svg|ttf|eot|woff|woff2)$/,
-                loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
-            },
+            // {
+            //     test: /\.(svg|ttf|eot|woff|woff2)$/,
+            //     loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
+            // },
             // base64 - images in js/css like base64
             // {
             //     test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
@@ -67,6 +67,7 @@ var config = {
             { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=../fonts/[name].[ext]' },
             { test: /\.[ot]tf$/, loader: 'url-loader?limit=65000&mimetype=application/octet-stream&name=./fonts/[name].[ext]' },
             { test: /\.eot$/, loader: 'url-loader?limit=65000&mimetype=application/vnd.ms-fontobject&name=../fonts/[name].[ext]' },
+            { test: /\.ttf$/, loader: 'url-loader?limit=65000&name=../fonts/[name].[ext]' },
 
             // js es6
             {
