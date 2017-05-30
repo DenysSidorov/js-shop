@@ -7,8 +7,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит па
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-var isProduction = NODE_ENV == 'production';
 console.log('Production state is ' + isProduction, ' ', NODE_ENV.toUpperCase());
+
+// Реагируем на флаг -p
+var productionArg = (process.argv.indexOf('-p') != -1 ? true : false);
+var inProduction = (productionArg ? 'production' : 'development');
+console.log('Production state is ' + inProduction);
+
 
 // Добавление hash если режим production
 function addHash(template, hash) {
@@ -171,7 +176,7 @@ var config = {
         }]
     },
     // source-maps
-    devtool: isProduction ? false : "cheap-module-inline-source-map",
+    devtool: inProduction === 'production' ? false : "cheap-module-inline-source-map",
 };
 
 // Если продакшн - чистим консоль, код, папки и т.д
@@ -186,7 +191,7 @@ if (true) {
     let cleanOptions = {
         //root: '/',
         exclude: ['shared.js'],
-        verbose: isProduction, // clean console.log
+        verbose: inProduction === 'production', // clean console.log
         dry: false, // просто эмулирует удаление
     }
     // очистка папки https://github.com/johnagan/clean-webpack-plugin
