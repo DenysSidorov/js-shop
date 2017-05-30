@@ -7,12 +7,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит па
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-console.log('Production state is ' + isProduction, ' ', NODE_ENV.toUpperCase());
+
 
 // Реагируем на флаг -p
 var productionArg = (process.argv.indexOf('-p') != -1 ? true : false);
 var inProduction = (productionArg ? 'production' : 'development');
-console.log('Production state is ' + inProduction);
+console.log('Production state is ' + inProduction.toUpperCase());
 
 
 // Добавление hash если режим production
@@ -24,10 +24,10 @@ function addHash(template, hash) {
 var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
-        //main: ["webpack-dev-server/client"],
-        //app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
-        //startToo: './startToo.js', // другая точка входа
-        //vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
+        main: ["webpack-dev-server/client"],
+        app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
+        startToo: './startToo.js', // другая точка входа
+        vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
         common_css: ['./less/test'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
     },
     output: {
@@ -44,11 +44,13 @@ var config = {
 
     module: {
         rules: [
+
             // https://www.npmjs.com/package/pug-loader - использование, описание
             {
                 test: /\.(jade|pug)$/,
                 loader: "pug-loader"
             },
+            // base64 loader
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: addHash('url-loader?limit=3000&name=../img/[name].[ext]', 'hash:6')
@@ -67,6 +69,8 @@ var config = {
             //         options: {limit: 10000} // Convert images < 10k to base64 strings
             //     }]
             // },
+
+            // fonts
             { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=../fonts/[name].[ext]' },
             { test: /\.woff$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff&name=../fonts/[name].[ext]' },
             { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=../fonts/[name].[ext]' },
@@ -110,7 +114,7 @@ var config = {
             // Loaders for other file types can go here
         ],
     },
-    // …
+
     plugins: [
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
