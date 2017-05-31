@@ -27,7 +27,6 @@ export const singup = (req, resp, next) => {
             return resp.json(user);
         }
     })
-
 }
 
 export const singin = async(req, resp, next) => {
