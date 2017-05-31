@@ -2,15 +2,7 @@
   "name": "js-shop",
   "version": "1.0.0",
   "description": "shop and admin panel for user",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "production": "webpack -p",
-    "start": "webpack-dev-server --hot --inline",
-    "start-server": "nodemon --exec babel-node server.js",
-    "watch": "webpack --watch",
-    "push": "git push all master"
-  },
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/sidorovdenis/js-shop.git"
@@ -48,6 +40,9 @@
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
@@ -56,11 +51,26 @@
     "file-loader": "^0.11.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
+    "nodemon": "^1.11.0",
     "postcss-loader": "^2.0.5",
     "postcss-smart-import": "^0.7.4",
     "precss": "^1.4.0",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
     "webpack-dev-server": "^2.2.0-rc.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "production": "webpack -p",
+    "start4": "webpack-dev-server --hot --inline",
+    "watch": "webpack --watch",
+
+    "push": "git push all master",
+
+    "start-server": "nodemon --exec babel-node server.js",
+    "start2": "babel-node server.js --presets es2015",
+    "start3": "babel-node --presets es2015 server.js",
+    "start": "babel-node server.js --presets es2015,stage-2"
   }
 }
