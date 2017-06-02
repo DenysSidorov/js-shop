@@ -1,9 +1,7 @@
 @robotoLight: 'Roboto-Light';
 @robotoMedium: 'Roboto-Medium';
 @robotoRegular: 'Roboto-Regular';
-@montserratRegular: 'Roboto-Regular';
-@merriWeatherLight: 'Roboto-Regular';
-@proximaNovaBold: 'Roboto-Regular';
+
 
 @darkCyan: #0f5f5c;
 @lightCyan: #c1d3d2;
@@ -46,7 +44,7 @@
 
 body {
   height: 100%; /*100% от окна браузера*/
-  background-color: #0f5f5c;
+  background-color: rgba(246, 255, 206, 0.55);
 }
 
 html {
@@ -130,7 +128,6 @@ html {
 
 .menuSection {
   min-height: 40px;
-  background-color: #000000;
 }
 
 .container {
@@ -138,25 +135,49 @@ html {
   //padding: 0 30px;
   margin: 0 auto;
   position: relative;
-  background-color: #6fb048;
+  //background-color: #6fb048;
 }
 
 .menuSection {
+  background-color:  #424040;
+  position: fixed;
   .container {
     .flexWrapMenu {
+
+      min-height: 40px;
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       //justify-content: space-between;
       //flex-wrap: wrap;
       .search {
+        margin-top: 5px;
+        margin-bottom: 5px;
         //width: 35%;
         flex-grow: 1;
+        min-width: 150px;
         .search__input{
+          position: relative;
           max-width: 260px;
           margin: 0 auto;
           .search__input_input{
             width:100%;
             border: none;
             border-radius: 2px;
+            padding-left: 30px;
+            padding-right: 7px;
+            height: 30px;
+            font: 14px/14px @robotoMedium;
+            color: #9a9a9a;
+          }
+          .search-font-main-menu{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 20px;
+             padding: 6px 0px 5px 8px;
+            color: #9a9a9a;
+
           }
         }
       }
@@ -165,13 +186,48 @@ html {
         flex-grow: 1;
         .menu__menuHeader {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
           .menu__menuHeader_item{
             white-space: nowrap;
-            font-size: 16px;
+            //font-size: 16px;
+            //robotoLight: 'Roboto-Light';
+            //robotoMedium: 'Roboto-Medium';
+            //robotoRegular: 'Roboto-Regular';
+
             padding-left: 10px;
             &:last-child{
               padding-right: 10px;
+            }
+            a{
+              font: 15px/30px @robotoRegular;
+              color: #ded6d6;
+
+              display: inline-block;
+              //text-shadow: 1px 1px 1px white,
+              //  1px -1px 1px white,
+              //-1px 1px 1px white,
+              //  -1px -1px 1px white;
+              //color: steelblue;
+              transition: all 0.5s;
+              &:hover{
+                color: #ffe355;
+                //transition: font-size 0.5s ease;
+              }
+              &:after {
+                content: "";
+                display: block;
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                margin: auto;
+                border-bottom: 1px solid #ffe355;
+                bottom: .15em;
+                transition: all 0.3s;
+              }
+              &:hover:after {
+                width: 0%;
+                border-bottom-width: 1px;
+              }
             }
           }
         }
