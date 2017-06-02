@@ -2,12 +2,15 @@
 @robotoMedium: 'Roboto-Medium';
 @robotoRegular: 'Roboto-Regular';
 
-
 @darkCyan: #0f5f5c;
 @lightCyan: #c1d3d2;
 @cyan: #83a7a5;
 @green: #6fb048;
 @grey: #6b8383;
+
+@yellowMain: #ffe355;
+@greyText: #9a9a9a;
+@whiteColor: #fff1d9;
 
 @font-face {
   font-family: 'Roboto-Light';
@@ -139,7 +142,7 @@ html {
 }
 
 .menuSection {
-  background-color:  #424040;
+  background-color: #424040;
   position: fixed;
   .container {
     .flexWrapMenu {
@@ -156,38 +159,40 @@ html {
         //width: 35%;
         flex-grow: 1;
         min-width: 150px;
-        .search__input{
+        .search__input {
           position: relative;
           max-width: 260px;
           margin: 0 auto;
-          .search__input_input{
-            width:100%;
+          .search__input_input {
+            width: 100%;
             border: none;
             border-radius: 2px;
             padding-left: 30px;
             padding-right: 7px;
             height: 30px;
             font: 14px/14px @robotoMedium;
-            color: #9a9a9a;
+            color: @greyText;
           }
-          .search-font-main-menu{
+          .search-font-main-menu {
             position: absolute;
             left: 0px;
             top: 0px;
             height: 20px;
-             padding: 6px 0px 5px 8px;
-            color: #9a9a9a;
+            padding: 6px 0px 5px 8px;
+            color: @greyText;
 
           }
         }
       }
       .menu {
-        //width: 60%;
         flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .menu__menuHeader {
           display: flex;
           justify-content: center;
-          .menu__menuHeader_item{
+          .menu__menuHeader_item {
             white-space: nowrap;
             //font-size: 16px;
             //robotoLight: 'Roboto-Light';
@@ -195,10 +200,10 @@ html {
             //robotoRegular: 'Roboto-Regular';
 
             padding-left: 10px;
-            &:last-child{
+            &:last-child {
               padding-right: 10px;
             }
-            a{
+            a {
               font: 15px/30px @robotoRegular;
               color: #ded6d6;
 
@@ -209,8 +214,8 @@ html {
               //  -1px -1px 1px white;
               //color: steelblue;
               transition: all 0.5s;
-              &:hover{
-                color: #ffe355;
+              &:hover {
+                color: @yellowMain;
                 //transition: font-size 0.5s ease;
               }
               &:after {
@@ -220,7 +225,7 @@ html {
                 z-index: 1;
                 width: 100%;
                 margin: auto;
-                border-bottom: 1px solid #ffe355;
+                border-bottom: 1px solid @yellowMain;
                 bottom: .15em;
                 transition: all 0.3s;
               }
@@ -235,6 +240,32 @@ html {
     }
   }
 }
+
+.main-cart {
+  .main-cart__ico {
+    color: @yellowMain;
+    font-size: 22px;
+    margin-left: 15px;
+    &:hover {
+      transform: rotate(7deg);
+      color: @whiteColor;
+      transition: all 0.2s ease;
+    }
+    &:after {
+      color: black;
+      color: black;
+      display: inline;
+      content: attr(data-js_count);
+      font-size: 16px;
+      margin-left: 5px;
+      /* padding: 3px; */
+      padding: 3px 5px;
+      background-color: white;
+      border-radius: 13px;
+      font-family: @robotoMedium;
+    }
+    }
+  }
 
 
 
