@@ -242,14 +242,16 @@ html {
 }
 
 .main-cart {
+  cursor: pointer;
   .main-cart__ico {
     color: @yellowMain;
     font-size: 22px;
     margin-left: 15px;
+    transition:  0.4s;
     &:hover {
       transform: rotate(7deg);
       color: @whiteColor;
-      transition: all 0.2s ease;
+
     }
     &:after {
       color: black;
