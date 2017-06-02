@@ -5,7 +5,6 @@
 @merriWeatherLight: 'Roboto-Regular';
 @proximaNovaBold: 'Roboto-Regular';
 
-
 @darkCyan: #0f5f5c;
 @lightCyan: #c1d3d2;
 @cyan: #83a7a5;
@@ -44,7 +43,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 
 body {
   height: 100%; /*100% от окна браузера*/
@@ -122,7 +120,6 @@ html {
   background-size: cover;
 }
 
-
 .blackColor {
   color: #000000;
 }
@@ -131,11 +128,12 @@ html {
   color: #ffffff;
 }
 
-.menuSection{
+.menuSection {
   min-height: 40px;
   background-color: #000000;
 }
-.container{
+
+.container {
   max-width: 1200px;
   //padding: 0 30px;
   margin: 0 auto;
@@ -143,22 +141,42 @@ html {
   background-color: #6fb048;
 }
 
-.menuSection{
-  .container{
-    .flexWrapMenu{
-display: flex;
-      justify-content: space-between;
-      .search{
-
+.menuSection {
+  .container {
+    .flexWrapMenu {
+      display: flex;
+      //justify-content: space-between;
+      //flex-wrap: wrap;
+      .search {
+        //width: 35%;
+        flex-grow: 1;
+        .search__input{
+          max-width: 260px;
+          margin: 0 auto;
+          .search__input_input{
+            width:100%;
+            border: none;
+            border-radius: 2px;
+          }
+        }
       }
-      .menu{
-         .menu__menuHeader{
-           display: flex;
-
-         }
+      .menu {
+        //width: 60%;
+        flex-grow: 1;
+        .menu__menuHeader {
+          display: flex;
+          justify-content: flex-end;
+          .menu__menuHeader_item{
+            white-space: nowrap;
+            font-size: 16px;
+            padding-left: 10px;
+            &:last-child{
+              padding-right: 10px;
+            }
+          }
+        }
       }
     }
-
   }
 }
 
