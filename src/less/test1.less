@@ -2,11 +2,6 @@
 @robotoMedium: 'Roboto-Medium';
 @robotoRegular: 'Roboto-Regular';
 
-@darkCyan: #0f5f5c;
-@lightCyan: #c1d3d2;
-@cyan: #83a7a5;
-@green: #6fb048;
-@grey: #6b8383;
 
 @yellowMain: #ffe355;
 @greyText: #7f7f7f;
@@ -106,7 +101,6 @@ html {
 .tableCell {
   display: table-cell;
   vertical-align: middle;
-  //position: relative;
 }
 
 .tableRow {
@@ -138,7 +132,6 @@ html {
   //padding: 0 30px;
   margin: 0 auto;
   position: relative;
-  //background-color: #6fb048;
 }
 
 .menuSection {
@@ -151,12 +144,9 @@ html {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      //justify-content: space-between;
-      //flex-wrap: wrap;
       .search {
         margin-top: 5px;
         margin-bottom: 5px;
-        //width: 35%;
         flex-grow: 1;
         min-width: 150px;
         .search__input {
@@ -180,7 +170,6 @@ html {
             height: 20px;
             padding: 6px 0px 5px 8px;
             color: @greyText;
-
           }
         }
       }
@@ -194,11 +183,6 @@ html {
           justify-content: center;
           .menu__menuHeader_item {
             white-space: nowrap;
-            //font-size: 16px;
-            //robotoLight: 'Roboto-Light';
-            //robotoMedium: 'Roboto-Medium';
-            //robotoRegular: 'Roboto-Regular';
-
             padding-left: 10px;
             &:last-child {
               padding-right: 10px;
@@ -206,17 +190,10 @@ html {
             a {
               font: 15px/30px @robotoRegular;
               color: #ded6d6;
-
               display: inline-block;
-              //text-shadow: 1px 1px 1px white,
-              //  1px -1px 1px white,
-              //-1px 1px 1px white,
-              //  -1px -1px 1px white;
-              //color: steelblue;
               transition: all 0.5s;
               &:hover {
                 color: @yellowMain;
-                //transition: font-size 0.5s ease;
               }
               &:after {
                 content: "";
@@ -247,11 +224,10 @@ html {
     color: @yellowMain;
     font-size: 22px;
     margin-left: 15px;
-    transition:  0.4s;
+    transition: 0.4s;
     &:hover {
       transform: rotate(7deg);
       color: @whiteColor;
-
     }
     &:after {
       color: black;
@@ -260,14 +236,13 @@ html {
       content: attr(data-js_count);
       font-size: 16px;
       margin-left: 5px;
-      /* padding: 3px; */
       padding: 3px 5px;
       background-color: white;
       border-radius: 13px;
       font-family: @robotoMedium;
     }
-    }
   }
+}
 
 
 
