@@ -180,7 +180,7 @@ var config = {
         }]
     },
     // source-maps
-    devtool: inProduction === 'production' ? false : "cheap-module-inline-source-map",
+    devtool: "cheap-module-inline-source-map"//inProduction === 'production' ? false : "cheap-module-inline-source-map",
 };
 
 // Если продакшн - чистим консоль, код, папки и т.д
