@@ -1,4 +1,21 @@
-// $(document).ready(function () {
+$(document).ready(function () {
+    window.$ = $;
+
+    /* Global! При ресайзе следить за отступом меню, т.к. оно fixed*/
+    var menuSection = $('.js_search-height');
+    var menuInfoSection = $('.js_search-margin');
+    if (menuSection.length && menuInfoSection.length) {
+        setHeight();
+        $(document).on('scroll', setHeight);
+        $(window).resize( setHeight);
+    }
+
+    function setHeight() {
+        var heightMenu = menuSection.height();
+        menuInfoSection.css('margin-top', heightMenu);
+    }
+    // console.log(a);
+    // console.log(b);
 //     if ($('.navBurger').length > 0) {
 //         $('.navBurger').on('click', function (e) {
 //             e.preventDefault();
@@ -26,4 +43,4 @@
 //             });
 //         }
 //     })
-// });
+});
