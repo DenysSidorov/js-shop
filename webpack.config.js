@@ -28,7 +28,7 @@ var config = {
         app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
         startToo: './startToo.js', // другая точка входа
         vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
-        common_css: ['./less/test1', './less/reset', './less/font-awesome'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
+        common_css: ['./less/main', './less/reset', './less/font-awesome'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
     },
     output: {
         path: path.resolve(__dirname, './www/assets'),
@@ -180,7 +180,7 @@ var config = {
         }]
     },
     // source-maps
-    devtool: "cheap-module-inline-source-map"//inProduction === 'production' ? false : "cheap-module-inline-source-map",
+    devtool: "source-map"  //inProduction ? "source-map" : "cheap-module-inline-source-map",
 };
 
 // Если продакшн - чистим консоль, код, папки и т.д
