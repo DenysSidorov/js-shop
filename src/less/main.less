@@ -42,7 +42,7 @@
 
 body {
   height: 100%; /*100% от окна браузера*/
-  background-color: rgba(246, 255, 206, 0.55);
+ // background-color: rgba(246, 255, 206, 0.55);
 }
 
 html {
@@ -243,11 +243,16 @@ html {
     }
   }
 }
+.menuInfoSection{
 
+  margin-bottom: 18px;
 .submenuBlock {
   //background-color: #dcdcdc;
   display: flex;
   flex-wrap: wrap;
+  background-color: #e1fbfd;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   .contactInfo {
     flex-grow: 1;
     //background-color: #9d9bff;
@@ -256,7 +261,7 @@ html {
     align-items: center;
     .contactInfo__list-contacts-info{
       a{
-        font: 15px/19px @robotoRegular;
+        font: 15px/22px @robotoRegular;
         color: @greyText;
         transition: all 0.5s;
         &:hover{
@@ -273,7 +278,7 @@ html {
     justify-content: center;
     align-content: center;
     .logoInfo__logo-img {
-      height: 100px;
+      height: 75px;
       width: 200px;
     }
   }
@@ -285,7 +290,7 @@ html {
     align-items: center;
  .userInfo__listInfo{
    a{
-     font: 15px/19px @robotoRegular;
+     font: 15px/22px @robotoRegular;
      color: @greyText;
      transition: all 0.5s;
      &:hover{
@@ -296,5 +301,5 @@ html {
  }
   }
 }
-
+}
 
