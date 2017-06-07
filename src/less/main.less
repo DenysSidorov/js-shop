@@ -245,15 +245,55 @@ html {
 }
 
 .submenuBlock {
-  background-color: #dcdcdc;
+  //background-color: #dcdcdc;
+  display: flex;
+  flex-wrap: wrap;
   .contactInfo {
+    flex-grow: 1;
+    //background-color: #9d9bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .contactInfo__list-contacts-info{
+      a{
+        font: 15px/19px @robotoRegular;
+        color: @greyText;
+        transition: all 0.5s;
+        &:hover{
+          color: @yellowMain;
+        }
+      }
 
+    }
   }
   .logoInfo {
-
+    flex-grow: 1;
+    //background-color: #a7ff6f;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    .logoInfo__logo-img {
+      height: 100px;
+      width: 200px;
+    }
   }
-  .userInfo{
+  .userInfo {
+    //background-color: #ffe188;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ .userInfo__listInfo{
+   a{
+     font: 15px/19px @robotoRegular;
+     color: @greyText;
+     transition: all 0.5s;
+     &:hover{
+       color: @yellowMain;
+     }
+   }
 
+ }
   }
 }
 
