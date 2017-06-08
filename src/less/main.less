@@ -6,6 +6,7 @@
 @yellowMain: #a7ff6f;
 @greyText: #7f7f7f;
 @whiteColor: #fff1d9;
+@bgBlockColor: #e1fbfd;
 
 @font-face {
   font-family: 'Roboto-Light';
@@ -251,7 +252,7 @@ html {
     //background-color: #dcdcdc;
     display: flex;
     flex-wrap: wrap;
-    background-color: #e1fbfd;
+    background-color: @bgBlockColor;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     .contactInfo {
@@ -308,24 +309,55 @@ html {
   .themeItemsblock {
     display: flex;
     flex-wrap: wrap;
+    background-color: @bgBlockColor;
+    border-radius: 10px;
     .themeItemsblock__oneItem {
-      /* width: 200px; */
       min-width: 85px;
       flex-grow: 0;
-      //flex-basis: 140px;
       padding: 5px;
       display: flex;
       justify-content: center;
       white-space: nowrap;
-      /* flex-shrink: 2; */
       align-items: center;
-      /* float: left; */
       height: 40px;
-      /* display: block; */
       background-color: brown;
       color: #e1fbfd;
-      margin: 15px;
-      /* word-wrap: normal; */
+      margin: 5px;
+      border-radius: 6px;
+      transition-duration: 0.5s;
+      transition-property: transform;
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      transition: all 0.5s ease;
+      a {
+        font: 15px/22px @robotoRegular;
+        color: @greyText;
+        transition: all 0.5s;
+      }
+      &:hover {
+        a {
+          color: @yellowMain;
+        }
+      }
+      &:hover, &:focus, &:active {
+        transform: translateY(-3px);
+        animation-name: hover;
+        animation-duration: 1s;
+        animation-delay: 0.3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
     }
+  }
+}
+
+@keyframes hover {
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(-6px);
   }
 }
