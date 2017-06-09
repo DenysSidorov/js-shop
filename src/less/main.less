@@ -6,7 +6,7 @@
 @yellowMain: #a7ff6f;
 @greyText: #7f7f7f;
 @whiteColor: #fff1d9;
-@bgBlockColor: #e1fbfd;
+@bgBlockColor: #80cc58;
 
 @font-face {
   font-family: 'Roboto-Light';
@@ -246,7 +246,7 @@ html {
 }
 
 .menuInfoSection {
-
+  margin-top: 40px;
   margin-bottom: 18px;
   .submenuBlock {
     //background-color: #dcdcdc;
@@ -320,7 +320,7 @@ html {
       white-space: nowrap;
       align-items: center;
       height: 40px;
-      background-color: brown;
+      background-color: #eeeeee;
       color: #e1fbfd;
       margin: 5px;
       border-radius: 6px;
@@ -334,11 +334,6 @@ html {
         color: @greyText;
         transition: all 0.5s;
       }
-      &:hover {
-        a {
-          color: @yellowMain;
-        }
-      }
       &:hover, &:focus, &:active {
         transform: translateY(-3px);
         animation-name: hover;
@@ -347,6 +342,9 @@ html {
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;
+        a {
+          color: @yellowMain;
+        }
       }
     }
   }
@@ -360,4 +358,9 @@ html {
   100% {
     transform: translateY(-6px);
   }
+}
+
+
+.productsCardBlock{
+
 }
