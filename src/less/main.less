@@ -365,6 +365,7 @@ html {
   background-color: @mainBgColor;
   border-radius: 10px;
   .productsCardBlock__bodyCardItems {
+    padding: 0 10px;
     .bodyCardItems__oneCardItem {
       width: 23.5%;
       float: left;
@@ -376,6 +377,24 @@ html {
       border: solid 1px @mainBgColor;
       &:nth-child(4n+1){
         margin-left: 0%;
+      }
+      .oneCardItem__headCard{
+        .oneCardItem__headCard__priceCard{
+          background-color: #fff1a2;
+          display: block;
+          text-align: center;
+        }
+        .oneCardItem__headCard__nameBrand{
+          background-color: #ffbce6;
+          display: block;
+          text-align: center;
+
+        }
+        .oneCardItem__headCard__otherThings{
+          background-color: #84b8ff;
+          display: block;
+          text-align: center;
+        }
       }
     }
   }
