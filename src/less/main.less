@@ -3,10 +3,10 @@
 @robotoRegular: 'Roboto-Regular';
 
 @bgGreyColor: #424040;
-@yellowMain: #a7ff6f;
+
 @greyText: #7f7f7f;
 @whiteColor: #fff1d9;
-@bgBlockColor: #80cc58;
+@mainBgColor: #75d047;
 
 @font-face {
   font-family: 'Roboto-Light';
@@ -194,7 +194,7 @@ html {
               display: inline-block;
               transition: all 0.5s;
               &:hover {
-                color: @yellowMain;
+                color: @mainBgColor;
               }
               &:after {
                 content: "";
@@ -203,7 +203,7 @@ html {
                 z-index: 1;
                 width: 100%;
                 margin: auto;
-                border-bottom: 1px solid @yellowMain;
+                border-bottom: 1px solid @mainBgColor;
                 bottom: .15em;
                 transition: all 0.3s;
               }
@@ -222,7 +222,7 @@ html {
 .main-cart {
   cursor: pointer;
   .main-cart__ico {
-    color: @yellowMain;
+    color: @mainBgColor;
     font-size: 22px;
     margin-left: 15px;
     transition: 0.4s;
@@ -252,7 +252,7 @@ html {
     //background-color: #dcdcdc;
     display: flex;
     flex-wrap: wrap;
-    background-color: @bgBlockColor;
+    background-color: @mainBgColor;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     .contactInfo {
@@ -267,7 +267,7 @@ html {
           color: @greyText;
           transition: all 0.5s;
           &:hover {
-            color: @yellowMain;
+            color: @mainBgColor;
           }
         }
 
@@ -296,7 +296,7 @@ html {
           color: @greyText;
           transition: all 0.5s;
           &:hover {
-            color: @yellowMain;
+            color: @mainBgColor;
           }
         }
 
@@ -306,10 +306,11 @@ html {
 }
 
 .itemsSection {
+  margin-bottom: 18px;
   .themeItemsblock {
     display: flex;
     flex-wrap: wrap;
-    background-color: @bgBlockColor;
+    background-color: @mainBgColor;
     border-radius: 10px;
     .themeItemsblock__oneItem {
       min-width: 85px;
@@ -343,7 +344,7 @@ html {
         animation-iteration-count: infinite;
         animation-direction: alternate;
         a {
-          color: @yellowMain;
+          color: @bgGreyColor;
         }
       }
     }
@@ -360,7 +361,22 @@ html {
   }
 }
 
-
-.productsCardBlock{
-
+.productsCardBlock {
+  background-color: @mainBgColor;
+  border-radius: 10px;
+  .productsCardBlock__bodyCardItems {
+    .bodyCardItems__oneCardItem {
+      width: 23.5%;
+      float: left;
+      margin-left: 2%;
+      height: 350px;
+      margin-bottom: 10px;
+      //background-color: @mainBgColor;
+      border-radius: 8px;
+      border: solid 1px @mainBgColor;
+      &:nth-child(4n+1){
+        margin-left: 0%;
+      }
+    }
+  }
 }
