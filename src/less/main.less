@@ -46,9 +46,11 @@ body {
   // background-color: rgba(246, 255, 206, 0.55);
 }
 
+
 html {
   font-family: '';
   height: 100%; /*100% от body*/
+    font-size: 62.5%; /* для простоты вычислений в качестве базового размера шрифта задается 10 пикселей */
 }
 
 .left { /*прижаться к левому краю*/
@@ -161,7 +163,7 @@ html {
             padding-left: 30px;
             padding-right: 7px;
             height: 30px;
-            font: 14px/14px @robotoMedium;
+            font: 1.4rem/1.4rem @robotoMedium;
             color: @greyText;
           }
           .search-font-main-menu {
@@ -170,6 +172,7 @@ html {
             top: 0px;
             height: 20px;
             padding: 6px 0px 5px 8px;
+            font-size: 16px;
             color: @greyText;
           }
         }
@@ -189,7 +192,7 @@ html {
               padding-right: 10px;
             }
             a {
-              font: 15px/30px @robotoRegular;
+              font: 1.5rem/3rem @robotoRegular;
               color: #ded6d6;
               display: inline-block;
               transition: all 0.5s;
@@ -223,7 +226,7 @@ html {
   cursor: pointer;
   .main-cart__ico {
     color: @mainBgColor;
-    font-size: 22px;
+    font-size: 2.2rem;
     margin-left: 15px;
     transition: 0.4s;
     &:hover {
@@ -263,7 +266,7 @@ html {
       align-items: center;
       .contactInfo__list-contacts-info {
         a {
-          font: 15px/22px @robotoRegular;
+          font: 1.5rem/2.2rem @robotoRegular;
           color: @greyText;
           transition: all 0.5s;
           &:hover {
@@ -292,7 +295,7 @@ html {
       align-items: center;
       .userInfo__listInfo {
         a {
-          font: 15px/22px @robotoRegular;
+          font: 1.5rem/2.2rem @robotoRegular;
           color: @greyText;
           transition: all 0.5s;
           &:hover {
@@ -331,7 +334,7 @@ html {
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       transition: all 0.5s ease;
       a {
-        font: 15px/22px @robotoRegular;
+        font: 1.5rem/2.2rem @robotoRegular;
         color: @greyText;
         transition: all 0.5s;
       }
@@ -375,27 +378,47 @@ html {
       //background-color: @mainBgColor;
       border-radius: 8px;
       border: solid 1px @mainBgColor;
-      &:nth-child(4n+1){
+      &:nth-child(4n+1) {
         margin-left: 0%;
       }
-      .oneCardItem__headCard{
-        .oneCardItem__headCard__priceCard{
+      .oneCardItem__headCard {
+        .oneCardItem__headCard__priceCard {
           background-color: #fff1a2;
           display: block;
           text-align: center;
         }
-        .oneCardItem__headCard__nameBrand{
+        .oneCardItem__headCard__nameBrand {
           background-color: #ffbce6;
           display: block;
           text-align: center;
-
         }
-        .oneCardItem__headCard__otherThings{
+        .oneCardItem__headCard__otherThings {
           background-color: #84b8ff;
           display: block;
           text-align: center;
         }
       }
+      .oneCardItem__imageBody {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid @bgGreyColor;
+        border-bottom: 1px solid @bgGreyColor;
+        img {
+          max-height: 150px;
+          max-width: 100%;
+        }
+      }
+      .oneCardItem__bottomCard {
+
+      }
     }
   }
 }
+
+
+//html, body {
+//  @media (min-width: 1600px) {
+//    font-size: 78.125%;
+//  }
+//}
