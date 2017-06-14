@@ -2,8 +2,9 @@ module.exports = {
     plugins: {
         'postcss-smart-import': {},
         //'precss':{/* ...options */},
-        'autoprefixer': {},
 
+        'autoprefixer': {},
+'postcss-mixins':{}, // это не тестировал!
 
         //  испольвание нового синтаксиса в css        http://cssnext.io/
           'cssnext': {/* ...options */},

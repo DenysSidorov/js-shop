@@ -46,11 +46,10 @@ body {
   // background-color: rgba(246, 255, 206, 0.55);
 }
 
-
 html {
   font-family: '';
   height: 100%; /*100% от body*/
-    font-size: 62.5%; /* для простоты вычислений в качестве базового размера шрифта задается 10 пикселей */
+  font-size: 62.5%; /* для простоты вычислений в качестве базового размера шрифта задается 10 пикселей */
 }
 
 .left { /*прижаться к левому краю*/
@@ -386,16 +385,24 @@ html {
           background-color: #fff1a2;
           display: block;
           text-align: center;
+          font: 1.5rem/3rem @robotoRegular;
+          margin: 0 40px;
+        @mixin nowrap;
+
         }
         .oneCardItem__headCard__nameBrand {
           background-color: #ffbce6;
           display: block;
           text-align: center;
+          font: 1.5rem/2.8rem @robotoRegular;
+        @mixin nowrap;
         }
         .oneCardItem__headCard__otherThings {
           background-color: #84b8ff;
           display: block;
           text-align: center;
+          font: 1.5rem/2.5rem @robotoRegular;
+        @mixin nowrap;
         }
       }
       .oneCardItem__imageBody {
@@ -416,9 +423,14 @@ html {
   }
 }
 
+@define-mixin nowrap {
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+}
 
-//html, body {
-//  @media (min-width: 1600px) {
-//    font-size: 78.125%;
-//  }
-//}
+/*html, body {
+  @media (min-width: 1600px) {
+    font-size: 78.125%;
+ }
+}*/
