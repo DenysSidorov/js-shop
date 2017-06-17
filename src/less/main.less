@@ -9,6 +9,15 @@
 @mainBgColor: #75d047;
 @mainRedColor: #ff301e;
 
+
+@define-mixin nowrap {
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+
+
 @font-face {
   font-family: 'Roboto-Light';
   src: url('../fonts/Roboto-Light.eot');
@@ -388,7 +397,8 @@ html {
           text-align: center;
           font: 1.5rem/3rem @robotoRegular;
           margin: 0 40px;
-        @mixin nowrap;
+          /* @add-mixin nowrap;*/
+        /* @mixin nowrap;*/
 
         }
         .oneCardItem__headCard__nameBrand {
@@ -407,32 +417,28 @@ html {
           background-color: #84b8ff;
           display: block;
           font: 1.5rem/2.5rem @robotoRegular;
-        @mixin nowrap;
+          /* @add-mixin nowrap;*/
+          @mixin nowrap;
+          }
         }
-      }
-      .oneCardItem__imageBody {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-top: 1px solid @bgGreyColor;
-        border-bottom: 1px solid @bgGreyColor;
-        img {
-          max-height: 150px;
-          max-width: 100%;
+        .oneCardItem__imageBody {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-top: 1px solid @bgGreyColor;
+          border-bottom: 1px solid @bgGreyColor;
+          img {
+            max-height: 150px;
+            max-width: 100%;
+          }
         }
-      }
-      .oneCardItem__bottomCard {
+        .oneCardItem__bottomCard {
 
+        }
       }
     }
   }
-}
 
-@define-mixin nowrap {
-  white-space: nowrap; /* Запрещаем перенос строк */
-  overflow: hidden; /* Обрезаем все, что не помещается в область */
-  text-overflow: ellipsis; /* Добавляем многоточие */
-}
 
 /*html, body {
   @media (min-width: 1600px) {

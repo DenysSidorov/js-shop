@@ -4,7 +4,7 @@ module.exports = {
         //'precss':{/* ...options */},
 
         'autoprefixer': {},
-'postcss-mixins':{}, // это не тестировал!
+        'postcss-mixins':{}, // это не тестировал!
 
         //  испольвание нового синтаксиса в css        http://cssnext.io/
           'cssnext': {/* ...options */},
