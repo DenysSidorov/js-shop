@@ -5,18 +5,17 @@
 @bgGreyColor: #424040;
 
 @greyText: #7f7f7f;
+@paleGrey: #eeeeee;
 @whiteColor: #fff1d9;
 @mainBgColor: #75d047;
+@mainBgColorT: #4c88d0;
 @mainRedColor: #ff301e;
-
 
 @define-mixin nowrap {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
   text-overflow: ellipsis; /* Добавляем многоточие */
 }
-
-
 
 @font-face {
   font-family: 'Roboto-Light';
@@ -379,10 +378,11 @@ html {
   .productsCardBlock__bodyCardItems {
     padding: 0 10px;
     .bodyCardItems__oneCardItem {
+      position: relative;
       width: 23.5%;
       float: left;
       margin-left: 2%;
-      height: 35rem;
+      height: 45rem;
       margin-bottom: 10px;
       //background-color: @mainBgColor;
       border-radius: 8px;
@@ -390,21 +390,57 @@ html {
       &:nth-child(4n+1) {
         margin-left: 0%;
       }
+      .oneCardItem__bottomCard_sale {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #75d047;
+        border-radius: 50%;
+        font: 15px/15px 'Roboto-Medium';
+        color: white;
+        border: 1px solid #7f7f7f;
+        padding: 9px;
+        transform: rotate(-38deg) translate(-5%, -20%);
+      }
+      .oneCardItem__bottomCard_new {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: @mainBgColor;
+        border-radius: 50%;
+        font: 15px/15px @robotoMedium;
+        color: white;
+        border: 1px solid @greyText;
+        padding: 9px;
+        transform: rotate(38deg) translate(5%, -20%);
+      }
       .oneCardItem__headCard {
         .oneCardItem__headCard__priceCard {
-          background-color: #fff1a2;
+          //background-color: #fff1a2;
           display: block;
           text-align: center;
-          font: 1.5rem/3rem @robotoRegular;
-          margin: 0 40px;
+          font: 2.5rem/3rem @robotoMedium;
+          margin: 5px 40px 0 40px;
+          color: @bgGreyColor;
           /* @add-mixin nowrap;*/
-        /* @mixin nowrap;*/
+          /* @mixin nowrap;*/
 
         }
         .oneCardItem__headCard__nameBrand {
-          background-color: #ffbce6;
+          //background-color: #ffbce6;
           display: block;
           text-align: center;
+          color: @bgGreyColor;
           font: 1.4rem/2.4rem @robotoRegular;
           /*@mixin nowrap;*/
           overflow: hidden;
@@ -412,33 +448,75 @@ html {
           padding: 0 30px
         }
         .oneCardItem__headCard__otherThings {
+          color: #D2691E;
           text-align: right;
           padding-right: 1.5rem;
-          background-color: #84b8ff;
+          //background-color: #84b8ff;
           display: block;
           font: 1.5rem/2.5rem @robotoRegular;
           /* @add-mixin nowrap;*/
           @mixin nowrap;
+          .oneCardItem__headCard__otherThings_count{
+            color: @bgGreyColor;
           }
         }
-        .oneCardItem__imageBody {
+      }
+      .oneCardItem__imageBody {
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid @paleGrey;
+        border-bottom: 1px solid @paleGrey;
+        img {
+          max-height: 150px;
+          max-width: 100%;
+        }
+      }
+      .oneCardItem__bottomCard {
+        .oneCardItem__bottomCard__shortText {
+          margin-top: 10px;
+          height: 6rem;
+          font: 1.3rem/1.5rem @robotoRegular;
+          text-align: center;
+          overflow: hidden;
+          padding: 0px 5px
+        }
+        .oneCardItem__bottomCard__shortText_dots:after {
+          //content:"...";
+          //display:inline-block;
+          //position:absolute;
+        }
+        .oneCardItem__bottomCard__status{
+          font: 1.5rem/4rem @robotoRegular;
+          color: @mainBgColor;
+          text-align: right;
+          padding-right: 8px;
+        }
+        .oneCardItem__bottomCard__buy{
+          height: 3.5rem;
           display: flex;
           justify-content: center;
-          align-items: center;
-          border-top: 1px solid @bgGreyColor;
-          border-bottom: 1px solid @bgGreyColor;
-          img {
-            max-height: 150px;
-            max-width: 100%;
-          }
-        }
-        .oneCardItem__bottomCard {
+          margin: 0 auto;
 
+          span {
+            transition: all 0.5s ease;
+            font: 2rem/2rem @robotoMedium;
+            background-color: @mainBgColor;
+            color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid @greyText;
+            padding: 0.7rem;
+            &:hover{
+              background-color: @paleGrey;
+              color: @mainBgColor;
+            }
+          }
         }
       }
     }
   }
-
+}
 
 /*html, body {
   @media (min-width: 1600px) {
