@@ -7,14 +7,20 @@
 @greyText: #7f7f7f;
 @paleGrey: #eeeeee;
 @whiteColor: #fff1d9;
-@mainBgColor: #75d047;
-@mainBgColorTwo: #4c88d0;
+@mainBgColorTwo: #75d047;
+@mainBgColor: #4c88d0;
 @mainRedColor: #ff301e;
 
 @define-mixin nowrap {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
   text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+@keyframes preloader {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @font-face {
@@ -274,11 +280,11 @@ html {
       align-items: center;
       .contactInfo__list-contacts-info {
         a {
-          font: 1.5rem/2.2rem @robotoRegular;
-          color: @greyText;
+          font: 1.5rem/2.2rem @robotoMedium;
+          color: white;
           transition: all 0.5s;
           &:hover {
-            color: @mainBgColor;
+            color: @bgGreyColor;
           }
         }
 
@@ -303,11 +309,11 @@ html {
       align-items: center;
       .userInfo__listInfo {
         a {
-          font: 1.5rem/2.2rem @robotoRegular;
-          color: @greyText;
+          font: 1.5rem/2.2rem @robotoMedium;
+          color: white;
           transition: all 0.5s;
           &:hover {
-            color: @mainBgColor;
+            color: @bgGreyColor;
           }
         }
 
@@ -378,17 +384,23 @@ html {
   .productsCardBlock__bodyCardItems {
     padding: 0 10px;
     .bodyCardItems__oneCardItem {
+      transition: background-color 0.5s ease;
       position: relative;
       width: 23.5%;
       float: left;
       margin-left: 2%;
       height: 45rem;
-      margin-bottom: 10px;
+      margin-bottom: 3rem;
       //background-color: @mainBgColor;
       border-radius: 8px;
       border: solid 1px @mainBgColor;
+
       &:nth-child(4n+1) {
         margin-left: 0%;
+      }
+
+      &:hover {
+        background-color: rgba(167, 242, 172, 0.12);
       }
       .oneCardItem__bottomCard_sale {
         position: absolute;
@@ -399,13 +411,19 @@ html {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #75d047;
+        background-color: @mainBgColorTwo;
         border-radius: 50%;
         font: 15px/15px 'Roboto-Medium';
         color: white;
         border: 1px solid #7f7f7f;
         padding: 9px;
         transform: rotate(-38deg) translate(-5%, -20%);
+        transition: box-shadow 0.5s ease;
+        &:hover {
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+          //animation: preloader 0.5s infinite linear;
+        }
+
       }
       .oneCardItem__bottomCard_new {
         position: absolute;
@@ -423,6 +441,11 @@ html {
         border: 1px solid @greyText;
         padding: 9px;
         transform: rotate(38deg) translate(5%, -20%);
+        transition: box-shadow 0.5s ease;
+        &:hover {
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+          //animation: preloader 0.5s infinite linear;
+        }
       }
       .oneCardItem__headCard {
         .oneCardItem__headCard__priceCard {
@@ -455,8 +478,8 @@ html {
           display: block;
           font: 1.5rem/2.5rem @robotoRegular;
           /* @add-mixin nowrap;*/
-          @mixin nowrap;
-          .oneCardItem__headCard__otherThings_count{
+        @mixin nowrap;
+          .oneCardItem__headCard__otherThings_count {
             color: @bgGreyColor;
           }
         }
@@ -487,13 +510,13 @@ html {
           //display:inline-block;
           //position:absolute;
         }
-        .oneCardItem__bottomCard__status{
+        .oneCardItem__bottomCard__status {
           font: 1.5rem/4rem @robotoRegular;
           color: @mainBgColor;
           text-align: right;
           padding-right: 8px;
         }
-        .oneCardItem__bottomCard__buy{
+        .oneCardItem__bottomCard__buy {
           height: 3.5rem;
           display: flex;
           justify-content: center;
@@ -507,9 +530,29 @@ html {
             border-radius: 8px;
             border: 1px solid @greyText;
             padding: 0.7rem;
-            &:hover{
+            &:before {
+              pointer-events: none;
+              position: absolute;
+              z-index: 1;
+              content: '';
+              top: 96%;
+              left: 12%;
+              height: 10px;
+              width: 75%;
+              opacity: 0;
+              background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+              -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+              -webkit-transition-property: transform, opacity;
+              transition-property: transform, opacity;
+            }
+            &:hover {
               background-color: @paleGrey;
               color: @mainBgColor;
+              &:before {
+                opacity: 1;
+              }
+
             }
           }
         }
@@ -518,8 +561,39 @@ html {
   }
 }
 
+.fullHeight {
+  background-color: #feff3b;
+  //min-height: calc((100vh) - (80px));
+  //min-height: calc(~"100vh - 51.5px");
+}
+
+.footerSection {
+  background-color: #4c88d0;
+  .footerMainBlock {
+    background-color: rgb(208, 34, 47);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 20px 15px;
+  }
+}
+
 /*html, body {
   @media (min-width: 1600px) {
     font-size: 78.125%;
  }
 }*/
+
+/*For footer adhere, independence footer's height*/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footerSection {
+  flex: 0 0 auto;
+}
