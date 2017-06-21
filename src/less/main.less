@@ -11,6 +11,7 @@
 @mainBgColor: #2EA9FD; /*#2ea9fd;  #2ea9fd; */
 @mainRedColor: #ff301e;
 @lightBlue: #93b7c9;
+@cardBG : #f6f6f6;
 @define-mixin nowrap {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
@@ -400,7 +401,7 @@ html {
       }
 
       &:hover {
-        background-color: rgb(225, 225, 225);
+        background-color: @cardBG;
         //opacity: 0.3;
 
       }
@@ -602,12 +603,26 @@ html {
     .footerMainBlock {
       .footerMainBlock__titles {
         font: 2rem/2.6rem @robotoMedium;
-        color: #d3d3d3;
+        color: white;
+        opacity: 0.7;
         margin: 0 auto;
         text-align: center;
         padding-top: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &:first-child {
           padding-top: 0px;
+        }
+        span{
+
+        }
+        .strip_double{
+          flex-grow: 1;
+          margin: 0 1%;
+          height: 7px;
+          border-top: 1px solid #93b7c9;
+          border-bottom: 1px solid #93b7c9;
         }
       }
       .footerMainBlock__phones {
@@ -616,16 +631,8 @@ html {
         justify-content: space-around;
         padding-bottom: 15px;
         padding-top: 15px;
-        border-bottom: 1px solid @lightBlue;
-        span {
-          font: 1.5rem/2.2rem @robotoMedium;
-          color: white;
-          transition: all 0.5s;
-          margin: 0 10px;
-          &:hover {
-            color: @bgGreyColor;
-          }
-        }
+        //border-bottom: 1px solid @lightBlue;
+
 
       }
       .footerMainBlock__socials {
@@ -634,44 +641,66 @@ html {
         justify-content: center;
         padding-bottom: 15px;
         padding-top: 15px;
-        border-bottom: 1px solid @lightBlue;
-        span {
-          font: 1.5rem/2.2rem @robotoMedium;
-          color: white;
-          transition: all 0.5s;
-          margin: 0 10px;
-          &:hover {
-            color: @bgGreyColor;
-          }
-        }
+        //border-bottom: 1px solid @lightBlue;
+
       }
       .footerMainBlock__payment-delivery {
+
         display: flex;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        justify-content: space-around;
         flex-wrap: wrap;
         .footerMainBlock__payment-delivery_payment {
-          span {
-            font: 1.5rem/2.2rem @robotoMedium;
-            color: white;
-            transition: all 0.5s;
-            margin: 0 10px;
-            &:hover {
-              color: @bgGreyColor;
-            }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #c2ff61;
+          img{
+            //max-height:6.4rem;
+            //max-width:6.4rem;
           }
         }
         .footerMainBlock__socials_delivery {
-          span {
-            font: 1.5rem/2.2rem @robotoMedium;
-            color: white;
-            transition: all 0.5s;
-            margin: 0 10px;
-            &:hover {
-              color: @bgGreyColor;
-            }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          //background-color: #ff6a6f;
+          img{
+            height:10rem;
+            //max-width:6.4rem;
+            margin: 0 6px;
+          }
+          .nvpochta{
+          transform: scale(0.6);
           }
         }
       }
     }
+  }
+}
+
+.menu_one{
+  font: 2.5rem/2.2rem 'Roboto-Medium';
+  color: #feff3b;
+  opacity: 0.9;
+  transition: all 0.3s;
+  margin: 0 10px;
+  font-style: italic;
+  &:hover {
+    color: @bgGreyColor;
+    //opacity: 1;
+  }
+  i{
+    background-color: #feff3b;
+    color: @mainBgColor!important;
+    padding: 0.8rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
   }
 }
 
