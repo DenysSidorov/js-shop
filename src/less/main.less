@@ -3,14 +3,14 @@
 @robotoRegular: 'Roboto-Regular';
 
 @bgGreyColor: #424040;
-
+@greyPaleText: #ded6d6;
 @greyText: #7f7f7f;
 @paleGrey: #eeeeee;
 @whiteColor: #fff1d9;
 @mainBgColorTwo: #75d047;
-@mainBgColor: #4c88d0;
+@mainBgColor: #2EA9FD; /*#2ea9fd;  #2ea9fd; */
 @mainRedColor: #ff301e;
-
+@lightBlue: #93b7c9;
 @define-mixin nowrap {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
@@ -400,7 +400,9 @@ html {
       }
 
       &:hover {
-        background-color: rgba(167, 242, 172, 0.12);
+        background-color: rgb(225, 225, 225);
+        //opacity: 0.3;
+
       }
       .oneCardItem__bottomCard_sale {
         position: absolute;
@@ -568,9 +570,9 @@ html {
 }
 
 .footerSection {
-  background-color: #4c88d0;
+  background-color: @mainBgColor;
   .footerMainBlock {
-    background-color: rgb(208, 34, 47);
+    // background-color: rgb(208, 34, 47);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 20px 15px;
@@ -596,4 +598,86 @@ html {
 
 .footerSection {
   flex: 0 0 auto;
+  .container {
+    .footerMainBlock {
+      .footerMainBlock__titles {
+        font: 2rem/2.6rem @robotoMedium;
+        color: #d3d3d3;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 12px;
+        &:first-child {
+          padding-top: 0px;
+        }
+      }
+      .footerMainBlock__phones {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        border-bottom: 1px solid @lightBlue;
+        span {
+          font: 1.5rem/2.2rem @robotoMedium;
+          color: white;
+          transition: all 0.5s;
+          margin: 0 10px;
+          &:hover {
+            color: @bgGreyColor;
+          }
+        }
+
+      }
+      .footerMainBlock__socials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        border-bottom: 1px solid @lightBlue;
+        span {
+          font: 1.5rem/2.2rem @robotoMedium;
+          color: white;
+          transition: all 0.5s;
+          margin: 0 10px;
+          &:hover {
+            color: @bgGreyColor;
+          }
+        }
+      }
+      .footerMainBlock__payment-delivery {
+        display: flex;
+        flex-wrap: wrap;
+        .footerMainBlock__payment-delivery_payment {
+          span {
+            font: 1.5rem/2.2rem @robotoMedium;
+            color: white;
+            transition: all 0.5s;
+            margin: 0 10px;
+            &:hover {
+              color: @bgGreyColor;
+            }
+          }
+        }
+        .footerMainBlock__socials_delivery {
+          span {
+            font: 1.5rem/2.2rem @robotoMedium;
+            color: white;
+            transition: all 0.5s;
+            margin: 0 10px;
+            &:hover {
+              color: @bgGreyColor;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+/*font: 1.5rem/2.2rem @robotoMedium;
+        color: white;
+        transition: all 0.5s;
+        &:hover {
+          color: @bgGreyColor;
+        }*/
