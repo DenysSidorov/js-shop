@@ -8,7 +8,7 @@
 @paleGrey: #eeeeee;
 @whiteColor: #fff1d9;
 @mainBgColorTwo: #75d047;
-@mainBgColor: #2EA9FD; /*#2ea9fd;  #2ea9fd; */
+@mainBgColor: #50d0ca;/*rgba(255, 136, 0, 0.89); /*#2EA9FD; /*#2ea9fd;  #2ea9fd; */
 @mainRedColor: #ff301e;
 @lightBlue: #93b7c9;
 @cardBG: #f6f6f6;
@@ -393,15 +393,17 @@ html {
       height: 45rem;
       margin-bottom: 3rem;
       //background-color: @mainBgColor;
-      border-radius: 8px;
-      border: solid 1px @mainBgColor;
-
+      //border-radius: 8px;
+      border: solid 1px transparent;
+      overflow: hidden;
+      background-color: @cardBG;
       &:nth-child(4n+1) {
         margin-left: 0%;
       }
 
       &:hover {
-        background-color: @cardBG;
+        border: solid 1px @mainBgColor;
+
         //opacity: 0.3;
 
       }
@@ -611,18 +613,19 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+
         &:first-child {
           padding-top: 0px;
         }
         span {
-
+          inimatitransform: scalse(1.1);
         }
         .strip_double {
           flex-grow: 1;
           margin: 0 1%;
           height: 7px;
-          border-top: 1px solid #93b7c9;
-          border-bottom: 1px solid #93b7c9;
+          border-top: 1px solid #d9d9da;
+          border-bottom:  1px solid #d9d9da;
         }
       }
       .footerMainBlock__phones {
@@ -644,22 +647,37 @@ html {
 
       }
       .footerMainBlock__payment-delivery {
-
         display: flex;
         flex-wrap: wrap;
         padding-bottom: 15px;
         padding-top: 15px;
         justify-content: space-around;
         flex-wrap: wrap;
-        .footerMainBlock__payment-delivery_payment {
+        .footerMainBlock__payment-delivery_menu {
           flex-basis: 70%;
-          //display: flex;
+          display: flex;
+
           //justify-content: center;
           //align-items: center;
           //background-color: #c2ff61;
-          img {
-            //max-height:6.4rem;
-            //max-width:6.4rem;
+          .contactMenuBlockFooter{
+            flex-basis: 200px;
+            margin-bottom: 15px;
+            //background-color: #c3ff4d;
+            .contactMenuBlockFooter_main{
+              li{
+                a{
+                  transition: all ease 0.3s;
+                  color: white;
+                  font: 1.3rem/1.8rem @robotoMedium;
+                  &:hover{
+                    color: #dee6ec!important;
+                  }
+                }
+
+              }
+            }
+
           }
 
         }
@@ -668,12 +686,12 @@ html {
           justify-content: center;
           align-items: center;
           flex-wrap: wrap;
-
-          background-color: yellow;
+          flex-basis: 250px;
+          //background-color: yellow;
           //border-radius: 50%;
           padding: 8px;
           margin-bottom: 10px;
-          //background-color: #ff6a6f;
+          ///background-color: #ff6a6f;
           img {
             height: 10rem;
 
@@ -686,29 +704,62 @@ html {
         }
       }
     }
-  }.footerMainBlock__payment-delivery_payment-afferta {
-     font: 1rem/1.4rem @robotoMedium;
-     color: #bfe5fe;
-     padding: 8px;
-       text-align: center;
-   }
+  }
+  .footerMainBlock__payment-delivery_payment{
+    //font: 1rem/1.4rem @robotoMedium;
+    //color: #bfe5fe;
+    //padding: 8px;
+    //text-align: center;
+      background-color: #ffce5c;
+  }
 }
-
-.menu_one {
+.footerMainBlock__payment-delivery_payment-afferta{
+  font: 1rem/1.4rem @robotoMedium;
+  color: #d9d9da;
+  padding: 8px;
+  text-align: center;
+}
+.menu_one_telFooter {
+  display: flex;
+  align-items: center;
   font-weight: bold;
   font: 2.5rem/2.2rem 'Roboto-Medium';
-  color: #feff3b;
+  color: white;
   opacity: 0.9;
   transition: all 0.3s;
   margin: 0 10px;
   font-style: italic;
-  &:hover {
-    color: @bgGreyColor;
-    //opacity: 1;
+  span{
+    font-weight: bold;
   }
+i{
+  transition: all 0.3s;
+  font-size: 4.5rem ;
+  //background-color: #fff;
+  border-radius: 50%;
+  //border:solid 2px white;
+  margin-right: 10px;
+  padding: 10px;
+  &:hover {
+    color: #dee6ec;
+  }
+}
+}
+
+
+
+.menu_one_soc {
+  font-weight: bold;
+  font: 2.5rem/2.2rem 'Roboto-Medium';
+  color: white;
+  opacity: 0.9;
+  transition: all 0.3s;
+  margin: 0 10px;
+  font-style: italic;
+
   i {
     background-color: #feff3b;
-    color: @mainBgColor !important;
+    color: @mainBgColor ;
     padding: 0.8rem;
     width: 4rem;
     height: 4rem;
@@ -716,8 +767,18 @@ html {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    transition: all 0.5s ease;
+    &:hover {
+      background-color: @mainBgColor;
+      color: #feff3b ;
+      border-radius: 50%;
+      //color: #dee6ec;
+      transform: rotate(360deg);
+      //opacity: 1;
+    }
   }
 }
+
 
 .imgFooterBlock {
   background-color: #ffffff;
@@ -728,9 +789,10 @@ html {
   align-items: center;
   width: 100px;
   height: 60px;
+  margin: 5px;
   .imgFooter {
     max-height: 190px;
-    max-height: 46px;
+    max-height: 45px;
   }
 }
 
