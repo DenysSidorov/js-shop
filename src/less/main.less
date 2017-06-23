@@ -11,7 +11,7 @@
 @mainBgColor: #2EA9FD; /*#2ea9fd;  #2ea9fd; */
 @mainRedColor: #ff301e;
 @lightBlue: #93b7c9;
-@cardBG : #f6f6f6;
+@cardBG: #f6f6f6;
 @define-mixin nowrap {
   white-space: nowrap; /* Запрещаем перенос строк */
   overflow: hidden; /* Обрезаем все, что не помещается в область */
@@ -614,10 +614,10 @@ html {
         &:first-child {
           padding-top: 0px;
         }
-        span{
+        span {
 
         }
-        .strip_double{
+        .strip_double {
           flex-grow: 1;
           margin: 0 1%;
           height: 7px;
@@ -633,7 +633,6 @@ html {
         padding-top: 15px;
         //border-bottom: 1px solid @lightBlue;
 
-
       }
       .footerMainBlock__socials {
         display: flex;
@@ -647,40 +646,56 @@ html {
       .footerMainBlock__payment-delivery {
 
         display: flex;
+        flex-wrap: wrap;
         padding-bottom: 15px;
         padding-top: 15px;
         justify-content: space-around;
         flex-wrap: wrap;
         .footerMainBlock__payment-delivery_payment {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #c2ff61;
-          img{
+          flex-basis: 70%;
+          //display: flex;
+          //justify-content: center;
+          //align-items: center;
+          //background-color: #c2ff61;
+          img {
             //max-height:6.4rem;
             //max-width:6.4rem;
           }
+
         }
         .footerMainBlock__socials_delivery {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-wrap: wrap;
+
+          background-color: yellow;
+          //border-radius: 50%;
+          padding: 8px;
+          margin-bottom: 10px;
           //background-color: #ff6a6f;
-          img{
-            height:10rem;
-            //max-width:6.4rem;
+          img {
+            height: 10rem;
+
             margin: 0 6px;
           }
-          .nvpochta{
-          transform: scale(0.6);
+          .nvpochta {
+            //transform: scale(0.6);
           }
+
         }
       }
     }
-  }
+  }.footerMainBlock__payment-delivery_payment-afferta {
+     font: 1rem/1.4rem @robotoMedium;
+     color: #bfe5fe;
+     padding: 8px;
+       text-align: center;
+   }
 }
 
-.menu_one{
+.menu_one {
+  font-weight: bold;
   font: 2.5rem/2.2rem 'Roboto-Medium';
   color: #feff3b;
   opacity: 0.9;
@@ -691,9 +706,9 @@ html {
     color: @bgGreyColor;
     //opacity: 1;
   }
-  i{
+  i {
     background-color: #feff3b;
-    color: @mainBgColor!important;
+    color: @mainBgColor !important;
     padding: 0.8rem;
     width: 4rem;
     height: 4rem;
@@ -701,6 +716,21 @@ html {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+  }
+}
+
+.imgFooterBlock {
+  background-color: #ffffff;
+  border: 1px solid #7f7f7f;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  .imgFooter {
+    max-height: 190px;
+    max-height: 46px;
   }
 }
 
