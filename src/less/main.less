@@ -8,7 +8,7 @@
 @paleGrey: #eeeeee;
 @whiteColor: #fff1d9;
 @mainBgColorTwo: #75d047;
-@mainBgColor: #50d0ca;/*rgba(255, 136, 0, 0.89); /*#2EA9FD; /*#2ea9fd;  #2ea9fd; */
+@mainBgColor: #2EA9FD; /*#50d0ca;rgba(255, 136, 0, 0.89); /*#2EA9FD; /*#2ea9fd;  #2ea9fd; */
 @mainRedColor: #ff301e;
 @lightBlue: #93b7c9;
 @cardBG: #f6f6f6;
@@ -173,13 +173,17 @@ html {
           margin: 0 auto;
           .search__input_input {
             width: 100%;
-            border: none;
+            border: 3px solid transparent;
             border-radius: 2px;
             padding-left: 30px;
             padding-right: 7px;
             height: 30px;
             font: 1.4rem/1.4rem @robotoMedium;
             color: @greyText;
+            transition: all 0.5s ease;
+            &:hover, &:focus{
+            border-color: @mainBgColor;
+            }
           }
           .search-font-main-menu {
             position: absolute;
@@ -264,7 +268,7 @@ html {
 }
 
 .menuInfoSection {
-  margin-top: 40px;
+  margin-top: 55px;
   margin-bottom: 18px;
   .submenuBlock {
     //background-color: #dcdcdc;
@@ -280,12 +284,14 @@ html {
       justify-content: center;
       align-items: center;
       .contactInfo__list-contacts-info {
+        margin-bottom: 5px;
+        margin-top: 5px;
         a {
           font: 1.5rem/2.2rem @robotoMedium;
           color: white;
           transition: all 0.5s;
           &:hover {
-            color: @bgGreyColor;
+            color: #d9d9da;
           }
         }
 
@@ -314,7 +320,7 @@ html {
           color: white;
           transition: all 0.5s;
           &:hover {
-            color: @bgGreyColor;
+            color: #d9d9da;;
           }
         }
 
@@ -599,6 +605,14 @@ html {
   flex: 1 0 auto;
 }
 
+.additionalCardBlock {
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 8px;
+  background-color: @mainBgColor;
+}
+
 .footerSection {
   flex: 0 0 auto;
   .container {
@@ -625,7 +639,7 @@ html {
           margin: 0 1%;
           height: 7px;
           border-top: 1px solid #d9d9da;
-          border-bottom:  1px solid #d9d9da;
+          border-bottom: 1px solid #d9d9da;
         }
       }
       .footerMainBlock__phones {
@@ -653,25 +667,28 @@ html {
         padding-top: 15px;
         justify-content: space-around;
         flex-wrap: wrap;
-        .footerMainBlock__payment-delivery_menu {
-          flex-basis: 70%;
-          display: flex;
 
+        .footerMainBlock__payment-delivery_menu {
+          //flex-basis: 70%;
+          display: flex;
+          flex-grow: 1;
+          justify-content: center;
           //justify-content: center;
           //align-items: center;
           //background-color: #c2ff61;
-          .contactMenuBlockFooter{
+          .contactMenuBlockFooter {
             flex-basis: 200px;
             margin-bottom: 15px;
             //background-color: #c3ff4d;
-            .contactMenuBlockFooter_main{
-              li{
-                a{
+            .contactMenuBlockFooter_main {
+              li {
+                text-align: center;
+                a {
                   transition: all ease 0.3s;
                   color: white;
-                  font: 1.3rem/1.8rem @robotoMedium;
-                  &:hover{
-                    color: #dee6ec!important;
+                  font: 1.5rem/1.9rem @robotoMedium;
+                  &:hover {
+                    color: #dee6ec !important;
                   }
                 }
 
@@ -679,7 +696,9 @@ html {
             }
 
           }
+          .rr {
 
+          }
         }
         .footerMainBlock__socials_delivery {
           display: flex;
@@ -705,48 +724,53 @@ html {
       }
     }
   }
-  .footerMainBlock__payment-delivery_payment{
+  .footerMainBlock__payment-delivery_payment {
     //font: 1rem/1.4rem @robotoMedium;
     //color: #bfe5fe;
     //padding: 8px;
     //text-align: center;
-      background-color: #ffce5c;
+    background-color: #ffce5c;
   }
 }
-.footerMainBlock__payment-delivery_payment-afferta{
+
+.footerMainBlock__payment-delivery_payment-afferta {
   font: 1rem/1.4rem @robotoMedium;
   color: #d9d9da;
   padding: 8px;
   text-align: center;
 }
+
 .menu_one_telFooter {
   display: flex;
   align-items: center;
   font-weight: bold;
   font: 2.5rem/2.2rem 'Roboto-Medium';
-  color: white;
+  color: yellow;
   opacity: 0.9;
-  transition: all 0.3s;
+transition: all 0.3s ease;
   margin: 0 10px;
   font-style: italic;
-  span{
+  a {
+    transition: all 0.3s ease;
+    color: yellow;
     font-weight: bold;
   }
-i{
-  transition: all 0.3s;
-  font-size: 4.5rem ;
-  //background-color: #fff;
-  border-radius: 50%;
-  //border:solid 2px white;
-  margin-right: 10px;
-  padding: 10px;
   &:hover {
     color: #dee6ec;
+    a {
+      color: #dee6ec;
+    }
+  }
+  i {
+    font-size: 4.5rem;
+    //background-color: #fff;
+    border-radius: 50%;
+    //border:solid 2px white;
+    margin-right: 10px;
+    padding: 10px;
+
   }
 }
-}
-
-
 
 .menu_one_soc {
   font-weight: bold;
@@ -759,7 +783,7 @@ i{
 
   i {
     background-color: #feff3b;
-    color: @mainBgColor ;
+    color: @mainBgColor;
     padding: 0.8rem;
     width: 4rem;
     height: 4rem;
@@ -770,7 +794,7 @@ i{
     transition: all 0.5s ease;
     &:hover {
       background-color: @mainBgColor;
-      color: #feff3b ;
+      color: #feff3b;
       border-radius: 50%;
       //color: #dee6ec;
       transform: rotate(360deg);
@@ -778,7 +802,6 @@ i{
     }
   }
 }
-
 
 .imgFooterBlock {
   background-color: #ffffff;
@@ -790,6 +813,11 @@ i{
   width: 100px;
   height: 60px;
   margin: 5px;
+  transition: all ease 0.5s;
+  &:hover{
+    transform: scale(1.1);
+
+  }
   .imgFooter {
     max-height: 190px;
     max-height: 45px;
