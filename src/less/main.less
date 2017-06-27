@@ -843,7 +843,7 @@ html {
 */
 .accordion {
   margin: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   padding: 0;
   list-style: none;
 }
@@ -860,6 +860,7 @@ html {
 * Элемент label который запускает открыть/закрыть.
 */
 .accordion_trigger {
+
   display: block;
   background-color: #007ccf;
   color: #ddd;
@@ -867,12 +868,14 @@ html {
   font: 1.4rem/2rem @robotoMedium;
   cursor: pointer;
   padding: 1.2em;
+  padding-left: 33px;
 }
 
 /* меняем цвет фона у активного переключателя */
 
 .accordion_toggle:checked ~ .accordion_trigger {
   background-color: #006bb3;
+  padding-left: 33px;
 }
 
 /**
@@ -895,8 +898,12 @@ html {
   padding: 0;
   position: absolute;
   width: 1px;
-  background-color: #ddd;
+  background-color: #f5f5f6;
   color: #444;
+  p{
+    color: #9c9c9c;
+    font: 1.3rem/1.6rem @robotoLight;
+  }
 }
 
 /**
@@ -915,7 +922,53 @@ html {
   -moz-animation: fadeIn ease-in 0.5s;
   animation: fadeIn ease-in 0.5s;
 }
-
+.accordion_toggle {
+  vertical-align: top;
+  width: 17px;
+  height: 17px;
+  margin: 0 3px 0 0;
+}
+.accordion_toggle + label {
+  cursor: pointer;
+}
+.accordion_toggle:not(checked) {
+  position: absolute;
+  opacity: 0;
+}
+.accordion_toggle:not(checked) + label {
+  position: relative;
+  //padding: 0 0 0 35px;
+}
+.accordion_toggle:not(checked) + label:before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #CDD1DA;
+  border-radius: 50%;
+  background: #FFF;
+}
+.accordion_toggle:not(checked) + label:after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9FD468;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+  opacity: 0;
+  transition: all .2s;
+}
+.accordion_toggle:checked + label:after {
+  opacity: 1;
+}
+.accordion_toggle:focus + label:before {
+  box-shadow: 0 0 0 3px rgba(255,255,0,.5);
+}
 /* анимация при появлении блоков с содержанием */
 @-moz-keyframes fadeIn {
   from {
@@ -952,6 +1005,7 @@ html {
   background-color: #ff775d;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   .userWays {
     width: 400px;
     background-color: #cfff10;
@@ -980,6 +1034,33 @@ html {
 
       }
     }
+    .paymentWayOrder{
+      padding-left: 30px;
+      margin-bottom: 35px;
+    }
+    .userDataForOrder{
+      p{
+        margin-left: 30px;
+        margin-top: 20px;
+        font: 1.2rem/1.2rem @robotoMedium;
+      }
+      .nameInput{
+        margin-top: 3px;
+        margin-left: 30px;
+      }
+      .phoneInput{
+        margin-top: 3px;
+        margin-left: 30px;
+      }
+      .cityInput{
+        margin-top: 3px;
+        margin-left: 30px;
+      }
+      .mailInput{
+        margin-top: 3px;
+        margin-left: 30px;
+      }
+    }
   }
   .itemsInCart{
     background-color: #5071ff;
@@ -990,7 +1071,9 @@ html {
     margin-bottom: 60px;
   }
 }
-
+.red{
+  color: red;
+}
 /* ORDER-BOTTOM*/
 
 
