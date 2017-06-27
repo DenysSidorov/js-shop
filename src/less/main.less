@@ -181,8 +181,8 @@ html {
             font: 1.4rem/1.4rem @robotoMedium;
             color: @greyText;
             transition: all 0.5s ease;
-            &:hover, &:focus{
-            border-color: @mainBgColor;
+            &:hover, &:focus {
+              border-color: @mainBgColor;
             }
           }
           .search-font-main-menu {
@@ -268,7 +268,7 @@ html {
 }
 
 .menuInfoSection {
- // margin-top: 55px;
+  // margin-top: 55px;
   margin-bottom: 18px;
   .submenuBlock {
     //background-color: #dcdcdc;
@@ -748,7 +748,7 @@ html {
   font: 2.5rem/2.2rem 'Roboto-Medium';
   color: yellow;
   opacity: 0.9;
-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   margin: 0 10px;
   font-style: italic;
   a {
@@ -815,7 +815,7 @@ transition: all 0.3s ease;
   height: 60px;
   margin: 5px;
   transition: all ease 0.5s;
-  &:hover{
+  &:hover {
     transform: scale(1.1);
 
   }
@@ -824,16 +824,17 @@ transition: all 0.3s ease;
     max-height: 45px;
   }
 }
-.testTemp{
+
+.testTemp {
   background-color: #ff1200;
 }
+
 /*font: 1.5rem/2.2rem @robotoMedium;
         color: white;
         transition: all 0.5s;
         &:hover {
           color: @bgGreyColor;
         }*/
-
 
 /* ORDER-TOP*/
 
@@ -846,12 +847,15 @@ transition: all 0.3s ease;
   padding: 0;
   list-style: none;
 }
+
 .accordion_item {
   border-bottom: 1px solid #5a95fd;
 }
+
 .accordion_item:last-of-type {
   border-bottom: none;
 }
+
 /**
 * Элемент label который запускает открыть/закрыть.
 */
@@ -877,6 +881,7 @@ transition: all 0.3s ease;
   position: absolute;
   display: none;
 }
+
 /**
 * скрытое содержание аккордеона.
 */
@@ -892,6 +897,7 @@ transition: all 0.3s ease;
   background-color: #ddd;
   color: #444;
 }
+
 /**
 * когда переключатель checked на radio/checkbox, показать содержимое аккордеона.
 */
@@ -904,30 +910,85 @@ transition: all 0.3s ease;
   width: auto;
   height: auto;
   /* задержка появления  функция анимации */
-  -webkit-animation:fadeIn ease-in 0.5s;
-  -moz-animation:fadeIn ease-in 0.5s;
-  animation:fadeIn ease-in 0.5s;
+  -webkit-animation: fadeIn ease-in 0.5s;
+  -moz-animation: fadeIn ease-in 0.5s;
+  animation: fadeIn ease-in 0.5s;
 }
+
 /* анимация при появлении блоков с содержанием */
 @-moz-keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1 }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1
+  }
 }
+
 @-webkit-keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1 }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1
+  }
 }
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1 }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1
+  }
 }
-
-
-.waysBlock{
-  .container{}
+.tittleOrderForm{
+  //text-align: center;
+  margin-top: 20px;
+  font: 2.5rem/2.5rem @robotoRegular;
+}
+.formOrderMain {
   background-color: #ff775d;
-}
+  display: flex;
+  justify-content: space-around;
+  .userWays {
+    width: 400px;
+    background-color: #cfff10;
+    height: 300px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    .tittleWAyName{
+      font: 2rem/2rem @robotoRegular;
+      margin-left: 30px;
+      position: relative;
+      margin-bottom: 25px;
+      &:after{
+        content: attr(data-count);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -13px;
+        left: -57px;
+        color: #ffffff;
+        font: 2rem/2rem @robotoMedium;
+        background-color: @mainBgColor;
+        border-radius: 50%;
+        height:50px;
+        width:50px;
 
+      }
+    }
+  }
+  .itemsInCart{
+    background-color: #5071ff;
+    width: 400px;
+    height: 350px;
+
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
 
 /* ORDER-BOTTOM*/
 
