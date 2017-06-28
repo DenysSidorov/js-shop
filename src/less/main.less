@@ -1020,103 +1020,108 @@ html {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  .userWays {
-    padding-top: 23px;
-    width: 400px;
-    background-color: #e8e8e8;
-    //height: 300px;
-    margin-top: 30px;
-    margin-bottom: 60px;
-    border-radius: 15px;
-    .tittleWAyName {
-      font: 2rem/2rem @robotoRegular;
-      margin-left: 30px;
-      position: relative;
-      margin-bottom: 25px;
-      &:after {
-        content: attr(data-count);
+  .userWaysContainer {
+    padding: 0 30px;
+    width: 500px;
+    .userWays {
+      padding-top: 23px;
+      padding-bottom:25px;
+      width: 100%;
+      background-color: #e8e8e8;
+      //height: 300px;
+      margin-top: 30px;
+      margin-bottom: 60px;
+      border-radius: 15px;
+      .tittleWAyName {
+        font: 2rem/2rem @robotoRegular;
+        margin-left: 30px;
+        position: relative;
+        margin-bottom: 25px;
+        &:after {
+          content: attr(data-count);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: -13px;
+          left: -57px;
+          color: #ffffff;
+          font: 2rem/2rem @robotoMedium;
+          background-color: @mainBgColor;
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+
+        }
+      }
+      .paymentWayOrder {
+        padding-left: 30px;
+        margin-bottom: 35px;
+      }
+      .userDataForOrder {
+        display: flex;
+        flex-direction: column;
+        p {
+          margin-left: 30px;
+          margin-top: 20px;
+          font: 1.2rem/1.2rem @robotoLight;
+        }
+        .orderWaysInput {
+          font: 1.7rem/1.7rem @robotoLight;
+          color: #00416f;
+          padding: 2px 8px;
+          align-items: center;
+          margin-top: 3px;
+          //margin-left: 30px;
+          border: 1px solid transparent;
+          transition: all 0.5s ease;
+          border-radius: 4px;
+          height: 4rem;
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          &:focus, &:hover {
+            border-color: @mainBgColor
+          }
+          &:last-child {
+            margin-bottom: 20px;
+          }
+        }
+
+      }
+      .orderWaysConfirmBtn {
+
+        //margin-left: 30px;
+        //position: relative;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+       // margin-bottom: 2.5rem;
+        background-color: @mainBgColor;
+        border-radius: 7px;
+        width: 90%;
+        height: 60px;
         display: flex;
         justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: -13px;
-        left: -57px;
-        color: #ffffff;
-        font: 2rem/2rem @robotoMedium;
-        background-color: @mainBgColor;
-        border-radius: 50%;
-        height: 50px;
-        width: 50px;
-
-      }
-    }
-    .paymentWayOrder {
-      padding-left: 30px;
-      margin-bottom: 35px;
-    }
-    .userDataForOrder {
-      display: flex;
-      flex-direction: column;
-      p {
-        margin-left: 30px;
-        margin-top: 20px;
-        font: 1.2rem/1.2rem @robotoLight;
-      }
-      .orderWaysInput {
-        font: 1.7rem/1.7rem @robotoLight;
-        color: #00416f;
-        padding: 2px 8px;
-        align-items: center;
-        margin-top: 3px;
-        //margin-left: 30px;
-        border: 1px solid transparent;
+        //align-content: center;
         transition: all 0.5s ease;
-        border-radius: 4px;
-        height: 4rem;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        &:focus, &:hover{
-          border-color: @mainBgColor
+        &:hover {
+          transform: scale(1.025);
+          span {
+            color: #bdedff;
+          }
         }
-        &:last-child {
-          margin-bottom: 20px;
+        span {
+          transition: all 0.5s ease;
+          align-self: center;
+          font: 3rem/3rem @robotoRegular;
+          color: white;
         }
-      }
-
-    }
-    .orderWaysConfirmBtn{
-
-      //margin-left: 30px;
-      //position: relative;
-      margin: 0 auto;
-      margin-top: 1.5rem;
-      margin-bottom: 2.5rem;
-      background-color: @mainBgColor;
-      border-radius: 7px;
-      width: 90%;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      //align-content: center;
-      transition: all 0.5s ease;
-      &:hover{
-      transform: scale(1.025);
-        span{
-          color: #bdedff;
-        }
-      }
-      span{
-        transition: all 0.5s ease;
-        align-self: center;
-        font: 3rem/3rem @robotoRegular;
-        color: white;
       }
     }
   }
   .itemsInCart {
     // background-color: #5071ff;
-    width: 400px;
+    width: 500px;
     //height: 350px;
 
     margin-top: 30px;
@@ -1129,13 +1134,6 @@ html {
 }
 
 /* ORDER-BOTTOM*/
-
-
-
-
-
-
-
 
 /*
 |  ul + p  - первый p за ul
