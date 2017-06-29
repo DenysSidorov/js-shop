@@ -1140,6 +1140,9 @@ html {
 
 
 /*table order top*/
+table td{
+  position: relative;
+}
 table {
   border: 1px solid #ccc;
   width: 100%;
@@ -1179,8 +1182,9 @@ table th {
     border-bottom: 2px solid #ddd;
   }
   table td {
+    position: relative;
     display: block;
-    text-align: right;
+    /* text-align: right; */
     font-size: 13px;
     border-bottom: 1px dotted #ccc;
   }
@@ -1188,6 +1192,11 @@ table th {
     border-bottom: 0;
   }
   table td:before {
+    position: static;
+    text-align: center;
+    background-color: antiquewhite;
+    left: 2%;
+    width: 100%;
     content: attr(data-label);
     float: left;
     text-transform: uppercase;
@@ -1195,9 +1204,11 @@ table th {
   }
 }
 
+
 .testtest{
   background-color: #ffb578;
   width: 50px;
   height: 50px;
 }
+/*https://www.youtube.com/watch?v=8_EWsLjt3D8*/
 /*table order bottom*/
