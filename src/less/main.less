@@ -1113,7 +1113,7 @@ html {
     }
   }
   .itemsInCart {
-    background-color: #f9ffc8;
+    //background-color: #f9ffc8;
     width: 500px;
     //margin-top: 30px;
     //margin-bottom: 60px;
@@ -1153,19 +1153,23 @@ table {
 }
 
 table tr {
+  background-color: #eee;
   border: 1px solid #ddd;
-  padding: 5px;
+  border-bottom-width: 2px;
+  padding: 0.5rem;
 }
 
 table th,
 table td {
-  padding: 10px;
-  text-align: center;
+  font: 1.2rem/1.5rem @robotoRegular;
+  padding: 1rem;
+  text-align: justify;
 }
 
 table th {
+  font-weight: bold;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 1.4rem;
   letter-spacing: 1px;
 }
 
@@ -1177,24 +1181,27 @@ table th {
     display: none;
   }
   table tr {
-    margin-bottom: 10px;
+    margin-bottom: 2rem;
     display: block;
     border-bottom: 2px solid #ddd;
   }
   table td {
+    font: 1.2rem/1.5rem @robotoRegular;
     position: relative;
     display: block;
+    text-align: center;
     /* text-align: right; */
-    font-size: 13px;
+    //  font-size: 1.3rem;
     border-bottom: 1px dotted #ccc;
   }
   table td:last-child {
     border-bottom: 0;
   }
   table td:before {
+    font: 1.5rem/2rem @robotoRegular;
     position: static;
     text-align: center;
-    background-color: antiquewhite;
+    background-color: #eeeeee;
     left: 2%;
     width: 100%;
     content: attr(data-label);
@@ -1209,6 +1216,7 @@ table th {
   background-color: #ffb578;
   width: 50px;
   height: 50px;
+  margin: 5px;
 }
 /*https://www.youtube.com/watch?v=8_EWsLjt3D8*/
 /*table order bottom*/
