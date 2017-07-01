@@ -151,8 +151,9 @@ html {
   margin: 0 auto;
   position: relative;
 }
+
 /* Для автоопределения отступа для блока под гл. меню*/
-.js_search-margin{
+.js_search-margin {
   margin-top: 40px;
 }
 
@@ -408,29 +409,28 @@ html {
       overflow: hidden;
       background-color: @cardBG;
 
-
-     /* &:before{
-        pointer-events: none;
-        position: absolute;
-        content: '';
-        height: 0;
-        width: 0;
-        bottom: 0;
-        left: 0;
-        background: white;
-        background: linear-gradient(45deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
-        box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.4);
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        -webkit-transition-property: width, height;
-        transition-property: width, height;
-      }
-      &:hover:before,
-      &:focus:before,
-      &:active:before {
-        width: 25px;
-        height: 25px;
-      }*/
+      /* &:before{
+         pointer-events: none;
+         position: absolute;
+         content: '';
+         height: 0;
+         width: 0;
+         bottom: 0;
+         left: 0;
+         background: white;
+         background: linear-gradient(45deg, white 45%, #aaaaaa 50%, #cccccc 56%, white 80%);
+         box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.4);
+         -webkit-transition-duration: 0.3s;
+         transition-duration: 0.3s;
+         -webkit-transition-property: width, height;
+         transition-property: width, height;
+       }
+       &:hover:before,
+       &:focus:before,
+       &:active:before {
+         width: 25px;
+         height: 25px;
+       }*/
       &:nth-child(4n+1) {
         margin-left: 0%;
       }
@@ -509,19 +509,37 @@ html {
           max-height: 4.8rem;
           padding: 0 30px
         }
-        .oneCardItem__headCard__otherThings {
-          color: #e61c1c;
-          text-align: right;
-          padding-right: 1.5rem;
-          //background-color: #84b8ff;
-          display: block;
-          font: 1.5rem/2.5rem @robotoRegular;
-          /* @add-mixin nowrap;*/
-        @mixin nowrap;
-          .oneCardItem__headCard__otherThings_count {
+        .oneCardItem__headCard__wrap-things{
+          //display: flex;
+
+          .oneCardItem__headCard__otherThings {
+            color: #e61c1c;
+            text-align: right;
+            padding-right: 1.5rem;
+            //background-color: #84b8ff;
+            display: block;
+            font: 1.5rem/2.5rem @robotoRegular;
+            /* @add-mixin nowrap;*/
+            @mixin nowrap;
+            float: right;
+            transition: all 0.5s ease;
+            &:hover{
+              color: red;
+            }
+            .oneCardItem__headCard__otherThings_like {
+              color: @bgGreyColor;
+            }
+          }
+          .oneCardItem__headCard__view{
+            font: 1.5rem/2.5rem @robotoRegular;
             color: @bgGreyColor;
+            padding-left: 1.5rem;
+            .oneCardItem__headCard__view_items, i{
+              color: #929292;
+            }
           }
         }
+
       }
       .oneCardItem__imageBody {
         height: 17.5rem;
@@ -1369,9 +1387,6 @@ html {
 |  li:nth-last-child(2) - с конца nth-child
 */
 
-
-
-
 /* Кнопка вверх top*/
 #scrollup {
   position: fixed; /* фиксированная позиция */
@@ -1384,4 +1399,5 @@ html {
   display: none; /* спрятать блок */
   cursor: pointer;
 }
+
 /* Кнопка вверх bottom*/
