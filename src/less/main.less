@@ -151,6 +151,10 @@ html {
   margin: 0 auto;
   position: relative;
 }
+/* Для автоопределения отступа для блока под гл. меню*/
+.js_search-margin{
+  margin-top: 40px;
+}
 
 .menuSection {
   background-color: @bgGreyColor;
@@ -521,16 +525,30 @@ html {
         }
       }
       .oneCardItem__imageBody {
-        padding: 10px 0;
+        height: 17.5rem;
+        overflow: hidden;
+        //padding: 10px 0;
         display: flex;
         justify-content: center;
         align-items: center;
         border-top: 1px solid @paleGrey;
         border-bottom: 1px solid @paleGrey;
+
         img {
-          max-height: 150px;
-          max-width: 100%;
+          transition: all 0.5s ease;
+          //max-height: 17.5rem;
+          //max-width: 100%;
         }
+        /*//&:hover{
+        //  transition: all 0.5s ease;
+        //  overflow: visible;
+        //  img{
+        //    max-height: 200vh;
+        //    z-index: 99999999;
+        //  }
+        // // max-height: 20vw;
+        //  //max-width: 20vw;
+        //}*/
       }
       .oneCardItem__bottomCard {
         .oneCardItem__bottomCard__shortText {
@@ -1351,3 +1369,20 @@ html {
 |  div:not(#container) -  все div кроме #container
 |  li:nth-last-child(2) - с конца nth-child
 */
+
+
+
+
+/* Кнопка вверх top*/
+#scrollup {
+  position: fixed; /* фиксированная позиция */
+  opacity: 0.8; /* прозрачность */
+  padding: 15px 10px 10px; /* отступы */
+  background: #aaa;
+  border-radius: 5px; /* скругление углов */
+  left: 10px; /* отступ слева */
+  bottom: 10px; /* отступ снизу */
+  display: none; /* спрятать блок */
+  cursor: pointer;
+}
+/* Кнопка вверх bottom*/

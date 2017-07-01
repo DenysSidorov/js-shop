@@ -1,7 +1,8 @@
-$(document).ready(function () {
+// $(document).ready(function () {
+window.onload = function () { // после загрузки страницы
     window.$ = $;
 
-    /* Global! При ресайзе следить за отступом меню, т.к. оно fixed*/
+    /* 1. Global! При ресайзе следить за отступом меню, т.к. оно fixed*/
     var menuSection = $('.js_search-height');
     var menuInfoSection = $('.js_search-margin');
     // if (menuSection.length && menuInfoSection.length) {
@@ -9,7 +10,7 @@ $(document).ready(function () {
 
         setHeight();
         $(document).on('scroll', setHeight);
-        $(window).resize( setHeight);
+        $(window).resize(setHeight);
     }
 
     function setHeight() {
@@ -17,6 +18,36 @@ $(document).ready(function () {
         console.log(heightMenu, 'heightMenu');
         menuInfoSection.css('margin-top', heightMenu);
     }
+
+
+    // 2. Кнопка подняться наверх
+    var scrollUp = document.getElementById('scrollup'); // найти элемент
+
+    scrollUp.onmouseover = function () { // добавить прозрачность
+        scrollUp.style.opacity = 0.3;
+        scrollUp.style.filter = 'alpha(opacity=30)';
+    };
+
+    scrollUp.onmouseout = function () { //убрать прозрачность
+        scrollUp.style.opacity = 0.5;
+        scrollUp.style.filter = 'alpha(opacity=50)';
+    };
+
+    scrollUp.onclick = function () { //обработка клика
+        window.scrollTo(0, 0);
+    };
+
+    // show button
+
+    window.onscroll = function () { // при скролле показывать и прятать блок
+        if (window.pageYOffset > 0) {
+            scrollUp.style.display = 'block';
+        } else {
+            scrollUp.style.display = 'none';
+        }
+    };
+
+
     // console.log(a);
     // console.log(b);
 //     if ($('.navBurger').length > 0) {
@@ -31,6 +62,7 @@ $(document).ready(function () {
 //     }
 //
 //
+
 //
 //     $(window).scroll(function () {
 //         var scroll = $(window).scrollTop();
@@ -46,4 +78,6 @@ $(document).ready(function () {
 //             });
 //         }
 //     })
-});
+}
+
+// );
