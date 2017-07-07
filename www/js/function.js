@@ -1,6 +1,14 @@
+
+
 // $(document).ready(function () {
 window.onload = function () { // после загрузки страницы
     window.$ = $;
+
+
+    $('#responsiveTabsDemo').responsiveTabs({
+        startCollapsed: 'accordion'
+    });
+
 
     /* 1. Global! При ресайзе следить за отступом меню, т.к. оно fixed*/
     var menuSection = $('.js_search-height');
@@ -47,16 +55,20 @@ window.onload = function () { // после загрузки страницы
         }
     };
 
-    // 3 Подняться нверх 2
+    // 3 Подняться наверх 2
     //window.scrollTo(x,y)
     var scrolled;
     var timer;
 
-    document.getElementById('top').onclick = function () {
-        scrolled = window.pageYOffset;
-        //window.scrollTo(0,0);
-        scrollToTop();
+    var clickBtnToTop = document.getElementById('top');
+    if(clickBtnToTop){
+        clickBtnToTop.onclick = function () {
+            scrolled = window.pageYOffset;
+            //window.scrollTo(0,0);
+            scrollToTop();
+        }
     }
+
     function scrollToTop() {
         if (scrolled > 0) {
             window.scrollTo(0, scrolled);
