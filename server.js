@@ -36,13 +36,15 @@ app.use(morgan('tiny')); // Настройка логирования, см. д�
 
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extend: true}));
-app.use(session({
+
+/*TODO make async function*/ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: config.backend.secretWord
 }));
 
 app.use('/api', authRoute); // singin singup
+
 app.use('/api', checkToken,  userRoute); // get user route
 app.use(getUser);
 app.use('/api', checkToken,  pageRoute); //
