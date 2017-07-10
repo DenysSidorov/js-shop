@@ -6,34 +6,31 @@
 /*TABS WITOUT JAVASCRIPT TOP*/
 /*http://dbmast.ru/adaptivnye-vkladki-taby-na-css3 */
 /* Базовый контейнер табов */
-.tabs {
+.mainCardContainer__tabs {
   min-width: 320px;
   //max-width: 800px;
   padding: 0px;
   margin: 0 auto;
 }
 /* Стили секций с содержанием */
-.tabs>section {
+.mainCardContainer__tabs>section {
   display: none;
   padding: 15px;
   background: #fff;
   border: 1px solid #ddd;
 }
-.tabs>section>p {
+.mainCardContainer__tabs>section>.containerInTabs {
   margin: 0 0 5px;
   line-height: 1.5;
   color: #383838;
   /* прикрутим анимацию */
-  -webkit-animation-duration: 1s;
   animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+  animation-name: fadeInTabs;
 }
 /* Описываем анимацию свойства opacity */
 
-@-webkit-keyframes fadeIn {
+@-webkit-keyframes fadeInTabs {
   from {
     opacity: 0;
   }
@@ -41,21 +38,14 @@
     opacity: 1;
   }
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+
 /* Прячем чекбоксы */
-.tabs>input {
+.mainCardContainer__tabs>input {
   display: none;
   position: absolute;
 }
 /* Стили переключателей вкладок (табов) */
-.tabs>label {
+.mainCardContainer__tabs>label {
   display: inline-block;
   margin: 0 0 -1px;
   padding: 15px 25px;
@@ -66,40 +56,45 @@
   border-width: 1px 1px 1px 1px;
   background: #f1f1f1;
   border-radius: 3px 3px 0 0;
+  font: 1.6rem/2.2rem @robotoMedium;
+
 }
 /* Шрифт-иконки от Font Awesome в формате Unicode */
-.tabs>label:before {
+.mainCardContainer__tabs>label:before {
   font-family: fontawesome;
   font-weight: normal;
   margin-right: 10px;
 }
-.tabs>label[for*="1"]:before {
-  content: "\f19a";
+.mainCardContainer__tabs>label[for*="1"]:before {
+  content: "\f281";
 }
-.tabs>label[for*="2"]:before {
-  content: "\f17a";
+.mainCardContainer__tabs>label[for*="2"]:before {
+  content: "\f083";
 }
-.tabs>label[for*="3"]:before {
-  content: "\f13b";
+.mainCardContainer__tabs>label[for*="3"]:before {
+  content: "\f086";
 }
-.tabs>label[for*="4"]:before {
+.mainCardContainer__tabs>label[for*="4"]:before {
   content: "\f13c";
 }
 /* Изменения стиля переключателей вкладок при наведении */
 
-.tabs>label:hover {
+.mainCardContainer__tabs>label:hover {
   color: #888;
   cursor: pointer;
 }
 /* Стили для активной вкладки */
-.tabs>input:checked+label {
+.mainCardContainer__tabs>input:checked+label {
   color: #555;
-  border-top: 1px solid #009933;
+  border-top: 2px solid @mainBgColor;
   border-bottom: 1px solid #fff;
   background: #fff;
 }
 /* Активация секций с помощью псевдокласса :checked */
-#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {
+#mainCardContainer__tabs_tab1:checked~#mainCardContainer__tabs_content-tab1,
+#mainCardContainer__tabs_tab2:checked~#mainCardContainer__tabs_content-tab2,
+#mainCardContainer__tabs_tab3:checked~#mainCardContainer__tabs_content-tab3,
+#mainCardContainer__tabs_tab4:checked~#mainCardContainer__tabs_content-tab4 {
   display: block;
 }
 /* Убираем текст с переключателей
