@@ -3,15 +3,20 @@
   display: flex;
   flex-wrap: wrap;
   .mainContainerForCard__imageBlock {
-   // background-color: rgba(142, 225, 93, 0.57);
-    height: 500px;
+    // background-color: rgba(142, 225, 93, 0.57);
+    //height: 500px;
     flex-grow: 2;
     flex-basis: 450px;
 
     .mainContainerForCard__imageBlock_viewComponent {
       width: 100%;
-      height: 300px;
+      //height: 300px;
       //background-color: #99eeff;
+      text-align: center;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
     .mainContainerForCard__imageBlock_addOpportunity {
       width: 100%;
@@ -19,7 +24,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-     // background-color: #ff8c8e;
+      // background-color: #ff8c8e;
       .mainContainerForCard__imageBlock_addOpportunity_item {
         background-color: white;
         width: 110px;
@@ -27,20 +32,20 @@
         margin: 10px;
         text-align: center;
 
-        &:hover{
+        &:hover {
           color: red;
           cursor: pointer;
-          span{
+          span {
             color: @mainBgColor;
           }
         }
-        i{
+        i {
           width: 100%;
           text-align: center;
           font-size: 45px;
-          color: @mainBgColor ;
+          color: @mainBgColor;
         }
-        span{
+        span {
           font: 12px/16px @robotoRegular;
           color: #696666;
           text-align: center;
@@ -66,12 +71,12 @@
         padding: 5px 30px;
         border-radius: 5px;
         transition: all 0.3s ease;
-        &:hover{
+        &:hover {
           transform: scale(1.1) rotate(1deg);
         }
         .mainContainerForCard__mainInfoBlock_show_value, i {
           color: #929292;
-          span{
+          span {
             color: #777777;
           }
         }
@@ -84,7 +89,7 @@
         padding: 5px 30px;
         border-radius: 5px;
         transition: all 0.3s ease;
-        &:hover{
+        &:hover {
           transform: scale(1.1) rotate(1deg);
         }
 
@@ -117,7 +122,7 @@
       .partnersInCard {
         max-height: 50px;
         max-width: 80px;
-       // border: solid 1px #d9d9da;
+        // border: solid 1px #d9d9da;
         margin-bottom: 6px;
       }
     }
@@ -128,7 +133,7 @@
       border-bottom: 1px solid #eeeeee;
 
       .mainContainerForCard__mainInfoBlock_fourBlockPrice_price {
-        margin-right:13px;
+        margin-right: 13px;
         .mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count {
           font: 4.5rem/4.5rem @robotoMedium;
         }
@@ -141,7 +146,7 @@
       .mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly {
         font: 1.3rem/4.5rem @robotoRegular;
         border: solid 1px @mainBgColor;
-        margin-right:13px;
+        margin-right: 13px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -167,7 +172,7 @@
         padding-left: 25px;
         //color: @mainBgColor;
         transition: all 0.3s ease;
-        margin-right:13px;
+        margin-right: 13px;
         flex-shrink: 0;
         &:hover {
           color: #e5e5e5;
@@ -176,9 +181,9 @@
       }
 
     }
-    .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy{
+    .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy {
       padding: 15px;
-      padding-top:10px;
+      padding-top: 10px;
       border-bottom: 1px solid #eeeeee;
       display: flex;
       flex-wrap: wrap;
@@ -191,20 +196,19 @@
         padding: 5px 30px;
         border-radius: 5px;
         transition: all 0.3s ease;
-        &:hover{
+        &:hover {
           transform: scale(1.1) rotate(1deg);
         }
 
-        .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count{
+        .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count {
           color: #929292;
-          font: 1.4rem/2.5rem @robotoRegular ;
-          span{
+          font: 1.4rem/2.5rem @robotoRegular;
+          span {
             color: #777777;
             font-size: 1.6rem;
           }
         }
       }
-
 
       .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot {
         margin-top: 5px;
@@ -214,18 +218,18 @@
         padding: 5px 30px;
         border-radius: 5px;
         transition: all 0.3s ease;
-        &:hover{
+        &:hover {
           transform: scale(1.1) rotate(1deg);
         }
-        .greenInCard{
+        .greenInCard {
           color: #58e145;
         }
-        .redInCard{
+        .redInCard {
           color: #e92e37;
         }
-        .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text{
+        .mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text {
           color: #999999;
-          font: 1.4rem/2.5rem @robotoMedium ;
+          font: 1.4rem/2.5rem @robotoMedium;
         }
       }
     }
@@ -233,8 +237,7 @@
 }
 
 .containerForCardAdditional {
-/* TABS LIBRARRY TOP */
+  /* TABS LIBRARRY TOP */
 
-
-/* TABS LIBRARRY BOTTOM */
+  /* TABS LIBRARRY BOTTOM */
 }
