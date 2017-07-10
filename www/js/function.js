@@ -5,9 +5,7 @@ window.onload = function () { // после загрузки страницы
     window.$ = $;
 
 // https://github.com/jellekralt/Responsive-Tabs
-    $('#responsiveTabsDemo').responsiveTabs({
-        startCollapsed: 'accordion'
-    });
+
 
 
     /* 1. Global! При ресайзе следить за отступом меню, т.к. оно fixed*/
