@@ -16,6 +16,7 @@
     .mainContainerForCard__imageBlock_addOpportunity {
       width: 100%;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
      // background-color: #ff8c8e;
@@ -122,6 +123,7 @@
     }
     .mainContainerForCard__mainInfoBlock_fourBlockPrice {
       display: flex;
+      flex-wrap: wrap;
       padding: 15px 15px;
       border-bottom: 1px solid #eeeeee;
 
@@ -137,7 +139,7 @@
 
       }
       .mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly {
-        font: 1.3rem/1.3rem @robotoRegular;
+        font: 1.3rem/4.5rem @robotoRegular;
         border: solid 1px @mainBgColor;
         margin-right:13px;
         display: flex;
@@ -147,13 +149,14 @@
         padding-left: 8px;
         color: @mainBgColor;
         transition: all 0.3s ease;
+        flex-shrink: 0;
         &:hover {
           color: #999999;
           border: solid 1px #999999;
         }
       }
       .mainContainerForCard__mainInfoBlock_fourBlockPrice_cart {
-        font: 1.6rem/1.3rem @robotoMedium;
+        font: 1.6rem/4.5rem @robotoMedium;
         color: #ffffff;
         background-color: @mainBgColor;
         border: solid 1px @mainBgColor;
@@ -165,6 +168,7 @@
         //color: @mainBgColor;
         transition: all 0.3s ease;
         margin-right:13px;
+        flex-shrink: 0;
         &:hover {
           color: #e5e5e5;
           //border: solid 1px #999999;
