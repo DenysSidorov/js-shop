@@ -4,14 +4,15 @@ import slick from './vendor/slick';
 //TODO поменять на react
 // https://github.com/akiran/react-slick
 // http://kenwheeler.github.io/slick/
-var slickSliderContainer = $('.slickSliderContainer');
-console.log(slickSliderContainer.length);
-if(slickSliderContainer) {
-    console.log('slickSliderContainer');
-    $('.slickSliderContainer').slick({ // -----------------------slick slider #2---------------
-        dots: true,
+var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
+
+if(slickContainerSimilarGoods.length) {
+    $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
+        //dots: true,
         infinite: false,
         speed: 300,
+        autoplay: true,
+        autoplaySpeed: 2500,
         slidesToShow: 4,
         slidesToScroll: 4,
         responsive: [
@@ -21,7 +22,7 @@ if(slickSliderContainer) {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
+                    //dots: true
                 }
             },
             {
