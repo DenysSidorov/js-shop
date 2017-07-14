@@ -9,12 +9,12 @@ var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
 if(slickContainerSimilarGoods.length) {
     $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
         //dots: true,
-        infinite: false,
+        infinite: true,
         speed: 300,
         autoplay: true,
-        autoplaySpeed: 2500,
+        autoplaySpeed: 3000,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 2,
         responsive: [
             {
                 breakpoint: 1024,

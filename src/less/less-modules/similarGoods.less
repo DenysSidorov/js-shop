@@ -137,7 +137,10 @@
                display: block;
                font: 1.5rem/2.5rem @robotoRegular;
                /* @add-mixin nowrap;*/
-               @mixin nowrap;
+               /*@mixin nowrap;*/
+                white-space: nowrap; /* Запрещаем перенос строк */
+                 overflow: hidden; /* Обрезаем все, что не помещается в область */
+                 text-overflow: ellipsis; /* Добавляем многоточие */
                float: right;
                transition: all 0.5s ease;
                &:hover{
