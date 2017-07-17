@@ -27,6 +27,8 @@ window.onload = function () { // после загрузки страницы
 
 
     // 2. Кнопка подняться наверх
+    var scrolled;
+    var timer;
     var scrollUp = document.getElementById('scrollup'); // найти элемент
 
     scrollUp.onmouseover = function () { // добавить прозрачность
@@ -39,9 +41,15 @@ window.onload = function () { // после загрузки страницы
         scrollUp.style.filter = 'alpha(opacity=50)';
     };
 
-    scrollUp.onclick = function () { //обработка клика
-        window.scrollTo(0, 0);
-    };
+    // scrollUp.onclick = function () { //обработка клика
+    //      window.scrollTo(0, 0);
+    // };
+
+    scrollUp.onclick = function () {
+        scrolled = window.pageYOffset;
+        //window.scrollTo(0,0);
+        scrollToTop();
+    }
 
     // show button
 
@@ -53,31 +61,21 @@ window.onload = function () { // после загрузки страницы
         }
     };
 
-    // 3 Подняться наверх 2
-    //window.scrollTo(x,y)
-    var scrolled;
-    var timer;
-
-    var clickBtnToTop = document.getElementById('top');
-    if(clickBtnToTop){
-        clickBtnToTop.onclick = function () {
-            scrolled = window.pageYOffset;
-            //window.scrollTo(0,0);
-            scrollToTop();
-        }
-    }
-
     function scrollToTop() {
         if (scrolled > 0) {
+            console.log(scrolled, 'scrolled' );
             window.scrollTo(0, scrolled);
-            scrolled = scrolled - 50; //100 - скорость прокрутки
-            timer = setTimeout(scrollToTop, 200);
+            scrolled = scrolled - 150; //100 - скорость прокрутки
+            timer = setTimeout(scrollToTop, 20);
         }
         else {
             clearTimeout(timer);
             window.scrollTo(0, 0);
         }
     }
+
+
+
 
 
     // console.log(a);
