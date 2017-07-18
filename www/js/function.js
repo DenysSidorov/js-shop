@@ -41,9 +41,6 @@ window.onload = function () { // после загрузки страницы
         scrollUp.style.filter = 'alpha(opacity=50)';
     };
 
-    // scrollUp.onclick = function () { //обработка клика
-    //      window.scrollTo(0, 0);
-    // };
 
     scrollUp.onclick = function () {
         scrolled = window.pageYOffset;
