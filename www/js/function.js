@@ -4,7 +4,7 @@
 window.onload = function () { // после загрузки страницы
     window.$ = $;
 
-// https://github.com/jellekralt/Responsive-Tabs
+
 
 
 
