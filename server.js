@@ -6,6 +6,8 @@ import session from 'express-session';
 import bodyParse from 'body-parser';
 import morgan from 'morgan'; //  Логирование
 
+// TODO download CORS-middleware and require it here
+
 import config from './config/index';
 // import config from './app-server/config'; // Конфигурация
 import authRoute from './app-server/routes/auth';
