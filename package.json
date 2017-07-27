@@ -47,6 +47,10 @@
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
     "cssnext": "^1.8.4",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.5",
     "file-loader": "^0.11.1",
     "less": "^2.7.2",
@@ -68,7 +72,9 @@
     "push": "git push all master",
     "start-server": "nodemon --exec babel-node server.js",
     "start2": "babel-node server.js --presets es2015",
-    "start3": "babel-node --presets es2015 server.js",
     "start": "babel-node server.js --presets es2015,stage-2"
+  },
+  "eslintConfig": {
+    "extends": "airbnb"
   }
 }
