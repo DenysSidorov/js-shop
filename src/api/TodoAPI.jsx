@@ -14,7 +14,7 @@ module.exports = {
     try {
       todos = JSON.parse(stringTodos);
     } catch (e) {
-
+      console.log(e);
     }
 
     return $.isArray(todos) ? todos : [];
