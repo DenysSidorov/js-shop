@@ -1,36 +1,34 @@
-import http from 'http';
+// import http from 'http';
+//
+// console.log('START TEST');
+//
+// async function b(a) {
+//    var pr = new Promise(function(resolve, reject) {
+//
+//        var res = 3;
+//        setTimeout( ()=>{
+//            resolve(a * a);
+//        }, 1000);
+//
+//    });
+//     return pr;
+// }
+//
+//
+// async function d(){
+//     var k =1 ;
+//     try {
+//         k = await b(100);
+//     } catch (e){
+//         console.log('errro');
+//     }
+//
+//     console.log(k, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+// }
+// d();
 
-console.log('START TEST');
 
-async function b(a) {
-   var pr = new Promise(function(resolve, reject) {
-
-
-
-       var res = 3;
-       setTimeout( ()=>{
-           resolve(a * a);
-       }, 1000);
-
-   });
-
-
-    return pr;
-}
-
-
-async function d(){
-    var k =1 ;
-    try {
-        k = await b(100);
-    } catch (e){
-        console.log('errro');
-    }
-
-    console.log(k, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
-}
-d();
-
+console.log('test');
 // import path from 'path';
 // const S = path.resolve(__dirname, './app-server');
 // import express from 'express';
