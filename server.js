@@ -28,7 +28,7 @@
 // d();
 
 
-console.log('test');
+console.log('test2s');
 // import path from 'path';
 // const S = path.resolve(__dirname, './app-server');
 // import express from 'express';
