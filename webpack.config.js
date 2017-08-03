@@ -51,24 +51,26 @@ var config = {
                 loader: "pug-loader"
             },
             // base64 loader
-            {
-                test: /\.(png|jpg|gif)$/,
-                loader: addHash('url-loader?limit=65000&name=../img/[name].[ext]', 'hash:6')
-            },
-            {
-                test: /\.(svg|ttf|eot|woff|woff2)$/,
-                loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
-            },
-            // base64 - images in js/css like base64
             // {
-            //     test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
-            //     include: path.resolve(__dirname, 'src'),
-            //     use: [{
-            //         /*'url-loader?name=[path][name].[hash:6][ext]',*/
-            //         loader: addHash('url-loader?name=../img/[name].[ext]', 'hash:6'),
-            //         options: {limit: 10000} // Convert images < 10k to base64 strings
-            //     }]
+            //     test: /\.(png|jpg|gif)$/,
+            //     loader: addHash('url-loader?limit=65000&name=../img/[name].[ext]', 'hash:6')
             // },
+            // Рабочий
+            // {
+            //     test: /\.(svg|ttf|eot|woff|woff2)$/,
+            //     loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
+            // },
+
+            // base64 - images in js/css like base64
+            {
+                test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
+                include: path.resolve(__dirname, 'src'),
+                use: [{
+                    /*'url-loader?name=[path][name].[hash:6][ext]',*/
+                    loader: addHash('url-loader?name=../img/[name].[ext]', 'hash:6'),
+                    options: {limit: 3500} // Convert images < 10k to base64 strings
+                }]
+            },
 
             // fonts
             // { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=../fonts/[name].[ext]' },
