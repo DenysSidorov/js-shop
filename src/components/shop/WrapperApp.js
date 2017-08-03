@@ -8,7 +8,7 @@ class WrapperApp extends React.Component {
             <div className="wrapper">
                 <div className="content">
                     <MainMenu/>
-                    <ConfirmBlock/>
+                    {/*<ConfirmBlock/>*/}
                 </div>
             </div>
         )
