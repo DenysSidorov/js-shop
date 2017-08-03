@@ -55,10 +55,10 @@ var config = {
                 test: /\.(png|jpg|gif)$/,
                 loader: addHash('url-loader?limit=3000&name=../img/[name].[ext]', 'hash:6')
             },
-            // {
-            //     test: /\.(svg|ttf|eot|woff|woff2)$/,
-            //     loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
-            // },
+            {
+                test: /\.(svg|ttf|eot|woff|woff2)$/,
+                loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
+            },
             // base64 - images in js/css like base64
             // {
             //     test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
@@ -71,16 +71,16 @@ var config = {
             // },
 
             // fonts
-            { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=../fonts/[name].[ext]' },
-            { test: /\.woff$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff&name=../fonts/[name].[ext]' },
-            { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=../fonts/[name].[ext]' },
-            { test: /\.[ot]tf$/, loader: 'url-loader?limit=65000&mimetype=application/octet-stream&name=./fonts/[name].[ext]' },
-            { test: /\.eot$/, loader: 'url-loader?limit=65000&mimetype=application/vnd.ms-fontobject&name=../fonts/[name].[ext]' },
-            { test: /\.ttf$/, loader: 'url-loader?limit=65000&name=../fonts/[name].[ext]' },
+            // { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=../fonts/[name].[ext]' },
+            // { test: /\.woff$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff&name=../fonts/[name].[ext]' },
+            // { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=../fonts/[name].[ext]' },
+            // { test: /\.[ot]tf$/, loader: 'url-loader?limit=65000&mimetype=application/octet-stream&name=./fonts/[name].[ext]' },
+            // { test: /\.eot$/, loader: 'url-loader?limit=65000&mimetype=application/vnd.ms-fontobject&name=../fonts/[name].[ext]' },
+            // { test: /\.ttf$/, loader: 'url-loader?limit=65000&name=../fonts/[name].[ext]' },
 
             // js es6
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 include: path.resolve(__dirname, 'src'),
                 exclude: /(node_modules|bower_components)/,
                 use: [{
@@ -94,20 +94,20 @@ var config = {
                 test: /\.css$/,
                 include: path.resolve(__dirname, 'src'),
                 //use: extractCSS.extract([ 'css-loader', 'postcss-loader' ])
-                loader: ExtractTextPlugin.extract({
-                    exclude: /node_modules/,
-                    fallbackLoader: 'style-loader',
-                    loader: ['css-loader?sourceMap', 'postcss-loader']
+                use: ExtractTextPlugin.extract({
+                    // exclude: /node_modules/,
+                    fallback: 'style-loader',
+                    use: ['css-loader?sourceMap', 'postcss-loader']
                 })
             },
             //less
             {
                 test: /\.less$/,
                 include: path.resolve(__dirname, 'src'),
-                loader: ExtractTextPlugin.extract({
-                    exclude: /node_modules/,
-                    fallbackLoader: 'style-loader',
-                    loader: ['css-loader?sourceMap', 'less-loader', 'postcss-loader'],
+                use: ExtractTextPlugin.extract({
+                    // exclude: /node_modules/,
+                    fallback: 'style-loader',
+                    use: ['css-loader?sourceMap', 'less-loader', 'postcss-loader'],
                 })
             }
 
@@ -185,7 +185,7 @@ var config = {
 
 // Если продакшн - чистим консоль, код, папки и т.д
 // isProduction
-if (true) {
+if (true/*false*/) {
     // the path(s) that should be cleaned
     let pathsToClean = [
         path.resolve(__dirname, './www/assets/*')

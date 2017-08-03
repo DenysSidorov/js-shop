@@ -1,5 +1,15 @@
 import st from './test.less';
 import img from './photo.jpg';
-export default 4434;
+import React from 'react';
 
-const component = (props) => <span> Hello world </span> 
+
+// const component = (props) => <span> Hello world </span>
+console.log("REACT GO");
+
+class MyCo extends React.Component{
+    render(){
+        return (<div>Hi3</div>)
+    }
+}
+
+export default MyCo;

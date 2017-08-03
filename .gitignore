@@ -5,6 +5,7 @@ node_modules/
 dist/bundle.js
 app-server/assets.json
 www/assert/*
+www/img/*
 credentials/*
 app-server/config/*
 config/*
