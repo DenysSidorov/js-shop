@@ -8,7 +8,7 @@ console.log("REACT GO");
 
 class MyCo extends React.Component{
     render(){
-        return (<div>Hi3</div>)
+        return (<div>Hi3 <img src={img} alt=""/></div>)
     }
 }
 

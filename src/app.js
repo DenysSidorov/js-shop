@@ -4,9 +4,10 @@ import MyCo from './components/test';
 import ReactDom from 'react-dom';
 import React from 'react';
 
-// document.addEventListener("DOMContentLoaded", function(event) {
-//     ReactDom.render(<MyCo/>, document.getElementById('reactContent'));
-// });
+document.addEventListener("DOMContentLoaded", function(event) {
+     ReactDom.render(<MyCo/>, document.getElementById('reactContent'));
+console.log('gamn');
+});
 
 
 window.$ = jQuery;

@@ -53,7 +53,7 @@ var config = {
             // base64 loader
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: addHash('url-loader?limit=3000&name=../img/[name].[ext]', 'hash:6')
+                loader: addHash('url-loader?limit=65000&name=../img/[name].[ext]', 'hash:6')
             },
             {
                 test: /\.(svg|ttf|eot|woff|woff2)$/,
@@ -172,11 +172,11 @@ var config = {
         hot: true,
         // enable HMR on the server
         host: "localhost", // default
-        port: 8080, // default
-        contentBase: path.resolve(__dirname, './www'), // отдает по умолчанию(можн указ люб папку), есди нет бандлов
+        port: 8090, // default
+        contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), есди нет бандлов
         proxy: [{
             path: '*',
-            target: 'http://localhost:3000'
+            target: 'http://localhost:3000',
         }]
     },
     // source-maps
@@ -185,7 +185,7 @@ var config = {
 
 // Если продакшн - чистим консоль, код, папки и т.д
 // isProduction
-if (true/*false*/) {
+if (false/*false*/) {
     // the path(s) that should be cleaned
     let pathsToClean = [
         path.resolve(__dirname, './www/assets/*')
