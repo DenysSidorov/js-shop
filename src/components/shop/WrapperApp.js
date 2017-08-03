@@ -11,20 +11,17 @@ class WrapperApp extends React.Component {
                 <div className="wrapper">
                     <div className="content">
                         {/*<ConfirmBlock/>*/}
+
                         <MainMenu/>
                         <MainContent>
-                           <h1>test 23423423 4234234 234 234 234 23432</h1>
                         </MainContent>
-                    </div>
 
+
+                    </div>
                         <FooterSection/>
                         <BtnUp/>
-
                 </div>
-
-
         )
-
     }
 }
 
