@@ -1,10 +1,16 @@
 import React from "react";
-import MainMenu from './MainMenu';
+import MainMenu from "./MainMenu";
+import ConfirmBlock from "./ConfirmBlock";
 
 class WrapperApp extends React.Component {
     render() {
         return (
-         <MainMenu/>
+            <div className="wrapper">
+                <div className="content">
+                    <MainMenu/>
+                    <ConfirmBlock/>
+                </div>
+            </div>
         )
 
     }
