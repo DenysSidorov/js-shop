@@ -2,6 +2,7 @@ import React from "react";
 import MainMenu from "./MainMenu";
 import ConfirmBlock from "./ConfirmBlock";
 import BtnUp from "./BtnUp";
+import FooterSection from "./FooterSection";
 
 class WrapperApp extends React.Component {
     render() {
@@ -17,10 +18,13 @@ class WrapperApp extends React.Component {
                                 <div className="preloader-main-content"></div>
 
 
+
+
                             </div>
                         </div>
 
                         <BtnUp/>
+                        <FooterSection/>
                     </div>
                 </div>
             </div>
