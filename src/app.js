@@ -1,18 +1,34 @@
 //import responsiveTabs from 'responsive-tabs';
-//import $ from 'jquery';
-import App from './components/shop';
-import ReactDom from 'react-dom';
 import React from 'react';
+import ReactDom from 'react-dom';
+
+import { Provider } from 'react-redux'; // wrap App for connect components to store
+import { ConnectedRouter } from 'react-router-redux'; // connect router to redux
+import store, { history } from './store'; // our store with config
+import App from './containers/app'; // main app
+
+
+
+import App from './components/shop';
+const container  = document.getElementById('reactContent');
 
 document.addEventListener("DOMContentLoaded", function(event) {
-
      ReactDom.render(
-         <App/>
-         , document.getElementById('reactContent'));
+         <Provider store={store}>
+              <ConnectedRouter history={history}>
+                   <div>
+                        <App />
+                   </div>
+              </ConnectedRouter>
+         </Provider>
+
+         ,container);
 });
 
-window.$ = jQuery;
-window.jQuery = jQuery;
+
+//import $ from 'jquery';
+// window.$ = jQuery;
+// window.jQuery = jQuery;
 
 
 
