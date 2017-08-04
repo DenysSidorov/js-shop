@@ -7,20 +7,23 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 // our store with config
 import store, { history } from './store';
-import App from './containers/app';
+// import App from './containers/app';
 
+
+import $ from 'jquery';
 
 
 import App from './components/shop';
-const container  = document.getElementById('reactContent');
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    const container  = document.getElementById('reactContent');
      ReactDom.render(
          <Provider store={store}>
               <ConnectedRouter history={history}>
-                   <div>
+
                         <App />
-                   </div>
+
               </ConnectedRouter>
          </Provider>
 
@@ -28,9 +31,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
-//import $ from 'jquery';
-// window.$ = jQuery;
-// window.jQuery = jQuery;
+window.$ = jQuery;
+window.jQuery = jQuery;
 
 
 
