@@ -12,8 +12,9 @@ class WrapperApp extends React.Component {
                     <div className="content">
                         {/*<ConfirmBlock/>*/}
 
-                        <MainMenu/>
-                        <MainContent>
+                        <MainMenu {...this.props}/>
+                        <MainContent {...this.props}>
+
                         </MainContent>
 
 

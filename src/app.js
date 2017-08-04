@@ -1,11 +1,13 @@
 //import responsiveTabs from 'responsive-tabs';
 import React from 'react';
 import ReactDom from 'react-dom';
-
-import { Provider } from 'react-redux'; // wrap App for connect components to store
-import { ConnectedRouter } from 'react-router-redux'; // connect router to redux
-import store, { history } from './store'; // our store with config
-import App from './containers/app'; // main app
+// wrap App for connect components to store
+import { Provider } from 'react-redux';
+// connect router to redux
+import { ConnectedRouter } from 'react-router-redux';
+// our store with config
+import store, { history } from './store';
+import App from './containers/app';
 
 
 
