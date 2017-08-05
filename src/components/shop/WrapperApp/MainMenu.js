@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 class MainMenu extends React.Component {
     render() {
         return (
@@ -15,18 +15,14 @@ class MainMenu extends React.Component {
                             </div>
                             <div className="menu">
                                 <ul className="menu__menuHeader">
+                                    <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">
-                                        {/*<a href="">Главная</a>*/}
-                                        <Link to="/">Главная</Link>
-                                    </li>
-                                    <li className="menu__menuHeader_item">
-                                        {/*<a href="">О нас</a>*/}
-                                        <Link to="/about-us">О нас</Link>
+                                        <NavLink to="/about-us" activeStyle={{background: 'red'}}>О нас</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Оплата и доставка</a>*/}
                                         {/*<Link to="/payment-and-delivery">Оплата и доставка</Link>*/}
-                                        <Link to="/about-us/23321/213">Оплата и доставка</Link>
+                                        <NavLink to="/about-us/23321/213">Оплата и доставка</NavLink>
                                         <Link to="/blog/9999/312">Оплата и доставка</Link>
                                     </li>
                                     <li className="menu__menuHeader_item">
@@ -35,7 +31,7 @@ class MainMenu extends React.Component {
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Блог</a>*/}
-                                        <Link to="/blog/123">Блог</Link>
+                                        <Link to="/blog/123" >Блог</Link>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Контакты</a>*/}

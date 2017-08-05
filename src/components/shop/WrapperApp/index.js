@@ -53,7 +53,7 @@ class WrapperApp extends React.Component {
                             </main>
 
                         </MainContent>
-<div></div>
+<div></div><div></div>
                     </div>
                         <FooterSection/>
                         <BtnUp/>
