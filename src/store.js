@@ -15,20 +15,9 @@ const middleware = [
     thunk,
     routerMiddleware(history)
 ];
-
+// TODO how to use process.env.NODE_ENV from webpacl/node/environment
 // if (process.env.NODE_ENV === 'development') {
-// https://github.com/zalmoxisus/redux-devtools-extension#usage
-const devToolsExtension = window.devToolsExtension;
-if (typeof devToolsExtension === 'function') {
-    enhancers.push(devToolsExtension())
-}
-
-// https://github.com/leoasis/redux-immutable-state-invariant
-// only for develop, show message in console, when mutation state without spread, assign...
-let immutableState = require('redux-immutable-state-invariant').default();
-if (typeof immutableState === 'function') {
-    middleware.push(immutableState)
-}
+    setDevTools();
 // }
 
 const composedEnhancers = compose(
@@ -43,3 +32,19 @@ const store = createStore(
 );
 
 export default store
+
+
+function setDevTools()  {
+    // https://github.com/zalmoxisus/redux-devtools-extension#usage
+    const devToolsExtension = window.devToolsExtension;
+    if (typeof devToolsExtension === 'function') {
+        enhancers.push(devToolsExtension())
+    }
+
+// https://github.com/leoasis/redux-immutable-state-invariant
+// only for develop, show message in console, when mutation state without spread, assign...
+    let immutableState = require('redux-immutable-state-invariant').default();
+    if (typeof immutableState === 'function') {
+        middleware.push(immutableState)
+    }
+}
