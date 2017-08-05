@@ -1,12 +1,15 @@
 import React from "react";
 import { Route, Link } from 'react-router-dom';
 
-import Home from '../Home';
 import MainMenu from "./MainMenu";
 import ConfirmBlock from "./ConfirmBlock";
 import BtnUp from "./BtnUp";
 import FooterSection from "./FooterSection";
 import MainContent from "./MainContent";
+
+import Home from '../Home';
+import About from '../pages/About';
+
 
 class WrapperApp extends React.Component {
     render() {
@@ -24,7 +27,9 @@ class WrapperApp extends React.Component {
 
                             <main>
                                 <Route exact path="/" component={Home} />
+
                                 <Route exact path="/about-us" component={About} />
+
                             </main>
 
                         </MainContent>
@@ -39,11 +44,3 @@ class WrapperApp extends React.Component {
 
 export default WrapperApp;
 
-
-// const Home = (props)=> <div>Home Component</div>
-const About = (props) => (
-    <div>
-        <h1>About Us</h1>
-        <p>Hello Medium!</p>
-    </div>
-)

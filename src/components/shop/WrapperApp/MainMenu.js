@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 class MainMenu extends React.Component {
     render() {
         return (
@@ -15,8 +15,14 @@ class MainMenu extends React.Component {
                             </div>
                             <div className="menu">
                                 <ul className="menu__menuHeader">
-                                    <li className="menu__menuHeader_item"><a href="">Главная</a></li>
-                                    <li className="menu__menuHeader_item"><a href="">О нас</a></li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">Главная</a>*/}
+                                        <Link to="/">Главная</Link>
+                                    </li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">О нас</a>*/}
+                                        <Link to="/about-us">О нас</Link>
+                                    </li>
                                     <li className="menu__menuHeader_item"><a href="">Оплата и доставка</a></li>
                                     <li className="menu__menuHeader_item"><a href="">Возврат и обмен</a></li>
                                     <li className="menu__menuHeader_item"><a href="">Блог</a></li>
