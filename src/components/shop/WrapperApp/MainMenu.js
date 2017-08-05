@@ -17,25 +17,22 @@ class MainMenu extends React.Component {
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">
-                                        <NavLink to="/about-us" activeStyle={{background: 'red'}}>О нас</NavLink>
+                                        <NavLink to="/about-us" activeStyle={{color: '#2EA9FD'}}>О нас</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        {/*<a href="">Оплата и доставка</a>*/}
-                                        {/*<Link to="/payment-and-delivery">Оплата и доставка</Link>*/}
-                                        <NavLink to="/about-us/23321/213">Оплата и доставка</NavLink>
-                                        <Link to="/blog/9999/312">Оплата и доставка</Link>
+                                        <NavLink to="/payment-and-delivery" activeStyle={{color: '#2EA9FD'}}>
+                                            Оплата и доставка</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Возврат и обмен</a>*/}
-                                        <Link to="/cashback-and-exchange">Возврат и обмен</Link>
+                                        <NavLink to="/cashback-and-exchange" activeStyle={{color: '#2EA9FD'}}>
+                                            Возврат и обмен</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        {/*<a href="">Блог</a>*/}
-                                        <Link to="/blog/123" >Блог</Link>
+                                        <NavLink to="/blog" activeStyle={{color: '#2EA9FD'}}>Блог</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        {/*<a href="">Контакты</a>*/}
-                                        <Link to="/contacts">Контакты</Link>
+                                        <NavLink to="/contacts" activeStyle={{color: '#2EA9FD'}}>Контакты</NavLink>
                                     </li>
                                 </ul>
                                 <span className="main-cart">

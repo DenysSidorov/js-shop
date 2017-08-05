@@ -8,7 +8,8 @@ import FooterSection from "./FooterSection";
 import MainContent from "./MainContent";
 
 import Home from '../Home';
-import About from '../pages/About';
+import AboutUs from '../pages/AboutUs';
+import Blog from '../pages/Blog';
 
 // TODO maybe use async loading component with ErrorComp and PreloadComp ???
 // https://github.com/ctrlplusb/react-async-component
@@ -22,24 +23,11 @@ class WrapperApp extends React.Component {
                         <MainMenu {...this.props}/>
                         <MainContent {...this.props}>
 
-                            <header>
-                                <Link to="/">Home</Link>
-                                <Link to="/about-us">About</Link>
-                            </header>
-
                             <main>
-                                <div></div>
                               <Switch>
                                 <Route exact path="/" component={Home} />
-
-                                <Route path="/about-us/:n" component={About} />
-                                <Route exact path="/about-us" component={About} />
-
-                                <Route exact path="/blog/:n/" render={(props)=>{
-                                    console.log(props, 'props!!!');
-                                    // props.history.push('/');
-                                    return (<div>bLOG {props.match.params.n} / n/</div>)
-                                }} />
+                                <Route exact path="/about-us" component={AboutUs} />
+                                <Route exact path="/blog" component={Blog} />
 
                                 <Route path="/blog/:n/:m/" render={(props)=>{
                                     console.log(props, 'props!!!');
