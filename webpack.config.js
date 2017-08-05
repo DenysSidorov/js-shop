@@ -173,7 +173,7 @@ var config = {
         }),
         // генерит json со всеми зависямостями
         // если html всегда статичен (SPA), можно использовать другой плагин(HtmlWebpackPlugin), который сам создает
-        // 1.html с уже подключенными бандлами
+        // index.html с уже подключенными бандлами
         // https://www.youtube.com/watch?v=kxxFQZx3KOk
         new AssetsPlugin({
             filename: 'assets.json',
@@ -182,6 +182,7 @@ var config = {
         })
     ],
     devServer: {
+        historyApiFallback: true, // cannot GET *url* after press f5
         hot: true,
         // enable HMR on the server
         host: "localhost", // default
@@ -206,7 +207,7 @@ if (true/*false*/) {
 
 // the clean options to use
     let cleanOptions = {
-        //root: '/',
+        root: '/',
         exclude: ['shared.js'],
         verbose: inProduction === 'production', // clean console.log
         dry: false, // просто эмулирует удаление
