@@ -25,7 +25,9 @@ class MainMenu extends React.Component {
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Оплата и доставка</a>*/}
-                                        <Link to="/payment-and-delivery">Оплата и доставка</Link>
+                                        {/*<Link to="/payment-and-delivery">Оплата и доставка</Link>*/}
+                                        <Link to="/about-us/23321/213">Оплата и доставка</Link>
+                                        <Link to="/blog/9999/312">Оплата и доставка</Link>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Возврат и обмен</a>*/}

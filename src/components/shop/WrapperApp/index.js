@@ -10,6 +10,8 @@ import MainContent from "./MainContent";
 import Home from '../Home';
 import About from '../pages/About';
 
+// TODO maybe use async loading component with ErrorComp and PreloadComp ???
+// https://github.com/ctrlplusb/react-async-component
 
 class WrapperApp extends React.Component {
     render() {
@@ -28,12 +30,19 @@ class WrapperApp extends React.Component {
                             <main>
                                 <Route exact path="/" component={Home} />
 
+                                <Route path="/about-us/:n" component={About} />
                                 <Route exact path="/about-us" component={About} />
 
-                                <Route path="/blog/:n" render={(props)=>{
+                                <Route exact path="/blog/:n/" render={(props)=>{
                                     console.log(props, 'props!!!');
                                     // props.history.push('/');
-                                    return (<div>bLOG</div>)
+                                    return (<div>bLOG {props.match.params.n} / n/</div>)
+                                }} />
+
+                                <Route path="/blog/:n/:m/" render={(props)=>{
+                                    console.log(props, 'props!!!');
+                                    // props.history.push('/');
+                                    return (<div>bLOG {props.match.params.n} n/m</div>)
                                 }} />
 
                             </main>
