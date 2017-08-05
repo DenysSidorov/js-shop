@@ -11,6 +11,8 @@ import Home from '../Home';
 import AboutUs from '../pages/AboutUs';
 import Blog from '../pages/Blog';
 import PaymentAndDelivery from '../pages/PaymentAndDelivery';
+import CashbackAndExchange from '../pages/CashbackAndExchange';
+import Contacts from '../pages/Contacts';
 
 // TODO maybe use async loading component with ErrorComp and PreloadComp ???
 // https://github.com/ctrlplusb/react-async-component
@@ -30,6 +32,8 @@ class WrapperApp extends React.Component {
                                 <Route exact path="/about-us" component={AboutUs} />
                                 <Route exact path="/blog" component={Blog} />
                                 <Route exact path="/payment-and-delivery" component={PaymentAndDelivery} />
+                                <Route exact path="/cashback-and-exchange" component={CashbackAndExchange} />
+                                <Route exact path="/contacts" component={Contacts} />
 
                                   <Route render={(props)=> {
                                       return <div>404 Sorry! Not Found Page with route: {props.location.pathname}</div>
