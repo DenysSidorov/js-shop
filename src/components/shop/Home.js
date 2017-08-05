@@ -57,7 +57,7 @@ const pushTo = () => push('/about-us');
 const mapDispatchToProps = (dispatch, ownProps) => {
     //console.log(ownProps, 'ownPropsDispatch');
     return bindActionCreators({
-        doDo: (i, c, v) => increment(),
+        doDo: (i, c, v) => incrementSync(),
         increment,
         incrementSync,
         incrementAsync,

@@ -17,6 +17,7 @@ export default (state = initialState, action) => {
                 isIncrementing: true
             }
 
+            //return state.count = 545;
         case INCREMENT:
             return {
                 ...state,
