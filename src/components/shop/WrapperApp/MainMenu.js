@@ -23,10 +23,22 @@ class MainMenu extends React.Component {
                                         {/*<a href="">О нас</a>*/}
                                         <Link to="/about-us">О нас</Link>
                                     </li>
-                                    <li className="menu__menuHeader_item"><a href="">Оплата и доставка</a></li>
-                                    <li className="menu__menuHeader_item"><a href="">Возврат и обмен</a></li>
-                                    <li className="menu__menuHeader_item"><a href="">Блог</a></li>
-                                    <li className="menu__menuHeader_item"><a href="">Контакты</a></li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">Оплата и доставка</a>*/}
+                                        <Link to="/payment-and-delivery">Оплата и доставка</Link>
+                                    </li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">Возврат и обмен</a>*/}
+                                        <Link to="/cashback-and-exchange">Возврат и обмен</Link>
+                                    </li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">Блог</a>*/}
+                                        <Link to="/blog">Блог</Link>
+                                    </li>
+                                    <li className="menu__menuHeader_item">
+                                        {/*<a href="">Контакты</a>*/}
+                                        <Link to="/contacts">Контакты</Link>
+                                    </li>
                                 </ul>
                                 <span className="main-cart">
                                     <i className="fa fa-shopping-cart main-cart__ico" data-js_count="5"></i>
