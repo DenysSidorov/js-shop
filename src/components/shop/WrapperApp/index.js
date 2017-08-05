@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 import MainMenu from "./MainMenu";
 import ConfirmBlock from "./ConfirmBlock";
@@ -28,6 +28,8 @@ class WrapperApp extends React.Component {
                             </header>
 
                             <main>
+                                <div></div>
+                              <Switch>
                                 <Route exact path="/" component={Home} />
 
                                 <Route path="/about-us/:n" component={About} />
@@ -44,11 +46,14 @@ class WrapperApp extends React.Component {
                                     // props.history.push('/');
                                     return (<div>bLOG {props.match.params.n} n/m</div>)
                                 }} />
-
+                                  <Route render={(props)=> {
+                                      return <div>404 Sorry! Not Found Page with route: {props.location.pathname}</div>
+                                  }}/>
+                              </Switch>
                             </main>
 
                         </MainContent>
-
+<div></div>
                     </div>
                         <FooterSection/>
                         <BtnUp/>
