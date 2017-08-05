@@ -33,7 +33,7 @@ class MainMenu extends React.Component {
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Блог</a>*/}
-                                        <Link to="/blog">Блог</Link>
+                                        <Link to="/blog/123">Блог</Link>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Контакты</a>*/}

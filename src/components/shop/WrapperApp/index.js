@@ -30,6 +30,12 @@ class WrapperApp extends React.Component {
 
                                 <Route exact path="/about-us" component={About} />
 
+                                <Route path="/blog/:n" render={(props)=>{
+                                    console.log(props, 'props!!!');
+                                    // props.history.push('/');
+                                    return (<div>bLOG</div>)
+                                }} />
+
                             </main>
 
                         </MainContent>
