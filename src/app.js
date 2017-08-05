@@ -23,14 +23,16 @@ import App from './components/shop';
 
 document.addEventListener("DOMContentLoaded", function(event) {
     const container  = document.getElementById('reactContent');
-     ReactDom.render(
-         <Provider store={store}>
-              <ConnectedRouter history={history}>
-                        <App />
-              </ConnectedRouter>
-         </Provider>
+    if(container) {
+        ReactDom.render(
+            <Provider store={store}>
+                <ConnectedRouter history={history}>
+                    <App />
+                </ConnectedRouter>
+            </Provider>
 
-         ,container);
+            , container);
+    }
 });
 
 

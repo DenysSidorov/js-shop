@@ -173,7 +173,7 @@ var config = {
         }),
         // генерит json со всеми зависямостями
         // если html всегда статичен (SPA), можно использовать другой плагин(HtmlWebpackPlugin), который сам создает
-        // index.html с уже подключенными бандлами
+        // 1.html с уже подключенными бандлами
         // https://www.youtube.com/watch?v=kxxFQZx3KOk
         new AssetsPlugin({
             filename: 'assets.json',
