@@ -26,7 +26,6 @@ class WrapperApp extends React.Component {
                         {/*<ConfirmBlock/>*/}
                         <MainMenu {...this.props}/>
                         <MainContent {...this.props}>
-
                             <main>
                               <Switch>
                                 <Route exact path="/" component={Home} />
@@ -36,12 +35,9 @@ class WrapperApp extends React.Component {
                                 <Route exact path="/cashback-and-exchange" component={CashbackAndExchange} />
                                 <Route exact path="/contacts" component={Contacts} />
                                 <Route  component={NotFount} />
-
                               </Switch>
                             </main>
-
                         </MainContent>
-<div></div><div></div>
                     </div>
                         <FooterSection/>
                         <BtnUp/>
