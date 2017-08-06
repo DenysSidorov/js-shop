@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, Redirect, Prompt } from 'react-router-dom';
 
 import MainMenu from "./MainMenu";
 import ConfirmBlock from "./ConfirmBlock";
@@ -32,12 +32,14 @@ class WrapperApp extends React.Component {
                             <main>
                               <Switch>
                                 <Route exact path="/" component={Home} />
-                                <Route  path="/about-us" component={AboutUs} />
-                                <Route  path="/blog" component={Blog} />
-                                <Route  path="/payment-and-delivery" component={PaymentAndDelivery} />
-                                <Route  path="/cashback-and-exchange" component={CashbackAndExchange} />
-                                <RouteAuth  path="/contacts" component={Contacts} />
+                                <Route  path="/about-us/" component={AboutUs} />
+                                <Route  path="/payment-and-delivery/" component={PaymentAndDelivery} />
+                                <Route  path="/cashback-and-exchange/" component={CashbackAndExchange} />
+                                <Route  path="/blog/" component={Blog} />
+                                <RouteAuth  path="/contacts/" component={Contacts} />
                                 <Route  component={NotFound} />
+                                {/*<Route exact path="/404" component={NotFound} />*/}
+                                {/*<Redirect to="/404" />*/}
                               </Switch>
                                 {/*<Route  path="*" component={NotFound} />*/}
                             </main>
@@ -52,3 +54,25 @@ class WrapperApp extends React.Component {
 
 export default WrapperApp;
 
+class Form extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {dirty: false}; // состояние формы - нет изменений
+    }
+    setDirty () { this.setState({dirty: true})};
+
+    render() {
+        return (
+            <div>
+                <h1>Form</h1>
+
+                <input type='text' onInput={this.setDirty.bind(this)} />
+
+                <Prompt
+                    when={this.state.dirty}
+                    message='Данные будут потеряны!' />
+            </div>
+        )
+    }
+}

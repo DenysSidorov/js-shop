@@ -12,7 +12,7 @@ import {
 const Home = props => (
     <div>
 
-        <h1>Home</h1>
+        <h1 style={{fontSize: '20rem'}}>Home</h1>
         <h1 onClick={props.doDo} style={{cursor: 'pointer'}}>MY BTN</h1>
         <h1 onClick={props.incrementSync} style={{cursor: 'pointer'}}>SYNC PLAIN</h1>
         <p>Count: {props.count}</p>
