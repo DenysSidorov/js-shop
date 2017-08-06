@@ -16,6 +16,7 @@ import Contacts from '../pages/Contacts';
 import NotFound from '../pages/NotFound';
 
 import RouteFade from '../helpers/RouteFade';
+import RouteAuth from '../helpers/RouteAuth';
 
 // TODO maybe use async loading component with ErrorComp and PreloadComp ???
 // https://github.com/ctrlplusb/react-async-component
@@ -35,7 +36,7 @@ class WrapperApp extends React.Component {
                                 <Route  path="/blog" component={Blog} />
                                 <Route  path="/payment-and-delivery" component={PaymentAndDelivery} />
                                 <Route  path="/cashback-and-exchange" component={CashbackAndExchange} />
-                                <Route  path="/contacts" component={Contacts} />
+                                <RouteAuth  path="/contacts" component={Contacts} />
                                 <Route  component={NotFound} />
                               </Switch>
                                 {/*<Route  path="*" component={NotFound} />*/}
