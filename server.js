@@ -1,10 +1,13 @@
 import path from 'path';
 const S = path.resolve(__dirname, './app-server');
 import express from 'express';
-import mongoose from 'mongoose'; // MongoDb ORM
+// MongoDb ORM
+import mongoose from 'mongoose';
 import session from 'express-session';
 import bodyParse from 'body-parser';
-import morgan from 'morgan'; //  Логирование
+//  Логирование
+import morgan from 'morgan';
+
 
 // TODO download CORS-middleware and require it here
 

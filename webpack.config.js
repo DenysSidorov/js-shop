@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит па
 //const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-
+// TODO supp. es7,8 for static state in React.Component
 
 // Реагируем на флаг -p
 var productionArg = (process.argv.indexOf('-p') != -1 ? true : false);
@@ -25,7 +25,7 @@ var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
         main: ["webpack-dev-server/client"],
-        app: ['./app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
+        app: ["babel-polyfill", './app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
         startToo: './startToo.js', // другая точка входа
         vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
         common_css: ['./less/main', './less/reset', './less/font-awesome'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
@@ -98,7 +98,7 @@ var config = {
                 exclude: /(node_modules|bower_components)/,
                 use: [{
                     loader: 'babel-loader',
-                    options: {presets: ['es2015', "es2016", "es2017", 'react']},
+                    options: {presets: ['es2015', "es2016", "es2017", 'react', 'stage-0']},
 
                 }],
             },
