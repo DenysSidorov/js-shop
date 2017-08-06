@@ -25,6 +25,7 @@ var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
         main: ["webpack-dev-server/client"],
+        // "babel-polyfill" - для поддержки последних возможностей async/await
         app: ["babel-polyfill", './app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
         startToo: './startToo.js', // другая точка входа
         vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'

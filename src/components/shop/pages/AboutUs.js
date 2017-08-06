@@ -1,6 +1,9 @@
 import React from "react";
 
 class About extends React.Component {
+    componentDidMount(prevProps) {
+        window.scrollTo(0, 0)
+    }
     render() {
         return (
             <div>

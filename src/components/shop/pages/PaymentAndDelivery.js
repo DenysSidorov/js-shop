@@ -1,6 +1,9 @@
 import React from "react";
 
 class PaymentAndDelivery extends React.Component {
+        componentDidMount(prevProps) {
+                window.scrollTo(0, 0)
+        }
     render() {
         return (
             <div><br/><br/><br/><h2>PaymentAndDelivery  THERE </h2> <br/><br/><br/>
