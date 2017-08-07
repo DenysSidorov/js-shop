@@ -21,6 +21,9 @@ function addHash(template, hash) {
         template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`;
 }
 
+
+// SASS SCSS https://www.sitepoint.com/whats-difference-sass-scss/
+
 var config = {
     context: path.resolve(__dirname, './src'),
     entry: {
