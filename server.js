@@ -27,7 +27,7 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 
 
 const app = express(); // Запуск приложения
-
+// app.use(cors() // for all app
 /** Подключение к базе данных mongodb*/
 mongoose.Promise = require('bluebird'); // Для асинхронного кода
 mongoose.connect(config.backend.database, {}, err => {
@@ -53,7 +53,7 @@ app.use(session({
 }));
 
 
-app.use('/goods' ,goodRoute);
+app.use('/goods' ,cors(), goodRoute);
 
 
 
