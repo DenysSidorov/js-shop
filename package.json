@@ -85,13 +85,16 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
     "production": "webpack -p",
     "start4": "webpack-dev-server --hot --inline",
     "watch": "webpack --watch",
+
     "push": "git push all master",
+    "lint": "node_modules\\.bin\\eslint 1.js",
+
     "start-server": "nodemon --exec babel-node server.js",
     "start2": "babel-node server.js --presets es2015",
-    "start": "babel-node server.js --presets es2015, stage-2",
-    "lint": "node_modules\\.bin\\eslint 1.js"
+    "start": "babel-node server.js --presets es2015, stage-2"
   }
 }
