@@ -22,7 +22,7 @@ export const singup = (req, resp, next) => {
             let {message} = err;
             next({status: 400, message})
         };
-        // Если юзера нашли - отправим его на клиент
+        // елси юзер успешно создан - передаем его на клиент
         if (user) {
             return resp.json(user);
         }
@@ -58,7 +58,7 @@ export const singin = async(req, resp, next) => {
             } else {
                 next({
                     status: 400,
-                    message: 'Bad config'
+                    message: 'Bad password or login'
                 })
             }
         }).catch(err => {

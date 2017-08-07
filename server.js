@@ -49,13 +49,17 @@ app.use(session({
 }));
 
 app.use('/api', authRoute); // singin singup
+
+
 app.use('/api', checkToken,  userRoute); // get user route
-app.use(getUser);
+// app.use(getUser);
 app.use('/api', checkToken,  pageRoute); //
 app.get('/test', checkToken, (req, resp)=>{ // check token in headers
     resp.json('Success');
 });
-
+app.get('/' ,(req, resp )=> {
+    resp.status(303).json( {"_id" : 1, "name" : "User-Denis"} );
+})
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 
