@@ -4,7 +4,7 @@ const config = {
     },
     backend: {
         port: 3000,
-        database: 'mongodb://localhost:27017/blog',
+        database: 'mongodb://localhost:27017/shop',
         secretWord: 'verysecretkey'
     },
 };
