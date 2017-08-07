@@ -13,10 +13,10 @@ const GoodSchema = new Schema({
     descFull: {type: String},
     tags : {type : Array},
     sail : {type : Number},
-
-    body: { type: String, require: true },
-    url: { type: String, require: true, unique: true },
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    isNew : {type: Boolean},
+    category : {type : Array, require: true },
+    isExists : {type: Boolean},
+    producer: {type: String}
 });
 
 export default mongoose.model('Good', GoodSchema);
