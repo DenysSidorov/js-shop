@@ -1,18 +1,20 @@
-import React from 'react';
-import WrapperApp from './WrapperApp';
+import React from "react";
+import WrapperApp from "./WrapperApp";
+import axios from "axios";
 
-class App extends React.Component{
-    async componentDidMount(){
+class App extends React.Component {
+    async componentDidMount() {
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
-        var t = await fetch('http://localhost:3000/goods');
-        console.log( t, 't');
+        var t = await axios.get('http://localhost:3000/goods');
+        console.log(t.data.goods, 't');
     }
-    render(){
+
+    render() {
 
         return (
-                <div style={{width: '100%', height: '100%'}}>
-                    <WrapperApp {...this.props}/>
-                </div>
+            <div style={{width: '100%', height: '100%'}}>
+                <WrapperApp {...this.props}/>
+            </div>
         )
     }
 }
