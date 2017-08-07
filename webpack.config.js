@@ -125,8 +125,21 @@ var config = {
                     // exclude: /node_modules/,
                     fallback: 'style-loader',
                     use: ['css-loader?sourceMap', 'less-loader', 'postcss-loader'],
+                    // publicPath : '/assets'
+                })
+            },
+            // sass/scss
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src'),
+                use: ExtractTextPlugin.extract({
+                    // exclude: /node_modules/,
+                    fallback: 'style-loader',
+                    use: ['css-loader?sourceMap', 'sass-loader', 'postcss-loader'],
+                    // publicPath : '/assets'
                 })
             }
+
 
             // Loaders for other file types can go here
         ],
