@@ -9,12 +9,10 @@ const RouteAuth = ({component: Component, ...rest})=>(
         console.log(fakeAuth, 'fakeAuth ');
         return fakeAuth
             ? <Component {...matchProps}/>
-            : <Redirect to={{
-            pathname: '/',
-            state: {from: matchProps.location}
-        }}/>
+            : <Redirect to='/'/>
     }}/>
 )
 
 export  default RouteAuth;
 
+{/*: <Redirect to={{pathname: '/', state: {from: matchProps.location}}}/>*/}
