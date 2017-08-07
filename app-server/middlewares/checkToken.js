@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 export default (req, resp, next)=>{
     // Будем хранить в заголовке токен авторизации
     // Вытащим токен из заголовка, если он там есть
-    const token =req.headers['authorization'];
+    const token = req.headers['authorization'];
     // Если токена нет:;
     if(!token){
         console.log('нет токена?');
