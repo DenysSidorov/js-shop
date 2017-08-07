@@ -1,6 +1,8 @@
 import path from 'path';
 const S = path.resolve(__dirname, './app-server');
 import express from 'express';
+// https://www.npmjs.com/package/cors
+var cors = require('cors');
 // MongoDb ORM
 import mongoose from 'mongoose';
 import session from 'express-session';
@@ -15,6 +17,8 @@ import config from './config/index'; // Конфигурация
 import authRoute from './app-server/routes/auth';
 import userRoute from './app-server/routes/user';
 import pageRoute from './app-server/routes/page';
+import goodRoute from './app-server/shop/routes/goodRoute';
+
 
 import errorMiddleWare from './app-server/middlewares/errors';
 
@@ -48,18 +52,22 @@ app.use(session({
     secret: config.backend.secretWord
 }));
 
+
+app.use('/goods' ,goodRoute);
+
+
+
+
+
+
 app.use('/api', authRoute); // singin singup
-
-
 app.use('/api', checkToken,  userRoute); // get user route
 // app.use(getUser);
 app.use('/api', checkToken,  pageRoute); //
 app.get('/test', checkToken, (req, resp)=>{ // check token in headers
     resp.json('Success');
 });
-app.get('/' ,(req, resp )=> {
-    resp.status(303).json( {"_id" : 1, "name" : "User-Denis"} );
-})
+
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 

@@ -4,19 +4,19 @@ const GoodSchema = new Schema({
     name: { type: String, require: true },
     model: { type: String, require: true },
     createdAt: { type: Date, require: true, default: Date.now },
-    size : {type : Array},
-    comments : {type : Array},
+    size : {type : Array, require: true},
+    comments : {type : Array, require: true},
     price : { type: Number, require: true },
-    photo : {type : Array},
+    photo : {type : Array, require: true},
     code : { type: String, require: true },
-    descShort: {type: String},
-    descFull: {type: String},
-    tags : {type : Array},
-    sail : {type : Number},
-    isNew : {type: Boolean},
+    descShort: {type: String, require: true},
+    descFull: {type: String, require: true},
+    tags : {type : Array, require: true},
+    sail : {type : Number, require: true},
+    isNewGood : {type: Boolean, require: true},
     category : {type : Array, require: true },
-    isExists : {type: Boolean},
-    producer: {type: String}
+    isExists : {type: Boolean, require: true},
+    producer: {type: String, require: true}
 });
 
 export default mongoose.model('Good', GoodSchema);
@@ -68,3 +68,25 @@ var t = {
     "isExists" : true,
     "producer" : "China"
 }
+
+console.log(3);
+/*
+
+ name: { type: String, require: true },
+ model: { type: String, require: true },
+ createdAt: { type: Date, require: true, default: Date.now },
+ size : {type : Array},
+ comments : {type : Array},
+ price : { type: Number, require: true },
+ photo : {type : Array},
+ code : { type: String, require: true },
+ descShort: {type: String},
+ descFull: {type: String},
+ tags : {type : Array},
+ sail : {type : Number},
+ isNewGood : {type: Boolean},
+ category : {type : Array, require: true },
+ isExists : {type: Boolean},
+ producer: {type: String}
+
+ */

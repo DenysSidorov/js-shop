@@ -2,8 +2,10 @@ import React from 'react';
 import WrapperApp from './WrapperApp';
 
 class App extends React.Component{
-    componentDidMount(){
+    async componentDidMount(){
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
+        var t = await fetch('http://localhost:3000/goods');
+        console.log( t, 't');
     }
     render(){
 
