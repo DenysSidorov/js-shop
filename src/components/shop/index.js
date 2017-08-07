@@ -5,6 +5,7 @@ import axios from "axios";
 class App extends React.Component {
     async componentDidMount() {
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
+        // https://www.npmjs.com/package/axios
         var t = await axios.get('http://localhost:3000/goods');
         console.log(t.data.goods, 't');
     }
