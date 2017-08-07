@@ -71,5 +71,6 @@ app.get('/test', checkToken, (req, resp)=>{ // check token in headers
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 
+app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found", type: 404}));
 
 
