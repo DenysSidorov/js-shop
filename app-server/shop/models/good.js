@@ -1,6 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, {  Schema } from 'mongoose';
 
 const GoodSchema = new Schema({
+
     name: { type: String, require: true },
     model: { type: String, require: true },
     createdAt: { type: Date, require: true, default: Date.now },

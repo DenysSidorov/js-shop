@@ -2,7 +2,7 @@ import Good from "../models/good";
 
 export async function getAll(req, resp, next) {
     try {
-        var goods = await Good.find({}, );
+        var goods = await Good.find({}, {'_id': 1, 'sail': 1} );
 
     } catch ({message}) {
         return next({
@@ -10,7 +10,7 @@ export async function getAll(req, resp, next) {
             message
         });
     }
-
+console.log(goods);
     resp.json(goods);
 }
 
