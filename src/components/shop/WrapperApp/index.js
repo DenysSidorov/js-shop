@@ -14,6 +14,7 @@ import Blog from "../pages/Blog";
 import PaymentAndDelivery from "../pages/PaymentAndDelivery";
 import CashbackAndExchange from "../pages/CashbackAndExchange";
 import Contacts from "../pages/Contacts";
+import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import RouteAuth from "../helpers/RouteAuth";
 
@@ -29,7 +30,6 @@ class WrapperApp extends React.Component {
                     <MainMenu {...this.props}/>
                     <MainContent {...this.props}>
                         <main>
-
                                 <Switch key={location.key} location={location}>
                                     <Route exact path="/" component={Home}/>
                                     <Route path="/about-us/" component={AboutUs}/>
@@ -37,6 +37,8 @@ class WrapperApp extends React.Component {
                                     <Route path="/cashback-and-exchange/" component={CashbackAndExchange}/>
                                     <Route path="/blog/" component={Blog}/>
                                     <RouteAuth path="/contacts/" component={Contacts}/>
+                                    <Route path="/login/" component={Login}/>
+
                                     <Route component={NotFound}/>
                                     {/*<Route exact path="/404" component={NotFound} />*/}
                                     {/*<Redirect to="/404" />*/}

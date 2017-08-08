@@ -9,7 +9,7 @@ const RouteAuth = ({component: Component, ...rest})=>(
         console.log(fakeAuth, 'fakeAuth ');
         return fakeAuth
             ? <Component {...matchProps}/>
-            : <Redirect to='/'/>
+            : <Redirect to='/login'/>
     }}/>
 )
 
