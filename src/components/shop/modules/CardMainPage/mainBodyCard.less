@@ -22,9 +22,9 @@
 .bodyCardItems__oneCardItem {
   transition: background-color 0.5s ease;
   position: relative;
-  width: 23.5%;
+  /*width: 23.5%;*/
   float: left;
-  margin-left: 2%;
+ /* margin-left: 2%;*/
   height: 45rem;
   margin-bottom: 3.2rem;
   border: solid 1px transparent;
@@ -55,7 +55,7 @@
      height: 25px;
    }*/
   &:nth-child(4n+1) {
-    margin-left: 0%;
+    /*margin-left: 0%;*/
   }
 
   &:hover {
@@ -248,9 +248,45 @@
           &:before {
             opacity: 1;
           }
-
         }
       }
+    }
+  }
+}
+
+@media screen and  (min-width: 1001px) {
+  .bodyCardItems__oneCardItem{
+    width: 23.5%;
+    margin-left: 2%;
+    &:nth-child(4n+1) {
+      margin-left: 0%;
+    }
+  }
+}
+@media screen and  (max-width: 1000px)and (min-width: 751px) {
+  .bodyCardItems__oneCardItem{
+    width: 32%;
+    margin-left: 2%;
+    &:nth-child(3n+1) {
+      margin-left: 0%;
+    }
+  }
+}
+@media screen and  (max-width: 750px)and (min-width: 501px) {
+  .bodyCardItems__oneCardItem{
+    width: 49%;
+    margin-left: 2%;
+    &:nth-child(2n+1) {
+      margin-left: 0%;
+    }
+  }
+}
+
+@media screen and  (max-width: 750px)and (min-width: 501px) {
+  .bodyCardItems__oneCardItem{
+    width: 100%;
+    margin-left: 0%;
+    &:nth-child(2n+1) {
     }
   }
 }
