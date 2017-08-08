@@ -1,5 +1,5 @@
 import React from "react";
-
+import CardsSection from '../modules/CardsSection';
 class Home extends React.Component {
     componentDidMount(prevProps) {
         window.scrollTo(0, 0)
@@ -7,7 +7,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-
+                <CardsSection/>
             </div>
         )
     }
