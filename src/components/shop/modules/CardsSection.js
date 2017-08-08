@@ -1,3 +1,16 @@
-/**
- * Created by Denis on 08.08.2017.
- */
+import React from "react";
+
+class CardsSection extends React.Component {
+    componentDidMount(prevProps) {
+        window.scrollTo(0, 0)
+    }
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
+
+export default CardsSection;

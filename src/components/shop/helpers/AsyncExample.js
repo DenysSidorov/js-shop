@@ -1,3 +1,5 @@
+// https://medium.com/@kkomaz/react-to-async-await-553c43f243e2
+import React from 'react';
 class AsyncExample extends React.Component {
 
     componentDidMount() {
