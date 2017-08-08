@@ -2,7 +2,7 @@ import Good from "../models/good";
 
 export async function getAll(req, resp, next) {
     try {
-        var goods = await Good.find({});
+        var goods = await Good.find({}, );
 
     } catch ({message}) {
         return next({
@@ -10,7 +10,8 @@ export async function getAll(req, resp, next) {
             message
         });
     }
-    resp.json({goods});
+
+    resp.json(goods);
 }
 
 export async function create(req, resp, next) {
