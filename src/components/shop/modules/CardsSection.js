@@ -24,7 +24,7 @@ class CardsSection extends React.Component {
                         <div className="productsCardBlock__navigation"></div>
                         <div className="productsCardBlock__searchCard"></div>
                         <div className="productsCardBlock__bodyCardItems">
-                            { this.state.cards.map(el=> <CardMainPage key={el._id}/>)}
+                            { this.state.cards.map(el=> <CardMainPage card={el} key={el._id}/>)}
                         </div>
                     </div>
                 </div>

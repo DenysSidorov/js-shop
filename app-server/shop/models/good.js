@@ -1,7 +1,7 @@
 import mongoose, {  Schema } from 'mongoose';
 
 const GoodSchema = new Schema({
-
+    _id: Number,
     name: { type: String, require: true },
     model: { type: String, require: true },
     createdAt: { type: Date, require: true, default: Date.now },
@@ -10,8 +10,8 @@ const GoodSchema = new Schema({
     price : { type: Number, require: true },
     photo : {type : Array, require: true},
     code : { type: String, require: true },
-    descShort: {type: String, require: true},
-    descFull: {type: String, require: true},
+    'desc-short' : {type: String, require: true},
+    'desc-full' : {type: String, require: true},
     tags : {type : Array, require: true},
     sail : {type : Number, require: true},
     isNewGood : {type: Boolean, require: true},

@@ -3,26 +3,24 @@ import style from './mainBodyCard.less';
 class CardMainPage extends React.Component {
 
     render() {
+    let {card} = this.props;
         return (
             <div className="bodyCardItems__oneCardItem">
 
                 <div className="oneCardItem__headCard">
                     <div className="oneCardItem__headCard__priceCard">
-                        <span>879</span><span></span>&nbsp;<span>$</span>
+                        <span>{card.price}</span><span></span><span>грн.</span>
                     </div>
-                    <div className="oneCardItem__headCard__nameBrand">Reebok, model test-1000 21 12321
-                        312 3123
-                        123 123
-                        12321
+                    <div className="oneCardItem__headCard__nameBrand">{card.name} {card.model}
                     </div>
                     <div className="oneCardItem__headCard__wrap-things">
                         <div className="oneCardItem__headCard__otherThings">
                             <i className="fa fa-heart"></i>
-                            <span className="oneCardItem__headCard__otherThings_like"> 123</span>
+                            <span className="oneCardItem__headCard__otherThings_like">{card.likes}</span>
                         </div>
                         <div className="oneCardItem__headCard__view">
                             <i className="fa fa-eye" aria-hidden="true"></i>
-                            <span className="oneCardItem__headCard__view_items"> 123</span>
+                            <span className="oneCardItem__headCard__view_items">{card.views}</span>
                         </div>
                     </div>
                 </div>
@@ -33,14 +31,15 @@ class CardMainPage extends React.Component {
 
                 <div className="oneCardItem__bottomCard">
                     <div className="oneCardItem__bottomCard__shortText">
-                        <span className="oneCardItem__bottomCard__shortText_dots">Короткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давай</span>
+                        <span className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
                     </div>
-                    <div className="oneCardItem__bottomCard__status">В наличии</div>
+                    {card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>
+                        : <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}
                     <div className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
                 </div>
 
-                <div className="oneCardItem__bottomCard_sale"><span>-15%</span></div>
-                <div className="oneCardItem__bottomCard_new">NEW<span></span></div>
+                {card.sail ? <div className="oneCardItem__bottomCard_sale"><span>-{card.sail}%</span></div>: null}
+                {card.isNewGood ? <div className="oneCardItem__bottomCard_new">NEW<span></span></div> : null}
             </div>
         )
     }

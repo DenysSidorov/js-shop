@@ -2,7 +2,7 @@ import Good from "../models/good";
 
 export async function getAll(req, resp, next) {
     try {
-        var goods = await Good.find({}, {'_id': 1, 'sail': 1} );
+        var goods = await Good.find({} );
 
     } catch ({message}) {
         return next({
