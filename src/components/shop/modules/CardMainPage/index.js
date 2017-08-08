@@ -16,11 +16,11 @@ class CardMainPage extends React.Component {
                     <div className="oneCardItem__headCard__wrap-things">
                         <div className="oneCardItem__headCard__otherThings">
                             <i className="fa fa-heart"></i>
-                            <span className="oneCardItem__headCard__otherThings_like">{card.likes}</span>
+                            <span className="oneCardItem__headCard__otherThings_like"> {card.likes}</span>
                         </div>
                         <div className="oneCardItem__headCard__view">
                             <i className="fa fa-eye" aria-hidden="true"></i>
-                            <span className="oneCardItem__headCard__view_items">{card.views}</span>
+                            <span className="oneCardItem__headCard__view_items"> {card.views}</span>
                         </div>
                     </div>
                 </div>
