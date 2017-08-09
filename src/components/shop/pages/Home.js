@@ -3,6 +3,7 @@ import CardsSection from '../modules/CardsSection';
 import TagsMainSection from '../modules/TagsMainSection';
 import MenuInfoSection from '../modules/MenuInfoSection';
 import AdditionalSection from '../modules/AdditionalSection';
+import SimilarGoodsSection from '../modules/SimilarGoodsSection';
 class Home extends React.Component {
     componentDidMount(prevProps) {
         window.scrollTo(0, 0)
@@ -14,6 +15,7 @@ class Home extends React.Component {
                 <TagsMainSection/>
                 <CardsSection/>
                 <AdditionalSection/>
+                <SimilarGoodsSection/>
             </div>
         )
     }
