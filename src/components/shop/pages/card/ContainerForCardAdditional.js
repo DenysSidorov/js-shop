@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../../modules/CardMainPage";
 
 
 class ContainerForCardAdditional extends React.Component {
@@ -34,7 +35,7 @@ class ContainerForCardAdditional extends React.Component {
                         </div>
                     </section>
                     <section id="mainCardContainer__tabs_content-tab2">
-                        
+                        {/*<Card/>*/}
                         <div className="containerInTabs">
                             <div className="bodyCardItems__oneCardItem">
 

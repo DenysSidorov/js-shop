@@ -15,8 +15,6 @@ class CardsSection extends React.Component {
     }
 
     render() {
-        // <CardMainPage key={el._id}/>
-        this.state.cards.map((el,i)=>console.log(i));
         return (
             <div className="cardSection left fullWidth ">
                 <div className="container">
