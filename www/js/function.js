@@ -21,7 +21,7 @@ window.onload = function () { // после загрузки страницы
 
     function setHeight() {
         var heightMenu = menuSection.height();
-        //console.log(heightMenu, 'heightMenu');
+        // console.log(heightMenu, 'heightMenu');
         menuInfoSection.css('margin-top', heightMenu);
     }
 
