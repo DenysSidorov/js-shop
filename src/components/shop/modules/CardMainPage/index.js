@@ -46,3 +46,4 @@ class CardMainPage extends React.Component {
 }
 
 export default CardMainPage;
+

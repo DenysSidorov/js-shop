@@ -1,5 +1,7 @@
 import React from "react";
 import MainContainerForCard from "./MainContainerForCard";
+import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
+import ContainerForCardAdditional from "./ContainerForCardAdditional";
 
 class Card extends React.Component {
     componentDidMount(prevProps) {
@@ -9,6 +11,9 @@ class Card extends React.Component {
         return (
             <div>
                 <MainContainerForCard/>
+                <SimilarGoodsSection/>
+                <ContainerForCardAdditional/>
+
 
 
                 <div>CARD</div>
