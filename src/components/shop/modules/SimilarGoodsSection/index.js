@@ -1,60 +1,71 @@
 import React from "react";
 import styles from './index.less'
-import slick from '../../../../vendor/slick';
-
+// import slick from '../../../../vendor/slick';
+import Slider from 'react-slick';
 class SimilarGoodsSection extends React.Component {
     componentDidMount(){
+
+
+
         //TODO поменять на react
 // https://github.com/akiran/react-slick
 // http://kenwheeler.github.io/slick/
-        var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
-        console.log(slickContainerSimilarGoods);
-        if(slickContainerSimilarGoods.length) {
-            console.log('Da');
-            $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
-                //dots: true,
-                infinite: true,
-                speed: 300,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                slidesToShow: 5,
-                slidesToScroll: 2,
-                responsive: [
-                    {
-                        //breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true,
-                            //dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });//все дети этого дива станут слайдами// -----------------------slick slider #2---------------
-        }
+        {/*var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');*/}
+        {/*console.log(slickContainerSimilarGoods);*/}
+        {/*if(slickContainerSimilarGoods.length) {*/}
+            {/*console.log('Da');*/}
+            {/*$('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------*/}
+                {/*//dots: true,*/}
+                {/*infinite: true,*/}
+                {/*speed: 300,*/}
+                {/*autoplay: true,*/}
+                {/*autoplaySpeed: 2000,*/}
+                {/*slidesToShow: 5,*/}
+                {/*slidesToScroll: 2,*/}
+                {/*responsive: [*/}
+                    {/*{*/}
+                        {/*//breakpoint: 1024,*/}
+                        {/*settings: {*/}
+                            {/*slidesToShow: 3,*/}
+                            {/*slidesToScroll: 3,*/}
+                            {/*infinite: true,*/}
+                            {/*//dots: true*/}
+                        {/*}*/}
+                    {/*},*/}
+                    {/*{*/}
+                        {/*breakpoint: 600,*/}
+                        {/*settings: {*/}
+//                             slidesToShow: 2,
+//                             slidesToScroll: 2
+//                         }
+//                     },
+//                     {
+//                         breakpoint: 480,
+//                         settings: {
+//                             slidesToShow: 1,
+//                             slidesToScroll: 1
+//                         }
+//                     }
+//                     // You can unslick at a given breakpoint now by adding:
+//                     // settings: "unslick"
+//                     // instead of a settings object
+//                 ]
+//             });//все дети этого дива станут слайдами// -----------------------slick slider #2---------------
+//         }
     }
     render() {
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
         return (
             <div className="similarGoodsContainer">
                 <h2 className="similarGoodsTitle">Похожие товары</h2>
                 <div className="slickContainerSimilarGoods">
+
                     <div className="bodyCardItems__oneCardItem">
 
                         <div className="oneCardItem__headCard">
@@ -354,6 +365,7 @@ class SimilarGoodsSection extends React.Component {
                     <div className="goToAllGoodsFromSimilar">
                         <a className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</a>
                     </div>
+
                 </div>
             </div>
         )
