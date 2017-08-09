@@ -1,4 +1,5 @@
 import React from "react";
+import MainContainerForCard from "./MainContainerForCard";
 
 class Card extends React.Component {
     componentDidMount(prevProps) {
@@ -6,7 +7,13 @@ class Card extends React.Component {
     }
     render() {
         return (
-<div>CARD</div>
+            <div>
+                <MainContainerForCard/>
+
+
+                <div>CARD</div>
+            </div>
+
         )
 
     }
