@@ -168,7 +168,7 @@ html {
   z-index: 1000;
   .container {
     .flexWrapMenu {
-      min-height: 40px;
+      min-height: 50px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -211,9 +211,11 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         .menu__menuHeader {
           display: flex;
           justify-content: center;
+          flex-wrap: wrap;
           .menu__menuHeader_item {
             white-space: nowrap;
             padding-left: 10px;
@@ -253,6 +255,7 @@ html {
 
 .main-cart {
   cursor: pointer;
+  padding: 8px 0;
   .main-cart__ico {
     color: @mainBgColor;
     font-size: 2.2rem;
