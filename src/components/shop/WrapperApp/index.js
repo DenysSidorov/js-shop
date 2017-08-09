@@ -13,6 +13,7 @@ import AboutUs from "../pages/AboutUs";
 import Blog from "../pages/Blog";
 import PaymentAndDelivery from "../pages/PaymentAndDelivery";
 import CashbackAndExchange from "../pages/CashbackAndExchange";
+import Card from "../pages/Card";
 import Contacts from "../pages/Contacts";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
@@ -36,6 +37,7 @@ class WrapperApp extends React.Component {
                                     <Route path="/payment-and-delivery/" component={PaymentAndDelivery}/>
                                     <Route path="/cashback-and-exchange/" component={CashbackAndExchange}/>
                                     <Route path="/blog/" component={Blog}/>
+                                    <Route path="/card/" component={Card}/>
                                     <RouteAuth path="/contacts/" component={Contacts}/>
                                     <Route path="/login/" component={Login}/>
 
