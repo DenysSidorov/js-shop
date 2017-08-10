@@ -16,7 +16,6 @@ export async function getAll(req, resp, next) {
     resp.json(goods);
 }
 
-
 export async function getById(req, resp, next) {
     var id = req.params.id;
     try {
@@ -32,16 +31,9 @@ export async function getById(req, resp, next) {
 }
 
 export async function getSimilar(req, resp, next) {
-    console.log(req.params, 'PARAMS');
-    console.log(req.body, 'BODY');
-    var value = req.body.params.tags;
-    console.log(value, 'VALUE');
+    var categoryArr = req.body.params.category;
     try {
-        var goods = await Good.aggregate([
-            {$sort : {likes: -1 }},
-            {$limit: 7},
-        ]);
-
+        var goods = await Good.find({tags: {$in : categoryArr }});
     } catch ({message}) {
         return next({
             status: 500,
@@ -50,6 +42,7 @@ export async function getSimilar(req, resp, next) {
     }
     resp.json(goods);
 }
+
 export async function getPopular(req, resp, next) {
     try {
         // Your logic
@@ -58,7 +51,6 @@ export async function getPopular(req, resp, next) {
             {$sort : {likes: -1 }},
             {$limit: 7},
         ]);
-
     } catch ({message}) {
         return next({
             status: 500,
@@ -81,6 +73,7 @@ export async function create(req, resp, next) {
     }
     resp.json(name);
 }
+
 //
 // export async function getAll(req, resp, next) {
 //
