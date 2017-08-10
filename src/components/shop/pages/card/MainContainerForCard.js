@@ -9,7 +9,7 @@ class MainContainerForCard extends React.Component {
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        <img src="img-static/00017.jpg" alt=""/>
+                        <img src="/img-static/00017.jpg" alt=""/>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
@@ -38,25 +38,23 @@ class MainContainerForCard extends React.Component {
                     <div className="mainContainerForCard__mainInfoBlock_oneBlockContainer">
                              <span className="mainContainerForCard__mainInfoBlock_codeItem">
                                 <i className="fa fa-eye" aria-hidden="true"></i>
-                                <span className="mainContainerForCard__mainInfoBlock_codeItem_count"> 123</span>
+                                <span className="mainContainerForCard__mainInfoBlock_codeItem_count"> {card.views}</span>
                         </span>
                         <span className="mainContainerForCard__mainInfoBlock_show">
                                 <span className="mainContainerForCard__mainInfoBlock_show_value">код товара: <span>{card.code}</span></span>
                         </span>
                     </div>
-                    <h1 className="mainContainerForCard__mainInfoBlock_twoBlockTitle">
-                        Reebok, model test-1000 21 12321 312 3123 123 123 12321
-                    </h1>
+                    <h1 className="mainContainerForCard__mainInfoBlock_twoBlockTitle">{card.name} {card.model}</h1>
                     <div className="mainContainerForCard__mainInfoBlock_threeBlockPartners">
                         <span className="mainContainerForCard__mainInfoBlock_threeBlockPartners_title">Наши партнеры - </span>
-                        <img className="partnersInCard" src="img-static/privatbank.png" alt=""/>
-                            <img className="partnersInCard" src="img-static/navaposhta.png" alt=""/>
-                                <img className="partnersInCard" src="img-static/kievstar.png" alt=""/>
-                                    <img className="partnersInCard" src="img-static/life.png" alt=""/>
+                        <img className="partnersInCard" src="/img-static/privatbank.png" alt=""/>
+                            <img className="partnersInCard" src="/img-static/navaposhta.png" alt=""/>
+                                <img className="partnersInCard" src="/img-static/kievstar.png" alt=""/>
+                                    <img className="partnersInCard" src="/img-static/life.png" alt=""/>
                     </div>
                     <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice">
                         <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price">
-                            <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count">5345</span>
+                            <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count">{card.price}</span>
                             <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_money">грн</span>
                         </div>
                         <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly">КУПИТЬ СРАЗУ</div>
@@ -67,20 +65,20 @@ class MainContainerForCard extends React.Component {
                                 <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;уже купило <span>123</span> человека</span>
                             </span>
-                        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
+                        {card.isExists
+                            ? <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
                                 <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Есть в наличии</span>
                             </span>
-                        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
+                            :  <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
                                 <i className="fa fa-times-circle-o redInCard" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Нет в наличии</span>
                             </span>
+                        }
+
+
                     </div>
-                    <div className="mainContainerForCard__mainInfoBlock_sixBlockDescriptionShort">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores deleniti dolorem
-                        explicabo ipsa laudantium quae sed sequi sunt temporibus unde. Accusamus facilis laboriosam
-                        sequi. Dolor eius fuga illo vero voluptates.
-                    </div>
+                    <div className="mainContainerForCard__mainInfoBlock_sixBlockDescriptionShort">{card['desc-short']}</div>
                     <div className="clearfix"></div>
                 </div>
 
