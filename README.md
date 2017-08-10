@@ -7,7 +7,7 @@ Main tools:
 - SASS / LESS
 - JQuery
 - Redux/Saga/Middleware
-- React/Libraries 
+- React/Libraries/Router4
 - Express/Mongoose/MVC
 - MongoDB
        
