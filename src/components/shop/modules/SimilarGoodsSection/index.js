@@ -77,7 +77,6 @@ class SimilarGoodsSection extends React.Component {
                 <div className="slickContainerSimilarGoods">
                     {cards.length
                         ? cards.map((card)=> {
-                            console.log(card._id, 'card._id');
                         return <div key={card._id} className="bodyCardItems__oneCardItem">
                             <div className="oneCardItem__headCard">
                                 <div className="oneCardItem__headCard__priceCard">

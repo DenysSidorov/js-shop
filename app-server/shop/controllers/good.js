@@ -1,5 +1,8 @@
 import Good from "../models/good";
 
+
+
+
 export async function getAll(req, resp, next) {
     try {
         var goods = await Good.find({}).limit(50);
