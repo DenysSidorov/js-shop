@@ -8,6 +8,8 @@ class ContainerForCardAdditional extends React.Component {
     }
 
     render() {
+        var card = this.props.card[0];
+        console.log(card.comments, 'COMM');
         return (
             <div className="containerForCardAdditional">
 
@@ -28,7 +30,7 @@ class ContainerForCardAdditional extends React.Component {
                         <div className="containerInTabs">
                             {/*Содержимое таба*/}
 
-                            <div><span>Full Description</span></div>
+                            <div><p>{card['desc-full']}</p></div>
 
 
                             {/*Содержимое таба*/}
@@ -307,7 +309,11 @@ class ContainerForCardAdditional extends React.Component {
                     </section>
                     <section id="mainCardContainer__tabs_content-tab3">
                         <div className="containerInTabs">
-                            Комментарие нет!
+                            {card.comments.map((el,index)=>{
+                                return <div key={el._id}>{el.message}</div>
+                            })}
+
+
                         </div>
                     </section>
                 </div>

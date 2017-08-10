@@ -26,9 +26,9 @@ class Card extends React.Component {
                 {card.length
                     ? <div>
 
-                    <MainContainerForCard card={this.state.card}/>
+                    <MainContainerForCard card={this.state.card} />
                     <SimilarGoodsSection/>
-                    <ContainerForCardAdditional/>
+                    <ContainerForCardAdditional card={this.state.card} />
                 </div>
                     : null }
             </div>
