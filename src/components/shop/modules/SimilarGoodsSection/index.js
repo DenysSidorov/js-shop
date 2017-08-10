@@ -127,7 +127,12 @@ super(props);
                         : null}
                     {cards.length
                         ? <div className="goToAllGoodsFromSimilar">
-                        <Link to="/" className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</Link>
+                        <Link to={{
+                            pathname: '/',
+                            search: '?sort=main',
+                            hash: '',
+                            state: { relo: true }
+                        }} className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</Link>
                     </div>
                         : null}
                 </div>
