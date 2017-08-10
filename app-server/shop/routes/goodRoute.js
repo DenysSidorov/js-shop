@@ -5,6 +5,7 @@ import * as GoodController from '../controllers/good';
 const router = express.Router();
 
 router.get('/', GoodController.getAll);
+router.get('/popular', GoodController.getPopular);
 router.get('/:id', GoodController.getById);
 router.post('/', GoodController.create);
 

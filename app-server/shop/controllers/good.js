@@ -13,6 +13,7 @@ export async function getAll(req, resp, next) {
     resp.json(goods);
 }
 
+
 export async function getById(req, resp, next) {
     var id = req.params.id;
     try {
@@ -27,7 +28,23 @@ export async function getById(req, resp, next) {
     resp.json(good);
 }
 
+export async function getPopular(req, resp, next) {
+    try {
+        // Your logic
+        // var goods = await Good.find({}).limit(6);
+        var goods = await Good.aggregate([
+            {$sort : {likes: -1 }},
+            {$limit: 7},
+        ]);
 
+    } catch ({message}) {
+        return next({
+            status: 500,
+            message
+        });
+    }
+    resp.json(goods);
+}
 
 export async function create(req, resp, next) {
     var name = req.body.name;

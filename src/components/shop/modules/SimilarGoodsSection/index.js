@@ -56,7 +56,7 @@ class SimilarGoodsSection extends React.Component {
 
         return (
             <div className="similarGoodsContainer">
-                <h2 className="similarGoodsTitle">Похожие товары</h2>
+                <h2 className="similarGoodsTitle">{this.props.title || 'Похожие товары'}</h2>
                 <div className="slickContainerSimilarGoods">
 
                     <div className="bodyCardItems__oneCardItem">

@@ -15,7 +15,7 @@ class Home extends React.Component {
                 <TagsMainSection/>
                 <CardsSection/>
                 <AdditionalSection/>
-                <SimilarGoodsSection/>
+                <SimilarGoodsSection title={'Популярные'}/>
             </div>
         )
     }
