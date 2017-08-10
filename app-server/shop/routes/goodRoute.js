@@ -7,6 +7,7 @@ const router = express.Router();
 router.get('/', GoodController.getAll);
 router.get('/popular', GoodController.getPopular);
 router.get('/:id', GoodController.getById);
+router.post('/:id/similar', GoodController.getSimilar);
 router.post('/', GoodController.create);
 
 // router.post('/pages', PageController.getAll);

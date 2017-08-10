@@ -43,7 +43,7 @@ app.listen(config.backend.port, (err)=>{
 
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
 app.use(bodyParse.json());
-app.use(bodyParse.urlencoded({extend: true}));
+app.use(bodyParse.urlencoded({extended: true}));
 
 /*TODO make async function*/
 app.use(session({

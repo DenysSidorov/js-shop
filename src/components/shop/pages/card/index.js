@@ -15,7 +15,10 @@ class Card extends React.Component {
         // https://www.npmjs.com/package/axios
         try {
             card = await axios.get(`http://localhost:3000/goods/${id}`);
-            popularCards = await axios.get('http://localhost:3000/goods/popular');
+            console.log(card.data[0].tags, 'cards');
+            popularCards = await axios.post(`http://localhost:3000/goods/${id}/similar`,
+                {params: {'tags': card.data[0].tags}}
+            );
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
         } catch (e) {
             console.log(e);

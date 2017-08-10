@@ -31,6 +31,25 @@ export async function getById(req, resp, next) {
     resp.json(good);
 }
 
+export async function getSimilar(req, resp, next) {
+    console.log(req.params, 'PARAMS');
+    console.log(req.body, 'BODY');
+    var value = req.body.params.tags;
+    console.log(value, 'VALUE');
+    try {
+        var goods = await Good.aggregate([
+            {$sort : {likes: -1 }},
+            {$limit: 7},
+        ]);
+
+    } catch ({message}) {
+        return next({
+            status: 500,
+            message
+        });
+    }
+    resp.json(goods);
+}
 export async function getPopular(req, resp, next) {
     try {
         // Your logic
