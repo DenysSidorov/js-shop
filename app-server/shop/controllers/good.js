@@ -33,7 +33,19 @@ export async function getById(req, resp, next) {
 export async function getSimilar(req, resp, next) {
     var categoryArr = req.body.params.category;
     try {
-        var goods = await Good.find({tags: {$in : categoryArr }});
+        var goods = await Good.find({category: {$in : categoryArr }});
+    } catch ({message}) {
+        return next({
+            status: 500,
+            message
+        });
+    }
+    resp.json(goods);
+}
+
+export async function getUniqCategory(req, resp, next) {
+    try {
+        var goods = await Good.distinct('category');
     } catch ({message}) {
         return next({
             status: 500,

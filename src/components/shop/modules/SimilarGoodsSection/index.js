@@ -4,6 +4,9 @@ import styles from './index.less';
 import styles2 from './slick-slider.less';
 class SimilarGoodsSection extends React.Component {
 
+    constructor(props){
+
+    }
     // hook for update component
     state = {counter: 0, isUpdateted: false};
 

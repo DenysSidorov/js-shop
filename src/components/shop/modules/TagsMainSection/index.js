@@ -1,19 +1,28 @@
 import React from "react";
 import styles from './index.less'
+import {Link} from "react-router-dom";
 class TagsMainSection extends React.Component {
     render() {
         return (
             <div className="itemsSection left fullWidth ">
                 <div className="container">
                     <div className="themeItemsblock">
-                        <span className="themeItemsblock__oneItem"><a href="">Новинки</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Акция</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Скидки</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Популярные</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Мужские</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Женские</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Детские</a></span>
-                        <span className="themeItemsblock__oneItem"><a href="">Спорт</a></span>
+                             <Link to={{
+                                 pathname: '/',
+                                 search: '?sort=main',
+                                 hash: '',
+                                 state: { fromDashboard: true }
+                             }} className="themeItemsblock__oneItem">
+                                 <span>All333</span>
+                             </Link>
+
+
+                        {this.props.uniqCategory.map(el =>
+                            <span key={el} className="themeItemsblock__oneItem">
+                                <a >{el}</a>
+                            </span>
+                        )}
+
                     </div>
                 </div>
             </div>

@@ -10,7 +10,6 @@ class ContainerForCardAdditional extends React.Component {
 
     render() {
         var card = this.props.card[0];
-        console.log(card.comments, 'COMM');
         return (
             <div className="containerForCardAdditional">
 
