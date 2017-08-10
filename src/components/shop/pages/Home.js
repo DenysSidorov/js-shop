@@ -6,7 +6,7 @@ import MenuInfoSection from "../modules/MenuInfoSection";
 import AdditionalSection from "../modules/AdditionalSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 class Home extends React.Component {
-    state = {cards: []};
+    state = {cards: [], popularCards: []};
 
     async componentDidMount(prevProps) {
         window.scrollTo(0, 0)
@@ -16,10 +16,10 @@ class Home extends React.Component {
         var cards = [];
         var popularCards = [];
         try {
-             cards = await axios.get('http://localhost:3000/goods');
-             popularCards = await axios.get('http://localhost:3000/goods/popular');
+            cards = await axios.get('http://localhost:3000/goods');
+            popularCards = await axios.get('http://localhost:3000/goods/popular');
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
-        } catch(e){
+        } catch (e) {
             console.log(e);
 
         } finally {
@@ -29,8 +29,8 @@ class Home extends React.Component {
             })
         }
 
-        console.log(cards.data, 't');
-        console.log(popularCards.data, 'p');
+        console.log(cards, 't');
+        console.log(popularCards, 'p');
     }
 
     render() {
@@ -38,9 +38,13 @@ class Home extends React.Component {
             <div>
                 <MenuInfoSection/>
                 <TagsMainSection/>
-                <CardsSection cards={this.state.cards}/>
+                {this.state.cards && this.state.cards.length
+                  ? <CardsSection cards={this.state.cards}/>
+                  : null}
                 <AdditionalSection/>
-                <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
+                {this.state.popularCards && this.state.popularCards.length
+                    ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
+                    : null}
             </div>
         )
     }
