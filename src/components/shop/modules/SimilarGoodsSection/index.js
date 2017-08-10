@@ -1,24 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import styles from './index.less'
-import styles2 from './slick-slider.less'
-
+import styles from './index.less';
+import styles2 from './slick-slider.less';
 class SimilarGoodsSection extends React.Component {
 
     // hook for update component
-    state = {counter : 0, isUpdateted: false}
-    componentDidMount(){
+    state = {counter: 0, isUpdateted: false};
+
+    componentDidMount() {
         console.log('componentDidMount');
-        if(!this.state.isUpdateted){
+        if (!this.state.isUpdateted && this.props.cards.length) {
             var c = ++this.state.counter;
-            setTimeout(()=>{
-                this.setState({counter: c }, console.log('1'))
+            this.interval = setTimeout(()=> {
+                this.setState({counter: c, isUpdateted: true }, console.log(1))
             }, 1000)
         }
-
     }
 
     componentWillUpdate() {
+        console.log('componentWillUpdate');
         var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
         console.log(slickContainerSimilarGoods);
         if (slickContainerSimilarGoods.length) {
@@ -68,53 +68,57 @@ class SimilarGoodsSection extends React.Component {
 
 
     render() {
-         let {cards} = this.props;
+        let {cards} = this.props;
         console.log('RENDER SIMILAR');
         return (
 
             <div className="similarGoodsContainer">
-                {cards.length ?  <h2 className="similarGoodsTitle">{this.props.title || 'Похожие товары'}</h2> :null}
+                {cards.length ? <h2 className="similarGoodsTitle">{this.props.title || 'Похожие товары'}</h2> : null}
                 <div className="slickContainerSimilarGoods">
                     {cards.length
-                        ? cards.map((el)=>{
-                            return <div key={el._id} className="bodyCardItems__oneCardItem">
+                        ? cards.map((card)=> {
+                        return <div key={card._id} className="bodyCardItems__oneCardItem">
                             <div className="oneCardItem__headCard">
                                 <div className="oneCardItem__headCard__priceCard">
-                                    <span>879</span><span></span>&nbsp;<span>$</span>
+                                    <span>{card.price}</span><span></span>&nbsp;<span>грн.</span>
                                 </div>
-                                <div className="oneCardItem__headCard__nameBrand">Reebok, model test-1000 21 12321 312
-                                    3123
-                                    123 123
-                                    12321
+                                <div className="oneCardItem__headCard__nameBrand">{card.name}{' '}{card.model}
                                 </div>
                                 <div className="oneCardItem__headCard__wrap-things">
                                     <div className="oneCardItem__headCard__otherThings">
                                         <i className="fa fa-heart"></i>
-                                        <span className="oneCardItem__headCard__otherThings_like"> 123</span>
+                                        <span className="oneCardItem__headCard__otherThings_like"> {card.likes}</span>
                                     </div>
                                     <div className="oneCardItem__headCard__view">
                                         <i className="fa fa-eye" aria-hidden="true"></i>
-                                        <span className="oneCardItem__headCard__view_items"> 123</span>
+                                        <span className="oneCardItem__headCard__view_items"> {card.views}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="oneCardItem__imageBody">
-                                <img src="img-static/00017.jpg" alt=""/>
+                                <img src="/img-static/00017.jpg" alt=""/>
                             </div>
 
                             <div className="oneCardItem__bottomCard">
                                 <div className="oneCardItem__bottomCard__shortText">
-                                    <span className="oneCardItem__bottomCard__shortText_dots">Короткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давай</span>
+                                    <span
+                                        className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
                                 </div>
-                                <div className="oneCardItem__bottomCard__status">В наличии</div>
+                                <div
+                                    className="oneCardItem__bottomCard__status">{card.isExists ? 'В наличии' : 'Нет в наличии'}</div>
                                 <div className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
                             </div>
-
-                            <div className="oneCardItem__bottomCard_sale"><span>-15%</span></div>
-                            <div className="oneCardItem__bottomCard_new">NEW<span></span></div>
-                        </div>})
+                            {card.sail ?
+                                <div className="oneCardItem__bottomCard_sale"><span>-{card.sail}%</span></div> : null}
+                            {card.isNewGood
+                                ? <div className="oneCardItem__bottomCard_new">NEW<span></span></div>
+                                : null
+                            }
+                        </div>
+                    })
                         : null}
+
                 </div>
             </div>
 
