@@ -10,7 +10,7 @@ class Card extends React.Component {
 
             // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
             // https://www.npmjs.com/package/axios
-            var cards = await axios.get('http://localhost:3000/goods');
+            var cards = await axios.get('http://localhost:3000/goods/1');
 
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
             this.setState({cards: cards.data})
