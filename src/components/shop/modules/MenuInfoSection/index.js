@@ -23,7 +23,7 @@ class MenuInfoSection extends React.Component {
                             </ul>
                         </div>
                         <div className="logoInfo">
-                            <img className="logoInfo__logo-img" src="img-static/good.jpg" alt=""/>
+                            <img className="logoInfo__logo-img" src="/img-static/good.jpg" alt=""/>
                         </div>
                         <div className="userInfo">
                             <ul className="userInfo__listInfo">

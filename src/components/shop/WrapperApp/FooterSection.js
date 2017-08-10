@@ -77,10 +77,10 @@ class FooterSection extends React.Component {
 
                             <div className="footerMainBlock__socials_delivery">
                                 <div className="imgFooterBlock">
-                                    <img className="imgFooter" src="img-static/privatbank.png" alt=""/>
+                                    <img className="imgFooter" src="/img-static/privatbank.png" alt=""/>
                                 </div>
                                 <div className="imgFooterBlock">
-                                    <img className="nvpochta imgFooter" src="img-static/navaposhta.png" alt=""/>
+                                    <img className="nvpochta imgFooter" src="/img-static/navaposhta.png" alt=""/>
                                 </div>
 
                             </div>

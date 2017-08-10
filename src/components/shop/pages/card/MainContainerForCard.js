@@ -9,7 +9,7 @@ class MainContainerForCard extends React.Component {
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        <img src="/img-static/00017.jpg" alt=""/>
+                        <img src={`/img-static/${randomInteger(1, card.photo.length)}.png`} alt=""/>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
@@ -90,3 +90,9 @@ class MainContainerForCard extends React.Component {
 }
 
 export default MainContainerForCard;
+
+function randomInteger(min, max) {
+    var rand = min + Math.random() * (max + 1 - min);
+    rand = Math.floor(rand);
+    return rand;
+}
