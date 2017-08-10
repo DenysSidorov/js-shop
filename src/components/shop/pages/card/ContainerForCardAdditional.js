@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../modules/CardMainPage";
+import Comment from "./Comment";
 
 
 class ContainerForCardAdditional extends React.Component {
@@ -309,10 +309,12 @@ class ContainerForCardAdditional extends React.Component {
                     </section>
                     <section id="mainCardContainer__tabs_content-tab3">
                         <div className="containerInTabs">
-                            {card.comments.map((el,index)=>{
-                                return <div key={el._id}>{el.message}</div>
-                            })}
-
+                            {!card.comments.length
+                                ? <div>Комментариев нет</div>
+                                : card.comments.map((el, index)=> {
+                                return <Comment key={el._id} comment={el}/>
+                            })
+                            }
 
                         </div>
                     </section>

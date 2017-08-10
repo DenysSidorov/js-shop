@@ -4,7 +4,7 @@ import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
 class Card extends React.Component {
-    state = {card: []};
+    state = {card: null};
 
     async componentDidMount(prevProps) {
         window.scrollTo(0, 0)
@@ -23,14 +23,14 @@ class Card extends React.Component {
         var {card} = this.state;
         return (
             <div>
-                {card.length
+                {card
                     ? <div>
 
                     <MainContainerForCard card={this.state.card} />
                     <SimilarGoodsSection/>
                     <ContainerForCardAdditional card={this.state.card} />
                 </div>
-                    : null }
+                    : <div>Такого товара не существует</div> }
             </div>
         )
 
