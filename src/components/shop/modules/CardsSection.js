@@ -22,6 +22,9 @@ class CardsSection extends React.Component {
                     <div className="productsCardBlock">
                         <div className="productsCardBlock__navigation"></div>
                         <div className="productsCardBlock__searchCard"></div>
+                        <div className="productsCardBlock__searchCard-count">
+                            Найдено : {cards.length}
+                        </div>
                         <div className="productsCardBlock__bodyCardItems">
                             { cards.map(el=> <CardMainPage card={el} key={el._id}/>)}
                         </div>
