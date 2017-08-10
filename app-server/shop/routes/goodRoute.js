@@ -5,6 +5,7 @@ import * as GoodController from '../controllers/good';
 const router = express.Router();
 
 router.get('/', GoodController.getAll);
+router.get('/tags', GoodController.getUniqTags);
 router.get('/popular', GoodController.getPopular);
 router.get('/:id', GoodController.getById);
 router.post('/:id/similar', GoodController.getSimilar);

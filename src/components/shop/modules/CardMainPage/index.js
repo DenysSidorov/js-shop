@@ -27,7 +27,7 @@ class CardMainPage extends React.Component {
                 </div>
 
                 <div className="oneCardItem__imageBody">
-                    <img src="img-static/00017.jpg" alt=""/>
+                    <img src="/img-static/00017.jpg" alt=""/>
                 </div>
 
                 <div className="oneCardItem__bottomCard">

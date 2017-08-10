@@ -28,9 +28,6 @@ class Home extends React.Component {
                 popularCards: popularCards.data
             })
         }
-
-        console.log(cards, 't');
-        console.log(popularCards, 'p');
     }
 
     render() {
@@ -41,7 +38,9 @@ class Home extends React.Component {
                 {this.state.cards && this.state.cards.length
                   ? <CardsSection cards={this.state.cards}/>
                   : null}
-                <AdditionalSection/>
+
+                  <AdditionalSection/>
+
                 {this.state.popularCards && this.state.popularCards.length
                     ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
                     : null}

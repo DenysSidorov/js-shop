@@ -43,6 +43,8 @@ export async function getSimilar(req, resp, next) {
     resp.json(goods);
 }
 
+
+
 export async function getPopular(req, resp, next) {
     try {
         // Your logic
