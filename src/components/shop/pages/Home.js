@@ -9,27 +9,70 @@ class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
     async componentWillReceiveProps(prevProps) {
-        console.log('componentWillReceiveProps', 'получил новые пропс');
-        var cards = [];
+        // получение обьекта параметров запроса
+        var params = window
+            .location
+            .search
+            .replace('?','')
+            .split('&')
+            .reduce(
+                function(p,e){
+                    var a = e.split('=');
+                    p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                    return p;
+                },
+                {}
+            );
 
-        try {
-            cards = await axios.get('http://localhost:3000/goods');
-        } catch (e) {
-            console.log(e);
-        } finally {
-            this.setState({
-            })
+
+
+        console.log('componentWillReceiveProps', 'получил новые пропс');
+        var param = params['sort'];
+        if(param){
+            var cards = [];
+            try {
+                cards = await axios.get(`http://localhost:3000/goods?sort=${param}`);
+
+            } catch (e) {
+                console.log(321);
+                console.log(e);
+            } finally {
+                this.setState({
+                    cards: cards.data,
+                }, ()=>{console.log('уже после фильтра');})
+            }
         }
+
     }
     async componentDidMount(prevProps) {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
+
+        var params = window
+            .location
+            .search
+            .replace('?','')
+            .split('&')
+            .reduce(
+                function(p,e){
+                    var a = e.split('=');
+                    p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                    return p;
+                },
+                {}
+            );
+        var param = params['sort'];
 
         // https://www.npmjs.com/package/axios
         var cards = [];
         var popularCards = [];
         var uniqCategory = [];
         try {
+            if(param){
+
+            } else {
+
+            }
             cards = await axios.get('http://localhost:3000/goods');
             popularCards = await axios.get('http://localhost:3000/goods/popular');
             uniqCategory = await axios.get('http://localhost:3000/goods/tags');

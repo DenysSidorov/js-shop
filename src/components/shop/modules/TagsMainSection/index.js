@@ -13,14 +13,19 @@ class TagsMainSection extends React.Component {
                                  hash: '',
                                  state: { fromDashboard: true }
                              }} className="themeItemsblock__oneItem">
-                                 <span>All333</span>
+                                 <span>Все</span>
                              </Link>
 
 
                         {this.props.uniqCategory.map(el =>
-                            <span key={el} className="themeItemsblock__oneItem">
-                                <a >{el}</a>
-                            </span>
+                            <Link key={el} to={{
+                                pathname: '/',
+                                search: `?sort=${el}`,
+                                hash: '',
+                                state: { fromDashboard: true }
+                            }} className="themeItemsblock__oneItem">
+                                <span>{el}</span>
+                            </Link>
                         )}
 
                     </div>
