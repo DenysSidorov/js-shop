@@ -5,8 +5,12 @@ import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
 class Card extends React.Component {
     state = {card: null, similarCategory: [], popularCards: []};
+constructor(props){
+    super(props);
+    this.initCadd = this.initCadd.bind(this);
 
-    async componentDidMount(prevProps) {
+}
+    async initCadd(){
         window.scrollTo(0, 0)
         var id = this.props.match.params.id;
         var similarCategory = [];
@@ -32,7 +36,16 @@ class Card extends React.Component {
             });
         }
     }
+     componentDidMount() {
+         console.log('componentDidMount');
+        this.initCadd();
+    }
 
+    componentWillReceiveProps() {
+        // console.log('componentWillReceiveProps');
+        this.forceUpdate();
+        this.initCadd();
+    }
     render() {
         var {card} = this.state;
         return (
