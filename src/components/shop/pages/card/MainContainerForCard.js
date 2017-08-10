@@ -9,7 +9,7 @@ class MainContainerForCard extends React.Component {
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        <img src={`/img-static/${randomInteger(1, card.photo.length)}.png`} alt=""/>
+                        <img src={`/img-static/${card.photo[0]}`} alt=""/>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">

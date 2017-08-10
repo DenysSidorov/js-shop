@@ -104,7 +104,7 @@ super(props);
                             </div>
 
                             <div className="oneCardItem__imageBody">
-                                <img src={`/img-static/${randomInteger(1, card.photo.length)}.png`} alt=""/>
+                                <img src={`/img-static/${card.photo[0]}`} alt=""/>
                             </div>
 
                             <div className="oneCardItem__bottomCard">
