@@ -37,7 +37,7 @@ class WrapperApp extends React.Component {
                                     <Route path="/payment-and-delivery/" component={PaymentAndDelivery}/>
                                     <Route path="/cashback-and-exchange/" component={CashbackAndExchange}/>
                                     <Route path="/blog/" component={Blog}/>
-                                    <Route path="/card/" component={Card}/>
+                                    <Route path="/card/:id" component={Card}/>
                                     <RouteAuth path="/contacts/" component={Contacts}/>
                                     <Route path="/login/" component={Login}/>
 

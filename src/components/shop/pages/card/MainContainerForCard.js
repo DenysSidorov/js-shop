@@ -2,12 +2,14 @@ import React from "react";
 import styles from './mainContainerForCard.less'
 
 class MainContainerForCard extends React.Component {
+
     render() {
+        var card = this.props.card[0];
         return (
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        <img src="img-static/b2ae5d6885.jpg" alt=""/>
+                        <img src="img-static/00017.jpg" alt=""/>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
@@ -39,7 +41,7 @@ class MainContainerForCard extends React.Component {
                                 <span className="mainContainerForCard__mainInfoBlock_codeItem_count"> 123</span>
                         </span>
                         <span className="mainContainerForCard__mainInfoBlock_show">
-                                <span className="mainContainerForCard__mainInfoBlock_show_value">код товара: <span>123</span></span>
+                                <span className="mainContainerForCard__mainInfoBlock_show_value">код товара: <span>{card.code}</span></span>
                         </span>
                     </div>
                     <h1 className="mainContainerForCard__mainInfoBlock_twoBlockTitle">

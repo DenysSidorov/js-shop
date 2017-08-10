@@ -1,9 +1,11 @@
 import React from "react";
 import style from './mainBodyCard.less';
+import {Link} from "react-router-dom";
 class CardMainPage extends React.Component {
 
     render() {
     let {card} = this.props;
+
         return (
             <div className="bodyCardItems__oneCardItem">
 
@@ -11,8 +13,7 @@ class CardMainPage extends React.Component {
                     <div className="oneCardItem__headCard__priceCard">
                         <span>{card.price}</span><span></span><span>грн.</span>
                     </div>
-                    <div className="oneCardItem__headCard__nameBrand">{card.name} {card.model}
-                    </div>
+                    <Link to={`/card/${card._id}`} className="oneCardItem__headCard__nameBrand">{card.name} {card.model}</Link>
                     <div className="oneCardItem__headCard__wrap-things">
                         <div className="oneCardItem__headCard__otherThings">
                             <i className="fa fa-heart"></i>

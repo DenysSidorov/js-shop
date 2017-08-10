@@ -4,29 +4,34 @@ import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
 class Card extends React.Component {
-    state = {cards : []};
+    state = {card: []};
+
     async componentDidMount(prevProps) {
         window.scrollTo(0, 0)
+        var id = this.props.match.params.id;
+        // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
+        // https://www.npmjs.com/package/axios
+        var card = await axios.get(`http://localhost:3000/goods/${id}`);
 
-            // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
-            // https://www.npmjs.com/package/axios
-            var cards = await axios.get('http://localhost:3000/goods/1');
+        // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
+        this.setState({card: card.data});
 
-            // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
-            this.setState({cards: cards.data})
-
-            console.log(cards.data, 'card t');
-
-
+        console.log(card.data[0]._id, 'ID CARD');
     }
+
     render() {
+        var {card} = this.state;
         return (
             <div>
-                <MainContainerForCard/>
-                <SimilarGoodsSection/>
-                <ContainerForCardAdditional/>
-            </div>
+                {card.length
+                    ? <div>
 
+                    <MainContainerForCard card={this.state.card}/>
+                    <SimilarGoodsSection/>
+                    <ContainerForCardAdditional/>
+                </div>
+                    : null }
+            </div>
         )
 
     }

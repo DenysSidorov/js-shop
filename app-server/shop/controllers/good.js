@@ -14,12 +14,9 @@ export async function getAll(req, resp, next) {
 }
 
 export async function getById(req, resp, next) {
-    var idPar = req.params.id;
-    console.log(idPar, " --idPar-- ");
-    var idBody = req.body.id;
-    console.log(idBody, " --idBody-- ");
+    var id = req.params.id;
     try {
-        var good = await Good.find({_id: 1});
+        var good = await Good.find({_id: id});
 
     } catch ({message}) {
         return next({
