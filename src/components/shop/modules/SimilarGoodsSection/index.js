@@ -8,21 +8,21 @@ class SimilarGoodsSection extends React.Component {
     state = {counter: 0, isUpdateted: false};
 
     componentDidMount() {
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
         if (!this.state.isUpdateted && this.props.cards.length) {
             var c = ++this.state.counter;
             this.interval = setTimeout(()=> {
-                this.setState({counter: c, isUpdateted: true }, console.log(1))
+                this.setState({counter: c, isUpdateted: true })
             }, 1000)
         }
     }
 
     componentWillUpdate() {
-        console.log('componentWillUpdate');
+        // console.log('componentWillUpdate');
         var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
         console.log(slickContainerSimilarGoods);
         if (slickContainerSimilarGoods.length) {
-            console.log('Da');
+            // console.log('Da');
             $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
                 //dots: true,
                 infinite: true,
@@ -77,13 +77,14 @@ class SimilarGoodsSection extends React.Component {
                 <div className="slickContainerSimilarGoods">
                     {cards.length
                         ? cards.map((card)=> {
+                            console.log(card._id, 'card._id');
                         return <div key={card._id} className="bodyCardItems__oneCardItem">
                             <div className="oneCardItem__headCard">
                                 <div className="oneCardItem__headCard__priceCard">
                                     <span>{card.price}</span><span></span>&nbsp;<span>грн.</span>
                                 </div>
-                                <div className="oneCardItem__headCard__nameBrand">{card.name}{' '}{card.model}
-                                </div>
+                                <Link to={`/card/${card._id}`} className="oneCardItem__headCard__nameBrand">{card.name}{' '}{card.model}
+                                </Link>
                                 <div className="oneCardItem__headCard__wrap-things">
                                     <div className="oneCardItem__headCard__otherThings">
                                         <i className="fa fa-heart"></i>
@@ -118,7 +119,11 @@ class SimilarGoodsSection extends React.Component {
                         </div>
                     })
                         : null}
-
+                    {cards.length
+                        ? <div className="goToAllGoodsFromSimilar">
+                        <a style={{color: "#eee"}} className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</a>
+                    </div>
+                        : null}
                 </div>
             </div>
 
