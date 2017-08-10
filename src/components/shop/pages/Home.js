@@ -9,6 +9,7 @@ class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
     async componentWillReceiveProps(prevProps) {
+        window.scrollTo(0, 0)
         // получение обьекта параметров запроса
         var params = window
             .location
@@ -40,6 +41,7 @@ class Home extends React.Component {
 
     }
     async componentDidMount(prevProps) {
+        window.scrollTo(0, 0)
         window.scrollTo(0, 0);
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
 
