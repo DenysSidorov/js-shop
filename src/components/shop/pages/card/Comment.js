@@ -1,4 +1,5 @@
 import React from "react";
+import st from './comment.less';
 class Comment extends React.Component {
 
 

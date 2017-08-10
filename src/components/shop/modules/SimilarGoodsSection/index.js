@@ -120,7 +120,7 @@ class SimilarGoodsSection extends React.Component {
                         : null}
                     {cards.length
                         ? <div className="goToAllGoodsFromSimilar">
-                        <a style={{color: "#eee"}} className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</a>
+                        <Link to="/" className="goToAllGoodsFromSimilar_text">Перейти ко всем похожим товарам</Link>
                     </div>
                         : null}
                 </div>
