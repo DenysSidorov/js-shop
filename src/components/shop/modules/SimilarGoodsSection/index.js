@@ -5,7 +5,8 @@ import styles2 from './slick-slider.less';
 class SimilarGoodsSection extends React.Component {
 
     constructor(props){
-
+super(props);
+        this.initSlick = this.initSlick.bind(this);
     }
     // hook for update component
     state = {counter: 0, isUpdateted: false};
@@ -15,13 +16,13 @@ class SimilarGoodsSection extends React.Component {
         if (!this.state.isUpdateted && this.props.cards.length) {
             var c = ++this.state.counter;
             this.interval = setTimeout(()=> {
-                this.setState({counter: c, isUpdateted: true })
+                this.setState({counter: c, isUpdateted: true }, ()=>{
+                    this.initSlick();
+                })
             }, 1000)
         }
     }
-
-    componentWillUpdate() {
-        // console.log('componentWillUpdate');
+    initSlick(){
         var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
         console.log(slickContainerSimilarGoods);
         if (slickContainerSimilarGoods.length) {
@@ -64,6 +65,9 @@ class SimilarGoodsSection extends React.Component {
                 ]
             });//все дети этого дива станут слайдами// -----------------------slick slider #2---------------
         }
+    }    componentWillUpdate() {
+        // console.log('componentWillUpdate');
+
     }
 
 //TODO поменять на react
