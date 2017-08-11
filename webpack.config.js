@@ -130,7 +130,7 @@ var config = {
             },
             // sass/scss
             {
-                test: /\.scss$/,
+                test: /\.(scss|sass)$/,
                 include: path.resolve(__dirname, 'src'),
                 use: ExtractTextPlugin.extract({
                     // exclude: /node_modules/,

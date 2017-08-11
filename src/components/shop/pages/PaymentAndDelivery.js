@@ -1,59 +1,53 @@
 import React from "react";
-
+import st from './paymentAndDelivery.scss'
 class PaymentAndDelivery extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)
         }
     render() {
         return (
-            <div><br/><br/><br/><h2>PaymentAndDelivery  THERE </h2> <br/><br/><br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
+            <div className="paymentAndDelivery__container">
+                    <p>
+                        Условия оплаты и доставки.
+                    </p>
+                    <p>
+                        Оплатить заказ вы можете удобным для вас способом:
+                    </p>
+                    <ol>
+                        <li>На расчетный счет Приват банка.</li>
+                        <li>Оплата заказа при получении, в отделении "Новой Почты"..</li>
+                    </ol>
+                    <br/>
+                        <ul>
+                            <li>
+                                <span
+                                    style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Заказы отправляем ежедневно.</span>
+                            </li>
+                            <li><span
+                                style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Доставка осуществляется транспортной компанией "Новая Почта".&nbsp;
+                            </span>
+                            </li>
+                            <li><span
+                                style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Услуги доставки оплачивает покупатель, согласно тарифов компании-перевозчика.
+                            </span>
+                            </li>
+                            <li>
+                                <span
+                                    style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Сроки доставки 1-3 дня.</span>
+                            </li>
+                            <li>
+                            </li>
+                        </ul><p style={{fontWeight: 'bold'}}>
+                        <b><br/></b>
+                        </p>
+                <p style={{fontWeight: 'bold'}}></p>
+                <p
+                    style={{fontWeight: 'bold'}}><img src="https://kupit-rukzak.com.ua//uploads/images/b32a622b6336a207c9be9ead37cfcfbc.png"
+                                                      style={{width: '465px', height: '89px'}}/></p><p
+                    style={{fontWeight: 'bold'}}></p><p><img
+                    src="https://kupit-rukzak.com.ua//uploads/images/90625a2380aa604a1f68cc0773b7df84.png"
+                    style={{width: '481.515px', 'height' : '137px'}}/></p><p></p><br/><p></p>
+                        <p style={{fontWeight: 'bold'}}></p>
             </div>
         )
 
