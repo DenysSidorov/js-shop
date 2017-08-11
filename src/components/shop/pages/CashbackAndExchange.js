@@ -1,60 +1,26 @@
 import React from "react";
-
+import st from './cashbackAndExchange.scss';
 class CashbackAndExchange extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)
         }
     render() {
         return (
-            <div><br/><br/><br/><h2>CashbackAndExchange  THERE </h2> <br/><br/><br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore! <br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore! <br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!<br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!<br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!<br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi culpa cumque deleniti earum nam
-                natus non nostrum, officiis rem ullam vero. Debitis eveniet iste molestiae nemo quibusdam, ratione vel.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus, adipisci cum dolore dolorum
-                earum, eos excepturi expedita harum laudantium magni minus nemo nisi perferendis recusandae repudiandae
-                sapiente suscipit tempore!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aperiam, asperiores autem
-                doloremque doloribus dolorum, eaque excepturi ipsam iure modi neque quas quis saepe sed similique sint
-                totam. Aliquid, excepturi!
-            </div>
+         <div className="cashbackAndExchange__container">
+             <p>
+                 Мы с уважением относимся к правам наших покупателей и соблюдаем Закон Украины "О защите прав потребителей". Перед отправкой мы проверяем товар на брак.
+                 Покупатель имеет право вернуть товар в течении 14 дней с момента покупки, в двух случаях:
+                 В приобретенном товаре был выявлен существенный недостаток. (ст.8)
+                 Товар не подходит по форме, цвету, размеру и т.д (ст.9)
+                 Мы предложим вам поменять товар на аналогичный или вернем вам деньги, если:
+                 товар новый, в упаковке. Без признаков использования.
+                 сохранился документ, подтверждающий покупку в нашем интернет- магазине.
+                 Для возврата товара вам необходимо связаться с нами по телефону и уточнить дальнейшие действия. Сумма возмещения будет равна цене, на момент покупки товара. Пересылка за счет покупателя.
+             </p>
+             <div className="cashbackAndExchange__container-img">
+                 <img src="/img-static/cashback.png" alt="Возврат денег"/>
+             </div>
+         </div>
         )
 
     }
