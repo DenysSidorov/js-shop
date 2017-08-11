@@ -15,7 +15,7 @@ Not implemented :
 
 -  _hot **SEARCH** from hight menu_
 - _login/logout_
-- _delivery/payment/conditions pages_
+- _~~delivery/payment/conditions pages~~_
 - _**ADMIN PANEL**_
 - _**~~CDN IMAGES~~**_
 - _**IMAGE COMPONENT**_
