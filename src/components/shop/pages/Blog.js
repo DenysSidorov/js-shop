@@ -7,7 +7,7 @@ class Blog extends React.Component {
     render() {
         return (
          <div className="blogPage-container">
-                        <p>Постов нет</p>
+                        <p>Постов нет !</p>
          </div>
         )
 

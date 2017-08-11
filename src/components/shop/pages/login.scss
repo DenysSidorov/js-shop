@@ -1,0 +1,22 @@
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+
+.loginPage_container{
+  padding: 10px;
+  p{
+    font: 1.3rem/2rem $robotoRegular;
+    margin-bottom: 10px;
+    text-indent: 20px;
+  }
+  form label{
+    font: 1.3rem/2rem $robotoRegular;
+    margin-bottom: 10px;
+  }
+  form input {
+    border: 1px solid #a0a0a0;
+    height: 25px;
+    border-radius: 7px;
+    padding: 4px;
+  }
+}

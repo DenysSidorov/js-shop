@@ -1,7 +1,7 @@
 import React from 'react';
-
+import st from './login.scss';
 const Login = props => (
-    <div>
+    <div className="loginPage_container">
 
         <form action="">
             <label htmlFor="login">Please input your LOGIN:</label>
