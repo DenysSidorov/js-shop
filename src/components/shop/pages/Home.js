@@ -91,7 +91,7 @@ class Home extends React.Component {
             <div>
 
                 <MenuInfoSection/>
-                <HomeReduxExample />
+                {/*<HomeReduxExample />*/}
                 {this.state.uniqCategory && this.state.uniqCategory.length
                 ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
                 : null}

@@ -1,6 +1,9 @@
 import React from "react";
 import style from './mainBodyCard.less';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {Link} from "react-router-dom";
+import {pushToCart} from '../../../../reducers/cart';
 class CardMainPage extends React.Component {
 
     render() {
@@ -36,7 +39,9 @@ class CardMainPage extends React.Component {
                     </div>
                     {card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>
                         : <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}
-                    <div className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
+                    <div className="oneCardItem__bottomCard__buy">
+                        <span onClick={() => this.props.addItem(card)}>В КОРЗИНУ</span>
+                    </div>
                 </div>
 
                 {card.sail ? <div className="oneCardItem__bottomCard_sale"><span>-{card.sail}%</span></div>: null}
@@ -46,7 +51,17 @@ class CardMainPage extends React.Component {
     }
 }
 
-export default CardMainPage;
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        addItem: (item)=> pushToCart(item)
+    },dispatch)
+}
+
+export default connect(
+    null, mapDispatchToProps
+)(CardMainPage);
+
 
 function randomInteger(min, max) {
     var rand = min + Math.random() * (max + 1 - min);

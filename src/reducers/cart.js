@@ -13,11 +13,13 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_ITEM_IN_CART:
-            var newState = [].concat(state);
+            console.log(state, 'ST');
+            var newState = {...state};
+
+
             var newArr = [];
-            var existsId;
-            if (newState.some(el=> el._id == action.payload._id)) {
-                newArr = newState.map((el) => {
+            if (newState.items.some(el=> el._id == action.payload._id)) {
+                newArr = newState.items.map((el) => {
                     if (el._id == action.payload._id){
                         el.count = ++el.count
                     }
@@ -25,10 +27,14 @@ export default (state = initialState, action) => {
                 })
             } else {
                 var newPayload = action.payload;
-                newPayload.count = 0;
-                newArr = [...newState, newPayload]
+                newPayload.count = 1;
+
+                newArr = [...newState.items, newPayload]
             }
-            return newArr;
+            return {...newState, items: newArr};
+            // Object.assign({}, state, {
+            //     completed: !state.completed
+            // }
 
         //return state.count = 545;
         case DELETE_ITEM_IN_CART:
