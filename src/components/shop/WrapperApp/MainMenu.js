@@ -5,7 +5,7 @@ class MainMenu extends React.Component {
     render() {
         let {cart} = this.props;
         let count = 0;
-         cart.forEach(el=> {count = count + el.count);
+        cart.forEach(el=> count = count + el.count)
         return (
             <div>
                 <div className="menuSection left fullWidth js_search-height">
@@ -30,7 +30,7 @@ class MainMenu extends React.Component {
                                     <li className="menu__menuHeader_item">
                                         {/*<a href="">Возврат и обмен</a>*/}
                                         <NavLink to="/cashback-and-exchange" activeStyle={{color: '#2EA9FD'}}>
-                                            Возврат и обмен{count}</NavLink>
+                                            Возврат и обмен</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
                                         <NavLink to="/blog" activeStyle={{color: '#2EA9FD'}}>Блог</NavLink>
