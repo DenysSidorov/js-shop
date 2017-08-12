@@ -36,12 +36,12 @@ class MainMenu extends React.Component {
                                         <NavLink to="/blog" activeStyle={{color: '#2EA9FD'}}>Блог</NavLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        <NavLink to="/contacts" activeStyle={{color: '#2EA9FD'}}>Контакты</NavLink>
+                                        <NavLink to="/contacts" activeStyle={{color: '#2EA9FD'}}>Protected</NavLink>
                                     </li>
                                 </ul>
-                                <span className="main-cart">
+                                <Link to="/order" className="main-cart">
                                     <i className="fa fa-shopping-cart main-cart__ico" data-js_count={count}></i>
-                                </span>
+                                </Link>
                             </div>
                         </div>
                     </div>
