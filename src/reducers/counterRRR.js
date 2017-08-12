@@ -45,9 +45,10 @@ export default (state = initialState, action) => {
 
 // work without thunk-middleware because returns only plain object {}
 // TODO use  --SAGA--
+
 export const incrementSync = ()=>{
     return { type: INCREMENT}
-}
+};
 
 export const increment = () => {
     return dispatch => {

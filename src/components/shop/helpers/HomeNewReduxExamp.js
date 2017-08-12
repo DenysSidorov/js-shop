@@ -12,7 +12,7 @@ import {
 const Home = props => (
     <div>
 
-        <h1 style={{fontSize: '20rem'}}>Home</h1>
+        <h1 style={{fontSize: '3.0rem'}}>Home</h1>
         <h1 onClick={props.doDo} style={{cursor: 'pointer'}}>MY BTN</h1>
         <h1 onClick={props.incrementSync} style={{cursor: 'pointer'}}>SYNC PLAIN</h1>
         <p>Count: {props.count}</p>
@@ -54,6 +54,7 @@ const mapStateToProps = (state, ownProps) => {
 //
 // };
 const pushTo = () => push('/about-us');
+
 const mapDispatchToProps = (dispatch, ownProps) => {
     //console.log(ownProps, 'ownPropsDispatch');
     return bindActionCreators({

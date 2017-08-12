@@ -4,6 +4,7 @@ import {routerMiddleware} from "react-router-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 
+// first export history, simple config
 import createHistory from "history/createBrowserHistory";
 export const history = createHistory();
 
@@ -12,7 +13,7 @@ const enhancers = [];
 
 const middleware = [
     thunk,
-    routerMiddleware(history)
+    routerMiddleware(history) // first place react-router-redux including, second - combineReducers
 ];
 // TODO how to use process.env.NODE_ENV from webpacl/node/environment
 // if (process.env.NODE_ENV === 'development') {

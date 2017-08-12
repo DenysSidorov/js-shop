@@ -11,7 +11,7 @@ import store, { history } from './store';
 
 
 import $ from 'jquery';
-import t from './t.scss';
+
 
 /**  new react-router-redux  for  react-router 4
      https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux

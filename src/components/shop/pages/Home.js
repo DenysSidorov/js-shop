@@ -5,6 +5,7 @@ import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
 import AdditionalSection from "../modules/AdditionalSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
+import HomeReduxExample from "../helpers/HomeNewReduxExamp";
 class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
@@ -88,7 +89,9 @@ class Home extends React.Component {
         console.log('rerender');
         return (
             <div>
+
                 <MenuInfoSection/>
+                <HomeReduxExample />
                 {this.state.uniqCategory && this.state.uniqCategory.length
                 ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
                 : null}
