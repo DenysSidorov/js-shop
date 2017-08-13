@@ -18,17 +18,21 @@ export default (state = initialState, action) => {
 
 
             var newArr = [];
-            if (newState.items.some(el=> el._id == action.payload._id)) {
-                newArr = newState.items.map((el) => {
-                    if (el._id == action.payload._id){
-                        el.count = ++el.count
-                    }
-                    return el;
-                })
-            } else {
-                var newPayload = action.payload;
-                newPayload.count = 1;
 
+            if (newState.items.some(el=> el._id == action.payload._id)) {
+                newState.items.forEach((el) => {
+                    if (el._id == action.payload._id){
+                        let newEl = {...el};
+                        newEl.count++;
+                        newArr.push(newEl);
+                    } else {
+                        newArr.push(el);
+                    }
+                })
+
+            } else {
+                var newPayload = {...action.payload};
+                newPayload.count = 1;
                 newArr = [...newState.items, newPayload]
             }
             return {...newState, items: newArr};
