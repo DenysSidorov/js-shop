@@ -41,7 +41,7 @@ class GoodsTable extends React.Component {
                                     </div>
                                 </td>
                                 <td data-label="Цена"><span>{el.price}</span><span>грн.</span></td>
-                                <td onClick={this.props.deleteItem(el)} data-label="Удалить"><span className="deleteCross">X</span></td>
+                                <td onClick={ ()=>{this.props.deleteItem(el)}} data-label="Удалить"><span className="deleteCross">X</span></td>
                             </tr>
                         })}
 

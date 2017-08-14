@@ -76,9 +76,9 @@ export default (state = initialState, action) => {
 
         //return state.count = 545;
         case DELETE_ITEM_IN_CART:
-            var newArr = [].concat(state);
-            return newArr.filter(el=> el._id != action.payload._id);
-
+            var newState = {...state};
+            return {...newState,
+                items : state.items.filter(el=> el._id != action.payload._id)}
         default:
             return state
     }
