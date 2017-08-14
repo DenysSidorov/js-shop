@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import st from './index.less'
 import { bindActionCreators } from 'redux';
 import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
 class GoodsTable extends React.Component {
@@ -30,7 +32,7 @@ class GoodsTable extends React.Component {
                                 <td data-label="Фото"><img className="imgINOrderTable"
                                                            src={`/img-static/${el.photo[0]}`}
                                                            alt=""/></td>
-                                <td data-label="Описание">{el.name} {el.model}</td>
+                                <td data-label="Описание"><Link to={`/cart/${el._id}`} className="linkFromCartToItem" >{el.name} {el.model}</Link></td>
                                 <td data-label="Кол-во">
                                     <div className="countCartInTableContainer">
                                         <button onClick={()=>{this.props.decrementItem(el._id)}}
