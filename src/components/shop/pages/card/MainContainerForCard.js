@@ -1,6 +1,8 @@
 import React from "react";
 import styles from './mainContainerForCard.less'
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import {pushToCart} from '../../../../reducers/cart';
 class MainContainerForCard extends React.Component {
 
     render() {
@@ -57,8 +59,8 @@ class MainContainerForCard extends React.Component {
                             <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count">{card.price}</span>
                             <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_money">грн</span>
                         </div>
-                        <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly">КУПИТЬ СРАЗУ</div>
-                        <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_cart">В КОРЗИНУ</div>
+                        {/*<div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly">КУПИТЬ СРАЗУ</div>*/}
+                        <div onClick={() => this.props.addItem(card)} className="mainContainerForCard__mainInfoBlock_fourBlockPrice_cart">В КОРЗИНУ</div>
                     </div>
                     <div className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy">
                             <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">
@@ -88,8 +90,15 @@ class MainContainerForCard extends React.Component {
 
     }
 }
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        addItem: (item)=> pushToCart(item)
+    },dispatch)
+}
 
-export default MainContainerForCard;
+export default connect(
+    null, mapDispatchToProps
+)(MainContainerForCard);
 
 function randomInteger(min, max) {
     var rand = min + Math.random() * (max + 1 - min);

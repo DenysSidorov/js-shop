@@ -2,8 +2,8 @@ import React from "react";
 import style from './mainBodyCard.less';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {Link} from "react-router-dom";
 import {pushToCart} from '../../../../reducers/cart';
+import {Link} from "react-router-dom";
 class CardMainPage extends React.Component {
 
     render() {
