@@ -6,7 +6,7 @@ export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
 var t = [{...{}, count: 32}]
 
 const initialState = {
-    items: [{count: 2, _id: 231}, {count: 3, _id: 2331}]
+    items: []//[{count: 2, _id: 231}, {count: 3, _id: 2331}]
 }
 
 export default (state = initialState, action) => {
