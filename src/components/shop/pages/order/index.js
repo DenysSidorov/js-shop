@@ -1,5 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
 import MenuInfoSection from "../../modules/MenuInfoSection";
+import WaysDevPay from "./WaysDevPay";
+import GoodsTable from "./GoodsTable";
 class Order extends React.Component {
     state = {};
 
@@ -88,62 +91,7 @@ class Order extends React.Component {
 
 
                     </div>
-                    <div className="userWaysContainer">
-                        <div className="userWays">
-                            <div className="tittleWAyName" data-count="1">Способ доставки</div>
-
-                            <ul className="accordion">
-                                <li className="accordion_item">
-                                    <input type="radio" className="accordion_toggle" name="accordion-01" id="toggle-01"
-                                           readOnly checked/>
-                                    <label className="accordion_trigger" htmlFor="toggle-01">Доставка по Украине "Новая
-                                        Почта"</label>
-                                    <label htmlFor="toggle-01"></label>
-                                    <div className="accordion_target">
-                                        <p className="">
-                                            Быстрый и удобный способ доставки службой Новая Почта в любой населенный
-                                            пункт
-                                            Украины.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li className="accordion_item">
-                                    <input type="radio" className="accordion_toggle" name="accordion-01"
-                                           id="toggle-02"/>
-                                    <label className="accordion_trigger" htmlFor="toggle-02">Доставка по Украине
-                                        "Интайм"</label>
-                                    <div className="accordion_target">
-                                        <p>
-                                            Качественная и быстрая доставка в Ваш город, по приятным ценам
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div className="tittleWAyName" data-count="2">Способ оплаты</div>
-                            <div className="paymentWayOrder">
-                                <select>
-                                    <option>Пункт 1</option>
-                                    <option>Пункт 2</option>
-                                </select>
-                            </div>
-
-                            <div className="tittleWAyName" data-count="3">Способ доставки</div>
-
-                            <div className="userDataForOrder">
-                                <p>Имя и фамилия <span className="red">*</span></p>
-                                <input type="text" className="orderWaysInput" id="nameInput"/>
-                                <p>Мобильный телефон <span className="red">*</span></p>
-                                <input type="text" className="orderWaysInput" id="phoneInput"/>
-                                <p>Адресс доставки <span className="red">*</span></p>
-                                <input type="text" className="orderWaysInput" id="cityInput"/>
-                                <p>Электронная почта</p>
-                                <input type="text" className="orderWaysInput" id="mailInput"/>
-                            </div>
-
-                            <div className="orderWaysConfirmBtn"><span>Подтвердить</span></div>
-                        </div>
-                    </div>
+                    <WaysDevPay/>
                 </div>
             </div>
 
@@ -153,7 +101,7 @@ class Order extends React.Component {
     }
 }
 
-export default Order;
+export default connect(null, null)(Order);
 {/*<div style={{display: 'flex', flexWrap: 'wrap'}}>*/
 }
 {/*<MenuInfoSection/></div>*/
