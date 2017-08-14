@@ -76,7 +76,7 @@ super(props);
 
     render() {
         let {cards} = this.props;
-        console.log('RENDER SIMILAR');
+       //console.log('RENDER SIMILAR');
         return (
 
             <div className="similarGoodsContainer">

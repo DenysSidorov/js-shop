@@ -60,7 +60,7 @@ window.onload = function () { // после загрузки страницы
 
     function scrollToTop() {
         if (scrolled > 0) {
-            console.log(scrolled, 'scrolled' );
+            //console.log(scrolled, 'scrolled' );
             window.scrollTo(0, scrolled);
             scrolled = scrolled - 150; //100 - скорость прокрутки
             timer = setTimeout(scrollToTop, 20);

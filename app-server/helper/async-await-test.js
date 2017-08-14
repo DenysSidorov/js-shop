@@ -1,4 +1,4 @@
-console.log('START TEST');
+
 
 async function b(a) {
    var pr = new Promise(function(resolve, reject) {
@@ -18,7 +18,7 @@ async function d(){
     try {
         k = await b(100);
     } catch (e){
-        console.log('errro');
+        console.log('error');
     }
 
     console.log(k, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');

@@ -70,7 +70,6 @@ var t = {
     "producer" : "China"
 }
 
-console.log(3);
 /*
 
  name: { type: String, require: true },

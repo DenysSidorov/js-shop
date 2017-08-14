@@ -3,7 +3,6 @@ import React from 'react';
 class AsyncExample extends React.Component {
 
     componentDidMount() {
-        console.log('START TEST');
 
         async function b(a) {
             return new Promise(function (resolve, reject) {
@@ -19,7 +18,6 @@ class AsyncExample extends React.Component {
             } catch (e){
                 console.log(e, 'errroR');
             }
-            console.log(k, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
             return k
         }
         d().then(res=> console.log(res, 'resp'), e=> console.log(e, 'err'));

@@ -13,7 +13,7 @@ const RouteFade = ({component: Component, transition, ...rest})=>(
 
 class FadeIn extends React.Component{
     componentDidMount() {
-        console.log('componentDidMount', this.displayName);
+        //console.log('componentDidMount', this.displayName);
         var that = this;
         var elem = ReactDOM.findDOMNode(that);
         elem.style.opacity = 0;

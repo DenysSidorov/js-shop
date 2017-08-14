@@ -36,7 +36,7 @@ class Home extends React.Component {
             } finally {
                 this.setState({
                     cards: cards.data,
-                }, ()=>{console.log('уже после фильтра');})
+                }, ()=>{})
             }
         }
 
@@ -86,7 +86,6 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log('rerender');
         return (
             <div>
 

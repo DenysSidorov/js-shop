@@ -21,7 +21,7 @@ constructor(props){
         try {
             popularCards = await axios.get('http://localhost:3000/goods/popular');
             card = await axios.get(`http://localhost:3000/goods/${id}`);
-            console.log(card.data[0].category, 'cards');
+            //console.log(card.data[0].category, 'cards');
             similarCategory = await axios.post(`http://localhost:3000/goods/${id}/similar`,
                 {params: {'category': card.data[0].category}}
             );
@@ -37,7 +37,7 @@ constructor(props){
         }
     }
      componentDidMount() {
-         console.log('componentDidMount');
+         //console.log('componentDidMount');
         this.initCadd();
     }
 

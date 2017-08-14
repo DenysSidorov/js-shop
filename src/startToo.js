@@ -5,7 +5,6 @@ import slick from './vendor/slick';
 var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
 console.log(slickContainerSimilarGoods);
 if(slickContainerSimilarGoods.length) {
-    console.log('Da');
     $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
         //dots: true,
         infinite: true,
