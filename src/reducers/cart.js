@@ -35,7 +35,7 @@ const initialState = {
             "черный",
             "школа"
         ],
-        "sail": 0,
+        "sail": 15,
         "category": [
             "мужской",
             "городской",
