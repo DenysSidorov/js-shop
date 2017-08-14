@@ -14,6 +14,7 @@ const initialState = {
             28,
             35
         ],
+        "count": 2,
         "comments" : [
             {
                 "_id" : 1,

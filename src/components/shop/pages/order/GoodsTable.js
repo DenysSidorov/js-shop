@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {pushToCart} from '../../../../reducers/cart';
+import {pushToCart, deleteFromCart} from '../../../../reducers/cart';
 class GoodsTable extends React.Component {
     state = {};
 
@@ -35,13 +35,13 @@ class GoodsTable extends React.Component {
                                 <td data-label="Кол-во">
                                     <div className="countCartInTableContainer">
                                         <button className="countCartInTableContainer__countMinus">-</button>
-                                        <input value={el.count} readOnly
+                                        <input  value={el.count}
                                                className="countCartInTableContainer__count"></input>
                                         <button className="countCartInTableContainer__countPlus">+</button>
                                     </div>
                                 </td>
                                 <td data-label="Цена"><span>{el.price}</span><span>грн.</span></td>
-                                <td data-label="Удалить"><span className="deleteCross">X</span></td>
+                                <td onClick={this.props.deleteItem(el)} data-label="Удалить"><span className="deleteCross">X</span></td>
                             </tr>
                         })}
 
@@ -86,6 +86,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
+        deleteItem : (item)=> deleteFromCart(item),
         addItem: (item)=> pushToCart(item)
     },dispatch)
 }
