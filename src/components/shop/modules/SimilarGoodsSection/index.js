@@ -2,6 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import styles from './index.less';
 import styles2 from './slick-slider.less';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import {pushToCart} from '../../../../reducers/cart';
 class SimilarGoodsSection extends React.Component {
 
     constructor(props){
@@ -114,7 +117,7 @@ super(props);
                                 </div>
                                 <div
                                     className="oneCardItem__bottomCard__status">{card.isExists ? 'В наличии' : 'Нет в наличии'}</div>
-                                <div className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
+                                <div onClick={() => this.props.addItem(card)} className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
                             </div>
                             {card.sail ?
                                 <div className="oneCardItem__bottomCard_sale"><span>-{card.sail}%</span></div> : null}
@@ -141,8 +144,15 @@ super(props);
         )
     }
 }
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        addItem: (item)=> pushToCart(item)
+    },dispatch)
+}
 
-export default SimilarGoodsSection;
+export default connect(
+    null, mapDispatchToProps
+)(SimilarGoodsSection);
 
 
 
