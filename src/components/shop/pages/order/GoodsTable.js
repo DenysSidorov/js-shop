@@ -10,10 +10,9 @@ class GoodsTable extends React.Component {
 
     render() {
         let goods = this.props.cart;
+
         return(
             <div className="itemsInCart">
-
-
                 <div className="tableWrapperInOrder">
                     <table className="tableWrapperInOrdertable__table">
                         <thead>
@@ -41,27 +40,9 @@ class GoodsTable extends React.Component {
                                     </div>
                                 </td>
                                 <td data-label="Цена"><span>{el.price}</span><span>грн.</span></td>
-                                <td onClick={ ()=>{this.props.deleteItem(el)}} data-label="Удалить"><span className="deleteCross">X</span></td>
+                                <td onClick={ ()=>{if(confirm(`Вы уверены что хотите удалить товар: ${el.name} ${el.model}`)){this.props.deleteItem(el)}}} data-label="Удалить"><span className="deleteCross">X</span></td>
                             </tr>
                         })}
-
-                        <tr>
-                            <td data-label="Фото"><img className="imgINOrderTable"
-                                                       src="img-static/arrow_down.png" alt=""/></td>
-                            <td data-label="Описание">Белый пластиковый чехол Soft Touch для MacBook Pro 13"
-                                Retina
-                            </td>
-                            <td data-label="Кол-во">
-                                <div className="countCartInTableContainer">
-                                    <button className="countCartInTableContainer__countMinus">-</button>
-                                    <input value="2" readOnly
-                                           className="countCartInTableContainer__count"></input>
-                                    <button className="countCartInTableContainer__countPlus">+</button>
-                                </div>
-                            </td>
-                            <td data-label="Цена"><span>2312</span><span> ua</span></td>
-                            <td data-label="Удалить"><span className="deleteCross">X</span></td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

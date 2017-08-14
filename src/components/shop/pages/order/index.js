@@ -2,6 +2,7 @@ import React from "react";
 import MenuInfoSection from "../../modules/MenuInfoSection";
 import WaysDevPay from "./WaysDevPay";
 import GoodsTable from "./GoodsTable";
+import {connect} from "react-redux";
 class Order extends React.Component {
     state = {};
 
@@ -25,14 +26,20 @@ class Order extends React.Component {
             flexWrap: 'wrap',
             justifyContent: 'center',
             flexDirection: 'column'
-        }
+        };
+        let goods = this.props.cart;
         return (
             <div style={styles}>
                 <MenuInfoSection/>
-                <div className="formOrderMain">
+                {!goods.length
+                    ? <div style={{padding: '30px'}}>
+                    <span style={{fontSize: '2rem'}}>Корзина пуста!</span>
+                </div>
+                    : <div className="formOrderMain">
                     <GoodsTable/>
                     <WaysDevPay/>
-                </div>
+                </div> }
+
             </div>
 
 
@@ -41,8 +48,9 @@ class Order extends React.Component {
     }
 }
 
-export default Order;
-{/*<div style={{display: 'flex', flexWrap: 'wrap'}}>*/
+const mapStateToProps = (state, ownProps) => {
+    return {
+        cart: state.cart.items
+    }
 }
-{/*<MenuInfoSection/></div>*/
-}
+export default connect(mapStateToProps)(Order);
