@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import st from './index.less'
 import { bindActionCreators } from 'redux';
 import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
+import AllPrice from './AllPrice';
 class GoodsTable extends React.Component {
     state = {};
 
@@ -50,11 +51,7 @@ class GoodsTable extends React.Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="allPriceForItems">
-                    <span className="allPriceForItems_text">ВСЕГО К ОПЛАТЕ:&nbsp;&nbsp;</span>
-                    <span className="allPriceForItems_price">3452</span>
-                    <span className="allPriceForItems_text">&nbsp;грн.</span>
-                </div>
+                <AllPrice/>
 
 
             </div>
