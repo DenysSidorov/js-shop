@@ -98,6 +98,25 @@ export default (state = initialState, action) => {
             } else {
                 return newState
             }
+        case DECREMENT_ITEM_IN_CART:
+            var newState = {...state};
+            var newArr = [];
+            if (newState.items.some(el=> el._id == action.payload)) {
+                newState.items.forEach((el) => {
+                    if (el._id == action.payload) {
+                        let newEl = {...el};
+                        if(newEl.count > 1){
+                            newEl.count--;
+                        }
+                        newArr.push(newEl);
+                    } else {
+                        newArr.push(el);
+                    }
+                })
+                return {...newState, items: newArr};
+            } else {
+                return newState
+            }
         default:
             return state
     }
@@ -118,5 +137,8 @@ export const incrementItem = (id)=> {
     return {type: INCREMENT_ITEM_IN_CART, payload: id}
 };
 
+export const decrementItem = (id)=> {
+    return {type: DECREMENT_ITEM_IN_CART, payload: id}
+};
 
 

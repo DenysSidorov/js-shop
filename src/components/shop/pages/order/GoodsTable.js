@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {pushToCart, deleteFromCart} from '../../../../reducers/cart';
+import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
 class GoodsTable extends React.Component {
     state = {};
 
@@ -33,10 +33,12 @@ class GoodsTable extends React.Component {
                                 <td data-label="Описание">{el.name} {el.model}</td>
                                 <td data-label="Кол-во">
                                     <div className="countCartInTableContainer">
-                                        <button className="countCartInTableContainer__countMinus">-</button>
+                                        <button onClick={()=>{this.props.decrementItem(el._id)}}
+                                                className="countCartInTableContainer__countMinus">-</button>
                                         <input  value={el.count}
                                                className="countCartInTableContainer__count"></input>
-                                        <button className="countCartInTableContainer__countPlus">+</button>
+                                        <button onClick={()=>{this.props.incrementItem(el._id)}}
+                                                className="countCartInTableContainer__countPlus">+</button>
                                     </div>
                                 </td>
                                 <td data-label="Цена"><span>{el.price}</span><span>грн.</span></td>
@@ -68,7 +70,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         deleteItem : (item)=> deleteFromCart(item),
-        addItem: (item)=> pushToCart(item)
+        addItem: (item)=> pushToCart(item),
+        incrementItem,
+        decrementItem
     },dispatch)
 }
 
