@@ -7,43 +7,43 @@ var t = [{...{}, count: 32}]
 
 const initialState = {
     items: [{
-        "_id" : 3,
-        "name" : "Школьный",
-        "model" : "Classic",
-        "size" : [
+        "_id": 3,
+        "name": "Школьный",
+        "model": "Classic",
+        "size": [
             28,
             35
         ],
         "count": 2,
-        "comments" : [
+        "comments": [
             {
-                "_id" : 1,
-                "message" : "Купили малышу в школу, остались очень довольны"
+                "_id": 1,
+                "message": "Купили малышу в школу, остались очень довольны"
             }
         ],
-        "views" : 23,
-        "likes" : 5,
-        "price" : 480,
-        "photo" : [
+        "views": 23,
+        "likes": 5,
+        "price": 480,
+        "photo": [
             "3.png"
         ],
-        "code" : "68003",
-        "desc-short" : "Школьный портфель на детей",
-        "desc-full" : "Отличный подарок вашему чаду! Школьный портфель на детей",
-        "tags" : [
+        "code": "68003",
+        "desc-short": "Школьный портфель на детей",
+        "desc-full": "Отличный подарок вашему чаду! Школьный портфель на детей",
+        "tags": [
             "портфель",
             "черный",
             "школа"
         ],
-        "sail" : 0,
-        "category" : [
+        "sail": 0,
+        "category": [
             "мужской",
             "городской",
             "школа"
         ],
-        "isExists" : true,
-        "producer" : "Ukraine",
-        "isNewGood" : true
+        "isExists": true,
+        "producer": "Ukraine",
+        "isNewGood": true
     }]//[{count: 2, _id: 231}, {count: 3, _id: 2331}]
 }
 
@@ -77,8 +77,27 @@ export default (state = initialState, action) => {
         //return state.count = 545;
         case DELETE_ITEM_IN_CART:
             var newState = {...state};
-            return {...newState,
-                items : state.items.filter(el=> el._id != action.payload._id)}
+            return {
+                ...newState,
+                items: state.items.filter(el=> el._id != action.payload._id)
+            };
+        case INCREMENT_ITEM_IN_CART:
+            var newState = {...state};
+            var newArr = [];
+            if (newState.items.some(el=> el._id == action.payload)) {
+                newState.items.forEach((el) => {
+                    if (el._id == action.payload) {
+                        let newEl = {...el};
+                        newEl.count++;
+                        newArr.push(newEl);
+                    } else {
+                        newArr.push(el);
+                    }
+                })
+                return {...newState, items: newArr};
+            } else {
+                return newState
+            }
         default:
             return state
     }
@@ -93,6 +112,10 @@ export const pushToCart = (item)=> {
 
 export const deleteFromCart = (item)=> {
     return {type: DELETE_ITEM_IN_CART, payload: item}
+};
+
+export const incrementItem = (id)=> {
+    return {type: INCREMENT_ITEM_IN_CART, payload: id}
 };
 
 
