@@ -44,7 +44,11 @@ class GoodsTable extends React.Component {
                                                 className="countCartInTableContainer__countPlus">+</button>
                                     </div>
                                 </td>
-                                <td data-label="Цена"><span>{el.price}</span><span>грн.</span></td>
+                                <td data-label="Цена">
+                                    <span>{el.price}</span><span>грн.
+                                     {el.sail ? <span className="sailInfoInMainCart">-{el.sail}%</span>: null}
+                                    </span>
+                                </td>
                                 <td onClick={ ()=>{if(confirm(`Вы уверены что хотите удалить товар: ${el.name} ${el.model}`)){this.props.deleteItem(el)}}} data-label="Удалить"><span className="deleteCross">X</span></td>
                             </tr>
                         })}

@@ -5,12 +5,13 @@ class AllPrice extends React.Component {
 
     render() {
         let goods = this.props.cart;
-
+        let price = goods.reduce((prev, cur)=> prev + (cur.price*cur.count), 0);
         return(
             <div className="allPriceForItems">
                 <span className="allPriceForItems_text">ВСЕГО К ОПЛАТЕ:&nbsp;&nbsp;</span>
-                <span className="allPriceForItems_price">3452</span>
+                <span className="allPriceForItems_price">{price}</span>
                 <span className="allPriceForItems_text">&nbsp;грн.</span>
+                    <div>qweqw</div>
             </div>
         )
 
