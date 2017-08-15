@@ -4,7 +4,7 @@ import Dropdown from "react-dropdown";
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
     state = {
-        payment: {value: 'predo', label: 'Приват24 Предоплата'},
+        payment: {value: 'predo', label: 'Предоплата на карту'},
         delivery: 'newpost',
         name: '',
         phone: '',
@@ -67,7 +67,7 @@ class WaysDevPay extends React.Component {
     }
 
     dispatchData() {
-            console.log(this.state);
+        console.log(this.state);
     }
 
     chDelivery(kind, e) {
@@ -77,7 +77,7 @@ class WaysDevPay extends React.Component {
 
     render() {
         const payment = [
-            {value: 'predo', label: 'Приват24 Предоплата'},
+            {value: 'predo', label: 'Предоплата на карту'},
             {value: 'naloj', label: 'Наложенный платеж'}
         ]
 
@@ -92,9 +92,9 @@ class WaysDevPay extends React.Component {
                                    className="accordion_toggle"
                                    name="accordion-01"
                                    id="toggle-01"
-                                   readOnly
-                                   checked/>
-                            <label  onClick={this.chDelivery.bind(this, 'newpost')} className="accordion_trigger"
+                                   checked={this.state.delivery == 'newpost' ? 'checked' : null}
+                            />
+                            <label onClick={this.chDelivery.bind(this, 'newpost')} className="accordion_trigger"
                                    htmlFor="toggle-01">Доставка по Украине "Новая Почта"
                             </label>
                             <label htmlFor="toggle-01"></label>
@@ -106,10 +106,14 @@ class WaysDevPay extends React.Component {
                                 </p>
                             </div>
                         </li>
-                        <li  className="accordion_item">
-                            <input type="radio" className="accordion_toggle" name="accordion-01"
-                                   id="toggle-02"/>
-                            <label onClick={this.chDelivery.bind(this, 'intime')} className="accordion_trigger" htmlFor="toggle-02">Доставка по Украине
+                        <li className="accordion_item">
+                            <input type="radio"
+                                   className="accordion_toggle"
+                                   name="accordion-01"
+                                   id="toggle-02"
+                                   checked={this.state.delivery == 'intime' ? 'checked' : null}/>
+                            <label onClick={this.chDelivery.bind(this, 'intime')} className="accordion_trigger"
+                                   htmlFor="toggle-02">Доставка по Украине
                                 "Интайм"</label>
                             <div className="accordion_target">
                                 <p>
