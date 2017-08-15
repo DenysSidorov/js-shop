@@ -2,7 +2,7 @@ export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
 export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
 export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
-
+// import Immutable from "immutable";
 var t = [{...{}, count: 32}]
 
 const initialState = {
@@ -104,6 +104,13 @@ export default (state = initialState, action) => {
             if (newState.items.some(el=> el._id == action.payload)) {
                 newState.items.forEach((el) => {
                     if (el._id == action.payload) {
+
+
+                        // let newEl = Immutable.Map(Immutable.fromJS(el));
+                        // if(newEl.get('count') > 1){
+                        //     newEl = newEl.set('count', newEl.get('count') - 1 );
+                        // }
+                        // newArr.push(newEl.toJS());
                         let newEl = {...el};
                         if(newEl.count > 1){
                             newEl.count--;

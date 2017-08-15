@@ -21,7 +21,7 @@ import $ from 'jquery';
 
 import App from './components/shop';
 
-
+// TODO https://github.com/xiaolin/react-image-gallery
 document.addEventListener("DOMContentLoaded", function(event) {
     const container  = document.getElementById('reactContent');
     if(container) {
@@ -39,6 +39,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 window.$ = jQuery;
 window.jQuery = jQuery;
+// window.Immutable = Immutable;
+
+
+
+
+
 
 
 
