@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Dropdown from "react-dropdown";
+import Confirm from '../../WrapperApp/ConfirmBlock';
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
     state = {
@@ -11,6 +12,7 @@ class WaysDevPay extends React.Component {
         address: '',
         email: '',
         isNormal: false,
+        isShowConfirm: false
     };
 
     chName(e) {
@@ -158,8 +160,10 @@ class WaysDevPay extends React.Component {
                         : <div className="orderWaysConfirmBtnDsbl"><span>Подтвердить</span></div>
                     }
 
-
                 </div>
+                <Confirm >
+
+                </Confirm>
             </div>
         )
 
