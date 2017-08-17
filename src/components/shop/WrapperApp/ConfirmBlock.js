@@ -10,11 +10,16 @@ class ConfirmBlock extends React.Component {
         this.props.cancelHandler()
     }
 
+    closeComponet(){
+         // this.props.cancelHandler();
+        this.props.unmountConfirm();
+
+    }
     render() {
         return (
             <div className="confirmBlockForUser">
                 <div className="confirmBlockForUser__content">
-        <span className="confirmBlockForUser__content_btn_close">
+        <span className="confirmBlockForUser__content_btn_close" onClick={this.closeComponet.bind(this)}>
         <i className="fa fa-times" aria-hidden="true"></i>
         </span>
                     {this.props.children}

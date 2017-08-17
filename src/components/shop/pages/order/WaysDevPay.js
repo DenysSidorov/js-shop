@@ -12,8 +12,13 @@ class WaysDevPay extends React.Component {
         address: '',
         email: '',
         isNormal: false,
-        isShowConfirm: false
+        isShowConfirm: false,
+        renderConfirm: true
     };
+
+    handleConfirmUnmount(){
+        this.setState({renderConfirm: false});
+    }
 
     chName(e) {
         console.log(e.target.value);
@@ -161,10 +166,12 @@ class WaysDevPay extends React.Component {
                     }
 
                 </div>
-                <Confirm
+                {this.state.renderConfirm && <Confirm
                     okHandler={()=> console.log('Hello from parrent OK')}
                     cancelHandler={()=> console.log('Hello from parrent cancel')}
+                    unmountConfirm={this.handleConfirmUnmount.bind(this)}
                 >
+
                     <ul>
                         <li>
                             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad amet beatae,
@@ -189,7 +196,7 @@ class WaysDevPay extends React.Component {
                             </div>
                         </li>
                     </ul>
-                </Confirm>
+                </Confirm>}
             </div>
         )
 
