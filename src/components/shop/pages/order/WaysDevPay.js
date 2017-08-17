@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import Dropdown from "react-dropdown";
-import Confirm from '../../WrapperApp/ConfirmBlock';
+import Confirm from "../../WrapperApp/ConfirmBlock";
+
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
     state = {
@@ -12,12 +13,11 @@ class WaysDevPay extends React.Component {
         address: '',
         email: '',
         isNormal: false,
-        isShowConfirm: false,
-        renderConfirm: true
+        isShowConfirm: false
     };
 
-    handleConfirmUnmount(){
-        this.setState({renderConfirm: false});
+    handleConfirmUnmount() {
+        this.setState({isShowConfirm: false});
     }
 
     chName(e) {
@@ -64,7 +64,8 @@ class WaysDevPay extends React.Component {
             })
         } else {
             this.setState({
-                isNormal: true
+                isNormal: true,
+
             })
         }
     }
@@ -74,6 +75,12 @@ class WaysDevPay extends React.Component {
     }
 
     dispatchData() {
+        if (this.props.cart.length) {
+            this.setState({
+                isShowConfirm: true
+            })
+        }
+
         console.log(this.state);
     }
 
@@ -83,6 +90,7 @@ class WaysDevPay extends React.Component {
     }
 
     render() {
+
         const payment = [
             {value: 'predo', label: 'Предоплата на карту'},
             {value: 'naloj', label: 'Наложенный платеж'}
@@ -166,7 +174,7 @@ class WaysDevPay extends React.Component {
                     }
 
                 </div>
-                {this.state.renderConfirm && <Confirm
+                {this.state.isShowConfirm && <Confirm
                     okHandler={()=> console.log('Hello from parrent OK')}
                     cancelHandler={()=> console.log('Hello from parrent cancel')}
                     unmountConfirm={this.handleConfirmUnmount.bind(this)}
@@ -202,5 +210,9 @@ class WaysDevPay extends React.Component {
 
     }
 }
-
-export default connect(null, null)(WaysDevPay);
+const mapStateToProps = (state, ownProps) => {
+    return {
+        cart: state.cart.items
+    }
+}
+export default connect(mapStateToProps, null)(WaysDevPay);
