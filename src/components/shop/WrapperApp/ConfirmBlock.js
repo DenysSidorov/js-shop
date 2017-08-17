@@ -1,5 +1,5 @@
 import React from "react";
-
+import st from './confirmBlock.less';
 class ConfirmBlock extends React.Component {
     render() {
         return (
