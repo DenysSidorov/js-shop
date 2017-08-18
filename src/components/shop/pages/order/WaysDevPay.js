@@ -92,12 +92,33 @@ class WaysDevPay extends React.Component {
     }
 
     render() {
-
+        let goods = this.props.cart;
         const payment = [
             {value: 'predo', label: 'Предоплата на карту'},
             {value: 'naloj', label: 'Наложенный платеж'}
-        ]
+        ];
 
+        let dataForBack = {
+            payment: this.state.payment.value,
+            delivery: this.state.delivery,
+            name: this.state.name,
+            address: this.state.address,
+            email: this.state.email,
+            phone: this.state.phone,
+            goods: []
+
+        };
+        goods.forEach((item, ind)=>{
+            var curGood = {};
+            curGood._id = item._id;
+            curGood.count = item.count;
+            curGood.name = item.name;
+            curGood.model= item.model;
+            curGood.sail= item.sail;
+            dataForBack.goods.push(curGood);
+        });
+
+        console.log(dataForBack, 'dataForBack');
         return (
             <div className="userWaysContainer">
                 <div className="userWays">
@@ -187,7 +208,6 @@ class WaysDevPay extends React.Component {
                             <div>Тип доставки: <span>Пешком</span></div>
                             <div>Тип оплаты: <span>Сухарями</span></div>
                             <div>Товар: <span>Пешком</span></div>
-
                         </li>
                     </ul>
                 </Confirm>}
