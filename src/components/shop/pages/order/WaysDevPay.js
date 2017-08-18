@@ -1,7 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
+import { bindActionCreators } from 'redux';
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
+import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
 
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
@@ -199,4 +201,14 @@ const mapStateToProps = (state, ownProps) => {
         cart: state.cart.items
     }
 }
-export default connect(mapStateToProps, null)(WaysDevPay);
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        deleteItem : (item)=> deleteFromCart(item),
+        addItem: (item)=> pushToCart(item),
+        incrementItem,
+        decrementItem
+    },dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WaysDevPay);
