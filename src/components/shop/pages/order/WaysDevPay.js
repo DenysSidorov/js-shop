@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
-
+import GoodsTable from './GoodsTable';
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
     state = {
@@ -115,6 +115,7 @@ class WaysDevPay extends React.Component {
             curGood.name = item.name;
             curGood.model= item.model;
             curGood.sail= item.sail;
+            curGood.price= item.price;
             dataForBack.goods.push(curGood);
         });
 
@@ -206,12 +207,12 @@ class WaysDevPay extends React.Component {
                     <ul>
                         <li>
                             <div>Тип доставки:
-                                {dataForBack.delivery == "newpost" && <span>Новая Почта</span>}
-                                {dataForBack.delivery == "intime" && <span>Интайм</span>}
+                                {dataForBack.delivery == "newpost" && <span> Новая Почта</span>}
+                                {dataForBack.delivery == "intime" && <span> Интайм</span>}
                             </div>
                             <div>Тип оплаты:
-                                {dataForBack.payment.value == "predo" && <span>Предоплата на карту</span>}
-                                {dataForBack.payment.value == "naloj" && <span>Наложенный платеж</span>}
+                                {dataForBack.payment.value == "predo" && <span> Предоплата на карту</span>}
+                                {dataForBack.payment.value == "naloj" && <span> Наложенный платеж</span>}
                             </div>
                             <div>Имя: <span>{dataForBack.name}</span></div>
                             <div>Телефон: <span>{dataForBack.phone}</span></div>
@@ -219,6 +220,7 @@ class WaysDevPay extends React.Component {
                             {dataForBack.email && <div>Почта: <span>{dataForBack.email}</span></div>}
                         </li>
                     </ul>
+                    <GoodsTable cart={goods}/>
                 </Confirm>}
             </div>
         )
