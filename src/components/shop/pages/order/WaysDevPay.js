@@ -99,7 +99,7 @@ class WaysDevPay extends React.Component {
         ];
 
         let dataForBack = {
-            payment: this.state.payment.value,
+            payment: this.state.payment,
             delivery: this.state.delivery,
             name: this.state.name,
             address: this.state.address,
@@ -205,9 +205,18 @@ class WaysDevPay extends React.Component {
 
                     <ul>
                         <li>
-                            <div>Тип доставки: <span>Пешком</span></div>
-                            <div>Тип оплаты: <span>Сухарями</span></div>
-                            <div>Товар: <span>Пешком</span></div>
+                            <div>Тип доставки:
+                                {dataForBack.delivery == "newpost" && <span>Новая Почта</span>}
+                                {dataForBack.delivery == "intime" && <span>Интайм</span>}
+                            </div>
+                            <div>Тип оплаты:
+                                {dataForBack.payment.value == "predo" && <span>Предоплата на карту</span>}
+                                {dataForBack.payment.value == "naloj" && <span>Наложенный платеж</span>}
+                            </div>
+                            <div>Имя: <span>{dataForBack.name}</span></div>
+                            <div>Телефон: <span>{dataForBack.phone}</span></div>
+                            <div>Адрес: <span>{dataForBack.address}</span></div>
+                            {dataForBack.email && <div>Почта: <span>{dataForBack.email}</span></div>}
                         </li>
                     </ul>
                 </Confirm>}
