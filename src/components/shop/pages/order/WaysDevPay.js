@@ -220,7 +220,11 @@ class WaysDevPay extends React.Component {
                             {dataForBack.email && <div>Почта: <span>{dataForBack.email}</span></div>}
                         </li>
                     </ul>
-                    <GoodsTable cart={goods}/>
+                    <div className="maskForGoodsTableInOrder">
+                        <div className="maskForGoodsTableInOrder-mask"></div>
+                        <GoodsTable cart={goods}/>
+                    </div>
+
                 </Confirm>}
             </div>
         )
