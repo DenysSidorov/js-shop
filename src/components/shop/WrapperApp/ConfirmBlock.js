@@ -14,14 +14,16 @@ class ConfirmBlock extends React.Component {
          // this.props.cancelHandler();
         this.props.unmountConfirm();
 
+
     }
     render() {
         return (
             <div className="confirmBlockForUser">
-                <div className="confirmBlockForUser__content">
-        <span className="confirmBlockForUser__content_btn_close" onClick={this.closeComponet.bind(this)}>
+                  <span className="confirmBlockForUser__content_btn_close" onClick={this.closeComponet.bind(this)}>
         <i className="fa fa-times" aria-hidden="true"></i>
         </span>
+                <div className="confirmBlockForUser__content">
+
                     {this.props.children}
                     <div className="confirmBlockForUser__content_btn">
                         <span onClick={this.okHandler.bind(this)} className="confirmBlockForUser__content_btn_ok">Ок</span>
