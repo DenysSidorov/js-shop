@@ -13,7 +13,7 @@ Main tools:
 
 Not implemented :
 
--  _hot **SEARCH** from hight menu_
+-  _hot **SEARCH** from hight menu, AUTOCOMPLETE_
 - _login/logout_
 - _~~delivery/payment/conditions pages~~_
 - _**ADMIN PANEL**_
