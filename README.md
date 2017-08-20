@@ -13,9 +13,10 @@ Main tools:
 
 Not implemented :
 
--  _hot **SEARCH** from hight menu, AUTOCOMPLETE_
+- _hot **SEARCH** from hight menu, AUTOCOMPLETE_
 - _login/logout_
 - _~~delivery/payment/conditions pages~~_
+- _posts db/admin-panel/view_
 - _**ADMIN PANEL**_
 - _**~~CDN IMAGES~~**_
 - _**IMAGE COMPONENT**_

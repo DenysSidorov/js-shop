@@ -40,3 +40,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 window.$ = jQuery;
 window.jQuery = jQuery;
 // window.Immutable = Immutable;
+
+console.log('test main component');
