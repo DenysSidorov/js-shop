@@ -120,10 +120,17 @@ class WaysDevPay extends React.Component {
         });
 
         try {
-           let ggg =  await axios.post(`http://localhost:3000/orders`,
+           let response =  await axios.post(`http://localhost:3000/orders`,
                 {order}
             );
-            console.log(ggg, 'ggg');
+            if(response){
+                // TODO disable SPINNER
+                // TODO delete order from main redux store
+                // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
+                //
+                console.log(response, 'response');
+            }
+
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
         } catch (e) {
             console.log(e);
@@ -131,14 +138,12 @@ class WaysDevPay extends React.Component {
             console.log();
         }
 
-        console.log(order.data, 'dataForBack');
+
     }
 
     render() {
         let goods = this.props.cart;
         let {payment, delivery, name, address, email, phone}  = this.state;
-
-
         return (
             <div className="userWaysContainer">
                 <div className="userWays">
