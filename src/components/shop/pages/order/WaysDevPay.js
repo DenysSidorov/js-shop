@@ -96,8 +96,8 @@ class WaysDevPay extends React.Component {
         this.setState({delivery: kind})
     }
 
-    sendDataToServer() {
-        let dataForBack = {
+   async sendDataToServer() {
+        let order = {
             payment: this.state.payment,
             delivery: this.state.delivery,
             name: this.state.name,
@@ -116,10 +116,22 @@ class WaysDevPay extends React.Component {
             curGood.sail = item.sail;
             curGood.price = item.price;
 
-            dataForBack.goods.push(curGood);
+            order.goods.push(curGood);
         });
 
-        console.log(dataForBack, 'dataForBack');
+        try {
+           let ggg =  await axios.post(`http://localhost:3000/orders`,
+                {order}
+            );
+            console.log(ggg, 'ggg');
+            // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
+        } catch (e) {
+            console.log(e);
+        } finally {
+            console.log();
+        }
+
+        console.log(order.data, 'dataForBack');
     }
 
     render() {

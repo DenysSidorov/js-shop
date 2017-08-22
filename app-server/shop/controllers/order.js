@@ -2,8 +2,10 @@ import Order from "../models/order";
 
 
 export async function create(req, resp, next) {
-    var order = req.body.order;
+    var order = req.params;
+    var body = req.body.order;
 console.log(order, 'ORDERS');
+console.log(body, 'BODY');
     // try {
     //     var order = await Order.create({order: order});
     // } catch ({message}) {
@@ -12,6 +14,6 @@ console.log(order, 'ORDERS');
     //         message
     //     });
     // }
-    // resp.json(order);
+    resp.json(body);
 }
 
