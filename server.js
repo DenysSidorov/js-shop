@@ -54,6 +54,7 @@ app.use(session({
 
 
 app.use('/goods' ,cors(), goodRoute);
+app.use('/orders' ,cors(), orderRoute);
 
 
 
