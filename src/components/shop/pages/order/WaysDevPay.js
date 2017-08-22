@@ -205,7 +205,7 @@ class WaysDevPay extends React.Component {
                 </div>
                 {this.state.isShowConfirm && <Confirm
                     okHandler={ this.sendDataToServer.bind(this) }
-                    cancelHandler={()=> console.log('Hello from parrent cancel')}
+                    cancelHandler={this.handleConfirmUnmount.bind(this)}
                     unmountConfirm={this.handleConfirmUnmount.bind(this)}
                 >
 
