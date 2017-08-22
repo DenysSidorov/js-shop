@@ -14,7 +14,8 @@ const OrderSchema = new Schema({
         name: {type: String, require: true},
         model: {type: String, require: true},
         sail: {type: Number, require: true},
-        price: {type: Number, require: true}
+        price: {type: Number, require: true},
+        createdAt: { type: Date, require: true, default: Date.now }
     }]
 
 

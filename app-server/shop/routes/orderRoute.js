@@ -1,9 +1,10 @@
 import express from 'express';
 
-// import * as GoodController from '../controllers/good';
+import * as OrderController from '../controllers/order';
 
 const router = express.Router();
 
+router.post('/', OrderController.create);
 // router.get('/', GoodController.getAll);
 // router.get('/tags', GoodController.getUniqCategory);
 // router.get('/popular', GoodController.getPopular);
