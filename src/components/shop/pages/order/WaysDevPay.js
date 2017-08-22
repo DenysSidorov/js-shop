@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import axios from "axios";
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {pushToCart, deleteFromCart, incrementItem, decrementItem} from "../../../../reducers/cart";
