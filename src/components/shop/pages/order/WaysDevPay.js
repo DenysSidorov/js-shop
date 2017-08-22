@@ -114,6 +114,7 @@ class WaysDevPay extends React.Component {
             curGood.model = item.model;
             curGood.sail = item.sail;
             curGood.price = item.price;
+
             dataForBack.goods.push(curGood);
         });
 

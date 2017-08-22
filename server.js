@@ -18,6 +18,7 @@ import authRoute from './app-server/routes/auth';
 import userRoute from './app-server/routes/user';
 import pageRoute from './app-server/routes/page';
 import goodRoute from './app-server/shop/routes/goodRoute';
+import orderRoute from './app-server/shop/routes/orderRoute';
 
 
 import errorMiddleWare from './app-server/middlewares/errors';
