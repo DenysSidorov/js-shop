@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from "redux";
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
-import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../../reducers/cart';
-import GoodsTable from './GoodsTable';
+import {pushToCart, deleteFromCart, incrementItem, decrementItem} from "../../../../reducers/cart";
+import GoodsTable from "./GoodsTable";
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
     state = {
@@ -15,7 +15,11 @@ class WaysDevPay extends React.Component {
         address: '',
         email: '',
         isNormal: false,
-        isShowConfirm: false
+        isShowConfirm: false,
+        paymentVariants: [
+            {value: 'predo', label: 'Предоплата на карту'},
+            {value: 'naloj', label: 'Наложенный платеж'}
+        ]
     };
 
     handleConfirmUnmount() {
@@ -23,7 +27,7 @@ class WaysDevPay extends React.Component {
     }
 
     chName(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         if (e.target.value.length < 70) {
             this.setState({name: e.target.value})
         }
@@ -31,7 +35,7 @@ class WaysDevPay extends React.Component {
     }
 
     chPhone(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         if (e.target.value.length < 70) {
             this.setState({phone: e.target.value})
         }
@@ -39,7 +43,7 @@ class WaysDevPay extends React.Component {
     }
 
     chAddress(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         if (e.target.value.length < 70) {
             this.setState({address: e.target.value})
         }
@@ -47,7 +51,7 @@ class WaysDevPay extends React.Component {
     }
 
     chEmail(e) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         if (e.target.value.length < 70) {
             this.setState({email: e.target.value})
         }
@@ -83,21 +87,15 @@ class WaysDevPay extends React.Component {
             })
         }
 
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     chDelivery(kind, e) {
-        console.log(kind, 'k');
+        // console.log(kind, 'k');
         this.setState({delivery: kind})
     }
 
-    render() {
-        let goods = this.props.cart;
-        const payment = [
-            {value: 'predo', label: 'Предоплата на карту'},
-            {value: 'naloj', label: 'Наложенный платеж'}
-        ];
-
+    sendDataToServer() {
         let dataForBack = {
             payment: this.state.payment,
             delivery: this.state.delivery,
@@ -108,18 +106,25 @@ class WaysDevPay extends React.Component {
             goods: []
 
         };
-        goods.forEach((item, ind)=>{
+        this.props.cart.forEach((item, ind)=> {
             var curGood = {};
             curGood._id = item._id;
             curGood.count = item.count;
             curGood.name = item.name;
-            curGood.model= item.model;
-            curGood.sail= item.sail;
-            curGood.price= item.price;
+            curGood.model = item.model;
+            curGood.sail = item.sail;
+            curGood.price = item.price;
             dataForBack.goods.push(curGood);
         });
 
         console.log(dataForBack, 'dataForBack');
+    }
+
+    render() {
+        let goods = this.props.cart;
+        let {payment, delivery, name, address, email, phone}  = this.state;
+
+
         return (
             <div className="userWaysContainer">
                 <div className="userWays">
@@ -131,7 +136,7 @@ class WaysDevPay extends React.Component {
                                    className="accordion_toggle"
                                    name="accordion-01"
                                    id="toggle-01"
-                                   checked={this.state.delivery == 'newpost' ? 'checked' : null}
+                                   checked={delivery == 'newpost' ? 'checked' : null}
                             />
                             <label onClick={this.chDelivery.bind(this, 'newpost')} className="accordion_trigger"
                                    htmlFor="toggle-01">Доставка по Украине "Новая Почта"
@@ -150,7 +155,7 @@ class WaysDevPay extends React.Component {
                                    className="accordion_toggle"
                                    name="accordion-01"
                                    id="toggle-02"
-                                   checked={this.state.delivery == 'intime' ? 'checked' : null}/>
+                                   checked={delivery == 'intime' ? 'checked' : null}/>
                             <label onClick={this.chDelivery.bind(this, 'intime')} className="accordion_trigger"
                                    htmlFor="toggle-02">Доставка по Украине
                                 "Интайм"</label>
@@ -167,7 +172,7 @@ class WaysDevPay extends React.Component {
                         <Dropdown
                             options={payment}
                             onChange={this.chPayment.bind(this)}
-                            value={this.state.payment.label}
+                            value={payment.label}
                         />
                         {/*<select>*/}
                         {/*<option>Пункт 1</option>*/}
@@ -199,7 +204,7 @@ class WaysDevPay extends React.Component {
 
                 </div>
                 {this.state.isShowConfirm && <Confirm
-                    okHandler={()=> console.log('Hello from parrent OK')}
+                    okHandler={ this.sendDataToServer.bind(this) }
                     cancelHandler={()=> console.log('Hello from parrent cancel')}
                     unmountConfirm={this.handleConfirmUnmount.bind(this)}
                 >
@@ -207,17 +212,17 @@ class WaysDevPay extends React.Component {
                     <ul>
                         <li>
                             <div>Тип доставки:
-                                {dataForBack.delivery == "newpost" && <span> Новая Почта</span>}
-                                {dataForBack.delivery == "intime" && <span> Интайм</span>}
+                                {delivery == "newpost" && <span> Новая Почта</span>}
+                                {delivery == "intime" && <span> Интайм</span>}
                             </div>
                             <div>Тип оплаты:
-                                {dataForBack.payment.value == "predo" && <span> Предоплата на карту</span>}
-                                {dataForBack.payment.value == "naloj" && <span> Наложенный платеж</span>}
+                                {payment.value == "predo" && <span> Предоплата на карту</span>}
+                                {payment.value == "naloj" && <span> Наложенный платеж</span>}
                             </div>
-                            <div>Имя: <span>{dataForBack.name}</span></div>
-                            <div>Телефон: <span>{dataForBack.phone}</span></div>
-                            <div>Адрес: <span>{dataForBack.address}</span></div>
-                            {dataForBack.email && <div>Почта: <span>{dataForBack.email}</span></div>}
+                            <div>Имя: <span>{name}</span></div>
+                            <div>Телефон: <span>{phone}</span></div>
+                            <div>Адрес: <span>{address}</span></div>
+                            {email && <div>Почта: <span>{email}</span></div>}
                         </li>
                     </ul>
                     <div className="maskForGoodsTableInOrder">
@@ -239,11 +244,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
-        deleteItem : (item)=> deleteFromCart(item),
+        deleteItem: (item)=> deleteFromCart(item),
         addItem: (item)=> pushToCart(item),
         incrementItem,
         decrementItem
-    },dispatch)
+    }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WaysDevPay);
