@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 
 const OrderSchema = new Schema({
-    _id: Number,
+
     payment: {type: Object, require: true},
     delivery: {type: String, require: true},
     name: {type: String, require: true},
@@ -9,7 +9,7 @@ const OrderSchema = new Schema({
     phone: {type: String, require: true},
     email: {type: String},
     goods: [{
-        id: {type: Number, require: true},
+        _id: {type: Number, require: true},
         count: {type: Number, require: true},
         name: {type: String, require: true},
         model: {type: String, require: true},
