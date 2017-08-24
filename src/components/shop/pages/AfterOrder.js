@@ -7,7 +7,10 @@ class AfterOrder extends React.Component {
 
     render() {
         return (
-            <div>Thanks</div>
+            <div>
+                <div></div>
+                Спасибо за ваш заказ. Наши менеджеры свяжутся с Вами в ближайшее время!
+            </div>
         )
 
     }

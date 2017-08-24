@@ -15,6 +15,7 @@ import PaymentAndDelivery from "../pages/PaymentAndDelivery";
 import CashbackAndExchange from "../pages/CashbackAndExchange";
 import Card from "../pages/Card";
 import Order from "../pages/Order";
+import AfterOrder from "../pages/AfterOrder";
 import Contacts from "../pages/Contacts";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
@@ -40,6 +41,7 @@ class WrapperApp extends React.Component {
                                     <Route path="/blog/" component={Blog}/>
                                     <Route path="/card/:id" component={Card}/>
                                     <Route exact path="/order/" component={Order}/>
+                                    <Route exact path="/great/" component={AfterOrder}/>
                                     <RouteAuth path="/contacts/" component={Contacts}/>
                                     <Route path="/login/" component={Login}/>
                                     <Route component={NotFound}/>
