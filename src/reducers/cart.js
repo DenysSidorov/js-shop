@@ -1,6 +1,7 @@
 export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
 export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
+export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
 export const DELETE_ALL_ITEM_IN_CART = 'cart/DELETE_ALL_ITEM_IN_CART';
 // import Immutable from "immutable";
 var t = [{...{}, count: 32}]
@@ -155,3 +156,6 @@ export const decrementItem = (id)=> {
 };
 
 
+export const deleteAll = ()=> {
+    return {type: DELETE_ALL_ITEM_IN_CART}
+};
