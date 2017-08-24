@@ -1,7 +1,7 @@
 export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
 export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
-export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
+export const DELETE_ALL_ITEM_IN_CART = 'cart/DELETE_ALL_ITEM_IN_CART';
 // import Immutable from "immutable";
 var t = [{...{}, count: 32}]
 
@@ -74,12 +74,18 @@ export default (state = initialState, action) => {
         //     completed: !state.completed
         // }
 
-        //return state.count = 545;
+        //return state.count = 545;  DELETE_ALL_ITEM_IN_CART
         case DELETE_ITEM_IN_CART:
             var newState = {...state};
             return {
                 ...newState,
                 items: state.items.filter(el=> el._id != action.payload._id)
+            };
+        case DELETE_ALL_ITEM_IN_CART:
+            var newState = {...state};
+            return {
+                ...newState,
+                items: []
             };
         case INCREMENT_ITEM_IN_CART:
             var newState = {...state};

@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import axios from "axios";
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
-import {pushToCart, deleteFromCart, incrementItem, decrementItem} from "../../../../reducers/cart";
+import {pushToCart, deleteFromCart, incrementItem, decrementItem, deleteAll} from "../../../../reducers/cart";
 import GoodsTable from "./GoodsTable";
 // http://fraserxu.me/react-dropdown/
 class WaysDevPay extends React.Component {
@@ -266,7 +266,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         deleteItem: (item)=> deleteFromCart(item),
         addItem: (item)=> pushToCart(item),
         incrementItem,
-        decrementItem
+        decrementItem,
+        deleteAll,
     }, dispatch)
 }
 
