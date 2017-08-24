@@ -5,9 +5,7 @@ import * as OrderController from '../controllers/order';
 const router = express.Router();
 
 router.post('/', OrderController.create);
-router.get('/', (req, resp)=>{
-    resp.json({orders: 5})
-});
+
 // router.get('/', GoodController.getAll);
 // router.get('/tags', GoodController.getUniqCategory);
 // router.get('/popular', GoodController.getPopular);

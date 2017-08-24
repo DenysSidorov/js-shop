@@ -120,12 +120,11 @@ class WaysDevPay extends React.Component {
         });
 
         try {
-           let response =  await axios.post(`http://localhost:3000/orders`,
-                order
-            );
+           let response =  await axios.post(`http://localhost:3000/orders`, order);
             if(response){
                 // TODO disable SPINNER
                 // TODO delete order from main redux store
+
                 // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
                 //
                 console.log(response, 'response');
