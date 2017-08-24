@@ -128,7 +128,7 @@ class WaysDevPay extends React.Component {
                 // TODO delete order from main redux store
                 // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
                 //
-                console.log(response, 'response');
+                console.log(response, 'response');  
             }
 
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
