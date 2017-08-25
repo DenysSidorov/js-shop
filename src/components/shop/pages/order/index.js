@@ -37,7 +37,7 @@ class Order extends React.Component {
                 </div>
                     : <div className="formOrderMain">
                     <GoodsTable/>
-                    <WaysDevPay/>
+                    <WaysDevPay {...this.props}/>
                 </div> }
 
             </div>

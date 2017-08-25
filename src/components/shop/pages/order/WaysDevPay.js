@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import axios from "axios";
+import { push } from 'react-router-redux';
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {pushToCart, deleteFromCart, incrementItem, decrementItem, deleteAll} from "../../../../reducers/cart";
@@ -124,11 +125,14 @@ class WaysDevPay extends React.Component {
             if(response){
                 // TODO disable SPINNER
                 // TODO delete order from main redux store
-this.props.deleteAll();
+                //this.props.deleteAll();
                 // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
                 //
                 response = response.data
-                console.log(response, 'response'); // _id
+                console.log(response, 'response1'); // _id
+                // push('/about-us');
+                this.props.changePage(117)
+                console.log('22222');
             }
 
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
@@ -137,8 +141,6 @@ this.props.deleteAll();
         } finally {
             console.log();
         }
-
-
     }
 
     render() {
@@ -260,12 +262,13 @@ const mapStateToProps = (state, ownProps) => {
         cart: state.cart.items
     }
 }
-
+const pushTo = (st) => push('/great');
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         deleteItem: (item)=> deleteFromCart(item),
         addItem: (item)=> pushToCart(item),
         incrementItem,
+        changePage: pushTo,
         decrementItem,
         deleteAll,
     }, dispatch)
