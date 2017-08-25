@@ -131,8 +131,7 @@ class WaysDevPay extends React.Component {
                 response = response.data
                 console.log(response, 'response1'); // _id
                 // push('/about-us');
-                this.props.changePage(117)
-                console.log('22222');
+                this.props.changePage(response._id);
             }
 
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
@@ -262,7 +261,7 @@ const mapStateToProps = (state, ownProps) => {
         cart: state.cart.items
     }
 }
-const pushTo = (st) => push('/great');
+const pushTo = (orderNumber) => push({ pathname: '/great', state:orderNumber,  search: '?the=search'});
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         deleteItem: (item)=> deleteFromCart(item),
