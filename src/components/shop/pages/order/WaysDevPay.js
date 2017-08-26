@@ -125,7 +125,7 @@ class WaysDevPay extends React.Component {
             if(response){
                 // TODO disable SPINNER
                 // TODO delete order from main redux store
-                //this.props.deleteAll();
+                this.props.deleteAll();
                 // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
                 //
                 response = response.data
