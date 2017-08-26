@@ -35,15 +35,15 @@ class WrapperApp extends React.Component {
                         <main>
                                 <Switch key={location.key} location={location}>
                                     <Route exact path="/" component={Home}/>
-                                    <Route path="/about-us/" component={AboutUs}/>
-                                    <Route path="/payment-and-delivery/" component={PaymentAndDelivery}/>
-                                    <Route path="/cashback-and-exchange/" component={CashbackAndExchange}/>
-                                    <Route path="/blog/" component={Blog}/>
+                                    <Route path="/about-us" component={AboutUs}/>
+                                    <Route path="/payment-and-delivery" component={PaymentAndDelivery}/>
+                                    <Route path="/cashback-and-exchange" component={CashbackAndExchange}/>
+                                    <Route path="/blog" component={Blog}/>
                                     <Route path="/card/:id" component={Card}/>
-                                    <Route exact path="/order/" component={Order}/>
-                                    <Route exact path="/great/" component={AfterOrder}/>
-                                    <RouteAuth path="/contacts/" component={Contacts}/>
-                                    <Route path="/login/" component={Login}/>
+                                    <Route exact path="/order" component={Order}/>
+                                    <Route exact path="/great" component={AfterOrder}/>
+                                    <RouteAuth path="/contacts" component={Contacts}/>
+                                    <Route path="/login" component={Login}/>
                                     <Route component={NotFound}/>
                                     {/*<Route exact path="/404" component={NotFound} />*/}
                                     {/*<Redirect to="/404" />*/}
@@ -56,6 +56,7 @@ class WrapperApp extends React.Component {
                 <BtnUp/>
             </div>
         )
+
     }
 }
 

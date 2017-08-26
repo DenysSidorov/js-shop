@@ -1,11 +1,9 @@
 import React from "react";
 import {Link, NavLink} from 'react-router-dom';
-import { connect } from 'react-redux';
+import MenuCart from '../modules/MenuCart';
 class MainMenu extends React.Component {
     render() {
-        let {cart} = this.props;
-        let count = 0;
-        cart.forEach(el=> count = count + el.count)
+
         return (
             <div>
                 <div className="menuSection left fullWidth js_search-height">
@@ -39,9 +37,7 @@ class MainMenu extends React.Component {
                                         <NavLink to="/contacts" activeStyle={{color: '#2EA9FD'}}>Protected</NavLink>
                                     </li>
                                 </ul>
-                                <Link to="/order" className="main-cart">
-                                    <i className="fa fa-shopping-cart main-cart__ico" data-js_count={count}></i>
-                                </Link>
+                                <MenuCart/>
                             </div>
                         </div>
                     </div>
@@ -53,15 +49,4 @@ class MainMenu extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        cart: state.cart.items
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {return {}}
-
-export default connect(
-    mapStateToProps,
-
-)(MainMenu);
+export default MainMenu;
