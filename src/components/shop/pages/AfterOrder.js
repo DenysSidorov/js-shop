@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import st from './afterOrder.scss';
 class AfterOrder extends React.Component {
     componentDidMount(prevProps) {
@@ -7,10 +8,10 @@ class AfterOrder extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>Спасибо за ваш заказ. Наши менеджеры свяжутся с Вами в ближайшее время!</div>
-                {this.props.history.location.state && <div>Номер вашего заказа: {this.props.history.location.state}</div>}
-
+            <div className="greatPage-container">
+                <p>Спасибо за ваш заказ. Наши менеджеры свяжутся с Вами в ближайшее время!</p>
+                {this.props.history.location.state && <p>Номер вашего заказа: <span style={{color: 'green'}}>{this.props.history.location.state}</span></p>}
+              <p><Link to="/" style={{color: 'blue'}}>На главную</Link></p>
             </div>
         )
 
