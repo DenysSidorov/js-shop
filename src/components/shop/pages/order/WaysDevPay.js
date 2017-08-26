@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import axios from "axios";
-import { push } from 'react-router-redux';
+import {push} from "react-router-redux";
 import Dropdown from "react-dropdown";
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {pushToCart, deleteFromCart, incrementItem, decrementItem, deleteAll} from "../../../../reducers/cart";
@@ -79,7 +79,11 @@ class WaysDevPay extends React.Component {
     }
 
     chPayment(paymentObj) {
-        this.setState({payment: paymentObj});
+        console.log(paymentObj, 'plat2');
+        this.setState({
+            payment: paymentObj,
+            paymentVariants: [this.state.paymentVariants[1], this.state.paymentVariants[0]]
+        });
     }
 
     dispatchData() {
@@ -97,7 +101,7 @@ class WaysDevPay extends React.Component {
         this.setState({delivery: kind})
     }
 
-   async sendDataToServer() {
+    async sendDataToServer() {
         let order = {
             payment: this.state.payment,
             delivery: this.state.delivery,
@@ -121,8 +125,8 @@ class WaysDevPay extends React.Component {
         });
 
         try {
-           let response =  await axios.post(`http://localhost:3000/orders`, order);
-            if(response){
+            let response = await axios.post(`http://localhost:3000/orders`, order);
+            if (response) {
                 // TODO disable SPINNER
                 // TODO delete order from main redux store
                 this.props.deleteAll();
@@ -144,7 +148,9 @@ class WaysDevPay extends React.Component {
 
     render() {
         let goods = this.props.cart;
-        let {payment, delivery, name, address, email, phone}  = this.state;
+        let {paymentVariants, delivery, name, address, email, phone}  = this.state;
+        let payment = [{value: 'predo', label: 'Предоплата на карту'},
+            {value: 'naloj', label: 'Наложенный платеж'}]
         return (
             <div className="userWaysContainer">
                 <div className="userWays">
@@ -190,14 +196,10 @@ class WaysDevPay extends React.Component {
                     <div className="tittleWAyName" data-count="2">Способ оплаты</div>
                     <div className="paymentWayOrder">
                         <Dropdown
-                            options={payment}
+                            options={paymentVariants}
                             onChange={this.chPayment.bind(this)}
-                            value={payment.label}
+                            value={paymentVariants[0]}
                         />
-                        {/*<select>*/}
-                        {/*<option>Пункт 1</option>*/}
-                        {/*<option>Пункт 2</option>*/}
-                        {/*</select>*/}
                     </div>
 
                     <div className="tittleWAyName" data-count="3">Способ доставки</div>
@@ -261,7 +263,7 @@ const mapStateToProps = (state, ownProps) => {
         cart: state.cart.items
     }
 }
-const pushTo = (orderNumber) => push({ pathname: '/great', state:orderNumber,  search: '?the=search'});
+const pushTo = (orderNumber) => push({pathname: '/great', state: orderNumber, search: '?the=search'});
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         deleteItem: (item)=> deleteFromCart(item),
@@ -274,3 +276,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WaysDevPay);
+
+console.log(13212);
+console.log(13212);
+console.log(3);
+console.log(3312);
+console.log(3312);
+console.log(3312);
+console.log(3312);
