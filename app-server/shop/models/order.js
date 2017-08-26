@@ -8,6 +8,7 @@ const OrderSchema = new Schema({
     address: {type: String, require: true},
     phone: {type: String, require: true},
     email: {type: String},
+    createdAt: { type: Date, require: true, default: Date.now },
     goods: [{
         _id: {type: Number, require: true},
         count: {type: Number, require: true},
@@ -15,7 +16,6 @@ const OrderSchema = new Schema({
         model: {type: String, require: true},
         sail: {type: Number, require: true},
         price: {type: Number, require: true},
-        createdAt: { type: Date, require: true, default: Date.now }
     }]
 
 
