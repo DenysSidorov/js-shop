@@ -1,17 +1,42 @@
 import React from "react";
-import styles from './mainContainerForCard.less';
-import Gallery from '../../modules/image-gallery';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import {pushToCart} from '../../../../reducers/cart';
+import Gallery from "../../modules/image-gallery";
+import "./mainContainerForCard.less";
+import Confirm from "../../WrapperApp/ConfirmBlock";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {pushToCart} from "../../../../reducers/cart";
 class MainContainerForCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            kindConfirm: ''
+        };
+        // this.showConfirm = this.showConfirm.bind(this);
+        // this.closeConfirms = this.closeConfirms.bind(this);
+    }
+
+    closeConfirms () {
+        console.log([''], 'empty');
+        this.setState({
+            kindConfirm: '',
+            jopa: 111
+        }, ()=>{console.log(this.state.kindConfirm , 'after222');
+            this.forceUpdate();
+        })
+    }
+    showConfirm (kind){
+        this.setState({
+            kindConfirm: kind
+        })
+    }
     render() {
-        var card = this.props.card[0];
-        const images = [];
-        card.photo.forEach(el=> images.push({
-            original: `/img-static/${el}`,
-            thumbnail:`/img-static/${el}`
-        }));
+        console.log('rerender');
+        // var card = this.props.card[0];
+        // const images = [];
+        // card.photo.forEach(el=> images.push({
+        //     original: `/img-static/${el}`,
+        //     thumbnail:`/img-static/${el}`
+        // }));
         return (
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
@@ -23,28 +48,43 @@ class MainContainerForCard extends React.Component {
                                 autoPlay={true}
                             />
                         </div>
-
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item">
-                            <i className="fa fa-clock-o" aria-hidden="true"></i>
-                            <span>Обмен и возврат в теч. 14 дней</span>
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
+                             onClick={this.showConfirm.bind(this, 'cashback')}>
+                            <i className="fa fa-clock-o addOpportunity_item_i" aria-hidden="true"></i>
+                            <span className="addOpportunity_item_span">Обмен и возврат в теч. 14 дней</span>
+                            {this.state.kindConfirm == 'cashback' ? <Confirm
+                                okHandler={ this.closeConfirms.bind(this)}
+                                cancelHandler={this.closeConfirms.bind(this)}
+                                unmountConfirm={this.closeConfirms.bind(this)}
+                            >
+                                cashback
+                            </Confirm>: null}
+                        </div>
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
+                             onClick={this.showConfirm.bind(this, 'garanty')}>
+                            <i className="fa fa-star-o addOpportunity_item_i" aria-hidden="true"></i>
+                            <span className="addOpportunity_item_span">Гарантия качества на товары</span>
+                            {this.state.kindConfirm == 'garanty' ? <Confirm
+                                okHandler={ this.closeConfirms}
+                                cancelHandler={this.closeConfirms}
+                                unmountConfirm={this.closeConfirms}
+                            >
+                                garanty
+                            </Confirm>: null}
                         </div>
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
-                            <i className="fa fa-star-o" aria-hidden="true"></i>
-                            <span>Гарантия качества на товары</span>
+                            <i className="fa fa-check-square-o addOpportunity_item_i" aria-hidden="true"></i>
+                            <span className="addOpportunity_item_span">Проверка каждого товаров</span>
                         </div>
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
-                            <i className="fa fa-check-square-o" aria-hidden="true"></i>
-                            <span>Проверка каждого товаров</span>
+                            <i className="fa fa-bus addOpportunity_item_i" aria-hidden="true"></i>
+                            <span className="addOpportunity_item_span">Удобная и быстрая доставка</span>
                         </div>
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
-                            <i className="fa fa-bus" aria-hidden="true"></i>
-                            <span>Удобная и быстрая доставка</span>
-                        </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item">
-                            <i className="fa fa-money" aria-hidden="true"></i>
-                            <span>Надежная система оплаты</span>
+                            <i className="fa fa-money addOpportunity_item_i" aria-hidden="true"></i>
+                            <span className="addOpportunity_item_span">Надежная система оплаты</span>
                         </div>
                     </div>
                 </div>
@@ -117,3 +157,5 @@ function randomInteger(min, max) {
     rand = Math.floor(rand);
     return rand;
 }
+
+
