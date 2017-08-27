@@ -124,7 +124,7 @@ var config = {
                 use: ExtractTextPlugin.extract({
                     // exclude: /node_modules/,
                     fallback: 'style-loader',
-                    use: ['css-loader?sourceMap', 'less-loader', 'postcss-loader'],
+                    use: ['css-loader?sourceMap',  'postcss-loader', 'less-loader'],
                     // publicPath : '/assets'
                 })
             },
@@ -135,7 +135,7 @@ var config = {
                 use: ExtractTextPlugin.extract({
                     // exclude: /node_modules/,
                     fallback: 'style-loader',
-                    use: ['css-loader?sourceMap', 'sass-loader', 'postcss-loader'],
+                    use: ['css-loader?sourceMap', 'postcss-loader', 'sass-loader'],
                     // publicPath : '/assets'
                 })
             }

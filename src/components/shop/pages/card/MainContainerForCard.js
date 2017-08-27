@@ -1,41 +1,29 @@
 import React from "react";
 import styles from './mainContainerForCard.less';
-import st2 from './imageGallery.less';
-import ImageGallery from 'react-image-gallery';
+import Gallery from '../../modules/image-gallery';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {pushToCart} from '../../../../reducers/cart';
 class MainContainerForCard extends React.Component {
-    handleImageLoad = (event)=> {
-        console.log('Image loaded ', event.target)
-    }
     render() {
         var card = this.props.card[0];
-        const images = [
-            {
-                original: `/img-static/${card.photo[0]}`,
-                thumbnail:`/img-static/${card.photo[0]}`
-            },
-            {
-                original: `/img-static/${card.photo[0]}`,
-                thumbnail:`/img-static/${card.photo[0]}`
-            },
-            {
-                original: `/img-static/${card.photo[0]}`,
-                thumbnail:`/img-static/${card.photo[0]}`
-            }
-        ]
+        const images = [];
+        card.photo.forEach(el=> images.push({
+            original: `/img-static/${el}`,
+            thumbnail:`/img-static/${el}`
+        }));
         return (
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        {/*<img src={`/img-static/${card.photo[0]}`} alt=""/>*/}
-                        <ImageGallery
-                            onImageLoad={this.handleImageLoad}
-                            items={images}
-                            defaultImage={`/img-static/${card.photo[0]}`}
-                            slideInterval={2000}
-                        />
+                        <div style={{width: '95%', height: '500px'}}>
+                            <Gallery
+                                items={images}
+                                slideOnThumbnailHover={true}
+                                autoPlay={true}
+                            />
+                        </div>
+
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item">
