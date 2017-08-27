@@ -79,7 +79,7 @@ define([
                 arrForView = this.props.items;
             }
             let d = ((Date.now().toString() * 1) + 4).toString();
-            console.log(this.props.isFullScreen, " isFullScreen in component");
+            // console.log(this.props.isFullScreen, " isFullScreen in component");
             return (
                 <div style={{
                     height: this.props.height ? this.props.height : '100%',
