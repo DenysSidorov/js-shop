@@ -5,38 +5,45 @@ import Confirm from "../../WrapperApp/ConfirmBlock";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {pushToCart} from "../../../../reducers/cart";
+import {changeConfirm} from "../../../../reducers/confirmInCard";
 class MainContainerForCard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            kindConfirm: ''
-        };
-        // this.showConfirm = this.showConfirm.bind(this);
-        // this.closeConfirms = this.closeConfirms.bind(this);
+
+        this.showConfirm = this.showConfirm.bind(this);
+        //  this.closeConfirms = this.closeConfirms.bind(this);
     }
 
     closeConfirms () {
         console.log([''], 'empty');
-        this.setState({
-            kindConfirm: '',
-            jopa: 111
-        }, ()=>{console.log(this.state.kindConfirm , 'after222');
-            this.forceUpdate();
-        })
+        this.props.changeKind('');
+        console.log(this.props.confirmKind , 'close reducer');
+        // this.setState({
+        //     kindConfirm: '',
+        //     jopa: 111
+        // }, ()=>{console.log(this.state.kindConfirm , 'after222');
+        //     this.forceUpdate();
+        // })
     }
-    showConfirm (kind){
-        this.setState({
-            kindConfirm: kind
-        })
+    showConfirm (kind, e){
+        console.log(kind, 'kind');
+        console.log(e, 'e');
+        e.stopPropagation();
+        console.log('start show');
+        this.props.changeKind(kind);
+        // this.setState({
+        //     kindConfirm: kind
+        // })
+        console.log(this.props.confirmKind, 'show reducer');
     }
     render() {
         console.log('rerender');
-        // var card = this.props.card[0];
-        // const images = [];
-        // card.photo.forEach(el=> images.push({
-        //     original: `/img-static/${el}`,
-        //     thumbnail:`/img-static/${el}`
-        // }));
+        var card = this.props.card[0];
+        const images = [];
+        card.photo.forEach(el=> images.push({
+            original: `/img-static/${el}`,
+            thumbnail:`/img-static/${el}`
+        }));
         return (
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
@@ -51,38 +58,29 @@ class MainContainerForCard extends React.Component {
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item"
-                             onClick={this.showConfirm.bind(this, 'cashback')}>
+                             onClick={(e)=>{this.showConfirm('cashback',e)}}>
                             <i className="fa fa-clock-o addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Обмен и возврат в теч. 14 дней</span>
-                            {this.state.kindConfirm == 'cashback' ? <Confirm
-                                okHandler={ this.closeConfirms.bind(this)}
-                                cancelHandler={this.closeConfirms.bind(this)}
-                                unmountConfirm={this.closeConfirms.bind(this)}
-                            >
-                                cashback
-                            </Confirm>: null}
+
                         </div>
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item"
-                             onClick={this.showConfirm.bind(this, 'garanty')}>
+                             onClick={(e)=>{this.showConfirm('garanty',e)}}>
                             <i className="fa fa-star-o addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Гарантия качества на товары</span>
-                            {this.state.kindConfirm == 'garanty' ? <Confirm
-                                okHandler={ this.closeConfirms}
-                                cancelHandler={this.closeConfirms}
-                                unmountConfirm={this.closeConfirms}
-                            >
-                                garanty
-                            </Confirm>: null}
+
                         </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item">
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
+                             onClick={(e)=>{this.showConfirm('verif',e)}}>
                             <i className="fa fa-check-square-o addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Проверка каждого товаров</span>
                         </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item">
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
+                             onClick={(e)=>{this.showConfirm('deliv',e)}}>
                             <i className="fa fa-bus addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Удобная и быстрая доставка</span>
                         </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item">
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
+                             onClick={(e)=>{this.showConfirm('payment',e)}}>
                             <i className="fa fa-money addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Надежная система оплаты</span>
                         </div>
@@ -136,20 +134,33 @@ class MainContainerForCard extends React.Component {
                     <div className="clearfix"></div>
                 </div>
 
-
+                {this.props.confirmKind.length ? <Confirm
+                    okHandler={ this.closeConfirms.bind(this)}
+                    cancelHandler={this.closeConfirms.bind(this)}
+                    unmountConfirm={this.closeConfirms.bind(this)}
+                >
+                    cashback
+                </Confirm>: null}
             </div>
         )
 
     }
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        confirmKind: state.confirmsCard
+    }
+}
+
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
-        addItem: (item)=> pushToCart(item)
+        addItem: (item)=> pushToCart(item),
+        changeKind : (kind)=> changeConfirm(kind),
     },dispatch)
 }
 
 export default connect(
-    null, mapDispatchToProps
+    mapStateToProps, mapDispatchToProps
 )(MainContainerForCard);
 
 function randomInteger(min, max) {
@@ -159,3 +170,9 @@ function randomInteger(min, max) {
 }
 
 
+console.log(24234);
+console.log(24234);
+console.log(24123234);
+console.log(2423234);
+console.log(234234);
+console.log(233523);
