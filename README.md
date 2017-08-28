@@ -19,10 +19,10 @@ Not implemented :
 - _posts db/admin-panel/view_
 - _**ADMIN PANEL**_
 - _**~~CDN IMAGES~~**_
-- _**IMAGE COMPONENT**_
-- _**REDUX STORE FOR CART**_
-- _confirm for user in card_
+- _**~~IMAGE COMPONENT~~**_
+- _**~~REDUX STORE FOR CART~~**_
+- _~~confirm for user in card~~_
 - _quickly buy_
-- _react inputs_
+- _~~react inputs~~_
 - _images from hdd_
        
