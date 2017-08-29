@@ -276,11 +276,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WaysDevPay);
-
-console.log(13212);
-console.log(13212);
-console.log(3);
-console.log(3312);
-console.log(3312);
-console.log(3312);
-console.log(3312);
