@@ -29,6 +29,7 @@ var config = {
     entry: {
         main: ["webpack-dev-server/client"],
         // "babel-polyfill" - для поддержки последних возможностей async/await
+        //  ExtractTextPlugin - app.b.css формирует на основе app
         app: ["babel-polyfill", './app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
         startToo: './startToo.js', // другая точка входа
         vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
@@ -204,7 +205,7 @@ var config = {
         // enable HMR on the server
         host: "localhost", // default
         port: 8090, // default
-        contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), есди нет бандлов
+        contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), если нет бандлов
         proxy: [{
             path: '*',
             target: 'http://localhost:3000',
