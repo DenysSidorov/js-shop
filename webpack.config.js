@@ -40,7 +40,7 @@ var config = {
         filename: addHash('[name].b.js', 'chunkhash'), /*'[name].[chunkhash].b.js'*/  // точки входа
         chunkFilename: addHash('[id].js', 'chunkhash'), /*'[id].[chunkhash].js',*/  // только для require.ensure ajax подгрузке js
         library: '[name]',
-        publicPath: /* CDN link here */ '/assets/', // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
+        publicPath: inProduction === 'production' ? '' : '/assets/' // строка-шаблон в адрессе для картинок, скриптов полезна для CDN
     },
 
     resolve: {
@@ -147,6 +147,8 @@ var config = {
     },
 
     plugins: [
+        // delete all in folder
+        new CleanWebpackPlugin(['./www/assets/*.*']),
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
             PRODUCTION: JSON.stringify(true),
@@ -218,22 +220,38 @@ var config = {
 // Если продакшн - чистим консоль, код, папки и т.д
 // isProduction
 if (true/*false*/) {
-    // the path(s) that should be cleaned
-    let pathsToClean = [
-        path.resolve(__dirname, './www/assets/*')
-    ]
-
-// the clean options to use
-    let cleanOptions = {
-        root: '/',
-        exclude: ['shared.js'],
-        verbose: inProduction === 'production', // clean console.log
-        dry: false, // просто эмулирует удаление
-    }
-    // очистка папки https://github.com/johnagan/clean-webpack-plugin
-    var cleanPlugin = new CleanWebpackPlugin(pathsToClean, cleanOptions);
-    config.plugins.push(cleanPlugin);
+//     // the path(s) that should be cleaned
+//     let pathsToClean = [
+//         path.resolve(__dirname, './www/assets/*.*')
+//     ]
+//
+// // the clean options to use
+//     let cleanOptions = {
+//         root: '/',
+//         exclude: ['shared.js'],
+//         verbose: inProduction === 'production', // clean console.log
+//         dry: false, // просто эмулирует удаление
+//     }
+//     // очистка папки https://github.com/johnagan/clean-webpack-plugin
+//     var cleanPlugin = new CleanWebpackPlugin(pathsToClean, cleanOptions);
+//     config.plugins.push(cleanPlugin);
 }
+
+if(inProduction === 'production'){
+    var ugly = new webpack.optimize.UglifyJsPlugin({
+        comments: false,
+        minimize: true,
+        beautify: false,
+        compress: {
+            warnings: false,
+            drop_console: true,
+        },
+        sourceMap: true
+    });
+    config.devtool = false;
+    config.plugins.push(ugly);
+}
+
 
 module.exports = config;
 
