@@ -40,3 +40,52 @@ $robotoRegular: 'Roboto-Regular';
     @extend .btnInLoginIn;
     background-color: #5de56c;
 }
+
+
+.example-enter {
+  opacity: 0;
+  transform: translateX(-250px);
+}
+.example-enter.example-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: 0.35s;
+}
+
+
+
+
+.example-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.example-leave.example-leave-active {
+  opacity: 0;
+  transform: translateX(250px);
+  transition: 0.35s;
+}
+
+
+
+
+.example-appear {
+  opacity: 0;
+  transform: translateX(-250px);
+}
+.example-appear.example-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: 0.4s;
+}
+
+
+
+.item {
+  background-color: #efefef;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1px;
+  padding: 8px 12px;
+  width: 120px;
+}

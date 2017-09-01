@@ -1,30 +1,48 @@
 import React from "react";
-import  './login.scss';
+import "./login.scss";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 class Login extends React.Component {
+    constructor(pr) {
+        super(pr);
+        this.chPress = this.chPress.bind(this);
+    }
+
     state = {
         login: '',
         pass: '',
-        normal: false
+        normal: false,
+        press: false
+
     }
-    chLogin(e){
+
+    chPress() {
+        this.setState({
+            press: !this.state.press
+        })
+    }
+
+    chLogin(e) {
         let val = e.target.value;
         if (val.length < 70) {
-            this.setState({login: val},  this.validateData)
+            this.setState({login: val}, this.validateData)
         }
     }
-    chPass(e){
+
+    chPass(e) {
         let val = e.target.value;
         if (val.length < 70) {
             this.setState({pass: val}, this.validateData)
         }
     }
+
     validateData() {
-        if (this.state.login.length > 5 && this.state.pass.length > 5){
-            this.setState({normal: true });
-        } else{
-            this.setState({normal: false });
+        if (this.state.login.length > 5 && this.state.pass.length > 5) {
+            this.setState({normal: true});
+        } else {
+            this.setState({normal: false});
         }
     }
+
     render() {
         return (
             <div className="loginPage_container">
@@ -47,13 +65,35 @@ class Login extends React.Component {
                            placeholder="Your password"/>
                     <br/>
                     <br/>
+
                     {this.state.normal
-                        ? <div className="btnInLoginDis"
-                               onClick={()=>{}}
-                               type="button"><span>Подтвердить</span></div>
-                        : <div className="btnInLoginIn"
-                               onClick={()=>{}}
-                               type="button"><span>Подтвердить</span></div>
+                        ? <ReactCSSTransitionGroup
+                        transitionName="example"
+                        transitionAppear={true}
+                        transitionAppearTimeout={300}
+                        transitionEnterTimeout={300}
+                        transitionLeaveTimeout={300}>
+                        <div className="btnInLoginDis"
+                             onClick={()=> {
+                             }}
+                             type="button">
+                            <span>Подтвердить</span>
+                        </div>
+                    </ReactCSSTransitionGroup>
+                        :
+                        <div className="btnInLoginIn"
+                             onClick={()=> {
+                             }}
+                             onMouseDown={()=> {
+                                 console.log(4);
+                             }}
+                             onMouseUp={()=> {
+                                 console.log(5);
+                             }}
+                             type="button">
+                            <span>Подтвердить</span>
+                        </div>
+
                     }
                 </form>
             </div>
@@ -63,3 +103,6 @@ class Login extends React.Component {
 
 
 export default Login;
+
+console.log(2);
+
