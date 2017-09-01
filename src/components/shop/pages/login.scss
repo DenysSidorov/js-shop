@@ -19,4 +19,24 @@ $robotoRegular: 'Roboto-Regular';
     border-radius: 7px;
     padding: 4px;
   }
+
+}
+.btnInLoginIn{
+  width: 120px;
+  display: flex;
+  height: 35px;
+  background-color: #ff7867;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid #a0a0a0;
+  span{
+    color: white;
+    font: 1.4rem/1.5rem $robotoMedium;
+  }
+}
+.btnInLoginDis{
+    @extend .btnInLoginIn;
+    background-color: #5de56c;
 }
