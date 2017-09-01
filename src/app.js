@@ -42,3 +42,4 @@ window.jQuery = jQuery;
 // window.Immutable = Immutable;
 
 console.log('test main component');
+console.log(process.env.NODE_ENV, 'App ');

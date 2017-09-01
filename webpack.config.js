@@ -151,8 +151,8 @@ var config = {
         new CleanWebpackPlugin(['./www/assets/*.*']),
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
-            PRODUCTION: JSON.stringify(true),
-            'NODE_ENV': JSON.stringify('production')
+            // PRODUCTION: JSON.stringify(true),
+            'process.env.NODE_ENV' : JSON.stringify(inProduction)
         }),
 
         // Автоматически загружаемые модули
@@ -208,10 +208,10 @@ var config = {
         host: "localhost", // default
         port: 8090, // default
         contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), если нет бандлов
-        proxy: [{
-            path: '*',
-            target: 'http://localhost:3000',
-        }]
+        // proxy: [{
+        //     path: '*',
+        //     target: 'http://localhost:3000',
+        // }]
     },
     // source-maps
     devtool: "source-map"  //inProduction ? "source-map" : "cheap-module-inline-source-map",
