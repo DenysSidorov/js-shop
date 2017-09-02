@@ -2,6 +2,7 @@ import {createStore, applyMiddleware, compose} from "redux";
 import {routerMiddleware} from "react-router-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
+import initLocalStorage from "./api/initLocalStorage";
 
 // first export history, simple config
 import createHistory from "history/createBrowserHistory";
@@ -29,6 +30,11 @@ const store = createStore(
     initialState,
     composedEnhancers
 );
+
+initLocalStorage(store);
+
+
+
 
 
 export default store

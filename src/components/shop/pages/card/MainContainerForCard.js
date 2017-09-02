@@ -168,11 +168,3 @@ function randomInteger(min, max) {
     rand = Math.floor(rand);
     return rand;
 }
-
-
-console.log(24234);
-console.log(24234);
-console.log(24123234);
-console.log(2423234);
-console.log(234234);
-console.log(233523);
