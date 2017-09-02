@@ -4,11 +4,16 @@ import { loadingBarReducer , showLoading} from 'react-redux-loading-bar'; // pre
 import counter from './counterRRR'
 import cartReducer from './cart'
 import confirmCardReducer from './confirmInCard'
+import serverPreloaderReducer from './serverPreloader'
+import authReducer from './authReducer/authReducer'
 
 export default combineReducers({
     router: routerReducer, // second place react-router-redux including, first - applyMiddleware
     counter,
     loadingBar: loadingBarReducer,
     cart: cartReducer,
-    confirmsCard: confirmCardReducer
+    confirmsCard: confirmCardReducer,
+    authReducer
+    // serverPreloaderReducer,
+
 })

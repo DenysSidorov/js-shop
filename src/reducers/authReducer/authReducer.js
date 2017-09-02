@@ -4,9 +4,9 @@ import {
     AUTH_ERROR,
     FETCH_MESSAGE
 } from './types';
+let  initialState = {error:'', authenticated: false, message: ''}
 
-
-export default function(state = {}, action) {
+export default function(state = initialState, action) {
     switch(action.type) {
         case AUTH_USER:
             return { ...state, error: '', authenticated: true };

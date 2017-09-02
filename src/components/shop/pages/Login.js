@@ -1,6 +1,10 @@
 import React from "react";
 import "./login.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {signinUser} from '../../../reducers/authReducer/actions';
+
 class Login extends React.Component {
     constructor(pr) {
         super(pr);
@@ -17,7 +21,10 @@ class Login extends React.Component {
 
     sendData = () => {
         console.log('send2');
-        let {pass, login} = this.state;
+        let {login, pass} = this.state;
+        console.log(login, pass, 'req111111');
+        this.props.signinUser(login, pass);
+        this.setState({pass: ''});
         // Отправить данные о пользователе
         // Запустить прелоадер
 
@@ -50,7 +57,7 @@ class Login extends React.Component {
     }
 
     validateData() {
-        if (this.state.login.length > 5 && this.state.pass.length > 5) {
+        if (this.state.login.length >= 4 && this.state.pass.length >= 4) {
             this.setState({normal: true});
         } else {
             this.setState({normal: false});
@@ -102,11 +109,23 @@ class Login extends React.Component {
                             <span>Подтвердить</span>
                         </div>
                     }
+                    <div style={{margin: '15px', color: 'red', fontSize: '1.5rem'}}>{this.props.authReducer.error}</div>
                 </form>
             </div>
         )
     }
 }
+//{error:'', authenticated: false, message: ''}
+const mapStateToProps = (state, ownProps) => {
+    return {
+        authReducer: state.authReducer
+    }
+}
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        signinUser: (login, password) => signinUser(login, password),
+    }, dispatch)
+}
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
