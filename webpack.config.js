@@ -152,7 +152,9 @@ var config = {
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
             // PRODUCTION: JSON.stringify(true),
-            'process.env.NODE_ENV' : JSON.stringify(inProduction)
+            'process.env.NODE_ENV' : JSON.stringify(inProduction),
+            'process.env.ROOT_URL' : JSON.stringify('http://localhost:3000')
+
         }),
 
         // Автоматически загружаемые модули

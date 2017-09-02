@@ -1,7 +1,9 @@
-export const AUTH_USER = 'authReducer/AUTH_USER';
-export const UNAUTH_USER ='authReducer/UNAUTH_USER';
-export const AUTH_ERROR = 'authReducer/AUTH_ERROR';
-export const FETCH_MESSAGE = 'authReducer/FETCH_MESSAGE';
+import {
+    AUTH_USER,
+    UNAUTH_USER,
+    AUTH_ERROR,
+    FETCH_MESSAGE
+} from './types';
 
 
 export default function(state = {}, action) {

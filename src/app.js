@@ -43,3 +43,4 @@ window.jQuery = jQuery;
 
 console.log('test main component');
 console.log(process.env.NODE_ENV, 'App ');
+console.log(process.env.ROOT_URL, 'ROOT_URL ');
