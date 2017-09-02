@@ -6,6 +6,7 @@ import {Route, Switch} from "react-router-dom";
 
 import MainMenu from "./MainMenu";
 import BtnUp from "./BtnUp";
+import SocialMedia from "./SocialMedia";
 import FooterSection from "./FooterSection";
 import MainContent from "./MainContent";
 import Home from "../pages/Home";
@@ -54,6 +55,7 @@ class WrapperApp extends React.Component {
                 </div>
                 <FooterSection/>
                 <BtnUp/>
+                <SocialMedia/>
             </div>
         )
 
