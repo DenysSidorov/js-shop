@@ -3,7 +3,7 @@ import slick from './slick';
 // https://github.com/akiran/react-slick
 // http://kenwheeler.github.io/slick/
 var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
-console.log(slickContainerSimilarGoods);
+// console.log(slickContainerSimilarGoods);
 if(slickContainerSimilarGoods.length) {
     $('.slickContainerSimilarGoods').slick({ // -----------------------slick slider #2---------------
         //dots: true,

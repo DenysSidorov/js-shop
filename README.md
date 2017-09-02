@@ -14,7 +14,8 @@ Main tools:
 Not implemented :
 
 - _hot **SEARCH** from hight menu, AUTOCOMPLETE_
-- _login/logout_
+- _~~login/logout~~_
+- _logup_
 - _~~delivery/payment/conditions pages~~_
 - _posts db/admin-panel/view_
 - _**ADMIN PANEL**_
@@ -24,5 +25,8 @@ Not implemented :
 - _~~confirm for user in card~~_
 - _quickly buy_
 - _~~react inputs~~_
+- _images from hdd_
+- _blog_
+- _USER PANEL_
 - _images from hdd_
        

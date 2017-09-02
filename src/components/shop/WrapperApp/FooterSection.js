@@ -50,12 +50,12 @@ class FooterSection extends React.Component {
                                 <div className="contactMenuBlockFooter">
 
                                     <ul className="contactMenuBlockFooter_main">
-                                        <li className=""><a href="">Главная</a></li>
-                                        <li className=""><a href="">О нас</a></li>
-                                        <li className=""><a href="">Оплата и доставка</a></li>
-                                        <li className=""><a href="">Возврат и обмен</a></li>
-                                        <li className=""><a href="">Блог</a></li>
-                                        <li className=""><a href="">Контакты</a></li>
+                                        <li className=""><a>Главная</a></li>
+                                        <li className=""><a>О нас</a></li>
+                                        <li className=""><a>Оплата и доставка</a></li>
+                                        <li className=""><a>Возврат и обмен</a></li>
+                                        <li className=""><a>Блог</a></li>
+                                        <li className=""><a>Контакты</a></li>
                                     </ul>
                                 </div>
 

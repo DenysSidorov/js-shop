@@ -1,6 +1,6 @@
 import React from "react";
 
-class Contacts extends React.Component {
+class Profile extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)
         }
@@ -12,4 +12,4 @@ class Contacts extends React.Component {
     }
 }
 
-export default Contacts ;
+export default Profile ;

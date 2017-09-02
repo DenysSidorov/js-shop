@@ -24,7 +24,7 @@ class Login extends React.Component {
         let {login, pass} = this.state;
         console.log(login, pass, 'req111111');
         this.props.signinUser(login, pass);
-        this.setState({pass: ''});
+        this.setState({pass: '', normal: false});
         // Отправить данные о пользователе
         // Запустить прелоадер
 

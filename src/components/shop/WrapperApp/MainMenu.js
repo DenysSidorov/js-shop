@@ -43,9 +43,9 @@ class MainMenu extends React.Component {
                                     {/*<li className="menu__menuHeader_item">*/}
                                         {/*<NavLink to="/blog" activeStyle={{color: '#2EA9FD'}}>Блог</NavLink>*/}
                                     {/*</li>*/}
-                                    <li className="menu__menuHeader_item">
-                                        <NavLink to="/contacts" activeStyle={{color: '#2EA9FD'}}>Protected</NavLink>
-                                    </li>
+                                    {/*<li className="menu__menuHeader_item">*/}
+                                        {/*<NavLink to="/profile" activeStyle={{color: '#2EA9FD'}}>Protected</NavLink>*/}
+                                    {/*</li>*/}
                                 </ul>
                                 <MenuCart/>
                             </div>
