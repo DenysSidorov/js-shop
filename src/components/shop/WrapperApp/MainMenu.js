@@ -1,4 +1,5 @@
 import React from "react";
+import LoadingBar from 'react-redux-loading-bar';
 import {Link, NavLink} from 'react-router-dom';
 import MenuCart from '../modules/MenuCart';
 class MainMenu extends React.Component {
@@ -41,11 +42,11 @@ class MainMenu extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <LoadingBar />
                 </div>
                 <div className="left fullWidth js_search-margin"></div>
             </div>
         )
-
     }
 }
 

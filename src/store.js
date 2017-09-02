@@ -30,6 +30,7 @@ const store = createStore(
     initialState,
     composedEnhancers
 );
+window.storet = store;
 
 export default store
 
