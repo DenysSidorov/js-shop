@@ -11,7 +11,6 @@ class CardMainPage extends React.Component {
 
         return (
             <div className="bodyCardItems__oneCardItem">
-
                 <div className="oneCardItem__headCard">
                     <div className="oneCardItem__headCard__priceCard">
                         <span>{card.price}</span><span></span><span>грн.</span>

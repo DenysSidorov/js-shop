@@ -1,7 +1,15 @@
-import React from "react";
-import styles from './index.less'
+import React from "react";;
+import styles from './index.less';
+import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
+import {signoutUser} from '../../../../reducers/authReducer/actions'
+import {bindActionCreators} from "redux";
 class MenuInfoSection extends React.Component {
+    unAuth(){
+        this.props.signoutUser();
+    }
     render() {
+        let authenticated = this.props.authenticated;
         return (
             <div className="menuInfoSection left fullWidth ">
                 <div className="container">
@@ -27,9 +35,10 @@ class MenuInfoSection extends React.Component {
                         </div>
                         <div className="userInfo">
                             <ul className="userInfo__listInfo">
-                                <li><a href="#">Ввойти в кабинет</a></li>
-                                <li><a href="#">Регистрация</a></li>
-                                <li><a href="#">Мой профиль</a></li>
+                                {authenticated && <li><Link to='/user'>Ввойти в кабинет</Link></li>}
+                                {authenticated && <li><a onClick={this.unAuth.bind(this)}>Выйти</a></li>}
+                                {!authenticated && <li><Link to="/logup">Регистрация</Link></li>}
+                                {!authenticated && <li><Link to="/login">Войти</Link></li>}
                             </ul>
                         </div>
                     </div>
@@ -39,5 +48,18 @@ class MenuInfoSection extends React.Component {
     }
 }
 
-export default MenuInfoSection;
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        authenticated: state.authReducer.authenticated
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        signoutUser: ()=> signoutUser(),
+
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuInfoSection);

@@ -45,3 +45,9 @@ export function authError(error) {
         payload: error
     };
 }
+
+export function signoutUser() {
+    console.log('reducer');
+    localStorage.removeItem('info');
+    return { type: UNAUTH_USER };
+}
