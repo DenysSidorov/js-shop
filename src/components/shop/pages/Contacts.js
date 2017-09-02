@@ -6,8 +6,8 @@ class Contacts extends React.Component {
         }
     render() {
         return (
-         <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>
-             Украина, г. Одесса
+         <div style={{fontSize: '1.3rem', fontFamily: 'Roboto-Regular'}}>
+            Онлайн магазин. Украина, г. Одесса. Телефон: 0936877613
          </div>
         )
 

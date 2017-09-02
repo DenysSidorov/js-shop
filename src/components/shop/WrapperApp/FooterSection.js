@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 class FooterSection extends React.Component {
     render() {
         return (
@@ -50,25 +50,25 @@ class FooterSection extends React.Component {
                                 <div className="contactMenuBlockFooter">
 
                                     <ul className="contactMenuBlockFooter_main">
-                                        <li className=""><a>Главная</a></li>
-                                        <li className=""><a>О нас</a></li>
-                                        <li className=""><a>Оплата и доставка</a></li>
-                                        <li className=""><a>Возврат и обмен</a></li>
-                                        <li className=""><a>Блог</a></li>
-                                        <li className=""><a>Контакты</a></li>
+                                        <li className=""><Link to="/">Главная</Link></li>
+                                        <li className=""><Link to="/about-us" >О нас</Link></li>
+                                        <li className=""><Link to="/payment-and-delivery">Оплата и доставка</Link></li>
+                                        <li className=""><Link to="/cashback-and-exchange">Возврат и обмен</Link></li>
+                                        {/*<li className=""><a>Блог</a></li>*/}
+                                        <li className=""><Link to="/contacts">Контакты</Link></li>
                                     </ul>
                                 </div>
 
                                 <div className="contactMenuBlockFooter">
 
-                                    <ul className="contactMenuBlockFooter_main">
-                                        <li className=""><a href="">Новинки</a></li>
-                                        <li className=""><a href="">Акции</a></li>
-                                        <li className=""><a href="">Скидки</a></li>
-                                        <li className=""><a href="">Популярное</a></li>
-                                        <li className=""><a href="">Детские</a></li>
-                                        <li className=""><a href="">Мужские</a></li>
-                                    </ul>
+                                    {/*<ul className="contactMenuBlockFooter_main">*/}
+                                        {/*<li className=""><a>Новинки</a></li>*/}
+                                        {/*<li className=""><a>Акции</a></li>*/}
+                                        {/*<li className=""><a>Скидки</a></li>*/}
+                                        {/*<li className=""><a>Популярное</a></li>*/}
+                                        {/*<li className=""><a>Детские</a></li>*/}
+                                        {/*<li className=""><a>Мужские</a></li>*/}
+                                    {/*</ul>*/}
                                 </div>
                                 <div className="socribeBtnBlockFooter">
 
