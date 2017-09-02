@@ -38,7 +38,3 @@ class SocialMedia extends React.Component {
 }
 
 export default SocialMedia;
-console.log(1231423);
-console.log(12314233);
-console.log(1231233);
-console.log(1231233);

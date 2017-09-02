@@ -44,7 +44,7 @@ class MenuInfoSection extends React.Component {
                         <div className="userInfo">
                             <ul className="userInfo__listInfo">
                                 <ReactCSSTransitionGroup
-                                    transitionName="menuInfoSection"
+                                    transitionName="menuInfoSectionRigth"
                                     transitionAppear={true}
                                     transitionAppearTimeout={300}
                                     transitionEnterTimeout={300}

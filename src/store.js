@@ -34,10 +34,7 @@ const store = createStore(
 initLocalStorage(store);
 
 
-
-
-
-export default store
+export default store;
 if (process.env.NODE_ENV === 'development') { window.storet = store;}
 
 function setDevTools()  {
