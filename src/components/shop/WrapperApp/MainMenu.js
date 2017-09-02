@@ -1,12 +1,20 @@
 import React from "react";
 // https://www.npmjs.com/package/react-redux-loading-bar
 import LoadingBar from 'react-redux-loading-bar';
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import st from './mainMenu.less';
 import {Link, NavLink} from 'react-router-dom';
 import MenuCart from '../modules/MenuCart';
 class MainMenu extends React.Component {
     render() {
 
         return (
+            <ReactCSSTransitionGroup
+                transitionName="mainMenu"
+                transitionAppear={true}
+                transitionAppearTimeout={300}
+                transitionEnter={false}
+                transitionLeave={false}>
             <div>
                 <div className="menuSection left fullWidth js_search-height">
                     <div className="container">
@@ -47,6 +55,7 @@ class MainMenu extends React.Component {
                 </div>
                 <div className="left fullWidth js_search-margin"></div>
             </div>
+                </ReactCSSTransitionGroup>
         )
     }
 }

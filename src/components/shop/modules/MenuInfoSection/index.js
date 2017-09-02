@@ -1,5 +1,6 @@
 import React from "react";;
 import styles from './index.less';
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
 import {signoutUser} from '../../../../reducers/authReducer/actions'
@@ -16,6 +17,12 @@ class MenuInfoSection extends React.Component {
                     <div className="submenuBlock">
                         <div className="contactInfo">
                             <ul className="contactInfo__list-contacts-info">
+                                <ReactCSSTransitionGroup
+                                    transitionName="menuInfoSection"
+                                    transitionAppear={true}
+                                    transitionAppearTimeout={300}
+                                    transitionEnterTimeout={300}
+                                    transitionLeave={false}>
                                 <li>
                                     <a title="Позвонить на Киевстар" href="tel:0988351315"><i
                                         className="fa fa-phone"></i>&nbsp;(098)83-51-315</a>
@@ -28,6 +35,7 @@ class MenuInfoSection extends React.Component {
                                         <meta content="Mo-Fr 10:00-19:00"/>
                                             <i className="fa fa-clock-o"></i>&nbsp;10:00-19:00&nbsp;пн-пт</a>
                                 </li>
+                                </ReactCSSTransitionGroup>
                             </ul>
                         </div>
                         <div className="logoInfo">
@@ -35,10 +43,17 @@ class MenuInfoSection extends React.Component {
                         </div>
                         <div className="userInfo">
                             <ul className="userInfo__listInfo">
+                                <ReactCSSTransitionGroup
+                                    transitionName="menuInfoSection"
+                                    transitionAppear={true}
+                                    transitionAppearTimeout={300}
+                                    transitionEnterTimeout={300}
+                                    transitionLeave={false}>
                                 {authenticated && <li><Link to='/user'>Ввойти в кабинет</Link></li>}
                                 {authenticated && <li><a onClick={this.unAuth.bind(this)}>Выйти</a></li>}
                                 {!authenticated && <li><Link to="/logup">Регистрация</Link></li>}
                                 {!authenticated && <li><Link to="/login">Войти</Link></li>}
+                                </ReactCSSTransitionGroup>
                             </ul>
                         </div>
                     </div>
