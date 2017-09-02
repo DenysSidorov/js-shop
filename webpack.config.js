@@ -30,8 +30,8 @@ var config = {
         main: ["webpack-dev-server/client"],
         // "babel-polyfill" - для поддержки последних возможностей async/await
         //  ExtractTextPlugin - app.b.css формирует на основе app
-        app: ["babel-polyfill", './app.js', './startToo.js'], // можно собирать несколько файлов в один, точка входа - app
-        startToo: './startToo.js', // другая точка входа
+        app: ["babel-polyfill", './app.js', './vendor/startToo.js'], // можно собирать несколько файлов в один, точка входа - app
+        startToo: './vendor/startToo.js', // другая точка входа
         vendor: ['react', 'react-dom', 'jquery'], // если вручную не писать './', а просто 'react'
         common_css: ['./less/main', './less/reset', './less/font-awesome'] // точка входа для стилей, она глобальная (не можем без js-точки - она пустая)
     },
