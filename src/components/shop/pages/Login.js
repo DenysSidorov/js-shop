@@ -11,8 +11,8 @@ class Login extends React.Component {
         login: '',
         pass: '',
         normal: false,
-        press: false
-
+        press: false,
+        serverGet: true
     }
 
     chPress() {
@@ -46,7 +46,9 @@ class Login extends React.Component {
     render() {
         return (
             <div className="loginPage_container">
-
+                {this.state.serverGet && <div className="loginPage_container_block">
+                    <span><i className="fa fa-briefcase fa-spin" ></i></span>
+                </div>}
                 <form action="">
                     <label htmlFor="login">Please input your LOGIN:</label>
                     <br/>
@@ -93,7 +95,6 @@ class Login extends React.Component {
                              type="button">
                             <span>Подтвердить</span>
                         </div>
-
                     }
                 </form>
             </div>
