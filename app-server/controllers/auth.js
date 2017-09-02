@@ -30,9 +30,9 @@ export const singup = (req, resp, next) => {
 }
 
 export const singin = async(req, resp, next) => {
-
     // Получим наши данные
     const {login, password} = req.body;
+    console.log(password, 'password');
     // Найдем нашего юзера в базе
     const user = User.findOne({login})
         .then(user => {

@@ -65,7 +65,7 @@ app.use('/orders' ,cors(), orderRoute);
 app.use('/api', authRoute); // singin singup
 app.use('/api', checkToken,  userRoute); // get user route
 // app.use(getUser);
-app.use('/api', checkToken,  pageRoute); //
+app.use('/api', checkToken,  pageRoute); // Use API if all normal
 app.get('/test', checkToken, (req, resp)=>{ // check token in headers
     resp.json('Success');
 });

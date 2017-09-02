@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import { loadingBarReducer ,showLoading} from 'react-redux-loading-bar'; // preloader
+import { loadingBarReducer , showLoading} from 'react-redux-loading-bar'; // preloader
 import counter from './counterRRR'
 import cartReducer from './cart'
 import confirmCardReducer from './confirmInCard'
