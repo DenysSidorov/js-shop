@@ -42,7 +42,7 @@ class MainMenu extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <LoadingBar />
+                    <LoadingBar style={{ backgroundColor: '#2EA9FD', height: '3px' }} />
                 </div>
                 <div className="left fullWidth js_search-margin"></div>
             </div>

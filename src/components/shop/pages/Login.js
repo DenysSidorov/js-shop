@@ -12,9 +12,23 @@ class Login extends React.Component {
         pass: '',
         normal: false,
         press: false,
-        serverGet: true
+        serverGet: false
     }
 
+    sendData = () => {
+        console.log('send2');
+        let {pass, login} = this.state;
+        // Отправить данные о пользователе
+        // Запустить прелоадер
+
+        // Если ошибка очистить данные
+        // Отключить прелоадер
+        // Вывести уведомление пользователю об ошибке
+
+        // Если все нормально выключить прелоадер
+        // Сохранить токен
+        // Перенаправить на другую страницу
+    }
     chPress() {
         this.setState({
             press: !this.state.press
@@ -76,23 +90,15 @@ class Login extends React.Component {
                         transitionEnterTimeout={300}
                         transitionLeaveTimeout={300}>
                         <div className="btnInLoginDis"
-                             onClick={()=> {
-                             }}
+                             onClick={this.sendData}
                              type="button">
                             <span>Подтвердить</span>
                         </div>
                     </ReactCSSTransitionGroup>
                         :
                         <div className="btnInLoginIn"
-                             onClick={()=> {
-                             }}
-                             onMouseDown={()=> {
-                                 console.log(4);
-                             }}
-                             onMouseUp={()=> {
-                                 console.log(5);
-                             }}
-                             type="button">
+                             type="button"
+                        >
                             <span>Подтвердить</span>
                         </div>
                     }
@@ -104,6 +110,3 @@ class Login extends React.Component {
 
 
 export default Login;
-
-console.log(2);
-
