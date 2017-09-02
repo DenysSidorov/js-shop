@@ -6,8 +6,9 @@ const RouteAuth = ({component: Component, ...rest})=>(
     <Route {...rest} render={(matchProps)=> {
 
         let fakeAuth = rest.authReducer.authenticated;
+        let token = localStorage.getItem('info')
         console.log(fakeAuth, 'fakeAuth ');
-        return fakeAuth
+        return fakeAuth && token
             ? <Component {...matchProps}/>
             : <Redirect to='/login'/>
     }}/>
@@ -20,9 +21,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-console.log(131323);
-console.log(131123);
-console.log(131323);
 
 export default connect(mapStateToProps, null)(RouteAuth);
 

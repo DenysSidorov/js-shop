@@ -6,7 +6,7 @@ export default  (store) =>{
 }
 
 export const initTokenAuthLocalStorage = (store) =>{
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('info');
 // If we have a token, consider the user to be signed in
     if (token) {
         // we need to update application state

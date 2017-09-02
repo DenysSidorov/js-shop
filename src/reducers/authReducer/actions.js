@@ -23,11 +23,11 @@ export function signinUser( login, password ) {
                 // - Update state to indicate user is authenticated
                 dispatch({ type: AUTH_USER });
                 // - Save the JWT token
-                localStorage.setItem('token', response.data);
+                localStorage.setItem('info', response.data);
                 // - redirect to the route '/feature'
                 // browserHistory.push('/feature');
                 dispatch(hideLoading())
-                dispatch(push('/blog'))
+                dispatch(push('/contacts'))
 
             })
             .catch((error) => {
