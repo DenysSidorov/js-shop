@@ -6,7 +6,7 @@ class Contacts extends React.Component {
         }
     render() {
         return (
-         <div style={{fontSize: '1.3rem'}}>Тут должна быть админка</div>
+         <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Тут должна быть админка</div>
         )
 
     }

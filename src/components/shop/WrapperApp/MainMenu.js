@@ -1,4 +1,5 @@
 import React from "react";
+// https://www.npmjs.com/package/react-redux-loading-bar
 import LoadingBar from 'react-redux-loading-bar';
 import {Link, NavLink} from 'react-router-dom';
 import MenuCart from '../modules/MenuCart';
