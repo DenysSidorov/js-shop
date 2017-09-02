@@ -15,10 +15,10 @@ const middleware = [
     thunk,
     routerMiddleware(history) // first place react-router-redux including, second - combineReducers
 ];
-// TODO how to use process.env.NODE_ENV from webpacl/node/environment
-// if (process.env.NODE_ENV === 'development') {
+
+ if (process.env.NODE_ENV === 'development') {
     setDevTools();
-// }
+ }
 
 const composedEnhancers = compose(
     applyMiddleware(...middleware),
@@ -30,12 +30,13 @@ const store = createStore(
     initialState,
     composedEnhancers
 );
-window.storet = store;
+
 
 export default store
-
+if (process.env.NODE_ENV === 'development') { window.storet = store;}
 
 function setDevTools()  {
+
     // https://github.com/zalmoxisus/redux-devtools-extension#usage
     const devToolsExtension = window.devToolsExtension;
     if (typeof devToolsExtension === 'function') {
