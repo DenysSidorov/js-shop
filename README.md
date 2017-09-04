@@ -2,14 +2,18 @@
 
 Main tools:
 
-- Webpack
+- MongoDB
 - Node
+- Express
+- Mongoose
+- MVC
 - SASS / LESS
 - JQuery
 - Redux/Saga/Middleware
 - React/Libraries/Router4
-- Express/Mongoose/MVC
-- MongoDB
+- Webpack
+
+
 
 Not implemented :
 
