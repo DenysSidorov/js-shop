@@ -27,6 +27,7 @@ Not implemented :
 - _~~react inputs~~_
 - _images from hdd_
 - _blog_
+- Admin profile/ UserProfile
 - _USER PANEL_
 - _images from hdd_
        
