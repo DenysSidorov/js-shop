@@ -7,10 +7,11 @@ Main tools:
 - Express
 - Mongoose
 - MVC
+- Redux/Saga/Middleware
+- ReactJS/Libraries/Router4
 - SASS / LESS
 - JQuery
-- Redux/Saga/Middleware
-- React/Libraries/Router4
+
 - Webpack
 
 
