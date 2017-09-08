@@ -71,7 +71,7 @@ class Login extends React.Component {
                     <span><i className="fa fa-briefcase fa-spin" ></i></span>
                 </div>}
                 <form action="">
-                    <label htmlFor="login">Please input your LOGIN:</label>
+                    <label htmlFor="login">Please input your Email:</label>
                     <br/>
                     <input value={this.state.login}
                            onChange={this.chLogin.bind(this)}

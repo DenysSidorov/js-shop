@@ -21,10 +21,10 @@ class Login extends React.Component {
 
     sendData = () => {
         console.log('send2');
-        let {login, pass} = this.state;
-        console.log(login, pass, 'req111111');
-        this.props.signinUser(login, pass);
-        this.setState({pass: '', normal: false});
+        // let {login, pass} = this.state;
+        // console.log(login, pass, 'req111111');
+        // this.props.signinUser(login, pass);
+        // this.setState({pass: '', normal: false});
         // Отправить данные о пользователе
         // Запустить прелоадер
 
@@ -49,6 +49,23 @@ class Login extends React.Component {
         }
     }
 
+    chPassRepeat(e) {
+        console.log(e.target.value, 'repeat');
+        // let val = e.target.value;
+        // if (val.length < 70) {
+        //     this.setState({pass: val}, this.validateData)
+        // }
+    }
+
+
+    chNickName(e) {
+        let val = e.target.value;
+        console.log(val, 'chNickName');
+        // if (val.length < 70) {
+        //     this.setState({pass: val}, this.validateData)
+        // }
+    }
+
     chPass(e) {
         let val = e.target.value;
         if (val.length < 70) {
@@ -71,7 +88,7 @@ class Login extends React.Component {
                     <span><i className="fa fa-briefcase fa-spin" ></i></span>
                 </div>}
                 <form action="">
-                    <label htmlFor="login">Please input your LOGIN:</label>
+                    <label htmlFor="login">Please input your Email:</label>
                     <br/>
                     <input value={this.state.login}
                            onChange={this.chLogin.bind(this)}
@@ -88,12 +105,23 @@ class Login extends React.Component {
                            placeholder="Your password"/>
                     <br/>
                     <br/>
-
+                    <label htmlFor="passRepeat">Repeat your PASSWORD:</label>
+                    <br/>
                     <input value={this.state.pass}
-                           onChange={this.chPass.bind(this)}
-                           name="pass"
+                           onChange={this.chPassRepeat.bind(this)}
+                           name="passRepeat"
                            type="password"
-                           placeholder="Your password"/>
+                           placeholder="Repeat password"/>
+                    <br/>
+                    <br/>
+                    <label htmlFor="nickName">Input your NickName:</label>
+                    <br/>
+                    <input value={this.state.pass}
+                           onChange={this.chNickName.bind(this)}
+                           name="nickName"
+                           type="password"
+                           placeholder="Your nickname"/>
+                    <br/>
                     <br/>
                     <br/>
 
