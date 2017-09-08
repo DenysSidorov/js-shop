@@ -89,6 +89,14 @@ class Login extends React.Component {
                     <br/>
                     <br/>
 
+                    <input value={this.state.pass}
+                           onChange={this.chPass.bind(this)}
+                           name="pass"
+                           type="password"
+                           placeholder="Your password"/>
+                    <br/>
+                    <br/>
+
                     {this.state.normal
                         ? <ReactCSSTransitionGroup
                         transitionName="example"
