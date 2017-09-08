@@ -34,8 +34,15 @@ $robotoRegular: 'Roboto-Regular';
     border-radius: 7px;
     padding: 4px;
   }
-
 }
+.formRegistration{
+  //background-color: rebeccapurple;
+  .h1Registration{
+    font: 1.5rem/2rem $robotoMedium;
+    margin-bottom: 20px;
+  }
+}
+
 .btnInLoginIn{
   width: 120px;
   display: flex;

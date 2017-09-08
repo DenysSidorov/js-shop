@@ -87,7 +87,10 @@ $robotoRegular: 'Roboto-Regular';
   transform: translateX(0);
   transition: 0.4s;
 }
-
+.loginTitle{
+  font: 1.5rem/2rem $robotoMedium;
+  margin-bottom: 20px;
+}
 
 
 .item {

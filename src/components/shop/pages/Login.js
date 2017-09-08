@@ -71,7 +71,8 @@ class Login extends React.Component {
                     <span><i className="fa fa-briefcase fa-spin" ></i></span>
                 </div>}
                 <form action="">
-                    <label htmlFor="login">Please input your Email:</label>
+                    <h1 className="loginTitle">Ввойдите в систему</h1>
+                    <label htmlFor="login">Введите свой Email:</label>
                     <br/>
                     <input value={this.state.login}
                            onChange={this.chLogin.bind(this)}
@@ -79,7 +80,7 @@ class Login extends React.Component {
                            type="text"
                            placeholder="Your login"/>
                     <br/> <br/>
-                    <label htmlFor="pass">Please input your PASSWORD:</label>
+                    <label htmlFor="pass">Введите свой Пароль:</label>
                     <br/>
                     <input value={this.state.pass}
                            onChange={this.chPass.bind(this)}

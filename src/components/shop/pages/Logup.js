@@ -1,5 +1,5 @@
 import React from "react";
-import "./login.scss";
+import "./logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
@@ -14,6 +14,8 @@ class Login extends React.Component {
     state = {
         login: '',
         pass: '',
+        repPass: '',
+        nick: '',
         normal: false,
         press: false,
         serverGet: false
@@ -51,19 +53,19 @@ class Login extends React.Component {
 
     chPassRepeat(e) {
         console.log(e.target.value, 'repeat');
-        // let val = e.target.value;
-        // if (val.length < 70) {
-        //     this.setState({pass: val}, this.validateData)
-        // }
+        let val = e.target.value;
+        if (val.length < 70) {
+            this.setState({repPass: val}, this.validateData)
+        }
     }
 
 
     chNickName(e) {
         let val = e.target.value;
         console.log(val, 'chNickName');
-        // if (val.length < 70) {
-        //     this.setState({pass: val}, this.validateData)
-        // }
+        if (val.length < 70) {
+            this.setState({nick: val}, this.validateData)
+        }
     }
 
     chPass(e) {
@@ -74,7 +76,12 @@ class Login extends React.Component {
     }
 
     validateData() {
-        if (this.state.login.length >= 4 && this.state.pass.length >= 4) {
+        let {login,nick, pass, repPass } = this.state;
+        if (login.length >= 4
+            && nick.length >= 4
+            && pass.length >= 4
+            && (pass === repPass)
+        ) {
             this.setState({normal: true});
         } else {
             this.setState({normal: false});
@@ -87,8 +94,9 @@ class Login extends React.Component {
                 {this.state.serverGet && <div className="loginPage_container_block">
                     <span><i className="fa fa-briefcase fa-spin" ></i></span>
                 </div>}
-                <form action="">
-                    <label htmlFor="login">Please input your Email:</label>
+                <form className="formRegistration" action="">
+                    <h1 className="h1Registration">Регистрация в системе</h1>
+                    <label htmlFor="login">Введите свой Email:</label>
                     <br/>
                     <input value={this.state.login}
                            onChange={this.chLogin.bind(this)}
@@ -96,7 +104,7 @@ class Login extends React.Component {
                            type="text"
                            placeholder="Your login"/>
                     <br/> <br/>
-                    <label htmlFor="pass">Please input your PASSWORD:</label>
+                    <label htmlFor="pass">Введите свой Пароль:</label>
                     <br/>
                     <input value={this.state.pass}
                            onChange={this.chPass.bind(this)}
@@ -105,18 +113,18 @@ class Login extends React.Component {
                            placeholder="Your password"/>
                     <br/>
                     <br/>
-                    <label htmlFor="passRepeat">Repeat your PASSWORD:</label>
+                    <label htmlFor="passRepeat">Важно повторить пароль:</label>
                     <br/>
-                    <input value={this.state.pass}
+                    <input value={this.state.repPass}
                            onChange={this.chPassRepeat.bind(this)}
                            name="passRepeat"
                            type="password"
                            placeholder="Repeat password"/>
                     <br/>
                     <br/>
-                    <label htmlFor="nickName">Input your NickName:</label>
+                    <label htmlFor="nickName">Введите своё имя в системе:</label>
                     <br/>
-                    <input value={this.state.pass}
+                    <input value={this.state.nick}
                            onChange={this.chNickName.bind(this)}
                            name="nickName"
                            type="password"
