@@ -4,8 +4,9 @@ import passwordHash from 'password-hash';
 import tokenGenerator from 'token-generator'
 /*index - индекс для быстрого поиска*/
 const UserSchema = new Schema ({
-   login: {type: String, unique: true, lowercase: true, index: true},
-   password: String
+   login: {type: String, unique: true,  index: true},
+   password: {type: String},
+    nick: {type: String}
 });
 
 // mongoose middleware

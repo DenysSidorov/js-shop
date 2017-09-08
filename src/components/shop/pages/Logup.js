@@ -3,7 +3,7 @@ import "./logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {signinUser} from '../../../reducers/authReducer/actions';
+import {signinUser, signupUser} from '../../../reducers/authReducer/actions';
 
 class Login extends React.Component {
     constructor(pr) {
@@ -25,8 +25,8 @@ class Login extends React.Component {
         console.log('send2');
         let {nick, login, pass} = this.state;
         console.log(nick, login, pass, 'req111111');
-        // this.props.signinUser(login, pass);
-        this.setState({ repPass: '', normal: false});
+        this.props.signupUser(login, pass, nick);
+        this.setState({ repPass: '', pass: '', normal: false});
         // Отправить данные о пользователе
         // Запустить прелоадер
 
@@ -129,7 +129,7 @@ class Login extends React.Component {
                     <input value={this.state.nick}
                            onChange={this.chNickName.bind(this)}
                            name="nickName"
-                           type="password"
+                           type="text"
                            placeholder="Your nickname"/>
                     <br/>
                     <br/>
@@ -171,6 +171,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         signinUser: (login, password) => signinUser(login, password),
+        signupUser: (login, password, nick) => signupUser(login, password, nick),
     }, dispatch)
 }
 

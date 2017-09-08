@@ -15,7 +15,7 @@ import morgan from 'morgan';
 
 import config from './config/index'; // Конфигурация
 import authRoute from './app-server/routes/auth';
-import userRoute from './app-server/routes/user';
+import userRoute from './app-server/shop/routes/user';
 import pageRoute from './app-server/routes/page';
 import goodRoute from './app-server/shop/routes/goodRoute';
 import orderRoute from './app-server/shop/routes/orderRoute';
@@ -23,7 +23,7 @@ import orderRoute from './app-server/shop/routes/orderRoute';
 
 import errorMiddleWare from './app-server/middlewares/errors';
 
-import getUser from './app-server/middlewares/getUser'; // Проверка наличия токена
+import getUser from './app-server/shop/middlewares/getUser'; // Проверка наличия токена
 import checkToken from './app-server/middlewares/checkToken'; // Проверка наличия токена
 
 

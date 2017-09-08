@@ -9,7 +9,12 @@ import {
 } from './types';
 
 const ROOT_URL = process.env.ROOT_URL;
-
+console.log(12312312);
+console.log(12312312);
+console.log(123123142);
+console.log(123123132);
+console.log(123123132);
+console.log(123123123);
 
 export function signinUser( login, password ) {
     console.log(login, password , 'REQUEST222');
@@ -37,6 +42,34 @@ export function signinUser( login, password ) {
                 dispatch(authError('Bad login or password'));
             });
     }
+}
+export function signupUser( login, password, nick ) {
+    console.log(login, password, nick, 'REQUEST222');
+  return {type: 'werwerwe', payload:'asd'};
+    // return function(dispatch) {
+    //     // Submit email/password to the server
+    //     dispatch(showLoading())
+    //     axios.post(`${ROOT_URL}/api/signin`, { login, password })
+    //         .then(response => {
+    //             console.log(response, 'resp');
+    //             // If request is good...
+    //             // - Update state to indicate user is authenticated
+    //             dispatch({ type: AUTH_USER });
+    //             // - Save the JWT token
+    //             localStorage.setItem('info', response.data);
+    //             // - redirect to the route '/feature'
+    //             // browserHistory.push('/feature');
+    //             dispatch(hideLoading())
+    //             dispatch(push('/profile'))
+    //
+    //         })
+    //         .catch((error) => {
+    //             // If request is bad...
+    //             // - Show an error to the user
+    //             dispatch(hideLoading());
+    //             dispatch(authError('Bad login or password'));
+    //         });
+    // }
 }
 
 export function authError(error) {

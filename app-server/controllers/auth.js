@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
 import config from "../../config/index"; // Генерация токена
 
@@ -45,7 +45,7 @@ export const singin = async(req, resp, next) => {
         const user = User.findOne({login})
             .then(user => {
                 console.log(1);
-                if (user.password == password) {
+                if (user && user.password == password) {
                     console.log(2);
 
                     /** Преймущество токена в том,что его можно выдавать не только браузеру но и приложению
