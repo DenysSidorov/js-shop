@@ -21,6 +21,8 @@ import Profile from "../pages/Profile";
 import Contacts from "../pages/Contacts";
 import Login from "../pages/Login";
 import Logup from "../pages/Logup";
+import VerifyEmail from "../pages/VerifyEmail";
+
 import NotFound from "../pages/NotFound";
 import RouteAuth from "../helpers/RouteAuth";
 

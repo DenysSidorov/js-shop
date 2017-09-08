@@ -7,31 +7,32 @@ export const singup = (req, resp, next) => {
     //console.log(req, 'REQ');
     console.log(credentials, 'credentials');
     let user;
-    if (credentials.login && credentials.password){
-        // --- НЕ ЗАВЕЛОСЬ =(((
-        // Используем try/catch - т.к используем async/await
-        //  try {
-        //     await User.create(config); // т.к тут асинхронный код - исп. await
-        // } catch (err){
-        //     next(err); // Если ощибка - прокидываем ее дальше, возможно express ее перехватит
-        // Мы не используем callback - т.к как испоьзуем async/await
-        // }  --- НЕ ЗАВЕЛОСЬ =(((
-
-        User.create(credentials, (err, user) => {
-            // Тут асинхронная операция
-            if (err) {
-                let {message} = err;
-                next({status: 400, message})
-            }
-            ;
-            // елси юзер успешно создан - передаем его на клиент
-            if (user) {
-                return resp.json(user);
-            }
-        })
-    } else {
-        next({status: 400, message : 'You need have password and login'})
-    }
+    resp.json({ok:'tipTop'});
+    // if (credentials.login && credentials.password){
+    //     // --- НЕ ЗАВЕЛОСЬ =(((
+    //     // Используем try/catch - т.к используем async/await
+    //     //  try {
+    //     //     await User.create(config); // т.к тут асинхронный код - исп. await
+    //     // } catch (err){
+    //     //     next(err); // Если ощибка - прокидываем ее дальше, возможно express ее перехватит
+    //     // Мы не используем callback - т.к как испоьзуем async/await
+    //     // }  --- НЕ ЗАВЕЛОСЬ =(((
+    //
+    //     User.create(credentials, (err, user) => {
+    //         // Тут асинхронная операция
+    //         if (err) {
+    //             let {message} = err;
+    //             next({status: 400, message})
+    //         }
+    //         ;
+    //         // елси юзер успешно создан - передаем его на клиент
+    //         if (user) {
+    //             return resp.json(user);
+    //         }
+    //     })
+    // } else {
+    //     next({status: 400, message : 'You need have password and login'})
+    // }
 }
 
 export const singin = async(req, resp, next) => {
