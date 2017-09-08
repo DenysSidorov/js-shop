@@ -20,6 +20,7 @@ import AfterOrder from "../pages/AfterOrder";
 import Profile from "../pages/Profile";
 import Contacts from "../pages/Contacts";
 import Login from "../pages/Login";
+import Logup from "../pages/Logup";
 import NotFound from "../pages/NotFound";
 import RouteAuth from "../helpers/RouteAuth";
 
@@ -47,6 +48,7 @@ class WrapperApp extends React.Component {
                                     <Route exact path="/contacts" component={Contacts}/>
                                     <RouteAuth path="/profile" component={Profile}/>
                                     <Route path="/login" component={Login}/>
+                                    <Route path="/logup" component={Logup}/>
                                     <Route component={NotFound}/>
                                     {/*<Route exact path="/404" component={NotFound} />*/}
                                     {/*<Redirect to="/404" />*/}
