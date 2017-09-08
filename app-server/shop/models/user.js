@@ -6,7 +6,7 @@ import tokenGenerator from 'token-generator'
 const UserSchema = new Schema ({
    login: {type: String, unique: true,  index: true},
    password: {type: String, minlength: 4},
-    nick: {type: String, minlength: 4}
+   nick: {type: String, minlength: 4}
 });
 
 // mongoose middleware

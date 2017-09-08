@@ -6,9 +6,37 @@ export const singup = (req, resp, next) => {
     let credentials = req.body; // Вытащим данные от юзера из формы.
     //console.log(req, 'REQ');
     console.log(credentials, 'credentials');
-    let user;
-    resp.json({email: credentials.email});
-    // if (credentials.)
+    if (credentials.login) {
+        User.findOne({login: credentials.login}, (err, user)=> {
+            if (err) {
+                let {message} = err;
+                next({status: 400, message})
+            console.log(2);
+            }
+            if(user){
+                console.log(user, 'USER');
+                next({status: 400, message : 'We have already had the same user'})
+            } else {
+                resp.json({email: credentials.login});
+            }
+
+        })
+    } else {
+        next({status: 400, message : 'You need have email'})
+    }
+//resp.json({email: credentials.login});
+
+    //
+
+    // TODO Send email to user with dataToken and date and another field
+
+    // if (credentials.login){
+    //
+    //         console.log(_id, '_id');
+    //         // Найдем по _id и вернем с "без = 0" пароля
+    //         return User.findOne({_id}, {password: 0})
+    // }
+
     // if (credentials.login && credentials.password){
     //     // --- НЕ ЗАВЕЛОСЬ =(((
     //     // Используем try/catch - т.к используем async/await
@@ -83,6 +111,6 @@ export const singin = async(req, resp, next) => {
                 })
             });
     } else {
-        next({status: 400, message : 'You need have password and login'})
+        next({status: 400, message: 'You need have password and login'})
     }
 }

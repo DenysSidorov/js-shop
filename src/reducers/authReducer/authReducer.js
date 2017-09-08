@@ -2,7 +2,8 @@ import {
     AUTH_USER,
     UNAUTH_USER,
     AUTH_ERROR,
-    FETCH_MESSAGE
+    FETCH_MESSAGE,
+    DELETE_ERROR_MESSAGE
 } from './types';
 let  initialState = {error:'', authenticated: false, message: ''}
 
@@ -16,6 +17,9 @@ export default function(state = initialState, action) {
             return { ...state, error: action.payload };
         case FETCH_MESSAGE:
             return { ...state, message: action.payload };
+        case DELETE_ERROR_MESSAGE:
+            return { ...state, error: ''};
+
     }
 
     return state;
