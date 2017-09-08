@@ -9,12 +9,6 @@ import {
 } from './types';
 
 const ROOT_URL = process.env.ROOT_URL;
-console.log(12312312);
-console.log(12312312);
-console.log(123123142);
-console.log(123123132);
-console.log(123123132);
-console.log(123123123);
 
 export function signinUser( login, password ) {
     console.log(login, password , 'REQUEST222');
@@ -54,13 +48,16 @@ export function signupUser( login, password, nick ) {
                 console.log(response, 'resp');
                 // If request is good...
                 // - Update state to indicate user is authenticated
-                dispatch({ type: AUTH_USER });
+                // dispatch({ type: AUTH_USER });
                 // - Save the JWT token
-                localStorage.setItem('info', response.data);
+                // localStorage.setItem('info', response.data);
                 // - redirect to the route '/feature'
                 // browserHistory.push('/feature');
                 dispatch(hideLoading())
-                dispatch(push('/profile'))
+
+                dispatch(push({
+                    pathname: '/verify-email', state: response.data,
+                }))
 
             })
             .catch((error) => {

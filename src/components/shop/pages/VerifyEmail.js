@@ -6,9 +6,15 @@ class VerifyEmail extends React.Component {
     }
 
     render = ()=>{
+        console.log(this.props, 'propspsss');
+        console.log(this.props, 'propspsss');
         return (
-            <div className="blogPage-container">
-                <p>Постов нет !</p>
+            <div className="verifyEmailContainer">
+                <p>Подтвердите свою почту, письмо с ссылкой о подтверждении отправленно на
+                    {this.props.history.location.state.email
+                    &&
+                        <span style={{color: 'green'}}> {this.props.history.location.state.email}</span>}
+                </p>
             </div>
         )
 

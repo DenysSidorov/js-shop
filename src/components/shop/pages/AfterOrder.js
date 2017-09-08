@@ -10,7 +10,10 @@ class AfterOrder extends React.Component {
         return (
             <div className="greatPage-container">
                 <p>Спасибо за ваш заказ. Наши менеджеры свяжутся с Вами в ближайшее время!</p>
-                {this.props.history.location.state && <p>Номер вашего заказа: <span style={{color: 'green'}}>{this.props.history.location.state}</span></p>}
+                {this.props.history.location.state
+                && <p>Номер вашего заказа:
+                    <span style={{color: 'green'}}>{this.props.history.location.state}</span>
+                </p>}
               <p><Link to="/" style={{color: 'blue'}}>На главную</Link></p>
             </div>
         )

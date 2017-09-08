@@ -7,7 +7,8 @@ export const singup = (req, resp, next) => {
     //console.log(req, 'REQ');
     console.log(credentials, 'credentials');
     let user;
-    resp.json({ok:'tipTop'});
+    resp.json({email: credentials.email});
+    // if (credentials.)
     // if (credentials.login && credentials.password){
     //     // --- НЕ ЗАВЕЛОСЬ =(((
     //     // Используем try/catch - т.к используем async/await
