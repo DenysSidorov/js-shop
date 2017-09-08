@@ -23,10 +23,10 @@ class Login extends React.Component {
 
     sendData = () => {
         console.log('send2');
-        // let {login, pass} = this.state;
-        // console.log(login, pass, 'req111111');
+        let {nick, login, pass} = this.state;
+        console.log(nick, login, pass, 'req111111');
         // this.props.signinUser(login, pass);
-        // this.setState({pass: '', normal: false});
+        this.setState({ repPass: '', normal: false});
         // Отправить данные о пользователе
         // Запустить прелоадер
 
@@ -76,8 +76,9 @@ class Login extends React.Component {
     }
 
     validateData() {
+        var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let {login,nick, pass, repPass } = this.state;
-        if (login.length >= 4
+        if (emailRegExp.test(login)
             && nick.length >= 4
             && pass.length >= 4
             && (pass === repPass)
@@ -96,6 +97,7 @@ class Login extends React.Component {
                 </div>}
                 <form className="formRegistration" action="">
                     <h1 className="h1Registration">Регистрация в системе</h1>
+                    <h2 className="h1RegistrationRules">Все поля должны иметь более 4-х символов</h2>
                     <label htmlFor="login">Введите свой Email:</label>
                     <br/>
                     <input value={this.state.login}

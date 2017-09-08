@@ -57,7 +57,9 @@ class Login extends React.Component {
     }
 
     validateData() {
-        if (this.state.login.length >= 4 && this.state.pass.length >= 4) {
+        var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (emailRegExp.test(this.state.login) && this.state.pass.length >= 4) {
             this.setState({normal: true});
         } else {
             this.setState({normal: false});

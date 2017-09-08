@@ -39,7 +39,12 @@ $robotoRegular: 'Roboto-Regular';
   //background-color: rebeccapurple;
   .h1Registration{
     font: 1.5rem/2rem $robotoMedium;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  }
+  .h1RegistrationRules{
+    font: 1.2rem/2rem $robotoRegular;
+    margin-bottom: 10px;
+    color: #909090;
   }
 }
 
