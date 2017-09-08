@@ -12,7 +12,8 @@ import {
 const ROOT_URL = process.env.ROOT_URL;
 
 export function deleteErrorMessage(){
-    return {type: DELETE_ERROR_MESSAGE}
+    return {type: DELETE_ERROR_MESSAGE};
+
 }
 export function signinUser( login, password ) {
     console.log(login, password , 'REQUEST222');

@@ -3,14 +3,21 @@ import "./logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {signinUser, signupUser} from '../../../reducers/authReducer/actions';
+import {signinUser, signupUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
 
-class Login extends React.Component {
+class Logup extends React.Component {
     constructor(pr) {
         super(pr);
         this.chPress = this.chPress.bind(this);
     }
 
+    componentWillMount(){
+        console.log('DidMount2');
+        this.props.delErrorMessage();
+        // window.st= this.props.store;
+        // this.props.store.dispatch(deleteErrorMessage());
+        // dispatch(deleteErrorMessage());
+    }
     state = {
         login: '',
         pass: '',
@@ -172,7 +179,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         signinUser: (login, password) => signinUser(login, password),
         signupUser: (login, password, nick) => signupUser(login, password, nick),
+        delErrorMessage: () => deleteErrorMessage(),
     }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Logup);
