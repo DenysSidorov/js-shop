@@ -3,7 +3,7 @@ import "./login.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {signinUser} from '../../../reducers/authReducer/actions';
+import {signinUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
 
 class Login extends React.Component {
     constructor(pr) {
@@ -17,6 +17,10 @@ class Login extends React.Component {
         normal: false,
         press: false,
         serverGet: false
+    }
+
+    componentWillMount(){
+        this.props.delErrorMessage();
     }
 
     sendData = () => {
@@ -128,6 +132,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         signinUser: (login, password) => signinUser(login, password),
+        delErrorMessage: () => deleteErrorMessage(),
     }, dispatch)
 }
 

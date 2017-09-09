@@ -3,7 +3,7 @@ import "./logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {signinUser, signupUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
+import {signupUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
 
 class Logup extends React.Component {
     constructor(pr) {
@@ -12,7 +12,6 @@ class Logup extends React.Component {
     }
 
     componentWillMount(){
-        console.log('DidMount2');
         this.props.delErrorMessage();
         // window.st= this.props.store;
         // this.props.store.dispatch(deleteErrorMessage());
@@ -177,7 +176,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
-        signinUser: (login, password) => signinUser(login, password),
         signupUser: (login, password, nick) => signupUser(login, password, nick),
         delErrorMessage: () => deleteErrorMessage(),
     }, dispatch)
