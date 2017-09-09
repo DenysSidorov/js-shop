@@ -17,11 +17,13 @@ export const singup = (req, resp, next) => {
                 console.log(user, 'USER');
                 next({status: 400, message : 'We have already had the same user'})
             } else {
-                sendMailForSingup({
+                // отправка на почту
+                setTimeout(()=>{sendMailForSingup({
                     email: credentials.login,
                     nick: credentials.nick,
                     link: '134214231423fasdfdasfad_token_with_date'
-                });
+                })}, 0);
+
 // TODO
 
                 resp.json({email: credentials.login});
