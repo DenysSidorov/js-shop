@@ -1,12 +1,12 @@
 import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
 import config from "../../config/index"; // Генерация токена
-
+import {sendMailForSingup} from '../shop/services/sendMail';
 export const singup = (req, resp, next) => {
     let credentials = req.body; // Вытащим данные от юзера из формы.
     //console.log(req, 'REQ');
     console.log(credentials, 'credentials');
-    if (credentials.login) {
+    if (credentials.login && credentials.nick ) {
         User.findOne({login: credentials.login}, (err, user)=> {
             if (err) {
                 let {message} = err;
@@ -17,6 +17,12 @@ export const singup = (req, resp, next) => {
                 console.log(user, 'USER');
                 next({status: 400, message : 'We have already had the same user'})
             } else {
+                sendMailForSingup({
+                    email: credentials.login,
+                    nick: credentials.nick,
+                    link: '134214231423fasdfdasfad_token_with_date'
+                });
+// TODO
 
                 resp.json({email: credentials.login});
             }
