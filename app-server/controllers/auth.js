@@ -17,6 +17,7 @@ export const singup = (req, resp, next) => {
                 console.log(user, 'USER');
                 next({status: 400, message : 'We have already had the same user'})
             } else {
+
                 resp.json({email: credentials.login});
             }
 
