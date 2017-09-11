@@ -37,7 +37,7 @@ mongoose.connect(config.backend.database, {}, err => {
 });
 
 /** Запуск приожения на порте*/
-app.listen(config.backend.port, (err)=>{
+app.listen(config.backend.port, config.backend.domain, config.backend.maxConnects, (err)=>{
     if (err) throw err;
     console.log('Server listening on port ' + config.backend.port );
 });
