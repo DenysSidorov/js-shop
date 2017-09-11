@@ -35,4 +35,4 @@ Not implemented :
 - Admin profile/ UserProfile
 - _USER PANEL_
 - _images from hdd_
-       
+- _send email to user for registration_
