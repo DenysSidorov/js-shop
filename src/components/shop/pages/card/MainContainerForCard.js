@@ -139,7 +139,7 @@ class MainContainerForCard extends React.Component {
                     cancelHandler={this.closeConfirms.bind(this)}
                     unmountConfirm={this.closeConfirms.bind(this)}
                 >
-                    cashback
+                    {this.props.confirmKind == 'verif' ? 'verify' : 'cashback'}
                 </Confirm>: null}
             </div>
         )
