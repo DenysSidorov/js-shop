@@ -6,12 +6,17 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {pushToCart} from "../../../../reducers/cart";
 import {changeConfirm} from "../../../../reducers/confirmInCard";
-import ExchangeConfirm from './confirms/Exchange';
+import Exchange from './confirms/Exchange';
+import Garanty from './confirms/Garanty';
+import Verify from './confirms/Verify';
+import Payment from './confirms/Payment';
+import Delivery from './confirms/Delivery';
 class MainContainerForCard extends React.Component {
     constructor(props) {
         super(props);
 
         this.showConfirm = this.showConfirm.bind(this);
+        this.showConfirmWithKind = this.showConfirmWithKind.bind(this);
         //  this.closeConfirms = this.closeConfirms.bind(this);
     }
 
@@ -36,6 +41,17 @@ class MainContainerForCard extends React.Component {
         //     kindConfirm: kind
         // })
         console.log(this.props.confirmKind, 'show reducer');
+    }
+    showConfirmWithKind(){
+        /*{this.props.confirmKind == 'verif' ? 'verify' : 'cashback'}*/
+        switch(this.props.confirmKind){
+            case('cashback'): return <Verify/>; break; //
+            case('garanty'): return <Verify/>; break;
+            case('verif'): return <Verify/>; break; //
+            case('deliv'): return <Delivery/>; break;
+            case('payment'): return <Payment/>; break;
+            default : return <Garanty/>;
+        }
     }
     render() {
         console.log('rerender');
@@ -140,8 +156,7 @@ class MainContainerForCard extends React.Component {
                     cancelHandler={this.closeConfirms.bind(this)}
                     unmountConfirm={this.closeConfirms.bind(this)}
                 >
-                    <ExchangeConfirm/>
-                    {/*{this.props.confirmKind == 'verif' ? 'verify' : 'cashback'}*/}
+                    {this.showConfirmWithKind()}
                 </Confirm>: null}
             </div>
         )
