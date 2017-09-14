@@ -18,7 +18,8 @@ class ExchangeConfirm extends React.Component {
 
                     <p className="exchangeContainer__item">1. Покупатель должен предоставить доказательство покупки с указаной датой</p>
                     <p className="exchangeContainer__item">2. 14 дневный срок для возвратов отсчитывается с момента приобретения товара</p>
-                    <p className="exchangeContainer__item">3. У продукта сохранен товарный вид 4. Затраты на обратную доставку оплачиваются покупателем</p>
+                    <p className="exchangeContainer__item">3. У продукта сохранен товарный вид</p>
+                    <p className="exchangeContainer__item">4. Затраты на обратную доставку оплачиваются покупателем</p>
                 </div>
             </div>
         )
