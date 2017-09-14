@@ -45,8 +45,8 @@ class MainContainerForCard extends React.Component {
     showConfirmWithKind(){
         /*{this.props.confirmKind == 'verif' ? 'verify' : 'cashback'}*/
         switch(this.props.confirmKind){
-            case('cashback'): return <Verify/>; break; //
-            case('garanty'): return <Verify/>; break;
+            case('cashback'): return <Exchange/>; break;
+            case('garanty'): return <Garanty/>; break;
             case('verif'): return <Verify/>; break; //
             case('deliv'): return <Delivery/>; break;
             case('payment'): return <Payment/>; break;

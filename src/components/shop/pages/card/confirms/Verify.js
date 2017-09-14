@@ -7,14 +7,15 @@ class Verify extends React.Component {
     render() {
         return (
             <div className="exchangeContainer">
-                <div className="exchangeContainer__title">Качество и гарантия</div>
+                <div className="exchangeContainer__title">Проверка товара</div>
                 <div>
-                    <p className="exchangeContainer__desc">Мы в iLounge сделаем все возможное, что бы решить вашу проблему, которая возникла с любым из наших товаров. Перейдя на "американский" метод обслуживания клиентов, мы даем вам больше гарантий, чем закон о защите прав потребителя. При этом, бюрократические моменты сведены к минимуму.</p>
+                    <p className="exchangeContainer__desc">Перед получением товара на наши склады от наших поставщиков -  мы всегда проверяем товары на царапины, соответствие цвету и все заранее уговоренные параметры. Каждая еденица товара проходит осмотр!</p>
 
-                    <p className="exchangeContainer__titleSub">В случае неприятности, мы:</p>
+                    <p className="exchangeContainer__titleSub">Главные характеристики осмотра</p>
 
-                    <p className="exchangeContainer__item">1. Всегда дадим консультацию о товаре</p>
-                    <p className="exchangeContainer__item">2. Обменяем или вернем деньги в течение 30-ти дней, если товар бракованный или некачественный</p>
+                    <p className="exchangeContainer__item">1. Параметры на упаковке и в документах</p>
+                    <p className="exchangeContainer__item">2. Вес, цвет, модель, размер</p>
+                    <p className="exchangeContainer__item">3. Качество изделия, хрупкость</p>
                 </div>
             </div>
         )
