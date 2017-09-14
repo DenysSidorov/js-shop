@@ -6,7 +6,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {pushToCart} from "../../../../reducers/cart";
 import {changeConfirm} from "../../../../reducers/confirmInCard";
-import ExchangeConfirm from './confirms/exchange';
+import ExchangeConfirm from './confirms/Exchange';
 class MainContainerForCard extends React.Component {
     constructor(props) {
         super(props);
