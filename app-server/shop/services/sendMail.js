@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import mailSettings from "../../../config/index";
+import config from "../../../config/index";
 // create reusable transporter object using the default SMTP transport
 //var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
 // https://nodemailer.com/about/
@@ -74,7 +75,8 @@ export const sendMailForSingup = ({email, nick, link})=> {
         text: 'Для подтверждения регистрации на сайте перейдите по следующей ссылке:', // plaintext body
         html: `<div>
             <p>Вы прошли регистрацию в онлайн магазине. Остался последний этап!</p>
-            <a href="${link}">Для подтверждения нажмите на ссылку...</a>
+            <a href="http://${config.backend.domain}:${config.backend.port}/api/ct?t=${link}">
+            Для подтверждения нажмите на ссылку...</a>
         </div>` // html body
     };
 

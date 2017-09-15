@@ -126,3 +126,10 @@ export const singin = async(req, resp, next) => {
         next({status: 400, message: 'You need have password and login'})
     }
 }
+export const checkTokenFromEmail = async(req, resp, next) => {
+
+console.log(req.params, 'par');
+console.log(req.body, 'body');
+console.log(req, 'req');
+    resp.json({email: 'cool'})
+}
