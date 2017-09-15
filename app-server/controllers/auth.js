@@ -6,7 +6,7 @@ export const singup = (req, resp, next) => {
     let credentials = req.body; // Вытащим данные от юзера из формы.
     //console.log(req, 'REQ');
     console.log(credentials, 'credentials');
-    if (credentials.login && credentials.nick ) {
+    if (credentials.login && credentials.nick && credentials.password ) {
         User.findOne({login: credentials.login}, (err, user)=> {
             if (err) {
                 let {message} = err;
@@ -17,21 +17,24 @@ export const singup = (req, resp, next) => {
                 console.log(user, 'USER');
                 next({status: 400, message : 'We have already had the same user'})
             } else {
+                // Формируем токен
+                // Signing a token with 10 minutes of expiration
+                var token = jwt.sign({
+                    data:credentials
+                }, config.backend.secretWord, { expiresIn: '3h' });
+
                 // отправка на почту
                 setTimeout(()=>{sendMailForSingup({
                     email: credentials.login,
                     nick: credentials.nick,
-                    link: '134214231423fasdfdasfad_token_with_date'
+                    token: token
                 })}, 0);
-
-// TODO
-
                 resp.json({email: credentials.login});
             }
 
         })
     } else {
-        next({status: 400, message : 'You need have email'})
+        next({status: 400, message : 'You have bad credentials'})
     }
 //resp.json({email: credentials.login});
 
