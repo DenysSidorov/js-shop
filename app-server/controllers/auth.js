@@ -91,8 +91,16 @@ export const checkTokenFromEmail = async(req, resp, next) => {
     if (req.query.t){
         jwt.verify(req.query.t, config.backend.secretWord, function(err, credentials) {
             if(err){
+                // TODO error-token
                 next({status:400, message: err.message})
             } else if(credentials && !err) {
+                // проверка существования логина в базе
+                // если пользователь есть -> отправить сообщение что пользователь уже есть
+                // если пользователя нет создаем его в базе с пометкой "не юзер" и делаем редирект с токеномо
+                // создаем токен и отправляем на url TODO verify-user
+                // на клиенте записываем токен, перенапрваляем на index, для избавления от токена в url
+                // на клиенте index.js panel будет делать запросы
+
                 console.log(credentials, 'credentials');
                 resp.json({email: req.query.t, after: 2})
             }
