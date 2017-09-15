@@ -11,10 +11,8 @@ export const singup = (req, resp, next) => {
             if (err) {
                 let {message} = err;
                 next({status: 400, message})
-            console.log(2);
             }
             if(user){
-                console.log(user, 'USER');
                 next({status: 400, message : 'We have already had the same user'})
             } else {
                 // Формируем токен
@@ -22,7 +20,6 @@ export const singup = (req, resp, next) => {
                 var token = jwt.sign({
                     data:credentials
                 }, config.backend.secretWord, { expiresIn: '1m' });
-                console.log(token, 'Токенище днище');
 
                 // отправка на почту
                 setTimeout(()=>{sendMailForSingup({
@@ -37,44 +34,6 @@ export const singup = (req, resp, next) => {
     } else {
         next({status: 400, message : 'You have bad credentials'})
     }
-//resp.json({email: credentials.login});
-
-    //
-
-    // TODO Send email to user with dataToken and date and another field
-
-    // if (credentials.login){
-    //
-    //         console.log(_id, '_id');
-    //         // Найдем по _id и вернем с "без = 0" пароля
-    //         return User.findOne({_id}, {password: 0})
-    // }
-
-    // if (credentials.login && credentials.password){
-    //     // --- НЕ ЗАВЕЛОСЬ =(((
-    //     // Используем try/catch - т.к используем async/await
-    //     //  try {
-    //     //     await User.create(config); // т.к тут асинхронный код - исп. await
-    //     // } catch (err){
-    //     //     next(err); // Если ощибка - прокидываем ее дальше, возможно express ее перехватит
-    //     // Мы не используем callback - т.к как испоьзуем async/await
-    //     // }  --- НЕ ЗАВЕЛОСЬ =(((
-    //
-    //     User.create(credentials, (err, user) => {
-    //         // Тут асинхронная операция
-    //         if (err) {
-    //             let {message} = err;
-    //             next({status: 400, message})
-    //         }
-    //         ;
-    //         // елси юзер успешно создан - передаем его на клиент
-    //         if (user) {
-    //             return resp.json(user);
-    //         }
-    //     })
-    // } else {
-    //     next({status: 400, message : 'You need have password and login'})
-    // }
 }
 
 export const singin = async(req, resp, next) => {
