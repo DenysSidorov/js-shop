@@ -21,13 +21,14 @@ export const singup = (req, resp, next) => {
                 // Signing a token with 10 minutes of expiration
                 var token = jwt.sign({
                     data:credentials
-                }, config.backend.secretWord, { expiresIn: '3h' });
+                }, config.backend.secretWord, { expiresIn: '1m' });
+                console.log(token, 'Токенище днище');
 
                 // отправка на почту
                 setTimeout(()=>{sendMailForSingup({
                     email: credentials.login,
                     nick: credentials.nick,
-                    token: token
+                    link: token
                 })}, 0);
                 resp.json({email: credentials.login});
             }
@@ -128,8 +129,19 @@ export const singin = async(req, resp, next) => {
 }
 export const checkTokenFromEmail = async(req, resp, next) => {
 
-console.log(req.params, 'par');
-console.log(req.body, 'body');
-console.log(req, 'req');
-    resp.json({email: 'cool'})
+    if (req.query.t){
+        jwt.verify(req.query.t, config.backend.secretWord, function(err, credentials) {
+            if(err){
+                next({status:400, message: err.message})
+            } else if(credentials && !err) {
+                console.log(credentials, 'credentials');
+                resp.json({email: req.query.t, after: 2})
+            }
+        });
+
+    } else {
+        next({status:400, message: "you don not have normal token"})
+    }
+
+    // resp.json({email: req.query.t, after: 0})
 }

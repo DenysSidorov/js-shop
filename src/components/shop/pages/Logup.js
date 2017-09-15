@@ -22,7 +22,7 @@ class Logup extends React.Component {
         pass: '000scorpions000@gmail.com',
         repPass: '000scorpions000@gmail.com',
         nick: '000scorpions000@gmail.com',
-        normal: false,
+        normal: true,
         press: false,
         serverGet: false
     }
