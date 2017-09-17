@@ -22,6 +22,8 @@ import Contacts from "../pages/Contacts";
 import Login from "../pages/Login";
 import Logup from "../pages/Logup";
 import VerifyEmail from "../pages/VerifyEmail";
+import VerifyUser from "../panel/auth/VerifyUser";
+import ErrorToken from "../panel/auth/ErrorToken";
 
 import NotFound from "../pages/NotFound";
 import RouteAuth from "../helpers/RouteAuth";
@@ -51,8 +53,8 @@ class WrapperApp extends React.Component {
                                     <RouteAuth path="/profile" component={Profile}/>
                                     <Route path="/login" component={Login}/>
                                     <Route path="/logup" component={Logup}/>
-                                    <Route path="/verify-user" component={Logup}/>
                                     <Route path="/verify-email" component={VerifyEmail}/>
+                                    <Route path="/verify-user" component={VerifyUser}/>
                                     <Route component={NotFound}/>
                                     {/*<Route exact path="/404" component={NotFound} />*/}
                                     {/*<Redirect to="/404" />*/}

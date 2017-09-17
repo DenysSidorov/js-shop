@@ -82,7 +82,7 @@ export const singin = async(req, resp, next) => {
     }
 }
 
-export async function checkTokenFromEmail(req, resp, next) => {
+export async function checkTokenFromEmail(req, resp, next) {
 
     if (req.query.t){
         jwt.verify(req.query.t, config.backend.secretWord, function(err, credentials) {
@@ -93,7 +93,7 @@ export async function checkTokenFromEmail(req, resp, next) => {
 // credentials.login && credentials.nick && credentials.password
                 console.log(credentials.login, 'credentials------------');
 
-                User.findOne({login: credentials.login}, (err, user)=> {
+                  User.findOne({login: credentials.login},async (err, user)=> {
                     if (err) {
                         let {message} = err;
                         next({status: 400, message})
@@ -106,7 +106,7 @@ export async function checkTokenFromEmail(req, resp, next) => {
 
 
                         try {
-                            var userResult = await  User.create(credentials);
+                            var userResult = await User.create(credentials);
                         } catch ({ message }) {
                             return next({
                                 status: 400,
@@ -120,7 +120,7 @@ export async function checkTokenFromEmail(req, resp, next) => {
                             config.backend.secretWord,
                             { expiresIn: '2d' });
 
-                        resp.redirect(`http://${config.frontend.domain}:${config.frontend.port}/verify-user`)
+                        resp.redirect(`http://${config.frontend.domain}:${config.frontend.port}/verify-user?t=${token}`)
 
                     }
 
@@ -133,7 +133,7 @@ export async function checkTokenFromEmail(req, resp, next) => {
                 // на клиенте index.js panel будет делать запросы
 
                 console.log(credentials, 'credentials');
-                resp.json({email: req.query.t, after: 2})
+                // resp.json({email: req.query.t, after: 2})
             }
         });
 
