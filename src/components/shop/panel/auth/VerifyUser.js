@@ -7,10 +7,10 @@ class VerifyUser extends React.Component {
         if (token) {
             console.log(token, 'tokenischeeeeeee');
         }
+
     }
 
     render = ()=> {
-        console.log(this.props, 'propspsss');
         return (
             <div className="verifyUserContainer">
 
