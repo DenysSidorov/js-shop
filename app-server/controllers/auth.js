@@ -1,6 +1,8 @@
 import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
-import config from "../../config/index"; // Генерация токена
+import config from "../../config/index";
+// import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену
+import * as UserService from '../shop/services/userService';
 import {sendMailForSingup} from '../shop/services/sendMail';
 export const singup = (req, resp, next) => {
     let credentials = req.body; // Вытащим данные от юзера из формы.
@@ -142,4 +144,23 @@ export async function checkTokenFromEmail(req, resp, next) {
     }
 
     // resp.json({email: req.query.t, after: 0})
+}
+
+
+export async function findUserByToken(req, resp, next){
+
+    export default (req, resp, next) => {
+        const {token} = req.body;
+
+        UserService.getUserByToken(token)
+            .then(user => {
+                console.log('Получил пользователя', user);
+                req.json(user);
+            })
+            .catch(er => {
+                let {message} = er;
+                next({message, status: 500});
+            })
+    }
+
 }
