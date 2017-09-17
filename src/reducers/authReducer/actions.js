@@ -15,6 +15,11 @@ export function deleteErrorMessage(){
     return {type: DELETE_ERROR_MESSAGE};
 
 }
+
+export function getUserByToken( token ) {
+    console.log(token, 'TOKEN');
+}
+
 export function signinUser( login, password ) {
     console.log(login, password , 'REQUEST222');
     return function(dispatch) {

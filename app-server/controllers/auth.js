@@ -1,6 +1,7 @@
 import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
 import config from "../../config/index";
+
 // import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену
 import * as UserService from '../shop/services/userService';
 import {sendMailForSingup} from '../shop/services/sendMail';
@@ -150,6 +151,7 @@ export async function checkTokenFromEmail(req, resp, next) {
 export async function findUserByToken(req, resp, next){
 
     export default (req, resp, next) => {
+        console.log(req.body);
         const {token} = req.body;
 
         UserService.getUserByToken(token)

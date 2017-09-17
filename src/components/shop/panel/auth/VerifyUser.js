@@ -1,4 +1,8 @@
 import React from "react";
+
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {getUserByToken} from '../../../../reducers/authReducer/actions';
 import queryParams from '../../helpers/lib/queryParams';
 class VerifyUser extends React.Component {
     componentDidMount = (prevProps) => {
@@ -6,12 +10,17 @@ class VerifyUser extends React.Component {
         var token = queryParams['t'];
         if (token) {
             console.log(token, 'tokenischeeeeeee');
-        }
-        // TODO проверка этого токена!
-        // Если все хорошо даем редаксу понять что это норм токен
-        // Если плохо Выводим сообщение
-        // //
 
+            this.props.getUser(token);
+
+
+
+            // post('/api/find-user-by-token'
+            // TODO проверка этого токена!
+            // Если все хорошо даем редаксу понять что это норм токен
+            // Если плохо Выводим сообщение
+            // //
+        }
     }
 
     render = ()=> {
@@ -23,5 +32,19 @@ class VerifyUser extends React.Component {
 
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        authReducer: state.authReducer
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        getUser: (token) => getUserByToken(token),
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyUser);
 
 export default VerifyUser;
