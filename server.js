@@ -23,7 +23,7 @@ import orderRoute from './app-server/shop/routes/orderRoute';
 
 import errorMiddleWare from './app-server/middlewares/errors';
 
-import getUser from './app-server/shop/middlewares/getUser'; // Проверка наличия токена
+import getUser from './app-server/shop/middlewares/getUser'; // Найти пользователя по токену
 import checkToken from './app-server/middlewares/checkToken'; // Проверка наличия токена
 
 

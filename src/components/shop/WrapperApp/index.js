@@ -23,7 +23,7 @@ import Login from "../pages/Login";
 import Logup from "../pages/Logup";
 import VerifyEmail from "../pages/VerifyEmail";
 import VerifyUser from "../panel/auth/VerifyUser";
-import ErrorToken from "../panel/auth/ErrorToken";
+// import ErrorToken from "../panel/auth/ErrorToken";
 
 import NotFound from "../pages/NotFound";
 import RouteAuth from "../helpers/RouteAuth";

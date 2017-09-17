@@ -97,9 +97,11 @@ export async function checkTokenFromEmail(req, resp, next) {
                     if (err) {
                         let {message} = err;
                         next({status: 400, message})
+                        // TODO error-token
                     }
                     if(user){
                         next({status: 400, message : 'We have already had the same user'})
+                        // TODO error-token
                     } else {
                         // Формируем токен
                         // Signing a token with 10 minutes of expiration
@@ -114,14 +116,11 @@ export async function checkTokenFromEmail(req, resp, next) {
                             });
                         }
 
-
                         const token = jwt.sign(
                             {_id: userResult._id},
                             config.backend.secretWord,
                             { expiresIn: '2d' });
-
                         resp.redirect(`http://${config.frontend.domain}:${config.frontend.port}/verify-user?t=${token}`)
-
                     }
 
                 })
@@ -138,6 +137,7 @@ export async function checkTokenFromEmail(req, resp, next) {
         });
 
     } else {
+        // TODO error-token
         next({status:400, message: "you don not have normal token"})
     }
 

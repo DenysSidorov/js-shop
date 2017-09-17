@@ -7,6 +7,10 @@ class VerifyUser extends React.Component {
         if (token) {
             console.log(token, 'tokenischeeeeeee');
         }
+        // TODO проверка этого токена!
+        // Если все хорошо даем редаксу понять что это норм токен
+        // Если плохо Выводим сообщение
+        // //
 
     }
 
