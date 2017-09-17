@@ -46,10 +46,7 @@ export const singin = async(req, resp, next) => {
     if (login && password) {
         const user = User.findOne({login})
             .then(user => {
-                console.log(1);
                 if (user && user.password == password) {
-                    console.log(2);
-
                     /** Преймущество токена в том,что его можно выдавать не только браузеру но и приложению
                      * Первый параметр - то что будем хэшировать
                      * Второй параметр - это ключ!
@@ -57,8 +54,10 @@ export const singin = async(req, resp, next) => {
                         // req.session.userId = user._id;
                         // resp.json(user);
 
-                    const token = jwt.sign({_id: user._id}, config.backend.secretWord);
-                    console.log(token);
+                    const token = jwt.sign(
+                        {data:{_id: user._id}},
+                        config.backend.secretWord,
+                        { expiresIn: '2d' });
                     resp.json(token);
 
                     /** Этот токен передается клиенту и при каждом обращении клиент должен его передавать серверу
@@ -67,14 +66,12 @@ export const singin = async(req, resp, next) => {
                      * */
 
                 } else {
-                    console.log(3);
                     next({
                         status: 400,
                         message: 'Bad password or login'
                     })
                 }
             }).catch(err => {
-                console.log(4);
                 const {message} = err;
                 // Если юзера не нашли - 400
                 return next({
@@ -86,6 +83,7 @@ export const singin = async(req, resp, next) => {
         next({status: 400, message: 'You need have password and login'})
     }
 }
+
 export const checkTokenFromEmail = async(req, resp, next) => {
 
     if (req.query.t){
@@ -94,6 +92,32 @@ export const checkTokenFromEmail = async(req, resp, next) => {
                 // TODO error-token
                 next({status:400, message: err.message})
             } else if(credentials && !err) {
+
+                console.log(credentials.data.login, 'credentials------------');
+                User.findOne({login: credentials.data.login}, (err, user)=> {
+                    if (err) {
+                        let {message} = err;
+                        next({status: 400, message})
+                    }
+                    if(user){
+                        next({status: 400, message : 'We have already had the same user'})
+                    } else {
+                        // Формируем токен
+                        // Signing a token with 10 minutes of expiration
+                        var token = jwt.sign({
+                            data:{credentials.data
+                        }, config.backend.secretWord, { expiresIn: '1m' });
+
+                        // отправка на почту
+                        setTimeout(()=>{sendMailForSingup({
+                            email: credentials.login,
+                            nick: credentials.nick,
+                            link: token
+                        })}, 0);
+                        resp.json({email: credentials.login});
+                    }
+
+                })
                 // проверка существования логина в базе
                 // если пользователь есть -> отправить сообщение что пользователь уже есть
                 // если пользователя нет создаем его в базе с пометкой "не юзер" и делаем редирект с токеномо
