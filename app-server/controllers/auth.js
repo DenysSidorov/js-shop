@@ -150,9 +150,9 @@ export async function checkTokenFromEmail(req, resp, next) {
 
 export async function findUserByToken(req, resp, next){
 
-    export default (req, resp, next) => {
-        console.log(req.body);
+        console.log(req.body, 'req.body');
         const {token} = req.body;
+        console.log(token, 'tokentokentokentokentoken');
 
         UserService.getUserByToken(token)
             .then(user => {
@@ -163,6 +163,4 @@ export async function findUserByToken(req, resp, next){
                 let {message} = er;
                 next({message, status: 500});
             })
-    }
-
 }

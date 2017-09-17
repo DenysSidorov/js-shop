@@ -23,6 +23,7 @@ import Login from "../pages/Login";
 import Logup from "../pages/Logup";
 import VerifyEmail from "../pages/VerifyEmail";
 import VerifyUser from "../panel/auth/VerifyUser";
+import Panel from '../panel/index';
 // import ErrorToken from "../panel/auth/ErrorToken";
 
 import NotFound from "../pages/NotFound";
@@ -51,6 +52,7 @@ class WrapperApp extends React.Component {
                                     <Route exact path="/great" component={AfterOrder}/>
                                     <Route exact path="/contacts" component={Contacts}/>
                                     <RouteAuth path="/profile" component={Profile}/>
+                                    <RouteAuth path="/panel" component={Panel}/>
                                     <Route path="/login" component={Login}/>
                                     <Route path="/logup" component={Logup}/>
                                     <Route path="/verify-email" component={VerifyEmail}/>
