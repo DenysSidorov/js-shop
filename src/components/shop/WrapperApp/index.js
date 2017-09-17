@@ -51,6 +51,7 @@ class WrapperApp extends React.Component {
                                     <RouteAuth path="/profile" component={Profile}/>
                                     <Route path="/login" component={Login}/>
                                     <Route path="/logup" component={Logup}/>
+                                    <Route path="/verify-user" component={Logup}/>
                                     <Route path="/verify-email" component={VerifyEmail}/>
                                     <Route component={NotFound}/>
                                     {/*<Route exact path="/404" component={NotFound} />*/}

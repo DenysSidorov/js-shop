@@ -17,9 +17,7 @@ export const singup = (req, resp, next) => {
             } else {
                 // Формируем токен
                 // Signing a token with 10 minutes of expiration
-                var token = jwt.sign({
-                    data:credentials
-                }, config.backend.secretWord, { expiresIn: '1m' });
+                var token = jwt.sign( credentials, config.backend.secretWord, { expiresIn: '1m' });
 
                 // отправка на почту
                 setTimeout(()=>{sendMailForSingup({
@@ -55,7 +53,7 @@ export const singin = async(req, resp, next) => {
                         // resp.json(user);
 
                     const token = jwt.sign(
-                        {data:{_id: user._id}},
+                        {_id: user._id},
                         config.backend.secretWord,
                         { expiresIn: '2d' });
                     resp.json(token);
@@ -84,7 +82,7 @@ export const singin = async(req, resp, next) => {
     }
 }
 
-export const checkTokenFromEmail = async(req, resp, next) => {
+export async function checkTokenFromEmail(req, resp, next) => {
 
     if (req.query.t){
         jwt.verify(req.query.t, config.backend.secretWord, function(err, credentials) {
@@ -92,9 +90,10 @@ export const checkTokenFromEmail = async(req, resp, next) => {
                 // TODO error-token
                 next({status:400, message: err.message})
             } else if(credentials && !err) {
+// credentials.login && credentials.nick && credentials.password
+                console.log(credentials.login, 'credentials------------');
 
-                console.log(credentials.data.login, 'credentials------------');
-                User.findOne({login: credentials.data.login}, (err, user)=> {
+                User.findOne({login: credentials.login}, (err, user)=> {
                     if (err) {
                         let {message} = err;
                         next({status: 400, message})
@@ -104,17 +103,25 @@ export const checkTokenFromEmail = async(req, resp, next) => {
                     } else {
                         // Формируем токен
                         // Signing a token with 10 minutes of expiration
-                        var token = jwt.sign({
-                            data:{credentials.data
-                        }, config.backend.secretWord, { expiresIn: '1m' });
 
-                        // отправка на почту
-                        setTimeout(()=>{sendMailForSingup({
-                            email: credentials.login,
-                            nick: credentials.nick,
-                            link: token
-                        })}, 0);
-                        resp.json({email: credentials.login});
+
+                        try {
+                            var userResult = await  User.create(credentials);
+                        } catch ({ message }) {
+                            return next({
+                                status: 400,
+                                message
+                            });
+                        }
+
+
+                        const token = jwt.sign(
+                            {_id: userResult._id},
+                            config.backend.secretWord,
+                            { expiresIn: '2d' });
+
+                        resp.redirect(`http://${config.frontend.domain}:${config.frontend.port}/verify-user`)
+
                     }
 
                 })
