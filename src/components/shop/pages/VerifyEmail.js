@@ -6,8 +6,6 @@ class VerifyEmail extends React.Component {
     }
 
     render = ()=>{
-        console.log(this.props, 'propspsss');
-        console.log(this.props, 'propspsss');
         return (
             <div className="verifyEmailContainer">
                 <p>Подтвердите свою почту, письмо с ссылкой о подтверждении отправленно на
