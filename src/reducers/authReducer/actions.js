@@ -51,6 +51,8 @@ export function signupUser( login, password, nick ) {
         axios.post(`${ROOT_URL}/api/signup`, { login, password, nick })
             .then(response => {
                 console.log(response, 'resp');
+                console.log(response.message, 'response.message');
+
                 // If request is good...
                 // - Update state to indicate user is authenticated
                 // dispatch({ type: AUTH_USER });
@@ -69,7 +71,7 @@ export function signupUser( login, password, nick ) {
                 // If request is bad...
                 // - Show an error to the user
                 dispatch(hideLoading());
-                dispatch(authError('Bad server response'));
+                dispatch(authError(error.response));
             });
     }
 }
