@@ -64,7 +64,7 @@ export function signinUser(login, password) {
                 // - redirect to the route '/feature'
                 // browserHistory.push('/feature');
                 dispatch(hideLoading())
-                dispatch(push('/profile'))
+                dispatch(push('/panel'))
 
             })
             .catch((error) => {

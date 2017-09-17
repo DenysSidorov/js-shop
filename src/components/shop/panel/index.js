@@ -8,11 +8,11 @@ class Panel extends React.Component {
         //     console.log(token, 'tokenischeeeeeee');
         // }
 
-    }
+    };
 
     render = ()=> {
         return (
-           <div>Panel</div>
+           <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Panel</div>
         )
 
     }
