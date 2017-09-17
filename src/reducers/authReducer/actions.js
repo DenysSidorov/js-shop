@@ -35,10 +35,11 @@ export function signinUser( login, password ) {
 
             })
             .catch((error) => {
+                console.log(error.response, 'error.response');
                 // If request is bad...
                 // - Show an error to the user
                 dispatch(hideLoading());
-                dispatch(authError('Bad login or password'));
+                dispatch(authError(error.response.data.message));
             });
     }
 }
@@ -71,7 +72,7 @@ export function signupUser( login, password, nick ) {
                 // If request is bad...
                 // - Show an error to the user
                 dispatch(hideLoading());
-                dispatch(authError(error.response));
+                dispatch(authError(error.response.data.message));
             });
     }
 }
