@@ -5,15 +5,15 @@ export async function getAll(req, resp, next) {
     try {
         var goods;
         if(filter){
-            goods = await Good.find({category: {$in : [filter] }}).limit(50);
+            goods = await Good.find({category: {$in : [filter] }}).limit(1000);
             if(filter == 'main'){
-                goods = await Good.find({}).limit(50);
+                goods = await Good.find({}).limit(1000);
             } else {
-                goods = await Good.find({category: {$in : [filter] }}).limit(50);
+                goods = await Good.find({category: {$in : [filter] }}).limit(1000);
             }
 
         } else {
-             goods = await Good.find({}).limit(50);
+             goods = await Good.find({}).limit(1000);
         }
 
 

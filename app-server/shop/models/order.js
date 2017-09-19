@@ -9,6 +9,8 @@ const OrderSchema = new Schema({
     phone: {type: String, require: true},
     email: {type: String},
     createdAt: { type: Date, require: true, default: Date.now },
+    // type: new, progress, done, delivery,
+    type: {type: String,require: true, default: 'new' },
     goods: [{
         _id: {type: Number, require: true},
         count: {type: Number, require: true},
