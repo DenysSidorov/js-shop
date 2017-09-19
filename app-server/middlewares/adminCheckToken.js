@@ -31,7 +31,15 @@ export default (req, resp, next)=>{
         // Делаем проверку на админа
         let user = await User.findOne({_id: decoded._id}, {password: 0})
         console.log(user);
-        req.token = decoded; // ТЕПЕРЬ ВЕЗДЕ В REQUEST ЕСТЬ TOKEN
-        next();
+        if(user.isAdmin){
+            req.token = decoded; // ТЕПЕРЬ ВЕЗДЕ В REQUEST ЕСТЬ TOKEN
+            next();
+        } else {
+            return next({
+                status: 403,
+                message: 'Forbidden. No Admin Access'
+            })
+        }
+
     });
 }
