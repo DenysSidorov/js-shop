@@ -12,7 +12,7 @@ class Panel extends React.Component {
 
     render = ()=> {
         return (
-           <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Panel</div>
+           <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Админ Панель</div>
         )
 
     }
