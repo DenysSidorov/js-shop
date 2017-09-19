@@ -44,11 +44,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VerifyUser);
-console.log(313152123);
-console.log(3131524123);
-console.log(31312123);
-console.log(313121323);console.log(3131524123);
-console.log(31312123);
-console.log(313121323);console.log(3131524123);
-console.log(31312123);
-console.log(313121323);
+

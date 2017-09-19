@@ -14,7 +14,7 @@ export function saveUserToken(token) {
     return function (dispatch) {
         dispatch({type: AUTH_USER});
         localStorage.setItem('info', token);
-        dispatch(push('/panel'));
+        dispatch(push('/'));
     }
 }
 

@@ -50,6 +50,7 @@ class MenuInfoSection extends React.Component {
                                     transitionEnterTimeout={300}
                                     transitionLeave={false}>
                                 {authenticated && <li><Link to='/panel'>Ввойти в кабинет</Link></li>}
+                                {authenticated && <li><Link to='/profile'>Профиль юзера</Link></li>}
                                 {authenticated && <li><a onClick={this.unAuth.bind(this)}>Выйти</a></li>}
                                 {!authenticated && <li><Link to="/logup">Регистрация</Link></li>}
                                 {!authenticated && <li><Link to="/login">Войти</Link></li>}
