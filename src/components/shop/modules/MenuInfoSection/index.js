@@ -11,6 +11,7 @@ class MenuInfoSection extends React.Component {
     }
     render() {
         let authenticated = this.props.authenticated;
+        let isAdmin = this.props.isAdmin;
         return (
             <div className="menuInfoSection left fullWidth ">
                 <div className="container">
@@ -49,8 +50,9 @@ class MenuInfoSection extends React.Component {
                                     transitionAppearTimeout={300}
                                     transitionEnterTimeout={300}
                                     transitionLeave={false}>
-                                {authenticated && <li><Link to='/panel'>Ввойти в кабинет</Link></li>}
-                                {authenticated && <li><Link to='/profile'>Профиль юзера</Link></li>}
+                                {/*{isAdmin && <li><Link to='/panel'>Ввойти в кабинет</Link></li>}*/}
+                                {<li><Link to='/panel'>Ввойти в кабинет</Link></li>}
+                                {authenticated && !isAdmin && <li><Link to='/profile'>Профиль юзера</Link></li>}
                                 {authenticated && <li><a onClick={this.unAuth.bind(this)}>Выйти</a></li>}
                                 {!authenticated && <li><Link to="/logup">Регистрация</Link></li>}
                                 {!authenticated && <li><Link to="/login">Войти</Link></li>}
@@ -67,7 +69,8 @@ class MenuInfoSection extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        authenticated: state.authReducer.authenticated
+        authenticated: state.authReducer.authenticated,
+        isAdmin: state.authReducer.isAdmin,
     }
 }
 

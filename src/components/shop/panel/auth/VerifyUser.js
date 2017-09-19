@@ -33,7 +33,8 @@ class VerifyUser extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        authReducer: state.authReducer
+        authReducer: state.authReducer,
+        isAdmin: state.isAdmin
     }
 }
 

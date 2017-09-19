@@ -11,7 +11,7 @@ class Panel extends React.Component {
 
     render = ()=> {
         return (
-            <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Профиль юзера пуст, подтверждение юзера в обработке</div>
+            <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Профиль пользователя пуст, подтверждение в обработке...</div>
         )
 
     }
