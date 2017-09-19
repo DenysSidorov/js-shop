@@ -15,19 +15,13 @@ export async function create(req, resp, next) {
 }
 
 export async function getAll(req, resp, next) {
-    var filter = req.query ? req.query.kind : null;
+    var filter = req.query ? req.query.type : null;
     try {
-        var goods;
-        if(filter){
-            goods = await Good.find({category: {$in : [filter] }}).limit(1000);
-            if(filter == 'main'){
-                goods = await Good.find({}).limit(350);
-            } else {
-                goods = await Good.find({category: {$in : [filter] }}).limit(1000);
-            }
-
+        var orders;
+        if(filter && filter != 'main'){
+            orders = await Order.find({type: {$in : [filter] }}).limit(1000);
         } else {
-            goods = await Good.find({}).limit(1000);
+            orders = await Order.find({}).limit(1000);
         }
 
 
