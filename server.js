@@ -68,9 +68,9 @@ app.use('/orders', cors(), orderRoute);
 app.use('/api', cors(), authRoute); // singin singup
 
 
-app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
-    resp.json('Success');
-});
+// app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
+//     resp.json('Success');
+// });
 
 
 
@@ -81,7 +81,7 @@ app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
-
+// todo сделать на фронте таблицу с ошибками 500, 404
 app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found", type: 404}));
 
 
