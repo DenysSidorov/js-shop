@@ -65,19 +65,19 @@ app.use(session({
 
 app.use('/goods' ,cors(), goodRoute);
 app.use('/orders' ,cors(), orderRoute);
-
-
-
-
-
-
 app.use('/api', cors(), authRoute); // singin singup
+
+
+app.get('/test',cors(), checkToken, (req, resp)=>{ // check token in headers
+    resp.json('Success');
+});
+
+
+
 app.use('/api', checkToken,  userRoute); // get user route
 // app.use(getUser);
 app.use('/api', checkToken,  pageRoute); // Use API if all normal
-app.get('/test', checkToken, (req, resp)=>{ // check token in headers
-    resp.json('Success');
-});
+
 
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
