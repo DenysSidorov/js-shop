@@ -1,7 +1,125 @@
 $robotoLight: 'Roboto-Light';
 $robotoMedium: 'Roboto-Medium';
 $robotoRegular: 'Roboto-Regular';
+$greyText: #d6d6d6;
+$mainColor: #2EA9FD;
+.adminPanContainer {
 
-.adminPanContainer{
+  .adminPanHeader {
+    width: 100%;
+    background-color: #2EA9FD;
+    min-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+
+    .adminPanHeader__left {
+      .adminPanHeader__title {
+        margin-left: 1rem;
+        color: #FFFFFF;
+        font: 1.4rem/1.6rem $robotoMedium;
+        padding: 0.6rem;
+      }
+    }
+    .adminPanHeader__right {
+    }
+  }
+  .adminPan__mainContent {
+    overflow: hidden;
+    background-color: rgb(116, 116, 117);
+
+    .adminPan__mainContent_menu {
+      width: 250px;
+      background-color: rgb(57, 57, 58);
+      height: calc(100vh - 165px);
+      .adminPan__menu_item{
+        height: 3.7rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        &:hover{
+          background-color: #525253;
+          cursor: pointer;
+        }
+        i{
+          width: 25%;
+          font-size: 1.5rem;
+          color: $greyText;
+          display: flex;
+          justify-content: center;
+
+        }
+        .adminPan__menu_item_text{
+          display: flex;
+         //justify-content: center;
+          width: 50%;
+          font: 1.7rem/3.7rem $robotoMedium;
+          color: $greyText;
+        }
+        .adminPan__menu_item_count{
+          span{
+            padding:3px 10px;
+            background-color: $mainColor;
+            border-radius: 50px;
+            font: 1.2rem/1.2rem $robotoMedium;
+            color: #ffffff;
+          }
+          display: flex;
+          justify-content: center;
+          width: 25%;
+
+        }
+      }
+    }
+    .adminPan__mainContent_content {
+      width: calc(100% - 250px);
+      height: calc(100vh - 165px);
+      //background-color: rgba(234, 234, 235, 0.5);
+      background-color: white;
+      border: 1px solid grey;
+      .adminPan__mainContent_content_filters{
+        min-height: 50px;
+        background-color: #f1f4f9;
+        display: flex;
+        .adminPan__filters_item{
+          margin: 5px 5px;
+          background-color: rgba(51, 184, 191, 0.33);
+          height: 40px;
+          .adminPan__filters_item_log{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ff6e7a;
+            i{
+              color: white;
+              font-size: 16px;
+            }
+          }
+          .adminPan__filters_item_text{
+
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.adminPanHeader__btn {
+  margin-left: 1rem;
+  color: #FFFFFF;
   font: 1.4rem/1.6rem $robotoMedium;
+  padding: 0.6rem;
+  border: 1px solid #FFFFFF;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #eaeaeb;
+  }
 }
