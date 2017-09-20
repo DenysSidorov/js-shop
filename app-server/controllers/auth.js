@@ -20,7 +20,7 @@ export const singup = (req, resp, next) => {
             } else {
                 // Формируем токен
                 // Signing a token with 10 minutes of expiration
-                var token = jwt.sign( credentials, config.backend.secretWord, { expiresIn: '1m' });
+                var token = jwt.sign( credentials, config.backend.secretWord, { expiresIn: '10m' });
 
                 // отправка на почту
                 setTimeout(()=>{sendMailForSingup({
