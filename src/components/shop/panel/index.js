@@ -36,8 +36,9 @@ class Panel extends React.Component {
                        <div className="adminPan__mainContent_content left">
 
                            <div className="adminPan__mainContent_content_filters">
+
                                <div className="adminPan__filters_item">
-                                   <div className="adminPan__filters_item_log">
+                                   <div className="adminPan__filters_item_log colorGreen">
                                        <i className="fa fa-shopping-cart"></i>
                                    </div>
                                    <div className="adminPan__filters_item_text">
@@ -45,6 +46,48 @@ class Panel extends React.Component {
                                        <div className="adminPan__filters_item_text_desk">Новых покупок</div>
                                    </div>
                                </div>
+
+                               <div className="adminPan__filters_item">
+                                   <div className="adminPan__filters_item_log colorYellow">
+                                       <i className="fa fa-spinner"></i>
+                                   </div>
+                                   <div className="adminPan__filters_item_text">
+                                       <div className="adminPan__filters_item_text_count">5</div>
+                                       <div className="adminPan__filters_item_text_desk">В обработке</div>
+                                   </div>
+                               </div>
+
+                               <div className="adminPan__filters_item">
+                                   <div className="adminPan__filters_item_log colorViolet">
+                                       <i className="fa fa-truck"></i>
+                                   </div>
+                                   <div className="adminPan__filters_item_text">
+                                       <div className="adminPan__filters_item_text_count">18</div>
+                                       <div className="adminPan__filters_item_text_desk">В пути</div>
+                                   </div>
+                               </div>
+
+                               <div className="adminPan__filters_item">
+                                   <div className="adminPan__filters_item_log colorRed">
+                                       <i className="fa fa-check-square-o"></i>
+                                   </div>
+                                   <div className="adminPan__filters_item_text">
+                                       <div className="adminPan__filters_item_text_count">335</div>
+                                       <div className="adminPan__filters_item_text_desk">Завершено</div>
+                                   </div>
+                               </div>
+
+                               <div className="adminPan__filters_item">
+                                   <div className="adminPan__filters_item_log colorMain">
+                                       <i className="fa fa-money"></i>
+                                   </div>
+                                   <div className="adminPan__filters_item_text">
+                                       <div className="adminPan__filters_item_text_count">371</div>
+                                       <div className="adminPan__filters_item_text_desk">Все</div>
+                                   </div>
+                               </div>
+
+
                            </div>
                            <thead>
                            <tr>

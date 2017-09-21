@@ -3,6 +3,31 @@ $robotoMedium: 'Roboto-Medium';
 $robotoRegular: 'Roboto-Regular';
 $greyText: #d6d6d6;
 $mainColor: #2EA9FD;
+$colorRed: #ff7867;
+$colorGreen: #17b87f;
+$colorViolet: #9a51bb;
+$colorYellow: #bbba16;
+
+.colorRed {
+  background-color: $colorRed;
+}
+
+.colorYellow {
+  background-color: $colorYellow;
+}
+
+.colorViolet {
+  background-color: $colorViolet;
+}
+
+.colorGreen {
+  background-color: $colorGreen;
+}
+
+.colorMain {
+  background-color: $mainColor;
+}
+
 .adminPanContainer {
 
   .adminPanHeader {
@@ -33,17 +58,18 @@ $mainColor: #2EA9FD;
       width: 250px;
       background-color: rgb(57, 57, 58);
       height: calc(100vh - 165px);
-      .adminPan__menu_item{
-        height: 3.7rem;
+      .adminPan__menu_item {
+        height: 4.7rem;
         width: 100%;
+        border-bottom: 1px solid grey;
         display: flex;
         align-items: center;
         transition: all 0.3s ease;
-        &:hover{
+        &:hover {
           background-color: #525253;
           cursor: pointer;
         }
-        i{
+        i {
           width: 25%;
           font-size: 1.5rem;
           color: $greyText;
@@ -51,16 +77,16 @@ $mainColor: #2EA9FD;
           justify-content: center;
 
         }
-        .adminPan__menu_item_text{
+        .adminPan__menu_item_text {
           display: flex;
-         //justify-content: center;
+          //justify-content: center;
           width: 50%;
           font: 1.7rem/3.7rem $robotoMedium;
           color: $greyText;
         }
-        .adminPan__menu_item_count{
-          span{
-            padding:3px 10px;
+        .adminPan__menu_item_count {
+          span {
+            padding: 3px 10px;
             background-color: $mainColor;
             border-radius: 50px;
             font: 1.2rem/1.2rem $robotoMedium;
@@ -79,28 +105,50 @@ $mainColor: #2EA9FD;
       //background-color: rgba(234, 234, 235, 0.5);
       background-color: white;
       border: 1px solid grey;
-      .adminPan__mainContent_content_filters{
+      .adminPan__mainContent_content_filters {
         min-height: 50px;
         background-color: #f1f4f9;
         display: flex;
-        .adminPan__filters_item{
+        flex-wrap: wrap;
+        padding: 10px;
+        .adminPan__filters_item {
           margin: 5px 5px;
-          background-color: rgba(51, 184, 191, 0.33);
-          height: 40px;
-          .adminPan__filters_item_log{
-            height: 30px;
-            width: 30px;
+          //background-color: rgba(51, 184, 191, 0.33);
+          background-color: white;
+          min-width: 250px;
+          height: 65px;
+          display: flex;
+          align-items: center;
+          padding: 6px;
+          -webkit-box-shadow: 1px 1px 7px 0px rgba(214, 214, 214, 1);
+          -moz-box-shadow: 1px 1px 7px 0px rgba(214, 214, 214, 1);
+          box-shadow: 1px 1px 7px 0px rgba(214, 214, 214, 1);
+          transition: all 0.5s ease;
+          &:hover {
+            background-color: rgb(246, 246, 246);
+          }
+          .adminPan__filters_item_log {
+            margin-right: 12px;
+            height: 45px;
+            width: 45px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ff6e7a;
-            i{
+            i {
               color: white;
               font-size: 16px;
             }
           }
-          .adminPan__filters_item_text{
+          .adminPan__filters_item_text {
+            .adminPan__filters_item_text_count {
+              font: 1.8rem/2.2rem $robotoMedium;
+              color: black;
+            }
+            .adminPan__filters_item_text_desk {
+              font: 1.2rem/2.2rem $robotoRegular;
+              color: #a0a0a0;
+            }
 
           }
         }
