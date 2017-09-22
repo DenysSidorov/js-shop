@@ -40,6 +40,8 @@ $colorYellow: #bbba16;
     padding: 0 10%;
 
     .adminPanHeader__left {
+      display: flex;
+      align-items: center;
       .adminPanHeader__title {
         margin-left: 1rem;
         color: #FFFFFF;
@@ -55,9 +57,8 @@ $colorYellow: #bbba16;
     background-color: rgb(116, 116, 117);
 
     .adminPan__mainContent_menu {
-      width: 250px;
+      width: 250px!important;
       background-color: rgb(57, 57, 58);
-      height: calc(100vh - 165px);
       .adminPan__menu_item {
         height: 4.7rem;
         width: 100%;
@@ -101,7 +102,6 @@ $colorYellow: #bbba16;
     }
     .adminPan__mainContent_content {
       width: calc(100% - 250px);
-      height: calc(100vh - 165px);
       //background-color: rgba(234, 234, 235, 0.5);
       background-color: white;
       border: 1px solid grey;
@@ -115,7 +115,7 @@ $colorYellow: #bbba16;
           margin: 5px 5px;
           //background-color: rgba(51, 184, 191, 0.33);
           background-color: white;
-          min-width: 250px;
+          min-width: 200px;
           height: 65px;
           display: flex;
           align-items: center;
@@ -126,8 +126,12 @@ $colorYellow: #bbba16;
           transition: all 0.5s ease;
           &:hover {
             background-color: rgb(246, 246, 246);
+            .adminPan__filters_item_log{
+              transform: rotate(360deg);
+            }
           }
           .adminPan__filters_item_log {
+            transition: all 0.5s ease;
             margin-right: 12px;
             height: 45px;
             width: 45px;
@@ -171,3 +175,210 @@ $colorYellow: #bbba16;
     color: #eaeaeb;
   }
 }
+
+
+// table top
+.tablePanel {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tablePanel td,
+.tablePanel th {
+  padding: 5px;
+  border:  1px solid black;
+}
+.tablePanel td {
+  position: relative;
+}
+@media screen and (max-width: 1050px) {
+  thead {
+    display: none;
+  }
+  .tablePanel td {
+    display: block;
+    padding-left: 40%;
+    border:  none;
+
+  }
+  .tablePanel td:nth-child(odd) {
+    background-color: #ccc;
+  }
+  .tablePanel td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 2%;
+  }
+  .tablePanel tr {
+    border-bottom: 5px solid black;
+  }
+}
+@media screen and (max-width: 600px) {
+  .tablePanel td:before {
+    position: static;
+    display: block;
+    background-color: #ccc;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  .tablePanel td {
+    padding: 10px;
+    text-align: center;
+
+  }
+  .tablePanel td:nth-child(odd) {
+    background-color: #fff;
+  }
+}
+// table bottom
+
+
+@media screen and (max-width: 767px) {
+  .adminPan__filters_item{
+    min-width: auto!important;
+    .adminPan__filters_item_log{
+      display: none!important;
+    }
+  }
+
+
+}
+
+
+
+
+// animation top
+@keyframes "leftMenuShow" {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+    display: none;
+  }
+  100%{
+    transform: translateX( 0px );
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes "leftMenuHide" {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+    display: none;
+  }
+  100%{
+    transform: translateX( -200px );
+    opacity: 0;
+    display: inline-block;
+  }
+}
+// animation BOTTOM
+
+
+// navigation burger menu top
+
+.navBurger {
+  //background-color: #ff7477;
+  display: none;
+  width: 35px;
+  //opacity: 0.1;
+  height: 25px;
+  left: 10px;
+  //top: 24px;
+  z-index: 9999999;
+  position: absolute;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  -ms-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  cursor: pointer;
+  span {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    display: block;
+    content: '';
+    height: 2px;
+    width: 35px;
+    background-color: white;
+    border-radius: 1px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    &:after, &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      height: 2px;
+      width: 35px;
+      background-color: white;
+      border-radius: 1px;
+      cursor: pointer;
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -ms-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+    }
+    &:before {
+      top: -8px;
+    }
+    &:after {
+      bottom: -8px;
+    }
+  }
+  &.active {
+    span {
+      background-color: transparent;
+      &:before, &:after {
+        top: 0;
+      }
+      &:before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        background-color: #6b8383;
+      }
+      &:after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        background-color: #6b8383;
+      }
+    }
+  }
+}
+.showLM {
+  animation: 'leftMenuShow' 0.4s forwards;
+}
+
+.hideLM {
+  animation: 'leftMenuHide' 0.4s forwards;
+}
+@media screen and (max-width: 988px) {
+  .navBurger {
+    display: inline-block;
+  }
+  .adminPan__mainContent_content {
+    width: 100% !important;
+  }
+  .leftMenuSection {
+    position: absolute;
+    z-index: 99999999999;
+    border-right: none !important;
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+}
+// navigation burger menu bottom
+

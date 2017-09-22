@@ -43,10 +43,10 @@ class PaymentAndDelivery extends React.Component {
                 <p style={{fontWeight: 'bold'}}></p>
                 <p
                     style={{fontWeight: 'bold'}}><img src="https://kupit-rukzak.com.ua//uploads/images/b32a622b6336a207c9be9ead37cfcfbc.png"
-                                                      style={{width: '465px', height: '89px'}}/></p><p
+                                                      style={{width: '465px', height: '89px', maxWidth: '95%'}}/></p><p
                     style={{fontWeight: 'bold'}}></p><p><img
                     src="https://kupit-rukzak.com.ua//uploads/images/90625a2380aa604a1f68cc0773b7df84.png"
-                    style={{width: '481.515px', 'height' : '137px'}}/></p><p></p><br/><p></p>
+                    style={{width: '481.515px', 'height' : '137px', maxWidth: '95%'}}/></p><p></p><br/><p></p>
                         <p style={{fontWeight: 'bold'}}></p>
             </div>
         )
