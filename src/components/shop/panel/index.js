@@ -133,23 +133,16 @@ class Panel extends React.Component {
                                        <div className="adminPan__filters_item_text_desk">Все</div>
                                    </div>
                                </div>
-
-
                            </div>
-
-
-
                            <table className="tablePanel">
                                <thead>
                                <tr>
+                                   <th>Имя, Phone, Адрес, Mail</th>
                                    <th>Оплата</th>
                                    <th>Доставка</th>
-                                   <th>Имя</th>
-                                   <th>Адрес</th>
-                                   <th>Mail</th>
-                                   <th>Phone</th>
                                    <th>Товар</th>
                                    <th>Создан</th>
+                                   <th>Звершен</th>
                                    <th>Статус</th>
                                </tr>
                                </thead>
