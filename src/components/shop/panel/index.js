@@ -148,20 +148,20 @@ class Panel extends React.Component {
                                </thead>
                                <tbody>
                                <tr>
-                                   <td data-label="Заголовок 1"><span>Компьютер</span></td>
-                                   <td data-label="Наименование"><span>Мощный компьютер</span></td>
-                                   <td data-label="Данные"><span>Супер данные</span></td>
-                                   <td data-label="Характеристики">
+                                   <td data-label="Имя, Phone, Адрес, Mail"><span>Компьютер</span></td>
+                                   <td data-label="Оплата"><span>Мощный компьютер</span></td>
+                                   <td data-label="Доставка"><span>Супер данные</span></td>
+                                   <td data-label="Товар">
                                        <ul>
                                            <li>Очень хорошая характеристика 1</li>
                                            <li>Очень хорошая характеристика 2</li>
                                            <li>Очень хорошая характеристика 3</li>
                                        </ul>
                                    </td>
-                                   <td data-label="Большой большой заголовок"><span>Большое большое описание</span></td>
-                                   <td data-label="Дата"><span>09.02.2017</span></td>
-                                   <td data-label="Цена"><span>100 000 руб.</span></td>
-                                   <td data-label="Преимущества"><span>Мы лучше всех</span></td>
+                                   <td data-label="Создан"><span>Большое большое описание</span></td>
+                                   <td data-label="Звершен"><span>09.02.2017</span></td>
+                                   <td data-label="Статус"><span>100 000 руб.</span></td>
+
                                </tr>
                                </tbody>
                            </table>
