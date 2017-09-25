@@ -163,6 +163,29 @@ $colorYellow: #bbba16;
   }
 }
 
+.adminPanelSpinner{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation-name: spinAdmin;
+  animation-duration: 2s;
+  Animation-iteration-count: infinite;
+  i{
+    transform: rotate(360deg);
+    font-size: 3.5rem;
+  }
+}
+@keyframes spinAdmin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 .adminPanHeader__btn {
   margin-left: 1rem;
   color: #FFFFFF;

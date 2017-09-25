@@ -141,8 +141,8 @@ console.log('renders');
                                    </div>
                                </div>
                            </div>
-                           {!this.orders.length
-                               ? <div></div>
+                           {!this.state.orders.length
+                               ? <div className="adminPanelSpinner"><i className="fa fa-spinner" aria-hidden="true"></i></div>
                                : null}
                            <table className="tablePanel">
                                <thead>
@@ -204,3 +204,5 @@ console.log('renders');
 }
 
 export default Panel;
+
+console.log(332432);
