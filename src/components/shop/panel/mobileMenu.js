@@ -36,8 +36,3 @@ export default function() {
         });
     // });
 }
-console.log(1323);
-console.log(13323);
-console.log(13823);
-console.log(164323);
-console.log(13723);

@@ -1,23 +1,64 @@
 import React from "react";
 import queryParams from '../helpers/lib/queryParams';
 import styles from './index.scss';
+import axios from "axios";
+import params from '../helpers/lib/queryParams';
 import menu from './mobileMenu';
 class Panel extends React.Component {
-    componentDidMount = (prevProps) => {
-        window.scrollTo(0, 0);
-        menu();
+    state = {
+        content: null,
+    }
 
-        // var token = queryParams['t'];
-        // if (token) {
-        //     console.log(token, 'tokenischeeeeeee');
-        // }
+     componentDidMount = async (prevProps) => {
+        window.scrollTo(0, 0);
+        // mobile menu
+        menu();
+        // read user token
+        let token;
+        try {
+            token = localStorage.getItem("info");
+        } catch (error){
+            console.error(error);
+        }
+        if (!token) {
+            this.setState({content: 'Нужно авторизироваться'})
+        } else {
+            var param = params['type'];
+            var orders = [];
+            if(param){
+                try {
+                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`);
+                } catch (error) {
+                    console.log(error.response.data);
+                    // this.setState({content: error.response.data.message})
+                }
+            }  else {
+                try{
+                    // orders = await axios.get('http://localhost:3000/orders');
+
+                    orders = await axios.get('http://localhost:3000/orders',{
+                        // timeout: 1000,
+                         headers: {'authorization': token}
+                    });
+                }catch (error){
+                    console.log(error.response);
+                    // this.setState({content: error.response.data.message})
+                }
+            }
+            console.log(token, 'token');
+            console.log(param, 'params');
+            console.log(orders.data, 'ors');
+            console.log(orders.data, 'ors');
+            console.log(orders.data, 'ors');
+        }
+
 
     };
 
     render = ()=> {
+
         return (
            <div className="adminPanContainer fullWidth left">
-
                <div className="adminPanHeader">
                    <div className="adminPanHeader__left">
                        <span className="adminPanHeader__title">Админ Панель</span>
@@ -101,14 +142,15 @@ class Panel extends React.Component {
                            <table className="tablePanel">
                                <thead>
                                <tr>
-                                   <th>Заголовок 1</th>
-                                   <th>Наименование</th>
-                                   <th>Данные</th>
-                                   <th>Характеристики</th>
-                                   <th>Большой большой заголовок</th>
-                                   <th>Дата</th>
-                                   <th>Цена</th>
-                                   <th>Преимущества</th>
+                                   <th>Оплата</th>
+                                   <th>Доставка</th>
+                                   <th>Имя</th>
+                                   <th>Адрес</th>
+                                   <th>Mail</th>
+                                   <th>Phone</th>
+                                   <th>Товар</th>
+                                   <th>Создан</th>
+                                   <th>Статус</th>
                                </tr>
                                </thead>
                                <tbody>

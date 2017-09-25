@@ -3,6 +3,7 @@ import mongoose, {Schema} from "mongoose";
 const OrderSchema = new Schema({
 
     payment: {type: Object, require: true},
+    price: {type: Number, require: true },
     delivery: {type: String, require: true},
     name: {type: String, require: true},
     address: {type: String, require: true},

@@ -102,7 +102,9 @@ class WaysDevPay extends React.Component {
     }
 
     async sendDataToServer() {
+        let price = this.props.cart.reduce((prev, cur)=> prev + Math.floor((((cur.price/100)*(100-cur.sail))*cur.count)), 0);
         let order = {
+            price,
             payment: this.state.payment,
             delivery: this.state.delivery,
             name: this.state.name,
