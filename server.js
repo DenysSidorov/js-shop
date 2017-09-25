@@ -49,18 +49,18 @@ app.use(bodyParse.urlencoded({extended: true}));
 
 /*TODO make async function*/
 var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
-app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: config.backend.secretWord,
-    // TODO проверить защиту кук
-    // cookie: { secure: true,
-    //     httpOnly: true,
-    //     domain: 'example.com',
-    //     path: 'foo/bar',
-    //     expires: expiryDate
-    // }
-}));
+// app.use(session({
+//     resave: true,
+//     saveUninitialized: true,
+//     secret: config.backend.secretWord,
+//     // TODO проверить защиту кук
+//     // cookie: { secure: true,
+//     //     httpOnly: true,
+//     //     domain: 'example.com',
+//     //     path: 'foo/bar',
+//     //     expires: expiryDate
+//     // }
+// }));
 
 
 app.use('/goods' ,cors(), goodRoute);

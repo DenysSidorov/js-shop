@@ -57,7 +57,7 @@ $colorYellow: #bbba16;
     background-color: rgb(116, 116, 117);
 
     .adminPan__mainContent_menu {
-      width: 250px!important;
+      width: 250px !important;
       height: 100vh;
       background-color: rgb(57, 57, 58);
       .adminPan__menu_item {
@@ -127,7 +127,7 @@ $colorYellow: #bbba16;
           transition: all 0.5s ease;
           &:hover {
             background-color: rgb(246, 246, 246);
-            .adminPan__filters_item_log{
+            .adminPan__filters_item_log {
               transform: rotate(360deg);
             }
           }
@@ -163,8 +163,8 @@ $colorYellow: #bbba16;
   }
 }
 
-.adminPanelSpinner{
-  width:100%;
+.adminPanelSpinner {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,16 +172,17 @@ $colorYellow: #bbba16;
   animation-name: spinAdmin;
   animation-duration: 2s;
   Animation-iteration-count: infinite;
-  i{
+  i {
     transform: rotate(360deg);
     font-size: 3.5rem;
   }
 }
+
 @keyframes spinAdmin {
-  from{
+  from {
     transform: rotate(0deg);
   }
-  to{
+  to {
     transform: rotate(360deg);
   }
 }
@@ -200,20 +201,44 @@ $colorYellow: #bbba16;
   }
 }
 
-
 // table top
 .tablePanel {
   width: 100%;
   border-collapse: collapse;
+  thead {
+    tr {
+      th {
+
+        font: 1.2rem/1.4rem $robotoMedium;
+
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        span {
+          color: #262626;
+          font: 1.3rem/1.4rem "Roboto-Regular";
+        .linkToGood{
+          color: #006bb3;
+        }
+        }
+      }
+    }
+  }
 }
+
 .tablePanel td,
 .tablePanel th {
   padding: 5px;
-  border:  1px solid black;
+  border: 1px solid black;
 }
+
 .tablePanel td {
   position: relative;
 }
+
 @media screen and (max-width: 1050px) {
   thead {
     display: none;
@@ -221,7 +246,7 @@ $colorYellow: #bbba16;
   .tablePanel td {
     display: block;
     padding-left: 40%;
-    border:  none;
+    border: none;
 
   }
   .tablePanel td:nth-child(odd) {
@@ -236,6 +261,7 @@ $colorYellow: #bbba16;
     border-bottom: 5px solid black;
   }
 }
+
 @media screen and (max-width: 600px) {
   .tablePanel td:before {
     position: static;
@@ -254,22 +280,18 @@ $colorYellow: #bbba16;
     background-color: #fff;
   }
 }
+
 // table bottom
 
-
 @media screen and (max-width: 767px) {
-  .adminPan__filters_item{
-    min-width: auto!important;
-    .adminPan__filters_item_log{
-      display: none!important;
+  .adminPan__filters_item {
+    min-width: auto !important;
+    .adminPan__filters_item_log {
+      display: none !important;
     }
   }
 
-
 }
-
-
-
 
 // animation top
 @keyframes "leftMenuShow" {
@@ -278,8 +300,8 @@ $colorYellow: #bbba16;
     opacity: 0;
     display: none;
   }
-  100%{
-    transform: translateX( 0px );
+  100% {
+    transform: translateX(0px);
     opacity: 1;
     display: block;
   }
@@ -291,14 +313,14 @@ $colorYellow: #bbba16;
     opacity: 1;
     display: none;
   }
-  100%{
-    transform: translateX( -200px );
+  100% {
+    transform: translateX(-200px);
     opacity: 0;
     display: inline-block;
   }
 }
-// animation BOTTOM
 
+// animation BOTTOM
 
 // navigation burger menu top
 
@@ -381,6 +403,7 @@ $colorYellow: #bbba16;
     }
   }
 }
+
 .showLM {
   animation: 'leftMenuShow' 0.4s forwards;
 }
@@ -388,6 +411,7 @@ $colorYellow: #bbba16;
 .hideLM {
   animation: 'leftMenuHide' 0.4s forwards;
 }
+
 @media screen and (max-width: 988px) {
   .navBurger {
     display: inline-block;
@@ -404,5 +428,6 @@ $colorYellow: #bbba16;
   }
 
 }
+
 // navigation burger menu bottom
 
