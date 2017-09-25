@@ -7,6 +7,7 @@ import menu from './mobileMenu';
 class Panel extends React.Component {
     state = {
         content: null,
+        orders: []
     }
 
      componentDidMount = async (prevProps) => {
@@ -28,6 +29,9 @@ class Panel extends React.Component {
             if(param){
                 try {
                     orders = await axios.get(`http://localhost:3000/orders?type=${param}`);
+                this.setState({
+                    orders: orders.data
+                })
                 } catch (error) {
                     console.log(error.response.data);
                     // this.setState({content: error.response.data.message})
@@ -40,6 +44,9 @@ class Panel extends React.Component {
                         // timeout: 1000,
                          headers: {'authorization': token}
                     });
+                    this.setState({
+                        orders: orders.data
+                    })
                 }catch (error){
                     console.log(error.response);
                     // this.setState({content: error.response.data.message})
@@ -56,7 +63,7 @@ class Panel extends React.Component {
     };
 
     render = ()=> {
-
+console.log('renders');
         return (
            <div className="adminPanContainer fullWidth left">
                <div className="adminPanHeader">
@@ -134,6 +141,9 @@ class Panel extends React.Component {
                                    </div>
                                </div>
                            </div>
+                           {!this.orders.length
+                               ? <div></div>
+                               : null}
                            <table className="tablePanel">
                                <thead>
                                <tr>
@@ -147,22 +157,40 @@ class Panel extends React.Component {
                                </tr>
                                </thead>
                                <tbody>
-                               <tr>
-                                   <td data-label="Имя, Phone, Адрес, Mail"><span>Компьютер</span></td>
-                                   <td data-label="Оплата"><span>Мощный компьютер</span></td>
-                                   <td data-label="Доставка"><span>Супер данные</span></td>
-                                   <td data-label="Товар">
-                                       <ul>
-                                           <li>Очень хорошая характеристика 1</li>
-                                           <li>Очень хорошая характеристика 2</li>
-                                           <li>Очень хорошая характеристика 3</li>
-                                       </ul>
-                                   </td>
-                                   <td data-label="Создан"><span>Большое большое описание</span></td>
-                                   <td data-label="Звершен"><span>09.02.2017</span></td>
-                                   <td data-label="Статус"><span>100 000 руб.</span></td>
+                               {this.state.orders.map((order,index)=>{
+                                   return <tr key={index}>
+                                       <td data-label="Имя, Phone, Адрес, Mail"><span>Компьютер</span></td>
+                                       <td data-label="Оплата"><span>Мощный компьютер</span></td>
+                                       <td data-label="Доставка"><span>Супер данные</span></td>
+                                       <td data-label="Товар">
+                                           <ul>
+                                               <li>Очень хорошая характеристика 1</li>
+                                               <li>Очень хорошая характеристика 2</li>
+                                               <li>Очень хорошая характеристика 3</li>
+                                           </ul>
+                                       </td>
+                                       <td data-label="Создан"><span>Большое большое описание</span></td>
+                                       <td data-label="Звершен"><span>09.02.2017</span></td>
+                                       <td data-label="Статус"><span>{order._id}</span></td>
 
-                               </tr>
+                                   </tr>
+                               })}
+                               {/*<tr>*/}
+                                   {/*<td data-label="Имя, Phone, Адрес, Mail"><span>Компьютер</span></td>*/}
+                                   {/*<td data-label="Оплата"><span>Мощный компьютер</span></td>*/}
+                                   {/*<td data-label="Доставка"><span>Супер данные</span></td>*/}
+                                   {/*<td data-label="Товар">*/}
+                                       {/*<ul>*/}
+                                           {/*<li>Очень хорошая характеристика 1</li>*/}
+                                           {/*<li>Очень хорошая характеристика 2</li>*/}
+                                           {/*<li>Очень хорошая характеристика 3</li>*/}
+                                       {/*</ul>*/}
+                                   {/*</td>*/}
+                                   {/*<td data-label="Создан"><span>Большое большое описание</span></td>*/}
+                                   {/*<td data-label="Звершен"><span>09.02.2017</span></td>*/}
+                                   {/*<td data-label="Статус"><span>100 000 руб.</span></td>*/}
+
+                               {/*</tr>*/}
                                </tbody>
                            </table>
 
