@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import st from './index.less';
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
@@ -63,7 +64,7 @@ constructor(props){
                         : null}
 
                 </div>
-                    : <div>Такого товара не существует</div> }
+                    : <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>}}
             </div>
         )
 
