@@ -163,38 +163,6 @@ class Panel extends React.Component {
                                    <td data-label="Цена"><span>100 000 руб.</span></td>
                                    <td data-label="Преимущества"><span>Мы лучше всех</span></td>
                                </tr>
-                               <tr>
-                                   <td data-label="Заголовок 1"><span>Компьютер</span></td>
-                                   <td data-label="Наименование"><span>Мощный компьютер</span></td>
-                                   <td data-label="Данные"><span>Супер данные</span></td>
-                                   <td data-label="Характеристики">
-                                       <ul>
-                                           <li>Очень хорошая характеристика 1</li>
-                                           <li>Очень хорошая характеристика 2</li>
-                                           <li>Очень хорошая характеристика 3</li>
-                                       </ul>
-                                   </td>
-                                   <td data-label="Большой большой заголовок"><span>Большое большое описание</span></td>
-                                   <td data-label="Дата"><span>09.02.2017</span></td>
-                                   <td data-label="Цена"><span>100 000 руб.</span></td>
-                                   <td data-label="Преимущества"><span>Мы лучше всех</span></td>
-                               </tr>
-                               <tr>
-                                   <td data-label="Заголовок 1"><span>Компьютер</span></td>
-                                   <td data-label="Наименование"><span>Мощный компьютер</span></td>
-                                   <td data-label="Данные"><span>Супер данные</span></td>
-                                   <td data-label="Характеристики">
-                                       <ul>
-                                           <li>Очень хорошая характеристика 1</li>
-                                           <li>Очень хорошая характеристика 2</li>
-                                           <li>Очень хорошая характеристика 3</li>
-                                       </ul>
-                                   </td>
-                                   <td data-label="Большой большой заголовок"><span>Большое большое описание</span></td>
-                                   <td data-label="Дата"><span>09.02.2017</span></td>
-                                   <td data-label="Цена"><span>100 000 руб.</span></td>
-                                   <td data-label="Преимущества"><span>Мы лучше всех</span></td>
-                               </tr>
                                </tbody>
                            </table>
 
