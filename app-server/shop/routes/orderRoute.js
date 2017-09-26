@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/', OrderController.create);
 router.get('/', adminCheck, OrderController.getAll);
+router.post('/change-type', adminCheck, OrderController.changeType);
 // router.get('/tags', GoodController.getUniqCategory);
 // router.get('/popular', GoodController.getPopular);
 // router.get('/:id', GoodController.getById);

@@ -6,6 +6,7 @@ import cartReducer from './cart'
 import confirmCardReducer from './confirmInCard'
 import serverPreloaderReducer from './serverPreloader'
 import authReducer from './authReducer/authReducer'
+import adminPanelReducer from './panel/adminPanelReducer'
 
 export default combineReducers({
     router: routerReducer, // second place react-router-redux including, first - applyMiddleware
@@ -13,7 +14,8 @@ export default combineReducers({
     loadingBar: loadingBarReducer,
     cart: cartReducer,
     confirmsCard: confirmCardReducer,
-    authReducer
+    authReducer,
+    adminPanelReducer
     // serverPreloaderReducer,
 
 })

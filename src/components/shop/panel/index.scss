@@ -203,6 +203,7 @@ $colorYellow: #bbba16;
 
 // table top
 .tablePanel {
+  margin-bottom: 120px;
   width: 100%;
   border-collapse: collapse;
   thead {
@@ -431,3 +432,27 @@ $colorYellow: #bbba16;
 
 // navigation burger menu bottom
 
+.Dropdown-placeholder{
+  width: 100%;
+  text-align: center;
+}
+.Dropdown-placeholder{
+  width: 100%;
+  border: 1px solid #2ea9fd;
+  text-align: center;
+}
+.Dropdown-arrow{
+  position: relative;
+}
+.Dropdown-menu{
+  position: absolute;
+  z-index: 999999;
+  min-width: 90%;
+}
+.Dropdown-option{
+  padding: 0 2px;
+  background-color: #2ea9fd;
+  width: auto;
+  text-align: center;
+  color: white;
+}
