@@ -52,3 +52,32 @@ export const changeType = async (req, resp, next) => {
     }
     resp.json(result);
 }
+
+export const getTypes = async (req, resp, next) =>{
+    let result = {};
+    try{
+        // let resMongo = await Order.find({},{_id:false, type: true});
+        let resMongo = await Order.aggregate([
+            {
+                $match: {
+                    type: { $not: {$size: 0} }
+                }
+            },
+            { $unwind: "$type" },
+            {
+                $group: {
+                    _id: {$toLower: '$type'},
+                    count: { $sum: 1 , }
+                }
+            }
+        ]);
+        console.log(resMongo, 'resMongo');
+        result = resMongo;
+    } catch ({message}) {
+        return next({
+            status: 500,
+            message
+        });
+    }
+    resp.json(result);
+}

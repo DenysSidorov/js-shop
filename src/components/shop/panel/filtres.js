@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {getTypes}from '../../../reducers/panel/actions';
 class Filters extends Component{
-
+componentDidMount(){
+    this.props.getType();
+}
     render(){
         console.log(this.props.panelReducer);
         return (
@@ -75,6 +78,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         addItem: (item)=> pushToCart(item),
         changeKind : (kind)=> changeConfirm(kind),
+        getType : (token)=> getTypes(token)
     },dispatch)
 }
 

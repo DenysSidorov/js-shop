@@ -5,6 +5,23 @@ import {GET_TYPES} from "./types";
 
 const ROOT_URL = process.env.ROOT_URL;
 
+export function getTypes(token) {
+    return function (dispatch) {
+        dispatch(showLoading());
+        try{
+            let result = axios.get(`${ROOT_URL}/orders/get-types`,{
+                // timeout: 1000,
+                headers: {'authorization': token}
+            });
+            console.log(result);
+            dispatch(hideLoading());
+            dispatch({type: GET_TYPES, payload: result})
+        }catch(err){
+            console.log(err || err.message);
+        }
+
+    }
+}
 // export function deleteErrorMessage() {
 //     return {type: DELETE_ERROR_MESSAGE};
 //
