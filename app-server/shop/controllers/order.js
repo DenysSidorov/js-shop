@@ -38,36 +38,45 @@ export const changeType = async (req, resp, next) => {
     console.log(req.body);
     let orderId = req.body._id;
     let orderType = req.body.type;
-    console.log(req.token._id, "admin's token");
-    let result = false;
-    try{
-        let resMongo = await Order.update({_id: orderId},{type : orderType });
-        console.log(resMongo, 'resMongo');
-        result = true;
-    } catch ({message}) {
+    if (['new', 'progress', 'done', 'delivery'].indexOf(orderType) !== -1) {
+
+
+        console.log(req.token._id, "admin's token");
+        let result = false;
+        try {
+            let resMongo = await Order.update({_id: orderId}, {type: orderType});
+            console.log(resMongo, 'resMongo');
+            result = true;
+        } catch ({message}) {
+            return next({
+                status: 500,
+                message
+            });
+        }
+        resp.json(result);
+    } else {
         return next({
-            status: 500,
-            message
+            status: 400,
+            message: 'Bad request, unusable type of order'
         });
     }
-    resp.json(result);
 }
 
-export const getTypes = async (req, resp, next) =>{
+export const getTypes = async (req, resp, next) => {
     let result = {};
-    try{
+    try {
         // let resMongo = await Order.find({},{_id:false, type: true});
         let resMongo = await Order.aggregate([
             {
                 $match: {
-                    type: { $not: {$size: 0} }
+                    type: {$not: {$size: 0}}
                 }
             },
-            { $unwind: "$type" },
+            {$unwind: "$type"},
             {
                 $group: {
                     _id: {$toLower: '$type'},
-                    count: { $sum: 1 , }
+                    count: {$sum: 1,}
                 }
             }
         ]);

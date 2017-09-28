@@ -6,20 +6,24 @@ import {GET_TYPES} from "./types";
 const ROOT_URL = process.env.ROOT_URL;
 
 export function getTypes(token) {
-    return function (dispatch) {
+    return async function (dispatch) {
         dispatch(showLoading());
+        console.log('sghhhhh');
         try{
-            let result = axios.get(`${ROOT_URL}/orders/get-types`,{
+            let result = await axios.get(`${ROOT_URL}/orders/get-types`,{
                 // timeout: 1000,
                 headers: {'authorization': token}
             });
-            console.log(result);
+            console.log(result.data);
             dispatch(hideLoading());
-            dispatch({type: GET_TYPES, payload: result})
+            dispatch({type: GET_TYPES, payload: result.data})
         }catch(err){
-            console.log(err || err.message);
+            dispatch(hideLoading());
+            console.log(err.message || err);
         }
-
+console.log(132342342);
+console.log(132342234342);
+console.log(1323423423);
     }
 }
 // export function deleteErrorMessage() {

@@ -1,9 +1,12 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 import Filtres from './filtres';
 import params from '../helpers/lib/queryParams';
 import ReactDropdown from 'react-dropdown';
+import {getTypes}from '../../../reducers/panel/actions';
 class Orders extends React.Component{
     state = {
         content: null,
@@ -16,6 +19,67 @@ class Orders extends React.Component{
             {value: 'delivery', label: 'В пути'},
         ]
     }
+
+    componentWillReceiveProps = async (prevProps) => {
+        console.log('componentWillReceiveProps');
+        // read user token
+        let token;
+        try {
+            token = localStorage.getItem("info");
+        } catch (error) {
+            console.error(error);
+        }
+        if (!token) {
+            this.setState({content: 'Нужно авторизироваться'})
+        } else {
+            this.setState({token})
+            var param = params['type'];
+            var orders = [];
+            if (param) {
+                try {
+                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`);
+                    console.log(orders, 1111111111);
+                    this.setState({
+                        orders: orders.data
+                    })
+                } catch (error) {
+                    this.setState({
+                        orders: orders
+                    })
+                    console.log(error.response.data);
+                    // this.setState({content: error.response.data.message})
+                }
+
+            } else {
+                try {
+                    // orders = await axios.get('http://localhost:3000/orders');
+
+                    orders = await axios.get('http://localhost:3000/orders', {
+                        // timeout: 1000,
+                        headers: {'authorization': token}
+                    });
+                    console.log(orders.data, 2222222222222);
+                    this.setState({
+                        orders: orders.data
+                    }, () => {
+                        console.log(this.state.orders, 'ORDERSSSSS');
+                    })
+                } catch (error) {
+                    this.setState({
+                        orders: orders
+                    }, () => {
+                        console.log(this.state.orders, 'ORDERSSSSS');
+                    })
+                    console.log(error.response);
+
+                    // this.setState({content: error.response.data.message})
+                }
+
+            }
+        }
+
+
+    };
 
     componentDidMount = async (prevProps) => {
         window.scrollTo(0, 0);
@@ -100,7 +164,7 @@ class Orders extends React.Component{
                 });
             console.log(res.data, 'res');
             if(res.data){
-                // todo
+                this.props.getType();
             }
         } catch (err) {
             console.log(err);
@@ -181,25 +245,24 @@ class Orders extends React.Component{
 
                         </tr>
                     })}
-                    {/*<tr>*/}
-                    {/*<td data-label="Имя, Phone, Адрес, Mail"><span>Компьютер</span></td>*/}
-                    {/*<td data-label="Оплата"><span>Мощный компьютер</span></td>*/}
-                    {/*<td data-label="Доставка"><span>Супер данные</span></td>*/}
-                    {/*<td data-label="Товар">*/}
-                    {/*<ul>*/}
-                    {/*<li>Очень хорошая характеристика 1</li>*/}
-                    {/*<li>Очень хорошая характеристика 2</li>*/}
-                    {/*<li>Очень хорошая характеристика 3</li>*/}
-                    {/*</ul>*/}
-                    {/*</td>*/}
-                    {/*<td data-label="Создан"><span>Большое большое описание</span></td>*/}
-                    {/*<td data-label="Звершен"><span>09.02.2017</span></td>*/}
-                    {/*<td data-label="Статус"><span>100 000 руб.</span></td>*/}
-                    {/*</tr>*/}
                     </tbody>
                 </table>}
             </div>
         )
     }
 }
-export default Orders;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        countTypes: state.adminPanelReducer.countTypes
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({
+        getType : (token)=> getTypes(token)
+    },dispatch)
+}
+
+
+export default connect(
+    mapStateToProps, mapDispatchToProps
+)(Orders);

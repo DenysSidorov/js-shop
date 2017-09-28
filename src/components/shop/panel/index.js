@@ -152,7 +152,7 @@ class Panel extends React.Component {
         return (
             <div className="adminPanContainer fullWidth left">
                <Header/>
-                <LoadingBar style={{ backgroundColor: '#2EA9FD', height: '3px' }} />
+                <LoadingBar style={{ backgroundColor: '#ff7867', height: '3px' }} />
                 <div className="adminPan__mainContent">
                   <LeftMenu/>
                     <Switch>

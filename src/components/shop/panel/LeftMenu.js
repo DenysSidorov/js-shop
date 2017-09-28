@@ -7,8 +7,8 @@ class LeftMenu extends Component{
         return (  <div className="adminPan__mainContent_menu leftMenuSection left">
             <div className="adminPan__menu_item">
                 <i className="fa fa-credit-card"></i>
-                <Link to="/panel/"className="adminPan__menu_item_text">Заказы</Link>
-                <span className="adminPan__menu_item_count"><span>{this.props.countTypes.new}</span></span>
+                <Link to="/panel"className="adminPan__menu_item_text">Заказы</Link>
+                {this.props.countTypes.new ? <span className="adminPan__menu_item_count"><span>{this.props.countTypes.new}</span></span> : null}
             </div>
             <div className="adminPan__menu_item">
                 <i className="fa fa-credit-card"></i>
