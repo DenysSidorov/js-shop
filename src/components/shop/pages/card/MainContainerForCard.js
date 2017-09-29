@@ -56,6 +56,7 @@ class MainContainerForCard extends React.Component {
     render() {
         console.log('rerender');
         var card = this.props.card[0];
+        console.log(card, 'card');
         const images = [];
         card.photo.forEach(el=> images.push({
             original: `/img-static/${el}`,
@@ -132,8 +133,12 @@ class MainContainerForCard extends React.Component {
                     <div className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy">
                             <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">
                                 <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;уже купило <span>123</span> человека</span>
+                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;уже купило <span>14</span> человека</span>
                             </span>
+                        {card.sail ?<span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">
+                               <i className="fa fa-pie-chart shop_blueIco_global" aria-hidden="true"></i>
+                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;скидка <span>{card.sail}</span> %</span>
+                            </span> : null}
                         {card.isExists
                             ? <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
                                 <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>

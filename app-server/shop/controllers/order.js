@@ -80,7 +80,7 @@ export const getTypes = async (req, resp, next) => {
                 }
             }
         ]);
-        console.log(resMongo, 'resMongo');
+        // console.log(resMongo, 'resMongo');
         result = resMongo;
     } catch ({message}) {
         return next({

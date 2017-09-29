@@ -20,7 +20,8 @@ export default function(state = initialState, action) {
             return { ...state, message: action.payload };
         case DELETE_ERROR_MESSAGE:
             return { ...state, error: ''};
-        case APPEAR_LIKE_ADMIN:
+
+            case APPEAR_LIKE_ADMIN:
             return {...state, isAdmin: true}
 
     }

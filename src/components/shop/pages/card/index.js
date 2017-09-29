@@ -64,7 +64,7 @@ constructor(props){
                         : null}
 
                 </div>
-                    : <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>}}
+                    : <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>}
             </div>
         )
 

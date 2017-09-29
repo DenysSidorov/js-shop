@@ -19,12 +19,12 @@ class MainMenu extends React.Component {
                 <div className="menuSection left fullWidth js_search-height">
                     <div className="container">
                         <div className="flexWrapMenu">
-                            <div className="search">
-                                <div className="search__input">
-                                    <i className="fa fa-search search-font-main-menu"></i>
-                                    <input className="search__input_input" type="text" placeholder="Поиск на сайте"/>
-                                </div>
-                            </div>
+                            {/*<div className="search">*/}
+                                {/*<div className="search__input">*/}
+                                    {/*<i className="fa fa-search search-font-main-menu"></i>*/}
+                                    {/*<input className="search__input_input" type="text" placeholder="Поиск на сайте"/>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
                             <div className="menu">
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>

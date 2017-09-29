@@ -13,18 +13,18 @@ import morgan from 'morgan';
 
 // TODO download CORS-middleware and require it here
 
-import config from './config/index'; // Конфигурация
-import authRoute from './app-server/routes/auth';
-import userRoute from './app-server/shop/routes/user';
-import pageRoute from './app-server/routes/page';
-import goodRoute from './app-server/shop/routes/goodRoute';
-import orderRoute from './app-server/shop/routes/orderRoute';
+import config from '../config/index'; // Конфигурация
+import authRoute from './routes/auth';
+import userRoute from './shop/routes/user';
+import pageRoute from './routes/page';
+import goodRoute from './shop/routes/goodRoute';
+import orderRoute from './shop/routes/orderRoute';
 
 
-import errorMiddleWare from './app-server/middlewares/errors';
+import errorMiddleWare from './middlewares/errors';
 
-import getUser from './app-server/shop/middlewares/getUser'; // Найти пользователя по токену
-import checkToken from './app-server/middlewares/checkToken'; // Проверка наличия токена
+import getUser from './shop/middlewares/getUser'; // Найти пользователя по токену
+import checkToken from './middlewares/checkToken'; // Проверка наличия токена
 
 
 const app = express(); // Запуск приложения
@@ -36,7 +36,7 @@ mongoose.connect(config.backend.database, {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
-
+console.log(23);
 /** Запуск приожения на порте*/
 app.listen(config.backend.port, config.backend.domain, config.backend.maxConnects, (err)=>{
     if (err) throw err;

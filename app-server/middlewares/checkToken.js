@@ -25,7 +25,7 @@ export default (req, resp, next)=>{
             })
         }
         // Если токен нормальный - пропускаем - все ок
-        console.log(decoded);
+        //console.log(decoded);
         req.token = decoded; // ТЕПЕРЬ ВЕЗДЕ В REQUEST ЕСТЬ TOKEN
         next();
     });

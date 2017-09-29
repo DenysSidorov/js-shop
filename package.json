@@ -105,7 +105,7 @@
     "watch": "webpack --watch",
     "push": "git push all master",
     "lint": "node_modules\\.bin\\eslint 1.js",
-    "start-server": "nodemon --exec babel-node server.js",
+    "start-server": "nodemon --exec babel-node app-server/server.js",
     "start2": "babel-node server.js --presets es2015",
     "start": "babel-node server.js --presets es2015, stage-2"
   }

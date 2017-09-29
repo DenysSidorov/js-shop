@@ -18,11 +18,11 @@ class Logup extends React.Component {
         // dispatch(deleteErrorMessage());
     }
     state = {
-        login: '000scorpions000@gmail.com',
-        pass: '000scorpions000@gmail.com',
-        repPass: '000scorpions000@gmail.com',
-        nick: '000scorpions000@gmail.com',
-        normal: true,
+        login: '',
+        pass: '',
+        repPass: '',
+        nick: '',
+        normal: false,
         press: false,
         serverGet: false
     }

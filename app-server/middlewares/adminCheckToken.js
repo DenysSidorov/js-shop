@@ -8,10 +8,13 @@ export default (req, resp, next)=>{
     // Будем хранить в заголовке токен авторизации
     // Вытащим токен из заголовка, если он там есть
     const token = req.headers['authorization'];
+    console.log(token, 'TTTOOOKEEN');
     // Если токена нет:;
-    if(!token){
+    if(!token || token === 'undefined'){
         console.log('нет токена?');
+
         return next({
+
             status: 403,
             message: 'Forbidden. No Admin Token'
         })
@@ -21,6 +24,7 @@ export default (req, resp, next)=>{
     jwt.verify(token, config.backend.secretWord, async function(err, decoded) {
         if(err){
             const {message} = err;
+            console.log('токен не подходит');
             return next({
                 status: 400,
                 message

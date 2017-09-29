@@ -37,3 +37,5 @@ Not implemented :
 - _images from hdd_
 - _send email to user for registration_
 - _sms notifications_
+- _filter for goods_
+- _pagination on order, goods pages_

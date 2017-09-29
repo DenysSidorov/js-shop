@@ -26,7 +26,7 @@ class Login extends React.Component {
     sendData = () => {
         console.log('send2');
         let {login, pass} = this.state;
-        console.log(login, pass, 'req111111');
+        //console.log(login, pass, 'req111111');
         this.props.signinUser(login, pass);
         this.setState({pass: '', normal: false});
         // Отправить данные о пользователе

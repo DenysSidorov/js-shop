@@ -21,6 +21,5 @@ async function d(){
         console.log('error');
     }
 
-    console.log(k, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
 }
 d();

@@ -98,7 +98,7 @@ class Home extends React.Component {
                   ? <CardsSection cards={this.state.cards}/>
                   : null}
 
-                  <AdditionalSection/>
+                  {/*<AdditionalSection/>*/}
 
                 {this.state.popularCards && this.state.popularCards.length
                     ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>

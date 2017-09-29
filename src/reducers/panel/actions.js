@@ -8,22 +8,17 @@ const ROOT_URL = process.env.ROOT_URL;
 export function getTypes(token) {
     return async function (dispatch) {
         dispatch(showLoading());
-        console.log('sghhhhh');
         try{
             let result = await axios.get(`${ROOT_URL}/orders/get-types`,{
                 // timeout: 1000,
                 headers: {'authorization': token}
             });
-            console.log(result.data);
             dispatch(hideLoading());
             dispatch({type: GET_TYPES, payload: result.data})
         }catch(err){
             dispatch(hideLoading());
             console.log(err.message || err);
         }
-console.log(132342342);
-console.log(132342234342);
-console.log(1323423423);
     }
 }
 // export function deleteErrorMessage() {

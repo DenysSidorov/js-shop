@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import Filtres from './filtres';
+import Filtres from './Filtres';
 import params from '../helpers/lib/queryParams';
 import ReactDropdown from 'react-dropdown';
 import {getTypes}from '../../../reducers/panel/actions';
@@ -20,8 +20,21 @@ class Orders extends React.Component{
         ]
     }
 
+    _getActualPathFromReduxRouter  =  (string) => {
+        var newStr = string.replace('?', '')
+            .split('&')
+            .reduce(
+                function (p, e) {
+                    var a = e.split('=');
+                    p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                    return p;
+                },
+                {}
+            );
+        return newStr;
+    }
+
     componentWillReceiveProps = async (prevProps) => {
-        console.log('componentWillReceiveProps');
         // read user token
         let token;
         try {
@@ -32,13 +45,15 @@ class Orders extends React.Component{
         if (!token) {
             this.setState({content: 'Нужно авторизироваться'})
         } else {
-            this.setState({token})
-            var param = params['type'];
+            this.setState({token});
+            var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
             var orders = [];
             if (param) {
                 try {
-                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`);
-                    console.log(orders, 1111111111);
+                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`, {
+                        // timeout: 1000,
+                        headers: {'authorization': token}
+                    });
                     this.setState({
                         orders: orders.data
                     })
@@ -46,7 +61,7 @@ class Orders extends React.Component{
                     this.setState({
                         orders: orders
                     })
-                    console.log(error.response.data);
+                    console.log(error.response || error);
                     // this.setState({content: error.response.data.message})
                 }
 
@@ -58,27 +73,19 @@ class Orders extends React.Component{
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
-                    console.log(orders.data, 2222222222222);
+
                     this.setState({
                         orders: orders.data
-                    }, () => {
-                        console.log(this.state.orders, 'ORDERSSSSS');
                     })
                 } catch (error) {
                     this.setState({
                         orders: orders
-                    }, () => {
-                        console.log(this.state.orders, 'ORDERSSSSS');
-                    })
+                    }, )
                     console.log(error.response);
-
                     // this.setState({content: error.response.data.message})
                 }
-
             }
         }
-
-
     };
 
     componentDidMount = async (prevProps) => {
@@ -97,12 +104,15 @@ class Orders extends React.Component{
             this.setState({
                 token
             })
-            var param = params['type'];
+            var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
             var orders = [];
+           // console.log(params, 'param');
             if (param) {
                 try {
-                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`);
-                    console.log(orders, 1111111111);
+                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`, {
+                        // timeout: 1000,
+                        headers: {'authorization': token}
+                    });
                     this.setState({
                         orders: orders.data
                     })
@@ -110,7 +120,7 @@ class Orders extends React.Component{
                     this.setState({
                         orders: orders
                     })
-                    console.log(error.response.data);
+                    console.log(error.response || error);
                     // this.setState({content: error.response.data.message})
                 }
 
@@ -122,20 +132,14 @@ class Orders extends React.Component{
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
-                    console.log(orders.data, 2222222222222);
                     this.setState({
                         orders: orders.data
-                    }, () => {
-                        console.log(this.state.orders, 'ORDERSSSSS');
                     })
                 } catch (error) {
                     this.setState({
                         orders: orders
-                    }, () => {
-                        console.log(this.state.orders, 'ORDERSSSSS');
                     })
-                    console.log(error.response);
-
+                    console.log(error.response || response);
                     // this.setState({content: error.response.data.message})
                 }
 
@@ -143,8 +147,6 @@ class Orders extends React.Component{
             console.log(token, 'token');
             console.log(param, 'params');
             console.log(orders.data, 'ors');
-            console.log(orders.data, 'ors');
-            console.log(this.state.orders, 'ors');
         }
 
 
@@ -164,7 +166,7 @@ class Orders extends React.Component{
                 });
             console.log(res.data, 'res');
             if(res.data){
-                this.props.getType();
+                this.props.getType(this.state.token);
             }
         } catch (err) {
             console.log(err);
@@ -234,7 +236,7 @@ class Orders extends React.Component{
                             })}</span></td>
                             <td data-label="Создан"><span>{new Date(ord.createdAt).toLocaleString()}</span></td>
                             <td data-label="Звершен"><span>{ord.finishedAt}</span></td>
-                            <td data-label="Статус"><span>
+                            <td data-label="Статус"><span className="dropdownPanelOrders">
                                 <ReactDropdown
                                     options={this.state.orderTypes}
                                     value={initType}

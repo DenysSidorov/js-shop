@@ -6,8 +6,8 @@ import * as OrderController from '../controllers/order';
 const router = express.Router();
 
 router.post('/', OrderController.create);
+router.get('/get-types',adminCheck, OrderController.getTypes);
 router.get('/', adminCheck, OrderController.getAll);
-router.get('/get-types', OrderController.getTypes);
 router.post('/change-type', adminCheck, OrderController.changeType);
 // router.get('/tags', GoodController.getUniqCategory);
 // router.get('/popular', GoodController.getPopular);

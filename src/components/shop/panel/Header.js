@@ -1,7 +1,13 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-
+import menu from './mobileMenu';
 class Header extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        menu();
+    }
     render(){
         return(
             <div className="adminPanHeader">

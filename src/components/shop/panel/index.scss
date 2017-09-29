@@ -218,12 +218,13 @@ $colorYellow: #bbba16;
   tbody {
     tr {
       td {
+        min-height: 24px;
         span {
           color: #262626;
           font: 1.3rem/1.4rem "Roboto-Regular";
-        .linkToGood{
-          color: #006bb3;
-        }
+          .linkToGood {
+            color: #006bb3;
+          }
         }
       }
     }
@@ -431,28 +432,32 @@ $colorYellow: #bbba16;
 }
 
 // navigation burger menu bottom
+.dropdownPanelOrders{
+  .Dropdown-root{
+    .Dropdown-control {
+      .Dropdown-placeholder {
+        width: 100%;
+        border: 1px solid #2ea9fd;
+        text-align: center;
+      }
+      .Dropdown-arrow {
+        position: relative;
+      }
+    }
 
-.Dropdown-placeholder{
-  width: 100%;
-  text-align: center;
+    .Dropdown-menu {
+      position: absolute;
+      z-index: 999999;
+      min-width: 90%;
+      .Dropdown-option {
+        padding: 0 2px;
+        background-color: #2ea9fd;
+        width: auto;
+        text-align: center;
+        color: white;
+      }
+    }
+  }
 }
-.Dropdown-placeholder{
-  width: 100%;
-  border: 1px solid #2ea9fd;
-  text-align: center;
-}
-.Dropdown-arrow{
-  position: relative;
-}
-.Dropdown-menu{
-  position: absolute;
-  z-index: 999999;
-  min-width: 90%;
-}
-.Dropdown-option{
-  padding: 0 2px;
-  background-color: #2ea9fd;
-  width: auto;
-  text-align: center;
-  color: white;
-}
+
+

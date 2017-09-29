@@ -11,15 +11,6 @@ class LeftMenu extends Component{
                 {this.props.countTypes.new ? <span className="adminPan__menu_item_count"><span>{this.props.countTypes.new}</span></span> : null}
             </div>
             <div className="adminPan__menu_item">
-                <i className="fa fa-credit-card"></i>
-                <Link to="/panel/orders/" className="adminPan__menu_item_text">Заказы</Link>
-                <span className="adminPan__menu_item_count"><span>{this.props.countTypes.new}</span></span>
-            </div>
-            <div className="adminPan__menu_item">
-                <i className="fa fa-cubes" ></i>
-                <Link to="/panel/test" className="adminPan__menu_item_text">Test</Link>
-            </div>
-            <div className="adminPan__menu_item">
                 <i className="fa fa-flag-checkered" ></i>
                 <Link to="/panel/test2" className="adminPan__menu_item_text">Test2</Link>
             </div>

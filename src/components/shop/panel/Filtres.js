@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import {getTypes}from '../../../reducers/panel/actions';
 class Filters extends Component{
 componentDidMount(){
-    this.props.getType();
+
+    let token;
+    try {
+        token = localStorage.getItem("info");
+    } catch (error) {
+        console.error(error);
+    }
+    if(token){
+        this.props.getType(token);
+    }
+
 }
     render(){
-        console.log(this.props.panelReducer);
         return (
-            <div className="adminPan__mainContent_content_filters">
-                <div className="adminPan__filters_item">
+            <div  className="adminPan__mainContent_content_filters">
+                <Link to='/panel?type=new' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorGreen">
                         <i className="fa fa-shopping-cart"></i>
                     </div>
@@ -18,9 +28,9 @@ componentDidMount(){
                         <div className="adminPan__filters_item_text_count">{this.props.countTypes.new} шт.</div>
                         <div className="adminPan__filters_item_text_desk">Новых покупок</div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="adminPan__filters_item">
+                <Link to='/panel?type=progress' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorYellow">
                         <i className="fa fa-spinner"></i>
                     </div>
@@ -28,9 +38,9 @@ componentDidMount(){
                         <div className="adminPan__filters_item_text_count">{this.props.countTypes.progress} шт.</div>
                         <div className="adminPan__filters_item_text_desk">В обработке</div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="adminPan__filters_item">
+                <Link to='/panel?type=delivery' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorViolet">
                         <i className="fa fa-truck"></i>
                     </div>
@@ -38,9 +48,9 @@ componentDidMount(){
                         <div className="adminPan__filters_item_text_count">{this.props.countTypes.delivery} шт.</div>
                         <div className="adminPan__filters_item_text_desk">В пути</div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="adminPan__filters_item">
+                <Link to='/panel?type=done' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorRed">
                         <i className="fa fa-check-square-o"></i>
                     </div>
@@ -48,9 +58,9 @@ componentDidMount(){
                         <div className="adminPan__filters_item_text_count">{this.props.countTypes.done} шт.</div>
                         <div className="adminPan__filters_item_text_desk">Завершено</div>
                     </div>
-                </div>
+                </Link>
 
-                <div className="adminPan__filters_item">
+                <Link to='/panel' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorMain">
                         <i className="fa fa-money"></i>
                     </div>
@@ -62,7 +72,7 @@ componentDidMount(){
                         } шт.</div>
                         <div className="adminPan__filters_item_text_desk">Все</div>
                     </div>
-                </div>
+                </Link>
             </div>
         )
     }
@@ -85,3 +95,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps, mapDispatchToProps
 )(Filters);
+    console.log(31123);
+    console.log(31123);
+    console.log(31123);
