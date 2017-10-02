@@ -31,7 +31,7 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 // app.use(cors() // for all app
 /** Подключение к базе данных mongodb*/
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-mongoose.connect(process.env.MONGODB_URI, {}, err => {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/shop', {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
