@@ -105,8 +105,9 @@
     "watch": "webpack --watch",
     "push": "git push all master",
     "lint": "node_modules\\.bin\\eslint 1.js",
-    "start-server": "nodemon --exec babel-node app-server/server.js",
+    "start-server": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
+    "start": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&babel-node server.js --exec  ",
     "start2": "babel-node server.js --presets es2015",
-    "start": "babel-node server.js --presets es2015, stage-2"
+    "start-temp": "babel-node server.js --presets es2015, stage-2"
   }
 }

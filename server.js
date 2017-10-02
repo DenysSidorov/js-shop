@@ -13,34 +13,37 @@ import morgan from 'morgan';
 
 // TODO download CORS-middleware and require it here
 
-import config from '../config/index'; // Конфигурация
-import authRoute from './routes/auth';
-import userRoute from './shop/routes/user';
-import pageRoute from './routes/page';
-import goodRoute from './shop/routes/goodRoute';
-import orderRoute from './shop/routes/orderRoute';
+import config from './config/index'; // Конфигурация
+import authRoute from './app-server/routes/auth';
+import userRoute from './app-server/shop/routes/user';
+import pageRoute from './app-server/routes/page';
+import goodRoute from './app-server/shop/routes/goodRoute';
+import orderRoute from './app-server/shop/routes/orderRoute';
 
 
-import errorMiddleWare from './middlewares/errors';
+import errorMiddleWare from './app-server/middlewares/errors';
 
-import getUser from './shop/middlewares/getUser'; // Найти пользователя по токену
-import checkToken from './middlewares/checkToken'; // Проверка наличия токена
+import getUser from './app-server/shop/middlewares/getUser'; // Найти пользователя по токену
+import checkToken from './app-server/middlewares/checkToken'; // Проверка наличия токена
 
 
-const app = express(); // Запуск приложения
-app.disable('x-powered-by'); // Отключить определение, что это express
+
 // app.use(cors() // for all app
 /** Подключение к базе данных mongodb*/
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-mongoose.connect(config.backend.database, {}, err => {
+mongoose.connect(process.env.MONGODB_URI, {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
+
+//Нужно запускать после подключения к базу, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
+const app = express(); // Запуск приложения
+app.disable('x-powered-by'); // Отключить определение, что это express
 console.log(23);
 /** Запуск приожения на порте*/
-app.listen(config.backend.port, config.backend.domain, config.backend.maxConnects, (err)=>{
+app.listen(process.env.PORT, config.backend.domain, config.backend.maxConnects, (err)=>{
     if (err) throw err;
-    console.log('Server listening on port ' + config.backend.port );
+    console.log('Server listening on port ' + process.env.PORT );
 });
 
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
@@ -62,7 +65,7 @@ var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
 //     // }
 // }));
 
-
+app.get('/', (req, resp)=> {resp.status(200).json({'get':200})});
 app.use('/goods' ,cors(), goodRoute);
 app.use('/orders', cors(), orderRoute);
 app.use('/api', cors(), authRoute); // singin singup
