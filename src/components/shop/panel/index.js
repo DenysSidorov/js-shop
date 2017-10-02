@@ -56,9 +56,7 @@ class Panel extends React.Component {
 
     }
 }
-const User = ({ match }) => {
-    return <h1>Hello user1 {match.params.username}!</h1>
-}
+
 const User2 = ({ match }) => {
     return <h1>Hello user 2 {match.params.username}!</h1>
 }
