@@ -41,7 +41,7 @@ const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 console.log(23);
 /** Запуск приожения на порте*/
-app.listen(process.env.PORT || 3000, config.backend.domain, config.backend.maxConnects, (err)=>{
+app.listen(process.env.PORT || 3000, (err)=>{
     if (err) throw err;
     console.log('Server listening on port ' + process.env.PORT || 3000 );
 });
