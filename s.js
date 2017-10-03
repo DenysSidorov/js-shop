@@ -12,3 +12,6 @@ app.listen(process.env.PORT || 3000, function () {
     console.log('Example app listening on port 3000!');
 });
 console.log('jopa');
+console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
+console.log(process.env.MONGODB_URI, 'process.env.MONGODB_URI');
+console.log(process.env.PORT, 'process.env.PORT');
