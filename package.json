@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.4",
