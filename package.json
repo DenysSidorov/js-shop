@@ -107,7 +107,7 @@
     "push": "git push all master",
     "lint": "node_modules\\.bin\\eslint 1.js",
     "start-server": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
-    "start": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000 &&.\\node_modules\\.bin\\babel-node server.js --exec  ",
+    "start": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000 &&./node_modules/.bin/babel-node server.js --exec  ",
     "start2": "./node_modules/.bin/babel-node server.js",
     "start3": "babel-node server.js --presets es2015",
     "start-temp": "babel-node server.js --presets es2015, stage-2"
