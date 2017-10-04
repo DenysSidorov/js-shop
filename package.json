@@ -19,7 +19,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme",
   "engines": {
-    "node": "~6.9.1"
+    "node": "~7.0.0"
   },
   "dependencies": {
     "axios": "~0.16.2",
