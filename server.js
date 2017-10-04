@@ -37,7 +37,7 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 // }
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
 console.log(config.backend.database, 'PATH MONGO');
-mongoose.connect('mongodb://denis:P@$$word92@ds159344.mlab.com:59344/js-shop', {
+mongoose.connect('mongodb://jopa:PASSword92@ds159344.mlab.com:59344/js-shop', {
     useMongoClient: true,
     reconnectTries: 30,
     user: 'denis',
