@@ -36,7 +36,7 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 //     } else return value;
 // }
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-
+console.log(config.backend.database, 'PATH MONGO');
 mongoose.connect(config.backend.database, {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
