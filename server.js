@@ -36,14 +36,10 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 //     } else return value;
 // }
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-console.log(config.backend.database, 'PATH MONGO');
 mongoose.connect(config.backend.database, {
-    // useMongoClient: true,
-    // reconnectTries: 30,
-    // user: 'denis',
-    // pass: 'P@$$word92'
+    useMongoClient: true,
+    reconnectTries: 30,
 }, err => {
-    console.log('jopa 1');
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
@@ -57,13 +53,14 @@ app.listen(config.backend.port, (err)=>{
     if (err) throw err;
     console.log('Server listening on port ' + config.backend.port);
 });
-
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '/www/')));
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extended: true}));
 
 /*TODO make async function*/
-var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
+// var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
 // app.use(session({
 //     resave: true,
 //     saveUninitialized: true,
@@ -77,10 +74,10 @@ var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
 //     // }
 // }));
 
-app.get('/', (req, resp)=> {resp.status(200).json({'get':200})});
-app.use('/goods' ,cors(), goodRoute);
-app.use('/orders', cors(), orderRoute);
-app.use('/api', cors(), authRoute); // singin singup
+
+app.use('/api/goods' ,cors(), goodRoute);
+app.use('/api/orders', cors(), orderRoute);
+app.use('/api/api', cors(), authRoute); // singin singup
 
 
 // app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
@@ -93,7 +90,9 @@ app.use('/api', checkToken,  userRoute); // get user route
 // app.use(getUser);
 app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname+'/www/index.html'));
+});
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 // todo сделать на фронте таблицу с ошибками 500, 404
