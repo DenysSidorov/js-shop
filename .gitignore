@@ -8,7 +8,6 @@ www/assert/*
 www/img/*
 credentials/*
 app-server/config/*
-config/*
 PLANS.TXT
 .idea/workspace.xml
 

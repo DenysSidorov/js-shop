@@ -30,8 +30,14 @@ import checkToken from './app-server/middlewares/checkToken'; // Проверк�
 
 // app.use(cors() // for all app
 /** Подключение к базе данных mongodb*/
+// function getValue(value, def){
+//     if(value === 'undefined' || value === undefined || value === 0 || value === ''){
+//         return def;
+//     } else return value;
+// }
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/shop', {}, err => {
+
+mongoose.connect(config.backend.database, {}, err => {
     if (err) throw err;
     console.log(`Mongo connected!`);
 });
@@ -41,9 +47,9 @@ const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 console.log(23);
 /** Запуск приожения на порте*/
-app.listen(process.env.PORT || 3000, (err)=>{
+app.listen(config.backend.port, (err)=>{
     if (err) throw err;
-    console.log('Server listening on port ' + process.env.PORT || 3000 );
+    console.log('Server listening on port ' + config.backend.port);
 });
 
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
