@@ -11,7 +11,7 @@ const config = {
         mailSend: {
             service: "Gmail",
             auth: {
-                user: process.env.EMAIL_USER , // "1qazxsw,
+                user: process.env.EMAIL_USER, // "1qazxsw,
                 pass: process.env.EMAIL_PASSWORD //
             }
         },
