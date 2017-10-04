@@ -110,7 +110,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-server": "mocha app-server/**/*.test.js",
-    "production": "webpack -p",
+    "production": "node_modules/.bin/webpack -p",
     "start4": "webpack-dev-server --hot --inline",
     "watch": "webpack --watch",
     "push": "git push all master",
