@@ -117,7 +117,7 @@
     "lint": "node_modules\\.bin\\eslint 1.js",
     "start-server": "set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
     "start5": "set MONGODB_URI=mongodb://denis:P@$$word92@ds159344.mlab.com:59344/js-shop&&set PORT=3000&&nodemon --exec babel-node server.js",
-    "start": "npm run production&&babel-node server.js --presets es2015",
+    "start": "node_modules/.bin/webpack -p&&babel-node server.js --presets es2015",
     "start2": "node s.js",
     "start-temp": "babel-node server.js --presets es2015, stage-2"
   }
