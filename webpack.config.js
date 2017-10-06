@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
+const configApp = require('./config/index');
 const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
 var AssetsPlugin = require('assets-webpack-plugin'); // создает json с зависимостями
@@ -8,7 +9,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin'); // Чистит па
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // TODO supp. es7,8 for static state in React.Component
-
 // Реагируем на флаг -p
 var productionArg = (process.argv.indexOf('-p') != -1 ? true : false);
 var inProduction = (productionArg ? 'production' : 'development');
@@ -126,7 +126,7 @@ var config = {
                 use: ExtractTextPlugin.extract({
                     // exclude: /node_modules/,
                     fallback: 'style-loader',
-                    use: ['css-loader?sourceMap',  'postcss-loader', 'less-loader'],
+                    use: ['css-loader?sourceMap', 'postcss-loader', 'less-loader'],
                     // publicPath : '/assets'
                 })
             },
@@ -153,8 +153,9 @@ var config = {
         // передача env-переменных в js файлы https://habrahabr.ru/post/245991/
         new webpack.DefinePlugin({
             // PRODUCTION: JSON.stringify(true),
-            'process.env.NODE_ENV' : JSON.stringify(inProduction),
-            'process.env.ROOT_URL' : JSON.stringify('http://localhost:3000')
+            'process.env.NODE_ENV': JSON.stringify(inProduction),
+            'process.env.ROOT_URL': JSON.stringify('http://localhost:3000'),
+            'process.env.APP_PORT': JSON.stringify(inProduction == 'development' ? configApp.frontend.apiPort: '')
 
         }),
 
@@ -240,7 +241,7 @@ if (true/*false*/) {
 //     config.plugins.push(cleanPlugin);
 }
 
-if(inProduction === 'production'){
+if (inProduction === 'production') {
     var ugly = new webpack.optimize.UglifyJsPlugin({
         comments: false,
         minimize: true,
@@ -257,9 +258,6 @@ if(inProduction === 'production'){
 
 
 module.exports = config;
-
-
-
 
 
 // Настройка для Node EsLint

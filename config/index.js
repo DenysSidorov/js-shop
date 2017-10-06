@@ -1,7 +1,8 @@
-const config = {
+var configApp = {
     frontend: {
         port: 8090,
-        domain: 'localhost'
+        domain: 'localhost',
+        apiPort: 3000
     },
     backend: {
         port: process.env.PORT, //3000
@@ -18,4 +19,4 @@ const config = {
     },
 
 };
-export default config;
+module.exports = configApp;
