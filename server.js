@@ -1,6 +1,7 @@
 import path from 'path';
 const S = path.resolve(__dirname, './app-server');
 import express from 'express';
+// TODO https://scotch.io/tutorials/use-ejs-to-template-your-node-application
 // https://www.npmjs.com/package/cors
 var cors = require('cors');
 // MongoDb ORM
@@ -57,6 +58,10 @@ app.use(express.static(path.join(__dirname, '/www/')));
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extended: true}));
+// set the view engine to ejs
+// app.engine('ejs', engine);
+app.set('view engine', 'ejs');
+
 
 /*TODO make async function*/
 // var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
@@ -90,7 +95,8 @@ app.use('/api/auth', cors(), authRoute); // singin singup
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname+'/www/index.html'));
+    res.render(path.join(__dirname+'/www/index.ejs'));
+    // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним

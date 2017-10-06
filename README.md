@@ -10,6 +10,7 @@ Main tools:
 - Redux/Saga/Middleware
 - ReactJS/Libraries/Router4
 - SASS / LESS
+- EJS
 - JQuery
 
 - Webpack

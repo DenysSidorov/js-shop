@@ -14,13 +14,13 @@ var productionArg = (process.argv.indexOf('-p') != -1 ? true : false);
 var inProduction = (productionArg ? 'production' : 'development');
 console.log('Production state is ' + inProduction.toUpperCase());
 
-
+console.log(NODE_ENV, 'NODE_ENV NODE_ENV');
 // Добавление hash если режим production
 function addHash(template, hash) {
-    return NODE_ENV == 'production' ?
+    return inProduction == 'production' ?
         template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`;
 }
-
+console.log(addHash('[name].b.js', 'jops'), 'HASH');
 
 // SASS SCSS https://www.sitepoint.com/whats-difference-sass-scss/
 
@@ -68,7 +68,8 @@ var config = {
                 include: path.resolve(__dirname, 'src'),
                 use: [{
                     /*'url-loader?name=[path][name].[hash:6][ext]',*/
-                    loader: addHash('url-loader?name=../img/[name].[ext]', 'hash:6'),
+                    // loader: addHash('url-loader?name=../img/[name].[ext]', 'hash:6'),
+                    loader: 'url-loader?name=../img/[name].[ext]',
                     options: {limit: 65000} // Convert images < 10k to base64 strings
                 }]
             },
@@ -85,7 +86,7 @@ var config = {
             //Рабочий
             {
                 test: /\.(svg|ttf|eot|woff|woff2)$/,
-                loader: addHash('file-loader?name=../fonts/[name].[ext]', 'hash:6')
+                loader: 'file-loader?name=../fonts/[name].[ext]',
             },
 
             // fonts
@@ -195,7 +196,7 @@ var config = {
         }),
         // генерит json со всеми зависямостями
         // если html всегда статичен (SPA), можно использовать другой плагин(HtmlWebpackPlugin), который сам создает
-        // index.html с уже подключенными бандлами
+        // index.ejs с уже подключенными бандлами
         // https://www.youtube.com/watch?v=kxxFQZx3KOk
         new AssetsPlugin({
             filename: 'assets.json',
