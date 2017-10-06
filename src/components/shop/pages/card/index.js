@@ -5,7 +5,7 @@ import urlApi from '../../../../api/urlApi';
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
-class Card extends React.Component {
+class CardComponent extends React.Component {
     state = {card: null, similarCategory: [], popularCards: []};
 constructor(props){
     super(props);
@@ -72,4 +72,4 @@ constructor(props){
     }
 }
 
-export default Card;
+export default CardComponent;

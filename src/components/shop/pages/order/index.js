@@ -3,7 +3,7 @@ import MenuInfoSection from "../../modules/MenuInfoSection";
 import WaysDevPay from "./WaysDevPay";
 import GoodsTable from "./GoodsTable";
 import {connect} from "react-redux";
-class Order extends React.Component {
+class OrderPage extends React.Component {
     state = {};
 
     constructor(props) {
@@ -53,4 +53,4 @@ const mapStateToProps = (state, ownProps) => {
         cart: state.cart.items
     }
 }
-export default connect(mapStateToProps)(Order);
+export default connect(mapStateToProps)(OrderPage);
