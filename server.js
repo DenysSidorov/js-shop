@@ -49,6 +49,7 @@ mongoose.connect(config.backend.database, {
 const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 console.log(25);
+console.log(assets, 'assets');
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
 
