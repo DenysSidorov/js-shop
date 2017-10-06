@@ -98,7 +98,7 @@ app.use('/api/auth', cors(), authRoute); // singin singup
 // app.use(getUser);
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.render(path.join(__dirname+'/www/index.ejs'), {assets});
     // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
