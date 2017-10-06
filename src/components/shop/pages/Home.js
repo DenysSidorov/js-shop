@@ -69,7 +69,7 @@ class Home extends React.Component {
             if(param){
                 cards = await axios.get(`http://localhost:3000/api/goods?sort=${param}`);
             } else {
-                cards = await axios.get('http://localhost:3000/api/goods');
+                cards = await axios.get(`${window.location.origin}/api/goods`);
             }
             popularCards = await axios.get('http://localhost:3000/api/goods/popular');
             uniqCategory = await axios.get('http://localhost:3000/api/goods/tags');
