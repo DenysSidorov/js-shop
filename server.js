@@ -50,6 +50,8 @@ const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 console.log(24);
 /** Запуск приожения на порте*/
+console.log(process.env.PORT, 'port');
+
 app.listen(config.backend.port, (err)=>{
     if (err) throw err;
     console.log('Server listening on port ' + config.backend.port);
