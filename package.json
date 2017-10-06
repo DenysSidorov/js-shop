@@ -119,6 +119,6 @@
     "start-temp": "babel-node server.js --presets es2015, stage-2",
     "NO2postinstall": "node_modules/.bin/webpack",
     "start": "babel-node server.js --presets es2015",
-    "postinstall": "./node_modules/webpack/bin/webpack.js -p --progress"
+    "preinstall": "./node_modules/webpack/bin/webpack.js -p --progress"
   }
 }
