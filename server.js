@@ -10,7 +10,6 @@ import bodyParse from 'body-parser';
 //  Логирование
 import morgan from 'morgan';
 
-
 // TODO download CORS-middleware and require it here
 
 import config from './config/index'; // Конфигурация
@@ -77,7 +76,7 @@ app.use(bodyParse.urlencoded({extended: true}));
 
 app.use('/api/goods' ,cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
-app.use('/api/api', cors(), authRoute); // singin singup
+app.use('/api/auth', cors(), authRoute); // singin singup
 
 
 // app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
@@ -86,9 +85,9 @@ app.use('/api/api', cors(), authRoute); // singin singup
 
 
 
-app.use('/api', checkToken,  userRoute); // get user route
+// app.use('/api', checkToken,  userRoute); // get user route
 // app.use(getUser);
-app.use('/api', checkToken,  pageRoute); // Use API if all normal
+// app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/www/index.html'));
@@ -96,6 +95,6 @@ app.get('/', (req, res) => {
 
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 // todo сделать на фронте таблицу с ошибками 500, 404
-app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found", type: 404}));
+app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found, API-SHOP", type: 404}));
 
 
