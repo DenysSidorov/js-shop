@@ -14,8 +14,8 @@ import AboutUs from "../pages/AboutUs";
 import Blog from "../pages/Blog";
 import PaymentAndDelivery from "../pages/PaymentAndDelivery";
 import CashbackAndExchange from "../pages/CashbackAndExchange";
-import Card from "../pages/Card";
-import Order from "../pages/Order";
+//import Card from "../pages/Card";
+// import Order from "../pages/Order";
 import AfterOrder from "../pages/AfterOrder";
  import Profile from "../pages/Profile";
 import Contacts from "../pages/Contacts";
@@ -47,8 +47,8 @@ class WrapperApp extends React.Component {
                                     <Route path="/payment-and-delivery" component={PaymentAndDelivery}/>
                                     <Route path="/cashback-and-exchange" component={CashbackAndExchange}/>
                                     <Route path="/blog" component={Blog}/>
-                                    <Route path="/card/:id" component={Card}/>
-                                    <Route exact path="/order" component={Order}/>
+                                    {/*<Route path="/card/:id" component={Card}/>*/}
+                                    {/*<Route exact path="/order" component={Order}/>*/}
                                     <Route exact path="/great" component={AfterOrder}/>
                                     <Route exact path="/contacts" component={Contacts}/>
                                     <RouteAuth path="/profile" component={Profile}/>
