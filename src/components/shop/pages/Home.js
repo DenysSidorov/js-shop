@@ -30,7 +30,7 @@ class Home extends React.Component {
         if(param){
             var cards = [];
             try {
-                cards = await axios.get(`http://localhost:3000/api/goods?sort=${param}`);
+                cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
 
             } catch (e) {
                 console.log(e);
@@ -68,12 +68,12 @@ class Home extends React.Component {
         var uniqCategory = [];
         try {
             if(param){
-                cards = await axios.get(`http://localhost:3000/api/goods?sort=${param}`);
+                cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
             } else {
                 cards = await axios.get(`${urlApi}/api/goods`);
             }
-            popularCards = await axios.get('http://localhost:3000/api/goods/popular');
-            uniqCategory = await axios.get('http://localhost:3000/api/goods/tags');
+            popularCards = await axios.get(`${urlApi}/api/goods/popular`);
+            uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
         } catch (e) {
             console.log(e);

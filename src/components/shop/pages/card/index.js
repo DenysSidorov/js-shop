@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import st from './index.less';
+import urlApi from '../../../../api/urlApi';
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
@@ -20,10 +21,10 @@ constructor(props){
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
         // https://www.npmjs.com/package/axios
         try {
-            popularCards = await axios.get('http://localhost:3000/goods/popular');
-            card = await axios.get(`http://localhost:3000/goods/${id}`);
+            popularCards = await axios.get(`${urlApi}/api/goods/popular`);
+            card = await axios.get(`${urlApi}/api/goods/${id}`);
             //console.log(card.data[0].category, 'cards');
-            similarCategory = await axios.post(`http://localhost:3000/goods/${id}/similar`,
+            similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
                 {params: {'category': card.data[0].category}}
             );
             // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)

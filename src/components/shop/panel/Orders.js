@@ -4,6 +4,7 @@ import axios from "axios";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import Filtres from './Filtres';
+import urlApi from '../../../api/urlApi';
 import params from '../helpers/lib/queryParams';
 import ReactDropdown from 'react-dropdown';
 import {getTypes}from '../../../reducers/panel/actions';
@@ -50,7 +51,7 @@ class Orders extends React.Component{
             var orders = [];
             if (param) {
                 try {
-                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`, {
+                    orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
@@ -69,7 +70,7 @@ class Orders extends React.Component{
                 try {
                     // orders = await axios.get('http://localhost:3000/orders');
 
-                    orders = await axios.get('http://localhost:3000/orders', {
+                    orders = await axios.get(`${urlApi}/api/orders`, {
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
@@ -109,7 +110,7 @@ class Orders extends React.Component{
            // console.log(params, 'param');
             if (param) {
                 try {
-                    orders = await axios.get(`http://localhost:3000/orders?type=${param}`, {
+                    orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
@@ -128,7 +129,7 @@ class Orders extends React.Component{
                 try {
                     // orders = await axios.get('http://localhost:3000/orders');
 
-                    orders = await axios.get('http://localhost:3000/orders', {
+                    orders = await axios.get(`${urlApi}/api/orders`, {
                         // timeout: 1000,
                         headers: {'authorization': token}
                     });
@@ -156,7 +157,7 @@ class Orders extends React.Component{
         console.log(id, 'id');
         console.log(type.value, 'type');
         try {
-            let res = await axios.post('http://localhost:3000/orders/change-type',
+            let res = await axios.post(`${urlApi}/api/orders/change-type`,
                 {
                     type: type.value,
                     _id: id
