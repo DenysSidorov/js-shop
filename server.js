@@ -48,7 +48,7 @@ mongoose.connect(config.backend.database, {
 //Нужно запускать после подключения к базу, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
-console.log(23);
+console.log(24);
 /** Запуск приожения на порте*/
 app.listen(config.backend.port, (err)=>{
     if (err) throw err;
