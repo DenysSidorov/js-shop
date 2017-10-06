@@ -1,6 +1,7 @@
 import path from 'path';
 const S = path.resolve(__dirname, './app-server');
 import express from 'express';
+import assets from './app-server/assets.json';
 // TODO https://scotch.io/tutorials/use-ejs-to-template-your-node-application
 // https://www.npmjs.com/package/cors
 var cors = require('cors');
@@ -95,7 +96,7 @@ app.use('/api/auth', cors(), authRoute); // singin singup
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 app.get('/', (req, res) => {
-    res.render(path.join(__dirname+'/www/index.ejs'));
+    res.render(path.join(__dirname+'/www/index.ejs'), {assets});
     // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
 
