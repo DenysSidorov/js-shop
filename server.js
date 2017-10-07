@@ -85,7 +85,7 @@ app.set('view engine', 'ejs');
 
 app.use('/api/goods' ,cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
-app.use('/api/auth', cors(), authRoute); // singin singup
+app.use('/api/', cors(), authRoute); // singin singup
 
 
 // app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers

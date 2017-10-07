@@ -175,12 +175,19 @@ class Orders extends React.Component{
     }
 
     render(){
+        var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
+       let isShowNoGoods = false;
+        if(param){
+            if(this.props.countTypes[param] === 0){ isShowNoGoods = true;}
+        }
         return(
             <div className="adminPan__mainContent_content left">
                 <Filtres/>
-                {!this.state.orders.length &&
+                {isShowNoGoods && <h1 className="h1InPanelTittle"> ЗАКАЗОВ ЭТОЙ КАТЕГОРИИ НЕТ</h1>}
+                {!this.state.orders.length && !isShowNoGoods &&
                 <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>}
-                {this.state.orders.length && <table className="tablePanel">
+
+                {this.state.orders.length ? <table className="tablePanel">
                     <thead>
                     <tr>
                         <th>Имя</th>
@@ -249,7 +256,7 @@ class Orders extends React.Component{
                         </tr>
                     })}
                     </tbody>
-                </table>}
+                </table> : null}
             </div>
         )
     }
