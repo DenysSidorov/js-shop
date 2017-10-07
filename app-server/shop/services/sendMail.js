@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import mailSettings from "../../../config/index";
 import config from "../../../config/index";
-import os from "os";
+
 // create reusable transporter object using the default SMTP transport
 //var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
 // https://nodemailer.com/about/
@@ -68,10 +68,10 @@ console.log(mailSettings.backend.mailSend, 'mailSettings.backend.mailSend');
     let smtpTransport = nodemailer.createTransport(mailSettings.backend.mailSend);
 
 // setup e-mail data with unicode symbols
-    var hostname = os.hostname();
-    let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${config.backend.port}` : hostname;
+    let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${config.backend.port}` : process.env.SERVER_DOMAIN;
 
-    console.log(hostname , 'hostname');
+    console.log(process.env.NODE_ENV , 'process.env.NODE_ENV');
+console.log(`http://${urlApi}/api/ct?t=${link}`, 'URRRRLLL');
     let mailOptions = {
         from: '"Online-shop" <1qazxsw23edccde30@gmail.com>', // sender address
         // to: "000scorpions0000@gmail.com, 1qazxsw23edccde30@gmail.com", // list of receivers
@@ -80,7 +80,7 @@ console.log(mailSettings.backend.mailSend, 'mailSettings.backend.mailSend');
         text: 'Для подтверждения регистрации на сайте перейдите по следующей ссылке:', // plaintext body
         html: `<div>
             <p>Вы прошли регистрацию в онлайн магазине. Остался последний этап!</p>
-            <a href="http://${urlApi}/api/ct?t=${link}">
+            <a href="${urlApi}/api/ct?t=${link}">
             Для подтверждения нажмите на ссылку...</a>
         </div>` // html body
     };
