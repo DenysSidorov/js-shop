@@ -2,8 +2,7 @@ import axios from "axios";
 import {push} from "react-router-redux";
 import {showLoading, hideLoading} from "react-redux-loading-bar";
 import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, DELETE_ERROR_MESSAGE} from "./types";
-
-const ROOT_URL = process.env.ROOT_URL;
+import urlApi from '../../api/urlApi';
 
 export function deleteErrorMessage() {
     return {type: DELETE_ERROR_MESSAGE};
@@ -53,7 +52,7 @@ export function signinUser(login, password) {
     return function (dispatch) {
         // Submit email/password to the server
         dispatch(showLoading())
-        axios.post(`${ROOT_URL}/api/signin`, {login, password})
+        axios.post(`${urlApi}/api/signin`, {login, password})
             .then(response => {
                 console.log(response, 'resp');
                 // If request is good...
@@ -82,7 +81,7 @@ export function signupUser(login, password, nick) {
     return function (dispatch) {
         // Submit email/password to the server
         dispatch(showLoading())
-        axios.post(`${ROOT_URL}/api/signup`, {login, password, nick})
+        axios.post(`${urlApi}/api/signup`, {login, password, nick})
             .then(response => {
                 console.log(response, 'resp');
                 console.log(response.message, 'response.message');

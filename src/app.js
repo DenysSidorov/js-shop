@@ -42,4 +42,3 @@ window.jQuery = jQuery;
 // window.Immutable = Immutable;
 
 console.log(process.env.NODE_ENV, 'App ');
-console.log(process.env.ROOT_URL, 'ROOT_URL ');

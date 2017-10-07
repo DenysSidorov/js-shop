@@ -7,12 +7,12 @@ import {
   FETCH_MESSAGE
 } from './types';
 
-const ROOT_URL = 'http://localhost:3090';
+import urlApi from '../../../../../api/urlApi';
 
 export function signinUser({ email, password }) {
   return function(dispatch) {
     // Submit email/password to the server
-    axios.post(`${ROOT_URL}/signin`, { email, password })
+    axios.post(`${urlApi}/api/signin`, { email, password })
       .then(response => {
         // If request is good...
         // - Update state to indicate user is authenticated
@@ -32,7 +32,7 @@ export function signinUser({ email, password }) {
 
 export function signupUser({ email, password }) {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/signup`, { email, password })
+    axios.post(`${urlApi}/api/signup`, { email, password })
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
@@ -57,7 +57,7 @@ export function signoutUser() {
 
 export function fetchMessage() {
   return function(dispatch) {
-    axios.get(ROOT_URL, {
+    axios.get(urlApi, {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {

@@ -2,14 +2,13 @@ import axios from "axios";
 import {push} from "react-router-redux";
 import {showLoading, hideLoading} from "react-redux-loading-bar";
 import {GET_TYPES} from "./types";
-
-const ROOT_URL = process.env.ROOT_URL;
+import urlApi from '../../api/urlApi';
 
 export function getTypes(token) {
     return async function (dispatch) {
         dispatch(showLoading());
         try{
-            let result = await axios.get(`${ROOT_URL}/orders/get-types`,{
+            let result = await axios.get(`${urlApi}/api/orders/get-types`,{
                 // timeout: 1000,
                 headers: {'authorization': token}
             });

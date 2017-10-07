@@ -154,7 +154,6 @@ var config = {
         new webpack.DefinePlugin({
             // PRODUCTION: JSON.stringify(true),
             'process.env.NODE_ENV': JSON.stringify(inProduction),
-            'process.env.ROOT_URL': JSON.stringify('http://localhost:3000'),
             'process.env.APP_PORT': JSON.stringify(inProduction == 'development' ? configApp.frontend.apiPort: '')
 
         }),
