@@ -249,8 +249,8 @@ if (inProduction === 'production') {
         minimize: true,
         beautify: false,
         compress: {
-            warnings: false,
-            drop_console: true,
+            warnings: true,//false,
+            drop_console: false//true,
         },
         sourceMap: true
     });
