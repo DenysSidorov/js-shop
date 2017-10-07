@@ -1,8 +1,15 @@
 import axios from "axios";
 import {push} from "react-router-redux";
 import {showLoading, hideLoading} from "react-redux-loading-bar";
-import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, DELETE_ERROR_MESSAGE} from "./types";
-import urlApi from '../../api/urlApi';
+import {
+    AUTH_USER,
+    UNAUTH_USER,
+    AUTH_ERROR,
+    DELETE_ERROR_MESSAGE,
+    APPEAR_LIKE_ADMIN,
+    DISAPPEAR_LIKE_ADMIN
+} from "./types";
+import urlApi from "../../api/urlApi";
 
 export function deleteErrorMessage() {
     return {type: DELETE_ERROR_MESSAGE};
@@ -59,12 +66,28 @@ export function signinUser(login, password) {
                 // - Update state to indicate user is authenticated
                 dispatch({type: AUTH_USER});
                 // - Save the JWT token
+                console.log();
+                // todo проверить юзера на админа
                 localStorage.setItem('info', response.data);
                 // - redirect to the route '/feature'
                 // browserHistory.push('/feature');
-                dispatch(hideLoading())
+                dispatch(hideLoading());
                 dispatch(push('/'))
+                return response.data;
+            })
+            .then(async(token) => {
+                try {
+                    let isAdmin = await axios.post(`${urlApi}/api/isadmin`, {authtoken: token});
+                    console.log(isAdmin.data.isadmin, 'isamin');
+                    if (isAdmin.data.isadmin) {
+                        dispatch({type: APPEAR_LIKE_ADMIN});
+                    } else {
+                        dispatch({type: DISAPPEAR_LIKE_ADMIN});
+                    }
 
+                } catch (er) {
+                    console.log(er);
+                }
             })
             .catch((error) => {
                 console.log(error.response, 'error.response');
