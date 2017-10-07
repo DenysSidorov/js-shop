@@ -206,7 +206,9 @@ var config = {
         })
     ],
     devServer: {
-        historyApiFallback: true, // cannot GET *url* after press f5
+        historyApiFallback: {
+            index: 'index2.html',
+        }, // cannot GET *url* after press f5
         hot: true,
         // enable HMR on the server
         host: "localhost", // default
