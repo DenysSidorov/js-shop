@@ -1,6 +1,8 @@
 import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
 import config from "../../config/index";
+import os from "os";
+
 
 // import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену
 import * as UserService from '../shop/services/userService';
@@ -123,7 +125,11 @@ export async function checkTokenFromEmail(req, resp, next) {
                             {_id: userResult._id},
                             config.backend.secretWord,
                             { expiresIn: '2d' });
-                        resp.redirect(`http://${config.frontend.domain}:${config.frontend.port}/verify-user?t=${token}`)
+                        var hostname = os.hostname();
+                        console.log(hostname , 'hostname');
+                        let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${config.frontend.port}` : hostname;
+
+                        resp.redirect(`${urlApi}/verify-user?t=${token}`)
                     }
 
                 })
