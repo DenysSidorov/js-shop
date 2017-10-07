@@ -33,9 +33,9 @@ class CardMainPage extends React.Component {
                 </div>
 
                 <div className="oneCardItem__bottomCard">
-                    <div className="oneCardItem__bottomCard__shortText">
+                    <Link to={`/card/${card._id}`} className="oneCardItem__bottomCard__shortText">
                         <span className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
-                    </div>
+                    </Link>
                     {card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>
                         : <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}
                     <div className="oneCardItem__bottomCard__buy">

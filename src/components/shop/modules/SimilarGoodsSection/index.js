@@ -111,10 +111,10 @@ super(props);
                             </div>
 
                             <div className="oneCardItem__bottomCard">
-                                <div className="oneCardItem__bottomCard__shortText">
+                                <Link to={`/card/${card._id}`} className="oneCardItem__bottomCard__shortText">
                                     <span
                                         className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
-                                </div>
+                                </Link>
                                 <div
                                     className="oneCardItem__bottomCard__status">{card.isExists ? 'В наличии' : 'Нет в наличии'}</div>
                                 <div onClick={() => this.props.addItem(card)} className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
