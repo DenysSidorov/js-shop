@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 import axios from "axios";
 import {push} from "react-router-redux";
 import Dropdown from "react-dropdown";
+import urlApi from '../../../../api/urlApi';
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {pushToCart, deleteFromCart, incrementItem, decrementItem, deleteAll} from "../../../../reducers/cart";
 import GoodsTable from "./GoodsTable";
