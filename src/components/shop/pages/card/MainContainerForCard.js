@@ -75,6 +75,9 @@ class MainContainerForCard extends React.Component {
                         </div>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
+                        <div className="mainContainerForCard__imageBlock_addOpportunity_read">
+                            <img src="/img-static/red-arrow.png" alt=""/>
+                        </div>
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item"
                              onClick={(e)=>{this.showConfirm('cashback',e)}}>
                             <i className="fa fa-clock-o addOpportunity_item_i" aria-hidden="true"></i>
