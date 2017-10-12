@@ -50,11 +50,6 @@ class Panel extends React.Component {
                     <span className="profileContainer_rowInfo_value">{this.state.user._id || 'Не определенно'} </span>
                 </div>
                 <div className="profileContainer_rowInfo">
-                    <span className="profileContainer_rowInfo_item">_id</span>
-                    <span className="profileContainer_rowInfo_del"> : </span>
-                    <span className="profileContainer_rowInfo_value">{this.state.user._id || 'Не определенно'} </span>
-                </div>
-                <div className="profileContainer_rowInfo">
                     <span className="profileContainer_rowInfo_item">Почта</span>
                     <span className="profileContainer_rowInfo_del"> : </span>
                     <span className="profileContainer_rowInfo_value">{this.state.user.login || 'Не определенно'}</span>

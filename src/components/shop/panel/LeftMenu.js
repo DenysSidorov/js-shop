@@ -12,7 +12,11 @@ class LeftMenu extends Component{
             </div>
             <div className="adminPan__menu_item">
                 <i className="fa fa-flag-checkered" ></i>
-                <Link to="/panel/test2" className="adminPan__menu_item_text">Test2</Link>
+                <Link to="/panel/admin" className="adminPan__menu_item_text">Admin Info</Link>
+            </div>
+            <div className="adminPan__menu_item">
+                <i className="fa fa-flag-checkered" ></i>
+                <Link to="/panel/test" className="adminPan__menu_item_text">Test Route</Link>
             </div>
         </div>)
     }

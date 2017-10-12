@@ -8,7 +8,7 @@ var configApp = {
         port: process.env.PORT, //3000
         database: process.env.MONGODB_URI, // 'mongodb://localhost:27017/shop'
         domain: process.env.SERVER_DOMAIN,
-        secretWord: process.env.SECRET_WORD, // 'verysecretkey'
+        secretWord: 'verysecretkey', //process.env.SECRET_WORD, // 'verysecretkey'
         mailSend: {
             service: "Gmail",
             auth: {

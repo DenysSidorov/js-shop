@@ -159,7 +159,6 @@ $colorYellow: #bbba16;
         }
       }
     }
-
   }
 }
 
@@ -461,5 +460,30 @@ $colorYellow: #bbba16;
 }
 .h1InPanelTittle{
   margin: 20px;
+}
+
+.adminForPage{
+  padding: 25px!important;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: white;
+  .adminForPage_rowInfo{
+    margin-top: 25px;
+    .adminForPage_rowInfo_item{
+      font: 1.6rem/1.8rem $robotoMedium;
+      color: black;
+
+    }
+    .adminForPage_rowInfo_del{
+      font: 1.4rem/1.8rem $robotoMedium;
+    }
+    .adminForPage_rowInfo_value{
+      font: 1.4rem/1.8rem $robotoMedium;
+      color: #3b4fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 

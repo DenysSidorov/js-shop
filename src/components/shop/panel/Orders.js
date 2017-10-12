@@ -181,7 +181,7 @@ class Orders extends React.Component{
             if(this.props.countTypes[param] === 0){ isShowNoGoods = true;}
         }
         return(
-            <div className="adminPan__mainContent_content left">
+            <div className=" left">
                 <Filtres/>
                 {isShowNoGoods && <h1 className="h1InPanelTittle"> ЗАКАЗОВ ЭТОЙ КАТЕГОРИИ НЕТ</h1>}
                 {!this.state.orders.length && !isShowNoGoods &&
