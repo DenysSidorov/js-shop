@@ -44,7 +44,7 @@ var config = {
     },
 
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.less'], // какие файлы ищет в модулях
+        extensions: ['.js', '.jsx', '.css', '.less', '.scss', '.sass'], // какие файлы ищет в модулях
     },
 
     module: {
