@@ -39,6 +39,16 @@ class Panel extends React.Component {
                 <div className="profileContainer_logo">
                     <img src="/img-static/profileUser.jpg" alt=""/>
                 </div>
+                {this.state.user.isAdmin
+                    ? <div className="profileContainer_rowInfo">
+                        <span className="profileContainer_rowInfo_item">Привет Администратор, как дела, готов служить тебе, твой сайт?!</span>
+                    </div>
+                    : null}
+                <div className="profileContainer_rowInfo">
+                    <span className="profileContainer_rowInfo_item">_id</span>
+                    <span className="profileContainer_rowInfo_del"> : </span>
+                    <span className="profileContainer_rowInfo_value">{this.state.user._id || 'Не определенно'} </span>
+                </div>
                 <div className="profileContainer_rowInfo">
                     <span className="profileContainer_rowInfo_item">_id</span>
                     <span className="profileContainer_rowInfo_del"> : </span>
