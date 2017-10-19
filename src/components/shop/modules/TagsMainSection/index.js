@@ -7,14 +7,19 @@ class TagsMainSection extends React.Component {
             <div className="itemsSection left fullWidth ">
                 <div className="container">
                     <div className="themeItemsblock">
-                             <Link to={{
-                                 pathname: '/',
-                                 search: '?sort=main',
-                                 hash: '',
-                                 state: { fromDashboard: true }
-                             }} className="themeItemsblock__oneItem">
-                                 <span>Все</span>
-                             </Link>
+                        <Link to={{
+                            pathname: '/',
+                            search: '?sort=main',
+                            hash: '',
+                            state: {fromDashboard: true}
+                        }} className="themeItemsblock__oneItem">
+                            <span className="themeItemsblock__oneItem_name">Все</span>
+                            <span
+                                className="themeItemsblock__oneItem_count">{this.props.uniqCategory.reduce((pre, cur)=> {
+                                return pre + cur.count;
+                            }, 0)}
+                                 </span>
+                        </Link>
 
 
                         {this.props.uniqCategory.map(el =>
@@ -22,7 +27,7 @@ class TagsMainSection extends React.Component {
                                 pathname: '/',
                                 search: `?sort=${el.name}`,
                                 hash: '',
-                                state: { fromDashboard: true }
+                                state: {fromDashboard: true}
                             }} className="themeItemsblock__oneItem">
                                 <span className="themeItemsblock__oneItem_name">{el.name}{' '}</span>
                                 <span className="themeItemsblock__oneItem_count">{el.count}</span>
@@ -35,12 +40,4 @@ class TagsMainSection extends React.Component {
         )
     }
 }
-
 export default TagsMainSection;
-
-console.log(3213);
-console.log(3213);
-console.log(32112313);
-console.log(321231233);
-console.log(3132213);
-console.log(3213);
