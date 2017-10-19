@@ -48,15 +48,49 @@ export async function getSimilar(req, resp, next) {
 }
 
 export async function getUniqCategory(req, resp, next) {
+    let result = {};
     try {
-        var goods = await Good.distinct('category');
+        // let resMongo = await Order.find({},{_id:false, type: true});
+        let resMongo = await Good.aggregate([
+            {
+                $match: {
+                    category: {$not: {$size: 0}}
+                }
+            },
+            {$unwind: "$category"},
+            {
+                $group: {
+                    _id: {$toLower: '$category'},
+                    count: {$sum: 1,}
+                }
+            },
+            { $project: {
+                _id: 0,
+                name: "$_id",
+                count: 1,
+            }
+            }
+
+        ]);
+        // console.log(resMongo, 'resMongo');
+        result = resMongo;
     } catch ({message}) {
         return next({
             status: 500,
             message
         });
     }
-    resp.json(goods);
+    resp.json(result);
+    // try {
+    //     var goods = await Good.distinct('category');
+    //
+    // } catch ({message}) {
+    //     return next({
+    //         status: 500,
+    //         message
+    //     });
+    // }
+    // resp.json(goods);
 }
 
 export async function getPopular(req, resp, next) {

@@ -21,6 +21,7 @@
     background-color: @mainBgColor;
     border-radius: 4px;
     .themeItemsblock__oneItem {
+      position: relative;
       min-width: 85px;
       flex-grow: 0;
       padding: 5px;
@@ -38,10 +39,18 @@
       transform: translateZ(0);
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       transition: all 0.5s ease;
-      span {
+      .themeItemsblock__oneItem_name {
         font: 1.5rem/2.2rem @robotoRegular;
         color: @greyText;
         transition: all 0.5s;
+      }
+      .themeItemsblock__oneItem_count {
+        font: 1.5rem/1.6rem @robotoRegular;
+        margin-left: 4px;
+        color: #FFFFFF;
+        background-color: @mainBgColor;
+        padding: 2px 4px;
+        border-radius: 50px;
       }
       a {
         font: 1.5rem/2.2rem @robotoRegular;

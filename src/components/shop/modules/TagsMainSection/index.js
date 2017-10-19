@@ -18,13 +18,14 @@ class TagsMainSection extends React.Component {
 
 
                         {this.props.uniqCategory.map(el =>
-                            <Link key={el} to={{
+                            <Link key={el.name} to={{
                                 pathname: '/',
-                                search: `?sort=${el}`,
+                                search: `?sort=${el.name}`,
                                 hash: '',
                                 state: { fromDashboard: true }
                             }} className="themeItemsblock__oneItem">
-                                <span>{el}</span>
+                                <span className="themeItemsblock__oneItem_name">{el.name}{' '}</span>
+                                <span className="themeItemsblock__oneItem_count">{el.count}</span>
                             </Link>
                         )}
 
@@ -37,3 +38,9 @@ class TagsMainSection extends React.Component {
 
 export default TagsMainSection;
 
+console.log(3213);
+console.log(3213);
+console.log(32112313);
+console.log(321231233);
+console.log(3132213);
+console.log(3213);
