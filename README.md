@@ -7,12 +7,11 @@ Main tools:
 - Express
 - Mongoose
 - MVC
-- Redux/Saga/Middleware
+- Redux/Middleware
 - ReactJS/Libraries/Router4
 - SASS / LESS
 - EJS
 - JQuery
-
 - Webpack
 
 
@@ -21,22 +20,21 @@ Not implemented :
 
 - _hot **SEARCH** from hight menu, AUTOCOMPLETE_
 - _~~login/logout~~_
-- _logup_
+- _~~logup~~_
 - _~~delivery/payment/conditions pages~~_
 - _posts db/admin-panel/view_
-- _**ADMIN PANEL**_
+- _~~**ADMIN PANEL**~~_
 - _**~~CDN IMAGES~~**_
 - _**~~IMAGE COMPONENT~~**_
 - _**~~REDUX STORE FOR CART~~**_
 - _~~confirm for user in card~~_
 - _quickly buy_
 - _~~react inputs~~_
-- _images from hdd_
+- _~~images from GOOGLE CLOUD STORAGE~~_
 - _blog_
-- Admin profile/ UserProfile
-- _USER PANEL_
-- _images from hdd_
-- _send email to user for registration_
-- _sms notifications_
-- _filter for goods_
-- _pagination on order, goods pages_
+- ~~Admin profile/ UserProfile~~
+- _~~USER PANEL~~_
+- _~~send email to user for registration~~_
+- _sms notifications, instead not. to manager's email_
+- _~~filter for goods~~_
+- _pagination on order, goods pages, admin panel_
