@@ -223,8 +223,8 @@ class Orders extends React.Component{
                             default:
                                 initType = 'Ошибка'
                         }
-                        return <tr key={ord._id}>
-                            <td data-label="Имя">
+                        return <tr  title={ord._id} key={ord._id}>
+                            <td  data-label="Имя">
                                 <span>{ord.name}</span>
                             </td>
                             <td data-label="Phone">
