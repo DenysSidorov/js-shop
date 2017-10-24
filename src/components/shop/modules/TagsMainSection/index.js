@@ -7,30 +7,24 @@ class TagsMainSection extends React.Component {
             <div className="itemsSection left fullWidth ">
                 <div className="container">
                     <div className="themeItemsblock">
-                        <Link to={{
-                            pathname: '/',
-                            search: '?sort=main',
-                            hash: '',
-                            state: {fromDashboard: true}
-                        }} className="themeItemsblock__oneItem">
-                            <span className="themeItemsblock__oneItem_name">Все</span>
-                            <span
-                                className="themeItemsblock__oneItem_count">{this.props.uniqCategory.reduce((pre, cur)=> {
-                                return pre + cur.count;
-                            }, 0)}
-                                 </span>
-                        </Link>
+                             <Link to={{
+                                 pathname: '/',
+                                 search: '?sort=main',
+                                 hash: '',
+                                 state: { fromDashboard: true }
+                             }} className="themeItemsblock__oneItem">
+                                 <span>Все</span>
+                             </Link>
 
 
                         {this.props.uniqCategory.map(el =>
-                            <Link key={el.name} to={{
+                            <Link key={el} to={{
                                 pathname: '/',
-                                search: `?sort=${el.name}`,
+                                search: `?sort=${el}`,
                                 hash: '',
-                                state: {fromDashboard: true}
+                                state: { fromDashboard: true }
                             }} className="themeItemsblock__oneItem">
-                                <span className="themeItemsblock__oneItem_name">{el.name}{' '}</span>
-                                <span className="themeItemsblock__oneItem_count">{el.count}</span>
+                                <span>{el}</span>
                             </Link>
                         )}
 
@@ -40,4 +34,15 @@ class TagsMainSection extends React.Component {
         )
     }
 }
+
 export default TagsMainSection;
+
+<<<<<<< HEAD
+=======
+console.log(3213);
+console.log(3213);
+console.log(32112313);
+console.log(321231233);
+console.log(3132213);
+console.log(3213);
+>>>>>>> parent of d0cd02d... fix app, all goods' count
