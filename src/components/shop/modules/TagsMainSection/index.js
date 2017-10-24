@@ -14,11 +14,6 @@ class TagsMainSection extends React.Component {
                             state: {fromDashboard: true}
                         }} className="themeItemsblock__oneItem">
                             <span className="themeItemsblock__oneItem_name">Все</span>
-                            <span
-                                className="themeItemsblock__oneItem_count">{this.props.uniqCategory.reduce((pre, cur)=> {
-                                return pre + cur.count;
-                            }, 0)}
-                                 </span>
                         </Link>
 
 
