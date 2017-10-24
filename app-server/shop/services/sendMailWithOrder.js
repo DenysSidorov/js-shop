@@ -8,7 +8,7 @@ export const sendMailWithOrder = ({email = [], order})=> {
 
 // setup e-mail data with unicode symbols
     let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
-    email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com'];
+    email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
     console.log(process.env.NODE_ENV , 'process.env.NODE_ENV');
 
     let mailOptions = {

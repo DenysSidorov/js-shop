@@ -35,6 +35,6 @@ Not implemented :
 - ~~Admin profile/ UserProfile~~
 - _~~USER PANEL~~_
 - _~~send email to user for registration~~_
-- _sms notifications, instead notifications to manager's email_
+- _sms notifications, instead not. to manager's email_
 - _~~filter for goods~~_
 - _pagination on order, goods pages, admin panel_
