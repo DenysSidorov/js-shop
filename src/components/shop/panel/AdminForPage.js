@@ -5,20 +5,28 @@ class AdminForPage extends React.Component{
         super(props);
     }
     componentDidMount(){
-console.log(23);
     }
     render(){
         return(
            <div className="adminForPage">
 
-               <div className="adminForPage_rowInfo">
-                   <span className="adminForPage_rowInfo_item">MongoLab DB Hosting</span>
-                   <span className="adminForPage_rowInfo_del"> : </span>
-                   <a target="blank" href="https://mlab.com/databases/js-shop"
-                      className="adminForPage_rowInfo_value">
-                       https://mlab.com/databases/js-shop
-                   </a>
-               </div>
+             <div className="adminForPage_rowInfo">
+               <span className="adminForPage_rowInfo_item">YourTrack JetBrains</span>
+               <span className="adminForPage_rowInfo_del"> : </span>
+               <a target="blank" href="https://band.myjetbrains.com/youtrack/agiles/89-0/90-0"
+                  className="adminForPage_rowInfo_value">
+                 https://band.myjetbrains.com/youtrack/agiles/89-0/90-0
+               </a>
+             </div>
+
+             <div className="adminForPage_rowInfo">
+               <span className="adminForPage_rowInfo_item">MongoLab DB Hosting</span>
+               <span className="adminForPage_rowInfo_del"> : </span>
+               <a target="blank" href="https://mlab.com/databases/js-shop"
+                  className="adminForPage_rowInfo_value">
+                 https://mlab.com/databases/js-shop
+               </a>
+             </div>
 
                <div className="adminForPage_rowInfo">
                    <span className="adminForPage_rowInfo_item">Heroku NodeJS Hosting</span>

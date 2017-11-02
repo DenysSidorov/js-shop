@@ -3,15 +3,26 @@ import styles from './index.less';
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
-import {signoutUser} from '../../../../reducers/authReducer/actions'
+import {signoutUser, isAdminFunc} from '../../../../reducers/authReducer/actions'
 import {bindActionCreators} from "redux";
 class MenuInfoSection extends React.Component {
+    verifyAdminLink(){
+      this.props.isAdminFunc();
+    }
+    componentDidMount(){
+       this.verifyAdminLink();
+    }
+    componentDidUpdate(){
+      this.verifyAdminLink();
+    }
     unAuth(){
         this.props.signoutUser();
     }
     render() {
         let authenticated = this.props.authenticated;
         let isAdmin = this.props.isAdmin;
+        console.log(authenticated, 'authenticated'.toUpperCase());
+        console.log(isAdmin, 'isAdmin'.toUpperCase());
         return (
             <div className="menuInfoSection left fullWidth ">
                 <div className="container">
@@ -77,6 +88,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         signoutUser: ()=> signoutUser(),
+      isAdminFunc: ()=> isAdminFunc()
 
     }, dispatch)
 }

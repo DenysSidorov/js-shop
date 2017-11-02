@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { loadingBarReducer , showLoading} from 'react-redux-loading-bar'; // preloader
+import {reducer as notifications} from 'react-notification-system-redux'; // notification system
 import counter from './counterRRR'
 import cartReducer from './cart'
 import confirmCardReducer from './confirmInCard'
@@ -15,7 +16,8 @@ export default combineReducers({
     cart: cartReducer,
     confirmsCard: confirmCardReducer,
     authReducer,
-    adminPanelReducer
+    adminPanelReducer,
     // serverPreloaderReducer,
+  notifications
 
 })

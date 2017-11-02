@@ -36,9 +36,3 @@ class TagsMainSection extends React.Component {
     }
 }
 export default TagsMainSection;
-console.log(3334322);
-console.log(3334322);
-console.log(3234234324334322);
-console.log(3334322);
-console.log(3334322);
-console.log(3334322);

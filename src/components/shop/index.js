@@ -1,29 +1,53 @@
 import React from "react";
 import WrapperApp from "./WrapperApp";
 import axios from "axios";
+
 import {Route, Switch} from "react-router-dom";
 import RouteAuth from "../shop/helpers/RouteAuth";
 import Panel from '../shop/panel/index';
+import NotificationsWrapper from '../shop/helpers/NotificationsWrapper';
+
 class App extends React.Component {
+    constructor(props){
+        super(props);
+      // this._notificationSystem = null;
+    }
     async componentDidMount() {
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
         // https://www.npmjs.com/package/axios
         // var t = await axios.get('http://localhost:3000/goods');
         // console.log(t.data.goods, 't');
+
+      // this._notificationSystem = this.refs.notificationSystem;
+      // console.log(this.refs.notificationSystem, 'this.refs.notificationSystem');
     }
+
+  // _addNotification(event) {
+  //   event.preventDefault();
+  //   this._notificationSystem.addNotification({
+  //     message: 'Notification message',
+  //     level: 'success'
+  //   });
+  // }
+
 
     render() {
 
         return (
             <div style={{width: '100%', height: '100%'}}>
+                {/*<button onClick={this._addNotification.bind(this)}>Add notification</button>*/}
+                {/*<NotificationSystem ref="notificationSystem" />*/}
+
+
                 <Switch>
                     <RouteAuth path="/panel" component={Panel}/>
                     <WrapperApp {...this.props}/>
                 </Switch>
-
+              <NotificationsWrapper/>
             </div>
         )
     }
 }
+
 export default App;
 

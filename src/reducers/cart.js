@@ -1,3 +1,6 @@
+import Notifications, { success,info } from 'react-notification-system-redux';
+import { push } from 'react-router-redux';
+
 export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
 export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
@@ -140,7 +143,26 @@ export default (state = initialState, action) => {
 // TODO use  --SAGA--
 
 export const pushToCart = (item)=> {
-    return {type: ADD_ITEM_IN_CART, payload: item}
+  return  function (dispatch) {
+// var notification = document.querySelector('.notifications-wrapper');
+    console.log(item, 'ITEM');
+    const notificationOpts = {
+      // uid: 'once-please', // you can specify your own uid if required
+      title: 'Товар добавлен в корзину',
+      message: `${item.name} ${item.model}`,
+      position: 'br',
+      autoDismiss: 3,
+      action: {
+        label: 'В корзину',
+        callback: () =>   dispatch(push('/order'))
+        // callback: () =>   window.location.href = window.location.origin + '/order'
+
+      }
+    };
+   dispatch(info(notificationOpts));
+    dispatch( {type: ADD_ITEM_IN_CART, payload: item});
+    // return {type: ADD_ITEM_IN_CART, payload: item}
+  }
 };
 
 export const deleteFromCart = (item)=> {
@@ -154,7 +176,6 @@ export const incrementItem = (id)=> {
 export const decrementItem = (id)=> {
     return {type: DECREMENT_ITEM_IN_CART, payload: id}
 };
-
 
 export const deleteAll = ()=> {
     return {type: DELETE_ALL_ITEM_IN_CART}

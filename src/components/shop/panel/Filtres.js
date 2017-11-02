@@ -95,6 +95,3 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps, mapDispatchToProps
 )(Filters);
-    console.log(31123);
-    console.log(31123);
-    console.log(31123);
