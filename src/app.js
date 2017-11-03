@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             , container);
     }
 });
-
+// add input mask
+// https://github.com/insin/react-maskedinput
 
 window.$ = jQuery;
 window.jQuery = jQuery;

@@ -81,6 +81,7 @@
     "react-dom": "~15.6.1",
     "react-dropdown": "~1.2.5",
     "react-image-gallery": "~0.8.3",
+    "react-maskedinput": "^4.0.0",
     "react-notification-system": "^0.2.16",
     "react-notification-system-redux": "^1.2.0",
     "react-redux": "~5.0.5",
