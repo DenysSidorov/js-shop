@@ -10,7 +10,6 @@ class Panel extends React.Component {
         try {
             const token = localStorage.getItem('info');
             let result = await axios.get(`${urlApi}/api/users/current`, {
-                // timeout: 1000,
                 headers: {'authorization': token}
             });
             console.log(result.data, 'data');
@@ -18,19 +17,9 @@ class Panel extends React.Component {
         } catch (err) {
             console.log(err.message || err);
         }
-
-        // var token = queryParams['t'];
-        // if (token) {
-        //     console.log(token, 'tokenischeeeeeee');
-        // }
-
     };
 
     render = () => {
-        // return (<div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>
-        //         Профиль пользователя пуст, подтверждение в обработке...
-        //     </div>
-        // )
         if (!this.state.isGotUser) {
             return <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
         }
@@ -77,7 +66,6 @@ class Panel extends React.Component {
                 <div className="profileContainer_editBtn">
                     <span className="profileContainer_editBtn_btn">Редактировать</span>
                 </div>
-
             </div>
         )
 

@@ -50,7 +50,6 @@ class PaymentAndDelivery extends React.Component {
                         <p style={{fontWeight: 'bold'}}></p>
             </div>
         )
-
     }
 }
 
