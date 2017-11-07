@@ -1,7 +1,7 @@
 import React from "react";
 import st from './comment.less';
 class Comment extends React.Component {
-
+// TODO add comments in db
 
     async componentDidMount(prevProps) {
         // window.scrollTo(0, 0)
