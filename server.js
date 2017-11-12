@@ -13,6 +13,9 @@ import bodyParse from 'body-parser';
 import morgan from 'morgan';
 
 // TODO download CORS-middleware and require it here
+//site opener
+import siteOpener from './app-server/helper/site-opener'
+
 
 import config from './config/index'; // Конфигурация
 import authRoute from './app-server/routes/auth';
@@ -107,5 +110,8 @@ app.use(errorMiddleWare ); // Обработчик ошибок должен б�
 // todo сделать на фронте таблицу с ошибками 500, 404
 app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found, API-SHOP", type: 404}));
 
+//site-opener
+siteOpener();
 
+export default app;
 
