@@ -48,7 +48,7 @@ mongoose.connect(config.backend.database, {
 //Нужно запускать после подключения к базу, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
-console.log(26);
+
 
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
@@ -106,5 +106,6 @@ app.get('*', (req, res) => {
 app.use(errorMiddleWare ); // Обработчик ошибок должен быть последним
 // todo сделать на фронте таблицу с ошибками 500, 404
 app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found, API-SHOP", type: 404}));
+
 
 
