@@ -17,7 +17,8 @@ const GoodSchema = new Schema({
     isNewGood : {type: Boolean, require: true},
     category : {type : Array, require: true },
     isExists : {type: Boolean, require: true},
-    producer: {type: String, require: true}
+    producer: {type: String, require: true},
+    views: {type: Number, default: 0}
 });
 
 export default mongoose.model('Good', GoodSchema);
