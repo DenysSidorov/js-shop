@@ -11,7 +11,7 @@ export default () => {
             }
 
             times++
-            console.log(times, ' times');
+            console.log(times, ' times', new Date().toLocaleString());
         })
     };
 
