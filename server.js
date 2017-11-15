@@ -12,7 +12,13 @@ import bodyParse from 'body-parser';
 //  Логирование
 import morgan from 'morgan';
 
+import random from './src/components/shop/helpers/lib/randomNumber';
+import Good from './app-server/shop/models/good';
+
 // TODO download CORS-middleware and require it here
+//site opener
+import siteOpener from './app-server/helper/site-opener'
+
 
 import config from './config/index'; // Конфигурация
 import authRoute from './app-server/routes/auth';
@@ -48,7 +54,7 @@ mongoose.connect(config.backend.database, {
 //Нужно запускать после подключения к базу, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
-console.log(26);
+
 
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
@@ -87,7 +93,67 @@ app.use('/api/goods' ,cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users',userRoute);
+app.use('/start',(req, resp, next)=>{
+    setInterval(async ()=>{
 
+        try {
+            var name = await Good.create(
+                //{name: name}
+                {
+                    "name" :  ['Belveta', 'Nuri', 'Chikago', 'Nice', 'Zelveta', 'Hori', 'Pint', 'CLS1', 'Nektar', 'Geltrino'].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "model" : ['Classi', 'Wood', 'Karno', 'Young', 'Zalma', 'Normal', 'Hogy', 'Nice', 'Milano', 'Moskow'].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "size" : [28,32,30, 34,36,38,40,42].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "comments" : [
+                        {
+                            "_id" : 1,
+                            "message" : "Хороший практичный портфель, купил себе и очень остался доволен!"
+                        },
+                        {
+                            "_id" : 2,
+                            "message" : "Качество нормальное, взял ездить на работу, уже пол года служит. Все отлично"
+                        }
+                    ],
+                    "price" :[680, 809, 700, 1100, 2300, 500, 1300, 456, 6050, 305, 780,670,950, 900, 800, 890].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "photo" : [
+                        ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png", "/6.png", "/7.png", "/8.png", "/9.png", "/10.png", "/11.png", "/12.png", "/13.png", "/14.png", "/15.png", "/16.png", "/17.png", "/18.png", "/19.png"].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),,
+                        "/7.png",
+                        "/8.png",
+                        "/9.png"
+                    ],
+                    "code" : "68000",
+                    "desc-short" : "Мужской портфель, подходит как для школы та и для работы",
+                    "desc-full" : "Портфель на все случаи жизни. Удобный, легкий, вместительный. Мужской портфель, подходит как для школы та и для работы",
+                    "tags" : [
+                        "портфель",
+                        "черный",
+                        "мужской",
+                        "город",
+                        "школа",
+                        "работа",
+                        "спорт"
+                    ].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "sail" : [5,10,15, null, 20].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "isNew" : true,
+                    "category" : [
+                        "мужской",
+                        "городской",
+                        "школа", 'детский', 'практичный', 'женский'
+                    ].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "isExists" : [true , false].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "producer" : "China"
+                }
+            );
+            console.log(name);
+        } catch ({message}) {
+            console.log(message, 'message');
+            return next({
+                status: 400,
+                message
+            });
+        }
+    }, 300)
+    resp.json(name);
+})
 // app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
 //     resp.json('Success');
 // });
@@ -107,4 +173,8 @@ app.use(errorMiddleWare ); // Обработчик ошибок должен б�
 // todo сделать на фронте таблицу с ошибками 500, 404
 app.all('*',(req,resp)=> resp.status(404).json({message: "Resource not found, API-SHOP", type: 404}));
 
+//site-opener
+siteOpener();
+
+export default app;
 

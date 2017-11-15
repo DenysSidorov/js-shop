@@ -24,7 +24,15 @@ export async function getById(req, resp, next) {
   var id = req.params.id;
   try {
     var good = await Good.find({_id: id});
-
+    if (good){
+      setTimeout(async ()=>{
+        try {
+          var climbResult = await Good.update({_id: id}, { $inc: { "views" : 1 } });
+        } catch ({message}) {
+          console.log( message );
+        }
+      },10);
+    }
   } catch ({message}) {
     return next({
       status: 500,
