@@ -2,6 +2,7 @@ import mongoose, {  Schema } from 'mongoose';
 
 const GoodSchema = new Schema({
     _id: { type: String, required: true },
+    // _id:{type: Number},
     name: { type: String, require: true },
     model: { type: String, require: true },
     createdAt: { type: Date, default: Date.now },
