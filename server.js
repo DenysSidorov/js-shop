@@ -134,11 +134,8 @@ app.use('/start',(req, resp, next)=>{
                     ].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
                     "sail" : [5,10,15, null, 20].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
                     "isNew" : true,
-                    "category" : [
-                        "мужской",
-                        "городской",
-                        "школа", 'детский', 'практичный', 'женский'
-                    ].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "category" : ["мужской", "городской", "школа", 'детский', 'практичный', 'женский']
+                      .reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
                     "isExists" : [true , false].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
                     "producer" : "China"
                 }
