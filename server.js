@@ -12,7 +12,7 @@ import bodyParse from 'body-parser';
 //  Логирование
 import morgan from 'morgan';
 
-import random from './src/components/shop/helpers/lib/randomNumber';
+import random from './src/components/shop/helpers/lib/randomArrElement';
 import Good from './app-server/shop/models/good';
 
 // TODO download CORS-middleware and require it here
@@ -94,15 +94,17 @@ app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users',userRoute);
 app.use('/start',(req, resp, next)=>{
-    setInterval(async ()=>{
+    console.log('START');
+    var name = {}
+    setTimeout(async ()=>{
 
         try {
-            var name = await Good.create(
+            name = await Good.create(
                 //{name: name}
                 {
-                    "name" :  ['Belveta', 'Nuri', 'Chikago', 'Nice', 'Zelveta', 'Hori', 'Pint', 'CLS1', 'Nektar', 'Geltrino'].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "model" : ['Classi', 'Wood', 'Karno', 'Young', 'Zalma', 'Normal', 'Hogy', 'Nice', 'Milano', 'Moskow'].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "size" : [28,32,30, 34,36,38,40,42].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "name" :  random(['Belveta', 'Nuri', 'Chikago', 'Nice', 'Zelveta', 'Hori', 'Pint', 'CLS1', 'Nektar', 'Geltrino']),
+                    "model" :  random(['3000', 'Summer', 'Superstar', 'BoniClayd', 'Nice', 'Davinchi', 'Surinami', 'Eventador', 'Harmony', 'Colt']),
+                    "size" : [random([28,32,30,34,36,38,40,42]), random([38,34])],
                     "comments" : [
                         {
                             "_id" : 1,
@@ -113,17 +115,19 @@ app.use('/start',(req, resp, next)=>{
                             "message" : "Качество нормальное, взял ездить на работу, уже пол года служит. Все отлично"
                         }
                     ],
-                    "price" :[680, 809, 700, 1100, 2300, 500, 1300, 456, 6050, 305, 780,670,950, 900, 800, 890].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
+                    "price" :random([680, 809, 700, 1100, 2300, 500, 1300, 456, 6050, 305, 780,670,950, 900, 800, 890]),
                     "photo" : [
-                        ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png", "/6.png", "/7.png", "/8.png", "/9.png", "/10.png", "/11.png", "/12.png", "/13.png", "/14.png", "/15.png", "/16.png", "/17.png", "/18.png", "/19.png"].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),,
+                        random(["/1.png", "/2.png", "/3.png", "/4.png", "/5.png", "/6.png", "/7.png", "/8.png", "/9.png", "/10.png", "/11.png", "/12.png", "/13.png", "/14.png", "/15.png", "/16.png", "/17.png", "/18.png", "/19.png"]),
                         "/7.png",
                         "/8.png",
                         "/9.png"
                     ],
+                    "count": random([1,2,3,4,5,22]),
+                    "views": random([4,66,45,12,67,89,56,4,54,76,8,897,3,45,34,213,45,78,34,23,45,34,23,5,27,73,8,5869,36,26]),
                     "code" : "68000",
-                    "desc-short" : "Мужской портфель, подходит как для школы та и для работы",
+                    "desc-short" : "Мужской портфель, подходит как для школы  и для работы",
                     "desc-full" : "Портфель на все случаи жизни. Удобный, легкий, вместительный. Мужской портфель, подходит как для школы та и для работы",
-                    "tags" : [
+                    "tags" : [random([
                         "портфель",
                         "черный",
                         "мужской",
@@ -131,25 +135,27 @@ app.use('/start',(req, resp, next)=>{
                         "школа",
                         "работа",
                         "спорт"
-                    ].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "sail" : [5,10,15, null, 20].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "isNew" : true,
-                    "category" : ["мужской", "городской", "школа", 'детский', 'практичный', 'женский']
-                      .reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "isExists" : [true , false].reduce((pre, cur, ind, arr)=>{ return arr[random(0, arr.length-1)] }),
-                    "producer" : "China"
+                    ])],
+                    "sail" : random([5,10,15, 20]),
+                    "isNew" : random([true,false]),
+                    "category" : [random(["мужской", "городской", "школа", 'детский', 'практичный', 'женский'])],
+                    "isExists" : random([true , false]),
+                    "isNewGood" : random([true , false]),
+                    "producer" : random(["China", "Ukraine", "Italy", "Germany", "France"] )
                 }
             );
-            console.log(name);
+            console.log(name, 'after');
+            console.log(name , 'Name');
+            resp.json(name);
         } catch ({message}) {
-            console.log(message, 'message');
+            console.log(message, ' | message');
             return next({
                 status: 400,
                 message
             });
         }
     }, 300)
-    resp.json(name);
+
 })
 // app.get('/test', cors(), checkToken, (req, resp)=>{ // check token in headers
 //     resp.json('Success');

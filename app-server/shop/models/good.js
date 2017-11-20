@@ -1,10 +1,10 @@
 import mongoose, {  Schema } from 'mongoose';
 
 const GoodSchema = new Schema({
-    _id: Number,
+    _id: { type: String, required: true },
     name: { type: String, require: true },
     model: { type: String, require: true },
-    createdAt: { type: Date, require: true, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
     size : {type : Array, require: true},
     comments : {type : Array, require: true},
     price : { type: Number, require: true },
