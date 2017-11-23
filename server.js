@@ -1,9 +1,10 @@
 import path from "path";
 import express from "express";
-import assets from "./app-server/assets.json";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 import morgan from "morgan";
+
+import assets from "./app-server/assets.json";
 import siteOpener from "./app-server/helper/site-opener";
 import config from "./config/index";
 import authRoute from "./app-server/routes/auth";
@@ -42,7 +43,7 @@ mongoose.connect(config.backend.database, {
     console.log(`Mongo connected!`);
 });
 
-//Нужно запускать после подключения к базу, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
+//Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 
