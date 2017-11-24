@@ -11,6 +11,7 @@ class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
     async componentWillReceiveProps(prevProps) {
+        this.setState({cards: []})
         window.scrollTo(0, 0)
         // получение обьекта параметров запроса
         var params = window
@@ -43,6 +44,7 @@ class Home extends React.Component {
 
     }
     async componentDidMount(prevProps) {
+
         window.scrollTo(0, 0)
         window.scrollTo(0, 0);
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
@@ -97,6 +99,10 @@ class Home extends React.Component {
                 : null}
                 {this.state.cards && this.state.cards.length
                   ? <CardsSection cards={this.state.cards}/>
+                  : null}
+
+                {!this.state.cards.length
+                  ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
                   : null}
 
                   {/*<AdditionalSection/>*/}

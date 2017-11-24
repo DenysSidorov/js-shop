@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import CardMainPage from './CardMainPage';
 class CardsSection extends React.Component {
-    // state = {cards : []};
+    state = {cards : []};
     // async componentDidMount() {
     //     // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
     //     // https://www.npmjs.com/package/axios
@@ -25,6 +25,7 @@ class CardsSection extends React.Component {
                         <div className="productsCardBlock__searchCard-count">
                             Найдено : {cards.length}
                         </div>
+
                         <div className="productsCardBlock__bodyCardItems">
                             { cards.map(el=> <CardMainPage card={el} key={el._id}/>)}
                         </div>
