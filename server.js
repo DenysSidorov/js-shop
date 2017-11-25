@@ -83,12 +83,10 @@ app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users', userRoute);
-
 app.use('/start', cors(), createGoods)
 
 
 // app.use('/api', checkToken,  userRoute); // get user route
-
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 app.get('*', (req, res) => {
