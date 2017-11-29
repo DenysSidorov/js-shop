@@ -1,13 +1,19 @@
 import Good from "../models/good";
 
+
 export async function getAll(req, resp, next) {
   var filter = req.query ? req.query.sort : null;
   try {
     var goods;
     if (filter && filter != 'main') {
-      goods = await Good.find({category: {$in: [filter]}}).limit(1000);
+      let goodsResponse = await Good.find({category: {$in: [filter]}}).limit(50);
+      let countResponse = await Good.find({category: {$in: [filter]}}).count();
+      goods = {goods: goodsResponse , count: countResponse}
     } else {
-      goods = await Good.find({}).limit(1000);
+
+      let goodsResponse = await Good.find({}).limit(50);
+      let countResponse = await Good.find({}).count();
+      goods = {goods: goodsResponse , count: countResponse}
     }
 
 

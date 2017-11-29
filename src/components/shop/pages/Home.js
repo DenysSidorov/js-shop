@@ -72,7 +72,8 @@ class Home extends React.Component {
             if(param){
                 cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
             } else {
-                cards = await axios.get(`${urlApi}/api/goods`);
+                let response = await axios.get(`${urlApi}/api/goods`);
+            // cards = response;
             }
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
