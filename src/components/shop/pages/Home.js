@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
-import urlApi from '../../../api/urlApi';
+import urlApi from "../../../api/urlApi";
 import CardsSection from "../modules/CardsSection";
 import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
-import AdditionalSection from "../modules/AdditionalSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
-import HomeReduxExample from "../helpers/HomeNewReduxExamp";
 class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
@@ -17,18 +15,18 @@ class Home extends React.Component {
         var params = window
             .location
             .search
-            .replace('?','')
+            .replace('?', '')
             .split('&')
             .reduce(
-                function(p,e){
+                function (p, e) {
                     var a = e.split('=');
-                    p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                    p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
                     return p;
                 },
                 {}
             );
         var param = params['sort'];
-        if(param){
+        if (param) {
             var cards = [];
             try {
                 cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
@@ -37,12 +35,15 @@ class Home extends React.Component {
                 console.log(e);
             } finally {
                 this.setState({
-                    cards: cards.data,
-                }, ()=>{})
+                    count: cards.data.count,
+                    cards: cards.data.goods,
+                }, ()=> {
+                })
             }
         }
 
     }
+
     async componentDidMount(prevProps) {
 
         window.scrollTo(0, 0)
@@ -52,12 +53,12 @@ class Home extends React.Component {
         var params = window
             .location
             .search
-            .replace('?','')
+            .replace('?', '')
             .split('&')
             .reduce(
-                function(p,e){
+                function (p, e) {
                     var a = e.split('=');
-                    p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                    p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
                     return p;
                 },
                 {}
@@ -69,11 +70,14 @@ class Home extends React.Component {
         var popularCards = [];
         var uniqCategory = [];
         try {
-            if(param){
+            if (param) {
                 cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                // cards = response.goods;
+                // count = response.count;
             } else {
-                let response = await axios.get(`${urlApi}/api/goods`);
-            // cards = response;
+                 cards = await axios.get(`${urlApi}/api/goods`);
+                // cards = response.goods;
+                // count = response.count;
             }
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
@@ -82,7 +86,8 @@ class Home extends React.Component {
             console.log(e);
         } finally {
             this.setState({
-                cards: cards.data,
+                count: cards.data.count,
+                cards: cards.data.goods,
                 popularCards: popularCards.data,
                 uniqCategory: uniqCategory.data
             })
@@ -96,17 +101,17 @@ class Home extends React.Component {
                 <MenuInfoSection/>
                 {/*<HomeReduxExample />*/}
                 {this.state.uniqCategory && this.state.uniqCategory.length
-                ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
-                : null}
+                    ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
+                    : null}
                 {this.state.cards && this.state.cards.length
-                  ? <CardsSection cards={this.state.cards}/>
-                  : null}
+                    ? <CardsSection count={this.state.count} cards={this.state.cards}/>
+                    : null}
 
                 {!this.state.cards.length
-                  ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
-                  : null}
+                    ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
+                    : null}
 
-                  {/*<AdditionalSection/>*/}
+                {/*<AdditionalSection/>*/}
 
                 {this.state.popularCards && this.state.popularCards.length
                     ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>

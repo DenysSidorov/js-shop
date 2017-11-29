@@ -23,7 +23,7 @@ class CardsSection extends React.Component {
                         <div className="productsCardBlock__navigation"></div>
                         <div className="productsCardBlock__searchCard"></div>
                         <div className="productsCardBlock__searchCard-count">
-                            Найдено : {cards.length}
+                            Найдено : {this.props.count}
                         </div>
 
                         <div className="productsCardBlock__bodyCardItems">
