@@ -51,7 +51,7 @@ export async function getById(req, resp, next) {
 export async function getSimilar(req, resp, next) {
   var categoryArr = req.body.params.category;
   try {
-    var goods = await Good.find({category: {$in: categoryArr}});
+    var goods = await Good.find({category: {$in: categoryArr}}).limit(10);
   } catch ({message}) {
     return next({
       status: 500,
