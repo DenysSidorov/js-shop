@@ -30,6 +30,7 @@ componentDidMount(){
                     </div>
                 </Link>
 
+
                 <Link to='/panel?type=progress' className="adminPan__filters_item">
                     <div className="adminPan__filters_item_log colorYellow">
                         <i className="fa fa-spinner"></i>
