@@ -30,6 +30,7 @@ class MainContainerForCard extends React.Component {
         // }, ()=>{console.log(this.state.kindConfirm , 'after222');
         //     this.forceUpdate();
         // })
+
     }
     showConfirm (kind, e){
         console.log(kind, 'kind');
@@ -58,7 +59,7 @@ class MainContainerForCard extends React.Component {
         var card = this.props.card[0];
         console.log(card, 'card');
         const images = [];
-        card.photo.forEach(el=> images.push({
+        card && card.photo.forEach(el=> images.push({
             original: `/img-static/${el}`,
             thumbnail:`/img-static/${el}`
         }));

@@ -1,18 +1,21 @@
 import React from "react";
 import axios from "axios";
-import st from './index.less';
-import urlApi from '../../../../api/urlApi';
+import urlApi from "../../../../api/urlApi";
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
 class CardComponent extends React.Component {
     state = {card: null, similarCategory: [], popularCards: []};
-constructor(props){
-    super(props);
-    this.initCadd = this.initCadd.bind(this);
 
-}
-    async initCadd(){
+    constructor(props) {
+        super(props);
+        this.initCadd = this.initCadd.bind(this);
+
+    }
+
+    state = {card: []}
+
+    async initCadd() {
         window.scrollTo(0, 0)
         var id = this.props.match.params.id;
         var similarCategory = [];
@@ -23,6 +26,7 @@ constructor(props){
         try {
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             card = await axios.get(`${urlApi}/api/goods/${id}`);
+            console.log(card, 'ehi');
             //console.log(card.data[0].category, 'cards');
             similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
                 {params: {'category': card.data[0].category}}
@@ -38,8 +42,9 @@ constructor(props){
             });
         }
     }
-     componentDidMount() {
-         //console.log('componentDidMount');
+
+    componentDidMount() {
+        //console.log('componentDidMount');
         this.initCadd();
     }
 
@@ -48,11 +53,13 @@ constructor(props){
         this.forceUpdate();
         this.initCadd();
     }
+
     render() {
         var {card} = this.state;
+        console.log(card, 'CART');
         return (
             <div>
-                {card
+                {card.length
                     ? <div>
 
                     <MainContainerForCard card={this.state.card}/>
