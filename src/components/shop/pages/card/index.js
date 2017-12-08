@@ -44,12 +44,10 @@ class CardComponent extends React.Component {
     }
 
     componentDidMount() {
-        //console.log('componentDidMount');
         this.initCadd();
     }
 
     componentWillReceiveProps() {
-        // console.log('componentWillReceiveProps');
         this.forceUpdate();
         this.initCadd();
     }
