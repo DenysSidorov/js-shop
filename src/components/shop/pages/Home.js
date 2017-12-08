@@ -8,44 +8,49 @@ import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
+    componentWillUpdate(){
+        console.log('componentWillUpdate');
+    }
     async componentWillReceiveProps(prevProps) {
-        this.setState({cards: []})
-        window.scrollTo(0, 0)
-        // получение обьекта параметров запроса
-        var params = window
-            .location
-            .search
-            .replace('?', '')
-            .split('&')
-            .reduce(
+        console.log('componentWillReceiveProps');
+        this.setState({cards: []}, async ()=>{
+            window.scrollTo(0, 0)
+            // получение обьекта параметров запроса
+            var params = window
+              .location
+              .search
+              .replace('?', '')
+              .split('&')
+              .reduce(
                 function (p, e) {
                     var a = e.split('=');
                     p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
                     return p;
                 },
                 {}
-            );
-        var param = params['sort'];
-        if (param) {
+              );
+            var param = params['sort'];
+
             var cards = [];
             try {
-                cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
-
+                if (param) {
+                    cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                } else{
+                    cards = await axios.get(`${urlApi}/api/goods`);
+                }
             } catch (e) {
                 console.log(e);
             } finally {
                 this.setState({
                     count: cards.data.count,
                     cards: cards.data.goods,
-                }, ()=> {
-                })
+                },)
             }
-        }
-
+        })
     }
 
     async componentDidMount(prevProps) {
-
+        console.log('componentDidMount');
         window.scrollTo(0, 0)
         window.scrollTo(0, 0);
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
@@ -64,24 +69,17 @@ class Home extends React.Component {
                 {}
             );
         var param = params['sort'];
-
-        // https://www.npmjs.com/package/axios
         var cards = [];
         var popularCards = [];
         var uniqCategory = [];
         try {
             if (param) {
                 cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
-                // cards = response.goods;
-                // count = response.count;
             } else {
                  cards = await axios.get(`${urlApi}/api/goods`);
-                // cards = response.goods;
-                // count = response.count;
             }
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
-            // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
         } catch (e) {
             console.log(e);
         } finally {

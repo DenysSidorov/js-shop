@@ -51,7 +51,7 @@ const initialState = {
     }]//[{count: 2, _id: 231}, {count: 3, _id: 2331}]
 }
 
-export default (state = initialState, action) => {
+export default (state = {items:[]}, action) => {
     switch (action.type) {
 
         case ADD_ITEM_IN_CART:
