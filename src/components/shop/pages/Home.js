@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import urlApi from "../../../api/urlApi";
+import linkParams from "../helpers/lib/queryParams";
 import CardsSection from "../modules/CardsSection";
 import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
@@ -8,27 +9,12 @@ import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 class Home extends React.Component {
     state = {cards: [], popularCards: [], uniqCategory: []};
 
-    componentWillUpdate(){
-        console.log('componentWillUpdate');
-    }
     async componentWillReceiveProps(prevProps) {
         console.log('componentWillReceiveProps');
         this.setState({cards: []}, async ()=>{
             window.scrollTo(0, 0)
             // получение обьекта параметров запроса
-            var params = window
-              .location
-              .search
-              .replace('?', '')
-              .split('&')
-              .reduce(
-                function (p, e) {
-                    var a = e.split('=');
-                    p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
-                    return p;
-                },
-                {}
-              );
+            var params = linkParams;
             var param = params['sort'];
 
             var cards = [];
@@ -50,24 +36,8 @@ class Home extends React.Component {
     }
 
     async componentDidMount(prevProps) {
-        console.log('componentDidMount');
         window.scrollTo(0, 0)
-        window.scrollTo(0, 0);
-        // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
-
-        var params = window
-            .location
-            .search
-            .replace('?', '')
-            .split('&')
-            .reduce(
-                function (p, e) {
-                    var a = e.split('=');
-                    p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
-                    return p;
-                },
-                {}
-            );
+        var params = linkParams;
         var param = params['sort'];
         var cards = [];
         var popularCards = [];
@@ -97,7 +67,6 @@ class Home extends React.Component {
             <div>
 
                 <MenuInfoSection/>
-                {/*<HomeReduxExample />*/}
                 {this.state.uniqCategory && this.state.uniqCategory.length
                     ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
                     : null}
