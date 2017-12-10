@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import st from './afterOrder.scss';
+import st from './pagesStyles/afterOrder.scss';
 class AfterOrder extends React.Component {
     componentDidMount(prevProps) {
         window.scrollTo(0, 0)

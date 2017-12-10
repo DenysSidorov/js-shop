@@ -1,5 +1,5 @@
 import React from "react";
-import st from './aboutUs.scss';
+import st from './pagesStyles/aboutUs.scss';
 class About extends React.Component {
     componentDidMount(prevProps) {
         window.scrollTo(0, 0)

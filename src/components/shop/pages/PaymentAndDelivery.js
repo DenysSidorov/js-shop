@@ -1,5 +1,5 @@
 import React from "react";
-import st from './paymentAndDelivery.scss'
+import st from './pagesStyles/paymentAndDelivery.scss'
 class PaymentAndDelivery extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)

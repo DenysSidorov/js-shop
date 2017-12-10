@@ -1,5 +1,5 @@
 import React from "react";
-import "./login.scss";
+import "./pagesStyles/login.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";

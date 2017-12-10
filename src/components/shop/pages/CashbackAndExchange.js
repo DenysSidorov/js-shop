@@ -1,5 +1,5 @@
 import React from "react";
-import st from './cashbackAndExchange.scss';
+import st from './pagesStyles/cashbackAndExchange.scss';
 class CashbackAndExchange extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)

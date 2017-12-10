@@ -1,5 +1,5 @@
 import React from "react";
-import st from './blog.scss';
+import st from './pagesStyles/blog.scss';
 class Blog extends React.Component {
     componentDidMount = (prevProps) => {
         window.scrollTo(0, 0)
