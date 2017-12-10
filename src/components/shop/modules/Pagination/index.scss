@@ -1,0 +1,23 @@
+.pagination{
+  float: left;
+  width: 100%;
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+  li{
+    display: flex;
+    justify-content: center;
+    min-width: 32px;
+    background-color: #2EA9FD;
+    padding: 6px;
+    border-radius: 5px;
+    margin: 1px;
+    color: white;
+  }
+  .disabled{
+    color: grey;
+  }
+  .active{
+    color: black;
+  }
+}

@@ -64,6 +64,7 @@
     "jsonwebtoken": "~7.3.0",
     "less": "~2.7.2",
     "less-loader": "~4.0.3",
+    "lodash": "^4.17.4",
     "mocha": "~3.5.0",
     "mongoose": "~4.10.8",
     "morgan": "~1.7.0",
