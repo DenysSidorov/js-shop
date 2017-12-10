@@ -74,6 +74,8 @@ class Home extends React.Component {
                     ? <CardsSection count={this.state.count} cards={this.state.cards}/>
                     : null}
 
+
+
                 {!this.state.cards.length
                     ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
                     : null}
