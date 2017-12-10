@@ -10,7 +10,6 @@ class CardComponent extends React.Component {
     constructor(props) {
         super(props);
         this.initCadd = this.initCadd.bind(this);
-
     }
 
     state = {card: []}
@@ -22,16 +21,12 @@ class CardComponent extends React.Component {
         var popularCards = [];
         var card;
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
-        // https://www.npmjs.com/package/axios
         try {
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             card = await axios.get(`${urlApi}/api/goods/${id}`);
-            console.log(card, 'ehi');
-            //console.log(card.data[0].category, 'cards');
             similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
                 {params: {'category': card.data[0].category}}
             );
-            // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
         } catch (e) {
             console.log(e);
         } finally {
@@ -73,7 +68,6 @@ class CardComponent extends React.Component {
                     : <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>}
             </div>
         )
-
     }
 }
 
