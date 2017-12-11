@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-var _ = require('lodash');
 import urlApi from "../../../api/urlApi";
 import linkParams from "../helpers/lib/queryParams";
 import CardsSection from "../modules/CardsSection";
@@ -11,20 +10,11 @@ import Pagination from "../modules/Pagination";
 class Home extends React.Component {
     constructor() {
         super();
-        var exampleItems = _.range(1, 151).map(i => { return { id: i, name: 'Item ' + i }; });
         this.state = {
-            exampleItems: exampleItems,
             pageOfItems: [],
             cards: [], popularCards: [], uniqCategory: []
         };
 
-        // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
-        this.onChangePage = this.onChangePage.bind(this);
-    }
-
-    onChangePage(pageOfItems) {
-        // update state with new page of items
-        this.setState({ pageOfItems: pageOfItems });
     }
 
     async componentWillReceiveProps(prevProps) {
