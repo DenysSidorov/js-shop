@@ -1,4 +1,4 @@
-.pagination{
+.paginationContainerUL{
   float: left;
   width: 100%;
   display: flex;
@@ -9,15 +9,19 @@
     justify-content: center;
     min-width: 32px;
     background-color: #2EA9FD;
-    padding: 6px;
+
     border-radius: 5px;
     margin: 1px;
     color: white;
+    a{
+      cursor: pointer;
+      padding: 6px;
+    }
   }
-  .disabled{
+  .disableLI{
     color: grey;
   }
-  .active{
+  .activeLI{
     color: black;
   }
 }
