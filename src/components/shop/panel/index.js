@@ -1,5 +1,5 @@
 import React from "react";
-import params from "../helpers/lib/queryParams";
+import queryParams from "../helpers/lib/queryParams";
 import {Switch, Route} from "react-router-dom";
 import AdminInfo from "./AdminForPage";
 import Header from "./Header";
@@ -21,6 +21,7 @@ class Panel extends React.Component {
 
 
         try {
+            var params = queryParams(this.props.location.search);
             var param = params['type'];
             let token = localStorage.getItem("info");
             this.setState({token, typeOrderParam: param})

@@ -25,11 +25,14 @@ class Home extends React.Component {
         console.log('componentWillReceiveProps');
         this.setState({cards: []}, async () => {
             window.scrollTo(0, 0)
+
             // получение обьекта параметров запроса
-            console.log(location.search, this.props.location.href, 'path');
-            var params = linkParams;
-            var param = linkParams['sort'];
-            console.log(param, 'param');
+
+
+            var params = linkParams(this.props.location.search);
+            var param = params['sort'];
+
+
 
             var cards = [];
             try {
@@ -51,7 +54,7 @@ class Home extends React.Component {
 
     async componentDidMount(prevProps) {
         window.scrollTo(0, 0)
-        var params = linkParams;
+        var params = linkParams(this.props.location.search);
         var param = params['sort'];
         var cards = [];
         var popularCards = [];

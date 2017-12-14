@@ -47,7 +47,7 @@ class Orders extends React.Component{
             this.setState({content: 'Нужно авторизироваться'})
         } else {
             this.setState({token});
-            var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
+            var param = this._getActualPathFromReduxRouter(this.props.location.search)['type'];
             var orders = [];
             if (param) {
                 try {
@@ -105,7 +105,7 @@ class Orders extends React.Component{
             this.setState({
                 token
             })
-            var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
+            var param = this._getActualPathFromReduxRouter(this.props.location.search)['type'];
             var orders = [];
            // console.log(params, 'param');
             if (param) {
@@ -175,7 +175,7 @@ class Orders extends React.Component{
     }
 
     render(){
-        var param = this._getActualPathFromReduxRouter(window.location.search)['type'];
+        var param = this._getActualPathFromReduxRouter(this.props.location.search)['type'];
        let isShowNoGoods = false;
         if(param){
             if(this.props.countTypes[param] === 0){ isShowNoGoods = true;}
