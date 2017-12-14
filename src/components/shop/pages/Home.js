@@ -26,8 +26,10 @@ class Home extends React.Component {
         this.setState({cards: []}, async () => {
             window.scrollTo(0, 0)
             // получение обьекта параметров запроса
+            console.log(location.search, this.props.location.href, 'path');
             var params = linkParams;
-            var param = params['sort'];
+            var param = linkParams['sort'];
+            console.log(param, 'param');
 
             var cards = [];
             try {
