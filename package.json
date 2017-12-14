@@ -121,5 +121,8 @@
     "postinstall": "node_modules/.bin/webpack -p",
     "start": "babel-node server.js --presets es2015",
     "NOOpreinstall": "./node_modules/webpack/bin/webpack.js -p --progress"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1"
   }
 }

@@ -7,6 +7,7 @@ import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 import Pagination from "../modules/Pagination";
+
 class Home extends React.Component {
     constructor() {
         super();
@@ -14,12 +15,15 @@ class Home extends React.Component {
             pageOfItems: [],
             cards: [], popularCards: [], uniqCategory: []
         };
-
+  this.onChangePage = this.onChangePage.bind(this);
+    }
+    onChangePage(){
+        console.log('onChangePage in parent');
     }
 
     async componentWillReceiveProps(prevProps) {
         console.log('componentWillReceiveProps');
-        this.setState({cards: []}, async ()=>{
+        this.setState({cards: []}, async () => {
             window.scrollTo(0, 0)
             // получение обьекта параметров запроса
             var params = linkParams;
@@ -29,7 +33,7 @@ class Home extends React.Component {
             try {
                 if (param) {
                     cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
-                } else{
+                } else {
                     cards = await axios.get(`${urlApi}/api/goods`);
                 }
             } catch (e) {
@@ -54,7 +58,7 @@ class Home extends React.Component {
             if (param) {
                 cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
             } else {
-                 cards = await axios.get(`${urlApi}/api/goods`);
+                cards = await axios.get(`${urlApi}/api/goods`);
             }
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
@@ -72,28 +76,28 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+          <div>
 
-                <MenuInfoSection/>
-                {this.state.uniqCategory && this.state.uniqCategory.length
-                    ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
-                    : null}
-                {this.state.cards && this.state.cards.length
-                    ? <CardsSection count={this.state.count} cards={this.state.cards}/>
-                    : null}
+              <MenuInfoSection/>
+              {this.state.uniqCategory && this.state.uniqCategory.length
+                ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
+                : null}
+              {this.state.cards && this.state.cards.length
+                ? <CardsSection count={this.state.count} cards={this.state.cards}/>
+                : null}
+              {this.state.cards && this.state.cards.length
+                ? <Pagination items={this.state.blablabla} onChangePage={this.onChangePage}/>
+                : null}
+              {!this.state.cards.length
+                ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
+                : null}
 
-                <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+              {/*<AdditionalSection/>*/}
 
-                {!this.state.cards.length
-                    ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
-                    : null}
-
-                {/*<AdditionalSection/>*/}
-
-                {this.state.popularCards && this.state.popularCards.length
-                    ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
-                    : null}
-            </div>
+              {this.state.popularCards && this.state.popularCards.length
+                ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
+                : null}
+          </div>
         )
     }
 }

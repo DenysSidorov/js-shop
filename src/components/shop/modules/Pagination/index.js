@@ -9,14 +9,11 @@ class Pagination extends React.Component {
         super(props);
         this.state = { };
     this.onPageChange = this.onPageChange.bind(this)
-    this.hrefBuilder = this.hrefBuilder.bind(this)
     }
 
     onPageChange(args){
         console.log(args, 'args');
-    }
-    hrefBuilder(args){
-        // console.log(args, 'args - hrefBuilder');
+        // TODO execute parent callback
     }
 
 
@@ -27,7 +24,6 @@ class Pagination extends React.Component {
                 pageCount={30}
                 pageRangeDisplayed={8}
                 marginPagesDisplayed={1}
-                hrefBuilder={this.hrefBuilder}
                 onPageChange={this.onPageChange}
                 previousLabel={"previous"}
                 containerClassName="paginationContainerUL"
