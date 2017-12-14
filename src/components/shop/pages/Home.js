@@ -15,10 +15,10 @@ class Home extends React.Component {
             pageOfItems: [],
             cards: [], popularCards: [], uniqCategory: []
         };
-  this.onChangePage = this.onChangePage.bind(this);
+  this.onPageChange = this.onPageChange.bind(this);
     }
-    onChangePage(){
-        console.log('onChangePage in parent');
+    onPageChange(selected){
+        console.log(selected,'onChangePage in parent');
     }
 
     async componentWillReceiveProps(prevProps) {
@@ -91,7 +91,7 @@ class Home extends React.Component {
                 ? <CardsSection count={this.state.count} cards={this.state.cards}/>
                 : null}
               {this.state.cards && this.state.cards.length
-                ? <Pagination items={this.state.blablabla} onChangePage={this.onChangePage}/>
+                ? <Pagination pageCount={this.state.count} inOnePage={50} onPageChange={this.onPageChange}/>
                 : null}
               {!this.state.cards.length
                 ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>

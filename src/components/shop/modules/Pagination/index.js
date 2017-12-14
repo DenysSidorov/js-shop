@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styles from './index.scss'
 import {Link} from "react-router-dom";
-import ReactPaginate from 'react-paginate';
+    import ReactPaginate from 'react-paginate';
 
 
 class Pagination extends React.Component {
@@ -12,17 +12,20 @@ class Pagination extends React.Component {
     }
 
     onPageChange(args){
+        this.props.onPageChange({...args})
         console.log(args, 'args');
         // TODO execute parent callback
     }
 
 
     render() {
+        let pageCount = this.props.pageCount === 50 ? 1 : ((this.props.pageCount-(this.props.pageCount%this.props.inOnePage))/this.props.inOnePage)+1
+console.log(pageCount, 'pageCount');
+        if (pageCount === 1 ) return null
         return (
             <ReactPaginate
-                initialPage={2}
-                pageCount={30}
                 pageRangeDisplayed={8}
+                pageCount={pageCount}
                 marginPagesDisplayed={1}
                 onPageChange={this.onPageChange}
                 previousLabel={"previous"}
@@ -36,3 +39,12 @@ class Pagination extends React.Component {
 
 
 export default Pagination;
+
+// initialPage={2}
+console.log(321213212441);
+console.log(32112321241);
+console.log(323123121241);
+console.log(323123121241);
+console.log(323123121241);
+console.log(323123121241);
+console.log(323123121241);

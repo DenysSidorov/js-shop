@@ -22,7 +22,7 @@ export async function getAll(req, resp, next) {
                     .limit(pageSize)
             } else {
                 console.log(222);
-                goodsResponse = await Good.find({category: {$in: [filter]}}).sort();
+                goodsResponse = await Good.find({category: {$in: [filter]}}).sort().limit(50);
             }
             let countResponse = await Good.find({category: {$in: [filter]}}).count();
             goods = {goods: goodsResponse, count: countResponse}
