@@ -60,6 +60,15 @@ class AdminForPage extends React.Component{
                    </a>
                </div>
 
+               <div className="adminForPage_rowInfo">
+                   <span className="adminForPage_rowInfo_item">Domain</span>
+                   <span className="adminForPage_rowInfo_del"> : </span>
+                   <a target="blank" href="https://www.ukraine.com.ua/"
+                      className="adminForPage_rowInfo_value">
+                       https://www.ukraine.com.ua/
+                   </a>
+               </div>
+
            </div>
         )
     }
