@@ -140,7 +140,7 @@ class Orders extends React.Component{
                     this.setState({
                         orders: orders
                     })
-                    console.log(error.response || response);
+                    console.log(error.response);
                     // this.setState({content: error.response.data.message})
                 }
 
