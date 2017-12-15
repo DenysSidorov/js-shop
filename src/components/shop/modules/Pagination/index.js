@@ -25,15 +25,15 @@ console.log(pageCount, 'pageCount');
             <ReactPaginate
                 disableInitialCallback={true}
                 initialPage={Number(this.props.paginationPageActive)}
-                pageRangeDisplayed={8}
+                pageRangeDisplayed={5}
                 pageCount={pageCount}
                 marginPagesDisplayed={1}
                 onPageChange={this.onPageChange}
                 containerClassName="paginationContainerUL"
                 disabledClassName="disableLI"
                 activeClassName="activeLI"
-                previousLabel={"Назад"}
-                nextLabel={"Вперед"}
+                previousLabel={"<<"}
+                nextLabel={">>"}
             />
         );
     }
