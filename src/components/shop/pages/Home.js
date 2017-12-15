@@ -72,6 +72,7 @@ class Home extends React.Component {
                 console.log(e);
             } finally {
                 this.setState({
+                    paginationPageActive: (numberPage && numberPage - 1) || 0,
                     count: cards.data.count,
                     cards: cards.data.goods,
                 },)
@@ -112,6 +113,7 @@ class Home extends React.Component {
             this.setState({
                 count: cards.data.count,
                 cards: cards.data.goods,
+                paginationPageActive: (numberPage && numberPage - 1) || 0,
                 popularCards: popularCards.data,
                 uniqCategory: uniqCategory.data
             })
@@ -133,7 +135,7 @@ class Home extends React.Component {
                     ? <Pagination
                                 pageCount={this.state.count}
                                 inOnePage={50}
-
+                                paginationPageActive={this.state.paginationPageActive}
                                 onPageChange={this.onPageChange}/>
                     : null}
                 {!this.state.cards.length

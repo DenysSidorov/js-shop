@@ -24,7 +24,7 @@ console.log(pageCount, 'pageCount');
         return (
             <ReactPaginate
                 disableInitialCallback={true}
-                initialPage={1}
+                initialPage={Number(this.props.paginationPageActive)}
                 pageRangeDisplayed={8}
                 pageCount={pageCount}
                 marginPagesDisplayed={1}
