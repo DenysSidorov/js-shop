@@ -29,10 +29,11 @@ console.log(pageCount, 'pageCount');
                 pageCount={pageCount}
                 marginPagesDisplayed={1}
                 onPageChange={this.onPageChange}
-                previousLabel={"previous"}
                 containerClassName="paginationContainerUL"
                 disabledClassName="disableLI"
                 activeClassName="activeLI"
+                previousLabel={"Назад"}
+                nextLabel={"Вперед"}
             />
         );
     }

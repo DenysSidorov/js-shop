@@ -16,12 +16,14 @@
     a{
       cursor: pointer;
       padding: 6px;
+      font-weight: bold;
+      font-size: 2rem;
     }
   }
   .disableLI{
     color: grey;
   }
   .activeLI{
-    color: black;
+    color: #fbde02;
   }
 }
