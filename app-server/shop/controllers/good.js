@@ -5,7 +5,7 @@ export async function getAll(req, resp, next) {
     var filter = req.query && req.query.sort ? req.query.sort : null;
     // db.users.find().skip(pagesize*(n-1)).limit(pagesize)
     var pageSize = req.query && req.query.pagesize ? req.query.pagesize : null;
-    var numberPage = req.query && req.query.numberPage ? req.query.numberPage : null;
+    var numberPage = req.query && req.query.numberpage ? req.query.numberpage : null;
     pageSize = Number(pageSize);
     numberPage = Number(numberPage);
     console.log(filter, pageSize, numberPage);

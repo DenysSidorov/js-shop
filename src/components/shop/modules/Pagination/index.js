@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import styles from './index.scss'
-import {Link} from "react-router-dom";
     import ReactPaginate from 'react-paginate';
 
 
@@ -24,6 +23,8 @@ console.log(pageCount, 'pageCount');
         if (pageCount === 1 ) return null
         return (
             <ReactPaginate
+                disableInitialCallback={true}
+                initialPage={1}
                 pageRangeDisplayed={8}
                 pageCount={pageCount}
                 marginPagesDisplayed={1}

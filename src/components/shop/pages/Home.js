@@ -1,5 +1,8 @@
 import React from "react";
 import axios from "axios";
+import qs from 'query-string';
+import {push} from "react-router-redux";
+import { connect } from 'react-redux';
 import urlApi from "../../../api/urlApi";
 import linkParams from "../helpers/lib/queryParams";
 import CardsSection from "../modules/CardsSection";
@@ -13,33 +16,57 @@ class Home extends React.Component {
         super();
         this.state = {
             pageOfItems: [],
-            cards: [], popularCards: [], uniqCategory: []
+            cards: [],
+            popularCards: [],
+            uniqCategory: [],
+            paginationPageActive : 1,
         };
-  this.onPageChange = this.onPageChange.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
-    onPageChange(selected){
-        console.log(selected,'onChangePage in parent');
+
+    onPageChange(pagin) {
+        console.log('callbackcallbackcallbackcallbackcallbackcallbackcallback');
+        console.log(pagin.selected, 'onChangePage in parent');
+        var params = linkParams(this.props.location.search);
+        params['pagesize'] = 50;
+        params['numberpage'] = pagin.selected + 1
+        const searchString = qs.stringify(params);
+        console.log(searchString , 'searchStringsearchStringsearchStringsearchString');
+        this.props.dispatch(push(`/?${searchString}`));
+        // this.componentWillReceiveProps();
     }
+    // shouldComponentUpdate(nextProps){
+    //     return nextProps.location.href != this.props.location.href
+    // }
 
     async componentWillReceiveProps(prevProps) {
         console.log('componentWillReceiveProps');
-        this.setState({cards: []}, async () => {
+        this.setState({cards: []}, async() => {
             window.scrollTo(0, 0)
-
             // получение обьекта параметров запроса
-
 
             var params = linkParams(this.props.location.search);
             var param = params['sort'];
+            var pageSize = params['pagesize'];
+            var numberPage = params['numberpage'];
 
 
+        //&pagesize=${pageSize}&numberpage=${numberPage}
 
             var cards = [];
             try {
                 if (param) {
-                    cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                    if (pageSize && numberPage) {
+                        cards = await axios.get(`${urlApi}/api/goods?sort=${param}&pagesize=${pageSize}&numberpage=${numberPage}`);
+                    } else {
+                        cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                    }
                 } else {
-                    cards = await axios.get(`${urlApi}/api/goods`);
+                    if (pageSize && numberPage) {
+                        cards = await axios.get(`${urlApi}/api/goods?pagesize=${pageSize}&numberpage=${numberPage}`);
+                    } else {
+                        cards = await axios.get(`${urlApi}/api/goods`);
+                    }
                 }
             } catch (e) {
                 console.log(e);
@@ -56,14 +83,26 @@ class Home extends React.Component {
         window.scrollTo(0, 0)
         var params = linkParams(this.props.location.search);
         var param = params['sort'];
+        var pageSize = params['pagesize'];
+        var numberPage = params['numberpage'];
+
         var cards = [];
         var popularCards = [];
         var uniqCategory = [];
+
         try {
             if (param) {
-                cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                if (pageSize && numberPage) {
+                    cards = await axios.get(`${urlApi}/api/goods?sort=${param}&pagesize=${pageSize}&numberpage=${numberPage}`);
+                } else {
+                    cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+                }
             } else {
-                cards = await axios.get(`${urlApi}/api/goods`);
+                if (pageSize && numberPage) {
+                    cards = await axios.get(`${urlApi}/api/goods&pagesize=${pageSize}&numberpage=${numberPage}`);
+                } else {
+                    cards = await axios.get(`${urlApi}/api/goods`);
+                }
             }
             popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
@@ -81,30 +120,34 @@ class Home extends React.Component {
 
     render() {
         return (
-          <div>
+            <div>
 
-              <MenuInfoSection/>
-              {this.state.uniqCategory && this.state.uniqCategory.length
-                ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
-                : null}
-              {this.state.cards && this.state.cards.length
-                ? <CardsSection count={this.state.count} cards={this.state.cards}/>
-                : null}
-              {this.state.cards && this.state.cards.length
-                ? <Pagination pageCount={this.state.count} inOnePage={50} onPageChange={this.onPageChange}/>
-                : null}
-              {!this.state.cards.length
-                ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
-                : null}
+                <MenuInfoSection/>
+                {this.state.uniqCategory && this.state.uniqCategory.length
+                    ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
+                    : null}
+                {this.state.cards && this.state.cards.length
+                    ? <CardsSection count={this.state.count} cards={this.state.cards}/>
+                    : null}
+                {this.state.cards && this.state.cards.length
+                    ? <Pagination
+                                pageCount={this.state.count}
+                                inOnePage={50}
 
-              {/*<AdditionalSection/>*/}
+                                onPageChange={this.onPageChange}/>
+                    : null}
+                {!this.state.cards.length
+                    ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
+                    : null}
 
-              {this.state.popularCards && this.state.popularCards.length
-                ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
-                : null}
-          </div>
+                {/*<AdditionalSection/>*/}
+
+                {this.state.popularCards && this.state.popularCards.length
+                    ? <SimilarGoodsSection cards={this.state.popularCards} title={'Популярные'}/>
+                    : null}
+            </div>
         )
     }
 }
 
-export default Home;
+export default connect(null, null)(Home);

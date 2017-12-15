@@ -10,7 +10,8 @@ var params = function(locationSearch) {
             },
             {}
         );
-    console.log(locationSearch, result, 'locationSearch');
+    console.log( result, 'locationSearch');
+    delete result[""];
     return result;
 };
 
