@@ -22,6 +22,7 @@ class Panel extends React.Component {
 
         try {
             var params = queryParams(this.props.location.search);
+            console.log(params, 'paramsparamsparams');
             var param = params['type'];
             let token = localStorage.getItem("info");
             this.setState({token, typeOrderParam: param})

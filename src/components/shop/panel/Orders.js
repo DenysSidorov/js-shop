@@ -32,6 +32,7 @@ class Orders extends React.Component{
                 },
                 {}
             );
+        delete newStr[""];
         return newStr;
     }
 
@@ -47,7 +48,7 @@ class Orders extends React.Component{
             this.setState({content: 'Нужно авторизироваться'})
         } else {
             this.setState({token});
-            var param = this._getActualPathFromReduxRouter(this.props.location.search)['type'];
+            var param = this._getActualPathFromReduxRouter(location.search)['type'];
             var orders = [];
             if (param) {
                 try {
@@ -105,7 +106,7 @@ class Orders extends React.Component{
             this.setState({
                 token
             })
-            var param = this._getActualPathFromReduxRouter(this.props.location.search)['type'];
+            var param = this._getActualPathFromReduxRouter(location.search)['type'];
             var orders = [];
            // console.log(params, 'param');
             if (param) {
