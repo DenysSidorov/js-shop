@@ -13,7 +13,7 @@ const OrderSchema = new Schema({
     // type: new, progress, done, delivery,
     type: {type: String,require: true, default: 'new' },
     goods: [{
-        _id: {type: Number, require: true},
+        _id: {type: String, require: true},
         count: {type: Number, require: true},
         name: {type: String, require: true},
         model: {type: String, require: true},
