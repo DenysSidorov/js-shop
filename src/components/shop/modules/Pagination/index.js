@@ -41,12 +41,3 @@ console.log(pageCount, 'pageCount');
 
 
 export default Pagination;
-
-// initialPage={2}
-console.log(321213212441);
-console.log(32112321241);
-console.log(323123121241);
-console.log(323123121241);
-console.log(323123121241);
-console.log(323123121241);
-console.log(323123121241);

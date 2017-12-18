@@ -100,7 +100,7 @@ class Home extends React.Component {
                 }
             } else {
                 if (pageSize && numberPage) {
-                    cards = await axios.get(`${urlApi}/api/goods&pagesize=${pageSize}&numberpage=${numberPage}`);
+                    cards = await axios.get(`${urlApi}/api/goods?pagesize=${pageSize}&numberpage=${numberPage}`);
                 } else {
                     cards = await axios.get(`${urlApi}/api/goods`);
                 }
