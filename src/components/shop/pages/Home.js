@@ -25,13 +25,11 @@ class Home extends React.Component {
     }
 
     onPageChange(pagin) {
-        console.log('callbackcallbackcallbackcallbackcallbackcallbackcallback');
         console.log(pagin.selected, 'onChangePage in parent');
         var params = linkParams(this.props.location.search);
         params['pagesize'] = 50;
         params['numberpage'] = pagin.selected + 1
         const searchString = qs.stringify(params);
-        console.log(searchString , 'searchStringsearchStringsearchStringsearchString');
         this.props.dispatch(push(`/?${searchString}`));
         // this.componentWillReceiveProps();
     }
@@ -90,7 +88,6 @@ class Home extends React.Component {
         var cards = [];
         var popularCards = [];
         var uniqCategory = [];
-
         try {
             if (param) {
                 if (pageSize && numberPage) {
@@ -123,7 +120,6 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-
                 <MenuInfoSection/>
                 {this.state.uniqCategory && this.state.uniqCategory.length
                     ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
