@@ -11,6 +11,7 @@ import authRoute from "./app-server/routes/auth";
 import userRoute from "./app-server/shop/routes/user";
 import goodRoute from "./app-server/shop/routes/goodRoute";
 import orderRoute from "./app-server/shop/routes/orderRoute";
+import rdRoute from "./app-server/shop/routes/rdRoute";
 import createGoods from "./app-server/shop/routes/createGoods";
 import errorMiddleWare from "./app-server/middlewares/errors";
 
@@ -79,6 +80,7 @@ app.set('view engine', 'ejs');
 //     //     expires: expiryDate
 //     // }
 // }));
+app.use('/api/rd', cors(), rdRoute)
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
@@ -93,6 +95,7 @@ app.get('*', (req, res) => {
     res.render(path.join(__dirname + '/www/index.ejs'), {assets});
     // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
+
 
 app.use(errorMiddleWare); // Обработчик ошибок должен быть последним
 // todo сделать на фронте таблицу с ошибками 500, 404
