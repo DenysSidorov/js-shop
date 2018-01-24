@@ -1,19 +1,29 @@
-import React from "react";;
+import React, {PureComponent} from "react";;
 import styles from './index.less';
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
-import {signoutUser, isAdminFunc} from '../../../../reducers/authReducer/actions'
+import {signoutUser, isAdminFunc, isValidToken} from '../../../../reducers/authReducer/actions'
 import {bindActionCreators} from "redux";
-class MenuInfoSection extends React.Component {
+class MenuInfoSection extends React.PureComponent {
+
+    state = {time:0}
+
     verifyAdminLink(){
-      this.props.isAdminFunc();
+          this.props.isAdminFunc();
     }
     componentDidMount(){
        this.verifyAdminLink();
+
+        this.timer = setInterval(()=>{
+            this.setState({time: this.state.time + 1000})
+        },1000)
     }
     componentDidUpdate(){
       this.verifyAdminLink();
+        if(this.state.time >= 10000){
+            clearInterval( this.timer)
+        }
     }
     unAuth(){
         this.props.signoutUser();
@@ -23,6 +33,7 @@ class MenuInfoSection extends React.Component {
         let isAdmin = this.props.isAdmin;
         console.log(authenticated, 'authenticated'.toUpperCase());
         console.log(isAdmin, 'isAdmin'.toUpperCase());
+        if(this.state.time < 1500) return null;
         return (
             <div className="menuInfoSection left fullWidth ">
                 <div className="container">
@@ -88,7 +99,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return bindActionCreators({
         signoutUser: ()=> signoutUser(),
-      isAdminFunc: ()=> isAdminFunc()
+      isAdminFunc: ()=> isAdminFunc(),
+        isValidToken: ()=> isValidToken()
 
     }, dispatch)
 }

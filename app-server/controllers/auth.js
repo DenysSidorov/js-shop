@@ -185,7 +185,7 @@ export async function checkTokenFromEmail(req, resp, next) {
 export async function findUserByToken(req, resp, next) {
 
     console.log(req.body, 'req.body');
-    const {token} = req.body;
+    const token = req.body.authtoken;
     console.log(token, 'tokentokentokentokentoken');
 
     UserService.getUserByToken(token)

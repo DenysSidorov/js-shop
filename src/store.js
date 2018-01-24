@@ -31,7 +31,7 @@ const store = createStore(
     composedEnhancers
 );
 
-initLocalStorage(store);
+// initLocalStorage(store);
 
 
 export default store;
