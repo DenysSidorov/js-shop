@@ -17,59 +17,67 @@
   // margin-top: 55px;
   margin-bottom: 18px;
   .submenuBlock {
+    min-height: 76px;
     //background-color: #dcdcdc;
     display: flex;
     flex-wrap: wrap;
     background-color: @mainBgColor;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    .contactInfo {
-      flex-grow: 1;
-      //background-color: #9d9bff;
+    .submenuBlock_container{
       display: flex;
-      justify-content: center;
-      align-items: center;
-      .contactInfo__list-contacts-info {
-        margin-bottom: 5px;
-        margin-top: 5px;
-        a {
-          font: 1.5rem/2.2rem @robotoMedium;
-          color: white;
-          transition: all 0.5s;
-          &:hover {
-            color: #d9d9da;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      width: 100%;
+      .contactInfo {
+        flex-grow: 1;
+        //background-color: #9d9bff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .contactInfo__list-contacts-info {
+          margin-bottom: 5px;
+          margin-top: 5px;
+          a {
+            font: 1.5rem/2.2rem @robotoMedium;
+            color: white;
+            transition: all 0.5s;
+            &:hover {
+              color: #d9d9da;
+            }
           }
-        }
 
+        }
       }
-    }
-    .logoInfo {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      .logoInfo__logo-img {
-        height: 75px;
-        width: 200px;
+      .logoInfo {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        .logoInfo__logo-img {
+          height: 75px;
+          width: 200px;
+        }
       }
-    }
-    .userInfo {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .userInfo__listInfo {
-        a {
-          font: 1.5rem/2.2rem @robotoMedium;
-          color: white;
-          transition: all 0.5s;
-          &:hover {
-            color: #d9d9da;;
+      .userInfo {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .userInfo__listInfo {
+          a {
+            font: 1.5rem/2.2rem @robotoMedium;
+            color: white;
+            transition: all 0.5s;
+            &:hover {
+              color: #d9d9da;;
+            }
           }
-        }
 
+        }
       }
     }
+
   }
 }
 
