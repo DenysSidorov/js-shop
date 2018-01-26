@@ -5,6 +5,12 @@ $robotoRegular: 'Roboto-Regular';
 .loginPage_container{
   padding: 10px;
   position: relative;
+  form{
+    max-width: 320px;
+    border: 1px solid #c7c4c4;
+    padding: 15px;
+    border-radius: 7px;
+  }
   .loginPage_container_block{
     position: absolute;
     top: 0;
