@@ -72,7 +72,6 @@ export function isValidToken(token) {
         } catch (er) {
             dispatch({type: UNAUTH_USER});
             dispatch({type: DISAPPEAR_LIKE_ADMIN});
-            console.log('er here');
             console.log(er);
         }
     }
@@ -98,7 +97,6 @@ export function isAdminFunc(token) {
       } catch (er) {
           dispatch({type: UNAUTH_USER});
           dispatch({type: DISAPPEAR_LIKE_ADMIN});
-          console.log('er here');
         console.log(er);
       }
     }
