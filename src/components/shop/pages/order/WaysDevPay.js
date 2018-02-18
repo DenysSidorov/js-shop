@@ -40,7 +40,7 @@ class WaysDevPay extends React.Component {
   chName(e) {
     // console.log(e.target.value);
     if (e.target.value.length < 70) {
-      console.log('name', e.target.value );
+      console.log('name', e.target.value);
       this.setState({name: e.target.value}, this.validateData())
     }
 
@@ -56,7 +56,7 @@ class WaysDevPay extends React.Component {
   chAddress(e) {
     // console.log(e.target.value);
     if (e.target.value.length < 70) {
-      this.setState({address: e.target.value},this.validateData())
+      this.setState({address: e.target.value}, this.validateData())
     }
   }
 
@@ -77,51 +77,45 @@ class WaysDevPay extends React.Component {
     const orderInputErrors = this.state.orderInputErrors;
     let phone = this.phoneV.value;
     let address = this.addressV.value;
-    let email = this.emailV.value;
     let name = this.nameV.value;
+    let email = this.emailV.value;
 
 
     var nameErr = 'Имя должно быть длиннее 5 символов';
-    if (name.length < 5 && orderInputErrors.indexOf(nameErr) === -1) {
-      this.setState({orderInputErrors: [...orderInputErrors, nameErr]})
-    }
-    if (name.length >= 5) {
-      let newAr = orderInputErrors.filter((el)=>{return el !== nameErr});
-      this.setState({orderInputErrors: newAr})
-    }
-
     var phoneErr = 'Телефон должен быть длиннее 4 символов';
-    if (phone.length < 4 && orderInputErrors.indexOf(phoneErr) === -1) {
-      this.setState({orderInputErrors: [...orderInputErrors, phoneErr]})
-    }
-    if (phone.length >= 4) {
-      let newAr = orderInputErrors.filter((el)=>{return el !== phoneErr});
-      this.setState({orderInputErrors: newAr})
-    }
-
     var addressErr = 'Адрес должен быть длиннее 4 символов';
-    if (address.length < 4 && orderInputErrors.indexOf(addressErr) === -1) {
-      this.setState({orderInputErrors: [...orderInputErrors, addressErr]})
-    }
-    if (address.length >= 4) {
-      let newAr = orderInputErrors.filter((el)=>{return el !== addressErr});
-      this.setState({orderInputErrors: newAr})
-    }
+
+    var localArr = [];
 
 
-    // if (phone.length < 4 && orderInputErrors.indexOf(phoneErr) === -1) {
-    //   this.setState({orderInputErrors: [...orderInputErrors, phoneErr]})
-    // }
-    if (name.length < 5
-      || address.length < 4
-      || phone.length < 4
+    if (name.length < 5) {
+      localArr.push(nameErr);
+    }
+
+    if (phone.length < 4) {
+      localArr.push(phoneErr);
+    }
+
+    if (address.length < 4) {
+      localArr.push(addressErr);
+    }
+    // this.setState({orderInputErrors: [...orderInputErrors, nameErr]})
+
+
+    if (
+      // name.length < 5
+    // || address.length < 4
+    // || phone.length < 4
+    localArr.length > 0
     ) {
       this.setState({
-        isNormal: false
+        isNormal: false,
+        orderInputErrors: [...localArr]
       })
     } else {
       this.setState({
         isNormal: true,
+        orderInputErrors: []
       })
     }
 
@@ -260,25 +254,25 @@ class WaysDevPay extends React.Component {
           <div className="userDataForOrder">
             <p>Имя и фамилия <span className="red">*</span></p>
             <input value={this.state.name} onChange={this.chName.bind(this)}
-                   ref={(v)=> this.nameV = v }
+                   ref={(v) => this.nameV = v}
                    type="text"
                    className="orderWaysInput" id="nameInput"/>
             <p>Мобильный телефон <span className="red">*</span></p>
             <input value={this.state.phone} onChange={this.chPhone.bind(this)} type="text"
-                   ref={(v)=> this.phoneV = v }
+                   ref={(v) => this.phoneV = v}
                    className="orderWaysInput" id="phoneInput"/>
             <p>Адресс доставки <span className="red">*</span></p>
             <input value={this.state.address} onChange={this.chAddress.bind(this)}
-                   ref={(v)=> this.addressV = v }
+                   ref={(v) => this.addressV = v}
                    type="text" className="orderWaysInput" id="cityInput"/>
             <p>Электронная почта</p>
             <input value={this.state.email} onChange={this.chEmail.bind(this)}
-                   ref={(v)=> this.emailV = v }
+                   ref={(v) => this.emailV = v}
                    type="text" className="orderWaysInput" id="mailInput"/>
           </div>
           <ul className="orderBadNotifications">
             {/*{this.state.orderInputErrors.map((el, ind) => {*/}
-              {/*return <li key={el + ind}>{el}</li>*/}
+            {/*return <li key={el + ind}>{el}</li>*/}
             {/*})}*/}
           </ul>
           {this.state.isNormal
