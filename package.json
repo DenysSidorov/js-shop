@@ -115,7 +115,7 @@
     "watch": "webpack --watch",
     "push": "git push all master",
     "lint": "node_modules\\.bin\\eslint 1.js",
-    "start-server": "set SITE=https://google.com&&set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
+    "start-server": "set NODE_ENV=development&&set SITE=https://google.com&&set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
     "start33": "babel-node server.js --presets es2015",
     "start2": "node s.js",
     "start-temp": "babel-node server.js --presets es2015, stage-2",

@@ -101,13 +101,8 @@ class WaysDevPay extends React.Component {
     }
     // this.setState({orderInputErrors: [...orderInputErrors, nameErr]})
 
-
-    if (
-      // name.length < 5
-    // || address.length < 4
-    // || phone.length < 4
-    localArr.length > 0
-    ) {
+console.log(localArr.length, name.length == 0 && address.length == 0 && phone.length == 0 );
+    if (localArr.length > 0) {
       this.setState({
         isNormal: false,
         orderInputErrors: [...localArr]
@@ -118,8 +113,6 @@ class WaysDevPay extends React.Component {
         orderInputErrors: []
       })
     }
-
-
   }
 
   chPayment(paymentObj) {
@@ -271,9 +264,9 @@ class WaysDevPay extends React.Component {
                    type="text" className="orderWaysInput" id="mailInput"/>
           </div>
           <ul className="orderBadNotifications">
-            {/*{this.state.orderInputErrors.map((el, ind) => {*/}
-            {/*return <li key={el + ind}>{el}</li>*/}
-            {/*})}*/}
+            {this.state.orderInputErrors.map((el, ind) => {
+              return <li key={el + ind}>{el}</li>
+            })}
           </ul>
           {this.state.isNormal
             ? <div onClick={this.dispatchData.bind(this)} className="orderWaysConfirmBtn">

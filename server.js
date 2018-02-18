@@ -35,13 +35,17 @@ var cors = require('cors');
 //         return def;
 //     } else return value;
 // }
+console.log(process.env.NODE_ENV, ';;');
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
+if (process.env.NODE_ENV == 'development') {
+  mongoose.set('debug', true); // выводить в консоль все запросы
+}
 mongoose.connect(config.backend.database, {
-    useMongoClient: true,
-    reconnectTries: 30,
+  useMongoClient: true,
+  reconnectTries: 30,
 }, err => {
-    if (err) throw err;
-    console.log(`Mongo connected!`);
+  if (err) throw err;
+  console.log(`Mongo connected!`);
 });
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
@@ -52,9 +56,9 @@ app.disable('x-powered-by'); // Отключить определение, чт�
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
 
-app.listen(config.backend.port, (err)=> {
-    if (err) throw err;
-    console.log('Server listening on port ' + config.backend.port);
+app.listen(config.backend.port, (err) => {
+  if (err) throw err;
+  console.log('Server listening on port ' + config.backend.port);
 });
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '/www/')));
@@ -92,14 +96,17 @@ app.use('/start', cors(), createGoods)
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
 app.get('*', (req, res) => {
-    res.render(path.join(__dirname + '/www/index.ejs'), {assets});
-    // res.sendFile(path.join(__dirname+'/www/index.ejs'));
+  res.render(path.join(__dirname + '/www/index.ejs'), {assets});
+  // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
 
 
 app.use(errorMiddleWare); // Обработчик ошибок должен быть последним
 // todo сделать на фронте таблицу с ошибками 500, 404
-app.all('*', (req, resp)=> resp.status(404).json({message: "Resource not found, API-SHOP", type: 404}));
+app.all('*', (req, resp) => resp.status(404).json({
+  message: "Resource not found, API-SHOP",
+  type: 404
+}));
 
 //site-opener
 siteOpener();
