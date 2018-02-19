@@ -35,7 +35,7 @@ var cors = require('cors');
 //         return def;
 //     } else return value;
 // }
-console.log(process.env.NODE_ENV, ';;');
+console.log('DEV MODE = ',process.env.NODE_ENV);
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
 if (process.env.NODE_ENV == 'development') {
   mongoose.set('debug', true); // выводить в консоль все запросы
