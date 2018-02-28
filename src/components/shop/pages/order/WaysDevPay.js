@@ -38,7 +38,6 @@ class WaysDevPay extends React.Component {
   }
 
   chName(e) {
-    // console.log(e.target.value);
     if (e.target.value.length < 70) {
       console.log('name', e.target.value);
       this.setState({name: e.target.value}, this.validateData())
@@ -47,30 +46,24 @@ class WaysDevPay extends React.Component {
   }
 
   chPhone(e) {
-    // console.log(e.target.value);
     if (e.target.value.length < 70) {
       this.setState({phone: e.target.value}, this.validateData())
     }
   }
 
   chAddress(e) {
-    // console.log(e.target.value);
     if (e.target.value.length < 70) {
       this.setState({address: e.target.value}, this.validateData())
     }
   }
 
   chEmail(e) {
-    // console.log(e.target.value);
     if (e.target.value.length < 70) {
       this.setState({email: e.target.value})
     }
   }
 
   validateData = () => {
-
-
-    // your validate logic
     var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     //orderInputErrors
