@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 
+
 router.get('/*', (req, resp, next) => {
     let body = req.body;
     let query = req.query;

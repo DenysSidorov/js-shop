@@ -84,7 +84,7 @@ app.set('view engine', 'ejs');
 //     //     expires: expiryDate
 //     // }
 // }));
-app.use('/api/rd', cors(), rdRoute)
+// app.use('/api/rd', cors(), rdRoute);
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
