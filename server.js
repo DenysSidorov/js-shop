@@ -57,21 +57,21 @@ mongoose.connect(config.backend.database, {
   console.log(`Mongo connected!`);
 });
 
-if (cluster.isMaster) {
-
-  var cpuCount = require('os').cpus().length;
-
-  for (var i = 0; i < cpuCount; i += 1) {
-    cluster.schedulingPolicy = cluster.SCHED_NONE;
-    cluster.fork();
-  }
-
-  cluster.on('exit', function (worker) {
-    console.log('Worker ' + worker.id + ' died :(');
-    cluster.fork();
-  });
-
-} else {
+// if (cluster.isMaster) {
+//
+//   var cpuCount = require('os').cpus().length;
+//
+//   for (var i = 0; i < cpuCount; i += 1) {
+//     cluster.schedulingPolicy = cluster.SCHED_NONE;
+//     cluster.fork();
+//   }
+//
+//   cluster.on('exit', function (worker) {
+//     console.log('Worker ' + worker.id + ' died :(');
+//     cluster.fork();
+//   });
+//
+// } else {
 
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
@@ -155,7 +155,7 @@ if (cluster.isMaster) {
 
   init();
 //************************************************************
-}
+// }
 process.on('uncaughtException', function (err) {
   console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
   console.error(err.stack);
