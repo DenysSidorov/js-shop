@@ -139,21 +139,21 @@ mongoose.connect(config.backend.database, {
 
 
 //************************* GARBAGE ***********************************
-  var gcInterval;
-
-  function init() {
-    gcInterval = setInterval(function () {
-      gcDo();
-    }, 60000);
-  }
-
-  function gcDo() {
-    global.gc();
-    clearInterval(gcInterval);
-    init();
-  }
-
-  init();
+//   var gcInterval;
+//
+//   function init() {
+//     gcInterval = setInterval(function () {
+//       gcDo();
+//     }, 60000);
+//   }
+//
+//   function gcDo() {
+//     global.gc();
+//     clearInterval(gcInterval);
+//     init();
+//   }
+//
+//   init();
 //************************************************************
 // }
 process.on('uncaughtException', function (err) {
