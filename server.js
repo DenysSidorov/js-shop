@@ -111,5 +111,28 @@ app.all('*', (req, resp) => resp.status(404).json({
 //site-opener
 siteOpener();
 
+
+
+//************************* GARBAGE ***********************************
+var gcInterval;
+function init()
+{
+  gcInterval = setInterval(function() { gcDo(); }, 60000);
+}
+function gcDo()
+{
+  global.gc();
+  clearInterval(gcInterval);
+  init();
+}
+init();
+//************************************************************
+
+process.on('uncaughtException', function (err) {
+  console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+  console.error(err.stack);
+  process.exit(1);
+});
+
 export default app;
 
