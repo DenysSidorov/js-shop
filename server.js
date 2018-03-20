@@ -20,8 +20,7 @@ import errorMiddleWare from "./app-server/middlewares/errors";
 
 // process.env.NODE_ENV = 'production';
 
-// Для работы с garbage collector запустите проект с параметрами:
-// node --nouse-idle-notification --expose-gc app.js
+
 
 
 // TODO https://scotch.io/tutorials/use-ejs-to-template-your-node-application
@@ -139,6 +138,9 @@ mongoose.connect(config.backend.database, {
 
 
 //************************* GARBAGE ***********************************
+// Для работы с garbage collector запустите проект с параметрами:
+// node --nouse-idle-notification --expose-gc app.js
+
 //   var gcInterval;
 //
 //   function init() {
