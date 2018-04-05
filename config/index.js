@@ -2,7 +2,7 @@ var configApp = {
     frontend: {
         port: 8090,
         domain: 'localhost',
-        apiPort: 3000
+        apiPort: 3000 // 3009
     },
     backend: {
         port: process.env.PORT, //3000
