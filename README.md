@@ -38,3 +38,5 @@ Not implemented :
 - _sms notifications, instead not. to manager's email_
 - _~~filter for goods~~_
 - _pagination on order, goods pages, admin panel_
+
+Main route-file: https://github.com/DenysSidorov/js-shop/blob/master/src/components/shop/WrapperApp/index.js
