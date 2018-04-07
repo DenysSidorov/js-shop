@@ -108,6 +108,7 @@ app.use('/api/users', userRoute);
 app.use('/start', cors(), createGoods)
 
 
+
 // app.use('/api', checkToken,  userRoute); // get user route
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 

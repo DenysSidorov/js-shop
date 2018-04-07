@@ -6,8 +6,7 @@ import Notifications from 'react-notification-system-redux';
 class NotificationsWrapper extends React.Component{
   render(){
     return (
-      <Notifications
-        notifications={this.props.notifications}
+      <Notifications notifications={this.props.notifications}
         // style={style}
       />
     )
