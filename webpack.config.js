@@ -205,16 +205,18 @@ var config = {
         })
     ],
     devServer: {
-      https: true,
-      inline: true,
-      port: 443, // default
+      // https: true,
+      // inline: true,
+      // port: 443, // default
+
+
         historyApiFallback: {
             index: 'index2.html',
         }, // cannot GET *url* after press f5
         hot: true,
         // enable HMR on the server
         host: "localhost", // default
-        // port: 8090, // default
+        port: 8090, // default
         contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), если нет бандлов
         // proxy: [{
         //     path: '*',

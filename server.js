@@ -173,13 +173,15 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
 
-// app.listen(config.backend.port, (err) => {
-//   if (err) throw err;
-//   console.log('Server listening on port ' + config.backend.port);
-// });
-
-// httpServer.listen(8080);
-httpsServer.listen(config.backend.port, (err) => {
+app.listen(config.backend.port, (err) => {
   if (err) throw err;
   console.log('Server listening on port ' + config.backend.port);
-}  );
+});
+
+// httpServer.listen(8080);
+// httpsServer.listen(config.backend.port, (err) => {
+//   if (err) throw err;
+//   console.log('Server listening on port ' + config.backend.port);
+// }  );
+// + поменять urlApi
+
