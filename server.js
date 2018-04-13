@@ -1,12 +1,16 @@
 import path from "path";
 import express from "express";
-var https = require('https');
-var http = require('http');
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 import morgan from "morgan";
+import fs from "fs";
+
 
 var cluster = require('cluster');
+
+var https = require('https');
+var http = require('http');
+
 
 import assets from "./app-server/assets.json";
 import siteOpener from "./app-server/helper/site-opener";
@@ -25,6 +29,9 @@ import errorMiddleWare from "./app-server/middlewares/errors";
 
 var cors = require('cors');
 
+var privateKey  = fs.readFileSync('app-server/sslcert/private.key', 'utf8');
+var certificate = fs.readFileSync('app-server/sslcert/certificate.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 // app.use(cors() // for all app
 
@@ -75,10 +82,11 @@ app.disable('x-powered-by'); // Отключить определение, чт�
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
 
-app.listen(config.backend.port, (err) => {
-  if (err) throw err;
-  console.log('Server listening on port ' + config.backend.port);
-});
+// app.listen(config.backend.port, (err) => {
+//   if (err) throw err;
+//   console.log('Server listening on port ' + config.backend.port);
+// });
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '/www/')));
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
@@ -161,3 +169,17 @@ process.on('uncaughtException', function (err) {
 
 // export default app;
 
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+
+// app.listen(config.backend.port, (err) => {
+//   if (err) throw err;
+//   console.log('Server listening on port ' + config.backend.port);
+// });
+
+// httpServer.listen(8080);
+httpsServer.listen(config.backend.port, (err) => {
+  if (err) throw err;
+  console.log('Server listening on port ' + config.backend.port);
+}  );
