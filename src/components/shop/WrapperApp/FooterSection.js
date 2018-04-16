@@ -88,10 +88,9 @@ class FooterSection extends React.Component {
 
                         </div>
                         <p className="footerMainBlock__payment-delivery_payment-afferta">
-                            Украина, г. Киев, ул. Павловская, 10, тел. 0 800 751-752. Весь контент © 2017. Интернет-магазин
-                            iLounge. Зазначені товарні знаки та продукція маркована знаками для товарів використовуються не в
+                            Украина, г. Одесса, тел. 093-123-12-43. Весь контент © 2018. Интернет-магазин
+                            shop-ukraine.pro Зазначені товарні знаки та продукція маркована знаками для товарів використовуються не в
                             комерційних цілях, а виключно для надання інформації користувачам про товар.
-                            Источник: https://ilounge.ua/catalog/usb-kabeli-shnury-perehodniki-apple-ipad-kupit-kiev
                         </p>
                     </div>
                 </div>
