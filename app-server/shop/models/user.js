@@ -25,14 +25,10 @@ UserSchema.pre('save', function(next) {
 
         if (err) next(err);
         let generatedSalt = salt; // Если все хорошо - создаем hash на основе пароля и соли
-            //console.log(33, generatedSalt, psd);
           bcrypt.hash(psd, generatedSalt, function(err, hash) {
-            //console.log(3, hash);
               if (err) next(err);
                 this.password = hash; // Теперь пароль зашифован!
-            //console.log(4);
             next();
-                //console.log(4);
         });
     });
 });
