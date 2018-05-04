@@ -17,6 +17,5 @@ var configApp = {
             }
         },
     },
-
 };
 module.exports = configApp;
