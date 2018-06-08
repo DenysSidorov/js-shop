@@ -1,8 +1,8 @@
 import path from "path";
 import express from "express";
 import mongoose from "mongoose";
-import bodyParse from "body-parser";
 import morgan from "morgan";
+import bodyParse from "body-parser";
 import fs from "fs";
 
 
@@ -116,7 +116,7 @@ app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users', userRoute);
-app.use('/start', cors(), createGoods)
+// app.use('/start', cors(), createGoods);
 
 
 

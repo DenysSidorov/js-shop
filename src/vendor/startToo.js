@@ -1,5 +1,6 @@
 import slick from './slick';
 
+
 // https://github.com/akiran/react-slick
 // http://kenwheeler.github.io/slick/
 var slickContainerSimilarGoods = $('.slickContainerSimilarGoods');
