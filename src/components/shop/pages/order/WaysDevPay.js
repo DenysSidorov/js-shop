@@ -181,9 +181,9 @@ console.log(localArr.length, name.length == 0 && address.length == 0 && phone.le
 
   render() {
     let goods = this.props.cart;
-    let {paymentVariants, delivery, name, address, email, phone} = this.state;
-    let payment = [{value: 'predo', label: 'Предоплата на карту'},
-      {value: 'naloj', label: 'Наложенный платеж'}]
+    let {paymentVariants, delivery, name, address, email, phone, payment} = this.state;
+    // let payment = [{value: 'predo', label: 'Предоплата на карту'},
+    //   {value: 'naloj', label: 'Наложенный платеж'}]
     return (
       <div className="userWaysContainer">
         <div className="userWays">

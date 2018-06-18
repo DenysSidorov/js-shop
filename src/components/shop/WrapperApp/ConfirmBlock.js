@@ -13,8 +13,6 @@ class ConfirmBlock extends React.Component {
     closeComponet(){
          // this.props.cancelHandler();
         this.props.unmountConfirm();
-
-
     }
     render() {
         return (
