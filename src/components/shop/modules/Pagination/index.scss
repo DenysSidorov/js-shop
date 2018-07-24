@@ -15,6 +15,7 @@
     color: white;
     a{
       cursor: pointer;
+      color: white;
       padding: 5px;
       font-weight: bold;
     }
@@ -23,6 +24,14 @@
     color: grey;
   }
   .activeLI{
-    color: #fbde02;
+    a{
+      color: #fbde02!important;
+    }
+  }
+  .disabledClassName{
+    a{
+      color: grey;
+      cursor: default!important;
+    }
   }
 }

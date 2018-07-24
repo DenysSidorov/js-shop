@@ -181,13 +181,28 @@
     align-items: center;
     border-top: 1px solid @paleGrey;
     border-bottom: 1px solid @paleGrey;
-
+    position: relative;
     img {
-      transition: all 0.5s ease;
+      transition: transform 0.2s ease;
+      transition-property: opacity, transform;
       max-width: 100%;
       max-height: 100%;
       //max-height: 17.5rem;
       //max-width: 100%;
+    }
+    .img-top{
+      opacity: 0;
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+    }
+    &:hover{
+      img{
+        transform: scale(1.1);
+      }
+      .img-top{
+        opacity: 1;
+      }
     }
     /*//&:hover{
     //  transition: all 0.5s ease;

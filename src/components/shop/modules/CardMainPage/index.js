@@ -17,10 +17,10 @@ class CardMainPage extends React.Component {
                     </div>
                     <Link to={`/card/${card._id}`} className="oneCardItem__headCard__nameBrand">{card.name} {card.model}</Link>
                     <div className="oneCardItem__headCard__wrap-things">
-                        <div className="oneCardItem__headCard__otherThings">
-                            <i className="fa fa-heart"></i>
-                            <span className="oneCardItem__headCard__otherThings_like"> {card.likes}</span>
-                        </div>
+                        {/*<div className="oneCardItem__headCard__otherThings">*/}
+                            {/*<i className="fa fa-heart"></i>*/}
+                            {/*<span className="oneCardItem__headCard__otherThings_like"> {card.likes}</span>*/}
+                        {/*</div>*/}
                         <div className="oneCardItem__headCard__view">
                             <i className="fa fa-eye" aria-hidden="true"></i>
                             <span className="oneCardItem__headCard__view_items"> {card.views}</span>
@@ -30,6 +30,7 @@ class CardMainPage extends React.Component {
 
                 <div className="oneCardItem__imageBody">
                     <img src={`/img-static/${card.photo[0]}`} alt=""/>
+                    <img src={`/img-static/${card.photo[1]}`} alt="" className="img-top"/>
                 </div>
 
                 <div className="oneCardItem__bottomCard">
