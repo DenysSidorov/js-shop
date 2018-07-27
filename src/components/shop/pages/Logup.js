@@ -110,7 +110,7 @@ class Logup extends React.Component {
                            onChange={this.chLogin.bind(this)}
                            name="login"
                            type="text"
-                           placeholder="Your login"/>
+                           placeholder="Ваш логин"/>
                     <br/> <br/>
                     <label htmlFor="pass">Введите свой Пароль:</label>
                     <br/>
@@ -118,7 +118,7 @@ class Logup extends React.Component {
                            onChange={this.chPass.bind(this)}
                            name="pass"
                            type="password"
-                           placeholder="Your password"/>
+                           placeholder="Ваш пароль"/>
                     <br/>
                     <br/>
                     <label htmlFor="passRepeat">Важно повторить пароль:</label>
@@ -127,7 +127,7 @@ class Logup extends React.Component {
                            onChange={this.chPassRepeat.bind(this)}
                            name="passRepeat"
                            type="password"
-                           placeholder="Repeat password"/>
+                           placeholder="Повторите пароль"/>
                     <br/>
                     <br/>
                     <label htmlFor="nickName">Введите своё имя в системе:</label>
@@ -136,7 +136,7 @@ class Logup extends React.Component {
                            onChange={this.chNickName.bind(this)}
                            name="nickName"
                            type="text"
-                           placeholder="Your nickname"/>
+                           placeholder="Ваш никнэйм"/>
                     <br/>
                     <br/>
                     <br/>

@@ -84,7 +84,7 @@ class Login extends React.Component {
                            onChange={this.chLogin.bind(this)}
                            name="login"
                            type="text"
-                           placeholder="Your login"/>
+                           placeholder="Ваш логин"/>
                     <br/> <br/>
                     <label htmlFor="pass">Введите свой Пароль:</label>
                     <br/>
@@ -92,7 +92,7 @@ class Login extends React.Component {
                            onChange={this.chPass.bind(this)}
                            name="pass"
                            type="password"
-                           placeholder="Your password"/>
+                           placeholder="Ваш пароль"/>
                     <br/>
                     <br/>
 
