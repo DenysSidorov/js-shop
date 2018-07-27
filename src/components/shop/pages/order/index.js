@@ -3,6 +3,7 @@ import MenuInfoSection from "../../modules/MenuInfoSection";
 import WaysDevPay from "./WaysDevPay";
 import GoodsTable from "./GoodsTable";
 import {connect} from "react-redux";
+import './index.less';
 class OrderPage extends React.Component {
     state = {};
 
@@ -31,6 +32,9 @@ class OrderPage extends React.Component {
         return (
             <div style={styles}>
                 <MenuInfoSection/>
+                <div className="orderPage_fast">
+                    <span>Купить без заполнения формы!</span>
+                </div>
                 {!goods.length
                     ? <div style={{padding: '30px'}}>
                     <span style={{fontSize: '2rem'}}>Корзина пуста!</span>
