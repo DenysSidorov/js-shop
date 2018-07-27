@@ -238,16 +238,16 @@ console.log(localArr.length, name.length == 0 && address.length == 0 && phone.le
           <div className="tittleWAyName" data-count="3">Способ доставки</div>
 
           <div className="userDataForOrder">
-            <p>Имя и фамилия <span className="red">*</span></p>
+            <p><span className="red">*</span> Имя и фамилия</p>
             <input value={this.state.name} onChange={this.chName.bind(this)}
                    ref={(v) => this.nameV = v}
                    type="text"
                    className="orderWaysInput" id="nameInput"/>
-            <p>Мобильный телефон <span className="red">*</span></p>
+            <p><span className="red">*</span> Мобильный телефон</p>
             <input value={this.state.phone} onChange={this.chPhone.bind(this)} type="text"
                    ref={(v) => this.phoneV = v}
                    className="orderWaysInput" id="phoneInput"/>
-            <p>Адресс доставки <span className="red">*</span></p>
+            <p><span className="red">*</span> Адресс доставки</p>
             <input value={this.state.address} onChange={this.chAddress.bind(this)}
                    ref={(v) => this.addressV = v}
                    type="text" className="orderWaysInput" id="cityInput"/>
