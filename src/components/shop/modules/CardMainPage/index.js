@@ -45,7 +45,10 @@ class CardMainPage extends React.Component {
                     {card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>
                         : <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}
                     <div className="oneCardItem__bottomCard__buy">
-                        <span onClick={() => this.props.addItem(card)}>В КОРЗИНУ</span>
+                        <span onClick={() => this.props.addItem(card)}>В корзину</span>
+                    </div>
+                    <div className="oneCardItem__bottomCard__buy_fast">
+                        <span>Заказ в 1 клик</span>
                     </div>
                 </div>
 
