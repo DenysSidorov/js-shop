@@ -43,6 +43,7 @@ class App extends React.Component {
                     <RouteAuth path="/panel" component={Panel}/>
                     <WrapperApp {...this.props}/>
                 </Switch>
+              <div id="modal-root" style={{zIndex: 99999999}}></div>
               <NotificationsWrapper/>
             </div>
         )
