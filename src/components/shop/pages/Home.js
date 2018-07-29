@@ -10,6 +10,7 @@ import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 import Pagination from "../modules/Pagination";
+import BasicModalWindowPB from "../modules/modals/basic-modal-pb/index";
 
 class Home extends React.Component {
     constructor() {
@@ -120,6 +121,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
+                <BasicModalWindowPB/>
                 <MenuInfoSection/>
                 {this.state.uniqCategory && this.state.uniqCategory.length
                     ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
