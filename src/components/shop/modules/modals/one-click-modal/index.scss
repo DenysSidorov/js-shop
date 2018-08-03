@@ -89,3 +89,27 @@ $robotoLight: 'Roboto-Light';
     }
   }
 }
+.oneClickModal_wasSend{
+  margin-left: 16px;
+  .oneClickModal_wasSend_title{
+    padding-right: 40px;
+    color: #2C3642;
+    font-family: $robotoRegular, "Helvetica Neue", Helvetica;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 23px;
+
+    margin-top: 24px;
+  }
+  .oneClickModal_wasSend_text{
+    font-family: $robotoLight, "Helvetica Neue", Helvetica;
+    padding-right: 30px;
+    color: #646565;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 15px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+
+}

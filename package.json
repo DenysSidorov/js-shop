@@ -85,7 +85,7 @@
     "react-dom": "^16.4.2",
     "react-dropdown": "~1.2.5",
     "react-image-gallery": "^0.8.10",
-    "react-maskedinput": "^4.0.0",
+    "react-maskedinput": "^4.0.1",
     "react-notification-system": "^0.2.16",
     "react-notification-system-redux": "^1.2.0",
     "react-paginate": "^5.0.0",
