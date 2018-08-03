@@ -17,12 +17,27 @@ class OneClickModal extends Component {
 
   render() {
     return (
-     <BasicModalWindowPB>
-       <p><span className="red">*</span> Мобильный телефон</p>
-       <input value={this.state.phone} onChange={this.chPhone.bind(this)} type="text"
-              ref={(v) => this.phoneV = v}
-              className="orderWaysInput" id="phoneInput"/>
-     </BasicModalWindowPB>
+      <BasicModalWindowPB>
+        <div className="oneClickModal">
+          <div className="oneClickModal_title">
+            Заказ в один клик
+          </div>
+          <div className="oneClickModal_describe">
+            Менеджер перезвонит Вам, узнает все детали и сам оформит заказ на Ваше имя.
+          </div>
+          <div className="oneClickModal_userDate">
+            <div className="oneClickModal_phone">
+              Телефон
+            </div>
+            <input value={this.state.phone} onChange={this.chPhone.bind(this)} type="text"
+                   ref={(v) => this.phoneV = v}
+                   className="oneClickModal_inputPhone" id="phoneInput"/>
+          </div>
+          <div className="oneClickModal_sendBtn">
+              <span>Отправить</span>
+          </div>
+        </div>
+      </BasicModalWindowPB>
     );
   }
 }
