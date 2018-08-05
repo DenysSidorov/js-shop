@@ -89,10 +89,41 @@ $robotoLight: 'Roboto-Light';
       color: #ffffff;
     }
   }
+
+  .oneClickModal_gList {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 100%;
+    font: 1.3rem/1.4rem $robotoLight;
+    color: #00416f;
+    //margin-left: 30px;
+    transition: all 0.5s ease;
+    margin-bottom: 13px;
+    .oneClickModal_gList_item {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      .oneClickModal_gList_item_logo {
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+      }
+    }
+  }
 }
-.oneClickModal_wasSend{
+
+.oneClickModal_wasSend {
   margin-left: 16px;
-  .oneClickModal_wasSend_title{
+  .oneClickModal_wasSend_title {
     padding-right: 40px;
     color: #2C3642;
     font-family: $robotoRegular, "Helvetica Neue", Helvetica;
@@ -102,7 +133,7 @@ $robotoLight: 'Roboto-Light';
 
     margin-top: 24px;
   }
-  .oneClickModal_wasSend_text{
+  .oneClickModal_wasSend_text {
     font-family: $robotoLight, "Helvetica Neue", Helvetica;
     padding-right: 30px;
     color: #646565;

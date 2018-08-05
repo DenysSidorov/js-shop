@@ -6,7 +6,6 @@ import BasicModalWindowPB from "../basic-modal-pb/index";
 import OneGoodItemInList from "./OneGoodInList/index";
 
 
-
 class OneClickModal extends Component {
 
   state = {
@@ -35,6 +34,7 @@ class OneClickModal extends Component {
 
   render() {
     const {randomNumber} = this.state;
+    console.log(' + ', this.props.goods);
     return (
       <BasicModalWindowPB
         close={this.props.close}
@@ -63,6 +63,34 @@ class OneClickModal extends Component {
             </div>
             <div className="oneClickModal_sendBtn">
               <span onClick={this.sendOneClick}>Отправить</span>
+            </div>
+
+            <div className="oneClickModal_gList">
+              {this.props.goods.map((good, ind) => {
+                return (
+                  <div className="oneClickModal_gList_item" key={ind}>
+                    <div className="oneClickModal_gList_item_logo">
+                      <img src={'/img-static/' + good.photo[0]}/>
+                    </div>
+                    <div className="oneClickModal_gList_item_name">
+                      {good.name && good.name} {good.model && good.model} -
+                    </div>
+
+                    <div className="oneClickModal_gList_item_price">
+                      {good.price}$ -
+                    </div>
+
+                    <div className="oneClickModal_gList_item_count">
+                      {good.count ? good.count : 1} {' шт.'} -
+                    </div>
+
+                    <div className="oneClickModal_gList_item_code">
+                      {' код-'}{good.code}
+                    </div>
+                  </div>
+                )
+              })}
+
             </div>
 
           </div>

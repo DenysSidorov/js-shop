@@ -3,6 +3,7 @@ import MenuInfoSection from "../../modules/MenuInfoSection";
 import WaysDevPay from "./WaysDevPay";
 import GoodsTable from "./GoodsTable";
 import {connect} from "react-redux";
+// CardMainPage
 import './index.less';
 class OrderPage extends React.Component {
     state = {};
