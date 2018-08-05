@@ -52,8 +52,9 @@ class OneClickModal extends Component {
               <div className="oneClickModal_phone">
                 Телефон
               </div>
+              +38
               <MaskedInput
-                mask="(111) 111-11-11"
+                mask="(111)111-11-11"
                 name="phone"
                 id="leading"
                 onChange={this._onChange}
