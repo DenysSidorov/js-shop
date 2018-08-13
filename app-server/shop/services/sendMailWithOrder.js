@@ -5,17 +5,11 @@ import React from 'react';
 const showGoods = (goods) => {
   let res = `${goods.map((g, ind) => (
     `<div>
-            <p>---${ind}---</p>
-            <p>Имя-${g.name} Модель-${g.model} Цена-${g.price} Кол_во${g.count} ID-${g._id}</p>
-            <p>-------</p>
+            <p>${ind}. Имя-<b>${g.name}</b> Модель-<b>${g.model}</b> Цена-<b>${g.price}</b> Кол_во<b>${g.count}</b> ID-<b>${g._id}</b></p>
           </div>`
-
-    
   ))}`
   // console.log('**** ** ** ',res);
   return res;
-
-
 }
 
 export const sendMailWithOrder = ({email = [], order}) => {
@@ -31,7 +25,6 @@ export const sendMailWithOrder = ({email = [], order}) => {
             <p>Price: <b>${order.price}</b></p>
             <p>Phone: <b>${order.phone}</b></p>
             <p>ID: <b>${order._id}</b></p>
-            <p>------------</p>
             <p>------Товары------</p>
             ${showGoods(order.goods)}
             <a href="${urlApi}/panel">

@@ -34,6 +34,30 @@ class OneClickModal extends Component {
     // this.setState({isSend: true})
     // this.fireClose();
 
+    let price = this.props.goods.reduce((prev, cur) => prev + Math.floor((((cur.price / 100) * (100 - cur.sail)) * cur.count)), 0);
+    let order = {
+      price,
+      payment: this.state.payment,
+      delivery: this.state.delivery,
+      name: this.state.name,
+      address: this.state.address,
+      email: this.state.email,
+      phone: this.state.phone,
+      goods: []
+
+    };
+    this.props.goods.forEach((item, ind) => {
+      var curGood = {};
+      curGood._id = item._id;
+      curGood.count = item.count;
+      curGood.name = item.name;
+      curGood.model = item.model;
+      curGood.sail = item.sail;
+      curGood.price = item.price;
+
+      order.goods.push(curGood);
+    });
+
     try {
       let response = await axios.post(`${urlApi}/api/orders`, order);
       if (response) {
