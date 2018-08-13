@@ -3,17 +3,18 @@ import mailSettings from "../../../config/index";
 import React from 'react';
 
 const showGoods = (goods) => {
-  return `<div>
-      ${goods.map((g, ind) => {
-        return 
-          `<div>
+  let res = `${goods.map((g, ind) => (
+    `<div>
             <p>---${ind}---</p>
             <p>Имя-${g.name} Модель-${g.model} Цена-${g.price} Кол_во${g.count} ID-${g._id}</p>
             <p>-------</p>
           </div>`
-        
-      })}
-    </div>`
+
+    
+  ))}`
+  // console.log('**** ** ** ',res);
+  return res;
+
 
 }
 
@@ -25,14 +26,7 @@ export const sendMailWithOrder = ({email = [], order}) => {
   let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
   email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
   console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
-
-  let mailOptions = {
-    from: '"Online-shop" <1qazxsw23edccde3@gmail.com>', // sender address
-    // to: "000scorpions0000@gmail.com, 1qazxsw23edccde3@gmail.com", // list of receivers
-    to: email.join(', '),
-    subject: `Заказ товара ${order._id}`,
-    text: 'На сайте был совершен заказ товара:', // plaintext body
-    html: `<div>
+  let html = `<div>
             <p>Name: <b>${order.name}</b></p>
             <p>Price: <b>${order.price}</b></p>
             <p>Phone: <b>${order.phone}</b></p>
@@ -42,7 +36,15 @@ export const sendMailWithOrder = ({email = [], order}) => {
             ${showGoods(order.goods)}
             <a href="${urlApi}/panel">
             Ссылка в админку...</a>
-        </div>` // html body
+        </div>`;
+  // console.log('-----', html);
+  let mailOptions = {
+    from: '"Online-shop" <1qazxsw23edccde3@gmail.com>', // sender address
+    // to: "000scorpions0000@gmail.com, 1qazxsw23edccde3@gmail.com", // list of receivers
+    to: email.join(', '),
+    subject: `Заказ товара ${order._id}`,
+    text: 'На сайте был совершен заказ товара:', // plaintext body
+    html // html body
   };
 
 // send mail with defined transport object

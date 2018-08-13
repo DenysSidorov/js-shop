@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './index.scss';
 import uuidv1 from 'uuid/v4';
 import MaskedInput from 'react-maskedinput'
+import axios from "axios";
+import urlApi from '../../../../../api/urlApi';
 import BasicModalWindowPB from "../basic-modal-pb/index";
 import OneGoodItemInList from "./OneGoodInList/index";
 
@@ -28,9 +30,24 @@ class OneClickModal extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  sendOneClick = () => {
-    this.setState({isSend: true})
+  sendOneClick = async () => {
+    // this.setState({isSend: true})
     // this.fireClose();
+
+    try {
+      let response = await axios.post(`${urlApi}/api/orders`, order);
+      if (response) {
+        response = response.data
+        console.log(response, 'response1'); // _id
+      }
+
+      // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
+    } catch (e) {
+      console.log(e);
+    } finally {
+      console.log();
+    }
+
   }
 
   render() {
