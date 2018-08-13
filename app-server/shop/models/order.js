@@ -3,7 +3,7 @@ import mongoose, {Schema} from "mongoose";
 const OrderSchema = new Schema({
 
     payment: {type: Object, require: true, default: {}},
-    price: {type: Number, require: true,  default: '-' },
+    price: {type: Number, require: true,  default: 0 },
     delivery: {type: String, require: true, default: '-'},
     name: {type: String, require: true, default: '-'},
     address: {type: String, require: true, default: '-'},

@@ -29,7 +29,8 @@ class OneClickModal extends Component {
   }
 
   sendOneClick = () => {
-    this.fireClose();
+    this.setState({isSend: true})
+    // this.fireClose();
   }
 
   render() {
