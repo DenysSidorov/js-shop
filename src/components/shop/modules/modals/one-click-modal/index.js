@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import './index.scss';
 import uuidv1 from 'uuid/v4';
 import MaskedInput from 'react-maskedinput'
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import axios from "axios";
 import urlApi from '../../../../../api/urlApi';
 import BasicModalWindowPB from "../basic-modal-pb/index";
 import OneGoodItemInList from "./OneGoodInList/index";
+import {deleteAll} from "../../../../../reducers/cart";
 
 
 class OneClickModal extends Component {
@@ -34,7 +37,10 @@ class OneClickModal extends Component {
     // this.setState({isSend: true})
     // this.fireClose();
 
-    let price = this.props.goods.reduce((prev, cur) => prev + Math.floor((((cur.price / 100) * (100 - cur.sail)) * cur.count)), 0);
+    let allGoods = this.props.goods.map((g) => {
+      return {...g, count: g.count ? g.count : 1}
+    })
+    let price = allGoods.reduce((prev, cur) => prev + Math.floor((((cur.price / 100) * (100 - cur.sail)) * cur.count)), 0);
     let order = {
       price,
       payment: this.state.payment,
@@ -46,7 +52,7 @@ class OneClickModal extends Component {
       goods: []
 
     };
-    this.props.goods.forEach((item, ind) => {
+    allGoods.forEach((item, ind) => {
       var curGood = {};
       curGood._id = item._id;
       curGood.count = item.count;
@@ -58,25 +64,29 @@ class OneClickModal extends Component {
       order.goods.push(curGood);
     });
 
+    console.log('******', order);
     try {
       let response = await axios.post(`${urlApi}/api/orders`, order);
       if (response) {
+        if(this.props.willDeleteGoods){
+          this.props.deleteAll();
+        }
         response = response.data
         console.log(response, 'response1'); // _id
+        this.setState({isSend: true})
       }
 
       // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
     } catch (e) {
       console.log(e);
+      alert('Ошибка, позвоните нам по номеру указанном в контактах!');
     } finally {
-      console.log();
     }
 
   }
 
   render() {
     const {randomNumber} = this.state;
-    console.log(' + ', this.props.goods);
     return (
       <BasicModalWindowPB
         close={this.props.close}
@@ -112,7 +122,7 @@ class OneClickModal extends Component {
                 return (
                   <div className="oneClickModal_gList_item" key={ind}>
                     <div className="oneClickModal_gList_item_logo">
-                      <img src={'/img-static/' +  good.photo[0]}/>
+                      <img src={'/img-static/' + good.photo[0]}/>
                     </div>
                     <div className="oneClickModal_gList_item_name">
                       {good.name && good.name} {good.model && good.model} -
@@ -151,4 +161,12 @@ class OneClickModal extends Component {
   }
 }
 
-export default OneClickModal;
+// export default OneClickModal;
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    deleteAll,
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(OneClickModal);

@@ -63,6 +63,7 @@ class OrderPage extends React.Component {
         {this.state.isShowOneClickModal && <OneClickModal
           close={this.handleShowOneClick}
           goods={goods}
+          willDeleteGoods={true}
         />}
       </div>
     )

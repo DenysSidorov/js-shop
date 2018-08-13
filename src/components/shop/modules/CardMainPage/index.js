@@ -76,6 +76,7 @@ class CardMainPage extends React.Component {
         {this.state.isShowOneClickModal && <OneClickModal
               close={this.handleShowOneClick}
               goods={[card]}
+              willDeleteGoods={false}
           />}
       </div>
     )
