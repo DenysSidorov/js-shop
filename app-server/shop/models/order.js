@@ -2,11 +2,11 @@ import mongoose, {Schema} from "mongoose";
 
 const OrderSchema = new Schema({
 
-    payment: {type: Object, require: true},
-    price: {type: Number, require: true },
-    delivery: {type: String, require: true},
-    name: {type: String, require: true},
-    address: {type: String, require: true},
+    payment: {type: Object, require: true, default: {}},
+    price: {type: Number, require: true,  default: '-' },
+    delivery: {type: String, require: true, default: '-'},
+    name: {type: String, require: true, default: '-'},
+    address: {type: String, require: true, default: '-'},
     phone: {type: String, require: true},
     email: {type: String},
     createdAt: { type: Date, require: true, default: Date.now },

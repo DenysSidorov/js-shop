@@ -70,7 +70,7 @@ class OneClickModal extends Component {
                 return (
                   <div className="oneClickModal_gList_item" key={ind}>
                     <div className="oneClickModal_gList_item_logo">
-                      <img src={'/img-static/' + good.photo[0]}/>
+                      <img src={'/img-static/' +  good.photo[0]}/>
                     </div>
                     <div className="oneClickModal_gList_item_name">
                       {good.name && good.name} {good.model && good.model} -
