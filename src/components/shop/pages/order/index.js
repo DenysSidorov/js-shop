@@ -49,9 +49,9 @@ class OrderPage extends React.Component {
     return (
       <div style={styles}>
         <MenuInfoSection/>
-        <div className="orderPage_fast">
+        {goods.length > 0 && <div className="orderPage_fast">
           <span onClick={this.handleShowOneClick}>Купить без заполнения формы!</span>
-        </div>
+        </div>}
         {!goods.length
           ? <div style={{padding: '30px'}}>
             <span style={{fontSize: '2rem'}}>Корзина пуста!</span>
