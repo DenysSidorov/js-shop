@@ -4,13 +4,11 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import bodyParse from "body-parser";
 import fs from "fs";
-
+var cors = require('cors');
 
 var cluster = require('cluster');
-
 var https = require('https');
 var http = require('http');
-
 
 import assets from "./app-server/assets.json";
 import siteOpener from "./app-server/helper/site-opener";
@@ -19,15 +17,11 @@ import authRoute from "./app-server/routes/auth";
 import userRoute from "./app-server/shop/routes/user";
 import goodRoute from "./app-server/shop/routes/goodRoute";
 import orderRoute from "./app-server/shop/routes/orderRoute";
+import errorMiddleWare from "./app-server/middlewares/errors";
 import rdRoute from "./app-server/shop/routes/rdRoute";
 import createGoods from "./app-server/shop/routes/createGoods";
-import errorMiddleWare from "./app-server/middlewares/errors";
 
 // process.env.NODE_ENV = 'production';
-
-// TODO https://scotch.io/tutorials/use-ejs-to-template-your-node-application
-
-var cors = require('cors');
 
 var privateKey  = fs.readFileSync('app-server/sslcert/private.key', 'utf8');
 var certificate = fs.readFileSync('app-server/sslcert/certificate.crt', 'utf8');
@@ -48,6 +42,7 @@ mongoose.Promise = require('bluebird'); // Для асинхронного ко�
 if (process.env.NODE_ENV == 'development') {
   mongoose.set('debug', true); // выводить в консоль все запросы
 }
+
 mongoose.connect(config.backend.database, {
   useMongoClient: true,
   reconnectTries: 30,
@@ -75,9 +70,10 @@ mongoose.connect(config.backend.database, {
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
+app.disable('x-powered-by'); // Отключить определение, что это express
+
 // app.use(require('prerender-node'));
 app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
-app.disable('x-powered-by'); // Отключить определение, что это express
 
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
@@ -96,7 +92,6 @@ app.use(bodyParse.urlencoded({extended: true}));
 // app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-
 /*TODO make async function*/
 // var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
 // app.use(session({
@@ -111,17 +106,16 @@ app.set('view engine', 'ejs');
 //     //     expires: expiryDate
 //     // }
 // }));
+
 // app.use('/api/rd', cors(), rdRoute);
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users', userRoute);
 // app.use('/start', cors(), createGoods);
-
-
-
 // app.use('/api', checkToken,  userRoute); // get user route
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
+
 
 app.get('*', (req, res) => {
   res.render(path.join(__dirname + '/www/index.ejs'), {assets});
@@ -161,6 +155,7 @@ siteOpener();
 //   init();
 //************************************************************
 // }
+
 process.on('uncaughtException', function (err) {
   console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
   console.error(err.stack);
