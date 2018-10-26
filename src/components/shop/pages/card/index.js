@@ -31,9 +31,9 @@ class CardComponent extends React.Component {
             console.log(e);
         } finally {
             this.setState({
-                card: card.data,
-                similarCategory: similarCategory.data,
-                popularCards: popularCards.data
+                card: card && card.data ? card.data : {},
+                similarCategory: similarCategory && similarCategory.data ? similarCategory.data : [],
+                popularCards: popularCards.data && popularCards.data ? popularCards.data : []
             });
         }
     }
@@ -59,7 +59,7 @@ class CardComponent extends React.Component {
                     {this.state.similarCategory && this.state.similarCategory.length
                         ? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/>
                         : null}
-                    {this.state.popularCards && this.state.popularCards.length
+                    {this.state.popularCards && this.state.popularCards.length && this.state.card.length
                         ? <ContainerForCardAdditional card={this.state.card}
                                                       popularCards={this.state.popularCards}/>
                         : null}
