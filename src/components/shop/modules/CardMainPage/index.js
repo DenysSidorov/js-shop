@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {pushToCart} from '../../../../reducers/cart';
 import {Link} from "react-router-dom";
 import OneClickModal from "../modals/one-click-modal/index";
+import {checkTextLength} from "../../helpers/lib/utils";
 class CardMainPage extends React.Component {
 
   state = {
@@ -33,7 +34,7 @@ class CardMainPage extends React.Component {
               <span>{card.price}</span><span></span><span>грн.</span>
             </div>
             <div className="oneCardItem__headCard__nameBrand">
-              {card.name} {card.model}
+              {checkTextLength(`${card.name} ${card.model}`, 29)}
             </div>
             <div className="oneCardItem__headCard__wrap-things">
               {/*<div className="oneCardItem__headCard__otherThings">*/}
@@ -58,8 +59,8 @@ class CardMainPage extends React.Component {
           <Link to={`/card/${card._id}`} className="oneCardItem__bottomCard__shortText">
             <span className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
           </Link>
-          {card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>
-            : <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}
+          {/*{card.isExists ? <div className="oneCardItem__bottomCard__status">В наличии</div>*/}
+            {/*: <div className="oneCardItem__bottomCard__status red">Нет в наличии</div>}*/}
           <div className="oneCardItem__bottomCard__buy">
             <span onClick={() => this.props.addItem(card)}>В корзину</span>
           </div>
