@@ -17,13 +17,14 @@ class CardComponent extends React.Component {
     async initCadd() {
         window.scrollTo(0, 0)
         var id = this.props.match.params.id;
+        console.log(id, 'id');
         var similarCategory = [];
         var popularCards = [];
         var card;
         // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
         try {
-            popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             card = await axios.get(`${urlApi}/api/goods/${id}`);
+            popularCards = await axios.get(`${urlApi}/api/goods/popular`);
             similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
                 {params: {'category': card.data[0].category}}
             );

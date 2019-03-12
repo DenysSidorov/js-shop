@@ -14,7 +14,7 @@ export async function create(req, resp, next) {
             message
         });
     }
-
+  Stateless- и stateful-приложения.Stateless- и stateful-приложения.
     resp.json(page);
 }
 
