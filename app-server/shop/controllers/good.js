@@ -136,11 +136,13 @@ export async function getUniqCategory(req, resp, next) {
 export async function getPopular(req, resp, next) {
   try {
     // Your logic
+    var goods = await Good.find().sort('views').limit(7);
     // var goods = await Good.find({}).limit(6);
-    var goods = await Good.aggregate([
-      {$sort: {likes: -1}},
-      {$limit: 7},
-    ]);
+    // var goods = await Good.aggregate([
+    //   // {cursor: { batchSize: 1024 }},
+    //   {$sort: {views: -1}},
+    //   {$limit: 7},
+    // ]);
   } catch ({message}) {
     return next({
       status: 500,
