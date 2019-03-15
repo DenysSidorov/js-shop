@@ -1,4 +1,4 @@
-import React from "react";
+Прimport React from "react";
 import "./pagesStyles/logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";

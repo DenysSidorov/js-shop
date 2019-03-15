@@ -13,7 +13,7 @@ export default (req, resp, next)=> {
         var id = mongoose.Types.ObjectId();
         var tempName = {
             "_id": id,
-            "name": random(['Belveta', 'Nuri', 'Chikago', 'Nice', 'Zelveta', 'Hori', 'Pint', 'CLS1', 'Nektar', 'Geltrino']),
+            "name": random(['Belveta', 'Nuri', 'Chikago', 'Nice', 'Zelveta', 'Hori', 'Pint', 'CLS2', 'Nektar', 'Geltrino']),
             "model": random(['3000', 'Summer', 'Superstar', 'BoniClayd', 'Nice', 'Davinchi', 'Surinami', 'Eventador', 'Harmony', 'Colt']),
             "size": [random([28, 32, 30, 34, 36, 38, 40, 42]), random([38, 34])],
             "comments": [
