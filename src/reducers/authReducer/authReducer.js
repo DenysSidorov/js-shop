@@ -1,4 +1,5 @@
 import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE, DELETE_ERROR_MESSAGE, APPEAR_LIKE_ADMIN, DISAPPEAR_LIKE_ADMIN} from "./types";
+
 let initialState = {error: '', authenticated: false, message: '', isAdmin: false}
 
 export default function (state = initialState, action) {

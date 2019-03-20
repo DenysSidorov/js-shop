@@ -6,3 +6,10 @@ export const checkTextLength = (text, maxLength) => {
   }
   return text;
 }
+
+
+export const setTitle = (title) => {
+  const shopName = 'Магазин сумок и рюкзаков';
+  let pageTitle = `${title} - ${shopName}`;
+  window.document.title = pageTitle;
+}

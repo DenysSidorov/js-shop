@@ -1,9 +1,10 @@
-Прimport React from "react";
+import React from "react";
 import "./pagesStyles/logup.scss";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {signupUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
+
 
 class Logup extends React.Component {
     constructor(pr) {
