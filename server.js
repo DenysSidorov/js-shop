@@ -44,7 +44,7 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 mongoose.connect(config.backend.database, {
-  useMongoClient: true,
+  // useMongoClient: true,
   reconnectTries: 30,
 }, err => {
   if (err) throw err;

@@ -57,6 +57,8 @@ class Home extends React.Component {
       // set new title
       if (param) {
         setTitle(param + 'портфель');
+      } else {
+        setTitle('Главная');
       }
 
       var cards = [];
@@ -100,6 +102,8 @@ class Home extends React.Component {
     // set new title
     if (param) {
       setTitle(param + 'портфель');
+    } else {
+      setTitle('Главная');
     }
 
     try {

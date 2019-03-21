@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {signinUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
+import {setTitle} from "../helpers/lib/utils";
 
 class Login extends React.Component {
     constructor(pr) {
@@ -21,6 +22,7 @@ class Login extends React.Component {
 
     componentWillMount(){
         this.props.delErrorMessage();
+        setTitle('Логин');
     }
 
     sendData = () => {

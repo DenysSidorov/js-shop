@@ -1,8 +1,10 @@
 import React from "react";
 import st from './pagesStyles/verifyEmail.scss';
+import {setTitle} from "../helpers/lib/utils";
 class VerifyEmail extends React.Component {
     componentDidMount = (prevProps) => {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
+        setTitle('Проверка почты');
     }
 
     render = ()=>{

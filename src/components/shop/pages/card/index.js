@@ -4,19 +4,25 @@ import urlApi from "../../../../api/urlApi";
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
+import {setTitle} from "../../helpers/lib/utils";
 
 class CardComponent extends React.Component {
-  state = {card: null, similarCategory: [], popularCards: []};
+
+  state = {
+    card: [],
+    similarCategory: [],
+    popularCards: []
+  };
 
   constructor(props) {
     super(props);
     this.initCadd = this.initCadd.bind(this);
   }
 
-  state = {card: []}
 
   async initCadd() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    setTitle('Карта товара');
     var id = this.props.match.params.id;
     var similarCategory = [];
     var popularCards = [];
@@ -32,9 +38,13 @@ class CardComponent extends React.Component {
       console.log(e);
     } finally {
       this.setState({
-        card: card && card.data ? card.data : {},
+        card: card && card.data ? card.data : [],
         similarCategory: similarCategory && similarCategory.data ? similarCategory.data : [],
         popularCards: popularCards.data && popularCards.data ? popularCards.data : []
+      }, () => {
+        if(this.state.card.length){
+          setTitle(`${this.state.card[0].name} ${this.state.card[0].model}`);
+        }
       });
     }
   }

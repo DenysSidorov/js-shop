@@ -1,8 +1,10 @@
 import React from "react";
+import {setTitle} from "../helpers/lib/utils";
 
 class Contacts extends React.Component {
         componentDidMount(prevProps) {
                 window.scrollTo(0, 0)
+          setTitle('Контакты');
         }
     render() {
         return (

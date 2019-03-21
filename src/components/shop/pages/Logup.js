@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {signupUser, deleteErrorMessage} from '../../../reducers/authReducer/actions';
+import {setTitle} from "../helpers/lib/utils";
 
 
 class Logup extends React.Component {
@@ -14,6 +15,7 @@ class Logup extends React.Component {
 
     componentWillMount(){
         this.props.delErrorMessage();
+        setTitle('Регистрация');
         // window.st= this.props.store;
         // this.props.store.dispatch(deleteErrorMessage());
         // dispatch(deleteErrorMessage());
