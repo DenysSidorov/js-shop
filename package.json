@@ -111,7 +111,6 @@
   },
   "scripts": {
     "start-front": "webpack-dev-server --hot --inline",
-    "start-server": "set NODE_ENV=development&&set SITE=https://google.com&&set MONGODB_URI=mongodb://localhost:27017/shop&&set PORT=3000&&nodemon --exec babel-node server.js",
     "start-s": "cross-env NODE_ENV=development SITE=https://google.com MONGODB_URI=mongodb://127.0.0.1:27017/shop PORT=3000 nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-server": "mocha app-server/**/*.test.js",
