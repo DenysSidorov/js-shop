@@ -1,11 +1,14 @@
 import React from "react";
 import st from './pagesStyles/aboutUs.scss';
-import {setTitle} from "../helpers/lib/utils";
+import {setTitle, setMetaTag} from "../helpers/lib/utils";
 
 class About extends React.Component {
   componentDidMount(prevProps) {
     window.scrollTo(0, 0)
     setTitle('О нас');
+    setMetaTag('description', 'Наш магазин продает товары уже более 5 лет, быстрая доставка,' +
+      ' удобная оплтата и приветливый персонал!');
+    setMetaTag('keywords', 'online-shop, интрнет магазин, доставка, оплата, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
   }
 
   render() {

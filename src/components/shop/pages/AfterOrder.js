@@ -1,12 +1,15 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import st from './pagesStyles/afterOrder.scss';
-import {setTitle} from "../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../helpers/lib/utils";
 
 class AfterOrder extends React.Component {
   componentDidMount(prevProps) {
     window.scrollTo(0, 0);
     setTitle('Заказ принят');
+    setMetaTag('description', 'Заказ будет обработан в течении рабочего дня приятных покупок');
+    setMetaTag('keywords', 'online-shop, интрнет магазин, заказ принят, shop-ukraine.pro');
+
   }
 
   render() {

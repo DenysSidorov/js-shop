@@ -2,13 +2,15 @@ import React from "react";
 import axios from "axios";
 import urlApi from '../../../api/urlApi';
 import st from './pagesStyles/profile.scss'
-import {setTitle} from "../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../helpers/lib/utils";
 
 class Panel extends React.Component {
   state = {user: {}, isGotUser: false}
   componentDidMount = async (prevProps) => {
     window.scrollTo(0, 0);
     setTitle('Мой профиль');
+    setMetaTag('description', 'Твой профиль в shop-ukraine.pro');
+    setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
     try {
       const token = localStorage.getItem('info');
       let result = await axios.get(`${urlApi}/api/users/current`, {

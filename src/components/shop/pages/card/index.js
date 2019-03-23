@@ -4,7 +4,7 @@ import urlApi from "../../../../api/urlApi";
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
-import {setTitle} from "../../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../../helpers/lib/utils";
 
 class CardComponent extends React.Component {
 
@@ -23,6 +23,9 @@ class CardComponent extends React.Component {
   async initCadd() {
     window.scrollTo(0, 0);
     setTitle('Карта товара');
+    setMetaTag('description', 'Купить портфель, сумку, рюкзак на любой вкус');
+    setMetaTag('keywords', 'online-shop, интрнет магазин, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+
     var id = this.props.match.params.id;
     var similarCategory = [];
     var popularCards = [];
@@ -42,12 +45,20 @@ class CardComponent extends React.Component {
         similarCategory: similarCategory && similarCategory.data ? similarCategory.data : [],
         popularCards: popularCards.data && popularCards.data ? popularCards.data : []
       }, () => {
-        if(this.state.card.length){
+        if (this.state.card.length) {
           setTitle(`${this.state.card[0].name} ${this.state.card[0].model}`);
+          setMetaTag('description', `${this.state.card[0].name} ${this.state.card[0].model} - ${this.state.card[0]['desc-short']}`);
+          setMetaTag('keywords', `${this.state.card[0].name}, ${this.state.card[0].model}, ${this.state.card[0].producer}, ${this.getMetaTags(this.state.card[0].tags)}, ${this.getMetaTags(this.state.card[0].category)}, online-shop, интрнет магазин, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro`);
         }
       });
     }
   }
+
+  getMetaTags = (arr) => {
+   return arr.reduce((prev, curr, ind) => {
+      return `${ind === 0 ? prev : prev + ','} ${curr}`
+   }, '');
+   }
 
   componentDidMount() {
     this.initCadd();

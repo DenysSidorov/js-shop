@@ -1,11 +1,13 @@
 import React from "react";
 import st from './pagesStyles/cashbackAndExchange.scss';
-import {setTitle} from "../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../helpers/lib/utils";
 
 class CashbackAndExchange extends React.Component {
   componentDidMount(prevProps) {
     window.scrollTo(0, 0)
     setTitle('Возврат и обмен');
+    setMetaTag('description', 'Возврат и обмен в течении 14 дней, соблюдении всех правил честной торговли');
+    setMetaTag('keywords', 'online-shop, интрнет магазин, возврат, обмен, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
   }
 
   render() {

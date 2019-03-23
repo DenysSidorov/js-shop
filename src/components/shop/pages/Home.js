@@ -10,7 +10,7 @@ import TagsMainSection from "../modules/TagsMainSection";
 import MenuInfoSection from "../modules/MenuInfoSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 import Pagination from "../modules/Pagination";
-import {setTitle} from "../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../helpers/lib/utils";
 
 class Home extends React.Component {
   constructor() {
@@ -101,9 +101,13 @@ class Home extends React.Component {
 
     // set new title
     if (param) {
-      setTitle(param + 'портфель');
+      setTitle(param + ' портфель');
+      setMetaTag('description', param + ' | Купить портфель сумку или рюкзак на любой вкус');
+      setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro ,' + param);
     } else {
       setTitle('Главная');
+      setMetaTag('description', 'Купить портфель сумку или рюкзак на любой вкус');
+      setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
     }
 
     try {

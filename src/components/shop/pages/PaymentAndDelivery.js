@@ -1,11 +1,13 @@
 import React from "react";
 import st from './pagesStyles/paymentAndDelivery.scss'
-import {setTitle} from "../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../helpers/lib/utils";
 
 class PaymentAndDelivery extends React.Component {
   componentDidMount(prevProps) {
     window.scrollTo(0, 0);
     setTitle('Оплата и доставка');
+    setMetaTag('description', 'Оплата и доставка shop-ukraine.pro');
+    setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
   }
 
   render() {

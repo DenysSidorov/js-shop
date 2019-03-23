@@ -5,7 +5,7 @@ import GoodsTable from "./GoodsTable";
 import {connect} from "react-redux";
 import OneClickModal from '../../modules/modals/one-click-modal';
 import './index.less';
-import {setTitle} from "../../helpers/lib/utils";
+import {setMetaTag, setTitle} from "../../helpers/lib/utils";
 
 class OrderPage extends React.Component {
 
@@ -38,6 +38,8 @@ class OrderPage extends React.Component {
   componentDidMount() {
     this.initCadd();
     setTitle('Корзина');
+    setMetaTag('description', 'Корзина ваших товаров');
+    setMetaTag('keywords', 'online-shop, интрнет магазин, возврат, обмен, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
   }
 
   render() {

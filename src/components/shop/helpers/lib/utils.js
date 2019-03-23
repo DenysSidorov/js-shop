@@ -13,3 +13,16 @@ export const setTitle = (title) => {
   let pageTitle = `${title} - ${shopName}`;
   window.document.title = pageTitle;
 }
+
+export const setMetaTag = (name, content) => {
+  let tag = document.querySelector(`meta[name="${name}"]`);
+
+  if(tag){
+    tag.content = content;
+  } else {
+    let m = document.createElement('meta');
+    m.name = name;
+    m.content = content;
+    document.head.appendChild(m);
+  }
+}
