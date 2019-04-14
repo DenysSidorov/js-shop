@@ -1,0 +1,90 @@
+@import "../../../../less/main";
+
+.categoryMenu {
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  padding: 4px;
+  background-color: #424040;
+  .container {
+    .menu {
+      width: 280px;
+      position: relative;
+      .menu_header {
+        //position: relative;
+        cursor: pointer;
+        border-radius: 4px;
+        height: 35px;
+
+        background-color: #fdec04;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        span {
+          margin-left: 1rem;
+          color: #424040;
+          font: 1.6rem/1.8rem @robotoMedium;
+          padding: 0.6rem;
+        }
+        i {
+          font-size: 16px;
+        }
+      }
+      .menu_body {
+        position: absolute;
+        top: 39px;
+        left: 0;
+        width: 100%;
+        margin-top: 4px;
+        border-radius: 4px;
+        z-index: 999;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(89, 89, 89, .5);
+        .menu_body-item {
+          &:hover {
+            background-color: #ecf1f8;
+          }
+          cursor: pointer;
+          display: flex;
+          height: 28px;
+          align-items: center;
+          .menu_body-item_ico {
+            color: #1170d0;
+            margin-left: 20px;
+            flex-basis: 9%;
+            font-size: 13px;
+          }
+          .menu_body-item_text {
+            font-size: 13px;
+            font-family: @robotoRegular;
+            flex-basis: 67%;
+            padding-right: 3%;
+            //padding-left: 3%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .menu_body-item_count {
+            flex-basis: 18%;
+            text-align: right;
+            padding-right: 4%;
+            .wrap {
+              background-color: #2EA9FD;
+              display: inline-block;
+              padding: 4px 10px;
+              border-radius: 3px;
+              width: 100%;
+              text-align: center;
+              span {
+                font-size: 12px;
+                color: #e8e8e8;
+                font-family: @robotoMedium;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

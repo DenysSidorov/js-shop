@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 // TODO connect animation
 
 import MainMenu from "./MainMenu";
+import CategoryMenu from "./category-menu/CategoryMenu";
 import BtnUp from "./BtnUp";
 import SocialMedia from "./SocialMedia";
 import FooterSection from "./FooterSection";
@@ -39,6 +40,7 @@ class WrapperApp extends React.Component {
                 <div className="content">
                     {/*<ConfirmBlock/>*/}
                     <MainMenu {...this.props}/>
+                    <CategoryMenu/>
                     <MainContent {...this.props}>
                         <main>
                                 <Switch key={location.key} location={location}>
