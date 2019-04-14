@@ -1,5 +1,5 @@
 @import "../../../../less/main";
-
+@menuWidth: 315px;
 .categoryMenu {
   //display: flex;
   //justify-content: center;
@@ -33,7 +33,7 @@
       .menu_body {
         position: absolute;
         top: 39px;
-        left: 0;
+        left: 5px;
         width: 100%;
         margin-top: 4px;
         border-radius: 4px;
@@ -88,6 +88,7 @@
 
           }
           .menu_body-sub2{
+            width: calc(~"90vw" - @menuWidth);
             display: flex;
             flex-wrap: wrap;
             position: absolute;
@@ -109,6 +110,8 @@
               height: 40px;
               width: 40px;
               background-color: red;
+              margin-right: 5px;
+              margin-bottom: 5px;
             }
           }
         }

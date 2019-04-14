@@ -37,9 +37,22 @@ class CategoryMenu extends React.Component {
                   </span>
                 </a>
                 <ul className="menu_body-sub2">
-                  <li className="menu_body-sub2_item">
-                    1
-                  </li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
+                  <li className="menu_body-sub2_item">1</li>
                 </ul>
               </li>
 
