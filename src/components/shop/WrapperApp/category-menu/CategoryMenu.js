@@ -12,129 +12,46 @@ class CategoryMenu extends React.Component {
               <span>КАТАЛОГ ТОВАРОВ</span>
               <i className="fa fa-bars"></i>
             </div>
-            <div className="menu_body">
+            <ul className="menu_body">
 
-              <div className="menu_body-item">
-                <i className="fa fa-music menu_body-item_ico"></i>
-                <div className="menu_body-item_text">МУЗЫКА</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                  <span>17</span>
-                  </div>
-                </div>
-              </div>
+              <li className="menu_body-item">
+                <a className="menu_body-item_a">
+                  <i className="fa fa-plane menu_body-item_ico"></i>
+                  <span className="menu_body-item_text">Птицы</span>
+                  <span className="menu_body-item_count">
+                    <span className="wrap">
+                      <span>5</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
 
-              <div className="menu_body-item">
-                <i className="fa fa-fire menu_body-item_ico"></i>
-                <div className="menu_body-item_text">САФАРИ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>138</span>
-                  </div>
-                </div>
-              </div>
+              <li className="menu_body-item">
+                <a className="menu_body-item_a">
+                  <i className="fa fa-music menu_body-item_ico"></i>
+                  <span className="menu_body-item_text">Музыка</span>
+                  <span className="menu_body-item_count">
+                    <span className="wrap">
+                      <span>17</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
 
-              <div className="menu_body-item">
-                <i className="fa fa-plane menu_body-item_ico"></i>
-                <div className="menu_body-item_text">ПТИЦЫ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>5</span>
-                  </div>
-                </div>
-              </div>
+              <li className="menu_body-item">
+                <a className="menu_body-item_a">
+                  <i className="fa fa-fire menu_body-item_ico"></i>
+                  <span className="menu_body-item_text">Сафари</span>
+                  <span className="menu_body-item_count">
+                    <span className="wrap">
+                      <span>138</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
 
-              <div className="menu_body-item">
-                <i className="fa fa-music menu_body-item_ico"></i>
-                <div className="menu_body-item_text">Музыка</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>17</span>
-                  </div>
-                </div>
-              </div>
 
-              <div className="menu_body-item">
-                <i className="fa fa-fire menu_body-item_ico"></i>
-                <div className="menu_body-item_text">Сафари</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>138</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-plane menu_body-item_ico"></i>
-                <div className="menu_body-item_text">Птицы</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>5</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-music menu_body-item_ico"></i>
-                <div className="menu_body-item_text">Музыка</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>17</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-fire menu_body-item_ico"></i>
-                <div className="menu_body-item_text">САФАРИ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>138</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-plane menu_body-item_ico"></i>
-                <div className="menu_body-item_text">ПТИЦЫ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>5</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-music menu_body-item_ico"></i>
-                <div className="menu_body-item_text">МУЗЫКА</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>17</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-fire menu_body-item_ico"></i>
-                <div className="menu_body-item_text">САФАРИ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>138</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="menu_body-item">
-                <i className="fa fa-plane menu_body-item_ico"></i>
-                <div className="menu_body-item_text">ПТИЦЫ</div>
-                <div className="menu_body-item_count">
-                  <div className="wrap">
-                    <span>5</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            </ul>
           </div>
         </div>
       </div>

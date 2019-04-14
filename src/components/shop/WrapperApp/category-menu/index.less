@@ -41,46 +41,50 @@
         background-color: white;
         box-shadow: 0 4px 10px rgba(89, 89, 89, .5);
         .menu_body-item {
+          cursor: pointer;
           &:hover {
             background-color: #ecf1f8;
           }
-          cursor: pointer;
-          display: flex;
-          height: 28px;
-          align-items: center;
-          .menu_body-item_ico {
-            color: #1170d0;
-            margin-left: 20px;
-            flex-basis: 9%;
-            font-size: 13px;
-          }
-          .menu_body-item_text {
-            font-size: 13px;
-            font-family: @robotoRegular;
-            flex-basis: 67%;
-            padding-right: 3%;
-            //padding-left: 3%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          .menu_body-item_count {
-            flex-basis: 18%;
-            text-align: right;
-            padding-right: 4%;
-            .wrap {
-              background-color: #2EA9FD;
-              display: inline-block;
-              padding: 4px 10px;
-              border-radius: 3px;
-              width: 100%;
-              text-align: center;
-              span {
-                font-size: 12px;
-                color: #e8e8e8;
-                font-family: @robotoMedium;
+          .menu_body-item_a{
+            display: flex;
+            height: 28px;
+            align-items: center;
+
+            .menu_body-item_ico {
+              color: #1170d0;
+              margin-left: 20px;
+              flex-basis: 9%;
+              font-size: 13px;
+            }
+            .menu_body-item_text {
+              font-size: 13px;
+              font-family: @robotoRegular;
+              flex-basis: 67%;
+              padding-right: 3%;
+              //padding-left: 3%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .menu_body-item_count {
+              flex-basis: 18%;
+              text-align: right;
+              padding-right: 4%;
+              .wrap {
+                background-color: #2EA9FD;
+                display: inline-block;
+                padding: 4px 10px;
+                border-radius: 3px;
+                width: 100%;
+                text-align: center;
+                span {
+                  font-size: 12px;
+                  color: #e8e8e8;
+                  font-family: @robotoMedium;
+                }
               }
             }
+
           }
         }
       }
