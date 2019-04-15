@@ -24,6 +24,38 @@ class CategoryMenu extends React.Component {
                     </span>
                   </span>
                 </a>
+                <ul className="menu_body-sub2">
+
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b1.jpg"/>
+                    </span>
+                      <span className="menu_body-sub2_item_text">Дикий павлин</span>
+                    </a>
+                  </li>
+
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b3.jpg"/>
+                    </span>
+                      <span className="menu_body-sub2_item_text">Смешные подростки</span>
+
+                    </a>
+                  </li>
+
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b2.jpg" />
+                    </span>
+                      <span className="menu_body-sub2_item_text">Заботливые Ара</span>
+
+                    </a>
+                  </li>
+
+                </ul>
               </li>
 
               <li className="menu_body-item">
@@ -38,6 +70,15 @@ class CategoryMenu extends React.Component {
                 </a>
                 <ul className="menu_body-sub2">
 
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b3.jpg"/>
+                    </span>
+                      <span className="menu_body-sub2_item_text">Смешные подростки</span>
+
+                    </a>
+                  </li>
                   <li className="menu_body-sub2_item">
                     <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
@@ -57,15 +98,7 @@ class CategoryMenu extends React.Component {
                     </a>
                   </li>
 
-                  <li className="menu_body-sub2_item">
-                    <a href="" className="menu_body-sub2_item_a">
-                      <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b3.jpg"/>
-                    </span>
-                      <span className="menu_body-sub2_item_text">Смешные подростки</span>
 
-                    </a>
-                  </li>
 
                 </ul>
               </li>
@@ -80,6 +113,40 @@ class CategoryMenu extends React.Component {
                     </span>
                   </span>
                 </a>
+                <ul className="menu_body-sub2">
+'
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b2.jpg" />
+                    </span>
+                      <span className="menu_body-sub2_item_text">Заботливые Ара</span>
+
+                    </a>
+                  </li>
+
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b1.jpg"/>
+                    </span>
+                      <span className="menu_body-sub2_item_text">Дикий павлин</span>
+                    </a>
+                  </li>
+
+                  <li className="menu_body-sub2_item">
+                    <a href="" className="menu_body-sub2_item_a">
+                      <span className="menu_body-sub2_item_img">
+                      <img src="/img-static/menu/b3.jpg"/>
+                    </span>
+                      <span className="menu_body-sub2_item_text">Смешные подростки</span>
+
+                    </a>
+                  </li>
+
+
+
+                </ul>
               </li>
 
 
