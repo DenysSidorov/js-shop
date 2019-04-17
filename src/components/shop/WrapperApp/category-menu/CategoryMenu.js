@@ -3,16 +3,24 @@ import './index.less';
 
 
 class CategoryMenu extends React.Component {
+  state = {
+    isShowMenu: false
+  }
+
+  handleShowMenu = () => {
+    this.setState({isShowMenu: !this.state.isShowMenu});
+  }
+
   render() {
     return (
       <div className="categoryMenu fullWidth left">
         <div className="container">
           <div className="menu">
-            <div className="menu_header">
+            <div className="menu_header" onClick={this.handleShowMenu}>
               <span>КАТАЛОГ ТОВАРОВ</span>
               <i className="fa fa-bars"></i>
             </div>
-            <ul className="menu_body">
+            {this.state.isShowMenu && <ul className="menu_body">
 
               <li className="menu_body-item">
                 <a className="menu_body-item_a">
@@ -25,7 +33,6 @@ class CategoryMenu extends React.Component {
                   </span>
                 </a>
                 <ul className="menu_body-sub2">
-
                   <li className="menu_body-sub2_item">
                     <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
@@ -48,12 +55,14 @@ class CategoryMenu extends React.Component {
                   <li className="menu_body-sub2_item">
                     <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b2.jpg" />
+                      <img src="/img-static/menu/b2.jpg"/>
                     </span>
                       <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
                     </a>
                   </li>
+
+                  <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
 
                 </ul>
               </li>
@@ -91,13 +100,14 @@ class CategoryMenu extends React.Component {
                   <li className="menu_body-sub2_item">
                     <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b2.jpg" />
+                      <img src="/img-static/menu/b2.jpg"/>
                     </span>
                       <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
                     </a>
                   </li>
 
+                  <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
 
 
                 </ul>
@@ -114,11 +124,11 @@ class CategoryMenu extends React.Component {
                   </span>
                 </a>
                 <ul className="menu_body-sub2">
-'
+
                   <li className="menu_body-sub2_item">
                     <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b2.jpg" />
+                      <img src="/img-static/menu/b2.jpg"/>
                     </span>
                       <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
@@ -144,13 +154,14 @@ class CategoryMenu extends React.Component {
                     </a>
                   </li>
 
+                  <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
 
 
                 </ul>
               </li>
 
 
-            </ul>
+            </ul>}
           </div>
         </div>
       </div>
