@@ -1,14 +1,25 @@
 import React from "react";
 import './index.less';
+import onClickOutside from 'react-onclickoutside';
 
 
 class CategoryMenu extends React.Component {
   state = {
     isShowMenu: false
   }
+  // mainContainerSection fullWidth left
+  handleShowMenu = (bool) => {
+    const mainContent = document.getElements
+    if (bool === undefined) {
+      this.setState({isShowMenu: !this.state.isShowMenu});
+    } else {
+      this.setState({isShowMenu: bool});
+    }
+  }
 
-  handleShowMenu = () => {
-    this.setState({isShowMenu: !this.state.isShowMenu});
+  handleClickOutside = evt => {
+    // Log.info('in component magic  act !!!');
+    this.handleShowMenu(false);
   }
 
   render() {
@@ -20,7 +31,9 @@ class CategoryMenu extends React.Component {
               <span>КАТАЛОГ ТОВАРОВ</span>
               <i className="fa fa-bars"></i>
             </div>
-            {this.state.isShowMenu && <ul className="menu_body">
+            {this.state.isShowMenu &&
+
+            <ul className="menu_body">
 
               <li className="menu_body-item">
                 <a className="menu_body-item_a">
@@ -170,4 +183,4 @@ class CategoryMenu extends React.Component {
   }
 }
 
-export default CategoryMenu;
+export default onClickOutside(CategoryMenu);
