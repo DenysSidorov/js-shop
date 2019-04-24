@@ -47,7 +47,7 @@
             background-color: #ecf1f8;
             .menu_body-sub2{
               opacity: 1;
-              transform: translateX(0px);
+              transform: translateX(10px);
               //display: flex;
               pointer-events: auto!important;
             }
@@ -99,7 +99,7 @@
             display: flex;
             width: calc(~"90vw" - @menuWidth);
             //width: calc(90vw - 315px);
-            max-width: 915px;
+            max-width: 900px;
             flex-wrap: wrap;
             position: absolute;
             top: 0;
@@ -115,8 +115,19 @@
             background-color: #fff;
             list-style: none;
             box-shadow: 6px 4px 10px rgba(90,90,90,.5);
-            transform: translateX(-10px);
+            transform: translateX(0px);
             opacity: 0;
+            &:before{
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: -10px;
+              display: block;
+              width: 10px;
+              /* height: 1px; */
+              background-color: transparent;
+            }
             .menu_body-sub2_item_link{
               display: block;
               width:100%;

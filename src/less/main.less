@@ -1194,6 +1194,40 @@ html {
   }
 }
 
+// ANIMATION FOR HIDE/SHOW BLOCKS (OPACITY)  START
+
+
+.rdAppear-appear {
+  opacity: 0.01;
+}
+
+.rdAppear-appear.rdAppear-appear-active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+
+// add blocks in list START
+.rdAppear-enter {
+  opacity: 0.01;
+}
+.rdAppear-enter.rdAppear-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+// add blocks in list END
+
+.rdAppear-leave {
+  opacity: 1;
+}
+
+
+.rdAppear-leave.rdAppear-leave-active {
+  opacity: 0.01;
+  transition: opacity 0.2s ease-in;
+}
+// ANIMATION FOR HIDE/SHOW BLOCKS (OPACITY)  END
+
 /* Кнопка вверх bottom*/
 
 /* Прелоудер top */
