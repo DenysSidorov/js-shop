@@ -40,10 +40,14 @@ class CategoryMenu extends React.Component {
       <div className="categoryMenu fullWidth left">
         <div className="container">
           <div className="menu">
-            <div className="menu_header" onClick={this.handleShowMenu}>
-              <span>КАТАЛОГ ТОВАРОВ</span>
-              <i className="fa fa-bars"></i>
-            </div>
+            <MenuBodyWrapper
+              handleShowMenu={this.handleShowMenu}
+              handleClickOutside={this.handleClickOutside}
+            />
+            {/*<div className="menu_header" onClick={this.handleShowMenu}>*/}
+              {/*<span>КАТАЛОГ ТОВАРОВ</span>*/}
+              {/*<i className="fa fa-bars"></i>*/}
+            {/*</div>*/}
             <ReactCSSTransitionGroup
               transitionName="rdAppear"
               transitionEnterTimeout={250}
@@ -203,4 +207,22 @@ class CategoryMenu extends React.Component {
   }
 }
 
-export default onClickOutside(CategoryMenu);
+export default CategoryMenu;
+
+class MenuBody extends React.Component{
+  handleClickOutside = () => {
+    this.props.handleClickOutside();
+  }
+  render(){
+    return(
+      <div className="menu_header" onClick={this.props.handleShowMenu}>
+        <span>КАТАЛОГ ТОВАРОВ</span>
+        <i className="fa fa-bars"></i>
+      </div>
+    )
+  }
+}
+
+const MenuBodyWrapper = onClickOutside(MenuBody);
+
+// onClickOutside
