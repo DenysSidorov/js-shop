@@ -19,7 +19,7 @@ class Home extends React.Component {
       pageOfItems: [],
       cards: [],
       popularCards: [],
-      uniqCategory: [],
+      // uniqCategory: [],
       paginationPageActive: 1,
     };
     this.onPageChange = this.onPageChange.bind(this);
@@ -97,7 +97,7 @@ class Home extends React.Component {
 
     var cards = [];
     var popularCards = [];
-    var uniqCategory = [];
+    // var uniqCategory = [];
 
     // set new title
     if (param) {
@@ -125,7 +125,7 @@ class Home extends React.Component {
         }
       }
       popularCards = await axios.get(`${urlApi}/api/goods/popular`);
-      uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
+      // uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
     } catch (e) {
       console.log(e);
     } finally {
@@ -134,7 +134,7 @@ class Home extends React.Component {
         cards: cards.data.goods,
         paginationPageActive: (numberPage && numberPage - 1) || 0,
         popularCards: popularCards.data,
-        uniqCategory: uniqCategory.data
+        // uniqCategory: uniqCategory.data
       })
     }
   }
@@ -143,9 +143,11 @@ class Home extends React.Component {
     return (
       <div>
         <MenuInfoSection/>
-        {this.state.uniqCategory && this.state.uniqCategory.length
-          ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
-          : null}
+
+        {/*{this.state.uniqCategory && this.state.uniqCategory.length*/}
+          {/*? <TagsMainSection uniqCategory={this.state.uniqCategory}/>*/}
+          {/*: null}*/}
+
         {this.state.cards && this.state.cards.length
           ? <CardsSection count={this.state.count} cards={this.state.cards}/>
           : null}
