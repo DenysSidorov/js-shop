@@ -5,6 +5,7 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import st from './mainMenu.less';
 import {Link, NavLink} from 'react-router-dom';
 import MenuCart from '../modules/MenuCart';
+import CategoryMenu from "./category-menu/CategoryMenu";
 class MainMenu extends React.Component {
     render() {
 
@@ -26,6 +27,7 @@ class MainMenu extends React.Component {
                                 {/*</div>*/}
                             {/*</div>*/}
                             <div className="menu">
+                                <CategoryMenu/>
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">

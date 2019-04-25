@@ -40,7 +40,7 @@ class WrapperApp extends React.Component {
                 <div className="content">
                     {/*<ConfirmBlock/>*/}
                     <MainMenu {...this.props}/>
-                    <CategoryMenu/>
+                    {/*<CategoryMenu/>*/}
                     <MainContent {...this.props}>
                         <main>
                                 <Switch key={location.key} location={location}>

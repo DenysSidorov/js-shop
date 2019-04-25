@@ -37,184 +37,183 @@ class CategoryMenu extends React.Component {
 
   render() {
     return (
-      <div className="categoryMenu fullWidth left">
-        <div className="container">
-          <div className="menu">
-            <MenuBodyWrapper
-              handleShowMenu={this.handleShowMenu}
-              handleClickOutside={this.handleClickOutside}
-            />
-            {/*<div className="menu_header" onClick={this.handleShowMenu}>*/}
-              {/*<span>КАТАЛОГ ТОВАРОВ</span>*/}
-              {/*<i className="fa fa-bars"></i>*/}
-            {/*</div>*/}
-            <ReactCSSTransitionGroup
-              transitionName="rdAppear"
-              transitionEnterTimeout={250}
-              transitionLeaveTimeout={250}
-              transitionAppearTimeout={250}
-              transitionAppear
-            >
-              {this.state.isShowMenu &&
-              <ul className="menu_body">
+      // <div className="categoryMenu fullWidth left">
+      // <div className="container">
 
-                <li className="menu_body-item">
-                  <a className="menu_body-item_a">
-                    <i className="fa fa-plane menu_body-item_ico"></i>
-                    <span className="menu_body-item_text">Птицы</span>
-                    <span className="menu_body-item_count">
+      <div className="categoryMenuWr">
+        <MenuBodyWrapper
+          handleShowMenu={this.handleShowMenu}
+          handleClickOutside={this.handleClickOutside}
+        />
+        {/*<div className="menu_header" onClick={this.handleShowMenu}>*/}
+        {/*<span>КАТАЛОГ ТОВАРОВ</span>*/}
+        {/*<i className="fa fa-bars"></i>*/}
+        {/*</div>*/}
+        <ReactCSSTransitionGroup
+          transitionName="rdAppear"
+          transitionEnterTimeout={250}
+          transitionLeaveTimeout={250}
+          transitionAppearTimeout={250}
+          transitionAppear
+        >
+          {this.state.isShowMenu &&
+          <ul className="menu_body">
+
+            <li className="menu_body-item">
+              <a className="menu_body-item_a">
+                <i className="fa fa-plane menu_body-item_ico"></i>
+                <span className="menu_body-item_text">Птицы</span>
+                <span className="menu_body-item_count">
                     <span className="wrap">
                       <span>5</span>
                     </span>
                   </span>
-                  </a>
-                  <ul className="menu_body-sub2">
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+              </a>
+              <ul className="menu_body-sub2">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b1.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Дикий павлин</span>
-                      </a>
-                    </li>
+                    <span className="menu_body-sub2_item_text">Дикий павлин</span>
+                  </a>
+                </li>
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b3.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Смешные подростки</span>
+                    <span className="menu_body-sub2_item_text">Смешные подростки</span>
 
-                      </a>
-                    </li>
+                  </a>
+                </li>
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b2.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Заботливые Ара</span>
+                    <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
-                      </a>
-                    </li>
-
-                    <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
-
-                  </ul>
+                  </a>
                 </li>
 
-                <li className="menu_body-item">
-                  <a className="menu_body-item_a">
-                    <i className="fa fa-music menu_body-item_ico"></i>
-                    <span className="menu_body-item_text">Музыка</span>
-                    <span className="menu_body-item_count">
+                <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
+
+              </ul>
+            </li>
+
+            <li className="menu_body-item">
+              <a className="menu_body-item_a">
+                <i className="fa fa-music menu_body-item_ico"></i>
+                <span className="menu_body-item_text">Музыка</span>
+                <span className="menu_body-item_count">
                     <span className="wrap">
                       <span>17</span>
                     </span>
                   </span>
-                  </a>
-                  <ul className="menu_body-sub2">
+              </a>
+              <ul className="menu_body-sub2">
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b3.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Смешные подростки</span>
+                    <span className="menu_body-sub2_item_text">Смешные подростки</span>
 
-                      </a>
-                    </li>
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                  </a>
+                </li>
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b1.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Дикий павлин</span>
-                      </a>
-                    </li>
+                    <span className="menu_body-sub2_item_text">Дикий павлин</span>
+                  </a>
+                </li>
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b2.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Заботливые Ара</span>
+                    <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
-                      </a>
-                    </li>
-
-                    <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
-
-
-                  </ul>
+                  </a>
                 </li>
 
-                <li className="menu_body-item">
-                  <a className="menu_body-item_a">
-                    <i className="fa fa-fire menu_body-item_ico"></i>
-                    <span className="menu_body-item_text">Сафари</span>
-                    <span className="menu_body-item_count">
+                <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
+
+
+              </ul>
+            </li>
+
+            <li className="menu_body-item">
+              <a className="menu_body-item_a">
+                <i className="fa fa-fire menu_body-item_ico"></i>
+                <span className="menu_body-item_text">Сафари</span>
+                <span className="menu_body-item_count">
                     <span className="wrap">
                       <span>138</span>
                     </span>
                   </span>
-                  </a>
-                  <ul className="menu_body-sub2">
+              </a>
+              <ul className="menu_body-sub2">
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b2.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Заботливые Ара</span>
+                    <span className="menu_body-sub2_item_text">Заботливые Ара</span>
 
-                      </a>
-                    </li>
+                  </a>
+                </li>
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b1.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Дикий павлин</span>
-                      </a>
-                    </li>
+                    <span className="menu_body-sub2_item_text">Дикий павлин</span>
+                  </a>
+                </li>
 
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
+                <li className="menu_body-sub2_item">
+                  <a href="" className="menu_body-sub2_item_a">
                       <span className="menu_body-sub2_item_img">
                       <img src="/img-static/menu/b3.jpg"/>
                     </span>
-                        <span className="menu_body-sub2_item_text">Смешные подростки</span>
+                    <span className="menu_body-sub2_item_text">Смешные подростки</span>
 
-                      </a>
-                    </li>
-
-                    <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
-
-
-                  </ul>
+                  </a>
                 </li>
 
+                <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
 
-              </ul>}
-            </ReactCSSTransitionGroup>
-          </div>
-        </div>
+
+              </ul>
+            </li>
+
+
+          </ul>}
+        </ReactCSSTransitionGroup>
       </div>
+      // </div>
+      // </div>
     )
-
   }
 }
 
-export default CategoryMenu;
-
-class MenuBody extends React.Component{
+class MenuBody extends React.Component {
   handleClickOutside = () => {
     this.props.handleClickOutside();
   }
-  render(){
-    return(
+
+  render() {
+    return (
       <div className="menu_header" onClick={this.props.handleShowMenu}>
         <span>КАТАЛОГ ТОВАРОВ</span>
         <i className="fa fa-bars"></i>
@@ -225,4 +224,5 @@ class MenuBody extends React.Component{
 
 const MenuBodyWrapper = onClickOutside(MenuBody);
 
+export default CategoryMenu;
 // onClickOutside
