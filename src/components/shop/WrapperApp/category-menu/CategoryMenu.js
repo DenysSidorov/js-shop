@@ -5,13 +5,14 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import onClickOutside from 'react-onclickoutside';
 import urlApi from "../../../../api/urlApi";
+import async from "../../helpers/middlewares/async";
 
 
 class CategoryMenu extends React.Component {
   state = {
     isShowMenu: false,
     uniqCategory: [],
-    cacheTopItems: []
+    // cacheTopItems: []
 
 
   }
@@ -54,27 +55,48 @@ class CategoryMenu extends React.Component {
   getTopItemsFromCache = (item) => {// {count: 13, name: "школа"}
     // cacheTopItems = [{count: 33, name: "школа"}, {count: 13, name: "lll"}]
 
-    let topItems = this.state.cacheTopItems;
+    let topItems = this.state.uniqCategory;
     topItems.find((el) => {
       return el.name === item.name;
     })
+
     if (topItems) {
       return topItems;
     } else {
-      const newItems = Array.concat(this.state.cacheTopItems, item);
-      this.setState({cacheTopItems: newItems});
+      // const newItems = Array.concat(this.state.cacheTopItems, item);
+      // this.setState({cacheTopItems: newItems});
 
-      return item;
+      return null;
     }
   }
 
   onMouseEnterItem = (el) => {
-    console.log(el);
-    this.getTopItemsFromCache();
     //  {count: 13, name: "школа"}
+    console.log(el);
+    let goods = this.getTopItemsFromCache(el);
+
+    if (!goods) {
+      this.getTopitems(el);
+    }
+  }
+
+  getTopitems = async (el) => {
+    try {
+      let result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}`);
+
+      if (result.data && Array.isArray(result.data)) {
+        // uniqCategory: [{count: 44, name: "школа"}, {count: 98, name: "школа"}]
+        // cacheTopItems = [{count: 33, name: "школа", topItems: [...]}, {count: 13, name: "lll"}]
+
+        this.setState({cacheTopItems: Array.concat(this.state.cacheTopItems, {...el, topItems: result.data})});
+      }
+    } catch (er) {
+      console.log(er.response || er);
+    }
   }
 
   render() {
+    const {uniqCategory} = this.state;
     return (
       // <div className="categoryMenu fullWidth left">
       // <div className="container">
