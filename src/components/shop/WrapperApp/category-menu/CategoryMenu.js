@@ -10,7 +10,10 @@ import urlApi from "../../../../api/urlApi";
 class CategoryMenu extends React.Component {
   state = {
     isShowMenu: false,
-    uniqCategory: []
+    uniqCategory: [],
+    cacheTopItems: []
+
+
   }
 
   async componentDidMount() {
@@ -48,6 +51,29 @@ class CategoryMenu extends React.Component {
     this.changeMainContainerOpacity('1')
   }
 
+  getTopItemsFromCache = (item) => {// {count: 13, name: "школа"}
+    // cacheTopItems = [{count: 33, name: "школа"}, {count: 13, name: "lll"}]
+
+    let topItems = this.state.cacheTopItems;
+    topItems.find((el) => {
+      return el.name === item.name;
+    })
+    if (topItems) {
+      return topItems;
+    } else {
+      const newItems = Array.concat(this.state.cacheTopItems, item);
+      this.setState({cacheTopItems: newItems});
+
+      return item;
+    }
+  }
+
+  onMouseEnterItem = (el) => {
+    console.log(el);
+    this.getTopItemsFromCache();
+    //  {count: 13, name: "школа"}
+  }
+
   render() {
     return (
       // <div className="categoryMenu fullWidth left">
@@ -73,7 +99,7 @@ class CategoryMenu extends React.Component {
           <ul className="menu_body">
             {
               this.state.uniqCategory.map((el, ind) =>
-                <li className="menu_body-item" key={ind}>
+                <li className="menu_body-item" key={ind} onMouseEnter={() => this.onMouseEnterItem(el)}>
                   <Link
                     className="menu_body-item_a"
                     to={{
@@ -128,48 +154,48 @@ class CategoryMenu extends React.Component {
               )
             }
             {/*<li className="menu_body-item">*/}
-              {/*<a className="menu_body-item_a">*/}
-                {/*<i className="fa fa-plane menu_body-item_ico"></i>*/}
-                {/*<span className="menu_body-item_text">Птицы</span>*/}
-                {/*<span className="menu_body-item_count">*/}
-                    {/*<span className="wrap">*/}
-                      {/*<span>5</span>*/}
-                    {/*</span>*/}
-                  {/*</span>*/}
-              {/*</a>*/}
-              {/*<ul className="menu_body-sub2">*/}
-                {/*<li className="menu_body-sub2_item">*/}
-                  {/*<a href="" className="menu_body-sub2_item_a">*/}
-                      {/*<span className="menu_body-sub2_item_img">*/}
-                      {/*<img src="/img-static/menu/b1.jpg"/>*/}
-                    {/*</span>*/}
-                    {/*<span className="menu_body-sub2_item_text">Дикий павлин</span>*/}
-                  {/*</a>*/}
-                {/*</li>*/}
+            {/*<a className="menu_body-item_a">*/}
+            {/*<i className="fa fa-plane menu_body-item_ico"></i>*/}
+            {/*<span className="menu_body-item_text">Птицы</span>*/}
+            {/*<span className="menu_body-item_count">*/}
+            {/*<span className="wrap">*/}
+            {/*<span>5</span>*/}
+            {/*</span>*/}
+            {/*</span>*/}
+            {/*</a>*/}
+            {/*<ul className="menu_body-sub2">*/}
+            {/*<li className="menu_body-sub2_item">*/}
+            {/*<a href="" className="menu_body-sub2_item_a">*/}
+            {/*<span className="menu_body-sub2_item_img">*/}
+            {/*<img src="/img-static/menu/b1.jpg"/>*/}
+            {/*</span>*/}
+            {/*<span className="menu_body-sub2_item_text">Дикий павлин</span>*/}
+            {/*</a>*/}
+            {/*</li>*/}
 
-                {/*<li className="menu_body-sub2_item">*/}
-                  {/*<a href="" className="menu_body-sub2_item_a">*/}
-                      {/*<span className="menu_body-sub2_item_img">*/}
-                      {/*<img src="/img-static/menu/b3.jpg"/>*/}
-                    {/*</span>*/}
-                    {/*<span className="menu_body-sub2_item_text">Смешные подростки</span>*/}
+            {/*<li className="menu_body-sub2_item">*/}
+            {/*<a href="" className="menu_body-sub2_item_a">*/}
+            {/*<span className="menu_body-sub2_item_img">*/}
+            {/*<img src="/img-static/menu/b3.jpg"/>*/}
+            {/*</span>*/}
+            {/*<span className="menu_body-sub2_item_text">Смешные подростки</span>*/}
 
-                  {/*</a>*/}
-                {/*</li>*/}
+            {/*</a>*/}
+            {/*</li>*/}
 
-                {/*<li className="menu_body-sub2_item">*/}
-                  {/*<a href="" className="menu_body-sub2_item_a">*/}
-                      {/*<span className="menu_body-sub2_item_img">*/}
-                      {/*<img src="/img-static/menu/b2.jpg"/>*/}
-                    {/*</span>*/}
-                    {/*<span className="menu_body-sub2_item_text">Заботливые Ара</span>*/}
+            {/*<li className="menu_body-sub2_item">*/}
+            {/*<a href="" className="menu_body-sub2_item_a">*/}
+            {/*<span className="menu_body-sub2_item_img">*/}
+            {/*<img src="/img-static/menu/b2.jpg"/>*/}
+            {/*</span>*/}
+            {/*<span className="menu_body-sub2_item_text">Заботливые Ара</span>*/}
 
-                  {/*</a>*/}
-                {/*</li>*/}
+            {/*</a>*/}
+            {/*</li>*/}
 
-                {/*<a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>*/}
+            {/*<a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>*/}
 
-              {/*</ul>*/}
+            {/*</ul>*/}
             {/*</li>*/}
           </ul>}
         </ReactCSSTransitionGroup>

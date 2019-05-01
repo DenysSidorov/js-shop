@@ -133,10 +133,64 @@ export async function getUniqCategory(req, resp, next) {
   //   resp.json(goods);
 }
 
+// /categories-with-top-products'
+export async function getCategoriesWithTopProducts(req, resp, next) {
+
+  let result = {};
+  try {
+    // var goods = await Good.distinct('category');
+    // let resMongo = await Order.find({},{_id:false, type: true});
+    let resMongo = await Good.aggregate([
+      { // поиск по критерию
+        $match: {
+          category: {$not: {$size: 0}}
+        }
+      },
+      {$unwind: "$category"}, // разбивает массив на отдельные документы
+      {
+        $group: { // ...
+          _id: {$toLower: '$category'},
+          count: {$sum: 1,}
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          name: "$_id",
+          count: 1,
+        }
+      }
+
+    ]);
+    // console.log(resMongo, 'resMongo');
+    result = resMongo;
+
+  } catch ({message}) {
+    return next({
+      status: 500,
+      message
+    });
+  }
+  resp.json(result);
+  // try {
+  //       var goods = await Good.distinct('category');
+  //   } catch ({message}) {
+  //       return next({
+  //           status: 500,
+  //           message
+  //       });
+  //   }
+  //   resp.json(goods);
+}
+
 export async function getPopular(req, resp, next) {
+  const category = req.query.category;
   try {
     // Your logic
-    var goods = await Good.find().sort('views').limit(7);
+    var goods = await Good
+      .find(category ? { category: {$in: [category]}} : {})
+      .sort('views')
+      .limit(7);
     // var goods = await Good.find({}).limit(6);
     // var goods = await Good.aggregate([
     //   // {cursor: { batchSize: 1024 }},
