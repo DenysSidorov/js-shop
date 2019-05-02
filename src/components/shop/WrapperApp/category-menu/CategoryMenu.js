@@ -72,7 +72,6 @@ class CategoryMenu extends React.Component {
 
   onMouseEnterItem = (el) => {
     //  {count: 13, name: "школа"}
-    console.log(el);
     let goods = this.getTopItemsFromCache(el);
 
     if (!goods) {

@@ -185,6 +185,7 @@ export async function getCategoriesWithTopProducts(req, resp, next) {
 
 export async function getPopular(req, resp, next) {
   const category = req.query.category;
+  // console.log('===========', category);
   try {
     // Your logic
     var goods = await Good
