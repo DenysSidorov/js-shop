@@ -54,14 +54,17 @@ class CategoryMenu extends React.Component {
 
   getTopItemsFromCache = (item) => {// {count: 13, name: "школа"}
     // cacheTopItems = [{count: 33, name: "школа"}, {count: 13, name: "lll"}]
-
-    let topItems = this.state.uniqCategory;
-    topItems.find((el) => {
+    console.log(1);
+    let items = this.state.uniqCategory;
+    let cachedItem = items.find((el) => {
       return el.name === item.name;
     })
+    console.log(1.1, cachedItem);
+    if (cachedItem && !cachedItem.sub2Items) {
+      // {count: 13, name: "школа"}
 
-    if (topItems) {
-      return topItems;
+      console.log(2);
+      this.getTopItems(item);
     } else {
       // const newItems = Array.concat(this.state.cacheTopItems, item);
       // this.setState({cacheTopItems: newItems});
@@ -72,22 +75,34 @@ class CategoryMenu extends React.Component {
 
   onMouseEnterItem = (el) => {
     //  {count: 13, name: "школа"}
-    let goods = this.getTopItemsFromCache(el);
+    this.getTopItemsFromCache(el);
 
-    if (!goods) {
-      this.getTopitems(el);
-    }
+    // if (!goods) {
+    //   this.getTopitems(el);
+    // }
   }
 
-  getTopitems = async (el) => {
+  getTopItems = async (el) => {
     try {
       let result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}`);
-
+      console.log(3);
       if (result.data && Array.isArray(result.data)) {
         // uniqCategory: [{count: 44, name: "школа"}, {count: 98, name: "школа"}]
         // cacheTopItems = [{count: 33, name: "школа", topItems: [...]}, {count: 13, name: "lll"}]
-
-        this.setState({cacheTopItems: Array.concat(this.state.cacheTopItems, {...el, topItems: result.data})});
+        let items = this.state.uniqCategory;
+        console.log(4);
+        items = items.map((item, ind) => {
+          const newItem = {...item};
+          if (el.name === item.name) {
+            newItem.sub2Items = result.data;
+          }
+          return newItem;
+          // return {...el,   sub2Items: result.data}
+        });
+        this.setState({
+          uniqCategory: items,
+          // cacheTopItems: Array.concat(this.state.cacheTopItems, {...el, topItems: result.data})});
+        })
       }
     } catch (er) {
       console.log(er.response || er);
@@ -138,36 +153,29 @@ class CategoryMenu extends React.Component {
                     </span>
                   </span>
                   </Link>
+
                   <ul className="menu_body-sub2">
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
-                      <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b1.jpg"/>
-                    </span>
-                        <span className="menu_body-sub2_item_text">Дикий павлин</span>
-                      </a>
-                    </li>
-
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
-                      <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b3.jpg"/>
-                    </span>
-                        <span className="menu_body-sub2_item_text">Смешные подростки</span>
-
-                      </a>
-                    </li>
-
-                    <li className="menu_body-sub2_item">
-                      <a href="" className="menu_body-sub2_item_a">
-                      <span className="menu_body-sub2_item_img">
-                      <img src="/img-static/menu/b2.jpg"/>
-                    </span>
-                        <span className="menu_body-sub2_item_text">Заботливые Ара</span>
-
-                      </a>
-                    </li>
-
+                    {el.sub2Items &&
+                    el.sub2Items.map((item, ind) =>
+                        <li className="menu_body-sub2_item" key={ind}>
+                          <a href="" className="menu_body-sub2_item_a">
+                            <span className="menu_body-sub2_item_img">
+                              {/*<img src="/img-static/menu/b1.jpg"/>*/}
+                              <img src={`/img-static/${item.photo[0]}`}/>
+                            </span>
+                            <span className="menu_body-sub2_item_text">{item.name}{' '}{item.model}</span>
+                          </a>
+                        </li>
+                    )
+                    }
+                    {/*<li className="menu_body-sub2_item">*/}
+                      {/*<a href="" className="menu_body-sub2_item_a">*/}
+                      {/*<span className="menu_body-sub2_item_img">*/}
+                      {/*<img src="/img-static/menu/b1.jpg"/>*/}
+                    {/*</span>*/}
+                        {/*<span className="menu_body-sub2_item_text">Дикий павлин</span>*/}
+                      {/*</a>*/}
+                    {/*</li>*/}
                     <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
 
                   </ul>
