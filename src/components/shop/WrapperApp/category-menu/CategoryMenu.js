@@ -141,8 +141,8 @@ class CategoryMenu extends React.Component {
                     to={{
                       pathname: '/',
                       search: `?sort=${el.name}`,
-                      hash: '',
-                      state: {fromDashboard: true}
+                      hash: ''
+                      // state: {fromDashboard: true}
                     }}
                   >
                     <i className="fa fa-plane menu_body-item_ico"></i>
@@ -155,8 +155,9 @@ class CategoryMenu extends React.Component {
                   </Link>
 
                   <ul className="menu_body-sub2">
-                    {el.sub2Items &&
-                    el.sub2Items.map((item, ind) =>
+
+                    {el.sub2Items ?
+                      el.sub2Items.map((item, ind) =>
                         <li className="menu_body-sub2_item" key={ind}>
                           <a href="" className="menu_body-sub2_item_a">
                             <span className="menu_body-sub2_item_img">
@@ -166,17 +167,20 @@ class CategoryMenu extends React.Component {
                             <span className="menu_body-sub2_item_text">{item.name}{' '}{item.model}</span>
                           </a>
                         </li>
-                    )
+                      ) :
+                      <div className="sub2MenuSpinner"><i className="fa fa-spinner"></i></div>
                     }
-                    {/*<li className="menu_body-sub2_item">*/}
-                      {/*<a href="" className="menu_body-sub2_item_a">*/}
-                      {/*<span className="menu_body-sub2_item_img">*/}
-                      {/*<img src="/img-static/menu/b1.jpg"/>*/}
-                    {/*</span>*/}
-                        {/*<span className="menu_body-sub2_item_text">Дикий павлин</span>*/}
-                      {/*</a>*/}
-                    {/*</li>*/}
-                    <a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>
+                    <Link
+                      className="menu_body-sub2_item_link"
+                      to={{
+                        pathname: '/',
+                        search: `?sort=${el.name}`,
+                        hash: ''
+                        // state: {fromDashboard: true}
+                      }}
+                    >Посмотреть все...</Link>
+
+                    {/*<a href="/" className="menu_body-sub2_item_link">Посмотреть все...</a>*/}
 
                   </ul>
                 </li>
