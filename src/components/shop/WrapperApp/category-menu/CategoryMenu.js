@@ -84,7 +84,7 @@ class CategoryMenu extends React.Component {
 
   getTopItems = async (el) => {
     try {
-      let result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}`);
+      let result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}&items=10`);
       console.log(3);
       if (result.data && Array.isArray(result.data)) {
         // uniqCategory: [{count: 44, name: "школа"}, {count: 98, name: "школа"}]

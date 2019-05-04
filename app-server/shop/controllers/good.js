@@ -185,13 +185,15 @@ export async function getCategoriesWithTopProducts(req, resp, next) {
 
 export async function getPopular(req, resp, next) {
   const category = req.query.category;
+  let items = req.query.items || 7;
+  items = Number.parseInt(items, 10);
   // console.log('===========', category);
   try {
     // Your logic
     var goods = await Good
       .find(category ? { category: {$in: [category]}} : {})
       .sort('views')
-      .limit(7);
+      .limit(items);
     // var goods = await Good.find({}).limit(6);
     // var goods = await Good.aggregate([
     //   // {cursor: { batchSize: 1024 }},
