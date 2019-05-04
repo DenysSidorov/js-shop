@@ -159,13 +159,13 @@ class CategoryMenu extends React.Component {
                     {el.sub2Items ?
                       el.sub2Items.map((item, ind) =>
                         <li className="menu_body-sub2_item" key={ind}>
-                          <a href="" className="menu_body-sub2_item_a">
+                          <Link to={`/card/${item._id}`} className="menu_body-sub2_item_a">
                             <span className="menu_body-sub2_item_img">
                               {/*<img src="/img-static/menu/b1.jpg"/>*/}
                               <img src={`/img-static/${item.photo[0]}`}/>
                             </span>
                             <span className="menu_body-sub2_item_text">{item.name}{' '}{item.model}</span>
-                          </a>
+                          </Link>
                         </li>
                       ) :
                       <div className="sub2MenuSpinner"><i className="fa fa-spinner"></i></div>
