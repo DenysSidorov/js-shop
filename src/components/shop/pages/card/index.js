@@ -78,9 +78,9 @@ class CardComponent extends React.Component {
           ? <div>
 
             <MainContainerForCard card={this.state.card}/>
-            {this.state.similarCategory && this.state.similarCategory.length
-              ? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/>
-              : null}
+            {/*{this.state.similarCategory && this.state.similarCategory.length*/}
+              {/*? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/>*/}
+              {/*: null}*/}
             {this.state.popularCards && this.state.popularCards.length && this.state.card.length
               ? <ContainerForCardAdditional card={this.state.card}
                                             popularCards={this.state.popularCards}/>
