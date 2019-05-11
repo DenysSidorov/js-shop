@@ -191,6 +191,7 @@ class Orders extends React.Component{
                 {this.state.orders.length ? <table className="tablePanel">
                     <thead>
                     <tr>
+                        <th>Заказ</th>
                         <th>Имя</th>
                         <th>Phone</th>
                         <th>Адрес</th>
@@ -225,6 +226,9 @@ class Orders extends React.Component{
                                 initType = 'Ошибка'
                         }
                         return <tr  title={ord._id} key={ord._id}>
+                            <td  data-label="Заказ">
+                                <span>{ord._id}</span>
+                            </td>
                             <td  data-label="Имя">
                                 <span>{ord.name}</span>
                             </td>
@@ -237,11 +241,11 @@ class Orders extends React.Component{
                             <td data-label="Mail">
                                 <span>{ord.mail}</span>
                             </td>
-                            <td data-label="Оплата"><span>{ord.payment.value}</span></td>
+                            <td data-label="Оплата"><span>{ord.payment ? ord.payment.value : 'No'}</span></td>
                             <td data-label="Доставка"><span>{ord.delivery}</span></td>
                             <td data-label="Товар"><span>{ord.goods.map((el, ind) => {
                                 return <Link className="linkToGood" key={ind} to={`/card/${el._id}`}>{ind > 0 &&
-                                <span>||||</span>} {el.name} {el.model} (кол-во{el.count}) </Link>
+                                <span>____</span>} {el.name} {el.model} ({el.count} шт.) </Link>
                             })}</span></td>
                             <td data-label="Создан"><span>{new Date(ord.createdAt).toLocaleString()}</span></td>
                             <td data-label="Звершен"><span>{ord.finishedAt}</span></td>
