@@ -199,7 +199,7 @@ var config = {
     // генерит json со всеми зависямостями
     // если html всегда статичен (SPA), можно использовать другой плагин(HtmlWebpackPlugin), который сам создает
     // index.ejs с уже подключенными бандлами
-    // https://www.youtube.com/watch?v=kxxFQZx3KOk
+    // https://www.youtube.com/watch?v=kxxFQZx3KsOk
     new AssetsPlugin({
       filename: 'assets.json',
       path: __dirname + '/app-server', // где его хранить
