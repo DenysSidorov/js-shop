@@ -44,7 +44,7 @@ class WrapperApp extends React.Component {
                     <MainContent {...this.props}>
                         <main>
                                 <Switch key={location.key} location={location}>
-                                    <Route exact path="/" component={Home}/>
+                                    <Route exact path="/shop" component={Home}/>
                                     <Route path="/about-us" component={AboutUs}/>
                                     <Route path="/payment-and-delivery" component={PaymentAndDelivery}/>
                                     <Route path="/cashback-and-exchange" component={CashbackAndExchange}/>

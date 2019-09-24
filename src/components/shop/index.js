@@ -5,7 +5,9 @@ import axios from "axios";
 import {Route, Switch} from "react-router-dom";
 import RouteAuth from "../shop/helpers/RouteAuth";
 import Panel from '../shop/panel/index';
+import Landing from '../shop/pages/landing';
 import NotificationsWrapper from '../shop/helpers/NotificationsWrapper';
+import Home from "./pages/Home";
 
 class App extends React.Component {
     constructor(props){
@@ -40,6 +42,7 @@ class App extends React.Component {
 
 
                 <Switch>
+                  <Route exact path="/" component={Landing}/>
                     <RouteAuth path="/panel" component={Panel}/>
                     <WrapperApp {...this.props}/>
                 </Switch>
