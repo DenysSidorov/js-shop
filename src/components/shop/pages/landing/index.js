@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import './index.less';
 import {setMetaTag, setTitle} from "../../helpers/lib/utils";
 import BuyBtn from './buy-btn';
@@ -45,6 +46,9 @@ class Landing extends React.Component {
             <a href="/#yorPhoto" className="header_item">
               <span>Ваше фото</span>
             </a>
+            <Link to={`/shop`}className="header_item header_item_shop">
+              <span>Магазин</span>
+            </Link>
           </div>
           <div className="header_number">+380636877613</div>
           <div className="header_mobMenu">
