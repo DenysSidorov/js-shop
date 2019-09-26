@@ -139,7 +139,7 @@ class CategoryMenu extends React.Component {
                   <Link
                     className="menu_body-item_a"
                     to={{
-                      pathname: '/',
+                      pathname: '/shop',
                       search: `?sort=${el.name}`,
                       hash: ''
                       // state: {fromDashboard: true}
@@ -173,7 +173,7 @@ class CategoryMenu extends React.Component {
                     <Link
                       className="menu_body-sub2_item_link"
                       to={{
-                        pathname: '/',
+                        pathname: '/shop',
                         search: `?sort=${el.name}`,
                         hash: ''
                         // state: {fromDashboard: true}

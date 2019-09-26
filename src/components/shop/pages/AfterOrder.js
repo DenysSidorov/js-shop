@@ -20,7 +20,7 @@ class AfterOrder extends React.Component {
         && <p>Номер вашего заказа:
           <span style={{color: 'green'}}>{this.props.history.location.state}</span>
         </p>}
-        <p><Link to="/" style={{color: 'blue'}}>На главную</Link></p>
+        <p><Link to="/shop" style={{color: 'blue'}}>На главную</Link></p>
       </div>
     )
 

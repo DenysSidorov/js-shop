@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-// import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+// import ReactCSSTransitionGroup from 'react/libs/ReactCSSTransitionGroup';
 // import  CSSTransitionGroup  from 'react-transition-group'
 // TODO connect animation
 

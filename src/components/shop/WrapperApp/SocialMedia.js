@@ -12,7 +12,7 @@ class SocialMedia extends React.Component {
     </span>
                     <ul className="fab-buttons">
                         <li className="fab-buttons__item">
-                            <Link to="/" href="#" className="fab-buttons__link" data-tooltip="Главная">
+                            <Link to="/shop" href="#" className="fab-buttons__link" data-tooltip="Главная">
                                 {/*<i className="icon-material icon-material_fb"></i>*/}
                                 <i className="fa fa-home main-cart__ico" ></i>
                             </Link>

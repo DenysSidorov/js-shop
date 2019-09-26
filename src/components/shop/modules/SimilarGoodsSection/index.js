@@ -141,7 +141,7 @@ class SimilarGoodsSection extends React.Component {
           {cards.length
             ? <div className="goToAllGoodsFromSimilar">
               <Link to={{
-                pathname: '/',
+                pathname: '/shop',
                 search: '?sort=main',
                 hash: '',
                 state: {relo: true}

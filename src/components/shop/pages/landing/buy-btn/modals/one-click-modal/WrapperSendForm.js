@@ -5,7 +5,7 @@ import React from "react";
 // import {pushToCart} from '../../../../reducers/cart';
 import {Link} from "react-router-dom";
 import OneClickModal from "../modals/one-click-modal/index";
-// import {checkTextLength} from "../../helpers/lib/utils";
+// import {checkTextLength} from "../../helpers/libs/utils";
 class CardMainPage extends React.Component {
 
   state = {

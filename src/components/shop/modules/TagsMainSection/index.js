@@ -8,7 +8,7 @@ class TagsMainSection extends React.Component {
                 <div className="container">
                     <div className="themeItemsblock">
                         <Link to={{
-                            pathname: '/',
+                            pathname: '/shop',
                             search: '?sort=main',
                             hash: '',
                             state: {fromDashboard: true}
@@ -19,7 +19,7 @@ class TagsMainSection extends React.Component {
 
                         {this.props.uniqCategory.map((el, index) =>
                             <Link key={index} to={{
-                                pathname: '/',
+                                pathname: '/shop',
                                 search: `?sort=${el.name}`,
                                 hash: '',
                                 state: {fromDashboard: true}
