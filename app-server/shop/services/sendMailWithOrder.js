@@ -18,7 +18,8 @@ export const sendMailWithOrder = ({email = [], order}) => {
 
 // setup e-mail data with unicode symbols
   let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
-  email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
+  // email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
+  email = ['000scorpions000@gmail.com', 'doshki.craft@gmail.com'];
   console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
   let html = `<div>
             <p>Name: <b>${order.name}</b></p>
@@ -32,10 +33,13 @@ export const sendMailWithOrder = ({email = [], order}) => {
         </div>`;
   // console.log('-----', html);
   let mailOptions = {
-    from: '"Online-shop" <1qazxsw23edccde3@gmail.com>', // sender address
-    // to: "000scorpions0000@gmail.com, 1qazxsw23edccde3@gmail.com", // list of receivers
+    // from: '"Online-shop" <1qazxsw23edccde3@gmail.com>', // sender address
+    from: "Магазин-фабрика doshki.com", // sender address
+    // to: "000scorpions0000@gmail.com, 1qazxsw23edccde3@gmail.com", // list
+    // of receivers
     to: email.join(', '),
-    subject: `Заказ товара ${order._id}`,
+    // subject: `Заказ товара ${order._id}`,
+    subject: `Заказ товара на doshki.com`,
     text: 'На сайте был совершен заказ товара:', // plaintext body
     html // html body
   };

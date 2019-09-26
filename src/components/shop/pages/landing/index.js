@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import {connect} from "react-redux";
 import './index.less';
 import {setMetaTag, setTitle} from "../../helpers/lib/utils";
+import BuyBtn from './buy-btn';
 
 class Landing extends React.Component {
 
@@ -25,9 +26,9 @@ class Landing extends React.Component {
   render() {
     return (
       <Fragment>
-        <div id="modal-root" style="z-index: 99999999"></div>
+        <div id="modal-root" style={{zIndex: 99999999}}></div>
         <div className="header fullWidth">
-          <img src="/static-img/logo.png" alt="" className="header_logo"/>
+          <img src="/img-static/land/logo.png" alt="" className="header_logo"/>
           <div className="header_items" id="header_items">
             <a href="/#howWeMake" className="header_item">
               <span>Примеры</span>
@@ -47,12 +48,13 @@ class Landing extends React.Component {
           </div>
           <div className="header_number">+380636877613</div>
           <div className="header_mobMenu">
-            <img src="/static-img/hum.png" alt="" id="header_mobMenu"/>
+            <img src="/img-static/land/hum.png" alt="" id="header_mobMenu"/>
           </div>
 
         </div>
         <div className="hiBlock fullWidth backgroundImage"
-             style="background-image:url('/static-img/mainPage.jpg')"
+             // style="background-image:url('/img-static/mainPage.jpg')"
+             style={{backgroundImage: `url('/img-static/land/mainPage.jpg')`}}
         >
           <div className="hiBlock_content container">
             <h1 className="hiBlock_content_h1">Loft картины на досках</h1>
@@ -73,7 +75,9 @@ class Landing extends React.Component {
                       {/* <div class="callUs_btn" id="callUs_btn">*/}
                       {/* <span>Заказать</span>*/}
                       {/* </div>*/}
-                <div className="buyNowContBodyTextContent2_cont" id="buyNow4"></div>
+                <div className="buyNowContBodyTextContent2_cont" id="buyNow4">
+                  <BuyBtn text={'Заказать'}/>
+                </div>
               </div>
             </div>
 
@@ -102,7 +106,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Подарок для близких</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/2.jpg" alt="Подарок для близких"/>
+                       src="img-static/land/2.jpg" alt="Подарок для близких"/>
                 <div className="howWeMake_blocks_item_desc">Не знаете что подарить? Хотите выделится и
                   не покупать один из сотни заезженных подарков, пылящихся на полках магазинов?
                   Глядя на картины из дерева, близкие будут вспоминать вас и радоваться.
@@ -111,7 +115,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Картины для интерьера</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/1_1.jpg" alt="Картины для интерьера"/>
+                       src="img-static/land/1_1.jpg" alt="Картины для интерьера"/>
                 <div className="howWeMake_blocks_item_desc">Деревянные картины из натурального материала
                   всегда будут гармонично и стильно вписываться в любом помещении. Подчеркнут ваш
                   вкус и любовь к природе.
@@ -121,7 +125,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Для заведений и офисов</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/3.jpg" alt="Картины на дереве для заведений и офисов"/>
+                       src="img-static/land/3.jpg" alt="Картины на дереве для заведений и офисов"/>
                 <div className="howWeMake_blocks_item_desc">Хотите удивить своих клиентов и сотрудников
                   яркими и со вкусом подобранными изображениями, тогда мы вам поможем.
                 </div>
@@ -132,54 +136,56 @@ class Landing extends React.Component {
         </div>
         <div className="examplesImages fullWidth">
                 {/* <div style="height:400px;">*/}
-                {/* <img src="/static-img/81.jpg"/>*/}
+                {/* <img src="/img-static/land/81.jpg"/>*/}
                 {/* </div>*/}
           <div className="examplesImages_item">
-            <img src="/static-img/pre1.jpg" alt="Картины на дереве в Украине"/>
+            <img src="/img-static/land/pre1.jpg" alt="Картины на дереве в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre2.JPG" alt="Картины на дереве в Украине"/>
+            <img src="/img-static/land/pre2.JPG" alt="Картины на дереве в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre3.JPG" alt="Картины на дереве в Украине"/>
+            <img src="/img-static/land/pre3.JPG" alt="Картины на дереве в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre4.JPG" alt="Картины на дереве в Украине"/>
+            <img src="/img-static/land/pre4.JPG" alt="Картины на дереве в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre5.jpg" alt="Картины на дереве в Украине"/>
+            <img src="/img-static/land/pre5.jpg" alt="Картины на дереве в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre6.jpg" alt="Картины на досках в Украине"/>
+            <img src="/img-static/land/pre6.jpg" alt="Картины на досках в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre7.jpg" alt="Картины на досках в Украине"/>
+            <img src="/img-static/land/pre7.jpg" alt="Картины на досках в Украине"/>
           </div>
           <div className="examplesImages_item">
-            <img src="/static-img/pre8.jpg" alt="Картины на досках в Украине"/>
+            <img src="/img-static/land/pre8.jpg" alt="Картины на досках в Украине"/>
           </div>
-          {/* <img src="/static-img/pre9.jpg"/>-->*/}
-          {/* <img src="/static-img/pre10.JPG"/>-->*/}
-          {/* <img src="/static-img/pre11.jpg"/>-->*/}
-          {/* <img src="/static-img/pre12.jpg"/>-->*/}
+          {/* <img src="/img-static/pre9.jpg"/>-->*/}
+          {/* <img src="/img-static/pre10.JPG"/>-->*/}
+          {/* <img src="/img-static/pre11.jpg"/>-->*/}
+          {/* <img src="/img-static/pre12.jpg"/>-->*/}
         </div>
         <a name="prep"></a>
         <div className="buyNow2 fullWidth backgroundImage mt60"
-             style="background-image:url('/static-img/buy3.jpg')"
+             // style="background-image:url('/img-static/buy3.jpg')"
+             style={{backgroundImage: `url('/img-static/land/buy3.jpg')`}}
         >
 
           <div className="buyNowContBodyText2">
             <h2 className="buyNowContBodyTextTitle2">ПОДАРОК К ПРАЗДНИКУ</h2>
             <div className="buyNowContBodyTextContent2_cont" id="buyNow1">
+              <BuyBtn/>
               {/* <div class="buyNowContBodyTextContent2" >-->*/}
               {/* <div class="buyNow2_arrow">-->*/}
-              {/* <img src="/static-img/red-arrow.png" alt=""/>-->*/}
+              {/* <img src="/img-static/red-arrow.png" alt=""/>-->*/}
               {/* </div>-->*/}
               {/* <span>КУПИТЬ</span>-->*/}
               {/* </div>-->*/}
             </div>
           </div>
-          {/* <img src="/static-img/buy2.jpg">*/}
+          {/* <img src="/img-static/buy2.jpg">*/}
         </div>
         <div className="howWeMake fullWidth">
           <div className="container">
@@ -193,7 +199,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Ручная обработка</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/DR1.jpg"/>
+                       src="img-static/land/DR1.jpg"/>
                 <div className="howWeMake_blocks_item_desc">Отобранная сосна проходит ручной процесс
                   распила и брошировки, что придает ей натуральность, уникальность и
                   долговечность. Изделия обрабатываются лаком и маслами для защиты.
@@ -202,7 +208,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Нанесение картинки</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/DR22.jpg"/>
+                       src="img-static/land/DR22.jpg"/>
                 <div className="howWeMake_blocks_item_desc">
                   Отточенным многолетним опытом проб и ошибок способом мы наносим изображение на
                   дерево, закрепляем его и подготавливаем к следующему этапу.
@@ -211,7 +217,7 @@ class Landing extends React.Component {
               <div className="howWeMake_blocks_item">
                 <h3 className="howWeMake_blocks_item_title">Лак, крепления, упаковка</h3>
                 <img className="howWeMake_blocks_item_img"
-                       src="static-img/DR3.jpg"/>
+                       src="img-static/land/DR3.jpg"/>
                 <div className="howWeMake_blocks_item_desc">
                   После всех работ, мы покрываем картину лаком, прокрашиваем и защищаем обратную
                   сторону, делаем изображение состаренным и реалистичным. Затем упаковываем и
@@ -223,7 +229,7 @@ class Landing extends React.Component {
 
         </div>
         <div className="examplesContBody">
-          <img src="/static-img/111.jpg" alt="Укрианские картины на досках"/>
+          <img src="/img-static/land/111.jpg" alt="Укрианские картины на досках"/>
             <div className="examplesContBodyText">
               <h2 className="examplesContBodyTextTitle">Рельеф дерева</h2>
               <div className="examplesContBodyTextContent">
@@ -241,11 +247,11 @@ class Landing extends React.Component {
               презентабельный вид, делают нашу упаковку надежной и красивой.
             </div>
           </div>
-          <img src="/static-img/2222.jpg" alt="Картрны на дереве"/>
+          <img src="/img-static/land/2222.jpg" alt="Картрны на дереве"/>
 
         </div>
         <div className="examplesContBody">
-          <img src="/static-img/333.jpg"/>
+          <img src="/img-static/land/333.jpg"/>
             <div className="examplesContBodyText">
               <h2 className="examplesContBodyTextTitle">Сочность оттенков</h2>
               <div className="examplesContBodyTextContent"> Мы используем японские технологи для максимальной
@@ -266,11 +272,11 @@ class Landing extends React.Component {
             </div>
             <div className="yourPhoto_examples">
               {/* <div class="yourPhoto_item">-->*/}
-              {/* <img src="/static-img/ex1.jpg" alt="">-->*/}
+              {/* <img src="/img-static/ex1.jpg" alt="">-->*/}
               {/* </div>-->*/}
               <div className="grid yourPhoto_item">
                 <figure className="effect-bubba">
-                  <img src="/static-img/m1.jpg" alt="Картины на досках Украина"/>
+                  <img src="/img-static/land/m1.jpg" alt="Картины на досках Украина"/>
                   <figcaption>
                     <h2>Ваше <span>Фото</span></h2>
                     <p>Загрузите изображение</p>
@@ -279,7 +285,7 @@ class Landing extends React.Component {
               </div>
               <div className="grid yourPhoto_item">
                 <figure className="effect-bubba">
-                  <img src="/static-img/m2.jpg" alt="Картины на досках Украина"/>
+                  <img src="/img-static/land/m2.jpg" alt="Картины на досках Украина"/>
                   <figcaption>
                     <h2>Изготовление <span>картины</span></h2>
                     <p>В минимальные сроки</p>
@@ -289,7 +295,7 @@ class Landing extends React.Component {
 
               <div className="grid yourPhoto_item">
                 <figure className="effect-bubba">
-                  <img src="/static-img/m3.jpg" alt="Картины на досках Украина"/>
+                  <img src="/img-static/land/m3.jpg" alt="Картины на досках Украина"/>
                   <figcaption>
                     <h2>Супер <span>Результат</span></h2>
                     <p>Качество мы гарантируем</p>
@@ -301,9 +307,10 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="processGetting fullWidth backgroundImage"
-             style="background-image:url('/static-img/top-image-4.jpg')"
+             // style="background-image:url('/img-static/top-image-4.jpg')"
+             style={{backgroundImage: `url('/img-static/land/top-image-4.jpg')`}}
         >
-          {/* <img src="/static-img/tools3.png" alt=""-->*/}
+          {/* <img src="/img-static/tools3.png" alt=""-->*/}
           {/* class="processGetting_block_right_tools">-->*/}
           <div className="container">
             <h2 className="processGetting_title">
@@ -358,20 +365,22 @@ class Landing extends React.Component {
                       <li>- Эмоции от приятного подарка</li>
                     </ul>
                   </div>
-                  <img src="/static-img/ex.png" className="processGetting_block_left_item_img"
+                  <img src="/img-static/land/ex.png" className="processGetting_block_left_item_img"
                          alt="Деревеные картины"/>
                 </div>
               </div>
               <div className="processGetting_block_center"></div>
               <div className="processGetting_block_right">
-                <div className="buyNowContBodyTextContent2_cont" id="buyNow5"></div>
+                <div className="buyNowContBodyTextContent2_cont" id="buyNow5">
+                  <BuyBtn text={'Бесплатная консультанция'}/>
+                </div>
                     {/* <div class="processGetting_block_right_btn">-->*/}
                     {/* <div class="buyNow2_arrow">-->*/}
-                    {/* <img src="/static-img/red-arrow.png" alt=""/>-->*/}
+                    {/* <img src="/img-static/red-arrow.png" alt=""/>-->*/}
                     {/* </div>-->*/}
                     {/* <span>Бесплатная консультанция</span>-->*/}
                     {/* </div>-->*/}
-                    {/* <img class="processGetting_block_right_back" src="/static-img/backLitle.png" alt="">-->*/}
+                    {/* <img class="processGetting_block_right_back" src="/img-static/backLitle.png" alt="">-->*/}
               </div>
             </div>
           </div>
@@ -382,7 +391,7 @@ class Landing extends React.Component {
             <h2 className="questions_title">Часто задаваемые вопросы:</h2>
             <ul className="accordion">
               <li className="accordion_item">
-                <input type="checkbox" className="accordion_toggle" id="toggle-05" checked hidden/>
+                <input type="checkbox" className="accordion_toggle" id="toggle-05" checked readOnly hidden/>
                   <label className="accordion_trigger" htmlFor="toggle-05">Гниют ли доски?</label>
                   <div className="accordion_target">
                     <p>
@@ -392,7 +401,7 @@ class Landing extends React.Component {
                   </div>
               </li>
               <li className="accordion_item">
-                <input type="checkbox" className="accordion_toggle" id="toggle-06" checked hidden/>
+                <input type="checkbox" className="accordion_toggle" id="toggle-06" checked readOnly hidden/>
                   <label className="accordion_trigger" htmlFor="toggle-06">Как происходит перенос
                     изображения?</label>
                   <div className="accordion_target">
@@ -467,22 +476,25 @@ class Landing extends React.Component {
 
         </div>
         <div className="buyNow2 fullWidth backgroundImage"
-             style="background-image:url('/static-img/buy1.jpg')"
+             // style="background-image:url('/img-static/buy1.jpg')"
+             style={{backgroundImage: `url('/img-static/land/buy1.jpg')`}}
         >
 
           <div className="buyNowContBodyText2">
             <h2 className="buyNowContBodyTextTitle2">ПОДАРОК ВТОРОЙ ПОЛОВИНЕ</h2>
-            <div className="buyNowContBodyTextContent2_cont" id="buyNow2"></div>
+            <div className="buyNowContBodyTextContent2_cont" id="buyNow2">
+              <BuyBtn/>
+            </div>
                   {/* <div class="buyNowContBodyTextContent2">-->*/}
                   {/* <div class="buyNow2_arrow">-->*/}
-                  {/* <img src="/static-img/red-arrow.png" alt=""/>-->*/}
+                  {/* <img src="/img-static/red-arrow.png" alt=""/>-->*/}
                   {/* </div>-->*/}
                   {/* <span>КУПИТЬ</span>-->*/}
                   {/* </div>-->*/}
           </div>
-          {/* <img src="/static-img/buy2.jpg">-->*/}
+          {/* <img src="/img-static/buy2.jpg">-->*/}
         </div>
-        <img src="/static-img/tt.png" className="papeImages" alt="Украина, картины на досках и дереве"/>
+        <img src="/img-static/land/tt.png" className="papeImages" alt="Украина, картины на досках и дереве"/>
           <a name="price"></a>
           <div className="price">
             <div className="price_container">
@@ -574,20 +586,23 @@ class Landing extends React.Component {
             </div>
           </div>
           <div className="buyNow2 fullWidth backgroundImage"
-               style="background-image:url('/static-img/buy2.jpg')"
+               // style="background-image:url('/img-static/buy2.jpg')"
+               style={{backgroundImage: `url('/img-static/land/buy2.jpg')`}}
           >
 
             <div className="buyNowContBodyText2">
               <h2 className="buyNowContBodyTextTitle2">ПОДАРОК КОЛЛЕГЕ ИЛИ БОССУ</h2>
-              <div className="buyNowContBodyTextContent2_cont" id="buyNow3"></div>
+              <div className="buyNowContBodyTextContent2_cont" id="buyNow3">
+                <BuyBtn/>
+              </div>
                   {/* <div class="buyNowContBodyTextContent2">-->*/}
                   {/* <div class="buyNow2_arrow">-->*/}
-                  {/* <img src="/static-img/red-arrow.png" alt=""/>-->*/}
+                  {/* <img src="/img-static/red-arrow.png" alt=""/>-->*/}
                   {/* </div>-->*/}
                   {/* <span>КУПИТЬ</span>-->*/}
                   {/* </div>-->*/}
             </div>
-            {/* <img src="/static-img/buy2.jpg">-->*/}
+            {/* <img src="/img-static/buy2.jpg">-->*/}
           </div>
           <div className="socBlock">
             <h2 className="socBlock_title">
@@ -595,23 +610,23 @@ class Landing extends React.Component {
             </h2>
             <div className="socBlock_cont">
               <div className="socBlock_facebook">
-                <img src="/static-img/facebook.png" alt="Картины на досках facebook"/>
+                <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>
               </div>
               <div className="socBlock_inst">
                 <div className="buyNow2_arrow">
-                  <img src="/static-img/red-arrow.png" alt=""/>
+                  <img src="/img-static/land/red-arrow.png" alt=""/>
                 </div>
-                <img src="/static-img/inst.png" alt="Картины на досках instagram"/>
+                <img src="/img-static/land/inst.png" alt="Картины на досках instagram"/>
               </div>
               <div className="socBlock_youtube">
-                <img src="/static-img/you.png" alt="Картины на досках youtube"/>
+                <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>
               </div>
             </div>
 
           </div>
           <div className="buyNowBlock fullWidth backgroundImage"
-               style="background-image:url('/static-img/slide_sosd5.jpg')"
-
+               // style="background-image:url('/img-static/slide_sosd5.jpg')"
+               style={{backgroundImage: `url('/img-static/land/slide_sosd5.jpg')`}}
           >
             <div className="buyNowBlock_container">
               Мы клиенто-ориентированная мастерская! Каждый второй человек приходит к нам повторно. Это
@@ -621,10 +636,10 @@ class Landing extends React.Component {
             </div>
           </div>
           <div className="orangeBlack">
-            <img className="orangeBlack_body" src="/static-img/orange.png" alt="Оранжевая полоса"/>
+            <img className="orangeBlack_body" src="/img-static/land/orange.png" alt="Оранжевая полоса"/>
           </div>
           <div className="advantagesBlock">
-            <img src="/static-img/tools2.png" alt=""
+            <img src="/img-static/land/tools2.png" alt=""
                  className="advantagesBlock_tools"/>
               <div className="advantagesBlock_container">
                 <div className="advantagesBlock_list">
@@ -656,8 +671,8 @@ class Landing extends React.Component {
               <img className="advantagesBlock_girl" src=""/>
           </div>
           <div className="daBlock fullWidth"
-               style="background-image:url('/static-img/sd5.jpg')"
-
+               // style="background-image:url('/img-static/sd5.jpg')"
+               style={{backgroundImage: `url('/img-static/land/sd5.jpg')`}}
           >
             <div className="daBlock_container">
               <h2 className="daBlock_title">
@@ -667,7 +682,9 @@ class Landing extends React.Component {
               </h2>
               <div className="daBlock_desc">Не знаете что из этого выйдет? Довертесь нашим дизайнерам!</div>
               <div className="daBlock_btn">
-                <div className="buyNowContBodyTextContent2_cont" id="buyNow6"></div>
+                <div className="buyNowContBodyTextContent2_cont" id="buyNow6">
+                  <BuyBtn /*showFileUpload={true}*/ text={'Бесплатная визуализация'}/>
+                </div>
                     {/* <div class="daBlock_btn_cont">-->*/}
                     {/* <span>Бесплатная визуализация</span>-->*/}
                     {/* </div>-->*/}
@@ -677,16 +694,16 @@ class Landing extends React.Component {
           <div className="socBlock">
             <div className="socBlock_cont">
               <div className="socBlock_facebook">
-                <img src="/static-img/facebook.png" alt="Картины на досках facebook"/>
+                <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>
               </div>
               <div className="socBlock_inst">
                 <div className="buyNow2_arrow">
-                  <img src="/static-img/red-arrow.png" alt=""/>
+                  <img src="/img-static/land/red-arrow.png" alt=""/>
                 </div>
-                <img src="/static-img/inst.png" alt="Картины на досках instagram"/>
+                <img src="/img-static/land/inst.png" alt="Картины на досках instagram"/>
               </div>
               <div className="socBlock_youtube">
-                <img src="/static-img/you.png" alt="Картины на досках youtube"/>
+                <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>
               </div>
             </div>
 
@@ -721,7 +738,7 @@ class Landing extends React.Component {
                     <a href=""></a>
                   </div>
                   <div className="bottomBlock_itemIimg_wr">
-                    <img src="/static-img/logo.png"
+                    <img src="/img-static/land/logo.png"
                          alt="" className="bottomBlock_itemIimg"/>
                   </div>
 
