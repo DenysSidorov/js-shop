@@ -1,5 +1,6 @@
 import React from "react";
 import Gallery from "../../modules/image-gallery";
+// import Gallery2 from "../../modules/gallery2";
 import "./mainContainerForCard.less";
 import Confirm from "../../WrapperApp/ConfirmBlock";
 import {bindActionCreators} from "redux";
@@ -67,13 +68,14 @@ class MainContainerForCard extends React.Component {
             <div className="mainContainerForCard">
                 <div className="mainContainerForCard__imageBlock">
                     <div className="mainContainerForCard__imageBlock_viewComponent">
-                        <div style={{width: '95%', height: '500px'}}>
+                        {/*<Gallery2/>*/}
+                         <div style={{width: '95%', height: '500px'}}>
                             <Gallery
                                 items={images}
                                 slideOnThumbnailHover={true}
                                 autoPlay={true}
                             />
-                        </div>
+                         </div>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
                         <div className="mainContainerForCard__imageBlock_addOpportunity_read">

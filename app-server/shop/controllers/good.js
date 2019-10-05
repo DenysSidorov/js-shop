@@ -54,6 +54,7 @@ export async function getById(req, resp, next) {
   var id = req.params.id;
   try {
     var good = await Good.find({_id: id});
+    console.log('============', id, good);
     if (good) {
       setTimeout(async () => {
         try {

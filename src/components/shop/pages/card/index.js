@@ -33,10 +33,13 @@ class CardComponent extends React.Component {
     // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
     try {
       card = await axios.get(`${urlApi}/api/goods/${id}`);
+      console.log(id, '11id111');
       console.log(card, '11111');
-      similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
-        {params: {'category': card.data[0].category}}
-      );
+      if(card.data.length){
+        similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
+          {params: {'category': card.data[0].category}}
+        );
+      }
       popularCards = await axios.get(`${urlApi}/api/goods/popular`);
     } catch (e) {
       console.log(e);

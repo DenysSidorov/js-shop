@@ -89,7 +89,7 @@ define([
                 }}><span className="nullBlock">{this.props.randomNumber ? this.props.randomNumber: null}</span>
                     <div className="imageGalleryContainer">
                         <div className="flScreenBtn" onClick={this.fullScreenM.bind(this)}>
-                            <i className="fa fa-television" aria-hidden="true"></i>
+                            <i className="fa fa-television" aria-hidden="true" style={{fontSize: '35px', width: '100%', opacity: '0'}}></i>
                         </div>
                         {this.state.isFullScreen
                             ? <div className="fullScreen" onClick={this.fSClose.bind(this)} >
@@ -99,12 +99,12 @@ define([
                                 <div className="fullScreenCenterContainer">
                                     <div className="fullScreenCenterContainerHZ"
                                          onClick={this.fullScreenClose.bind(this)}>
-                                        <i className="fa fa-times flScreenBtn" aria-hidden="true"></i>
+                                        <i className="fa fa-times flScreenBtnInternal" aria-hidden="true"></i>
                                     </div>
                                     <ImageGallery.default
                                         showThumbnails={arrForView.length > 1}
                                         items={arrForView}
-                                        slideInterval={2000}
+                                        slideInterval={3500}
                                         slideDuration={300}
                                         randomNumber={d}
                                         lazyLoad={true}

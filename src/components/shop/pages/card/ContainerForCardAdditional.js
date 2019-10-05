@@ -16,26 +16,26 @@ class ContainerForCardAdditional extends React.Component {
                 {/*TABS LIBRARRY TOP*/}
 
                 <div className="mainCardContainer__tabs">
-                    <input id="mainCardContainer__tabs_tab1" type="radio" name="tabs" defaultChecked/>
-                    <label htmlFor="mainCardContainer__tabs_tab1" title="Вкладка 1">ОБЗОР</label>
+                    {/*<input id="mainCardContainer__tabs_tab1" type="radio" name="tabs" defaultChecked/>*/}
+                    {/*<label htmlFor="mainCardContainer__tabs_tab1" title="Вкладка 1">ОБЗОР</label>*/}
 
-                    <input id="mainCardContainer__tabs_tab2" type="radio" name="tabs"/>
+                    <input id="mainCardContainer__tabs_tab2" type="radio" name="tabs" defaultChecked/>
                     <label htmlFor="mainCardContainer__tabs_tab2" title="Вкладка 2">РЕКОМЕНДУЕМ</label>
 
-                    <input id="mainCardContainer__tabs_tab3" type="radio" name="tabs"/>
-                    <label htmlFor="mainCardContainer__tabs_tab3" title="Вкладка 3">ОТЗЫВЫ</label>
+                    {/*<input id="mainCardContainer__tabs_tab3" type="radio" name="tabs"/>*/}
+                    {/*<label htmlFor="mainCardContainer__tabs_tab3" title="Вкладка 3">ОТЗЫВЫ</label>*/}
 
 
-                    <section id="mainCardContainer__tabs_content-tab1">
-                        <div className="containerInTabs">
-                            {/*Содержимое таба*/}
+                    {/*<section id="mainCardContainer__tabs_content-tab1">*/}
+                    {/*    <div className="containerInTabs">*/}
+                    {/*        /!*Содержимое таба*!/*/}
 
-                            <div><p>{card['desc-full']}</p></div>
+                    {/*        <div><p>{card['desc-full']}</p></div>*/}
 
 
-                            {/*Содержимое таба*/}
-                        </div>
-                    </section>
+                    {/*        /!*Содержимое таба*!/*/}
+                    {/*    </div>*/}
+                    {/*</section>*/}
                     <section id="mainCardContainer__tabs_content-tab2">
                         {/*<Card/>*/}
                         <div className="containerInTabs">
@@ -81,17 +81,17 @@ class ContainerForCardAdditional extends React.Component {
                             {/*</div>*/}
                         </div>
                     </section>
-                    <section id="mainCardContainer__tabs_content-tab3">
-                        <div className="containerInTabs">
-                            {!card.comments.length
-                                ? <div>Комментариев нет</div>
-                                : card.comments.map((el, index)=> {
-                                return <Comment key={el._id} comment={el}/>
-                            })
-                            }
+                    {/*<section id="mainCardContainer__tabs_content-tab3">*/}
+                    {/*    <div className="containerInTabs">*/}
+                    {/*        {!card.comments.length*/}
+                    {/*            ? <div>Комментариев нет</div>*/}
+                    {/*            : card.comments.map((el, index)=> {*/}
+                    {/*            return <Comment key={el._id} comment={el}/>*/}
+                    {/*        })*/}
+                    {/*        }*/}
 
-                        </div>
-                    </section>
+                    {/*    </div>*/}
+                    {/*</section>*/}
                 </div>
 
 

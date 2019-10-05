@@ -7,16 +7,22 @@
   width: 100%;
   height: 100%;
   position: relative;
+
   .flScreenBtn {
     position: absolute;
-
-    top: 10px;
-    right: 10px;
-    color: #428bca;
-
-    z-index: 999;
+    z-index: 998;
     cursor: pointer;
     font-size: x-large;
+    right: 85px;
+    color: #e43838;
+    /* top: 10px; */
+    top: 50%;
+    /* bottom: 50%; */
+    left: calc(46%);
+    height: 200px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+
     &:hover {
       -webkit-transition: all 0.3s ease;
       -moz-transition: all 0.3s ease;
@@ -26,6 +32,7 @@
       color: #9c9c9c;
     }
   }
+
   .fullScreen {
     position: fixed;
     top: 0;
@@ -34,6 +41,7 @@
     bottom: 0;
     z-index: 99999999997;
     background-color: rgba(0, 0, 0, 0.7);
+
     .fullCrossBtn {
       position: absolute;
       top: 45px;
@@ -42,6 +50,7 @@
       font-size: xx-large;
       right: 45px;
       color: white;
+
       &:hover {
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
@@ -51,6 +60,7 @@
         color: #9c9c9c;
       }
     }
+
     .fullScreenCenter {
       position: absolute;
       width: 600px;
@@ -62,20 +72,27 @@
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
+
       .fullScreenCenterContainer {
         width: 100%;
         height: 100%;
         position: relative;
+
         .fullScreenCenterContainerHZ {
           position: absolute;
-          top: 66%;
+          top: 10px;
           right: 10px;
           height: 30px;
           font-size: x-large;
           width: 30px;
-          color: white;
+          color: black;
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
           z-index: 999;
           cursor: pointer;
+
+          .flScreenBtnInternal {
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+          }
         }
       }
     }
@@ -169,23 +186,26 @@
     width: calc(100% - 84px);
   }
 }
+
 @media (max-width: 769px) {
-  .imageGalleryContainer .fullScreen .fullScreenCenter{
-    width: 90%!important;
-    height: 90%!important;
+  .imageGalleryContainer .fullScreen .fullScreenCenter {
+    width: 90% !important;
+    height: 90% !important;
   }
-  .fullScreen .fullCrossBtn{
-    display: none!important;
+
+  .fullScreen .fullCrossBtn {
+    display: none !important;
   }
 }
+
 @media (min-width: 769px) {
   .image-gallery-right-nav {
 
-    padding: 30% 3% 30% 40% !important;
+    padding: 30% 3% 30% 25% !important;
   }
 
   .image-gallery-left-nav {
-    padding: 30% 40% 30% 3% !important;
+    padding: 30% 25% 30% 0% !important;
   }
 }
 
@@ -339,7 +359,7 @@
 }
 
 .image-gallery-left-nav {
-  left: 0;
+  left: 1px;
 }
 
 .image-gallery-left-nav::before {
@@ -347,11 +367,12 @@
 }
 
 .image-gallery-right-nav {
-  right: 0;
+  right: 1px;
 }
 
 .image-gallery-right-nav::before {
   content: "";
+  left: 0;
 }
 
 .image-gallery-slides {
@@ -608,7 +629,8 @@
 .image-gallery-swipe {
   height: 100%;
 }
-.nullBlock{
+
+.nullBlock {
   position: absolute;
   right: 0;
   bottom: 0;
