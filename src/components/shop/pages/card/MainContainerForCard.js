@@ -137,15 +137,15 @@ class MainContainerForCard extends React.Component {
                         <div onClick={() => this.props.addItem(card)} className="mainContainerForCard__mainInfoBlock_fourBlockPrice_cart">В КОРЗИНУ</div>
                     </div>
                     <div className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy">
-                            <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">
-                                <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;уже купило <span>14</span> человека</span>
-                            </span>
+                            {/* <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">*/}
+                            {/*    <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>*/}
+                            {/*    <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;уже купило <span>14</span> человека</span>*/}
+                            {/* </span>*/}
                         {card.sail ?<span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_img">
                                <i className="fa fa-pie-chart shop_blueIco_global" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;скидка <span>{card.sail}</span> %</span>
                             </span> : null}
-                        {card.isExists
+                        {true || card.isExists
                             ? <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
                                 <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Есть в наличии</span>
@@ -155,6 +155,19 @@ class MainContainerForCard extends React.Component {
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Нет в наличии</span>
                             </span>
                         }
+
+                        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
+                                <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
+                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Изготовление 2-3 дня</span>
+                            </span>
+                        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
+                                <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
+                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Экологические материалы</span>
+                            </span>
+                        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
+                                <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
+                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Свое производство</span>
+                            </span>
 
 
                     </div>

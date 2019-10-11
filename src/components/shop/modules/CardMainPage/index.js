@@ -31,7 +31,7 @@ class CardMainPage extends React.Component {
         <Link to={`/card/${card._id}`}>
           <div className="oneCardItem__headCard">
             <div className="oneCardItem__headCard__priceCard">
-              <span>{card.price}</span><span></span><span>грн.</span>
+              <span>{'от '}{card.price}</span><span></span><span>грн.</span>
             </div>
             <div className="oneCardItem__headCard__nameBrand">
               {checkTextLength(`${card.name} ${card.model}`, 29)}

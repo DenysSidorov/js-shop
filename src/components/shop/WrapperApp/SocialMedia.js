@@ -23,12 +23,12 @@ class SocialMedia extends React.Component {
                                 <i className="fa fa-shopping-cart main-cart__ico" ></i>
                             </Link>
                         </li>
-                        <li className="fab-buttons__item">
-                            <Link to="/profile" href="#" className="fab-buttons__link" data-tooltip="Профиль">
-                                {/*<i className="icon-material icon-material_fb"></i>*/}
-                                <i className="fa fa-user main-cart__ico" ></i>
-                            </Link>
-                        </li>
+                        {/*<li className="fab-buttons__item">*/}
+                        {/*    <Link to="/profile" href="#" className="fab-buttons__link" data-tooltip="Профиль">*/}
+                        {/*        /!*<i className="icon-material icon-material_fb"></i>*!/*/}
+                        {/*        <i className="fa fa-user main-cart__ico" ></i>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
                         {/*<li className="fab-buttons__item">*/}
                             {/*<a href="#" className="fab-buttons__link" data-tooltip="Facebook">*/}
                                 {/*<i className="icon-material icon-material_fb"></i>*/}

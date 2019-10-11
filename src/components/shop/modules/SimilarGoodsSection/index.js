@@ -84,6 +84,9 @@ class SimilarGoodsSection extends React.Component {
 
   render() {
     let {cards} = this.props;
+    if (cards.length > 2) {
+      cards = [cards[cards.length-1], cards[cards.length-2], cards[cards.length-3]]
+    }
     //console.log('RENDER SIMILAR');
     return (
 
@@ -97,10 +100,10 @@ class SimilarGoodsSection extends React.Component {
                 <Link to={`/card/${card._id}`}>
                   <div className="oneCardItem__headCard">
                     <div className="oneCardItem__headCard__priceCard">
-                      <span>{card.price}</span><span></span>&nbsp;<span>грн.</span>
+                      <span>{'от '}{card.price}{' грн'}</span>
                     </div>
                     <div
-                          className="oneCardItem__headCard__nameBrand">{card.name}{' '}{card.model}
+                      className="oneCardItem__headCard__nameBrand noWrap">{card.model}
                     </div>
                     <div className="oneCardItem__headCard__wrap-things">
                       {/*<div className="oneCardItem__headCard__otherThings">*/}
@@ -123,8 +126,8 @@ class SimilarGoodsSection extends React.Component {
                                     <span
                                       className="oneCardItem__bottomCard__shortText_dots">{card['desc-short']}</span>
                   </Link>
-                  <div
-                    className="oneCardItem__bottomCard__status">{card.isExists ? 'В наличии' : 'Нет в наличии'}</div>
+                  {/*<div*/}
+                  {/*  className="oneCardItem__bottomCard__status">{card.isExists ? 'В наличии' : 'Нет в наличии'}</div>*/}
                   <div onClick={() => this.props.addItem(card)}
                        className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div>
                 </div>

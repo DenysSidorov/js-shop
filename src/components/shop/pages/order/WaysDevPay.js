@@ -195,7 +195,7 @@ console.log(localArr.length, name.length == 0 && address.length == 0 && phone.le
                      className="accordion_toggle"
                      name="accordion-01"
                      id="toggle-01"
-                     checked={delivery == 'newpost' ? 'checked' : null}
+                     defaultChecked={delivery == 'newpost' ? 'checked' : null}
               />
               <label onClick={this.chDelivery.bind(this, 'newpost')} className="accordion_trigger"
                      htmlFor="toggle-01">Доставка по Украине "Новая Почта"
@@ -214,7 +214,7 @@ console.log(localArr.length, name.length == 0 && address.length == 0 && phone.le
                      className="accordion_toggle"
                      name="accordion-01"
                      id="toggle-02"
-                     checked={delivery == 'intime' ? 'checked' : null}/>
+                     defaultChecked={delivery == 'intime' ? 'checked' : null}/>
               <label onClick={this.chDelivery.bind(this, 'intime')} className="accordion_trigger"
                      htmlFor="toggle-02">Доставка по Украине
                 "Интайм"</label>
