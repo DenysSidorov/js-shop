@@ -584,10 +584,10 @@ class Landing extends React.Component {
               </div>
             </div>
             <div className="price_black"></div>
-            <div className="price_add">
-              <strong>Состаренные края: </strong><span> +10% от стоимости</span>
-              <strong>БЕСПЛАТНО</strong>
-            </div>
+            {/*<div className="price_add">*/}
+            {/*  <strong>Состаренные края: </strong><span> +10% от стоимости</span>*/}
+            {/*  <strong>БЕСПЛАТНО</strong>*/}
+            {/*</div>*/}
           </div>
         </div>
         <div className="buyNow2 fullWidth backgroundImage"
