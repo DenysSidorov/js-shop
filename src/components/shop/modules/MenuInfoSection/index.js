@@ -63,23 +63,26 @@ class MenuInfoSection extends React.PureComponent {
                       transitionEnterTimeout={300}
                       transitionLeave={false}>
                       <li>
-                        <Phone phoneText="(098)83-51-315" phoneMobile="tel:0988351315"/>
+                        <Phone phoneText={this.props.serviceReducer.number1}
+                               phoneMobile={`tel:${this.props.serviceReducer.number1}`}/>
                         {/*<a title="Позвонить на Киевстар"*/}
                         {/*href="tel:0988351315"><i*/}
                         {/*className="fa fa-phone"></i>&nbsp;(098)83-51-315</a>*/}
                       </li>
-                      <li>
-                        <Phone phoneText="(093)88-75-395" phoneMobile="tel:0938875395"/>
+                      {/*<li>*/}
+                      {/*  <Phone phoneText="(093)88-75-395" phoneMobile="tel:0938875395"/>*/}
 
-                        {/*<a title="Позвонить на Life)" href="tel:0938875395"><i*/}
-                        {/*className="fa fa-phone"></i>&nbsp;(093)88-75-395</a>*/}
-                      </li>
+                      {/*  /!*<a title="Позвонить на Life)" href="tel:0938875395"><i*!/*/}
+                      {/*  /!*className="fa fa-phone"></i>&nbsp;(093)88-75-395</a>*!/*/}
+                      {/*</li>*/}
                       <li>
-                        <a title="График работы, условия оплаты и доставки"
+                        <span
+                          className="contactInfo__list-contacts-info_time"
+                          title="График работы, условия оплаты и доставки"
                            href="#">
                           <meta content="Mo-Fr 10:00-19:00"/>
                           <i className="fa fa-clock-o"></i>&nbsp;
-                          10:00-19:00&nbsp;пн-пт</a>
+                          10:00-19:00&nbsp;пн-пт</span>
                       </li>
                     </ReactCSSTransitionGroup>
                   </ul>
@@ -123,6 +126,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     authenticated: state.authReducer.authenticated,
     isAdmin: state.authReducer.isAdmin,
+    serviceReducer: state.serviceReducer
   }
 }
 
@@ -150,7 +154,10 @@ class Phone extends React.Component {
 
   render() {
     return (
-      <a title="Позвонить на Киевстар" href={this.props.phoneMobile} onClick={this.showAll}>
+      <a title="Позвонить на Лайф"
+         href={this.props.phoneMobile}
+         className="contactInfo__list-contacts-info_time"
+         onClick={this.showAll}>
         <i className="fa fa-phone"></i>
         &nbsp;{this.state.phoneForUser}
       </a>

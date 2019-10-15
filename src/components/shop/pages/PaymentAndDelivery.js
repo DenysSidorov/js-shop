@@ -6,8 +6,8 @@ class PaymentAndDelivery extends React.Component {
   componentDidMount(prevProps) {
     window.scrollTo(0, 0);
     setTitle('Оплата и доставка');
-    setMetaTag('description', 'Оплата и доставка shop-ukraine.pro');
-    setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+    setMetaTag('description', 'Оплата и доставка на doshki.com');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
   }
 
   render() {
@@ -21,16 +21,16 @@ class PaymentAndDelivery extends React.Component {
         </p>
         <ol>
           <li>На расчетный счет Приват банка.</li>
-          <li>Оплата заказа при получении, в отделении "Новой Почты"..</li>
+          <li>Оплата заказа при получении, в отделении перевозчика.</li>
         </ol>
         <br/>
         <ul>
           <li>
                                 <span
-                                  style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Заказы отправляем ежедневно.</span>
+                                  style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Заказы обрабатываем ежедневно.</span>
           </li>
           <li><span
-            style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Доставка осуществляется транспортной компанией "Новая Почта".&nbsp;
+            style={{lineHeight: "1.45em", backgroundColor: "initial"}}>Доставка осуществляется транспортной компанией "Новая Почта" или "ИнТайм".&nbsp;
                             </span>
           </li>
           <li><span

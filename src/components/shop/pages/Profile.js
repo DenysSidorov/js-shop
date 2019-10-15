@@ -9,8 +9,8 @@ class Panel extends React.Component {
   componentDidMount = async (prevProps) => {
     window.scrollTo(0, 0);
     setTitle('Мой профиль');
-    setMetaTag('description', 'Твой профиль в shop-ukraine.pro');
-    setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+    setMetaTag('description');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
     try {
       const token = localStorage.getItem('info');
       let result = await axios.get(`${urlApi}/api/users/current`, {

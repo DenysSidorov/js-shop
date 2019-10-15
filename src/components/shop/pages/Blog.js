@@ -5,8 +5,8 @@ class Blog extends React.Component {
     componentDidMount = (prevProps) => {
         window.scrollTo(0, 0)
         setTitle('Блог');
-      setMetaTag('description', 'Блог о портфелях, сумках, рюбзаках, сумка для школы');
-      setMetaTag('keywords', 'online-shop, сумках, рюбзаках, сумка для школы, shop-ukraine.pro');
+      setMetaTag('description', 'Блог о картинах на дереве, картины на досках в Украине');
+      setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
     }
 
     render = ()=>{

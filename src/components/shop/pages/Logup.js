@@ -16,8 +16,8 @@ class Logup extends React.Component {
   componentWillMount() {
     this.props.delErrorMessage();
     setTitle('Регистрация');
-    setMetaTag('description', 'Регистрация в магазин shop-ukraine.pro');
-    setMetaTag('keywords', 'online-shop, интрнет магазин, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+    setMetaTag('description', 'Регистрация в магазине doshki.com');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
 
     // window.st= this.props.store;
     // this.props.store.dispatch(deleteErrorMessage());

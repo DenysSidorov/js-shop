@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
 class FooterSection extends React.Component {
     render() {
         return (
@@ -15,14 +16,14 @@ class FooterSection extends React.Component {
                         <div className="footerMainBlock__phones">
                     <span className="menu_one_telFooter">
                         <i className="fa fa-mobile" aria-hidden="true"></i>
-                        <a href="tel:+0931231243">093-123-12-43</a>
+                        <a href={`tel:+${this.props.serviceReducer.number1}`}>{this.props.serviceReducer.number1}</a>
                     </span>
-                            <span className="menu_one_telFooter">
-                        <i className="fa fa-mobile" aria-hidden="true">
+                    {/*        <span className="menu_one_telFooter">*/}
+                    {/*    <i className="fa fa-mobile" aria-hidden="true">*/}
 
-                        </i>
-                        <a href="tel:+0679083278">067-908-32-78</a>
-                    </span>
+                    {/*    </i>*/}
+                    {/*    <a href="tel:+0679083278">067-908-32-78</a>*/}
+                    {/*</span>*/}
                         </div>
 
                         <div className="footerMainBlock__titles">
@@ -31,10 +32,11 @@ class FooterSection extends React.Component {
                             <div className="strip_double"></div>
                         </div>
                         <div className="footerMainBlock__socials">
-                            <span className="menu_one_soc"><i className="fa fa-facebook" aria-hidden="true"></i></span>
-                            <span className="menu_one_soc"><i className="fa fa-twitter" aria-hidden="true"></i></span>
-                            <span className="menu_one_soc"><i className="fa fa-google-plus" aria-hidden="true"></i></span>
-                            <span className="menu_one_soc"><i className="fa fa-vk" aria-hidden="true"></i></span>
+                            {/*<span className="menu_one_soc"><i className="fa fa-facebook" aria-hidden="true"></i></span>*/}
+                            {/*<span className="menu_one_soc"><i className="fa fa-twitter" aria-hidden="true"></i></span>*/}
+                            {/*<span className="menu_one_soc"><i className="fa fa-google-plus" aria-hidden="true"></i></span>*/}
+                            {/*<span className="menu_one_soc"><i className="fa fa-vk" aria-hidden="true"></i></span>*/}
+                            <a href={'https://www.instagram.com/loft.world/'} target="_blank" className="menu_one_soc"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                         </div>
 
                         <div className="footerMainBlock__titles">
@@ -88,15 +90,21 @@ class FooterSection extends React.Component {
 
                         </div>
                         <p className="footerMainBlock__payment-delivery_payment-afferta">
-                            Украина, г. Одесса, тел. 093-123-12-43. Весь контент © 2018. Интернет-магазин
-                            shop-ukraine.pro Зазначені товарні знаки та продукція маркована знаками для товарів використовуються не в
-                            комерційних цілях, а виключно для надання інформації користувачам про товар.
+                            Украина, г. Одесса, тел. {this.props.serviceReducer.number1}. Весь контент © 2017.  Зазначені товарні знаки та продукція маркована знаками для товарів захищені авторським правом.
                         </p>
                     </div>
                 </div>
-            </div>  
+            </div>
         )
     }
 }
 
-export default FooterSection;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        serviceReducer: state.serviceReducer
+    }
+}
+
+export default connect(
+  mapStateToProps, null
+)(FooterSection);

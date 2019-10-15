@@ -23,8 +23,8 @@ class CardComponent extends React.Component {
   async initCadd() {
     window.scrollTo(0, 0);
     setTitle('Карта товара');
-    setMetaTag('description', 'Купить портфель, сумку, рюкзак на любой вкус');
-    setMetaTag('keywords', 'online-shop, интрнет магазин, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+    setMetaTag('description', 'Купить картину на дереве в Украине, картины на досках Украина');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
 
     var id = this.props.match.params.id;
     var similarCategory = [];
@@ -52,7 +52,7 @@ class CardComponent extends React.Component {
         if (this.state.card.length) {
           setTitle(`${this.state.card[0].name} ${this.state.card[0].model}`);
           setMetaTag('description', `${this.state.card[0].name} ${this.state.card[0].model} - ${this.state.card[0]['desc-short']}`);
-          setMetaTag('keywords', `${this.state.card[0].name}, ${this.state.card[0].model}, ${this.state.card[0].producer}, ${this.getMetaTags(this.state.card[0].tags)}, ${this.getMetaTags(this.state.card[0].category)}, online-shop, интрнет магазин, портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro`);
+          setMetaTag('keywords', `${this.state.card[0].name}, ${this.state.card[0].model}, ${this.state.card[0].producer}, ${this.getMetaTags(this.state.card[0].tags)}, ${this.getMetaTags(this.state.card[0].category)}, интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины`);
         }
       });
     }

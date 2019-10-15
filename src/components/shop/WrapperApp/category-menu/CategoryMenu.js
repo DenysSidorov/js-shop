@@ -145,7 +145,7 @@ class CategoryMenu extends React.Component {
                       // state: {fromDashboard: true}
                     }}
                   >
-                    <i className="fa fa-plane menu_body-item_ico"></i>
+                    <i className="fa fa-picture-o menu_body-item_ico"></i>
                     <span className="menu_body-item_text">{el.name}</span>
                     <span className="menu_body-item_count">
                     <span className="wrap">
@@ -247,7 +247,7 @@ class MenuBody extends React.Component {
   render() {
     return (
       <div className="menu_header" onClick={this.props.handleShowMenu}>
-        <span>КАТАЛОГ ТОВАРОВ</span>
+        <span>КАТАЛОГ КАРТИН</span>
         <i className="fa fa-bars"></i>
       </div>
     )

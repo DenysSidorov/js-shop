@@ -56,7 +56,7 @@ class Home extends React.Component {
 
       // set new title
       if (param) {
-        setTitle(param + 'портфель');
+        setTitle(`Картины на дереве - ${param}`);
       } else {
         setTitle('Главная');
       }
@@ -101,13 +101,13 @@ class Home extends React.Component {
 
     // set new title
     if (param) {
-      setTitle(param + ' портфель');
-      setMetaTag('description', param + ' | Купить портфель сумку или рюкзак на любой вкус');
-      setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro ,' + param);
+      setTitle(`Картины на дереве - ${param}`);
+      setMetaTag('description' );
+      setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины ' + param);
     } else {
       setTitle('Главная');
-      setMetaTag('description', 'Купить портфель сумку или рюкзак на любой вкус');
-      setMetaTag('keywords', 'портфели, сумки, рюкзаки, купить для школы, shop-ukraine.pro');
+      setMetaTag('description');
+      setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
     }
 
     try {

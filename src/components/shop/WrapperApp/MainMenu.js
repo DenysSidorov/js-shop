@@ -31,17 +31,20 @@ class MainMenu extends React.Component {
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">
-                                        <NavLink to="/about-us" activeStyle={{color: '#2EA9FD'}}>О нас</NavLink>
+                                        <a href="/#aboutUs" activeStyle={{color: '#2EA9FD'}}>О нас</a>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        <NavLink to="/payment-and-delivery" activeStyle={{color: '#2EA9FD'}}>
-                                            Оплата и доставка</NavLink>
+                                        <a href="/#price" activeStyle={{color: '#2EA9FD'}}>Цены</a>
                                     </li>
-                                    <li className="menu__menuHeader_item">
-                                        {/*<a href="">Возврат и обмен</a>*/}
-                                        <NavLink to="/cashback-and-exchange" activeStyle={{color: '#2EA9FD'}}>
-                                            Возврат и обмен</NavLink>
-                                    </li>
+                                    {/*<li className="menu__menuHeader_item">*/}
+                                    {/*    <NavLink to="/payment-and-delivery" activeStyle={{color: '#2EA9FD'}}>*/}
+                                    {/*        Оплата и доставка</NavLink>*/}
+                                    {/*</li>*/}
+                                    {/*<li className="menu__menuHeader_item">*/}
+                                    {/*    /!*<a href="">Возврат и обмен</a>*!/*/}
+                                    {/*    <NavLink to="/cashback-and-exchange" activeStyle={{color: '#2EA9FD'}}>*/}
+                                    {/*        Возврат и обмен</NavLink>*/}
+                                    {/*</li>*/}
                                     {/*<li className="menu__menuHeader_item">*/}
                                         {/*<NavLink to="/blog" activeStyle={{color: '#2EA9FD'}}>Блог</NavLink>*/}
                                     {/*</li>*/}

@@ -8,7 +8,7 @@ class AfterOrder extends React.Component {
     window.scrollTo(0, 0);
     setTitle('Заказ принят');
     setMetaTag('description', 'Заказ будет обработан в течении рабочего дня приятных покупок');
-    setMetaTag('keywords', 'online-shop, интрнет магазин, заказ принят, shop-ukraine.pro');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
 
   }
 
