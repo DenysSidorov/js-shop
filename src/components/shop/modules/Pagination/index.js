@@ -19,7 +19,7 @@ class Pagination extends React.Component {
   }
 
   hrefBuilder = (numberPage) => {
-    return `/?numberpage=${numberPage}&pagesize=${this.pagesize}`
+    return `/shop?numberpage=${numberPage}&pagesize=${this.pagesize}`
   }
 
   render() {

@@ -9,12 +9,12 @@ class Delivery extends React.Component {
             <div className="exchangeContainer">
                 <div className="exchangeContainer__title">Быстрая доставка</div>
                 <div>
-                    <p className="exchangeContainer__desc">БЕСПЛАТНАЯ ДОСТАВКА НА ЗАКАЗЫ ОТ 1000 ГРН Мы предоставляем все самые удобные виды доставки, вам остается лишь выбрать лучший для вас.</p>
+                    <p className="exchangeContainer__desc">Мы предоставляем все самые удобные виды доставки, вам остается лишь выбрать лучший для вас.</p>
 
                     <p className="exchangeContainer__titleSub">Какие варианты доставки?</p>
 
-                    <p className="exchangeContainer__item">- Доставка по Украине "Новой Почтой" — 30 грн</p>
-                    <p className="exchangeContainer__item">- Доставка по Украине "Интайм" — 30 грн</p>
+                    <p className="exchangeContainer__item">- Доставка по Украине "Новой Почтой"</p>
+                    <p className="exchangeContainer__item">- Доставка по Украине "Интайм"</p>
                 </div>
             </div>
         )

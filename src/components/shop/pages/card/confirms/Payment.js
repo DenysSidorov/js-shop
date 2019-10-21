@@ -13,8 +13,8 @@ class Payment extends React.Component {
 
                     <p className="exchangeContainer__titleSub">Вы можете оплатить:</p>
 
-                    <p className="exchangeContainer__item">- Онлайн-платежом   (Visa/MasterCard, Приват24, LiqPay)</p>
-                    <p className="exchangeContainer__item">- Наличными в офисе Новой Почты</p>
+                    <p className="exchangeContainer__item">- Онлайн-платежом   (Visa/MasterCard, Приват24, LiqPay, Монобанк)</p>
+                    <p className="exchangeContainer__item">- Наличными в офисе Новой Почты или ИнТайм</p>
                 </div>
             </div>
         )

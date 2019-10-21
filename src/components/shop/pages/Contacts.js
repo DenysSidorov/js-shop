@@ -13,13 +13,13 @@ class Contacts extends React.Component {
     render() {
         return (
           <Fragment>
-            <div style={{fontSize: '1.3rem', fontFamily: 'Roboto-Regular'}}>
+            <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular', marginTop: '10px'}}>
               Онлайн магазин. Украина, г. Одесса.
             </div>
-            <div style={{fontSize: '1.3rem', fontFamily: 'Roboto-Regular'}}>
+            <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>
               Телефон: {this.props.serviceReducer.number1}
             </div>
-            <div style={{fontSize: '1.3rem', fontFamily: 'Roboto-Regular'}}>
+            <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>
               Почтовый ящик: {this.props.serviceReducer.email1}
             </div>
           </Fragment>

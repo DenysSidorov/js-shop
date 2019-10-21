@@ -23,6 +23,7 @@ export async function createFromLand(req, resp, next) {
 
 export async function create(req, resp, next) {
     var order = req.body;
+    order.site = 'doshki.com';
     try {
         var order = await Order.create(order);
         console.log(order, 'Order');

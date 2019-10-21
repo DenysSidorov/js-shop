@@ -78,26 +78,26 @@ class MainContainerForCard extends React.Component {
                          </div>
                     </div>
                     <div className="mainContainerForCard__imageBlock_addOpportunity">
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_read">
-                            <img src="/img-static/red-arrow.png" alt=""/>
-                        </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
-                             onClick={(e)=>{this.showConfirm('cashback',e)}}>
-                            <i className="fa fa-clock-o addOpportunity_item_i" aria-hidden="true"></i>
-                            <span className="addOpportunity_item_span">Обмен и возврат в теч. 14 дней</span>
+                        {/*<div className="mainContainerForCard__imageBlock_addOpportunity_read">*/}
+                        {/*    <img src="/img-static/red-arrow.png" alt=""/>*/}
+                        {/*</div>*/}
+                        {/*<div className="mainContainerForCard__imageBlock_addOpportunity_item"*/}
+                        {/*     onClick={(e)=>{this.showConfirm('cashback',e)}}>*/}
+                        {/*    <i className="fa fa-clock-o addOpportunity_item_i" aria-hidden="true"></i>*/}
+                        {/*    <span className="addOpportunity_item_span">Обмен и возврат в теч. 14 дней</span>*/}
 
-                        </div>
+                        {/*</div>*/}
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item"
                              onClick={(e)=>{this.showConfirm('garanty',e)}}>
                             <i className="fa fa-star-o addOpportunity_item_i" aria-hidden="true"></i>
                             <span className="addOpportunity_item_span">Гарантия качества на товары</span>
 
                         </div>
-                        <div className="mainContainerForCard__imageBlock_addOpportunity_item"
-                             onClick={(e)=>{this.showConfirm('verif',e)}}>
-                            <i className="fa fa-check-square-o addOpportunity_item_i" aria-hidden="true"></i>
-                            <span className="addOpportunity_item_span">Проверка каждого товаров</span>
-                        </div>
+                        {/*<div className="mainContainerForCard__imageBlock_addOpportunity_item"*/}
+                        {/*     onClick={(e)=>{this.showConfirm('verif',e)}}>*/}
+                        {/*    <i className="fa fa-check-square-o addOpportunity_item_i" aria-hidden="true"></i>*/}
+                        {/*    <span className="addOpportunity_item_span">Проверка каждого товаров</span>*/}
+                        {/*</div>*/}
                         <div className="mainContainerForCard__imageBlock_addOpportunity_item"
                              onClick={(e)=>{this.showConfirm('deliv',e)}}>
                             <i className="fa fa-bus addOpportunity_item_i" aria-hidden="true"></i>
@@ -145,16 +145,16 @@ class MainContainerForCard extends React.Component {
                                <i className="fa fa-pie-chart shop_blueIco_global" aria-hidden="true"></i>
                                 <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_count">&nbsp;&nbsp;скидка <span>{card.sail}</span> %</span>
                             </span> : null}
-                        {true || card.isExists
-                            ? <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
-                                <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>
-                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Есть в наличии</span>
-                            </span>
-                            :  <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
-                                <i className="fa fa-times-circle-o redInCard" aria-hidden="true"></i>
-                                <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Нет в наличии</span>
-                            </span>
-                        }
+                        {/*{true || card.isExists*/}
+                        {/*    ? <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">*/}
+                        {/*        <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>*/}
+                        {/*        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Есть в наличии</span>*/}
+                        {/*    </span>*/}
+                        {/*    :  <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">*/}
+                        {/*        <i className="fa fa-times-circle-o redInCard" aria-hidden="true"></i>*/}
+                        {/*        <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot__text">&nbsp;&nbsp;Нет в наличии</span>*/}
+                        {/*    </span>*/}
+                        {/*}*/}
 
                         <span className="mainContainerForCard__mainInfoBlock_fifeBlockAlreadyBuy_haveGot">
                                 <i className="fa fa-check-circle greenInCard" aria-hidden="true"></i>

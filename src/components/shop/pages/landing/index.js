@@ -11,7 +11,16 @@ class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.initCadd = this.initCadd.bind(this);
+    this.handleMenu = this.handleMenu.bind(this);
+    this.state = {
+      isOpen: false
+    }
+  }
 
+  handleMenu() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   async initCadd() {
@@ -31,20 +40,26 @@ class Landing extends React.Component {
         <div id="modal-root" style={{zIndex: 99999999}}></div>
         <div className="header fullWidth">
           <img src="/img-static/land/logo.png" alt="" className="header_logo"/>
-          <div className="header_items" id="header_items">
-            <a href="/#howWeMake" className="header_item">
+          <div
+            className="header_items"
+            id="header_items"
+            style={{
+              transform: window.innerWidth > 768  || this.state.isOpen ? 'translateX(0px)' : 'translateX(-5000px)'
+            }}
+          >
+            <a href="/#howWeMake" className="header_item" onClick={this.handleMenu}>
               <span>Примеры</span>
             </a>
-            <a href="/#prep" className="header_item">
+            <a href="/#prep" className="header_item" onClick={this.handleMenu}>
               <span>Изготовление</span>
             </a>
-            <a href="/#quest" className="header_item">
+            <a href="/#quest" className="header_item" onClick={this.handleMenu}>
               <span>Вопросы</span>
             </a>
-            <a href="/#price" className="header_item">
+            <a href="/#price" className="header_item" onClick={this.handleMenu}>
               <span>Цены</span>
             </a>
-            <a href="/#yorPhoto" className="header_item">
+            <a href="/#yorPhoto" className="header_item" onClick={this.handleMenu}>
               <span>Ваше фото</span>
             </a>
             <Link to={`/shop`} className="header_item header_item_shop">
@@ -53,7 +68,12 @@ class Landing extends React.Component {
           </div>
           <div className="header_number">{`тел ${this.props.serviceReducer.number1}`}</div>
           <div className="header_mobMenu">
-            <img src="/img-static/land/hum.png" alt="" id="header_mobMenu"/>
+            <img
+              src={this.state.isOpen ? "/img-static/land/close.png" : '/img-static/land/hum.png'}
+              alt=""
+              id="header_mobMenu"
+              onClick={this.handleMenu}
+            />
           </div>
 
         </div>
@@ -652,7 +672,7 @@ class Landing extends React.Component {
               <div className="advantagesBlock_list_item">На рынке картин на досках уже <span
                 className="blackColor">4</span> года.
               </div>
-              <div className="advantagesBlock_list_item">Более <span className="blackColor">700</span>
+              <div className="advantagesBlock_list_item">Более <span className="blackColor">700 </span>
                 довольных клиентов.
               </div>
               <div className="advantagesBlock_list_item">Только <span

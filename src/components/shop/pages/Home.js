@@ -31,7 +31,7 @@ class Home extends React.Component {
     params['pagesize'] = 50;
     params['numberpage'] = pagin.selected + 1
     const searchString = qs.stringify(params);
-    this.props.dispatch(push(`/?${searchString}`));
+    this.props.dispatch(push(`/shop?${searchString}`));
     // this.componentWillReceiveProps();
   }
 

@@ -31,10 +31,10 @@ class MainMenu extends React.Component {
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">
-                                        <a href="/#aboutUs" activeStyle={{color: '#2EA9FD'}}>О нас</a>
+                                        <a href="/#aboutUs">О нас</a>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        <a href="/#price" activeStyle={{color: '#2EA9FD'}}>Цены</a>
+                                        <a href="/#price">Цены</a>
                                     </li>
                                     {/*<li className="menu__menuHeader_item">*/}
                                     {/*    <NavLink to="/payment-and-delivery" activeStyle={{color: '#2EA9FD'}}>*/}
