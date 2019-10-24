@@ -120,7 +120,7 @@ class MainContainerForCard extends React.Component {
                                 <span className="mainContainerForCard__mainInfoBlock_show_value">код товара: <span>{card.code}</span></span>
                         </span>
                     </div>
-                    <h1 className="mainContainerForCard__mainInfoBlock_twoBlockTitle">{card.name} {card.model}</h1>
+                    <h1 className="mainContainerForCard__mainInfoBlock_twoBlockTitle">{`Картина на досках, Украина, категория - ${card.category}. ${card.name ? card.name + ' "' : '"'}${card.model}"`}</h1>
                     <div className="mainContainerForCard__mainInfoBlock_threeBlockPartners">
                         <span className="mainContainerForCard__mainInfoBlock_threeBlockPartners_title">Наши партнеры - </span>
                         <img className="partnersInCard" src="/img-static/privatbank.png" alt=""/>
@@ -130,7 +130,7 @@ class MainContainerForCard extends React.Component {
                     </div>
                     <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice">
                         <div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price">
-                            <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count">{card.price}</span>
+                            <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_count">{'от '}{card.price}</span>
                             <span className="mainContainerForCard__mainInfoBlock_fourBlockPrice_price_money">грн</span>
                         </div>
                         {/*<div className="mainContainerForCard__mainInfoBlock_fourBlockPrice_quicly">КУПИТЬ СРАЗУ</div>*/}
@@ -171,7 +171,10 @@ class MainContainerForCard extends React.Component {
 
 
                     </div>
-                    <div className="mainContainerForCard__mainInfoBlock_sixBlockDescriptionShort">{card['desc-short']}</div>
+                    <div className="mainContainerForCard__mainInfoBlock_sixBlockDescriptionShort">
+                        {/*{card['desc-short']}*/}
+                        Вручную изготовленная картина на деревянных досках, наполнит интерьер природой и подчеркнет ваш вкус. К каждой картине, сделанной в Украине мы подходим с любовью, что бы ваш подарок себе или близким гармонично вписался в стиль который вы создаете.
+                    </div>
                     <div className="clearfix"></div>
                 </div>
 

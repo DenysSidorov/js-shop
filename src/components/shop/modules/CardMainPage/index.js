@@ -34,7 +34,7 @@ class CardMainPage extends React.Component {
               <span>{'от '}{card.price}</span><span></span><span>грн.</span>
             </div>
             <div className="oneCardItem__headCard__nameBrand">
-              {checkTextLength(`${card.name} ${card.model}`, 29)}
+              Картина на досках "{checkTextLength(`${card.name}${card.model}`, 29)}"
             </div>
             <div className="oneCardItem__headCard__wrap-things">
               {/*<div className="oneCardItem__headCard__otherThings">*/}

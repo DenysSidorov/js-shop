@@ -7,6 +7,11 @@ import {connect} from 'react-redux';
 import {pushToCart} from '../../../../reducers/cart';
 
 class SimilarGoodsSection extends React.Component {
+render(){
+  return (<div></div>)
+}
+}
+class SimilarGoodsSection2 extends React.Component {
 
   constructor(props) {
     super(props);
