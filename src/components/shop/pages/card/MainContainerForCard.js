@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Gallery from "../../modules/image-gallery";
 // import Gallery2 from "../../modules/gallery2";
 import "./mainContainerForCard.less";
@@ -12,6 +12,7 @@ import Garanty from './confirms/Garanty';
 import Verify from './confirms/Verify';
 import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
+import Price from "../landing/Price";
 class MainContainerForCard extends React.Component {
     constructor(props) {
         super(props);
@@ -175,8 +176,10 @@ class MainContainerForCard extends React.Component {
                         {/*{card['desc-short']}*/}
                         Вручную изготовленная картина на деревянных досках, наполнит интерьер природой и подчеркнет ваш вкус. К каждой картине, сделанной в Украине мы подходим с любовью, что бы ваш подарок себе или близким гармонично вписался в стиль который вы создаете.
                     </div>
+
                     <div className="clearfix"></div>
                 </div>
+                <Price/>
 
                 {this.props.confirmKind.length ? <Confirm
                     okHandler={ this.closeConfirms.bind(this)}

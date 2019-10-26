@@ -4,6 +4,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import st from './mainMenu.less';
 import {Link, NavLink} from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import MenuCart from '../modules/MenuCart';
 import CategoryMenu from "./category-menu/CategoryMenu";
 class MainMenu extends React.Component {
@@ -31,10 +32,11 @@ class MainMenu extends React.Component {
                                 <ul className="menu__menuHeader">
                                     <li className="menu__menuHeader_item"><Link to="/">Главная</Link></li>
                                     <li className="menu__menuHeader_item">
-                                        <a href="/#aboutUs">О нас</a>
+                                        {/*<Link to="/#aboutUs">О нас</Link>*/}
+                                        <HashLink to="/#aboutUs">О нас</HashLink>
                                     </li>
                                     <li className="menu__menuHeader_item">
-                                        <a href="/#price">Цены</a>
+                                        <HashLink to="/#price">Цены</HashLink>
                                     </li>
                                     {/*<li className="menu__menuHeader_item">*/}
                                     {/*    <NavLink to="/payment-and-delivery" activeStyle={{color: '#2EA9FD'}}>*/}

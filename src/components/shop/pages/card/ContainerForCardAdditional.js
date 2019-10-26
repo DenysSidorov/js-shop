@@ -39,7 +39,7 @@ class ContainerForCardAdditional extends React.Component {
                     <section id="mainCardContainer__tabs_content-tab2">
                         {/*<Card/>*/}
                         <div className="containerInTabs">
-                            {[this.props.popularCards[0], this.props.popularCards[1]].map((el)=>{
+                            {this.props.popularCards.map((el)=>{
                                 return <Card key={el._id} card={el} />
                             })}
                             {/*<div className="bodyCardItems__oneCardItem">*/}
