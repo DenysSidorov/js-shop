@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
+import {withRouter} from 'react-router-dom';
 import urlApi from "../../../../api/urlApi";
 import MainContainerForCard from "./MainContainerForCard";
 import SimilarGoodsSection from "../../modules/SimilarGoodsSection";
 import ContainerForCardAdditional from "./ContainerForCardAdditional";
 import {setMetaTag, setTitle} from "../../helpers/lib/utils";
 
-class CardComponent extends React.Component {
+class CardComponent extends React.PureComponent {
 
   state = {
     card: [],
@@ -20,22 +21,20 @@ class CardComponent extends React.Component {
   }
 
 
-  async initCadd() {
+  async initCadd(id) {
     window.scrollTo(0, 0);
     setTitle('Карта товара');
     setMetaTag('description', 'Купить картину на дереве в Украине, картины на досках Украина');
     setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
 
-    var id = this.props.match.params.id;
     var similarCategory = [];
     var popularCards = [];
     var card;
     // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
     try {
       card = await axios.get(`${urlApi}/api/goods/${id}`);
-      console.log(id, '11id111');
       console.log(card, '11111');
-      if(card.data.length){
+      if (card.data.length) {
         similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
           {params: {'category': card.data[0].category}}
         );
@@ -59,23 +58,27 @@ class CardComponent extends React.Component {
   }
 
   getMetaTags = (arr) => {
-   return arr.reduce((prev, curr, ind) => {
+    return arr.reduce((prev, curr, ind) => {
       return `${ind === 0 ? prev : prev + ','} ${curr}`
-   }, '');
-   }
-
-  componentDidMount() {
-    this.initCadd();
+    }, '');
   }
 
-  componentWillReceiveProps() {
-    this.forceUpdate();
-    this.initCadd();
+  componentDidMount() {
+    var id = this.props.match.params.id;
+    this.initCadd(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      var id = nextProps.match.params.id;
+      this.initCadd(id);
+    }
+    // this.forceUpdate();
   }
 
   render() {
     var {card} = this.state;
-    console.log(card, 'CART');
+    // console.log(card, 'CART', card && card.length && card[0].model ? card[0].model.toUpperCase() : '');
     return (
       <div>
         {card.length
@@ -83,8 +86,8 @@ class CardComponent extends React.Component {
 
             <MainContainerForCard card={this.state.card}/>
             {/*{this.state.similarCategory && this.state.similarCategory.length*/}
-              {/*? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/>*/}
-              {/*: null}*/}
+            {/*? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/>*/}
+            {/*: null}*/}
             {this.state.popularCards && this.state.popularCards.length && this.state.card.length
               ? <ContainerForCardAdditional card={this.state.card}
                                             popularCards={this.state.popularCards}/>
@@ -97,4 +100,4 @@ class CardComponent extends React.Component {
   }
 }
 
-export default CardComponent;
+export default withRouter(CardComponent);

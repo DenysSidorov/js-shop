@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import {withRouter} from 'react-router-dom';
 import Gallery from "../../modules/image-gallery";
 // import Gallery2 from "../../modules/gallery2";
 import "./mainContainerForCard.less";
@@ -13,14 +14,25 @@ import Verify from './confirms/Verify';
 import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
 import Price from "../landing/Price";
-class MainContainerForCard extends React.Component {
+class MainContainerForCard extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.showConfirm = this.showConfirm.bind(this);
         this.showConfirmWithKind = this.showConfirmWithKind.bind(this);
         //  this.closeConfirms = this.closeConfirms.bind(this);
+      this.state = {
+        card: this.props.card
+      }
     }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.card !== this.props.card) {
+      this.setState({
+        card: nextProps.card
+      })
+    }
+  }
 
     closeConfirms () {
         console.log([''], 'empty');
@@ -58,7 +70,7 @@ class MainContainerForCard extends React.Component {
     }
     render() {
         console.log('rerender');
-        var card = this.props.card[0];
+        var card = this.state.card[0];
         console.log(card, 'card');
         const images = [];
         card && card.photo.forEach(el=> images.push({
@@ -206,9 +218,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },dispatch)
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps, mapDispatchToProps
-)(MainContainerForCard);
+)(MainContainerForCard));
 
 function randomInteger(min, max) {
     var rand = min + Math.random() * (max + 1 - min);

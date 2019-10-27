@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from 'react-router-dom';
 import style from './mainBodyCard.less';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -91,9 +92,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }, dispatch)
 }
 
-export default connect(
+export default withRouter(connect(
   null, mapDispatchToProps
-)(CardMainPage);
+)(CardMainPage));
 
 
 function randomInteger(min, max) {

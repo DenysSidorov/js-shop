@@ -1,5 +1,6 @@
 import React from "react";
 import Comment from "./Comment";
+import {withRouter} from 'react-router-dom';
 import Card from '../../modules/CardMainPage'
 
 
@@ -104,7 +105,7 @@ class ContainerForCardAdditional extends React.Component {
     }
 }
 
-export default ContainerForCardAdditional;
+export default withRouter(ContainerForCardAdditional);
 
 function randomInteger(min, max) {
     var rand = min + Math.random() * (max + 1 - min);
