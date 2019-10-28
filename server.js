@@ -134,7 +134,7 @@ app.all('*', (req, resp) => resp.status(404).json({
 }));
 
 //site-opener
-siteOpener();
+// siteOpener();
 
 
 //************************* GARBAGE ***********************************
