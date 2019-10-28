@@ -19,12 +19,12 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/sidorovdenis/js-shop#readme",
   "engines": {
-    "node": "7.6.0"
+    "node": "~7.0.0"
   },
   "dependencies": {
     "assets-webpack-plugin": "~3.5.1",
     "axios": "~0.16.2",
-    "babel-cli": "~6.24.1",
+    "babel": "~6.23.0",
     "babel-core": "~6.24.1",
     "babel-eslint": "~7.2.3",
     "babel-loader": "~7.0.0",
@@ -110,7 +110,10 @@
     "token-generator": "~1.0.0",
     "url-loader": "~0.5.8",
     "webpack": "~2.2.0",
-    "webpack-dev-server": "~2.2.0-rc.0"
+    "webpack-dev-server": "~2.2.0-rc.0",
+    "babel-cli": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "react-onclickoutside": "^6.8.0"
   },
   "scripts": {
     "start-front": "webpack-dev-server --hot --inline",
@@ -125,12 +128,7 @@
     "start2": "node s.js",
     "start-temp": "babel-node server.js --presets es2015, stage-2",
     "postinstall": "node_modules/.bin/webpack -p",
-    "start": "node_modules/.bin/babel-node server.js --presets es2015",
+    "start": "babel-node server.js --presets es2015",
     "NOOpreinstall": "./node_modules/webpack/bin/webpack.js -p --progress"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "cross-env": "^5.2.0",
-    "react-onclickoutside": "^6.8.0"
   }
 }
