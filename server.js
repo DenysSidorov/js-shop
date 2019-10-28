@@ -116,9 +116,9 @@ app.use('/api/users', userRoute);
 // app.use('/api', checkToken,  userRoute); // get user route
 // app.use('/api', checkToken,  pageRoute); // Use API if all normal
 
-app.get('/', (req, res)=>{
-  res.render(path.join(__dirname + '/www/main.ejs'));
-});
+// app.get('/', (req, res)=>{
+//   res.render(path.join(__dirname + '/www/main.ejs'));
+// });
 
 app.get('*', (req, res) => {
   res.render(path.join(__dirname + '/www/index.ejs'), {assets});
