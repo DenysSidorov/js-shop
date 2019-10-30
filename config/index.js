@@ -12,8 +12,8 @@ var configApp = {
         mailSend: {
             service: "Gmail",
             auth: {
-                user: process.env.EMAIL_USER, // "1qazxsw,
-                pass: process.env.EMAIL_PASSWORD //
+                user: process.env.E_U, // "1qazxsw,
+                pass: process.env.E_P //
             }
         },
     },
