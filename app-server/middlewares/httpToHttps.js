@@ -7,7 +7,9 @@ export default (req, res, next) => {
   } else {
     // request was via http, so redirect to https
     console.log(' ------------------', 2);
-    if (counter) {
+    console.log('------ ', counter);
+    if (counter === 1) {
+      ++counter;
       res.redirect('https://' + req.headers.host + req.url);
     } else {
       next();
