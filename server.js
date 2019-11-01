@@ -70,7 +70,7 @@ mongoose.connect(config.backend.database, {
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
-app.use(redirectToHTTPS([`/localhost:${process.env.PORT}/`] /*, ignoreRoutes*/ ));
+app.use(redirectToHTTPS([`/localhost:${process.env.PORT}/`, []] /*, ignoreRoutes*/ ));
 app.disable('x-powered-by'); // Отключить определение, что это express
 
 // app.use(require('prerender-node'));
