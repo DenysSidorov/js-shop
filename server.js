@@ -123,9 +123,7 @@ app.use('/api/users', userRoute);
 // });
 
 app.get('*', httpsMiddleWare, (req, res) => {
-  if(!req.secure){
 
-  }
   res.render(path.join(__dirname + '/www/index.ejs'), {assets});
   // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });

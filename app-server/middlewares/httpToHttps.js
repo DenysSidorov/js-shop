@@ -1,5 +1,5 @@
-
-export default (req, res, next)=>{
+export default (req, res, next) => {
+  var counter = 1;
   console.log(' ------------------', 1);
   if (req.secure) {
     // request was via https, so do no special handling
@@ -7,6 +7,10 @@ export default (req, res, next)=>{
   } else {
     // request was via http, so redirect to https
     console.log(' ------------------', 2);
-    res.redirect('https://' + req.headers.host + req.url);
+    if (counter) {
+      res.redirect('https://' + req.headers.host + req.url);
+    } else {
+      next();
+    }
   }
 }
