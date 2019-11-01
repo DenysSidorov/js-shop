@@ -17,7 +17,7 @@ export const sendMailWithOrder = ({email = [], order}) => {
   let smtpTransport = nodemailer.createTransport(mailSettings.backend.mailSend);
 
 // setup e-mail data with unicode symbols
-  let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
+  let urlApi = process.env.NODE_ENV == 'development' ? `http://127.0.0.1:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
   // email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
   email = ['000scorpions000@gmail.com', 'doshki.craft@gmail.com'];
   console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');

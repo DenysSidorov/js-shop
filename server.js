@@ -9,7 +9,7 @@ var cors = require('cors');
 var cluster = require('cluster');
 var https = require('https');
 var http = require('http');
-
+var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 import assets from "./app-server/assets.json";
 import siteOpener from "./app-server/helper/site-opener";
 import config from "./config/index";
@@ -70,6 +70,7 @@ mongoose.connect(config.backend.database, {
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
+app.use(redirectToHTTPS([`/localhost:${process.env.PORT}/`] /*, ignoreRoutes*/ ));
 app.disable('x-powered-by'); // Отключить определение, что это express
 
 // app.use(require('prerender-node'));

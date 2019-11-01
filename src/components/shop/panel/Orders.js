@@ -69,7 +69,7 @@ class Orders extends React.Component{
 
             } else {
                 try {
-                    // orders = await axios.get('http://localhost:3000/orders');
+                    // orders = await axios.get('http://127.0.0.1:3000/orders');
 
                     orders = await axios.get(`${urlApi}/api/orders`, {
                         // timeout: 1000,
@@ -128,7 +128,7 @@ class Orders extends React.Component{
 
             } else {
                 try {
-                    // orders = await axios.get('http://localhost:3000/orders');
+                    // orders = await axios.get('http://127.0.0.1:3000/orders');
 
                     orders = await axios.get(`${urlApi}/api/orders`, {
                         // timeout: 1000,

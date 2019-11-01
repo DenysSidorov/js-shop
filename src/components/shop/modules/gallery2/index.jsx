@@ -8,12 +8,12 @@ class Gallery2 extends React.Component {
   render() {
     const images = [
       {
-        original: 'http://localhost:8090/img-static/libs/cars/1_1.jpg',
-        thumbnail: 'http://localhost:8090/img-static/libs/cars/1_2.jpg',
+        original: 'http://127.0.0.1:8090/img-static/libs/cars/1_1.jpg',
+        thumbnail: 'http://127.0.0.1:8090/img-static/libs/cars/1_2.jpg',
       },
       {
-        original: 'http://localhost:8090/img-static/libs/cars/2_1.jpg',
-        thumbnail: 'http://localhost:8090/img-static/libs/cars/2_2.jpg',
+        original: 'http://127.0.0.1:8090/img-static/libs/cars/2_1.jpg',
+        thumbnail: 'http://127.0.0.1:8090/img-static/libs/cars/2_2.jpg',
       }
     ];
     const handleOnDragStart = e => e.preventDefault();
@@ -24,8 +24,8 @@ class Gallery2 extends React.Component {
           buttonsDisabled={true}
           showSlideInfo={true}
         >
-          <img src="http://localhost:8090/img-static/libs/cars/1_1.jpg" onDragStart={handleOnDragStart} className="yours-custom-class" />
-          <img src="http://localhost:8090/img-static/libs/cars/1_2.jpg" onDragStart={handleOnDragStart} className="yours-custom-class" />
+          <img src="http://127.0.0.1:8090/img-static/libs/cars/1_1.jpg" onDragStart={handleOnDragStart} className="yours-custom-class" />
+          <img src="http://127.0.0.1:8090/img-static/libs/cars/1_2.jpg" onDragStart={handleOnDragStart} className="yours-custom-class" />
         </AliceCarousel>
       </div>
     )

@@ -68,7 +68,7 @@ console.log(mailSettings.backend.mailSend, 'mailSettings.backend.mailSend');
     let smtpTransport = nodemailer.createTransport(mailSettings.backend.mailSend);
 
 // setup e-mail data with unicode symbols
-    let urlApi = process.env.NODE_ENV == 'development' ? `http://localhost:${config.backend.port}` : process.env.SERVER_DOMAIN;
+    let urlApi = process.env.NODE_ENV == 'development' ? `http://127.0.0.1:${config.backend.port}` : process.env.SERVER_DOMAIN;
 
     console.log(process.env.NODE_ENV , 'process.env.NODE_ENV');
 console.log(`http://${urlApi}/api/ct?t=${link}`, 'URRRRLLL');

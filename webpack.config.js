@@ -217,12 +217,12 @@ var config = {
     }, // cannot GET *url* after press f5
     hot: true,
     // enable HMR on the server
-    host: "localhost", // default
+    host: "127.0.0.1", // default
     port: 8090, // default
     contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), если нет бандлов
     // proxy: [{
     //     path: '*',
-    //     target: 'http://localhost:3000',
+    //     target: 'http://127.0.0.1:3000',
     // }]
   },
   // source-maps

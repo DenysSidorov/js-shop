@@ -6,7 +6,7 @@ class CardsSection extends React.Component {
     // async componentDidMount() {
     //     // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
     //     // https://www.npmjs.com/package/axios
-    //     var cards = await axios.get('http://localhost:3000/goods');
+    //     var cards = await axios.get('http://127.0.0.1:3000/goods');
     //
     //     // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
     //     this.setState({cards: cards.data})
