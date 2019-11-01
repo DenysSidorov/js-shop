@@ -9,7 +9,7 @@ var cors = require('cors');
 var cluster = require('cluster');
 var https = require('https');
 var http = require('http');
-var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
+// var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 import assets from "./app-server/assets.json";
 import siteOpener from "./app-server/helper/site-opener";
 import config from "./config/index";
@@ -18,6 +18,7 @@ import userRoute from "./app-server/shop/routes/user";
 import goodRoute from "./app-server/shop/routes/goodRoute";
 import orderRoute from "./app-server/shop/routes/orderRoute";
 import errorMiddleWare from "./app-server/middlewares/errors";
+import httpsMiddleWare from "./app-server/middlewares/httpToHttps";
 import rdRoute from "./app-server/shop/routes/rdRoute";
 import createGoods from "./app-server/shop/routes/createGoods";
 
@@ -70,11 +71,12 @@ mongoose.connect(config.backend.database, {
 
 //Нужно запускать после подключения к базе, гарантия что не будет запросов  к базе, если соед с ней еще не установлено!
 const app = express(); // Запуск приложения
-app.use(redirectToHTTPS([], []));
+// app.use(redirectToHTTPS([], []));
 app.disable('x-powered-by'); // Отключить определение, что это express
 
 // app.use(require('prerender-node'));
 app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
+// app.use(httpsMiddleWare);
 
 /** Запуск приожения на порте*/
 console.log(process.env.PORT, 'port');
@@ -107,7 +109,6 @@ app.set('view engine', 'ejs');
 //     //     expires: expiryDate
 //     // }
 // }));
-
 // app.use('/api/rd', cors(), rdRoute);
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
@@ -121,7 +122,10 @@ app.use('/api/users', userRoute);
 //   res.render(path.join(__dirname + '/www/main.ejs'));
 // });
 
-app.get('*', (req, res) => {
+app.get('*', httpsMiddleWare, (req, res) => {
+  if(!req.secure){
+
+  }
   res.render(path.join(__dirname + '/www/index.ejs'), {assets});
   // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
