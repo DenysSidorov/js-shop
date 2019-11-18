@@ -7,7 +7,7 @@ class Contacts extends React.Component {
                 window.scrollTo(0, 0)
           setTitle('Контакты');
           setMetaTag('description');
-          setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
+          setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины');
 
         }
     render() {

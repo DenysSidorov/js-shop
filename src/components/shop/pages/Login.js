@@ -24,7 +24,7 @@ class Login extends React.Component {
     this.props.delErrorMessage();
     setTitle('Логин');
     setMetaTag('description', 'Логин в магазин картин на дереве');
-    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины');
   }
 
   sendData = () => {

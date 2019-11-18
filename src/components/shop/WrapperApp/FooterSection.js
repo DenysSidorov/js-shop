@@ -36,7 +36,7 @@ class FooterSection extends React.Component {
                             {/*<span className="menu_one_soc"><i className="fa fa-twitter" aria-hidden="true"></i></span>*/}
                             {/*<span className="menu_one_soc"><i className="fa fa-google-plus" aria-hidden="true"></i></span>*/}
                             {/*<span className="menu_one_soc"><i className="fa fa-vk" aria-hidden="true"></i></span>*/}
-                            <a href={'https://www.instagram.com/loft.world/'} target="_blank" className="menu_one_soc"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href={'https://www.instagram.com/doshki.kom/'} target="_blank" className="menu_one_soc"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                         </div>
 
                         <div className="footerMainBlock__titles">

@@ -25,7 +25,7 @@ class CardComponent extends React.PureComponent {
     window.scrollTo(0, 0);
     setTitle('Карта товара');
     setMetaTag('description', 'Купить картину на дереве в Украине, картины на досках Украина');
-    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины, doshki.kom');
 
     var similarCategory = [];
     var popularCards = [];
@@ -33,7 +33,6 @@ class CardComponent extends React.PureComponent {
     // TODO getTime, isAuth, getCurrency, getName, getDate, getLocation, getSomeData
     try {
       card = await axios.get(`${urlApi}/api/goods/${id}`);
-      console.log(card, '11111');
       if (card.data.length) {
         similarCategory = await axios.post(`${urlApi}/api/goods/${id}/similar`,
           {params: {'category': card.data[0].category}}

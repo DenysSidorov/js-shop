@@ -39,7 +39,7 @@ class OrderPage extends React.Component {
     this.initCadd();
     setTitle('Корзина');
     setMetaTag('description', 'Корзина ваших товаров');
-    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины');
+    setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины');
   }
 
   render() {
