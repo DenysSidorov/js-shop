@@ -1,0 +1,40 @@
+Armageddon application
+
+**Main stack:**
+
+Front
+
+- Last React 16-17/ Async
+- React-Router 4
+- Redux
+- React Hooks
+- TypeScript
+- SASS
+- Webpack
+- floats/flexes/grids
+- Tests Enzyme/Jasmine
+- Apollo
+
+
+Back
+
+- Last Node
+- Express/Koa
+- MySQL/MongoDB
+- Mongoose/Sequelize
+- TypeScript
+- Swagger
+- Docker
+- Redis
+- AWS (few services)
+- CI
+- Clusters
+- PM2
+- nginx
+- GraphQL
+- SSR
+- Tests/few kinds
+- Elasticsearch
+- RabbitMQ/RedisMQ
+- Cache
+- Logs
