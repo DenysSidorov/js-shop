@@ -216,9 +216,10 @@ var config = {
       index: 'index2.html',
     }, // cannot GET *url* after press f5
     hot: true,
+    https: true,
     // enable HMR on the server
     host: "127.0.0.1", // default
-    port: 8090, // default
+    port: 8999, // default
     contentBase: path.join(__dirname, 'www'), // отдает по умолчанию(можн указ люб папку), если нет бандлов
     // proxy: [{
     //     path: '*',
