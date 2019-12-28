@@ -30,8 +30,8 @@ class Landing extends React.Component {
 
   componentDidMount() {
     this.initCadd();
-    setTitle('Корзина');
-    setMetaTag('description', 'Корзина ваших товаров');
+    setTitle('Картины на дереве в стиле лофт, Украина');
+    setMetaTag('description', 'Интернет магазин картин на дереве ручной работы');
     setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины');
   }
 
