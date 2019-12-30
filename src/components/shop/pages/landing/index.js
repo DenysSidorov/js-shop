@@ -641,18 +641,18 @@ class Landing extends React.Component {
             Узнайте о нас больше в социальных сетях
           </h2>
           <div className="socBlock_cont">
-            <div className="socBlock_facebook">
-              <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>
-            </div>
-            <div className="socBlock_inst">
-              <div className="buyNow2_arrow">
-                <img src="/img-static/land/red-arrow.png" alt=""/>
-              </div>
-              <img src="/img-static/land/inst.png" alt="Картины на досках instagram"/>
-            </div>
-            <div className="socBlock_youtube">
-              <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>
-            </div>
+            {/*<div className="socBlock_facebook">*/}
+            {/*  <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>*/}
+            {/*</div>*/}
+            <a className="socBlock_inst" href="https://www.instagram.com/doshki.kom/" target="_blank">
+              {/*<div className="buyNow2_arrow">*/}
+              {/*  <img src="/img-static/land/red-arrow.png" alt=""/>*/}
+              {/*</div>*/}
+              <img src="/img-static/land/inst.png" alt="Картины на досках instagram" className="socBlock_inst_img"/>
+            </a>
+            {/*<div className="socBlock_youtube">*/}
+            {/*  <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>*/}
+            {/*</div>*/}
           </div>
 
         </div>
@@ -731,19 +731,22 @@ class Landing extends React.Component {
           </div>
         </div>
         <div className="socBlock">
+          <h2 className="socBlock_title">
+            Узнайте о нас больше в социальных сетях
+          </h2>
           <div className="socBlock_cont">
-            <div className="socBlock_facebook">
-              <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>
-            </div>
-            <div className="socBlock_inst">
-              <div className="buyNow2_arrow">
-                <img src="/img-static/land/red-arrow.png" alt=""/>
-              </div>
-              <img src="/img-static/land/inst.png" alt="Картины на досках instagram"/>
-            </div>
-            <div className="socBlock_youtube">
-              <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>
-            </div>
+            {/*<div className="socBlock_facebook">*/}
+            {/*  <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>*/}
+            {/*</div>*/}
+            <a className="socBlock_inst" href="https://www.instagram.com/doshki.kom/" target="_blank">
+              {/*<div className="buyNow2_arrow">*/}
+              {/*  <img src="/img-static/land/red-arrow.png" alt=""/>*/}
+              {/*</div>*/}
+              <img src="/img-static/land/inst.png" alt="Картины на досках instagram" className="socBlock_inst_img"/>
+            </a>
+            {/*<div className="socBlock_youtube">*/}
+            {/*  <img src="/img-static/land/you.png" alt="Картины на досках youtube"/>*/}
+            {/*</div>*/}
           </div>
 
         </div>
