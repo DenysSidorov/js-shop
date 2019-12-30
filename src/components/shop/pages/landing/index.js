@@ -643,7 +643,7 @@ class Landing extends React.Component {
           <div className="socBlock_cont">
             {/*<div className="socBlock_facebook">*/}
             {/*  <img src="/img-static/land/facebook.png" alt="Картины на досках facebook"/>*/}
-            {/*</div>*/}
+            {/*</div>*/ }
             <a className="socBlock_inst" href="https://www.instagram.com/doshki.kom/" target="_blank">
               {/*<div className="buyNow2_arrow">*/}
               {/*  <img src="/img-static/land/red-arrow.png" alt=""/>*/}
