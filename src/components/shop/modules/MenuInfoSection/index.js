@@ -157,9 +157,10 @@ class Phone extends React.Component {
       <a title="Позвонить на Лайф"
          href={this.props.phoneMobile}
          className="contactInfo__list-contacts-info_time"
-         onClick={this.showAll}>
+         // onClick={this.showAll}
+      >
         <i className="fa fa-phone"></i>
-        &nbsp;{this.state.phoneForUser}
+        &nbsp;{this.props.phoneText}
       </a>
     )
   }
