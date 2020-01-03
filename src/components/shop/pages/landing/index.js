@@ -427,8 +427,8 @@ class Landing extends React.Component {
                 <label className="accordion_trigger" htmlFor="toggle-05">Гниют ли доски?</label>
                 <div className="accordion_target">
                   <p>
-                    Нет, мы применяем лучшие материалы, которые не вредны здоровью, которые
-                    защищают картину от внешних воздействий.
+                    Нет, мы применяем лучшие материалы, которые не вредны здоровью и
+                    сохраняют картину при воздействии внешней среды.
                   </p>
                 </div>
               </li>
