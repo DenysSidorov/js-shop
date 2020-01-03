@@ -23,8 +23,9 @@ class CardComponent extends React.PureComponent {
 
   async initCadd(id) {
     window.scrollTo(0, 0);
+    const descriptionText = 'Купить картину на дереве в Украине, ручная работа, картины на досках высокого качества. Украина.'
     setTitle('Карта товара');
-    setMetaTag('description', 'Купить картину на дереве в Украине, картины на досках Украина');
+    setMetaTag('description', descriptionText);
     setMetaTag('keywords', 'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины, doshki.kom');
 
     var similarCategory = [];
@@ -48,9 +49,10 @@ class CardComponent extends React.PureComponent {
         popularCards: popularCards.data && popularCards.data ? popularCards.data : []
       }, () => {
         if (this.state.card.length) {
-          setTitle(`${this.state.card[0].name} ${this.state.card[0].model}`);
-          setMetaTag('description', `${this.state.card[0].name} ${this.state.card[0].model} - ${this.state.card[0]['desc-short']}`);
-          setMetaTag('keywords', `${this.state.card[0].name}, ${this.state.card[0].model}, ${this.state.card[0].producer}, ${this.getMetaTags(this.state.card[0].tags)}, ${this.getMetaTags(this.state.card[0].category)}, интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины`);
+          setTitle(`${this.state.card[0].name && this.state.card[0].name + ', '}${this.state.card[0].model}`);
+          setMetaTag('description', `${this.state.card[0].name && this.state.card[0].name + ', '}${this.state.card[0].model} - ${this.state.card[0]['desc-short'] || descriptionText}`);
+          setMetaTag('keywords',
+            `${this.state.card[0].name && this.state.card[0].name + ', '}${this.state.card[0].model}, ${this.state.card[0].producer}, ${this.getMetaTags(this.state.card[0].tags)}, ${this.getMetaTags(this.state.card[0].category)}, интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины`);
         }
       });
     }
