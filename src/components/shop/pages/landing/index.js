@@ -470,7 +470,8 @@ class Landing extends React.Component {
                     Если вы хотите получить на картине ваше изображение, тогда оно должно быть
                     нормального качества. Минимальный размер 2000на1500 пикселей, если вы не
                     знаете как посмотреть размер, присылайте свою картинку и мы поможем вам.
-                    Подойдет фото с вашего телефона!
+                    Подойдет фото с вашего телефона! Либо Вы можете скачать изображение в хорошем
+                    качестве на сайтах <a href="https://unsplash.com/" target="_blank" className="accordion_target_link">unsplash</a>, <a href="https://ru.depositphotos.com/" target="_blank" className="accordion_target_link">depositphotos</a> или <a href="https://www.shutterstock.com/"  target="_blank" className="accordion_target_link">shutterstock</a>
                   </p>
                 </div>
               </li>
