@@ -14,7 +14,7 @@
 @cardBG: #f6f6f6;
 
 .mainContainerForCard {
-  margin-top: 25px;
+  //margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   .mainContainerForCard__imageBlock {
@@ -94,6 +94,19 @@
     //height: 440px;
     flex-grow: 1;
     flex-basis: 380px;
+    .mainContainerForCard_underLink{
+      margin: 15px 5px 9px 5px;
+      display: inline-block;
+      span{
+        font: 13px/13px @robotoRegular;
+        background-color: #2EA9FD;
+        padding: 5px 6px;
+        border-radius: 5px;
+        color: #ffffff;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
     .mainContainerForCard__mainInfoBlock_oneBlockContainer {
       display: flex;
       justify-content: space-between;
