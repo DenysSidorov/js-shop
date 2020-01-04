@@ -11,6 +11,7 @@ import MenuInfoSection from "../modules/MenuInfoSection";
 import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 import Pagination from "../modules/Pagination";
 import {setMetaTag, setTitle} from "../helpers/lib/utils";
+import LinksToImages from "../modules/LinksToImages";
 
 class Home extends React.Component {
   constructor() {
@@ -158,6 +159,8 @@ class Home extends React.Component {
             paginationPageActive={this.state.paginationPageActive}
             onPageChange={this.onPageChange}/>
           : null}
+
+        <LinksToImages/>
         {!this.state.cards.length
           ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
           : null}
