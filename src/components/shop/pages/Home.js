@@ -160,7 +160,8 @@ class Home extends React.Component {
             onPageChange={this.onPageChange}/>
           : null}
 
-        <LinksToImages/>
+        {this.state.cards && this.state.cards.length ? <LinksToImages/> : null}
+
         {!this.state.cards.length
           ? <div className="adminPanelSpinner"><i className="fa fa-spinner"></i></div>
           : null}
