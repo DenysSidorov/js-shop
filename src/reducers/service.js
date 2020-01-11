@@ -1,3 +1,3 @@
-export default (state = {number1: '098-960-50-08', email1: 'doshki.craft@gmail.com'}, action) => {
+export default (state = {number1: '093-687-76-13', email1: 'doshki.craft@gmail.com'}, action) => {
     return state;
 }
