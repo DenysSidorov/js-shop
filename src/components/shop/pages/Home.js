@@ -12,6 +12,7 @@ import SimilarGoodsSection from "../modules/SimilarGoodsSection";
 import Pagination from "../modules/Pagination";
 import {setMetaTag, setTitle} from "../helpers/lib/utils";
 import LinksToImages from "../modules/LinksToImages";
+import HeadBanner from "../modules/HeadBanner";
 
 class Home extends React.Component {
   constructor() {
@@ -144,6 +145,8 @@ class Home extends React.Component {
     return (
       <div>
         <MenuInfoSection/>
+
+        <HeadBanner/>
 
         {this.state.uniqCategory && this.state.uniqCategory.length
           ? <TagsMainSection uniqCategory={this.state.uniqCategory}/>
