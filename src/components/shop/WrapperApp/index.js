@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import {Route, Switch} from "react-router-dom";
 // import ReactCSSTransitionGroup from 'react/libs/ReactCSSTransitionGroup';
 // import  CSSTransitionGroup  from 'react-transition-group'
@@ -32,6 +32,16 @@ import RouteAuth from "../helpers/RouteAuth";
 
 // TODO maybe use async loading component with ErrorComp and PreloadComp ???
 // https://github.com/ctrlplusb/react-async-component
+
+// lazy loading functionality
+const TestComponent = React.lazy(() => import('./TestComponent'));
+const WrapperTestComp = () => {
+  return (
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <TestComponent />
+    </Suspense>
+  )
+}
 
 class WrapperApp extends React.Component {
     render() {

@@ -5,21 +5,25 @@ Armageddon application
 Front
 
 - Last React 16-17/ Async
-- React-Router 4
-- Redux
+Done - React-Router 4
+Done - Redux
 - React Hooks
 - TypeScript
-- SASS
-- Webpack
-- floats/flexes/grids
+Done - SASS
+- CSS-grids?
+- Webpack 4 latest
+- floats
+- Done - flexes
+- grids
 - Tests Enzyme/Jasmine
 - Apollo
 
 
 Back
 
+- CI/CD
 - Last Node
-- Express/Koa
+Done - Express/Koa
 - MySQL/MongoDB
 - Mongoose/Sequelize
 - TypeScript
@@ -27,7 +31,6 @@ Back
 - Docker
 - Redis
 - AWS (few services)
-- CI
 - Clusters
 - PM2
 - nginx
@@ -38,3 +41,11 @@ Back
 - RabbitMQ/RedisMQ
 - Cache
 - Logs
+
+
+Update webpack
+Update nodejs/npm
+Update React to latest
+Update Redux to latest
+Update React-router to latest
+compare with work-project, if find something - will add it!

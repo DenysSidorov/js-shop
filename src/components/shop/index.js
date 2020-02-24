@@ -42,7 +42,7 @@ class App extends React.Component {
 
 
                 <Switch>
-                  <Route exact path="/" component={Landing}/>
+                    <Route exact path="/" component={Landing}/>
                     <RouteAuth path="/panel" component={Panel}/>
                     <WrapperApp {...this.props}/>
                 </Switch>
