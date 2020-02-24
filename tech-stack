@@ -42,10 +42,11 @@ Done - Express/Koa
 - Cache
 - Logs
 
-
+using .env file how - in app!
 Update webpack
 Update nodejs/npm
 Update React to latest
 Update Redux to latest
 Update React-router to latest
 compare with work-project, if find something - will add it!
+using app in docker/redis/ on real linux-server
