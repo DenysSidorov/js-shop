@@ -28,7 +28,9 @@ Done - Express/Koa
 - Mongoose/Sequelize
 - TypeScript
 - Swagger
-- Docker https://levelup.gitconnected.com/intro-to-docker-for-front-end-developers-22ed1942c4a5
+- Docker
+    https://levelup.gitconnected.com/intro-to-docker-for-front-end-developers-22ed1942c4a5
+    https://medium.com/@xiaolishen/develop-in-docker-a-node-backend-and-a-react-front-end-talking-to-each-other-5c522156f634
 - Redis
 - AWS (few services)
 - Clusters
