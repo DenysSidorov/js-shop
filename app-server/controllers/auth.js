@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import config from "../../config/index";
 import * as UserService from "../shop/services/userService";
 import {sendMailForSingup} from "../shop/services/sendMailAuth";
+require('dotenv').config();
 
 
 // import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену

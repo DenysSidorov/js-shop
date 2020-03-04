@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import mailSettings from "../../../config/index";
 import config from "../../../config/index";
+require('dotenv').config();
 
 // create reusable transporter object using the default SMTP transport
 //var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');

@@ -45,6 +45,7 @@
     "css-loader": "~0.28.1",
     "cssnano": "~3.10.0",
     "cssnext": "~1.8.4",
+    "dotenv": "^8.2.0",
     "ejs": "^2.5.7",
     "eslint": "~4.3.0",
     "eslint-config-airbnb": "~15.1.0",
@@ -118,6 +119,7 @@
   "scripts": {
     "start-f": "webpack-dev-server --hot --inline",
     "start-s": "cross-env NODE_ENV=development SITE=https://google.com MONGODB_URI=mongodb://127.0.0.1:27017/shop PORT=3000 nodemon --exec babel-node server.js",
+    "start-s2": "nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-server": "mocha app-server/**/*.test.js",
     "production": "node_modules/.bin/webpack -p",

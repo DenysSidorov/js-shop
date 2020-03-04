@@ -1,5 +1,6 @@
 // import app from '../../server';
 var request = require('request');
+require('dotenv').config();
 // var express = require('express');
 // var app = express();
 export default () => {
@@ -10,7 +11,7 @@ export default () => {
                 console.log("Error: " + error);
             }
 
-            times++
+            times++;
             console.log(times, ' times', new Date().toLocaleString());
         })
     };

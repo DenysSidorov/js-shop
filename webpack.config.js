@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
+require('dotenv').config()
 const configApp = require('./config/index');
 const webpack = require('webpack'); // ставиться локально для того чтоб вытаскивать плагины и доп. инструменты
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); // собирает все css в один файл
@@ -148,7 +149,9 @@ var config = {
       // Loaders for other file types can go here
     ],
   },
-
+  node: {
+    fs: 'empty'
+  },
   plugins: [
     // delete all in folder
     new CleanWebpackPlugin(['./www/assets/*.*']),

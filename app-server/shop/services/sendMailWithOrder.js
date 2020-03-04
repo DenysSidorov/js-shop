@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import mailSettings from "../../../config/index";
 import React from 'react';
+require('dotenv').config();
 
 const showGoods = (goods) => {
   let res = `${goods.map((g, ind) => (

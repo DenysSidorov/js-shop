@@ -3,6 +3,7 @@ import {routerMiddleware} from "react-router-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 import initLocalStorage from "./api/initLocalStorage";
+require('dotenv').config();
 
 // first export history, simple config
 import createHistory from "history/createBrowserHistory";

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 // our store with config
 import store, { history } from './store';
+require('dotenv').config();
 // import App from './containers/app';
 
 

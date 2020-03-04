@@ -5,6 +5,7 @@ import morgan from "morgan";
 import bodyParse from "body-parser";
 import fs from "fs";
 var cors = require('cors');
+require('dotenv').config()
 
 var cluster = require('cluster');
 var https = require('https');
