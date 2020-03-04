@@ -150,7 +150,8 @@ var config = {
     ],
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
+    child_process: 'empty'
   },
   plugins: [
     // delete all in folder
