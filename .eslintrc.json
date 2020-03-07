@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "airbnb",
-    "prettier"
-  ],
-  "rules": {
-  },
-  "root": true
-}
