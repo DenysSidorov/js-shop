@@ -18,7 +18,7 @@ function getConfig(env = {}) {
     // context: path.resolve(__dirname, './src'),
     entry: {
       main: ['webpack-dev-server/client'], // for dev mode
-      app: ['@babel/polyfill', path.resolve(__dirname, 'src/index.js')/*path.resolve(__dirname, 'src/app.js'), path.resolve(__dirname, 'src/vendor/startToo.js')*/],
+      app: ['@babel/polyfill', /*path.resolve(__dirname, 'src/index.js')*/ path.resolve(__dirname, 'src/app.js'), path.resolve(__dirname, 'src/vendor/startToo.js')],
       vendor: ['react', 'react-dom', 'jquery']
       // common_css: ['./src/less/main', './src/less/reset', './src/less/font-awesome']
     },
@@ -146,6 +146,10 @@ function getConfig(env = {}) {
       https: true,
       hot: true,
       inline: true
+    },
+    node: {
+      fs: 'empty',
+      child_process: 'empty'
     },
     plugins: [
       new CleanWebpackPlugin(['www/assets/*.*']), // clean folder before  every bundling

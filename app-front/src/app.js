@@ -1,6 +1,7 @@
 //import responsiveTabs from 'responsive-tabs';
 import React from 'react';
 import ReactDom from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 // wrap App for connect components to store
 import { Provider } from 'react-redux';
 // connect router to redux
@@ -31,12 +32,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const container  = document.getElementById('reactContent');
     if(container) {
         ReactDom.render(
+          <BrowserRouter>
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                     <App />
                 </ConnectedRouter>
             </Provider>
-
+          </BrowserRouter>
             , container);
     }
 });
@@ -44,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // add input mask
 // https://github.com/insin/react-maskedinput
 
-window.$ = jQuery;
-window.jQuery = jQuery;
+window.$ = $;
+window.jQuery = $;
 // window.Immutable = Immutable;
 
 console.log(process.env.NODE_ENV, 'App ');

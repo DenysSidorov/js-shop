@@ -84,35 +84,35 @@ export default (state = getFromLocalData('cart'), action) => {
 
     //return state.count = 545;  DELETE_ALL_ITEM_IN_CART
     case DELETE_ITEM_IN_CART:
-      var newState = {...state};
+      let newState2 = {...state};
       result = {
-        ...newState,
+        ...newState2,
         items: state.items.filter(el => el._id != action.payload._id)
       };
       setInLocalData(result);
       return result;
     case DELETE_ALL_ITEM_IN_CART:
-      var newState = {...state};
+      var newState3 = {...state};
       result = {
-        ...newState,
+        ...newState3,
         items: []
       };
       setInLocalData(result);
       return result;
     case INCREMENT_ITEM_IN_CART:
-      var newState = {...state};
-      var newArr = [];
-      if (newState.items.some(el => el._id == action.payload)) {
-        newState.items.forEach((el) => {
+      var newState4 = {...state};
+      var newArr4 = [];
+      if (newState4.items.some(el => el._id == action.payload)) {
+        newState4.items.forEach((el) => {
           if (el._id == action.payload) {
             let newEl = {...el};
             newEl.count++;
-            newArr.push(newEl);
+            newArr4.push(newEl);
           } else {
-            newArr.push(el);
+            newArr4.push(el);
           }
         })
-        result = {...newState, items: newArr};
+        result = {...newState4, items: newArr};
         setInLocalData(result);
         return result;
 
@@ -121,10 +121,10 @@ export default (state = getFromLocalData('cart'), action) => {
         return newState
       }
     case DECREMENT_ITEM_IN_CART:
-      var newState = {...state};
-      var newArr = [];
-      if (newState.items.some(el => el._id == action.payload)) {
-        newState.items.forEach((el) => {
+      var newState5 = {...state};
+      var newArr5 = [];
+      if (newState5.items.some(el => el._id == action.payload)) {
+        newState5.items.forEach((el) => {
           if (el._id == action.payload) {
 
 
@@ -137,17 +137,17 @@ export default (state = getFromLocalData('cart'), action) => {
             if (newEl.count > 1) {
               newEl.count--;
             }
-            newArr.push(newEl);
+            newArr5.push(newEl);
           } else {
-            newArr.push(el);
+            newArr5.push(el);
           }
         })
-         result = {...newState, items: newArr};
+         result = {...newState5, items: newArr5};
         setInLocalData(result);
         return result;
       } else {
-        setInLocalData(newState);
-        return newState
+        setInLocalData(newState5);
+        return newState5
       }
     default:
       return state
