@@ -19,7 +19,8 @@ function getConfig(env = {}) {
     entry: {
       main: ['webpack-dev-server/client'], // for dev mode
       app: ['@babel/polyfill', /*path.resolve(__dirname, 'src/index.js')*/ path.resolve(__dirname, 'src/app.js'), path.resolve(__dirname, 'src/vendor/startToo.js')],
-      vendor: ['react', 'react-dom', 'jquery']
+      vendor: ['react', 'react-dom', 'jquery'],
+      common_css: [path.resolve(__dirname, 'src/less/main.less'), path.resolve(__dirname, 'src/less/reset.less'), path.resolve(__dirname, 'src/less/font-awesome.less')]
       // common_css: ['./src/less/main', './src/less/reset', './src/less/font-awesome']
     },
 
