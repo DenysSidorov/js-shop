@@ -8,6 +8,7 @@ www/img/*
 credentials/*
 app-server/config/*
 app-server/assets.json
+app-server/dist
 PLANS.TXT
 .idea/workspace.xml
 

@@ -50,3 +50,8 @@
 
 
 "query-string": "^5.0.1",
+
+
+
+"start-f": "webpack-dev-server --hot --inline",
+"prepublishOnly": "npm run build"
