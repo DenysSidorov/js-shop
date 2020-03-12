@@ -107,9 +107,8 @@
     "dotenv": "^4.0.0"
   },
   "scripts": {
-    "start-f": "webpack-dev-server --hot --inline",
+    "start-f": "node_modules/.bin/webpack-dev-server --mode development",
     "webpack-prod": "node_modules/.bin/webpack -p",
-    "webpack-dev": "node_modules/.bin/webpack-dev-server --mode development",
     "webpack-dev-stage": "node_modules/.bin/webpack-dev-server --mode development --env.API=https://stage-api.relationdesk.com --env.AUTH=https://stage-auth.relationdesk.com --env.DEFAULT_REDIRECTION=https://stage-login.relationdesk.com --env.PUBLISH=https://stage-publish.relationdesk.com --env.hostname=stage-engage.relationdesk.com",
     "lint": "node_modules/.bin/eslint  --quiet src/**/*.js",
     "lint-fix": "node_modules/.bin/eslint --fix src/**/*.js",

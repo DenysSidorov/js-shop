@@ -10,6 +10,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin'); // exclude js/css from finish version of index.html
 const HtmlWebpackHardDiskPlugin = require('html-webpack-harddisk-plugin'); // generate index.html in dev-mode
+const confFront = require('./config');
 
 console.log('Webpack mode is - ', prodMode);
 
@@ -142,7 +143,7 @@ function getConfig(env = {}) {
     devServer: {
       contentBase: path.resolve(__dirname, 'www'),
       host: "127.0.0.1",
-      port: 8999,
+      port: confFront['FRONT_PORT'],
       historyApiFallback: true,
       https: true,
       hot: true,
@@ -156,18 +157,18 @@ function getConfig(env = {}) {
       new CleanWebpackPlugin(['www/assets/*.*']), // clean folder before  every bundling
       new CleanWebpackPlugin(['www/index.html']), // clean file before every bundling
       new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.DefinePlugin({
-        'process.env': {
-          // process.env.NODE_ENV in JavaScript
-          'NODE_ENV': JSON.stringify(prodMode),
-          // 'PATH_ENGAGE': env.ENGAGE ? JSON.stringify(env.ENGAGE) : '',
-          // 'PATH_API': env.API ? JSON.stringify(env.API) : '',
-          // 'PATH_SERVICE': env.SERVICE ? JSON.stringify(env.SERVICE) : '',
-          // 'PATH_PUBLISH': env.PUBLISH ? JSON.stringify(env.PUBLISH) : '',
-          // 'PATH_REDIRECTION_LINK': env.DEFAULT_REDIRECTION ? JSON.stringify(env.DEFAULT_REDIRECTION) : '',
-          // 'PATH_AUTH': env.AUTH ? JSON.stringify(env.AUTH) : ''
-        }
-      }),
+      // new webpack.DefinePlugin({
+      //   'process.env': {
+      //     // process.env.NODE_ENV in JavaScript
+      //     'NODE_ENV': JSON.stringify(prodMode),
+      //     // 'PATH_ENGAGE': env.ENGAGE ? JSON.stringify(env.ENGAGE) : '',
+      //     // 'PATH_API': env.API ? JSON.stringify(env.API) : '',
+      //     // 'PATH_SERVICE': env.SERVICE ? JSON.stringify(env.SERVICE) : '',
+      //     // 'PATH_PUBLISH': env.PUBLISH ? JSON.stringify(env.PUBLISH) : '',
+      //     // 'PATH_REDIRECTION_LINK': env.DEFAULT_REDIRECTION ? JSON.stringify(env.DEFAULT_REDIRECTION) : '',
+      //     // 'PATH_AUTH': env.AUTH ? JSON.stringify(env.AUTH) : ''
+      //   }
+      // }),
       new MiniCssExtractPlugin({
         filename: isProduction ? '[name].[hash].css' : '[name].css',
         chunkFilename: isProduction ? '[id].[hash].css' : '[id].css'

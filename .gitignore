@@ -9,6 +9,8 @@ credentials/*
 app-server/config/*
 app-server/assets.json
 app-server/dist
+app-server/.env
+app-front/.env
 PLANS.TXT
 .idea/workspace.xml
 
@@ -79,3 +81,4 @@ typings/
 
 # dotenv environment variables file
 .env
+

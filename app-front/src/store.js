@@ -3,7 +3,7 @@ import {routerMiddleware} from "react-router-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 import initLocalStorage from "./api/initLocalStorage";
-require('dotenv').config();
+import config from '../config';
 
 // first export history, simple config
 // import createHistory from "history"; .createBrowserHistory
@@ -18,7 +18,7 @@ const middleware = [
     routerMiddleware(history) // first place react-router-redux including, second - combineReducers
 ];
 
- if (process.env.NODE_ENV === 'development') {
+ if (config['NODE_ENV'] === 'development') {
     setDevTools();
  }
 
@@ -37,7 +37,7 @@ const store = createStore(
 
 
 export default store;
-if (process.env.NODE_ENV === 'development') { window.storet = store;}
+if (config['NODE_ENV'] === 'development') { window.storet = store;}
 
 function setDevTools()  {
 

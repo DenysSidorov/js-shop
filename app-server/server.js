@@ -11,17 +11,17 @@ var cluster = require('cluster');
 var https = require('https');
 var http = require('http');
 // var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
-import assets from "./app-server/assets.json";
-import siteOpener from "./app-server/helper/site-opener";
+import assets from "./assets.json";
+import siteOpener from "./helper/site-opener";
 import config from "./config/index";
-import authRoute from "./app-server/routes/auth";
-import userRoute from "./app-server/shop/routes/user";
-import goodRoute from "./app-server/shop/routes/goodRoute";
-import orderRoute from "./app-server/shop/routes/orderRoute";
-import errorMiddleWare from "./app-server/middlewares/errors";
-import httpsMiddleWare from "./app-server/middlewares/httpToHttps";
-import rdRoute from "./app-server/shop/routes/rdRoute";
-import createGoods from "./app-server/shop/routes/createGoods";
+import authRoute from "./routes/auth";
+import userRoute from "./shop/routes/user";
+import goodRoute from "./shop/routes/goodRoute";
+import orderRoute from "./shop/routes/orderRoute";
+import errorMiddleWare from "./middlewares/errors";
+import httpsMiddleWare from "./middlewares/httpToHttps";
+import rdRoute from "./shop/routes/rdRoute";
+import createGoods from "./shop/routes/createGoods";
 
 // process.env.NODE_ENV = 'production';
 
