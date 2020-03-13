@@ -1,4 +1,3 @@
-//import responsiveTabs from 'responsive-tabs';
 import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
@@ -10,7 +9,6 @@ import {ConnectedRouter} from 'react-router-redux';
 import store, {history} from './store';
 import config from '../config';
 // import App from './containers/app';
-
 
 import $ from 'jquery';
 
