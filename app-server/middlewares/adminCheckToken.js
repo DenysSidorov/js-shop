@@ -1,4 +1,4 @@
-import config from '../../config/index';
+import config from '../config';
 import User from '../shop/models/user';
 import userService from '../shop/services/userService';
 import jwt from 'jsonwebtoken';
@@ -21,7 +21,7 @@ export default (req, resp, next)=>{
     }
 
     // Если токен есть - проверяем его с секретным словом
-    jwt.verify(token, config.backend.secretWord, async function(err, decoded) {
+    jwt.verify(token, config['SECRET_WORD'], async function(err, decoded) {
         if(err){
             const {message} = err;
             console.log('токен не подходит');

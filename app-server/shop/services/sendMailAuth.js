@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
-import mailSettings from "../../../config/index";
-import config from "../../../config/index";
-require('dotenv').config();
+import config from "../../config";
+const mailSettings = config['MAIL_SETTINGS'];
 
 // create reusable transporter object using the default SMTP transport
 //var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
@@ -65,13 +64,13 @@ require('dotenv').config();
 // }
 
 export const sendMailForSingup = ({email, nick, link})=> {
-console.log(mailSettings.backend.mailSend, 'mailSettings.backend.mailSend');
-    let smtpTransport = nodemailer.createTransport(mailSettings.backend.mailSend);
+console.log(mailSettings, 'mailSettings.backend');
+    let smtpTransport = nodemailer.createTransport(mailSettings);
 
 // setup e-mail data with unicode symbols
-    let urlApi = process.env.NODE_ENV == 'development' ? `http://127.0.0.1:${config.backend.port}` : process.env.SERVER_DOMAIN;
+    let urlApi = config['NODE_ENV'] === 'development' ? `http://127.0.0.1:${config['PORT']}` : config['SERVER_DOMAIN'];
 
-    console.log(process.env.NODE_ENV , 'process.env.NODE_ENV');
+    console.log(config['NODE_ENV'] , config['NODE_ENV']);
 console.log(`http://${urlApi}/api/ct?t=${link}`, 'URRRRLLL');
     let mailOptions = {
         from: '"Online-shop" <1qazxsw23edccde30@gmail.com>', // sender address

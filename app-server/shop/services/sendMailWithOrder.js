@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
-import mailSettings from "../../../config/index";
-import React from 'react';
-require('dotenv').config();
+import config from "../../config";
+const mailSettings = config['MAIL_SETTINGS'];
+// import React from 'react';
 
 const showGoods = (goods) => {
   let res = `${goods.map((g, ind) => (
@@ -14,14 +14,14 @@ const showGoods = (goods) => {
 }
 
 export const sendMailWithOrder = ({email = [], order}) => {
-  console.log(mailSettings.backend.mailSend, 'mailSettings.backend.mailSend');
-  let smtpTransport = nodemailer.createTransport(mailSettings.backend.mailSend);
+  console.log(mailSettings, 'mailSettings');
+  let smtpTransport = nodemailer.createTransport(mailSettings);
 
 // setup e-mail data with unicode symbols
-  let urlApi = process.env.NODE_ENV == 'development' ? `http://127.0.0.1:${mailSettings.frontend.port}` : process.env.SERVER_DOMAIN;
+  let urlApi = config['NODE_ENV'] === 'development' ? `http://127.0.0.1:${config['FRONT_PORT']}` : config['SERVER_DOMAIN'];
   // email = ['1qazxsw23edccde3@gmail.com', '000scorpions000@gmail.com', 'victoriasergeevna989@gmail.com'];
   email = ['000scorpions000@gmail.com', 'doshki.craft@gmail.com'];
-  console.log(process.env.NODE_ENV, 'process.env.NODE_ENV');
+  console.log(config['NODE_ENV'], 'process.env.NODE_ENV');
   let html = `<div>
             <p>Name: <b>${order.name}</b></p>
             <p>Price: <b>${order.price}</b></p>

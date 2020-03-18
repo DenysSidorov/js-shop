@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import random from "../../../src/components/shop/helpers/lib/randomArrElement";
+import random from "../../tools/randomArrElement";
 import Good from "../../../app-server/shop/models/good";
 
 export default (req, resp, next)=> {

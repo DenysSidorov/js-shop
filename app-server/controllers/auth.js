@@ -1,9 +1,8 @@
 import User from "../shop/models/user";
 import jwt from "jsonwebtoken";
-import config from "../../config/index";
+import config from "../config";
 import * as UserService from "../shop/services/userService";
 import {sendMailForSingup} from "../shop/services/sendMailAuth";
-require('dotenv').config();
 
 
 // import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену
@@ -22,7 +21,7 @@ export const singup = (req, resp, next) => {
             } else {
                 // Формируем токен
                 // Signing a token with 10 minutes of expiration
-                var token = jwt.sign(credentials, config.backend.secretWord, {expiresIn: '10m'});
+                var token = jwt.sign(credentials, config['SECRET_WORD'], {expiresIn: '10m'});
 
                 // отправка на почту
                 setTimeout(()=> {
@@ -45,7 +44,7 @@ export const isadmin = (req, resp, next)=> {
     console.log(tok, 'tok');
     if (tok) {
         // Если токен есть - проверяем его с секретным словом
-        jwt.verify(tok, config.backend.secretWord, async function (err, decoded) {
+        jwt.verify(tok, config['SECRET_WORD'], async function (err, decoded) {
             if (err) {
                 const {message} = err;
                 console.log('Токен не верный');
@@ -90,7 +89,7 @@ export const singin = async(req, resp, next) => {
 
                     const token = jwt.sign(
                         {_id: user._id},
-                        config.backend.secretWord,
+                        config['SECRET_WORD'],
                         {expiresIn: '2d'});
                     resp.json(token);
 
@@ -121,7 +120,7 @@ export const singin = async(req, resp, next) => {
 export async function checkTokenFromEmail(req, resp, next) {
 
     if (req.query.t) {
-        jwt.verify(req.query.t, config.backend.secretWord, function (err, credentials) {
+        jwt.verify(req.query.t, config['SECRET_WORD'], function (err, credentials) {
             if (err) {
                 // TODO error-token
                 next({status: 400, message: err.message})
@@ -154,9 +153,9 @@ export async function checkTokenFromEmail(req, resp, next) {
 
                         const token = jwt.sign(
                             {_id: userResult._id},
-                            config.backend.secretWord,
+                            config['SECRET_WORD'],
                             {expiresIn: '2d'});
-                        let urlApi = process.env.NODE_ENV == 'development' ? `http://127.0.0.1:${config.frontend.port}` : process.env.SERVER_DOMAIN;
+                        let urlApi = config['NODE_ENV'] === 'development' ? `http://127.0.0.1:${config['FRONT_PORT']}` : config['SERVER_DOMAIN'];
 
                         resp.redirect(`${urlApi}/verify-user?t=${token}`)
                     }

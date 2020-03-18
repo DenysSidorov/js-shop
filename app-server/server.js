@@ -5,7 +5,6 @@ import morgan from "morgan";
 import bodyParse from "body-parser";
 import fs from "fs";
 var cors = require('cors');
-require('dotenv').config();
 
 var cluster = require('cluster');
 var https = require('https');
@@ -13,7 +12,7 @@ var http = require('http');
 // var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 import assets from "./assets.json";
 import siteOpener from "./helper/site-opener";
-import config from "./config/index";
+import config from "./config";
 import authRoute from "./routes/auth";
 import userRoute from "./shop/routes/user";
 import goodRoute from "./shop/routes/goodRoute";
@@ -25,8 +24,8 @@ import createGoods from "./shop/routes/createGoods";
 
 // process.env.NODE_ENV = 'production';
 
-var privateKey  = fs.readFileSync('app-server/sslcert/private.key', 'utf8');
-var certificate = fs.readFileSync('app-server/sslcert/certificate.crt', 'utf8');
+var privateKey  = fs.readFileSync('./sslcert/private.key', 'utf8');
+var certificate = fs.readFileSync('./sslcert/certificate.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
 // app.use(cors() // for all app
@@ -38,14 +37,14 @@ var credentials = {key: privateKey, cert: certificate};
 //     } else return value;
 // }
 
-console.log('DEV MODE = ', process.env.NODE_ENV);
+console.log('DEV MODE = ', config['NODE_ENV']);
 
 mongoose.Promise = require('bluebird'); // Для асинхронного кода, а не колбэков которые по умолчанию
-if (process.env.NODE_ENV == 'development') {
+if (config['NODE_ENV'] == 'development') {
   mongoose.set('debug', true); // выводить в консоль все запросы
 }
 
-mongoose.connect(config.backend.database, {
+mongoose.connect(config['MONGODB_URI'], {
   // useMongoClient: true,
   reconnectTries: 30,
 }, err => {
@@ -80,7 +79,7 @@ app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'))
 // app.use(httpsMiddleWare);
 
 /** Запуск приожения на порте*/
-console.log(process.env.PORT, 'port');
+console.log(config['PORT'], 'port');
 
 // app.listen(config.backend.port, (err) => {
 //   if (err) throw err;
@@ -175,9 +174,9 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
 
-app.listen(config.backend.port, (err) => {
+app.listen(config['PORT'], (err) => {
   if (err) throw err;
-  console.log('Server listening on port ' + config.backend.port);
+  console.log('Server listening on port ' + config['PORT']);
 });
 
 // httpServer.listen(8080);
