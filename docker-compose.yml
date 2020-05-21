@@ -1,0 +1,31 @@
+version: "3"
+services:
+  database:
+    container_name: awesome_database
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - /data/db:/data/db
+  frontend:
+    container_name: awesome_web
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: vikasraj/awesome_web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/usr/src/app
+  backend:
+    container_name: awesome_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: vikasraj/awesome_server
+    ports:
+      - "5000:5000" ${P}:${P}
+    volumes:
+      - ./server:/usr/src/app
+    depends_on:
+      - database
