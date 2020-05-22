@@ -3,7 +3,7 @@ import React from 'react';
 const App = () => {
   return (
     <div>
-      <h1>You just setup react with babel and sadsdasdasdasdadssad</h1>
+      <h1>You just setup react with babel and webpack</h1>
     </div>
   );
 };
