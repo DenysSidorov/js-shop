@@ -2,6 +2,11 @@
     https://blog.usejournal.com/setup-react-using-webpack4-babel-7-and-eslint-airbnb-styling-d69c4b2e1da9
 2  Babel, Webpack Hot Replacement (REACT)
     https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
+3. React Hot Reloading
+    https://blog.logrocket.com/setup-react-hotloader-in-10-minutes-3175dfdbf38a/
+    https://www.npmjs.com/package/react-hot-loader
+
+
 3. ESLint and Prettier
     https://thomlom.dev/setup-eslint-prettier-react/
 4. hasky!

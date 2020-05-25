@@ -3,27 +3,31 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'app_bin.js',
   },
   devServer: {
     inline: true,
-    port: 3000
+    port: 3002,
+    hot: true
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom', // react-hot-reloading for new React features
+    },
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['@babel/preset-env', "@babel/preset-react"],
-        },
+        loader: 'babel-loader'
+        // query: {
+        //   presets: ['@babel/preset-env', "@babel/preset-react"],
+        // },
       },
       {
         test: /\.css$/,
@@ -32,7 +36,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './index.html',
     })

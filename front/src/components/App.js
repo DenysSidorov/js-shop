@@ -1,13 +1,30 @@
-import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import React, {Component} from 'react';
+import './index.css';
 
-const App = () => {
-  return (
-    <div>
-      <h1>You just setup react with babel and webpack</h1>
-    </div>
-  );
+
+class App extends Component {
+  constructor(p){
+    super(p);
+    this.state = {
+      number: 1,
+      a:2,
+      b:3
+    }
+  }
+
+
+  render(){
+    const a = this.state.a;
+    const b = this.state.b;
+    const number = this.state.number;
+    return (
+      <div>
+        <h1 onClick={()=>this.setState({number : this.state.number + 1})}>+++</h1>
+        <h1>We just setup react with babel. Test is {number}</h1>
+      </div>
+    );
+  }
 };
 
-export default App;
-
-module.hot.accept();
+export default hot(App);
