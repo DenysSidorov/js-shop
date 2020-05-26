@@ -1,5 +1,6 @@
 // import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
+import Test from './Test';
 import './index.css';
 
 
@@ -24,6 +25,7 @@ class App extends Component {
           We just setup react with babel1. Test is
           {number}
         </h1>
+        <Test />
       </div>
     );
   }
