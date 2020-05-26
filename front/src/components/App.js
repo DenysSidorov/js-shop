@@ -1,30 +1,32 @@
-import { hot } from 'react-hot-loader/root';
-import React, {Component} from 'react';
+// import { hot } from 'react-hot-loader/root';
+import React, { Component } from 'react';
 import './index.css';
 
 
 class App extends Component {
-  constructor(p){
-    super(p);
-    this.state = {
-      number: 1,
-      a:2,
-      b:3
-    }
+  state = {
+    number: 1,
+    b: 2
   }
 
+  clickHandler = () => {
+    this.setState((prevState) => ({
+      number: prevState.number + prevState.b
+    }));
+  }
 
-  render(){
-    const a = this.state.a;
-    const b = this.state.b;
-    const number = this.state.number;
+  render() {
+    const { number } = this.state;
     return (
       <div>
-        <h1 onClick={()=>this.setState({number : this.state.number + 1})}>+++</h1>
-        <h1>We just setup react with babel. Test is {number}</h1>
+        <p onClick={this.clickHandler}>++++</p>
+        <h1>
+          We just setup react with babel1. Test is
+          {number}
+        </h1>
       </div>
     );
   }
-};
+}
 
-export default hot(App);
+export default App;

@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "commonjs": true,
     "es6": true,
@@ -6,8 +7,12 @@
     "browser": true,
     "jest": true
   },
-  "plugins": ["import"],
-  "extends": "eslint:recommended",
+  "plugins": ["react", "import"],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
@@ -15,6 +20,11 @@
   "rules": {
     "no-console": "warn",
     "no-eval": "error",
-    "import/first": "error"
+    "import/first": "error",
+    "comma-dangle": ["error", "never"],
+    "react/state-in-constructor": "off",
+    "react/jsx-filename-extension": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }

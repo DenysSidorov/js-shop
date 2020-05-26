@@ -5,10 +5,15 @@
 3. React Hot Reloading
     https://blog.logrocket.com/setup-react-hotloader-in-10-minutes-3175dfdbf38a/
     https://www.npmjs.com/package/react-hot-loader
-
-
-3. ESLint and Prettier
+4. ESLint
     https://thomlom.dev/setup-eslint-prettier-react/
+    https://medium.com/@RossWhitehouse/setting-up-eslint-in-react-c20015ef35f7
+5. ESLint/React/Airbnb config
+    https://www.npmjs.com/package/eslint-config-airbnb
+6.
+    https://thomlom.dev/setup-eslint-prettier-react/
+
+
 4. hasky!
 
 5.???tests, jest, enzyme, test-cafe/Cypress
