@@ -22,7 +22,7 @@
     }
   },
   "lint-staged": {
-    "./src/*.{js,jsx,ts,tsx}": [
+    "./front/src/*.{js,jsx,ts,tsx}": [
       "npm run lint"
     ]
   },
