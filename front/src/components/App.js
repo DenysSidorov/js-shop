@@ -1,7 +1,7 @@
 // import { hot } from 'react-hot-loader/root';
 import React, {Component} from 'react';
 import Test from "./Test";
-import './index.css';
+import "./index.css";
 
 class App extends Component {
   state = {
