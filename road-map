@@ -21,3 +21,16 @@
 editorconfig
 
 5.???tests, jest, enzyme, test-cafe/Cypress
+
+
+"husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npm run prettier",
+      "npm run lint-fix"
+    ]
+  }

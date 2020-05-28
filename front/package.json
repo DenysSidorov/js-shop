@@ -1,5 +1,7 @@
 {
   "name": "front",
+  "author": "",
+  "license": "ISC",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,8 +16,16 @@
     "lint-fix": "node_modules/.bin/eslint --fix src/**/*.js",
     "prettier": "prettier --write src/**/*.js"
   },
-  "author": "",
-  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npm run lint"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
