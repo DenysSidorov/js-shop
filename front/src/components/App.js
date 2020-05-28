@@ -1,12 +1,12 @@
 // import { hot } from 'react-hot-loader/root';
-import React, {Component} from "react";
-import Test from "./Test";
-import "./index.css";
+import React, {Component} from 'react';
+import Test from './Test';
+import './index.css';
 
 class App extends Component {
   state = {
     number: 1,
-    b: 2,
+    b: 2
   };
 
   clickHandler = () => {
@@ -24,7 +24,7 @@ class App extends Component {
         <Test
           aasdadadadsdas={21}
           dfsafsafsadfsfb={6}
-          sadffsafsaasc={72341412}
+          sadffsafsaasc={723414412}
           aasdadadadsda2s={21}
           dfsafsaf2sadfsfb={6}
           sadffsaf2saasc={72341412}
