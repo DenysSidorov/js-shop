@@ -10,10 +10,14 @@
     https://medium.com/@RossWhitehouse/setting-up-eslint-in-react-c20015ef35f7
 5. ESLint/React/Airbnb config
     https://www.npmjs.com/package/eslint-config-airbnb
-6.
+6. Prettier
     https://thomlom.dev/setup-eslint-prettier-react/
+    https://github.com/yannickcr/eslint-plugin-react/issues/1921
+    https://habr.com/ru/company/ruvds/blog/428173/
 
 
 4. hasky!
+
+editorconfig
 
 5.???tests, jest, enzyme, test-cafe/Cypress
