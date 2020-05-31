@@ -22,6 +22,8 @@
 
 9. clean-webpack-plugin
     https://www.npmjs.com/package/clean-webpack-plugin
+10. prod/dev modes, postcss-config, css
+    https://tocode.ru/curses/nastroika-webpack4/preprocessor-sass-postcss
 
 editorconfig
 

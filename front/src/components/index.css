@@ -1,4 +1,10 @@
-html{
-    background-color: #3bff70;
+html {
+  background-color: #3bff70;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.df {
+  display: grid;
 }
 

@@ -1,0 +1,58 @@
+$colGreen: #2ecc71;
+$colGreenHover: #1eac61;
+$colBlue: #3290be;
+$colRed: #ff6339;
+$colLink: #3b5998;
+$colFacebook: #456ca6;
+$colBackGrey: #364150;
+$colBackGreyDark: #2b3643;
+$colBackGreyDarkBorder: #27303c;
+$colWhiteText: #ffffff;
+$colGreyText: #eeeeee;
+$colGreyWhite: #fafafa;
+$colGrey: #999999;
+$colGreyBorder: #ebecee;
+$greyText: #354052;
+$rdText: #7f8fa4;
+$whiteGreyColor: #c5c5c5;
+$borderColor: #dfe2e5;
+$toolsText: #929292;
+$colorLinks: #8ec5fc;
+$cyan: #1dc5e9;
+$pink: #f05afb;
+$colMainGreyBlack: #2c3642;
+$colMainGrey: #374150;
+$colMainGreyText: #9b9b9b;
+$colMainGreyWhite: #f5f5f5;
+$colMainGreyLine: #e2e2e2;
+$colMainBlue: #3b5a94;
+$colMainRed: #ee223b;
+$colMainGreen: #34ce75;
+$colMainInputBorder: #c7c7c7;
+$greyDark: #898989;
+$greyBright: #898989;
+
+
+$HR: 'HelveticaRegular', Helvetica, Arial, sans-serif;
+$HB: 'HelveticaBold', Helvetica, Arial, sans-serif;
+$HL: 'HelveticaLight', Helvetica, Arial, sans-serif;
+$HM: 'HelveticaMedium', Helvetica, Arial, sans-serif;
+
+.transit04 {
+  transition: all 0.4s ease;
+}
+
+.centerFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noWrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+

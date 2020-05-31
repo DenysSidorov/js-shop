@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import Test from './Test';
 import './index.css';
 
-class App extends Component {
+class Main extends Component {
   state = {
     number: 1,
-    b: 2
+    b: 22
   };
 
   clickHandler = () => {
@@ -36,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;
