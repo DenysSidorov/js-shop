@@ -1,12 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 
 module.exports = {
   entry: ['./src/index.js'],
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'app_bin.js',
+    path: path.resolve(__dirname, './www/assets'),
+    // path: path.join(__dirname, '/dist'),
+    filename: 'app_bin.js'
   },
   devServer: {
     inline: true,
@@ -16,8 +19,8 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      'react-dom': '@hot-loader/react-dom', // react-hot-reloading for new React features
-    },
+      'react-dom': '@hot-loader/react-dom' // react-hot-reloading for new React features
+    }
   },
   module: {
     rules: [
@@ -31,13 +34,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader'],
-      },
-    ],
+        loader: ['style-loader', 'css-loader']
+      }
+    ]
   },
   plugins: [
+    new CleanWebpackPlugin(), // output will be removed before every build
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './index.html'
     })
-  ],
+  ]
 };

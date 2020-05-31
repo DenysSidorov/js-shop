@@ -9,6 +9,8 @@ credentials/*
 app-server/config/*
 app-server/assets.json
 app-server/dist
+/www/index.html
+www/assets/*
 app-server/.env
 app-front/.env
 PLANS.TXT
