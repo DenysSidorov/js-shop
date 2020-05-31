@@ -26,6 +26,7 @@
     https://tocode.ru/curses/nastroika-webpack4/preprocessor-sass-postcss
 11. less/scss/sass
 12. file-loader/url-loader for fonts and images
+13. html-loader
 
 editorconfig
 

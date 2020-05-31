@@ -8,6 +8,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackHardDiskPlugin = require('html-webpack-harddisk-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+console.log('Webpack mode is - ', prodMode);
 
 module.exports = {
   // context: path.resolve(__dirname, './src'),
@@ -25,11 +26,11 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './www/assets/'),
-    filename: '[name].bundle.[hash].js',
-    publicPath: '/assets/'// for dev-mode
+    chunkFilename: isProduction ? '[name].[hash].js' : '[id].js',
+    filename: isProduction ? '[name].bundle.[hash].js' : '[name].bundle.js',
+    publicPath: '/assets/' // for dev-mode
 
-    // filename: isProduction ? '[name].bundle.[hash].js' : '[name].bundle.js',
-    // chunkFilename: isProduction ? '[name].[hash].js' : '[id].js',
+    // filename: '[name].bundle.[hash].js',
   },
   devServer: {
     inline: true,
@@ -129,6 +130,14 @@ module.exports = {
         test: /\.(svg|ttf|eot|woff|woff2)$/,
         loader: 'file-loader?name=../fonts/[name].[ext]'
       },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
+      }
       // less
       // {
       //   test: /\.less$/,
@@ -162,6 +171,7 @@ module.exports = {
     // new HtmlWebpackPlugin({
     //   template: './index.html'
     // }),
+    new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: isProduction ? '[name].[hash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[hash].css' : '[id].css'
