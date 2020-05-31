@@ -4,6 +4,7 @@ import Test from './Test';
 import './index.css';
 import './index2.scss';
 import './index3.less';
+import b from './burger.jpg';
 
 class Main extends Component {
   state = {
@@ -35,6 +36,7 @@ class Main extends Component {
         </Test>
         <div className='dfdf'>23</div>
         <div className='aaa'>123</div>
+        <img src={b} />
       </div>
     );
   }

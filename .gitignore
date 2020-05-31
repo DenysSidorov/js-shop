@@ -13,6 +13,10 @@ app-server/dist
 www/assets/*
 app-server/.env
 app-front/.env
+front/.env
+front/fonts
+front/assets
+front/index.html
 PLANS.TXT
 .idea/workspace.xml
 

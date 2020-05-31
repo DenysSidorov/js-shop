@@ -13,12 +13,15 @@ module.exports = {
   // context: path.resolve(__dirname, './src'),
   entry: {
     // app: path.resolve(__dirname, './src/app')
-    app: ['formdata-polyfill', path.resolve(__dirname, './src/app')] // entry point
-    // common_css: [
-    //   './styles/main',
-    //   './styles/reset',
-    //   './styles/helpers/font-awesome.less'
-    // ] // global styles sets
+    app: ['formdata-polyfill', path.resolve(__dirname, './src/app')], // entry point
+    common_css: [
+      path.resolve(__dirname, './src/styles/main'),
+      path.resolve(__dirname, './src/styles/reset'),
+      path.resolve(__dirname, './src/styles/helpers/font-awesome.less'),
+      // './src/styles/main',
+      // './styles/reset',
+      // './styles/helpers/font-awesome.less'
+    ] // global styles sets
   },
   output: {
     path: path.resolve(__dirname, './www/assets/'),
@@ -109,6 +112,22 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 65000
+            } // Convert images < 65k to base64 strings
+          }
+        ]
+      },
+      {
+        test: /\.(svg|ttf|eot|woff|woff2)$/,
+        loader: 'file-loader?name=../fonts/[name].[ext]'
       },
       // less
       // {
