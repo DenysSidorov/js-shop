@@ -63,12 +63,63 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              // modules: true,
               sourceMap: !isProduction
             }
           },
           'postcss-loader'
         ]
-      }
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        loader: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              // modules: true,
+              sourceMap: !isProduction
+            }
+          },
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: !isProduction
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        loader: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              // modules: true,
+              sourceMap: !isProduction
+            }
+          },
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: !isProduction
+            }
+          }
+        ]
+      },
+      // less
+      // {
+      //   test: /\.less$/,
+      //   include: path.resolve(__dirname, 'src'),
+      //   use: ExtractTextPlugin.extract({
+      //     exclude: /node_modules/,
+          // fallback: 'style-loader',
+          // use: ['css-loader?sourceMap', 'postcss-loader', 'less-loader']
+        // })
+      // },
       // css
       // {
       //   test: /\.css$/,
