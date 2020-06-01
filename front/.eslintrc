@@ -21,6 +21,7 @@
   },
   "rules": {
     "quotes": ["error", "single"],
+    "no-plusplus": "off",
     "no-console": "warn",
     "no-eval": "error",
     "import/first": "error",
