@@ -14,8 +14,8 @@ www/assets/*
 app-server/.env
 app-front/.env
 front/.env
-front/fonts
-front/assets
+front/www/fonts
+front/www/assets
 front/index.html
 PLANS.TXT
 .idea/workspace.xml
