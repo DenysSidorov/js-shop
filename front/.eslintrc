@@ -12,7 +12,8 @@
     "airbnb",
     "airbnb/hooks",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "airbnb-typescript-prettier"
   ],
 
   "parserOptions": {

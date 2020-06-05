@@ -28,8 +28,9 @@
 12. file-loader/url-loader for fonts and images
 13. html-loader
 14. production settings
+15. TypeScript
+    https://itnext.io/how-to-setup-typescript-eslint-prettier-and-react-in-5-minutes-44cfe8af5081
 
-editorconfig
 
 5.???tests, jest, enzyme, test-cafe/Cypress
 

@@ -12,9 +12,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --inline --color --mode development",
     "build": "node_modules/.bin/webpack -p",
-    "lint": "node_modules/.bin/eslint  --quiet src/**/*.js",
-    "lint-fix": "node_modules/.bin/eslint --fix src/**/*.js",
-    "prettier": "prettier --write src/**/*.js"
+    "lint": "node_modules/.bin/eslint  --quiet src/**/*.{js,ts,tsx}",
+    "lint-fix": "node_modules/.bin/eslint --fix src/**/*.{js,ts,tsx}",
+    "prettier": "prettier --write src/**/*.{js,ts,tsx}"
   },
   "husky": {
     "hooks": {
@@ -70,6 +70,7 @@
     "pretty-quick": "^2.0.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
+    "typescript": "^3.9.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
