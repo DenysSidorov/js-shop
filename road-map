@@ -28,7 +28,7 @@
 12. file-loader/url-loader for fonts and images
 13. html-loader
 14. production settings
-15. TypeScript
+15. TypeScript (without webpack ts loader, only eslint/react/ts/prettier)
     https://itnext.io/how-to-setup-typescript-eslint-prettier-and-react-in-5-minutes-44cfe8af5081
 
 

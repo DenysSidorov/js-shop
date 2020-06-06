@@ -5,6 +5,9 @@ import './index.css';
 import './index2.scss';
 import './index3.less';
 import b from './burger.jpg';
+// import ts from './index.ts';
+
+// console.log(ts);
 
 class Main extends Component {
   state = {
