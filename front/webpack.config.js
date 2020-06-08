@@ -17,7 +17,7 @@ console.log('Webpack mode is - ', prodMode);
 function getConfig(env = {}) {
   const config = {
     entry: {
-      app: ['formdata-polyfill', path.resolve(__dirname, './src/app')],
+      app: ['formdata-polyfill', path.resolve(__dirname, './src/app.tsx')],
       common_css: [
         path.resolve(__dirname, './src/styles/main'),
         path.resolve(__dirname, './src/styles/reset'),
@@ -40,13 +40,18 @@ function getConfig(env = {}) {
       historyApiFallback: true
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.css', 'less', '.scss'],
+      extensions: ['.js', '.jsx', '.css', 'less', '.scss', '.ts', '.tsx'],
       alias: {
         'react-dom': '@hot-loader/react-dom' // react-hot-reloading for new React features
       }
     },
     module: {
       rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: '/node_modules/'
+        },
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
@@ -171,7 +176,6 @@ function getConfig(env = {}) {
   }
 
   if (isProduction) {
-
     config.devtool = false;
 
     const ugly = new UglifyJsPlugin({
@@ -200,7 +204,7 @@ function getConfig(env = {}) {
   return config;
 };
 
-module.exports = env => {
+module.exports = (env) => {
   checkENVs(env, prodMode);
   return getConfig(env);
 };

@@ -30,7 +30,8 @@
 14. production settings
 15. TypeScript (without webpack ts loader, only eslint/react/ts/prettier)
     https://itnext.io/how-to-setup-typescript-eslint-prettier-and-react-in-5-minutes-44cfe8af5081
-
+16. TypeScript for webpack
+    https://dev.to/jacopobonta/react-typescript-webpack-3c6l
 
 5.???tests, jest, enzyme, test-cafe/Cypress
 
