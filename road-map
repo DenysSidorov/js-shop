@@ -31,6 +31,8 @@
 15. TypeScript (without webpack ts loader, only eslint/react/ts/prettier)
     https://itnext.io/how-to-setup-typescript-eslint-prettier-and-react-in-5-minutes-44cfe8af5081
 16. TypeScript for webpack
+    https://dev.to/elisealcala/a-new-react-project-with-typescript-eslint-and-prettier-d55
+    https://devblogs.microsoft.com/typescript/typescript-and-babel-7/
     https://dev.to/jacopobonta/react-typescript-webpack-3c6l
 
 5.???tests, jest, enzyme, test-cafe/Cypress
