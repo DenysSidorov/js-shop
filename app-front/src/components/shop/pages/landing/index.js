@@ -67,7 +67,7 @@ class Landing extends React.Component {
               <span>Магазин</span>
             </Link>
           </div>
-          <div className="header_number">{`тел ${this.props.serviceReducer.number1}`}</div>
+          <div className="header_number">{`тел2 ${this.props.serviceReducer.number1}`}</div>
           <div className="header_mobMenu">
             <img
               src={this.state.isOpen ? "/img-static/land/close.png" : '/img-static/land/hum.png'}

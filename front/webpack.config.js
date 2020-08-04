@@ -15,6 +15,7 @@ const checkENVs = require('./src/helpers/check-envs');
 console.log('Webpack mode is - ', prodMode);
 
 function getConfig(env = {}) {
+  console.log(env);
   const config = {
     entry: {
       app: ['formdata-polyfill', path.resolve(__dirname, './src/app.tsx')],
@@ -49,8 +50,8 @@ function getConfig(env = {}) {
       rules: [
         {
           test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: '/node_modules/'
+          exclude: '/node_modules/',
+          use: 'ts-loader'
         },
         {
           test: /\.(js|jsx)$/,
@@ -133,19 +134,19 @@ function getConfig(env = {}) {
             }
           ]
         }
-
       ]
     },
     plugins: [
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
           path.resolve(__dirname, 'www/assets/'),
-          path.resolve(__dirname, 'www/index.html')]
+          path.resolve(__dirname, 'www/index.html')
+        ]
       }), // output will be removed before every build
       new webpack.DefinePlugin({
         'process.env': {
           // process.env.NODE_ENV in JavaScript
-          'NODE_ENV': JSON.stringify(prodMode)
+          NODE_ENV: JSON.stringify(prodMode)
         }
       }),
       new MiniCssExtractPlugin({
@@ -164,16 +165,17 @@ function getConfig(env = {}) {
         excludeAssets: [/common_css.bundle.*.js/, /app.*.css/]
       }),
       new HtmlWebpackExcludeAssetsPlugin(),
-      new HtmlWebpackHardDiskPlugin({   // todo: move it to dev, adds index.html to root
+      new HtmlWebpackHardDiskPlugin({
+        // todo: move it to dev, adds index.html to root
         outputPath: path.resolve(__dirname, 'www')
       })
     ],
     devtool: 'source-map',
-    optimization : {
+    optimization: {
       noEmitOnErrors: true,
       minimizer: []
     }
-  }
+  };
 
   if (isProduction) {
     config.devtool = false;
@@ -202,7 +204,7 @@ function getConfig(env = {}) {
   }
 
   return config;
-};
+}
 
 module.exports = (env) => {
   checkENVs(env, prodMode);
