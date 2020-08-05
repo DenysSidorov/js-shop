@@ -16,7 +16,17 @@
     "lint-fix": "node_modules/.bin/eslint --fix src/**/*.{js,ts,tsx}",
     "prettier": "prettier --write src/**/*.{js,ts,tsx}"
   },
-
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx,tsx}": [
+      "npm run prettier",
+      "npm run lint"
+    ]
+  },
   "browserslist": [
     "> 1%",
     "ie >= 8"
