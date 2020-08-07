@@ -14,9 +14,19 @@
     "build": "node_modules/.bin/webpack -p",
     "lint": "node_modules/.bin/eslint  --quiet src/**/*.{js,ts,tsx}",
     "lint-fix": "node_modules/.bin/eslint --fix src/**/*.{js,ts,tsx}",
-    "prettier": "prettier --write src/**/*.{js,ts,tsx}"
+    "prettier": "prettier --write src/**/*.{tsx}"
   },
-
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{tsx}": [
+      "npm run prettier",
+      "npm run lint"
+    ]
+  },
   "browserslist": [
     "> 1%",
     "ie >= 8"
@@ -77,6 +87,9 @@
     "formdata-polyfill": "^3.0.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.12.21"
+    "react-hot-loader": "^4.12.21",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   }
 }
