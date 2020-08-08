@@ -25,7 +25,6 @@ if (location.protocol !== 'https:') {
   window.location.replace('https://' + location.hostname + location.pathname + location.search);
 }
 
-// TODO https://github.com/xiaolin/react-image-gallery
 document.addEventListener("DOMContentLoaded", function (event) {
   const container = document.getElementById('reactContent');
   if (container) {

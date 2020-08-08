@@ -21,17 +21,22 @@
     "sourceType": "module"
   },
   "rules": {
-    "quotes": ["error", "single"],
     "no-plusplus": "off",
     "no-console": "warn",
     "no-eval": "error",
     "import/first": "error",
     "comma-dangle": ["error", "never"],
+    "global-require": "off",
     "react/state-in-constructor": "off",
+    "quotes": ["error", "single", { "avoidEscape": true }],
     "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "jsx-a11y/alt-text": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "@typescript-eslint/no-var-requires": "off"
   }
 }
