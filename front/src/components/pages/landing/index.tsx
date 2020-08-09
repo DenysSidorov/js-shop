@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-// import {connect} from 'react-redux';
+import React, {Component, FC, useState} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './index.less';
 import './hoverBlock.less';
@@ -9,8 +9,15 @@ import './hoverBlock.less';
 // import Price from './Price';
 
 interface ILanding {
-  isOpen: boolean;
+  // isOpen: boolean;
 }
+
+// const Landing2: FC<ILanding> = () => {
+//   const [isOpen] = useState(5);
+//   return <div>DIV Landing {isOpen}</div>;
+// }
+//
+// export default Landing2;
 
 class Landing extends Component<{}, ILanding> {
   // constructor(props: {}) {
@@ -46,9 +53,9 @@ class Landing extends Component<{}, ILanding> {
     const {isOpen} = this.state;
     return (
       <>
-        <div id='modal-root' style={{zIndex: 99999999}} />
+        <div id='modal-root' style={{zIndex: 99999999}}/>
         <div className='header fullWidth'>
-          <img src='/img-static/land/logo.png' alt='' className='header_logo' />
+          <img src='/img-static/land/logo.png' alt='' className='header_logo'/>
           <div
             className='header_items'
             id='header_items'
@@ -118,7 +125,7 @@ class Landing extends Component<{}, ILanding> {
             </p>
           </div>
         </div>
-        <a id='howWeMake' />
+        <a id='howWeMake'/>
         <div className='howWeMake fullWidth whoBuy'>
           <div className='container'>
             <h2 className='howWeMake_title'>Причины купить картины на дереве в Украине</h2>
@@ -128,7 +135,7 @@ class Landing extends Component<{}, ILanding> {
             <div className='howWeMake_blocks'>
               <div className='howWeMake_blocks_item'>
                 <h3 className='howWeMake_blocks_item_title'>Подарок для близких</h3>
-                <img className='howWeMake_blocks_item_img' src='img-static/land/2.jpg' alt='Подарок для близких' />
+                <img className='howWeMake_blocks_item_img' src='img-static/land/2.jpg' alt='Подарок для близких'/>
                 <div className='howWeMake_blocks_item_desc'>
                   Не знаете что подарить? Хотите выделится и не покупать один из сотни заезженных подарков, пылящихся на
                   полках магазинов? Глядя на картины из дерева, близкие будут вспоминать вас и радоваться.
@@ -136,7 +143,7 @@ class Landing extends Component<{}, ILanding> {
               </div>
               <div className='howWeMake_blocks_item'>
                 <h3 className='howWeMake_blocks_item_title'>Картины для интерьера</h3>
-                <img className='howWeMake_blocks_item_img' src='img-static/land/1_1.jpg' alt='Картины для интерьера' />
+                <img className='howWeMake_blocks_item_img' src='img-static/land/1_1.jpg' alt='Картины для интерьера'/>
                 <div className='howWeMake_blocks_item_desc'>
                   Деревянные картины из натурального материала всегда будут гармонично и стильно вписываться в любом
                   помещении. Подчеркнут ваш вкус и любовь к природе.
@@ -162,28 +169,28 @@ class Landing extends Component<{}, ILanding> {
           {/* <img src="/img-static/land/81.jpg"/> */}
           {/* </div> */}
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre1.jpg' alt='Картины на дереве в Украине' />
+            <img src='/img-static/land/pre1.jpg' alt='Картины на дереве в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre2.JPG' alt='Картины на дереве в Украине' />
+            <img src='/img-static/land/pre2.JPG' alt='Картины на дереве в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre3.JPG' alt='Картины на дереве в Украине' />
+            <img src='/img-static/land/pre3.JPG' alt='Картины на дереве в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre4.JPG' alt='Картины на дереве в Украине' />
+            <img src='/img-static/land/pre4.JPG' alt='Картины на дереве в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre5.jpg' alt='Картины на дереве в Украине' />
+            <img src='/img-static/land/pre5.jpg' alt='Картины на дереве в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre6.jpg' alt='Картины на досках в Украине' />
+            <img src='/img-static/land/pre6.jpg' alt='Картины на досках в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre7.jpg' alt='Картины на досках в Украине' />
+            <img src='/img-static/land/pre7.jpg' alt='Картины на досках в Украине'/>
           </div>
           <div className='examplesImages_item'>
-            <img src='/img-static/land/pre8.jpg' alt='Картины на досках в Украине' />
+            <img src='/img-static/land/pre8.jpg' alt='Картины на досках в Украине'/>
           </div>
           {/* <img src="/img-static/pre9.jpg"/>--> */}
           {/* <img src="/img-static/pre10.JPG"/>--> */}
@@ -196,7 +203,7 @@ class Landing extends Component<{}, ILanding> {
             БОЛЬШЕ ПРИМЕРОВ В НАШЕМ МАГАЗИНЕ
           </Link>
         </div>
-        <a id='prep' />
+        <a id='prep'/>
         <div
           className='buyNow2 fullWidth backgroundImage'
           // style="background-image:url('/img-static/buy3.jpg')"
@@ -219,7 +226,7 @@ class Landing extends Component<{}, ILanding> {
             <div className='howWeMake_blocks'>
               <div className='howWeMake_blocks_item'>
                 <h3 className='howWeMake_blocks_item_title'>Ручная обработка</h3>
-                <img className='howWeMake_blocks_item_img' src='img-static/land/DR1.jpg' />
+                <img className='howWeMake_blocks_item_img' src='img-static/land/DR1.jpg'/>
                 <div className='howWeMake_blocks_item_desc'>
                   Отобранная сосна проходит ручной процесс распила и брошировки, что придает ей натуральность,
                   уникальность и долговечность. Изделия обрабатываются лаком и маслами для защиты.
@@ -227,7 +234,7 @@ class Landing extends Component<{}, ILanding> {
               </div>
               <div className='howWeMake_blocks_item'>
                 <h3 className='howWeMake_blocks_item_title'>Нанесение картинки</h3>
-                <img className='howWeMake_blocks_item_img' src='img-static/land/DR22.jpg' />
+                <img className='howWeMake_blocks_item_img' src='img-static/land/DR22.jpg'/>
                 <div className='howWeMake_blocks_item_desc'>
                   Отточенным многолетним опытом проб и ошибок способом мы наносим изображение на дерево, закрепляем его
                   и подготавливаем к следующему этапу.
@@ -235,7 +242,7 @@ class Landing extends Component<{}, ILanding> {
               </div>
               <div className='howWeMake_blocks_item'>
                 <h3 className='howWeMake_blocks_item_title'>Лак, крепления, упаковка</h3>
-                <img className='howWeMake_blocks_item_img' src='img-static/land/DR3.jpg' />
+                <img className='howWeMake_blocks_item_img' src='img-static/land/DR3.jpg'/>
                 <div className='howWeMake_blocks_item_desc'>
                   После всех работ, мы покрываем картину лаком, прокрашиваем и защищаем обратную сторону, делаем
                   изображение состаренным и реалистичным. Затем упаковываем и отправляем вам.
@@ -245,7 +252,7 @@ class Landing extends Component<{}, ILanding> {
           </div>
         </div>
         <div className='examplesContBody'>
-          <img src='/img-static/land/111.jpg' alt='Укрианские картины на досках' />
+          <img src='/img-static/land/111.jpg' alt='Укрианские картины на досках'/>
           <div className='examplesContBodyText'>
             <h2 className='examplesContBodyTextTitle'>Рельеф дерева</h2>
             <div className='examplesContBodyTextContent'>
@@ -262,10 +269,10 @@ class Landing extends Component<{}, ILanding> {
               нашу упаковку надежной и красивой.
             </div>
           </div>
-          <img src='/img-static/land/2222.jpg' alt='Картрны на дереве' />
+          <img src='/img-static/land/2222.jpg' alt='Картрны на дереве'/>
         </div>
         <div className='examplesContBody'>
-          <img src='/img-static/land/333.jpg' />
+          <img src='/img-static/land/333.jpg'/>
           <div className='examplesContBodyText'>
             <h2 className='examplesContBodyTextTitle'>Сочность оттенков</h2>
             <div className='examplesContBodyTextContent'>
@@ -274,7 +281,7 @@ class Landing extends Component<{}, ILanding> {
             </div>
           </div>
         </div>
-        <a id='yorPhoto' />
+        <a id='yorPhoto'/>
         <div className='yourPhoto'>
           <div className='container'>
             <h2 className='yourPhoto_title'>Картина из вашей фотографии</h2>
@@ -288,7 +295,7 @@ class Landing extends Component<{}, ILanding> {
               {/* </div>--> */}
               <div className='grid yourPhoto_item'>
                 <figure className='effect-bubba'>
-                  <img src='/img-static/land/m1.jpg' alt='Картины на досках Украина' />
+                  <img src='/img-static/land/m1.jpg' alt='Картины на досках Украина'/>
                   <figcaption>
                     <h2>
                       Ваше <span>Фото</span>
@@ -299,7 +306,7 @@ class Landing extends Component<{}, ILanding> {
               </div>
               <div className='grid yourPhoto_item'>
                 <figure className='effect-bubba'>
-                  <img src='/img-static/land/m2.jpg' alt='Картины на досках Украина' />
+                  <img src='/img-static/land/m2.jpg' alt='Картины на досках Украина'/>
                   <figcaption>
                     <h2>
                       Изготовление <span>картины</span>
@@ -311,7 +318,7 @@ class Landing extends Component<{}, ILanding> {
 
               <div className='grid yourPhoto_item'>
                 <figure className='effect-bubba'>
-                  <img src='/img-static/land/m3.jpg' alt='Картины на досках Украина' />
+                  <img src='/img-static/land/m3.jpg' alt='Картины на досках Украина'/>
                   <figcaption>
                     <h2>
                       Супер <span>Результат</span>
@@ -388,7 +395,7 @@ class Landing extends Component<{}, ILanding> {
                   />
                 </div>
               </div>
-              <div className='processGetting_block_center' />
+              <div className='processGetting_block_center'/>
               <div className='processGetting_block_right'>
                 <div className='buyNowContBodyTextContent2_cont' id='buyNow5'>
                   {/* <BuyBtn text='Бесплатная консультанция'/> */}
@@ -397,13 +404,13 @@ class Landing extends Component<{}, ILanding> {
             </div>
           </div>
         </div>
-        <a id='quest' />
+        <a id='quest'/>
         <div className='questions'>
           <div className='container'>
             <h2 className='questions_title'>Часто задаваемые вопросы:</h2>
             <ul className='accordion'>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-05' checked readOnly hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-05' checked readOnly hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-05'>
                   Гниют ли доски?
                 </label>
@@ -415,7 +422,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-06' checked readOnly hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-06' checked readOnly hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-06'>
                   Как происходит перенос изображения?
                 </label>
@@ -427,7 +434,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-066' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-066' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-066'>
                   Срок изготовления?
                 </label>
@@ -436,7 +443,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-07' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-07' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-07'>
                   Изображение будет четким?
                 </label>
@@ -448,7 +455,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-08' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-08' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-08'>
                   Требования к фото?
                 </label>
@@ -483,7 +490,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-09' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-09' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-09'>
                   Как крепится?
                 </label>
@@ -495,7 +502,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-10' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-10' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-10'>
                   Оплата
                 </label>
@@ -504,7 +511,7 @@ class Landing extends Component<{}, ILanding> {
                 </div>
               </li>
               <li className='accordion_item'>
-                <input type='checkbox' className='accordion_toggle' id='toggle-11' hidden />
+                <input type='checkbox' className='accordion_toggle' id='toggle-11' hidden/>
                 <label className='accordion_trigger' htmlFor='toggle-11'>
                   Доставка
                 </label>
@@ -527,7 +534,7 @@ class Landing extends Component<{}, ILanding> {
             </div>
           </div>
         </div>
-        <img src='/img-static/land/tt.png' className='papeImages' alt='Украина, картины на досках и дереве' />
+        <img src='/img-static/land/tt.png' className='papeImages' alt='Украина, картины на досках и дереве'/>
         {/* <Price/> */}
         <div
           className='buyNow2 fullWidth backgroundImage'
@@ -558,7 +565,7 @@ class Landing extends Component<{}, ILanding> {
               {/* <div className="buyNow2_arrow"> */}
               {/*  <img src="/img-static/land/red-arrow.png" alt=""/> */}
               {/* </div> */}
-              <img src='/img-static/land/inst.png' alt='Картины на досках instagram' className='socBlock_inst_img' />
+              <img src='/img-static/land/inst.png' alt='Картины на досках instagram' className='socBlock_inst_img'/>
             </a>
             {/* <div className="socBlock_youtube"> */}
             {/*  <img src="/img-static/land/you.png" alt="Картины на досках youtube"/> */}
@@ -571,7 +578,7 @@ class Landing extends Component<{}, ILanding> {
           style={{backgroundImage: "url('/img-static/land/slide_sosd5.jpg')"}}
         >
           <div className='buyNowBlock_container'>
-            <a id='aboutUs' />
+            <a id='aboutUs'/>
             Мы клиенто-ориентированная мастерская! Каждый второй человек приходит к нам повторно. Это говорит о многом.
             Уже несколько лет наша мастерская создает картины на досках в Украине. Сотни довольных клиентов. Сотни
             картин нашли своего ценителя. Каждый клиент нам очень важен, так как продукция создается именно для него,
@@ -579,10 +586,10 @@ class Landing extends Component<{}, ILanding> {
           </div>
         </div>
         <div className='orangeBlack'>
-          <img className='orangeBlack_body' src='/img-static/land/orange.png' alt='Оранжевая полоса' />
+          <img className='orangeBlack_body' src='/img-static/land/orange.png' alt='Оранжевая полоса'/>
         </div>
         <div className='advantagesBlock'>
-          <img src='/img-static/land/tools2.png' alt='' className='advantagesBlock_tools' />
+          <img src='/img-static/land/tools2.png' alt='' className='advantagesBlock_tools'/>
           <div className='advantagesBlock_container'>
             <div className='advantagesBlock_list'>
               <div className='advantagesBlock_list_item'>
@@ -606,9 +613,9 @@ class Landing extends Component<{}, ILanding> {
                 Гарантия <span className='blackColor'>1</span> год на все картины.
               </div>
             </div>
-            <div className='advantagesBlock_tools_cont' />
+            <div className='advantagesBlock_tools_cont'/>
           </div>
-          <img className='advantagesBlock_girl' src='' />
+          <img className='advantagesBlock_girl' src=''/>
         </div>
         <div className='toShopBlock'>
           {/* <div className="toShopBlock_text"></div> */}
@@ -624,7 +631,7 @@ class Landing extends Component<{}, ILanding> {
           <div className='daBlock_container'>
             <h2 className='daBlock_title'>
               Хотите Бесплатную обработку фото
-              <br />и ее вид в интерьере!
+              <br/>и ее вид в интерьере!
             </h2>
             <div className='daBlock_desc'>Не знаете что из этого выйдет? Довертесь нашим дизайнерам!</div>
             <div className='daBlock_btn'>
@@ -644,7 +651,7 @@ class Landing extends Component<{}, ILanding> {
               {/* <div className="buyNow2_arrow"> */}
               {/*  <img src="/img-static/land/red-arrow.png" alt=""/> */}
               {/* </div> */}
-              <img src='/img-static/land/inst.png' alt='Картины на досках instagram' className='socBlock_inst_img' />
+              <img src='/img-static/land/inst.png' alt='Картины на досках instagram' className='socBlock_inst_img'/>
             </a>
             {/* <div className="socBlock_youtube"> */}
             {/*  <img src="/img-static/land/you.png" alt="Картины на досках youtube"/> */}
@@ -653,7 +660,7 @@ class Landing extends Component<{}, ILanding> {
         </div>
         <div className='bottomBlock'>
           <div className='container'>
-            <div className='bottomBlock_title' />
+            <div className='bottomBlock_title'/>
             <div className='bottomBlock_items'>
               <div className='bottomBlock_item'>
                 <div className='bottomBlock_item_title'>ИНФОРМАЦИЯ</div>
@@ -675,10 +682,10 @@ class Landing extends Component<{}, ILanding> {
               </div>
               <div className='bottomBlock_item'>
                 <div className='bottomBlock_item_text'>
-                  <a href='' aria-label='Save' />
+                  <a href='' aria-label='Save'/>
                 </div>
                 <div className='bottomBlock_itemIimg_wr'>
-                  <img src='/img-static/land/logo.png' alt='' className='bottomBlock_itemIimg' />
+                  <img src='/img-static/land/logo.png' alt='' className='bottomBlock_itemIimg'/>
                 </div>
               </div>
             </div>
@@ -693,12 +700,15 @@ class Landing extends Component<{}, ILanding> {
   }
 }
 
-// const mapStateToProps = (state: any) => {
-//   return {
-//     cart: state.cart.items,
-//     serviceReducer: state.serviceReducer
-//   };
-// };
+const mapStateToProps = (state: any) => {
+  return {
+    a: state
+    // cart: state.cart.items,
+    // serviceReducer: state.serviceReducer
+  };
+};
 
-// export default connect(mapStateToProps)(Landing);
-export default Landing;
+const f = connect(mapStateToProps)(Landing);
+console.log(f);
+
+export default f;

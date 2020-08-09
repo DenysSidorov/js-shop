@@ -162,7 +162,7 @@ function getConfig(env = {}) {
         filename: isProduction ? '../index.html' : './index.html',
         minify: false,
         alwaysWriteToDisk: true,
-        excludeAssets: [/common_css.bundle.*.js/, /app.*.css/]
+        excludeAssets: isProduction ? [/common_css.bundle.*.js/] : ''
       }),
       new HtmlWebpackExcludeAssetsPlugin(),
       new HtmlWebpackHardDiskPlugin({

@@ -6,7 +6,6 @@ import {Route, Switch} from 'react-router-dom';
 // import Panel from '../shop/panel/index';
 import Landing from './pages/landing';
 // import NotificationsWrapper from '../shop/helpers/NotificationsWrapper';
-
 const App: FunctionComponent = () => {
   return (
     <div style={{width: '100%', height: '100%'}}>

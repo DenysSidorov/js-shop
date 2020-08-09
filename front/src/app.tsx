@@ -14,7 +14,7 @@ if (container) {
     <Provider store={store}>
       <div>
         <Router>
-         <App />
+          <App />
         </Router>
       </div>
     </Provider>,
