@@ -8,18 +8,11 @@ import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 // import BuyBtn from './buy-btn';
 // import Price from './Price';
 
-// interface ILanding {
-//   isOpen: boolean;
-// }
+interface ILanding {
+  number1: string;
+}
 
-// const Landing2: FC<ILanding> = () => {
-//   const [isOpen] = useState(5);
-//   return <div>DIV Landing {isOpen}</div>;
-// }
-//
-// export default Landing2;
-
-const Landing: FC = () => {
+const Landing: FC<ILanding> = ({number1}) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Картины на дереве в стиле лофт, Украина');
@@ -28,11 +21,10 @@ const Landing: FC = () => {
       'keywords',
       'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
     );
-    console.log('6666');
+    console.log('useEffect -------   ');
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-  console.log('==');
   const handleMenu = (): void => {
     setIsOpen(!isOpen);
   };
@@ -69,8 +61,7 @@ const Landing: FC = () => {
             <span>Магазин</span>
           </Link>
         </div>
-        {/* ${this.props.serviceReducer.number1} */}
-        <div className='header_number'>тел2</div>
+        <div className='header_number'>{number1}</div>
         <div className='header_mobMenu'>
           <img
             src={isOpen ? '/img-static/land/close.png' : '/img-static/land/hum.png'}
@@ -686,13 +677,11 @@ const Landing: FC = () => {
 
 const mapStateToProps = (state: any) => {
   return {
-    a: state
+    number1: state.serviceReducer.number1
     // cart: state.cart.items,
-    // serviceReducer: state.serviceReducer
   };
 };
 
 const f = connect(mapStateToProps)(Landing);
-console.log(f);
 
 export default f;
