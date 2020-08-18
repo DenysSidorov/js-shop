@@ -1,6 +1,6 @@
 import React, {FC, useCallback, useState} from 'react';
 // import './index.less';
-// import OneClickModal from './modals/one-click-modal';
+import OneClickModal from './modals/one-click-modal/OneClickModal';
 
 interface IBuyBtn {
   text: string;
@@ -28,14 +28,14 @@ const BuyBtn: FC<IBuyBtn> = ({text}) => {
       </div>
       <span>{text || 'КУПИТЬ'}</span>
 
-      {/* {this.state.isShowOneClickModal && ( */}
-      {/*  <OneClickModal */}
-      {/*    close={this.handleShowOneClick} */}
-      {/*    goods={[]} */}
-      {/*    willDeleteGoods={false} */}
-      {/*    showFileUpload={this.props.showFileUpload} */}
-      {/*  /> */}
-      {/* )} */}
+      {isShowOneClickModal && (
+        <OneClickModal
+          close={showHandler}
+          goods={[]}
+          willDeleteGoods={false}
+          // showFileUpload={this.props.showFileUpload}
+        />
+      )}
     </div>
   );
 };

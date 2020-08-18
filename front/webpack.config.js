@@ -203,6 +203,10 @@ function getConfig(env = {}) {
     // config.plugins.push(obfuscator);
   }
 
+  config.node = {
+    fs: 'empty'
+  };
+
   return config;
 }
 
