@@ -25,9 +25,11 @@ const Landing: FC<ILanding> = ({number1}) => {
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
+
   const handleMenu = (): void => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
       <div id='modal-root' style={{zIndex: 99999999}} />
@@ -86,7 +88,7 @@ const Landing: FC<ILanding> = ({number1}) => {
           <div className='callUsWrapper'>
             <div className='callUs'>
               <div className='buyNowContBodyTextContent2_cont' id='buyNow4'>
-                <BuyBtn text='Заказать' />
+                <BuyBtn text='Заказать'/>
               </div>
             </div>
           </div>

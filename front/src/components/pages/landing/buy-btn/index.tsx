@@ -6,7 +6,7 @@ interface IBuyBtn {
   text: string;
 }
 
-const BuyBtn: FC<IBuyBtn> = ({text}) => {
+const BuyBtn: FC<IBuyBtn> = ({text = 'Заказать!'}) => {
   const [isShowOneClickModal, setIsShowOneClickModal] = useState(false);
 
   const showHandler = useCallback(
