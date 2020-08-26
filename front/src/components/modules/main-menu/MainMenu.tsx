@@ -5,7 +5,7 @@ import {Link, NavLink} from 'react-router-dom';
 import {HashLink} from 'react-router-hash-link';
 import './index.less';
 import MenuCart from '../menu-cart/MenuCart';
-import CategoryMenu from './category-menu/CategoryMenu';
+import CategoryMenu from '../menu-category/CategoryMenu';
 
 class MainMenu extends React.Component {
   render() {

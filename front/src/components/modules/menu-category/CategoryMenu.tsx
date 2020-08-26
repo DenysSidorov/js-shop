@@ -4,7 +4,7 @@ import './index.less';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import onClickOutside from 'react-onclickoutside';
-import urlApi from '../../../../api/urlApi';
+import urlApi from '../../../api/urlApi';
 
 class CategoryMenu extends React.Component<any, any> {
   state = {
@@ -92,9 +92,9 @@ class CategoryMenu extends React.Component<any, any> {
       if (result.data && Array.isArray(result.data)) {
         // uniqCategory: [{count: 44, name: "школа"}, {count: 98, name: "школа"}]
         // cacheTopItems = [{count: 33, name: "школа", topItems: [...]}, {count: 13, name: "lll"}]
-        let items = uniqCategory;
+        let items: any[] = [].concat(uniqCategory);
         console.log(4);
-        items: = items.map((item: any): any => {
+        items = items.map((item: any): any => {
           const newItem = {...item};
           if (el.name === item.name) {
             newItem.sub2Items = result.data;

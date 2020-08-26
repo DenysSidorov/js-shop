@@ -42,6 +42,7 @@
     "@types/react-addons-css-transition-group": "^15.0.5",
     "@types/react-dom": "^16.9.8",
     "@types/react-maskedinput": "^4.0.4",
+    "@types/react-onclickoutside": "^6.7.3",
     "@types/react-router-hash-link": "^1.2.1",
     "@types/redux": "^3.6.0",
     "@types/uuid": "^8.3.0",
