@@ -1,11 +1,11 @@
-import React, {Component, ReactNode} from 'react';
+import React, {Component} from 'react';
 import './index.scss';
 import ModalPortalReact from '../modal-portal';
 
 interface IBasicModalWindowPB {
   randomNumber: number;
   close: Function;
-  children: ReactNode;
+  children?: any;
   height?: string;
   width?: string;
   maxWidth?: string;
