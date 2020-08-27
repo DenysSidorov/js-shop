@@ -6,7 +6,6 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-
     "sourceMap": true,
     "experimentalDecorators": true,
     "declaration": false,
@@ -14,8 +13,16 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "strict": true,
-    "lib": ["es6", "es7", "dom"],
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ],
     "baseUrl": "src",
-    "noImplicitAny": true
-  }
+    "noImplicitAny": true,
+    "checkJs": false
+  },
+  "exclude": [
+  "/helpers/libs/**.*"
+]
 }

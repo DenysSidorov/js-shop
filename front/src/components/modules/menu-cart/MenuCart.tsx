@@ -17,7 +17,7 @@ const MenuCart: FC = ({cart}: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    cart: state.cart.items
+    cart: state.cartReducer.items
   };
 };
 
