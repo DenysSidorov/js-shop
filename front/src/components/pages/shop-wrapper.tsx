@@ -5,8 +5,8 @@ import MainMenu from '../modules/main-menu/MainMenu';
 // import BtnUp from './BtnUp';
 // import SocialMedia from './SocialMedia';
 // import FooterSection from './FooterSection';
-// import MainContent from './MainContent';
-// import Home from '../pages/Home';
+import MainContent from '../modules/main-content/MainContent';
+import Home from '../pages/Home';
 // import AboutUs from '../pages/AboutUs';
 // import Blog from '../pages/Blog';
 // import PaymentAndDelivery from '../pages/PaymentAndDelivery';
@@ -31,28 +31,27 @@ const ShopWrapper: FC = (props: any) => {
         {/* <ConfirmBlock/> */}
         <MainMenu {...props} />
         {/* <CategoryMenu/> */}
-        {/* <MainContent {...props}> */}
-        TEXT223
-        <main>
-          {/* <Switch> */}
-          {/* <Route exact path='/shop' component={Home} /> */}
-          {/* <Route path='/about-us' component={AboutUs} /> */}
-          {/* <Route path='/payment-and-delivery' component={PaymentAndDelivery} /> */}
-          {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}
-          {/* <Route exact path='/order' component={OrderComp} /> */}
-          {/* <Route path='/blog' component={Blog} /> */}
-          {/* <Route path='/card/:id' component={CardPage} /> */}
-          {/* <Route exact path='/great' component={AfterOrder} /> */}
-          {/* <Route exact path='/contacts' component={Contacts} /> */}
-          {/* <RouteAuth path='/profile' component={Profile} /> */}
-          {/* <Route path='/login' component={Login} /> */}
-          {/* <Route path='/logup' component={Logup} /> */}
-          {/* <Route path='/verify-email' component={VerifyEmail} /> */}
-          {/* <Route path='/verify-user' component={VerifyUser} /> */}
-          {/* <Route component={NotFound} /> */}
-          {/* </Switch> */}
-        </main>
-        {/* </MainContent> */}
+        <MainContent {...props}>
+          <main>
+            {/* <Switch> */}
+             <Route exact path='/shop' component={Home} />
+            {/* <Route path='/about-us' component={AboutUs} /> */}
+            {/* <Route path='/payment-and-delivery' component={PaymentAndDelivery} /> */}
+            {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}
+            {/* <Route exact path='/order' component={OrderComp} /> */}
+            {/* <Route path='/blog' component={Blog} /> */}
+            {/* <Route path='/card/:id' component={CardPage} /> */}
+            {/* <Route exact path='/great' component={AfterOrder} /> */}
+            {/* <Route exact path='/contacts' component={Contacts} /> */}
+            {/* <RouteAuth path='/profile' component={Profile} /> */}
+            {/* <Route path='/login' component={Login} /> */}
+            {/* <Route path='/logup' component={Logup} /> */}
+            {/* <Route path='/verify-email' component={VerifyEmail} /> */}
+            {/* <Route path='/verify-user' component={VerifyUser} /> */}
+            {/* <Route component={NotFound} /> */}
+            {/* </Switch> */}
+          </main>
+        </MainContent>
       </div>
       {/* <FooterSection /> */}
       {/* <BtnUp /> */}
