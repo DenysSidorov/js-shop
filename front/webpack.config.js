@@ -2,6 +2,7 @@ const isProduction = process.argv.indexOf('-p') !== -1;
 const prodMode = isProduction ? 'production' : 'development';
 const path = require('path');
 const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -199,7 +200,8 @@ function getConfig(env = {}) {
     //   identifierNamesGenerator: 'hexadecimal'
     // }, []);
 
-    config.optimization.minimizer.push(ugly);
+    // config.optimization.minimizer.push(ugly);
+    config.optimization.minimizer.push(new TerserPlugin());
     // config.plugins.push(obfuscator);
   }
 

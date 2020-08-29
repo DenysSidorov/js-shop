@@ -80,6 +80,7 @@
     "pretty-quick": "^2.0.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^4.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
