@@ -6,7 +6,7 @@ import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
 // import CardsSection from '../modules/CardsSection';
 // import TagsMainSection from '../modules/TagsMainSection';
-// import MenuInfoSection from '../modules/MenuInfoSection';
+import MenuInfoSection from '../../../modules/menu-info-section/MenuInfoSection';
 // import SimilarGoodsSection from '../modules/SimilarGoodsSection';
 // import Pagination from '../modules/Pagination';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
@@ -158,7 +158,7 @@ class Home extends React.Component<IHome, StateHome> {
     return (
       <div>
         Hello
-        {/* <MenuInfoSection /> */}
+        <MenuInfoSection />
         {/* <HeadBanner /> */}
         {/* {this.state.uniqCategory && this.state.uniqCategory.length ? ( */}
         {/*  <TagsMainSection uniqCategory={this.state.uniqCategory} /> */}

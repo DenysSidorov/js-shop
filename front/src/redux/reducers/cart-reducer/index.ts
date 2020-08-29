@@ -66,13 +66,13 @@ export default (state = getFromLocalData('cart'), action: any) => {
       return result;
     }
     case DELETE_ITEM_IN_CART: {
-      const newState2 = {...state};
-      const result2 = {
-        ...newState2,
+      const newState = {...state};
+      const result = {
+        ...newState,
         items: state.items.filter((el: any) => el._id !== action.payload._id)
       };
-      setInLocalData(result2);
-      return result2;
+      setInLocalData(result);
+      return result;
     }
     case DELETE_ALL_ITEM_IN_CART: {
       const result = {
@@ -83,47 +83,47 @@ export default (state = getFromLocalData('cart'), action: any) => {
       return result;
     }
     case INCREMENT_ITEM_IN_CART: {
-      const newState4 = {...state};
-      const newArr4: Array<any> = [];
-      if (newState4.items.some((el: any) => el._id === action.payload)) {
-        newState4.items.forEach((el: any) => {
+      const newState = {...state};
+      const newArr: Array<any> = [];
+      if (newState.items.some((el: any) => el._id === action.payload)) {
+        newState.items.forEach((el: any) => {
           if (el._id === action.payload) {
             const newEl = {...el};
             newEl.count++;
-            newArr4.push(newEl);
+            newArr.push(newEl);
           } else {
-            newArr4.push(el);
+            newArr.push(el);
           }
         });
-        const result = {...newState4, items: newArr4};
+        const result = {...newState, items: newArr};
         setInLocalData(result);
         return result;
       }
-      setInLocalData(newState4);
-      return newState4;
+      setInLocalData(newState);
+      return newState;
     }
 
     case DECREMENT_ITEM_IN_CART: {
-      const newState5 = {...state};
-      const newArr5: Array<any> = [];
-      if (newState5.items.some((el: any) => el._id === action.payload)) {
-        newState5.items.forEach((el: any) => {
+      const newState = {...state};
+      const newArr: Array<any> = [];
+      if (newState.items.some((el: any) => el._id === action.payload)) {
+        newState.items.forEach((el: any) => {
           if (el._id === action.payload) {
             const newEl = {...el};
             if (newEl.count > 1) {
               newEl.count--;
             }
-            newArr5.push(newEl);
+            newArr.push(newEl);
           } else {
-            newArr5.push(el);
+            newArr.push(el);
           }
         });
-        const result = {...newState5, items: newArr5};
+        const result = {...newState, items: newArr};
         setInLocalData(result);
         return result;
       }
-      setInLocalData(newState5);
-      return newState5;
+      setInLocalData(newState);
+      return newState;
     }
     default:
       return state;
