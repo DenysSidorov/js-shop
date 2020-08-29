@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
-// import {Switch} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import MainMenu from '../modules/main-menu/MainMenu';
 // import CategoryMenu from './category-menu/CategoryMenu';
 // import BtnUp from './BtnUp';
 // import SocialMedia from './SocialMedia';
 // import FooterSection from './FooterSection';
 import MainContent from '../modules/main-content/MainContent';
-import Home from '../pages/Home';
+import Home from './shop/home/Home';
 // import AboutUs from '../pages/AboutUs';
 // import Blog from '../pages/Blog';
 // import PaymentAndDelivery from '../pages/PaymentAndDelivery';
@@ -34,7 +34,7 @@ const ShopWrapper: FC = (props: any) => {
         <MainContent {...props}>
           <main>
             {/* <Switch> */}
-             <Route exact path='/shop' component={Home} />
+            <Route exact path='/shop' component={Home} />
             {/* <Route path='/about-us' component={AboutUs} /> */}
             {/* <Route path='/payment-and-delivery' component={PaymentAndDelivery} /> */}
             {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}

@@ -13,7 +13,7 @@ export const setTitle = (title: string): void => {
   window.document.title = pageTitle;
 };
 
-export const setMetaTag = (name = 'description', value: any) => {
+export const setMetaTag = (name = 'description', value?: any) => {
   const content =
     'деревяные картины в украине, интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины';
 
