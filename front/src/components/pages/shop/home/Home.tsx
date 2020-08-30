@@ -11,7 +11,7 @@ import MenuInfoSection from '../../../modules/menu-info-section/MenuInfoSection'
 // import Pagination from '../modules/Pagination';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 // import LinksToImages from '../modules/LinksToImages';
-// import HeadBanner from '../modules/HeadBanner';
+import HeadBanner from '../../../modules/head-banner/HeadBanner';
 
 interface IHome {
   location: any;
@@ -159,7 +159,7 @@ class Home extends React.Component<IHome, StateHome> {
       <div>
         Hello
         <MenuInfoSection />
-        {/* <HeadBanner /> */}
+        <HeadBanner />
         {/* {this.state.uniqCategory && this.state.uniqCategory.length ? ( */}
         {/*  <TagsMainSection uniqCategory={this.state.uniqCategory} /> */}
         {/* ) : null} */}
