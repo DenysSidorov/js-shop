@@ -5,7 +5,7 @@ import axios from 'axios';
 import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
 // import CardsSection from '../modules/CardsSection';
-// import TagsMainSection from '../modules/TagsMainSection';
+import TagsMainSection from '../../../modules/tags-main-section/TagsMainSection';
 import MenuInfoSection from '../../../modules/menu-info-section/MenuInfoSection';
 // import SimilarGoodsSection from '../modules/SimilarGoodsSection';
 // import Pagination from '../modules/Pagination';
@@ -160,9 +160,7 @@ class Home extends React.Component<IHome, StateHome> {
         Hello
         <MenuInfoSection />
         <HeadBanner />
-        {/* {this.state.uniqCategory && this.state.uniqCategory.length ? ( */}
-        {/*  <TagsMainSection uniqCategory={this.state.uniqCategory} /> */}
-        {/* ) : null} */}
+        {uniqCategory && uniqCategory.length ? <TagsMainSection uniqCategory={uniqCategory} /> : null}
         {/* {this.state.cards && this.state.cards.length ? ( */}
         {/*  <CardsSection count={this.state.count} cards={this.state.cards} /> */}
         {/* ) : null} */}
