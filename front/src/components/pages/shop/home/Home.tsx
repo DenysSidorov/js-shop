@@ -4,7 +4,7 @@ import axios from 'axios';
 // import {push} from 'react-router-redux';
 import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
-// import CardsSection from '../modules/CardsSection';
+import CardsSection from '../../../modules/cards-section/CardsSection';
 import TagsMainSection from '../../../modules/tags-main-section/TagsMainSection';
 import MenuInfoSection from '../../../modules/menu-info-section/MenuInfoSection';
 // import SimilarGoodsSection from '../modules/SimilarGoodsSection';
@@ -161,9 +161,7 @@ class Home extends React.Component<IHome, StateHome> {
         <MenuInfoSection />
         <HeadBanner />
         {uniqCategory && uniqCategory.length ? <TagsMainSection uniqCategory={uniqCategory} /> : null}
-        {/* {this.state.cards && this.state.cards.length ? ( */}
-        {/*  <CardsSection count={this.state.count} cards={this.state.cards} /> */}
-        {/* ) : null} */}
+        {cards && cards.length ? <CardsSection count={count} cards={cards} /> : null}
         {/* {this.state.cards && this.state.cards.length ? ( */}
         {/*  <Pagination */}
         {/*    pageCount={this.state.count} */}
