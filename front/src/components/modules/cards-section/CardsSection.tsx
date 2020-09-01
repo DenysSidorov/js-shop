@@ -17,7 +17,6 @@ const CardsSection = ({count, cards}: ICardsSection) => {
 
           <div className='productsCardBlock__bodyCardItems'>
             {cards.map((el: any) => (
-              // eslint-disable-next-line
               <CardMainPage card={el} key={el._id} />
             ))}
           </div>
