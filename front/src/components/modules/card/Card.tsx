@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import './mainBodyCard.less';
 import {pushToCart} from '../../../redux/reducers/cart-reducer';
 
-// import OneClickModal from '../modals/one-click-modal/index';
+import OneClickModal from '../../parts/modals/one-click-modal/OneClickModal';
 import {checkTextLength} from '../../../helpers/libs/utils';
 
 interface ICardMainPage {
@@ -89,7 +89,7 @@ const CardMainPage = ({card, addItem}: ICardMainPage) => {
         </div>
       ) : null}
 
-      {/* {isShowOneClickModal && <OneClickModal close={handleShowOneClick} goods={[card]} willDeleteGoods={false} />} */}
+      {isShowOneClickModal && <OneClickModal close={handleShowOneClick} goods={[card]} willDeleteGoods={false} />}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import MaskedInput from 'react-maskedinput';
 // import {bindActionCreators} from "redux";
 import axios from 'axios';
 import './index.scss';
-import urlApi from '../../../../../../api/urlApi';
+import urlApi from '../../../../api/urlApi';
 import BasicModalWindowPB from '../basic-modal-pb/BasicModalWindowPB';
 // upload files! - import UploadFileField from "../../upload-file-field/index";
 // import OneGoodItemInList from "./OneGoodInList/index";
@@ -96,7 +96,7 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
   };
 
   const {randomNumber, phoneErr, isSend} = state;
-  const {close} = props;
+  const {close, goods} = props;
   return (
     <BasicModalWindowPB close={close} randomNumber={randomNumber}>
       {!isSend ? (
@@ -138,33 +138,31 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
           {/*  </div> */}
           {/* </Fragment> : null} */}
 
-          {/* <div className="oneClickModal_gList"> */}
-          {/* {this.props.goods.map((good, ind) => { */}
-          {/* return ( */}
-          {/* <div className="oneClickModal_gList_item" key={ind}> */}
-          {/* <div className="oneClickModal_gList_item_logo"> */}
-          {/* <img src={'/img-static/' + good.photo[0]}/> */}
-          {/* </div> */}
-          {/* <div className="oneClickModal_gList_item_name"> */}
-          {/* {good.name && good.name} {good.model && good.model} -*/}
-          {/* </div> */}
+          <div className='oneClickModal_gList'>
+            {goods.map((good: any, ind) => {
+              return (
+                <div className='oneClickModal_gList_item' key={ind}>
+                  <div className='oneClickModal_gList_item_logo'>
+                    <img src={`/img-static/${good.photo[0]}`} />
+                  </div>
+                  <div className='oneClickModal_gList_item_name'>
+                    {good.name && good.name} {good.model && good.model} -
+                  </div>
 
-          {/* <div className="oneClickModal_gList_item_price"> */}
-          {/* {good.price}$ -*/}
-          {/* </div> */}
+                  <div className='oneClickModal_gList_item_price'>{good.price}$ -</div>
 
-          {/* <div className="oneClickModal_gList_item_count"> */}
-          {/* {good.count ? good.count : 1} {' шт.'} -*/}
-          {/* </div> */}
+                  <div className='oneClickModal_gList_item_count'>
+                    {good.count ? good.count : 1} {' шт.'} -
+                  </div>
 
-          {/* <div className="oneClickModal_gList_item_code"> */}
-          {/* {' код-'}{good.code} */}
-          {/* </div> */}
-          {/* </div> */}
-          {/* ) */}
-          {/* })} */}
-
-          {/* </div> */}
+                  <div className='oneClickModal_gList_item_code'>
+                    {' код-'}
+                    {good.code}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       ) : (
         <div className='oneClickModal_wasSend'>
