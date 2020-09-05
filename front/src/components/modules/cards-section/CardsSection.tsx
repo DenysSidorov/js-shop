@@ -1,5 +1,6 @@
 import React from 'react';
 import CardMainPage from '../card/Card';
+import './index.scss';
 
 interface ICardsSection {
   count: number;

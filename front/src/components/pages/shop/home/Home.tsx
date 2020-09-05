@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-// import qs from 'query-string';
+import {withRouter, RouteComponentProps} from 'react-router-dom';
+import qs from 'query-string';
 // import {push} from 'react-router-redux';
 import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
@@ -8,12 +9,12 @@ import CardsSection from '../../../modules/cards-section/CardsSection';
 import TagsMainSection from '../../../modules/tags-main-section/TagsMainSection';
 import MenuInfoSection from '../../../modules/menu-info-section/MenuInfoSection';
 // import SimilarGoodsSection from '../modules/SimilarGoodsSection';
-// import Pagination from '../modules/Pagination';
+import Pagination from '../../../modules/pagination/Pagination';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 // import LinksToImages from '../modules/LinksToImages';
 import HeadBanner from '../../../modules/head-banner/HeadBanner';
 
-interface IHome {
+interface IHome extends RouteComponentProps<any> {
   location: any;
 }
 
@@ -143,13 +144,14 @@ class Home extends React.Component<IHome, StateHome> {
   }
 
   onPageChange(pagin: any) {
-    const {location} = this.props;
+    const {location, history} = this.props;
     const params = linkParams(location.search);
     params.pagesize = 50;
     params.numberpage = pagin.selected + 1;
-    // const searchString = qs.stringify(params);
+    const searchString = qs.stringify(params);
     // this.props.dispatch(push(`/shop?${searchString}`));
-    alert('Chage page');
+    history.push(`/shop?${searchString}`);
+    // alert('Chage page');
   }
 
   render() {
@@ -162,14 +164,14 @@ class Home extends React.Component<IHome, StateHome> {
         <HeadBanner />
         {uniqCategory && uniqCategory.length ? <TagsMainSection uniqCategory={uniqCategory} /> : null}
         {cards && cards.length ? <CardsSection count={count} cards={cards} /> : null}
-        {/* {this.state.cards && this.state.cards.length ? ( */}
-        {/*  <Pagination */}
-        {/*    pageCount={this.state.count} */}
-        {/*    inOnePage={50} */}
-        {/*    paginationPageActive={this.state.paginationPageActive} */}
-        {/*    onPageChange={this.onPageChange} */}
-        {/*  /> */}
-        {/* ) : null} */}
+        {cards && cards.length ? (
+          <Pagination
+            pageCount={count}
+            inOnePage={50}
+            paginationPageActive={paginationPageActive}
+            onPageChange={this.onPageChange}
+          />
+        ) : null}
         {/* {this.state.cards && this.state.cards.length ? <LinksToImages /> : null} */}
         {/* {!this.state.cards.length ? ( */}
         {/*  <div className='adminPanelSpinner'> */}
@@ -184,4 +186,4 @@ class Home extends React.Component<IHome, StateHome> {
   }
 }
 
-export default Home;
+export default withRouter(Home);
