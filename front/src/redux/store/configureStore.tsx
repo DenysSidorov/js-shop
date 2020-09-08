@@ -1,7 +1,6 @@
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Store, createStore, applyMiddleware, compose} from 'redux';
 import {createBrowserHistory} from 'history';
-import {routerMiddleware} from 'connected-react-router';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
@@ -10,7 +9,7 @@ export const history = createBrowserHistory();
 
 const initialState = {};
 const enhancers: any[] = [];
-const middleware = [routerMiddleware(history), thunk];
+const middleware = [thunk];
 const isDevMode = process.env.NODE_ENV === 'development';
 
 function setDevTools() {
@@ -32,6 +31,6 @@ let composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
 
 composedEnhancers = isDevMode ? composeWithDevTools(composedEnhancers) : composedEnhancers;
 
-const store: Store = createStore(rootReducer(history), initialState, composedEnhancers);
+const store: Store = createStore(rootReducer, initialState, composedEnhancers);
 
 export default store;

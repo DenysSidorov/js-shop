@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router-dom';
 import qs from 'query-string';
 // import {push} from 'react-router-redux';
-import {push} from 'connected-react-router';
+// import {push} from 'connected-react-router';
 import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
 import CardsSection from '../../../modules/cards-section/CardsSection';
@@ -19,7 +19,6 @@ import HeadBanner from '../../../modules/head-banner/HeadBanner';
 interface IHome extends RouteComponentProps<any> {
   location: any;
   history: any;
-  push: Function;
 }
 
 interface StateHome {
@@ -102,13 +101,13 @@ class Home extends React.Component<IHome, StateHome> {
   }
 
   async UNSAFE_componentWillReceiveProps() {
-    const {location} = this.props;
+    const {history} = this.props;
     console.log('componentWillReceiveProps');
     this.setState({cards: []}, async () => {
       window.scrollTo(0, 0);
       // получение обьекта параметров запроса
 
-      const params = linkParams(location.search);
+      const params = linkParams(history.location.search);
       const param = params.sort;
       const pageSize = params.pagesize;
       const numberPage = params.numberpage;
@@ -138,8 +137,9 @@ class Home extends React.Component<IHome, StateHome> {
       } catch (e) {
         console.log(e);
       } finally {
+        const res = (numberPage && numberPage - 1) || 0;
         this.setState({
-          paginationPageActive: (numberPage && numberPage - 1) || 0,
+          paginationPageActive: res,
           count: cards.data.count,
           cards: cards.data.goods
         });
@@ -148,24 +148,12 @@ class Home extends React.Component<IHome, StateHome> {
   }
 
   onPageChange(pagin: any) {
-    console.log('pagin', pagin);
-    const {location, history, push} = this.props;
-    console.log('location', location);
-    console.log('history', history);
+    const {history} = this.props;
     const params = linkParams(history.location.search);
     params.pagesize = 50;
     params.numberpage = pagin.selected + 1;
-    console.log('params 2', params);
     const searchString = qs.stringify(params);
-    console.log('searchString', searchString);
-    push(`/shop?${searchString}`);
-    // history.push(`/shop?${searchString}`);
-    // window.location.href = `/shop?${searchString}`;
-    // history.push({
-    //   pathname: '/shop',
-    //   search: `?${searchString}`
-    // });
-    // alert('Chage page');
+    history.push(`/shop?${searchString}`);
   }
 
   render() {
@@ -207,5 +195,5 @@ class Home extends React.Component<IHome, StateHome> {
 }
 
 // export default withRouter(Home);
-// export default Home;
-export default connect(null, {push})(Home);
+export default Home;
+// export default connect(null, {push})(Home);
