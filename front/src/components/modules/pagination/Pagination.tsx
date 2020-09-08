@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import './index.scss';
 import ReactPaginate from 'react-paginate';
 
@@ -12,9 +12,9 @@ interface IPagination {
 const Pagination = ({onPageChange, pageCount, inOnePage, paginationPageActive}: IPagination) => {
   const pagesize = 50;
 
-  const hrefBuilder = useCallback((numberPage) => {
+  const hrefBuilder = (numberPage: number) => {
     return `/shop?numberpage=${numberPage}&pagesize=${pagesize}`;
-  }, []);
+  };
 
   const pageCountInt = pageCount === pagesize ? 1 : (pageCount - (pageCount % inOnePage)) / inOnePage + 1;
   if (pageCount === 1) return null;

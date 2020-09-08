@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {RouteComponentProps} from 'react-router-dom';
 import qs from 'query-string';
 // import {push} from 'react-router-redux';
+import {push} from 'connected-react-router';
 import urlApi from '../../../../api/urlApi';
 import linkParams from '../../../../helpers/libs/queryParams';
 import CardsSection from '../../../modules/cards-section/CardsSection';
@@ -16,6 +18,8 @@ import HeadBanner from '../../../modules/head-banner/HeadBanner';
 
 interface IHome extends RouteComponentProps<any> {
   location: any;
+  history: any;
+  push: Function;
 }
 
 interface StateHome {
@@ -144,19 +148,35 @@ class Home extends React.Component<IHome, StateHome> {
   }
 
   onPageChange(pagin: any) {
-    const {location, history} = this.props;
-    const params = linkParams(location.search);
+    console.log('pagin', pagin);
+    const {location, history, push} = this.props;
+    console.log('location', location);
+    console.log('history', history);
+    const params = linkParams(history.location.search);
     params.pagesize = 50;
     params.numberpage = pagin.selected + 1;
+    console.log('params 2', params);
     const searchString = qs.stringify(params);
-    // this.props.dispatch(push(`/shop?${searchString}`));
-    history.push(`/shop?${searchString}`);
+    console.log('searchString', searchString);
+    push(`/shop?${searchString}`);
+    // history.push(`/shop?${searchString}`);
+    // window.location.href = `/shop?${searchString}`;
+    // history.push({
+    //   pathname: '/shop',
+    //   search: `?${searchString}`
+    // });
     // alert('Chage page');
   }
 
   render() {
     const {count, cards, pageOfItems, popularCards, uniqCategory, paginationPageActive} = this.state;
-    console.log(count, cards, pageOfItems, popularCards, uniqCategory, paginationPageActive);
+    const a = (rr: any, ...rest: any): void => {
+      const b = [rr, rest];
+      b.push(5);
+    };
+    a(count, cards, pageOfItems, popularCards, uniqCategory, paginationPageActive);
+    console.log('paginationPageActive', paginationPageActive);
+    console.log('count', count);
     return (
       <div>
         Hello
@@ -186,4 +206,6 @@ class Home extends React.Component<IHome, StateHome> {
   }
 }
 
-export default withRouter(Home);
+// export default withRouter(Home);
+// export default Home;
+export default connect(null, {push})(Home);
