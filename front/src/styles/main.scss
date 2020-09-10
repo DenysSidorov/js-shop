@@ -1,6 +1,8 @@
 @import "variables";
 @import "fonts";
 //@import "animations";
+//@import "~slick-carousel/slick/slick.css";
+//@import "~slick-carousel/slick/slick-theme.css";
 
 body {
   font-family: Helvetica, Arial, sans-serif;
@@ -1452,3 +1454,20 @@ html {
 }
 
 // ANIMATION FOR HIDE/SHOW BLOCKS (OPACITY)  END
+
+
+.adminPanelSpinner {
+  width: 97%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+  animation-name: spinAdmin;
+  animation-duration: 2s;
+  Animation-iteration-count: infinite;
+  i {
+    color: #000000;
+    transform: rotate(360deg);
+    font-size: 3.5rem;
+  }
+}

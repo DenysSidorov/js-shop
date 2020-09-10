@@ -15,6 +15,9 @@ import Pagination from '../../../modules/pagination/Pagination';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 // import LinksToImages from '../modules/LinksToImages';
 import HeadBanner from '../../../modules/head-banner/HeadBanner';
+import LinksToImages from '../../../modules/links-to-images/LinksToImages';
+import SimilarGoodsSection from '../../../modules/similar-goods-section2/SimilarGoodsSection';
+
 
 interface IHome extends RouteComponentProps<any> {
   location: any;
@@ -165,6 +168,7 @@ class Home extends React.Component<IHome, StateHome> {
     a(count, cards, pageOfItems, popularCards, uniqCategory, paginationPageActive);
     console.log('paginationPageActive', paginationPageActive);
     console.log('count', count);
+    console.log('popularCards', popularCards);
     return (
       <div>
         Hello
@@ -180,15 +184,15 @@ class Home extends React.Component<IHome, StateHome> {
             onPageChange={this.onPageChange}
           />
         ) : null}
-        {/* {this.state.cards && this.state.cards.length ? <LinksToImages /> : null} */}
-        {/* {!this.state.cards.length ? ( */}
-        {/*  <div className='adminPanelSpinner'> */}
-        {/*    <i className='fa fa-spinner' /> */}
-        {/*  </div> */}
-        {/* ) : null} */}
-        {/* {this.state.popularCards && this.state.popularCards.length ? ( */}
-        {/*  <SimilarGoodsSection cards={this.state.popularCards} title='Популярные' /> */}
-        {/* ) : null} */}
+        {cards && cards.length ? <LinksToImages /> : null}
+        {!cards.length ? (
+          <div className='adminPanelSpinner'>
+            <i className='fa fa-spinner' />
+          </div>
+        ) : null}
+        {popularCards && popularCards.length > 0 ? (
+          <SimilarGoodsSection cards={popularCards} title='Популярные' />
+        ) : null}
       </div>
     );
   }
