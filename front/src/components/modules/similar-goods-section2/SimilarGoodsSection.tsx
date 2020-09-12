@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import Slider from 'react-slick';
 // import './index.less';
 // import './slick-slider.less';
+import './similarGoodsSection.scss';
 import {pushToCart} from '../../../redux/reducers/cart-reducer';
+
 import CardMainPage from '../card/Card';
 
 interface ISimilarGoodsSection {
@@ -16,18 +18,19 @@ interface ISimilarGoodsSection {
 
 class SimilarGoodsSection extends React.Component<ISimilarGoodsSection, {}> {
   render() {
-    let {cards} = this.props;
-    const {title} = this.props;
-    if (cards.length > 2) {
-      cards = [cards[cards.length - 1], cards[cards.length - 2], cards[cards.length - 3]];
-    }
+    const {cards, title} = this.props;
+    // const {cards: internalCards} = this.props;
+    // let cards = [...internalCards];
+    // const {title} = this.props;
+    // if (cards.length > 2) {
+    //   cards = [cards[cards.length - 1], cards[cards.length - 2], cards[cards.length - 3]];
+    // }
     // console.log('RENDER SIMILAR');
+
     const settings = {
-      // -----------------------slick slider #2---------------
-      // dots: true,
       infinite: true,
       speed: 300,
-      autoplay: true,
+      // autoplay: true,
       autoplaySpeed: 2000,
       slidesToShow: 5,
       slidesToScroll: 2,
@@ -38,7 +41,6 @@ class SimilarGoodsSection extends React.Component<ISimilarGoodsSection, {}> {
             slidesToShow: 3,
             slidesToScroll: 3,
             infinite: true
-            // dots: true
           }
         },
         {
@@ -55,20 +57,18 @@ class SimilarGoodsSection extends React.Component<ISimilarGoodsSection, {}> {
             slidesToScroll: 1
           }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ]
     };
     if (!cards.length) return null;
+    console.log('cards=+++++++++++', cards);
     return (
       <div className='similarGoodsContainer'>
         <h2 className='similarGoodsTitle'>{title || 'Связанные овары'}</h2>
         <div className='slickContainerSimilarGoods'>
           <Slider {...settings}>
-            {cards.map((el: any) => (
-              <CardMainPage card={el} key={el._id} />
-            ))}
+            {cards.map((el: any) => {
+              return <CardMainPage card={el} key={el.code} width='100%' />;
+            })}
           </Slider>
 
           <div className='goToAllGoodsFromSimilar'>

@@ -12,9 +12,10 @@ import {checkTextLength} from '../../../helpers/libs/utils';
 interface ICardMainPage {
   card: any;
   addItem: Function;
+  width?: string;
 }
 
-const CardMainPage = ({card, addItem}: ICardMainPage) => {
+const CardMainPage = ({card, addItem, width}: ICardMainPage) => {
   const [isShowOneClickModal, setIsShowOneClickModal] = useState(false);
 
   const handleShowOneClick = useCallback(
@@ -29,7 +30,7 @@ const CardMainPage = ({card, addItem}: ICardMainPage) => {
   );
 
   return (
-    <div className='bodyCardItems__oneCardItem'>
+    <div className='bodyCardItems__oneCardItem' style={{width: width || ''}}>
       <Link to={`/card/${card._id}`}>
         <div className='oneCardItem__headCard'>
           <div className='oneCardItem__headCard__priceCard'>
