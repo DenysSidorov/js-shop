@@ -16,8 +16,7 @@ import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 // import LinksToImages from '../modules/LinksToImages';
 import HeadBanner from '../../../modules/head-banner/HeadBanner';
 import LinksToImages from '../../../modules/links-to-images/LinksToImages';
-import SimilarGoodsSection from '../../../modules/similar-goods-section2/SimilarGoodsSection';
-
+import SimilarGoodsSection from '../../../modules/similar-goods-section/SimilarGoodsSection';
 
 interface IHome extends RouteComponentProps<any> {
   location: any;
