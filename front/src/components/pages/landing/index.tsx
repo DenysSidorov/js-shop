@@ -6,7 +6,7 @@ import './hoverBlock.less';
 
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import BuyBtn from './buy-btn';
-// import Price from './Price';
+import Price from './Price';
 
 interface ILanding {
   number1: string;
@@ -88,7 +88,7 @@ const Landing: FC<ILanding> = ({number1}) => {
           <div className='callUsWrapper'>
             <div className='callUs'>
               <div className='buyNowContBodyTextContent2_cont' id='buyNow4'>
-                <BuyBtn text='Заказать'/>
+                <BuyBtn text='Заказать' />
               </div>
             </div>
           </div>
@@ -513,7 +513,7 @@ const Landing: FC<ILanding> = ({number1}) => {
         </div>
       </div>
       <img src='/img-static/land/tt.png' className='papeImages' alt='Украина, картины на досках и дереве' />
-      {/* <Price/> */}
+      <Price />
       <div
         className='buyNow2 fullWidth backgroundImage'
         // style="background-image:url('/img-static/buy2.jpg')"
