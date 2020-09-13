@@ -1,0 +1,30 @@
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+
+
+.exchangeContainer{
+  position: relative;
+  .exchangeContainer__exchangeImg{
+    position: absolute;
+    right: 0;
+    border-bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .exchangeContainer__title{
+    font: 2.7rem/2.7rem $robotoRegular;
+    margin-bottom: 10px;
+  }
+  .exchangeContainer__desc{
+    font: 1.6rem/2rem $robotoRegular;
+    margin-bottom: 10px;
+  }
+  .exchangeContainer__titleSub{
+    font: 1.5rem/2rem $robotoRegular;
+    margin-bottom: 5px;
+  }
+  .exchangeContainer__item{
+    font: 1.7rem/2rem $robotoLight;
+  }
+}

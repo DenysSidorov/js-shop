@@ -12,7 +12,7 @@ import Home from './shop/home/Home';
 // import CashbackAndExchange from '../pages/CashbackAndExchange';
 // import OrderComp from '../pages/order';
 // import AfterOrder from '../pages/AfterOrder';
-// import CardPage from '../pages/card';
+import CardPage from '../pages/shop/card/Card';
 // import Profile from '../pages/Profile';
 // import Contacts from '../pages/Contacts';
 // import Login from '../pages/Login';
@@ -39,7 +39,7 @@ const ShopWrapper: FC = (props: any) => {
             {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}
             {/* <Route exact path='/order' component={OrderComp} /> */}
             {/* <Route path='/blog' component={Blog} /> */}
-            {/* <Route path='/card/:id' component={CardPage} /> */}
+            <Route path='/card/:id' component={CardPage} />
             {/* <Route exact path='/great' component={AfterOrder} /> */}
             {/* <Route exact path='/contacts' component={Contacts} /> */}
             {/* <RouteAuth path='/profile' component={Profile} /> */}
