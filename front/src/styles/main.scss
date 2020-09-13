@@ -1563,3 +1563,20 @@ html {
   padding: 8px;
   text-align: center;
 }
+
+#scrollup {
+  position: fixed; /* фиксированная позиция */
+  opacity: 0.8; /* прозрачность */
+  //padding: 15px 10px 10px; /* отступы */
+  //background: #aaa;
+  border-radius: 5px; /* скругление углов */
+  right: 28px; /* отступ слева */
+  bottom: 20px; /* отступ снизу */
+  display: none; /* спрятать блок */
+  cursor: pointer;
+  transition: all 0.5s ease;
+  i {
+    font-size: 45px;
+    opacity: 0.3;
+  }
+}

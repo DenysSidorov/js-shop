@@ -4,10 +4,12 @@
   border-radius: 5px;
   right: 20px;
   bottom: 70px;
+  //display: none;
   cursor: pointer;
   transition: all 0.5s ease;
 
   .fab {
+    //position: fixed;
     width: 56px;
     left: 50%;
     bottom: 15px;

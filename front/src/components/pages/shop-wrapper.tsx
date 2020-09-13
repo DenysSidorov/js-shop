@@ -2,8 +2,7 @@ import React, {FC} from 'react';
 import {Route} from 'react-router-dom';
 import MainMenu from '../modules/main-menu/MainMenu';
 // import CategoryMenu from './category-menu/CategoryMenu';
-// import BtnUp from './BtnUp';
-// import SocialMedia from './SocialMedia';
+import SocialMedia from '../modules/social-media-buttons/SocialMedia';
 import FooterSection from '../parts/footer/FooterSection';
 import MainContent from '../modules/main-content/MainContent';
 import Home from './shop/home/Home';
@@ -54,8 +53,7 @@ const ShopWrapper: FC = (props: any) => {
         </MainContent>
       </div>
       <FooterSection />
-      {/* <BtnUp /> */}
-      {/* <SocialMedia /> */}
+      <SocialMedia />
     </div>
   );
 };
