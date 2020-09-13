@@ -4,7 +4,7 @@ import MainMenu from '../modules/main-menu/MainMenu';
 // import CategoryMenu from './category-menu/CategoryMenu';
 // import BtnUp from './BtnUp';
 // import SocialMedia from './SocialMedia';
-// import FooterSection from './FooterSection';
+import FooterSection from '../parts/footer/FooterSection';
 import MainContent from '../modules/main-content/MainContent';
 import Home from './shop/home/Home';
 // import AboutUs from '../pages/AboutUs';
@@ -53,7 +53,7 @@ const ShopWrapper: FC = (props: any) => {
           </main>
         </MainContent>
       </div>
-      {/* <FooterSection /> */}
+      <FooterSection />
       {/* <BtnUp /> */}
       {/* <SocialMedia /> */}
     </div>

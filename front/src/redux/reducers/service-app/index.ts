@@ -1,6 +1,6 @@
-interface IServiceRedecer {
-  number1: string;
-  email1: string;
+export interface IServiceRedecer {
+  number1?: string;
+  email1?: string;
 }
 
 const initialState: IServiceRedecer = {
