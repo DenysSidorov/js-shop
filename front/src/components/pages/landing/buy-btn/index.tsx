@@ -11,7 +11,6 @@ const BuyBtn: FC<IBuyBtn> = ({text = 'Заказать!'}) => {
 
   const showHandler = useCallback(
     (value: boolean | undefined | React.MouseEvent): void => {
-      console.log('value ====', value);
       if (value === undefined) {
         setIsShowOneClickModal(!isShowOneClickModal);
       } else if (typeof value === 'boolean') {

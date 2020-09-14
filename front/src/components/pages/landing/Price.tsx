@@ -1,11 +1,20 @@
 import React from 'react';
 
+export interface SpreadingExampleProps extends React.HTMLAttributes<HTMLAnchorElement> {
+  children?: React.ReactNode;
+  name?: string;
+}
+
+export function SpreadingAnchor({children, ...other}: SpreadingExampleProps) {
+  return <a {...other}>{children}</a>;
+}
+
 const Price = () => {
   return (
     <div className='price'>
       <div className='price_container'>
         <h2 className='price_title'>
-          <a id='price' />
+          <SpreadingAnchor name='price' id='price' />
           Цены картин на досках в Украине
         </h2>
         <div className='price_title_discount'>Сейчас действует скидка -40% на все!</div>

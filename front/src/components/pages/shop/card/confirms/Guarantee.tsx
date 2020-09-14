@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const Garanty = () => {
+const Guarantee = () => {
   return (
     <div className='exchangeContainer'>
       <div className='exchangeContainer__title'>Качество и гарантия</div>
@@ -23,4 +23,4 @@ const Garanty = () => {
   );
 };
 
-export default Garanty;
+export default Guarantee;

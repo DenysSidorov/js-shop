@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import {RouteComponentProps} from 'react-router-dom';
 import urlApi from '../../../../api/urlApi';
-// import MainContainerForCard from './MainContainerForCard';
+import MainContainerForCard from './MainContainerForCard';
 // import SimilarGoodsSection from '../../modules/SimilarGoodsSection';
 // import ContainerForCardAdditional from './ContainerForCardAdditional';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
@@ -116,7 +116,7 @@ class CardComponent extends React.Component<IHome, SCardComponent> {
       <div>
         {card.length ? (
           <div>
-            {/*<MainContainerForCard card={card} />*/}
+            <MainContainerForCard card={card} />
             {/* {this.state.similarCategory && this.state.similarCategory.length */}
             {/* ? <SimilarGoodsSection cards={this.state.similarCategory} title={'Похожие'}/> */}
             {/*: null} */}

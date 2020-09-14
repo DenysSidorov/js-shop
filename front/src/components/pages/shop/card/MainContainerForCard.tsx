@@ -1,83 +1,80 @@
-import React, {Fragment} from 'react';
-import {withRouter, Link} from 'react-router-dom';
-import Gallery from '../../modules/image-gallery';
-// import Gallery2 from "../../modules/gallery2";
+import React from 'react';
+import {Link} from 'react-router-dom';
+// import Gallery from '../../modules/image-gallery';
+// // // //   // / import Gallery2 from "../../modules/gallery2";
 import './mainContainerForCard.less';
-import Confirm from '../../WrapperApp/ConfirmBlock';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {pushToCart} from '../../../../reducers/cart';
-import {changeConfirm} from '../../../../reducers/confirmInCard';
+import Confirm from '../../../modules/confirm-block-in-card/ConfirmBlock';
+import {pushToCart} from '../../../../redux/reducers/cart-reducer';
+import {changeConfirm} from '../../../../redux/reducers/confirm-in-card';
 import Exchange from './confirms/Exchange';
-import Garanty from './confirms/Garanty';
+import Guarantee from './confirms/Guarantee';
 import Verify from './confirms/Verify';
 import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
-import Price from '../landing/Price';
+import Price from '../../landing/Price';
 
-class MainContainerForCard extends React.PureComponent {
-  constructor(props) {
-    super(props);
+interface IMainContainerForCard {
+  card: any;
+  changeKind: Function;
+  confirmKind: string;
+  addItem: Function;
+}
 
-    this.showConfirm = this.showConfirm.bind(this);
-    this.showConfirmWithKind = this.showConfirmWithKind.bind(this);
-    this.state = {
-      card: this.props.card
-    };
-  }
+class MainContainerForCard extends React.PureComponent<IMainContainerForCard> {
+  state = {
+    card: this.props.card
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.card !== this.props.card) {
+  UNSAFE_componentWillReceiveProps(nextProps: {card: Object}) {
+    const {card} = this.props;
+    if (nextProps.card !== card) {
       this.setState({
         card: nextProps.card
       });
     }
   }
 
-  closeConfirms() {
+  closeConfirms = () => {
     this.props.changeKind('');
-  }
+  };
 
-  showConfirm(kind, e) {
+  showConfirm = (kind: string, e: React.MouseEvent) => {
     e.stopPropagation();
     this.props.changeKind(kind);
-  }
+  };
 
-  showConfirmWithKind() {
+  showConfirmWithKind = () => {
     /* {this.props.confirmKind == 'verif' ? 'verify' : 'cashback'} */
     switch (this.props.confirmKind) {
       case 'cashback':
         return <Exchange />;
-        break;
       case 'garanty':
-        return <Garanty />;
-        break;
+        return <Guarantee />;
       case 'verif':
         return <Verify />;
-        break; //
       case 'deliv':
         return <Delivery />;
-        break;
       case 'payment':
         return <Payment />;
-        break;
       default:
-        return <Garanty />;
+        return <Guarantee />;
     }
-  }
+  };
 
   render() {
-    console.log('rerender');
     const card = this.state.card[0];
-    console.log(card, 'card');
-    const images = [];
-    card &&
-      card.photo.forEach((el) =>
+    const images: any[] = [];
+    if (card) {
+      card.photo.forEach((el: any) =>
         images.push({
           original: `/img-static/${el}`,
           thumbnail: `/img-static/${el}`
         })
       );
+    }
+
     return (
       <>
         <div className='mainContainerForCard'>
@@ -85,7 +82,7 @@ class MainContainerForCard extends React.PureComponent {
             <div className='mainContainerForCard__imageBlock_viewComponent'>
               {/* <Gallery2/> */}
               <div style={{width: '95%', height: '500px'}}>
-                <Gallery items={images} slideOnThumbnailHover autoPlay />
+                {/* <Gallery items={images} slideOnThumbnailHover autoPlay /> */}
               </div>
             </div>
             <div className='mainContainerForCard__imageBlock_addOpportunity'>
@@ -217,7 +214,6 @@ class MainContainerForCard extends React.PureComponent {
               </span>
             </div>
             <div className='mainContainerForCard__mainInfoBlock_sixBlockDescriptionShort'>
-              {/* {card['desc-short']} */}
               Вручную изготовленная картина на деревянных досках, наполнит интерьер природой и подчеркнет ваш вкус. К
               каждой картине, сделанной в Украине мы подходим с любовью, что бы ваш подарок себе или близким гармонично
               вписался в стиль который вы создаете.
@@ -229,9 +225,9 @@ class MainContainerForCard extends React.PureComponent {
 
           {this.props.confirmKind.length ? (
             <Confirm
-              okHandler={this.closeConfirms.bind(this)}
-              cancelHandler={this.closeConfirms.bind(this)}
-              unmountConfirm={this.closeConfirms.bind(this)}
+              okHandler={this.closeConfirms}
+              cancelHandler={this.closeConfirms}
+              unmountConfirm={this.closeConfirms}
             >
               {this.showConfirmWithKind()}
             </Confirm>
@@ -241,13 +237,13 @@ class MainContainerForCard extends React.PureComponent {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state: any) => {
   return {
     confirmKind: state.confirmsCard
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       addItem: (item) => pushToCart(item),
@@ -257,10 +253,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   );
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContainerForCard));
-
-function randomInteger(min, max) {
-  let rand = min + Math.random() * (max + 1 - min);
-  rand = Math.floor(rand);
-  return rand;
-}
+const EnhancedComponent = connect(mapStateToProps, mapDispatchToProps)(MainContainerForCard);
+// export default withRouter(EnhancedComponent);
+export default EnhancedComponent;
