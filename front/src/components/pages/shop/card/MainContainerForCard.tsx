@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import Gallery from '../../modules/image-gallery';
-// // // //   // / import Gallery2 from "../../modules/gallery2";
-import './mainContainerForCard.less';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+// // // //   // / import Gallery2 from "../../modules/gallery2";
+import './mainContainerForCard.less';
+import Gallery from '../../../modules/image-gallery/ImageGallery';
 import Confirm from '../../../modules/confirm-block-in-card/ConfirmBlock';
 import {pushToCart} from '../../../../redux/reducers/cart-reducer';
 import {changeConfirm} from '../../../../redux/reducers/confirm-in-card';
@@ -82,7 +82,7 @@ class MainContainerForCard extends React.PureComponent<IMainContainerForCard> {
             <div className='mainContainerForCard__imageBlock_viewComponent'>
               {/* <Gallery2/> */}
               <div style={{width: '95%', height: '500px'}}>
-                {/* <Gallery items={images} slideOnThumbnailHover autoPlay /> */}
+                <Gallery items={images} slideOnThumbnailHover autoPlay />
               </div>
             </div>
             <div className='mainContainerForCard__imageBlock_addOpportunity'>

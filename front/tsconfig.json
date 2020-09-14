@@ -20,7 +20,8 @@
     ],
     "baseUrl": "src",
     "noImplicitAny": true,
-    "checkJs": false
+    "checkJs": false,
+    "typeRoots" : ["node_modules/@types", "src/types"]
   },
   "exclude": [
   "/helpers/libs/**.*"
