@@ -5,7 +5,7 @@ import {RouteComponentProps} from 'react-router-dom';
 import urlApi from '../../../../api/urlApi';
 import MainContainerForCard from './MainContainerForCard';
 import SimilarGoodsSection from '../../../modules/similar-goods-section/SimilarGoodsSection';
-// import ContainerForCardAdditional from './ContainerForCardAdditional';
+import ContainerForCardAdditional from './ContainerForCardAdditional';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 
 interface IHome extends RouteComponentProps<any> {
@@ -120,9 +120,9 @@ class CardComponent extends React.Component<IHome, SCardComponent> {
             {similarCategory && similarCategory.length ? (
               <SimilarGoodsSection cards={similarCategory} title='Похожие' />
             ) : null}
-            {/* {popularCards && popularCards.length && card.length ? ( */}
-            {/*  <ContainerForCardAdditional card={card} popularCards={popularCards} /> */}
-            {/* ) : null} */}
+            {popularCards && popularCards.length && card.length ? (
+              <ContainerForCardAdditional card={card} popularCards={popularCards} />
+            ) : null}
           </div>
         ) : (
           <div className='adminPanelSpinner'>

@@ -256,3 +256,5 @@ const mapDispatchToProps = (dispatch: any) => {
 const EnhancedComponent = connect(mapStateToProps, mapDispatchToProps)(MainContainerForCard);
 // export default withRouter(EnhancedComponent);
 export default EnhancedComponent;
+
+console.log(3);
