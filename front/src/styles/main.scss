@@ -1585,3 +1585,336 @@ html {
 .js_search-margin {
   margin-top: 40px;
 }
+
+.formOrderMain {
+  color: #000000;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .userWaysContainer {
+    // background-color: #efffd5;
+    padding: 30px 30px 0px 30px;
+    width: 540px;
+    .userWays {
+      padding-top: 23px;
+      padding-bottom: 25px;
+      width: 100%;
+      background-color: #e8e8e8;
+      //margin-top: 30px;
+      margin-bottom: 60px;
+      border-radius: 15px;
+      .tittleWAyName {
+        font: 2rem/2rem $robotoRegular;
+        margin-left: 30px;
+        position: relative;
+        margin-bottom: 25px;
+        &:after {
+          content: attr(data-count);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: -13px;
+          left: -57px;
+          color: #ffffff;
+          font: 2rem/2rem $robotoMedium;
+          background-color: $mainBgColor;
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+
+        }
+      }
+      .paymentWayOrder {
+        padding-left: 30px;
+        margin-bottom: 35px;
+      }
+      .userDataForOrder {
+        display: flex;
+        flex-direction: column;
+        .red {
+          color: red;
+          font-size: 2.6rem;
+        }
+        p {
+          margin-left: 30px;
+          margin-top: 20px;
+          font: 1.7rem/1.7rem $robotoLight;
+        }
+        .orderWaysInput {
+          font: 1.7rem/1.7rem $robotoLight;
+          color: #00416f;
+          padding: 2px 8px;
+          align-items: center;
+          margin-top: 3px;
+          //margin-left: 30px;
+          border: 1px solid transparent;
+          transition: all 0.5s ease;
+          border-radius: 4px;
+          height: 4rem;
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          &:focus, &:hover {
+            border-color: $mainBgColor
+          }
+          &:last-child {
+            margin-bottom: 20px;
+          }
+        }
+
+      }
+      .orderWaysConfirmBtn {
+
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        background-color: $mainBgColor;
+        border-radius: 7px;
+        width: 90%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        transition: all 0.5s ease;
+        &:hover {
+          transform: scale(1.025);
+          span {
+            color: #bdedff;
+          }
+        }
+        span {
+          transition: all 0.5s ease;
+          align-self: center;
+          font: 3rem/3rem $robotoRegular;
+          color: white;
+        }
+      }
+    }
+  }
+  .itemsInCart {
+    //background-color: #efffd5;
+    padding: 30px 30px 0px 30px;
+    max-width: 540px;
+
+    /*table order top*/
+    /*https://www.youtube.com/watch?v=8_EWsLjt3D8*/
+    .tableWrapperInOrder {
+      // background-color: #ff4f4f;
+
+      table {
+        /*table*/
+        border: 1px solid #ccc;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      td {
+        position: relative;
+        .countCartInTableContainer {
+          display: inline-flex;
+          align-items: center;
+          .countCartInTableContainer__countPlus {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $mainBgColor;
+            border: 1px dotted black;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: #fff;
+            }
+          }
+          .countCartInTableContainer__countMinus {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $mainBgColor;
+            border: 1px dotted black;
+            font-size: 25px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: #fff;
+            }
+          }
+          .countCartInTableContainer__count {
+            text-align: center;
+            max-width: 40px;
+
+            //display: flex;
+            //justify-content: center;
+            //align-items: center;
+            //background-color: blue;
+            height: 30px;
+            padding: 0 7px;
+            margin: 0 2px;
+            border: 1px solid $mainBgColor;
+
+          }
+        }
+      }
+
+      tbody tr {
+
+      }
+      table tr {
+        position: relative;
+        border: 1px solid $mainBgColor;
+        //border-bottom-width: 2px;
+        padding: 0.5rem;
+        .deleteCross {
+          color: red;
+          font: 20px/20px $robotoMedium;
+          transition: all 0.5s ease;
+          //background-color: #ffd5ca;
+          &:hover {
+            cursor: pointer;
+            color: #CD5C5C;
+            // transform: skew(-40deg);
+          }
+        }
+      }
+
+      table th,
+      table td {
+        font: 1.2rem/1.5rem $robotoRegular;
+        padding: 1rem;
+        text-align: justify;
+      }
+
+      table th {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        background-color: $mainBgColor;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 600px) {
+        .countCartInTableContainer {
+          //padding-top:5px;
+        }
+
+        table {
+          border: 0;
+        }
+
+        table thead {
+          display: none;
+        }
+
+        table tr {
+          margin-bottom: 2rem;
+          display: block;
+          //border-bottom: 2px solid @mainBgColor;
+        }
+
+        table td {
+          font: 1.2rem/1.5rem $robotoRegular;
+          position: relative;
+          display: block;
+          text-align: center;
+          /* text-align: right; */
+          //  font-size: 1.3rem;
+          border-bottom: 1px dotted #ccc;
+        }
+
+        table td:last-child {
+          border-bottom: 0;
+        }
+
+        table td:before {
+          margin-bottom: 5px;
+          font: 1.5rem/2rem $robotoRegular;
+          position: static;
+          text-align: center;
+          background-color: $mainBgColor;
+          left: 2%;
+          width: 100%;
+          content: attr(data-label);
+          float: left;
+          text-transform: uppercase;
+          font-weight: bold;
+          border-radius: 5px;
+        }
+      }
+
+      .imgINOrderTable {
+        // background-color: #ffb578;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        border: 1px solid #eeeeee;
+        transition: all 0.5s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+    }
+    /*https://www.youtube.com/watch?v=8_EWsLjt3D8*/
+    /*table order bottom*/
+
+    .allPriceForItems {
+      margin: 0 auto;
+      margin-top: 1.5rem;
+      background-color: #2EA9FD;
+      border-radius: 7px;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      transition: all 0.5s ease;
+      span {
+        transition: all 0.5s ease;
+        align-self: center;
+        font: 3rem/3rem $robotoRegular;
+        color: white;
+      }
+      .allPriceForItems_text {
+        font: 1.6rem/3rem $robotoRegular;
+        color: #eeeeee;
+      }
+      .allPriceForItems_price {
+        font-family: $robotoMedium;
+      }
+    }
+  }
+}
+
+@media screen and  (max-width: 600px) {
+  .formOrderMain {
+    .userWaysContainer{
+      width: 100%!important;
+    }
+    .itemsInCart {
+      .allPriceForItems {
+        background-color: transparent;
+        color: black;
+        span {
+
+          font: 1rem/1.5rem $robotoRegular;
+          color: black;
+        }
+        .allPriceForItems_text {
+          font: 1rem/1.5rem $robotoRegular;
+          color: black;
+        }
+        .allPriceForItems_price {
+          font: 1rem/1.5rem $robotoRegular;
+          color: black;
+        }
+
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ import Home from './shop/home/Home';
 // import Blog from '../pages/Blog';
 // import PaymentAndDelivery from '../pages/PaymentAndDelivery';
 // import CashbackAndExchange from '../pages/CashbackAndExchange';
-// import OrderComp from '../pages/order';
+import OrderPage from '../pages/shop/order/index';
 // import AfterOrder from '../pages/AfterOrder';
 import CardPage from '../pages/shop/card/Card';
 // import Profile from '../pages/Profile';
@@ -37,7 +37,7 @@ const ShopWrapper: FC = (props: any) => {
             {/* <Route path='/about-us' component={AboutUs} /> */}
             {/* <Route path='/payment-and-delivery' component={PaymentAndDelivery} /> */}
             {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}
-            {/* <Route exact path='/order' component={OrderComp} /> */}
+            <Route exact path='/order' component={OrderPage} />
             {/* <Route path='/blog' component={Blog} /> */}
             <Route path='/card/:id' component={CardPage} />
             {/* <Route exact path='/great' component={AfterOrder} /> */}
