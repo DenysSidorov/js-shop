@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import './linkToImages.scss';
+import './index.scss';
 
 const LinksToImages: FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import './style.less';
+import './index.less';
 
 import defaultImg from './noCar.jpg';
 

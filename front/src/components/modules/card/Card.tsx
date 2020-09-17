@@ -3,7 +3,7 @@ import React, {useCallback, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import './mainBodyCard.less';
+import './index.less';
 import {pushToCart} from '../../../redux/reducers/cart-reducer';
 
 import OneClickModal from '../../parts/modals/one-click-modal/OneClickModal';

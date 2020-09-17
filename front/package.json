@@ -105,6 +105,7 @@
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.13.1",
+    "react-dropdown": "^1.2.5",
     "react-hot-loader": "^4.12.21",
     "react-image-gallery": "^0.8.18",
     "react-maskedinput": "^4.0.1",

@@ -1,7 +1,7 @@
 import React, {CSSProperties} from 'react';
 import {connect} from 'react-redux';
 // import MenuInfoSection from '../../modules/MenuInfoSection';
-// import WaysDevPay from './WaysDevPay';
+import WaysDevPay from './WaysDevPay';
 import GoodsTable from './GoodsTable';
 // import OneClickModal from '../../modules/modals/one-click-modal';
 import './index.less';
@@ -70,6 +70,7 @@ class OrderPage extends React.Component<IOrderPage, SOrderPage> {
           <div className='formOrderMain'>
             <GoodsTable />
             {/* <WaysDevPay {...this.props} /> */}
+            <WaysDevPay />
           </div>
         )}
         {this.state.isShowOneClickModal &&
