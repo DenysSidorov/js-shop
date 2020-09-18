@@ -6,21 +6,21 @@ import SocialMedia from '../modules/social-media-buttons/SocialMedia';
 import FooterSection from '../parts/footer/FooterSection';
 import MainContent from '../modules/main-content/MainContent';
 import Home from './shop/home/Home';
-// import AboutUs from '../pages/AboutUs';
-// import Blog from '../pages/Blog';
-// import PaymentAndDelivery from '../pages/PaymentAndDelivery';
-// import CashbackAndExchange from '../pages/CashbackAndExchange';
+import AboutUs from './shop/about-us/AboutUs';
+import Blog from './shop/blog/Blog';
+import PaymentAndDelivery from './shop/payment-and-delivery/PaymentAndDelivery';
+import CashbackAndExchange from './shop/cashback-and-exchange/CashbackAndExchange';
 import OrderPage from './shop/order/index';
 import AfterOrder from './shop/after-order/AfterOrder';
 import CardPage from './shop/card/Card';
 // import Profile from '../pages/Profile';
-// import Contacts from '../pages/Contacts';
+import Contacts from './shop/contacs/Contacts';
 // import Login from '../pages/Login';
 // import Logup from '../pages/Logup';
 // import VerifyEmail from '../pages/VerifyEmail';
 // import VerifyUser from '../panel/auth/VerifyUser';
 
-// import NotFound from '../pages/NotFound';
+import NotFound from './shop/not-found/NotFound';
 // import RouteAuth from '../helpers/RouteAuth';
 
 const ShopWrapper: FC = (props: any) => {
@@ -34,20 +34,20 @@ const ShopWrapper: FC = (props: any) => {
           <main>
             <Switch>
               <Route exact path='/shop' component={Home} />
-              {/* <Route path='/about-us' component={AboutUs} /> */}
-              {/* <Route path='/payment-and-delivery' component={PaymentAndDelivery} /> */}
-              {/* <Route path='/cashback-and-exchange' component={CashbackAndExchange} /> */}
+              <Route path='/about-us' component={AboutUs} />
+              <Route path='/payment-and-delivery' component={PaymentAndDelivery} />
+              <Route path='/cashback-and-exchange' component={CashbackAndExchange} />
               <Route path='/great' component={AfterOrder} />
               <Route path='/order' component={OrderPage} {...props} />
-              {/* <Route path='/blog' component={Blog} /> */}
+              <Route path='/blog' component={Blog} />
               <Route path='/card/:id' component={CardPage} />
-              {/* <Route exact path='/contacts' component={Contacts} /> */}
+              <Route exact path='/contacts' component={Contacts} />
               {/* <RouteAuth path='/profile' component={Profile} /> */}
               {/* <Route path='/login' component={Login} /> */}
               {/* <Route path='/logup' component={Logup} /> */}
               {/* <Route path='/verify-email' component={VerifyEmail} /> */}
               {/* <Route path='/verify-user' component={VerifyUser} /> */}
-              {/* <Route component={NotFound} /> */}
+              <Route component={NotFound} />
             </Switch>
           </main>
         </MainContent>

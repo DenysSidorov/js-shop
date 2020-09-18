@@ -1,0 +1,12 @@
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+
+.blogPage-container{
+  padding: 10px;
+  p{
+    font: 1.3rem/2rem $robotoRegular;
+    margin-bottom: 10px;
+    text-indent: 20px;
+  }
+}
