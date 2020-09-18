@@ -170,7 +170,6 @@ class Home extends React.Component<IHome, StateHome> {
     console.log('popularCards', popularCards);
     return (
       <div>
-        Hello
         <MenuInfoSection />
         <HeadBanner />
         {uniqCategory && uniqCategory.length ? <TagsMainSection uniqCategory={uniqCategory} /> : null}

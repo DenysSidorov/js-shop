@@ -2,9 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Dropdown from 'react-dropdown';
 import {bindActionCreators} from 'redux';
-import axios from 'axios';
+// import axios from 'axios';
+// import urlApi from '../../../../api/urlApi';
 // import {push} from 'react-router-redux';
-import urlApi from '../../../../api/urlApi';
+// import {RouteComponentProps} from 'react-router-dom';
+import {RouteComponentProps} from 'react-router-dom';
 import Confirm from '../../../parts/modals/confirm-cart-modal/ConfirmBlock';
 import {
   // pushToCart as pushToCartFu,
@@ -44,7 +46,12 @@ interface SWaysDevPay {
  deleteAll
  * */
 
-interface IWaysDevPay {
+interface IHistory extends RouteComponentProps<any> {
+  location: any;
+  history: any;
+}
+
+interface IWaysDevPay extends IHistory {
   cart: any;
   // pushToCart: Function;
   // deleteFromCart: Function;
@@ -52,7 +59,9 @@ interface IWaysDevPay {
   // decrementItem: Function;
 
   deleteAll: Function;
-  changePage: Function;
+  // location: any;
+  // history: any;
+  [key: string]: any;
 }
 
 class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
@@ -67,9 +76,9 @@ class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
   state = {
     payment: {value: 'predo', label: 'Предоплата на карту'},
     delivery: 'newpost',
-    name: '',
-    phone: '',
-    address: '',
+    name: '12345678',
+    phone: '12312453',
+    address: '123123',
     email: '',
     isNormal: false,
     isShowConfirm: false,
@@ -147,19 +156,19 @@ class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
     }
   };
 
-  handleConfirmUnmount() {
+  handleConfirmUnmount = () => {
     this.setState({isShowConfirm: false});
-  }
+  };
 
-  chPayment(paymentObj: any) {
+  chPayment = (paymentObj: any) => {
     const {paymentVariants} = this.state;
     this.setState({
       payment: paymentObj,
       paymentVariants: [paymentVariants[1], paymentVariants[0]]
     });
-  }
+  };
 
-  dispatchData() {
+  dispatchData = () => {
     if (this.props.cart.length) {
       this.setState({
         isShowConfirm: true
@@ -167,14 +176,14 @@ class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
     }
 
     // console.log(this.state);
-  }
+  };
 
-  chDelivery(kind: string) {
+  chDelivery = (kind: string) => {
     // console.log(kind, 'k');
     this.setState({delivery: kind});
-  }
+  };
 
-  async sendDataToServer() {
+  sendDataToServer = async () => {
     const price = this.props.cart.reduce(
       (prev: number, cur: any) => prev + Math.floor((cur.price / 100) * (100 - cur.sail) * cur.count),
       0
@@ -202,16 +211,17 @@ class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
     });
 
     try {
-      let response: any = await axios.post(`${urlApi}/api/orders`, order);
+      // let response: any = await axios.post(`${urlApi}/api/orders`, order);
+      let response: any = {data: {_id: 987654321}, _id: 12324453};
       if (response) {
         // TODO disable SPINNER
         // TODO delete order from main redux store
-        this.props.deleteAll();
+        // this.props.deleteAll();
         // TODO redirect to thank you (IMPORTANT TO HAVE orderID !!! )
         //
         response = response.data;
         // push('/about-us');
-        this.props.changePage(response._id);
+        this.changePage(response._id);
       }
 
       // setTimeout(()=>{this.setState({cards: cards.goods})}, 2000)
@@ -220,7 +230,14 @@ class WaysDevPay extends React.Component<IWaysDevPay, SWaysDevPay> {
     } finally {
       console.log();
     }
-  }
+  };
+
+  changePage = (id: number) => {
+    console.log('id', id);
+    console.log(this.props);
+    console.log('pushing!!!');
+    this.props.history.push('/great', id);
+  };
 
   render() {
     // const goods = this.props.cart;
@@ -401,15 +418,6 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const pushTo = (orderNumber: number) => {
-  alert(`push cart${orderNumber}`);
-  // push({
-  //   pathname: '/great',
-  //   state: orderNumber,
-  //   search: '?the=search'
-  // });
-};
-
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
@@ -417,7 +425,6 @@ const mapDispatchToProps = (dispatch: any) => {
       // addItem: (item) => pushToCartFu(item),
       // incrementItem: (id) => incrementItemFu(id),
       // decrementItem: (id) => decrementItemFu(id),
-      changePage: pushTo,
       deleteAll: () => deleteAllFu()
     },
     dispatch

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 // import MenuInfoSection from '../../modules/MenuInfoSection';
 import WaysDevPay from './WaysDevPay';
 import GoodsTable from './GoodsTable';
-// import OneClickModal from '../../modules/modals/one-click-modal';
+import OneClickModal from '../../../parts/modals/one-click-modal/OneClickModal';
 import './index.less';
 import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 
@@ -51,8 +51,6 @@ class OrderPage extends React.Component<IOrderPage, SOrderPage> {
       justifyContent: 'center',
       flexDirection: 'column'
     };
-    // const goods = this.props.cart;
-    console.log(this.props.cart, ' ===========');
     const {cart: goods} = this.props;
     return (
       <div style={styles}>
@@ -69,14 +67,12 @@ class OrderPage extends React.Component<IOrderPage, SOrderPage> {
         ) : (
           <div className='formOrderMain'>
             <GoodsTable />
-            {/* <WaysDevPay {...this.props} /> */}
-            <WaysDevPay />
+            <WaysDevPay {...this.props} />
           </div>
         )}
-        {this.state.isShowOneClickModal &&
-          {
-            /* <OneClickModal close={this.handleShowOneClick} goods={goods} willDeleteGoods /> */
-          }}
+        {this.state.isShowOneClickModal ? (
+          <OneClickModal close={this.handleShowOneClick} goods={goods} willDeleteGoods />
+        ) : null}
       </div>
     );
   }
