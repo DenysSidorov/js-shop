@@ -23,7 +23,9 @@ const Contacts: FC<IContacts> = ({serviceReducer}) => {
         Онлайн магазин. Украина, г. Одесса.
       </div>
       <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Телефон: {serviceReducer.number1}</div>
-      <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular'}}>Почтовый ящик: {serviceReducer.email1}</div>
+      <div style={{fontSize: '1.6rem', fontFamily: 'Roboto-Regular', marginBottom: '100px'}}>
+        Почтовый ящик: {serviceReducer.email1}
+      </div>
     </>
   );
 };
