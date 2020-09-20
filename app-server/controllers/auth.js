@@ -79,6 +79,7 @@ export const singin = async(req, resp, next) => {
     if (login && password) {
         const user = User.findOne({login})
             .then(user => {
+                console.log(user, '---');
                 if (user && user.password == password) {
                     /** Преймущество токена в том,что его можно выдавать не только браузеру но и приложению
                      * Первый параметр - то что будем хэшировать
@@ -144,6 +145,7 @@ export async function checkTokenFromEmail(req, resp, next) {
 
                         try {
                             var userResult = await User.create(credentials);
+                            console.log('userResult', userResult);
                         } catch ({message}) {
                             return next({
                                 status: 400,
@@ -168,7 +170,7 @@ export async function checkTokenFromEmail(req, resp, next) {
                 // на клиенте записываем токен, перенапрваляем на index, для избавления от токена в url
                 // на клиенте index.js panel будет делать запросы
 
-                console.log(credentials, 'credentials');
+                console.log(credentials, 'credentials2');
                 // resp.json({email: req.query.t, after: 2})
             }
         });

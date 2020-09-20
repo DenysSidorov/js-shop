@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 import Shop from './pages/shop-wrapper';
 // import RouteAuth from '../shop/helpers/RouteAuth';
 // import Panel from '../shop/panel/index';
-import Landing from './pages/landing';
+import Landing from './pages/shop/landing';
 // import NotificationsWrapper from '../shop/helpers/NotificationsWrapper';
 const App: FunctionComponent = (props) => {
   return (

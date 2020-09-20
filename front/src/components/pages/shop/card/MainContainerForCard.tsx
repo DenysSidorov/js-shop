@@ -13,7 +13,7 @@ import Guarantee from './confirms/Guarantee';
 import Verify from './confirms/Verify';
 import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
-import Price from '../../landing/Price';
+import Price from '../landing/Price';
 
 interface IMainContainerForCard {
   card: any;

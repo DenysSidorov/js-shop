@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './index.less';
 import './hoverBlock.less';
 
-import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
+import {setMetaTag, setTitle} from '../../../../helpers/libs/utils';
 import BuyBtn from './buy-btn';
 import Price from './Price';
 

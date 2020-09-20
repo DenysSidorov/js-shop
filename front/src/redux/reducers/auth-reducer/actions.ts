@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import {push} from 'react-router-redux';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
+import {history} from '../../store/configureStore';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -19,7 +20,10 @@ export function saveUserToken(token: string) {
   return function (dispatch: Function) {
     dispatch({type: AUTH_USER});
     localStorage.setItem('info', token);
-    alert("push('/')");
+    console.log('saveUserToken REDIRECT');
+    history.push('/shop');
+
+    // alert("push('/')");
     // dispatch(push('/'));
   };
 }
@@ -128,7 +132,9 @@ export function signinUser(login: string, password: string) {
         // - redirect to the route '/feature'
         // browserHistory.push('/feature');
         dispatch(hideLoading());
-        alert("push('/') auth reducer");
+        console.log('redirect --');
+        history.push('/shop');
+        // alert("push('/') auth reducer");
         // dispatch(push('/'));
         return response.data;
       })
@@ -176,7 +182,8 @@ export function signupUser(login: string, password: string, nick: string) {
         // browserHistory.push('/feature');
         dispatch(hideLoading());
 
-        alert('auth reducer /verify-email');
+        console.log('auth reducer /verify-email');
+        history.push('/verify-email');
         // dispatch(
         //   push({
         //     pathname: '/verify-email',

@@ -2,21 +2,20 @@ import {hot} from 'react-hot-loader/root';
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Provider} from 'react-redux';
-// import {Router} from 'react-router-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
-// import {createBrowserHistory} from 'history';
-import store from './redux/store/configureStore';
+import {Router} from 'react-router-dom';
+// import {BrowserRouter as Router} from 'react-router-dom';
+
+import store, {history} from './redux/store/configureStore';
 import Wrapper from './components/index';
 
 const App = hot(Wrapper);
-// const history = createBrowserHistory();
 
 const container = document.getElementById('main');
 if (container) {
   ReactDom.render(
     <Provider store={store}>
       <div>
-        <Router>
+        <Router history={history}>
           <App />
         </Router>
       </div>

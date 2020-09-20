@@ -13,15 +13,15 @@ import CashbackAndExchange from './shop/cashback-and-exchange/CashbackAndExchang
 import OrderPage from './shop/order/index';
 import AfterOrder from './shop/after-order/AfterOrder';
 import CardPage from './shop/card/Card';
-// import Profile from '../pages/Profile';
+import Profile from './shop/profile/Profile';
 import Contacts from './shop/contacs/Contacts';
-// import Login from '../pages/Login';
-// import Logup from '../pages/Logup';
-// import VerifyEmail from '../pages/VerifyEmail';
-// import VerifyUser from '../panel/auth/VerifyUser';
+import Login from './shop/login/Login';
+import Logup from './shop/logup/Logup';
+import VerifyEmail from './shop/verify-email/VerifyEmail';
+import VerifyUser from './shop/verify-user/VerifyUser';
 
 import NotFound from './shop/not-found/NotFound';
-// import RouteAuth from '../helpers/RouteAuth';
+import RouteAuth from '../HOCs/RouteAuth';
 
 const ShopWrapper: FC = (props: any) => {
   return (
@@ -42,11 +42,11 @@ const ShopWrapper: FC = (props: any) => {
               <Route path='/blog' component={Blog} />
               <Route path='/card/:id' component={CardPage} />
               <Route exact path='/contacts' component={Contacts} />
-              {/* <RouteAuth path='/profile' component={Profile} /> */}
-              {/* <Route path='/login' component={Login} /> */}
-              {/* <Route path='/logup' component={Logup} /> */}
-              {/* <Route path='/verify-email' component={VerifyEmail} /> */}
-              {/* <Route path='/verify-user' component={VerifyUser} /> */}
+              <RouteAuth path='/profile' component={Profile} />
+              <Route path='/login' component={Login} />
+              <Route path='/logup' component={Logup} />
+              <Route path='/verify-email' component={VerifyEmail} />
+              <Route path='/verify-user' component={VerifyUser} />
               <Route component={NotFound} />
             </Switch>
           </main>

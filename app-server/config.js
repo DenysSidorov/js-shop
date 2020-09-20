@@ -3,7 +3,7 @@ require('dotenv').config({path: './.env'});
 var configBackApp = {
   'NODE_ENV': process.env.NODE_ENV || 'development',
   'PORT': process.env.PORT || 3000,
-  'FRONT_PORT': process.env.FRONT_PORT || 9000,
+  'FRONT_PORT': process.env.FRONT_PORT || 3002,
   'MONGODB_URI': process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/shop',
   'SECRET_WORD': process.env.SECRET_WORD,
   'SERVER_DOMAIN': process.env.SERVER_DOMAIN,

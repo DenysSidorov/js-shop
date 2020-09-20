@@ -1,6 +1,6 @@
 import React, {FC, useCallback, useState} from 'react';
 // import './index.less';
-import OneClickModal from '../../../parts/modals/one-click-modal/OneClickModal';
+import OneClickModal from '../../../../parts/modals/one-click-modal/OneClickModal';
 
 interface IBuyBtn {
   text: string;
