@@ -1,14 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {connect} from 'react-redux';
 import {IServiceRedecer} from '../../../redux/reducers/service-app';
 import './index.scss';
 
-// interface IFooterSection {
-//   serviceReducer: Object;
-// }
+interface IFooterSection extends IServiceRedecer {
+  authenticated: boolean;
+  isAdmin: boolean;
+  unAuth: Function
+}
 
-const FooterSection = ({number1}: IServiceRedecer) => {
+const FooterSection = ({number1, authenticated, isAdmin, unAuth}: IFooterSection) => {
   return (
     <div className='footerSection left fullWidth '>
       <div className='container'>
@@ -83,6 +86,42 @@ const FooterSection = ({number1}: IServiceRedecer) => {
                 {/* <li className=""><a>Детские</a></li> */}
                 {/* <li className=""><a>Мужские</a></li> */}
                 {/* </ul> */}
+                <ul>
+                  <ReactCSSTransitionGroup
+                    transitionName='menuInfoSectionRigth'
+                    transitionAppear
+                    transitionAppearTimeout={300}
+                    transitionEnterTimeout={300}
+                    transitionLeave={false}
+                  >
+                    {/* {isAdmin && <li><Link to='/panel'>Ввойти в кабинет</Link></li>} */}
+                    {authenticated && isAdmin && (
+                      <li>
+                        <Link to='/panel'>Админка</Link>
+                      </li>
+                    )}
+                    {authenticated && (
+                      <li>
+                        <Link to='/profile'>Профиль юзера</Link>
+                      </li>
+                    )}
+                    {authenticated && (
+                      <li>
+                        <a onClick={unAuth}>Выйти</a>
+                      </li>
+                    )}
+                    {!authenticated && (
+                      <li>
+                        <Link to='/logup'>Регистрация</Link>
+                      </li>
+                    )}
+                    {!authenticated && (
+                      <li>
+                        <Link to='/login'>Войти</Link>
+                      </li>
+                    )}
+                  </ReactCSSTransitionGroup>
+                </ul>
               </div>
               <div className='socribeBtnBlockFooter' />
             </div>
@@ -97,8 +136,8 @@ const FooterSection = ({number1}: IServiceRedecer) => {
             </div>
           </div>
           <p className='footerMainBlock__payment-delivery_payment-afferta'>
-            Украина, г. Одесса, тел. {number1}. Весь контент © 2017. Зазначені товарні знаки
-            та продукція маркована знаками для товарів захищені авторським правом.
+            Украина, г. Одесса, тел. {number1}. Весь контент © 2017. Зазначені товарні знаки та продукція маркована
+            знаками для товарів захищені авторським правом.
           </p>
         </div>
       </div>
@@ -108,6 +147,8 @@ const FooterSection = ({number1}: IServiceRedecer) => {
 
 const mapStateToProps = (state: any) => {
   return {
+    authenticated: state.authReducer.authenticated,
+    isAdmin: state.authReducer.isAdmin,
     number1: state.serviceReducer.number1
   };
 };

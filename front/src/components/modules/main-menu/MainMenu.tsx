@@ -27,10 +27,10 @@ const MainMenu: FC = () => {
               {/* </div> */}
               {/* </div> */}
               <div className='menu'>
-                 <CategoryMenu />
+                <CategoryMenu />
                 <ul className='menu__menuHeader'>
                   <li className='menu__menuHeader_item'>
-                    <Link to='/'>Главная</Link>
+                    <Link to='/shop'>Главная</Link>
                   </li>
                   <li className='menu__menuHeader_item'>
                     {/* <Link to="/#aboutUs">О нас</Link> */}

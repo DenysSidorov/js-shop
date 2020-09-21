@@ -27,4 +27,3 @@ const mapStateToProps = (state: any) => {
 };
 
 export default connect(mapStateToProps, null)(RouteAuth);
-console.log(3);
