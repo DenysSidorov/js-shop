@@ -6,7 +6,6 @@ import rootReducer from '../reducers/index';
 
 // const historyModule = require('history');
 export const history = createBrowserHistory();
-
 const initialState = {};
 const enhancers: any[] = [];
 const middleware = [thunk];

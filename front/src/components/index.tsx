@@ -2,11 +2,10 @@ import React, {FunctionComponent} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import Shop from './pages/app-wrapper';
-// import RouteAuth from '../shop/helpers/RouteAuth';
 import Panel from './pages/panel/Panel';
 import Landing from './pages/landing';
 import RouteAuth from './HOCs/RouteAuth';
-// import NotificationsWrapper from '../shop/helpers/NotificationsWrapper';
+import NotificationsWrapper from './parts/notification-wrapper/NotificationsWrapper';
 
 const App: FunctionComponent = (props) => {
   return (
@@ -17,7 +16,7 @@ const App: FunctionComponent = (props) => {
         <Shop {...props} />
       </Switch>
       <div id='modal-root' style={{zIndex: 99999999}} />
-      {/* <NotificationsWrapper /> */}
+      <NotificationsWrapper />
     </div>
   );
 };

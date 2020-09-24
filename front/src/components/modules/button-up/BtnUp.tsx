@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const BtnUp = () => {
+const BtnUp: FC = () => {
   return (
     <div className='upBtn'>
       <div id='scrollup'>

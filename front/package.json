@@ -109,7 +109,7 @@
     "react-hot-loader": "^4.12.21",
     "react-image-gallery": "^0.8.18",
     "react-maskedinput": "^4.0.1",
-    "react-notification-system-redux": "^1.2.0",
+    "react-notification-system-redux": "^2.0.1",
     "react-onclickoutside": "^6.9.0",
     "react-paginate": "^5.3.1",
     "react-redux": "^7.2.1",

@@ -1,12 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import {info} from 'react-notification-system-redux';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
+import {history} from '../../store/configureStore';
 
 export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
 export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
 export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
 export const DELETE_ALL_ITEM_IN_CART = 'cart/DELETE_ALL_ITEM_IN_CART';
+
 
 /**
 const initialState = {
@@ -141,10 +143,10 @@ export const pushToCart = (item: any) => {
       autoDismiss: 3,
       action: {
         label: 'В корзину',
-        callback: () => {
-          alert('Добавленно в корзину, сменна роута');
-        }
-        // callback: () => dispatch(push('/order'))
+        // callback: () => {
+        //   alert('Добавленно в корзину, сменна роута');
+        // }
+        callback: () => history.push('/order')
         // callback: () =>   window.location.href = window.location.origin + '/order'
       },
       position: 'br'
