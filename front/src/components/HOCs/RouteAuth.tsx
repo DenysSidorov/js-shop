@@ -3,22 +3,23 @@ import {Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 interface IRouteAuth {
-  component: React.Component | any;
+  component: React.ElementType;
   authReducer?: any;
   path: string;
 }
 
-const RouteAuth = ({component: Component, ...rest}: IRouteAuth) => (
-  <Route
-    {...rest}
-    render={(matchProps) => {
-      const fakeAuth = rest.authReducer.authenticated;
-      const token = localStorage.getItem('info');
-      console.log(fakeAuth, 'fakeAuth ');
-      return fakeAuth && token ? <Component {...matchProps} /> : <Redirect to='/login' />;
-    }}
-  />
-);
+const RouteAuth = ({component: Comp, ...rest}: IRouteAuth) => {
+  return (
+    <Route
+      {...rest}
+      render={(matchProps) => {
+        const fakeAuth = rest.authReducer.authenticated;
+        const token = localStorage.getItem('info');
+        return fakeAuth && token ? <Comp {...matchProps} /> : <Redirect to='/login' />;
+      }}
+    />
+  );
+};
 
 const mapStateToProps = (state: any) => {
   return {

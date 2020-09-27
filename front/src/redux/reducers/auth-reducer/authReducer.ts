@@ -8,25 +8,56 @@ import {
   DISAPPEAR_LIKE_ADMIN
 } from './types';
 
-const initialState = {error: '', authenticated: false, message: '', isAdmin: false};
+export interface IAuthReducerState {
+  error: string;
+  authenticated: boolean;
+  message: string;
+  isAdmin: boolean;
+}
 
-export default function (state = initialState, action: {type: string; payload: any}) {
+export interface IActionAuthReducerPayloadString {
+  type: string;
+  payload: string;
+}
+
+export interface IActionAuthReducerPayloadObject {
+  type: string;
+  payload: Object;
+}
+
+type IActionAuthReducer = IActionAuthReducerPayloadString; // | IActionAuthReducerPayloadObject
+
+const initialState: IAuthReducerState = {
+  error: '',
+  authenticated: false,
+  message: '',
+  isAdmin: false
+};
+
+export default function (state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState {
   switch (action.type) {
-    case AUTH_USER:
+    case AUTH_USER: {
       return {...state, error: '', authenticated: true};
-    case UNAUTH_USER:
+    }
+    case UNAUTH_USER: {
       return {...state, authenticated: false, isAdmin: false};
-    case AUTH_ERROR:
+    }
+    case AUTH_ERROR: {
       return {...state, error: action.payload};
-    case FETCH_MESSAGE:
+    }
+    case FETCH_MESSAGE: {
       return {...state, message: action.payload};
-    case DELETE_ERROR_MESSAGE:
+    }
+    case DELETE_ERROR_MESSAGE: {
       return {...state, error: ''};
+    }
 
-    case APPEAR_LIKE_ADMIN:
+    case APPEAR_LIKE_ADMIN: {
       return {...state, isAdmin: true};
-    case DISAPPEAR_LIKE_ADMIN:
+    }
+    case DISAPPEAR_LIKE_ADMIN: {
       return {...state, isAdmin: false};
+    }
     default:
       return state;
   }

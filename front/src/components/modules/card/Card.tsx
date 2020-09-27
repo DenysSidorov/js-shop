@@ -12,7 +12,7 @@ import {checkTextLength} from '../../../helpers/libs/utils';
 interface ICardMainPage {
   card: any;
   addItem: Function;
-  width?: string | number;
+  width?: string;
 }
 
 const CardMainPage = ({card, addItem, width}: ICardMainPage) => {
