@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import './mainContainerForCard.less';
 import Gallery from '../../modules/image-gallery/ImageGallery';
 import Confirm from '../../modules/confirm-block-in-card/ConfirmBlock';
-import {pushToCart} from '../../../redux/reducers/cart-reducer';
+import {pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
 import {changeConfirm} from '../../../redux/reducers/confirm-in-card';
 import Exchange from './confirms/Exchange';
 import Guarantee from './confirms/Guarantee';

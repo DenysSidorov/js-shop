@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {IReducersState} from '../../redux/reducers';
+import {IAuthReducerState} from '../../redux/reducers/auth-reducer/authReducer';
 
 interface IRouteAuth {
   component: React.ElementType;
-  authReducer?: any;
+  authReducer?: IAuthReducerState;
   path: string;
 }
 
-const RouteAuth = ({component: Comp, ...rest}: IRouteAuth) => {
+const RouteAuth: FC<IRouteAuth> = ({component: Comp, ...rest}) => {
+  const authReducer = useSelector((state: IReducersState) => state.authReducer);
   return (
     <Route
       {...rest}
       render={(matchProps) => {
-        const fakeAuth = rest.authReducer.authenticated;
+        const fakeAuth = authReducer?.authenticated || false;
         const token = localStorage.getItem('info');
         return fakeAuth && token ? <Comp {...matchProps} /> : <Redirect to='/login' />;
       }}
@@ -21,10 +24,4 @@ const RouteAuth = ({component: Comp, ...rest}: IRouteAuth) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    authReducer: state.authReducer
-  };
-};
-
-export default connect(mapStateToProps, null)(RouteAuth);
+export default RouteAuth;

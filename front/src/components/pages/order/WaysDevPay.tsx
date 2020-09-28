@@ -14,7 +14,7 @@ import {
   // incrementItem as incrementItemFu,
   // decrementItem as decrementItemFu,
   deleteAll as deleteAllFu
-} from '../../../redux/reducers/cart-reducer';
+} from '../../../redux/reducers/cart-reducer/cartReducer';
 import GoodsTable from './GoodsTable';
 
 type PaymentObject = {

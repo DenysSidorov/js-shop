@@ -3,13 +3,37 @@ import {info} from 'react-notification-system-redux';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
 import {history} from '../../store/configureStore';
 
-export const ADD_ITEM_IN_CART = 'cart/ADD_ITEM_IN_CART';
-export const DELETE_ITEM_IN_CART = 'cart/DELETE_ITEM_IN_CART';
-export const INCREMENT_ITEM_IN_CART = 'cart/INCREMENT_ITEM_IN_CART';
-export const DECREMENT_ITEM_IN_CART = 'cart/DECREMENT_ITEM_IN_CART';
-export const DELETE_ALL_ITEM_IN_CART = 'cart/DELETE_ALL_ITEM_IN_CART';
+export const ADD_ITEM_IN_CART: string = 'cart/ADD_ITEM_IN_CART';
+export const DELETE_ITEM_IN_CART: string = 'cart/DELETE_ITEM_IN_CART';
+export const INCREMENT_ITEM_IN_CART: string = 'cart/INCREMENT_ITEM_IN_CART';
+export const DECREMENT_ITEM_IN_CART: string = 'cart/DECREMENT_ITEM_IN_CART';
+export const DELETE_ALL_ITEM_IN_CART: string = 'cart/DELETE_ALL_ITEM_IN_CART';
 
+export interface ICartReducerItem {
+  _id: number;
+  name: string;
+  model: string;
+  size: number[];
+  count: number;
+  comments: any[];
+  views: number;
+  likes: number;
+  price: number;
+  photo: string[];
+  code: string | number;
+  ['desc-short']: string;
+  ['desc-full']: string;
+  tags: string[];
+  sail: number;
+  category: string[];
+  isExists: boolean;
+  producer: string;
+  isNewGood: boolean;
+}
 
+export interface ICartReducerState {
+  items: Array<ICartReducerItem>;
+}
 /**
 const initialState = {
   items: [
@@ -43,13 +67,13 @@ const initialState = {
 };
 */
 
-export default (state = getFromLocalData('cart'), action: any) => {
+export default (state: ICartReducerState = getFromLocalData('cart'), action: any): ICartReducerState => {
   switch (action.type) {
     case ADD_ITEM_IN_CART: {
-      let result = {};
-      let newArr: Array<any> = [];
-      if (state.items.some((el: any) => el._id === action.payload._id)) {
-        state.items.forEach((el: any) => {
+      let result: ICartReducerState = {items: []};
+      let newArr: Array<ICartReducerItem> = [];
+      if (state.items.some((el: ICartReducerItem) => el._id === action.payload._id)) {
+        state.items.forEach((el: ICartReducerItem) => {
           if (el._id === action.payload._id) {
             const newEl = {...el};
             newEl.count++;
@@ -68,16 +92,16 @@ export default (state = getFromLocalData('cart'), action: any) => {
       return result;
     }
     case DELETE_ITEM_IN_CART: {
-      const newState = {...state};
+      const newState: ICartReducerState = {...state};
       const result = {
         ...newState,
-        items: state.items.filter((el: any) => el._id !== action.payload._id)
+        items: state.items.filter((el: ICartReducerItem) => el._id !== action.payload._id)
       };
       setInLocalData(result);
       return result;
     }
     case DELETE_ALL_ITEM_IN_CART: {
-      const result = {
+      const result: ICartReducerState = {
         ...state,
         items: []
       };
@@ -85,19 +109,19 @@ export default (state = getFromLocalData('cart'), action: any) => {
       return result;
     }
     case INCREMENT_ITEM_IN_CART: {
-      const newState = {...state};
-      const newArr: Array<any> = [];
-      if (newState.items.some((el: any) => el._id === action.payload)) {
-        newState.items.forEach((el: any) => {
+      const newState: ICartReducerState = {...state};
+      const newArr: Array<ICartReducerItem> = [];
+      if (newState.items.some((el: ICartReducerItem) => el._id === action.payload)) {
+        newState.items.forEach((el: ICartReducerItem) => {
           if (el._id === action.payload) {
-            const newEl = {...el};
+            const newEl: ICartReducerItem = {...el};
             newEl.count++;
             newArr.push(newEl);
           } else {
             newArr.push(el);
           }
         });
-        const result = {...newState, items: newArr};
+        const result: ICartReducerState = {...newState, items: newArr};
         setInLocalData(result);
         return result;
       }
@@ -106,12 +130,12 @@ export default (state = getFromLocalData('cart'), action: any) => {
     }
 
     case DECREMENT_ITEM_IN_CART: {
-      const newState = {...state};
-      const newArr: Array<any> = [];
-      if (newState.items.some((el: any) => el._id === action.payload)) {
-        newState.items.forEach((el: any) => {
+      const newState: ICartReducerState = {...state};
+      const newArr: Array<ICartReducerItem> = [];
+      if (newState.items.some((el: ICartReducerItem) => el._id === action.payload)) {
+        newState.items.forEach((el: ICartReducerItem) => {
           if (el._id === action.payload) {
-            const newEl = {...el};
+            const newEl: ICartReducerItem = {...el};
             if (newEl.count > 1) {
               newEl.count--;
             }
@@ -120,7 +144,7 @@ export default (state = getFromLocalData('cart'), action: any) => {
             newArr.push(el);
           }
         });
-        const result = {...newState, items: newArr};
+        const result: ICartReducerState = {...newState, items: newArr};
         setInLocalData(result);
         return result;
       }
@@ -132,22 +156,16 @@ export default (state = getFromLocalData('cart'), action: any) => {
   }
 };
 
-export const pushToCart = (item: any) => {
+export const pushToCart = (item: ICartReducerItem) => {
   return function (dispatch: Function) {
-    // var notification = document.querySelector('.notifications-wrapper');
     console.log(item, 'ITEM');
     const notificationOpts = {
-      // uid: 'once-please', // you can specify your own uid if required
       title: 'Товар добавлен в корзину',
       message: `${item.name} ${item.model}`,
       autoDismiss: 3,
       action: {
         label: 'В корзину',
-        // callback: () => {
-        //   alert('Добавленно в корзину, сменна роута');
-        // }
         callback: () => history.push('/order')
-        // callback: () =>   window.location.href = window.location.origin + '/order'
       },
       position: 'br'
     };
@@ -157,7 +175,7 @@ export const pushToCart = (item: any) => {
   };
 };
 
-export const deleteFromCart = (item: any) => {
+export const deleteFromCart = (item: ICartReducerItem) => {
   return {type: DELETE_ITEM_IN_CART, payload: item};
 };
 

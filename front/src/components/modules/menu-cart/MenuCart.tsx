@@ -1,11 +1,14 @@
 import React, {FC} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './index.less';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {IReducersState} from '../../../redux/reducers';
 
-const MenuCart: FC = ({cart}: any) => {
+const MenuCart: FC = () => {
   let count = 0;
-  cart.forEach((el: any) => {
+  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  cartItems.forEach((el: ICartReducerItem) => {
     count += el.count;
   });
   return (
@@ -15,10 +18,4 @@ const MenuCart: FC = ({cart}: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    cart: state.cartReducer.items
-  };
-};
-
-export default connect(mapStateToProps)(MenuCart);
+export default MenuCart;

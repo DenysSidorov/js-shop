@@ -2,15 +2,22 @@ import {combineReducers} from 'redux';
 import {loadingBarReducer} from 'react-redux-loading-bar';
 import {reducer as notifications} from 'react-notification-system-redux';
 import serviceReducer from './service-app';
-import cartReducer from './cart-reducer/index';
-import authReducer from './auth-reducer/authReducer';
+import cartReducer, {ICartReducerState} from './cart-reducer/cartReducer';
+import authReducer, {IAuthReducerState} from './auth-reducer/authReducer';
 import confirmsCard from './confirm-in-card';
 import panelReducer from './panel-reducer/adminPanelReducer';
 
-const reducer = (state: any, action: any) => action;
+export interface IReducersState {
+  serviceReducer: any;
+  cartReducer: ICartReducerState;
+  authReducer: IAuthReducerState;
+  confirmsCard: any;
+  panelReducer: any;
+  notifications: any;
+  loadingBar: any;
+}
 
-const cr = combineReducers({
-  reducerTest: reducer,
+const reducersState = combineReducers<IReducersState>({
   serviceReducer,
   cartReducer,
   authReducer,
@@ -20,4 +27,4 @@ const cr = combineReducers({
   loadingBar: loadingBarReducer
 });
 
-export default cr;
+export default reducersState;

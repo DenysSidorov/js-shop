@@ -1,22 +1,20 @@
 import React, {useCallback, useState} from 'react';
-// import {withRouter, Link} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import './index.less';
-import {pushToCart} from '../../../redux/reducers/cart-reducer';
-
+import {useDispatch} from 'react-redux';
+import {ICartReducerItem, pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
 import OneClickModal from '../../parts/modals/one-click-modal/OneClickModal';
 import {checkTextLength} from '../../../helpers/libs/utils';
+import './index.less';
 
 interface ICardMainPage {
-  card: any;
-  addItem: Function;
+  card: ICartReducerItem;
   width?: string;
 }
 
-const CardMainPage = ({card, addItem, width}: ICardMainPage) => {
+const CardMainPage = ({card, width}: ICardMainPage) => {
   const [isShowOneClickModal, setIsShowOneClickModal] = useState(false);
+  const dispatch = useDispatch();
+  const addItem = (item: ICartReducerItem) => dispatch(pushToCart(item));
 
   const handleShowOneClick = useCallback(
     (state: any) => {
@@ -95,13 +93,4 @@ const CardMainPage = ({card, addItem, width}: ICardMainPage) => {
   );
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      addItem: (item) => pushToCart(item)
-    },
-    dispatch
-  );
-};
-// export default withRouter(connect(null, mapDispatchToProps)(CardMainPage));
-export default connect(null, mapDispatchToProps)(CardMainPage);
+export default CardMainPage;

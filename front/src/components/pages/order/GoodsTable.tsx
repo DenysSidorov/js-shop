@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import './index.less';
-import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../redux/reducers/cart-reducer';
+import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 import AllPrice from './AllPrice';
 
 interface IGoodsTable {

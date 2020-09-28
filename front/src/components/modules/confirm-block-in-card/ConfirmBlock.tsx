@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './index.less';
 
 interface IConfirmBlock {
   okHandler: Function;
   cancelHandler: Function;
   unmountConfirm: Function;
-  children: any;
+  children: React.ReactNode;
 }
 
-const ConfirmBlock = (props: IConfirmBlock) => {
+const ConfirmBlock: FC<IConfirmBlock> = (props) => {
   const {unmountConfirm, okHandler, cancelHandler, children} = props;
   return (
     <div className='confirmBlockForUser'>

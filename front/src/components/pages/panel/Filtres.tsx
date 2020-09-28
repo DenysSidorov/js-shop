@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
-import {pushToCart} from '../../../redux/reducers/cart-reducer';
+import {pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
 import {changeConfirm} from '../../../redux/reducers/confirm-in-card';
 
 interface IFilters {

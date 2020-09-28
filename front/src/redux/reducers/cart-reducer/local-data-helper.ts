@@ -1,4 +1,5 @@
 import localdata from '../../../helpers/libs/localdata';
+import {ICartReducerState} from './cartReducer';
 
 export const setInLocalData = (items: any) => {
   try {
@@ -8,7 +9,7 @@ export const setInLocalData = (items: any) => {
   }
 };
 
-export const getFromLocalData = (name: any) => {
+export const getFromLocalData = (name: string): ICartReducerState => {
   try {
     const value = JSON.parse(String(localdata.getLocalData(name)));
     if (value) {
@@ -22,4 +23,3 @@ export const getFromLocalData = (name: any) => {
 };
 
 export default {};
-

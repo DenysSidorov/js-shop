@@ -52,3 +52,20 @@
       "npm run lint-fix"
     ]
   }
+
+//////// Input and Props ///////
+interface Props {
+  userName: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+<input value={props.userName} onChange={props.onChange} />  -
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+////// CSS Props /////////
+const divStyle: React.CSSProperties = {{width: 0}}
+
+
+///////Promise//// const d = (): Promise<MemberEntity[]> => { ////////////////
+///////Axios////  const d = ({data}: AxiosResponse<any[]>): MemberEntity[] => ////////////////
+ import Axios, { AxiosResponse } from 'axios';
+

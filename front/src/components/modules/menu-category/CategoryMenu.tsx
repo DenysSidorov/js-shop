@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './index.less';
 import {Link} from 'react-router-dom';
@@ -6,23 +6,25 @@ import axios from 'axios';
 import onClickOutside from 'react-onclickoutside';
 import urlApi from '../../../api/urlApi';
 
-class CategoryMenu extends React.Component<any, any> {
-  state = {
-    isShowMenu: false,
-    uniqCategory: []
-    // cacheTopItems: []
-  };
+interface ICategoryMenu {
+  isShowMenu: boolean;
+  uniqCategory: Array<any>;
+}
 
-  async componentDidMount() {
+class CategoryMenu: FC = () => {
+  const [isShowMenu, setIsShowMenu] = useState(false);
+  const [uniqCategory, setUniqCategory] = useState([]);
+
+  useEffect(()=>{
     try {
       const result = await axios.get(`${urlApi}/api/goods/tags`);
       if (result.data && Array.isArray(result.data)) {
-        this.setState({uniqCategory: result.data});
+        setUniqCategory(result.data);
       }
     } catch (er) {
       console.log(er);
     }
-  }
+  }, []);
 
   handleShowMenu = (bool: any) => {
     if (bool === undefined) {
@@ -112,7 +114,6 @@ class CategoryMenu extends React.Component<any, any> {
     }
   };
 
-  render() {
     const {uniqCategory, isShowMenu} = this.state;
     return (
       // <div className="categoryMenu fullWidth left">
@@ -243,7 +244,6 @@ class CategoryMenu extends React.Component<any, any> {
       // </div>
       // </div>
     );
-  }
 }
 
 class MenuBody extends React.Component<any, any> {

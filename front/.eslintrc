@@ -32,6 +32,7 @@
     "react/state-in-constructor": "off",
     "quotes": ["error", "single", { "avoidEscape": true }],
     "dot-notation": "off",
+    "import/no-cycle": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-no-target-blank" : "off",
