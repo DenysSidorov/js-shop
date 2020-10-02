@@ -4,13 +4,13 @@ import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 
 interface IHistory extends RouteComponentProps<any> {
-  location: any;
+  location?: any;
   history: any;
 }
 
 interface IAfterOrder extends IHistory {}
 
-const AfterOrder: FC<IAfterOrder> = ({history, location}) => {
+const AfterOrder: FC<IAfterOrder> = ({history}) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Заказ принят');
@@ -20,8 +20,6 @@ const AfterOrder: FC<IAfterOrder> = ({history, location}) => {
       'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
     );
   }, []);
-  console.log('location ----', location);
-  console.log('history -----', history);
   return (
     <div className='greatPage-container'>
       <p>Спасибо за ваш заказ. Наши менеджеры свяжутся с Вами в ближайшее время!</p>
