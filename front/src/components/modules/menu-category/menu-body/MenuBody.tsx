@@ -1,20 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-class MenuBody extends React.Component<any, any> {
-  handleClickOutside = () => {
-    const {handleClickOutside} = this.props;
-    handleClickOutside();
-  };
-
-  render() {
-    const {handleShowMenu} = this.props;
-    return (
-      <div className='menu_header' onClick={handleShowMenu}>
-        <span>КАТАЛОГ КАРТИН</span>
-        <i className='fa fa-bars' />
-      </div>
-    );
-  }
+interface IMenuBody {
+  handleClickOutside?: Function;
+  handleShowMenu: Function;
 }
+
+const MenuBody: FC<IMenuBody> = ({handleShowMenu}) => {
+  return (
+    <div className='menu_header' onClick={() => handleShowMenu()}>
+      <span>КАТАЛОГ КАРТИН</span>
+      <i className='fa fa-bars' />
+    </div>
+  );
+};
 
 export default MenuBody;
