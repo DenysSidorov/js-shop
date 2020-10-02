@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
 import './index.less';
 
-interface ITagsMainSection {
-  uniqCategory: Array<Object>;
+interface ITag {
+  name: string;
+  count: number;
 }
 
-const TagsMainSection = ({uniqCategory}: ITagsMainSection) => {
+interface ITagsMainSection {
+  uniqCategory: Array<ITag>;
+}
+
+const TagsMainSection: FC<ITagsMainSection> = ({uniqCategory}: ITagsMainSection) => {
   return (
     <div className='itemsSection left fullWidth '>
       <div className='container'>

@@ -4,9 +4,10 @@ import Slider from 'react-slick';
 import './index.scss';
 
 import CardMainPage from '../card/Card';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 
 interface ISimilarGoodsSection {
-  cards: Array<any>;
+  cards: Array<ICartReducerItem>;
   title: string;
 }
 
