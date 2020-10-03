@@ -1,6 +1,5 @@
 import React, {FC, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {IHistory} from '../../../interfaces';
