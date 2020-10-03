@@ -1,12 +1,9 @@
 import React, {FC, useEffect} from 'react';
-import {Link, RouteComponentProps} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-
-interface IHistory extends RouteComponentProps<any> {
-  location?: any;
-  history: any;
-}
+import {IHistory} from '../../../interfaces';
 
 interface IAfterOrder extends IHistory {}
 
