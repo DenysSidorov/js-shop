@@ -1,7 +1,5 @@
-// tslint:disable:no-var-requires
 import React, {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-// import {RouteComponentProps} from 'react-router-dom';
 import urlApi from '../../../api/urlApi';
 import MainContainerForCard from './MainContainerForCard';
 import SimilarGoodsSection from '../../modules/similar-goods-section/SimilarGoodsSection';
@@ -89,7 +87,7 @@ const CardComponent = ({match}: ICardComponent) => {
     <div>
       {card.length ? (
         <div>
-          <MainContainerForCard card={card} />
+          <MainContainerForCard card={card[0]} />
           {similarCategory && similarCategory.length ? (
             <SimilarGoodsSection cards={similarCategory} title='Похожие' />
           ) : null}

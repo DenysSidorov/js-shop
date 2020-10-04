@@ -1,6 +1,8 @@
 export const CHANGE_NAME_CONFIRM = 'card-confirm/CHANGE_NAME_CONFIRM';
 
-export default (state: string = '', action: {type: string; payload: string}) => {
+export type IConfirmsCard = string;
+
+export default (state: IConfirmsCard = '', action: {type: string; payload: string}): IConfirmsCard => {
   switch (action.type) {
     case CHANGE_NAME_CONFIRM:
       return action.payload;
@@ -9,6 +11,6 @@ export default (state: string = '', action: {type: string; payload: string}) => 
   }
 };
 
-export const changeConfirm = (type: Object) => {
+export const changeConfirm = (type: string): Object => {
   return {type: CHANGE_NAME_CONFIRM, payload: type};
 };

@@ -4,14 +4,14 @@ import {reducer as notifications} from 'react-notification-system-redux';
 import serviceReducer from './service-app';
 import cartReducer, {ICartReducerState} from './cart-reducer/cartReducer';
 import authReducer, {IAuthReducerState} from './auth-reducer/authReducer';
-import confirmsCard from './confirm-in-card';
+import confirmsCard, {IConfirmsCard} from './confirm-in-card';
 import panelReducer from './panel-reducer/adminPanelReducer';
 
 export interface IReducersState {
   serviceReducer: any;
   cartReducer: ICartReducerState;
   authReducer: IAuthReducerState;
-  confirmsCard: any;
+  confirmsCard: IConfirmsCard;
   panelReducer: any;
   notifications: any;
   loadingBar: any;
