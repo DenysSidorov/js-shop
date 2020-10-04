@@ -1,12 +1,13 @@
 import React, {FC, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
+import {IServiceReducer} from '../../../redux/reducers/service-app';
+import {IReducersState} from '../../../redux/reducers';
 
-interface IContacts {
-  serviceReducer: any;
-}
+interface IContacts {}
 
-const Contacts: FC<IContacts> = ({serviceReducer}) => {
+const Contacts: FC<IContacts> = () => {
+  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Контакты');
@@ -30,10 +31,4 @@ const Contacts: FC<IContacts> = ({serviceReducer}) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    serviceReducer: state.serviceReducer
-  };
-};
-
-export default connect(mapStateToProps, null)(Contacts);
+export default Contacts;

@@ -1,10 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {IServiceRedecer} from '../../../redux/reducers/service-app';
+import {useSelector} from 'react-redux';
+import {IServiceReducer} from '../../../redux/reducers/service-app';
 import './index.scss';
+import {IReducersState} from '../../../redux/reducers';
 
-const FooterSection = ({number1}: IServiceRedecer) => {
+const FooterSection = () => {
+  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
+  const {number1} = serviceReducer;
   return (
     <div className='footerSection left fullWidth '>
       <div className='container'>
@@ -102,10 +105,4 @@ const FooterSection = ({number1}: IServiceRedecer) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    number1: state.serviceReducer.number1
-  };
-};
-
-export default connect(mapStateToProps, null)(FooterSection);
+export default FooterSection;
