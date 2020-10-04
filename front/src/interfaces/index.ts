@@ -14,3 +14,10 @@ export interface IHistory extends RouteComponentProps {
   staticContext?: any;
   match: match<any>;
 }
+
+export interface IComment {
+  _id: string | number;
+  name: string;
+  message: string;
+  date: string;
+}

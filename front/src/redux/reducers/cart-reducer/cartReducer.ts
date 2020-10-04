@@ -2,6 +2,7 @@
 import {info} from 'react-notification-system-redux';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
 import {history} from '../../store/configureStore';
+import {IComment} from '../../../interfaces';
 
 export const ADD_ITEM_IN_CART: string = 'cart/ADD_ITEM_IN_CART';
 export const DELETE_ITEM_IN_CART: string = 'cart/DELETE_ITEM_IN_CART';
@@ -15,7 +16,7 @@ export interface ICartReducerItem {
   model: string;
   size: number[];
   count: number;
-  comments: any[];
+  comments: IComment[]; //[{name: '', date: '', message: ''}, {...}, {..}]
   views: number;
   likes: number;
   price: number;

@@ -1,19 +1,17 @@
 import React from 'react';
-// import Comment from "./Comment";
+import Comment from './Comment';
 import Card from '../../modules/card/Card';
 import '../../../styles/helpers/tabsInCard.less';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 
 interface IContainerForCardAdditional {
-  card: Array<any>;
-  popularCards: Array<any>;
+  card: Array<ICartReducerItem>;
+  popularCards: Array<ICartReducerItem>;
 }
 
-const ContainerForCardAdditional = ({popularCards}: IContainerForCardAdditional) => {
-  // const card = this.props.card[0];
+const ContainerForCardAdditional = ({popularCards, card}: IContainerForCardAdditional) => {
   return (
     <div className='containerForCardAdditional'>
-      {/* TABS LIBRARRY TOP */}
-
       <div className='mainCardContainer__tabs'>
         {/* <input id="mainCardContainer__tabs_tab1" type="radio" name="tabs" defaultChecked/> */}
         {/* <label htmlFor="mainCardContainer__tabs_tab1" title="Вкладка 1">ОБЗОР</label> */}
@@ -23,8 +21,10 @@ const ContainerForCardAdditional = ({popularCards}: IContainerForCardAdditional)
           РЕКОМЕНДУЕМ
         </label>
 
-        {/* <input id="mainCardContainer__tabs_tab3" type="radio" name="tabs"/> */}
-        {/* <label htmlFor="mainCardContainer__tabs_tab3" title="Вкладка 3">ОТЗЫВЫ</label> */}
+        <input id='mainCardContainer__tabs_tab3' type='radio' name='tabs' />
+        <label htmlFor='mainCardContainer__tabs_tab3' title='Вкладка 3'>
+          ОТЗЫВЫ
+        </label>
 
         {/* <section id="mainCardContainer__tabs_content-tab1"> */}
         {/*    <div className="containerInTabs"> */}
@@ -41,62 +41,22 @@ const ContainerForCardAdditional = ({popularCards}: IContainerForCardAdditional)
             {popularCards.map((el) => {
               return <Card key={el._id} card={el} />;
             })}
-            {/* <div className="bodyCardItems__oneCardItem"> */}
-            {/* <div className="oneCardItem__headCard"> */}
-            {/* <div className="oneCardItem__headCard__priceCard"> */}
-            {/* <span>879</span><span></span>&nbsp;<span>$</span> */}
-            {/* </div> */}
-            {/* <div className="oneCardItem__headCard__nameBrand">Reebok, model test-1000 21 12321 */}
-            {/* 312 3123 */}
-            {/* 123 123 */}
-            {/* 12321 */}
-            {/* </div> */}
-            {/* <div className="oneCardItem__headCard__wrap-things"> */}
-            {/* <div className="oneCardItem__headCard__otherThings"> */}
-            {/* <i className="fa fa-heart"></i> */}
-            {/* <span className="oneCardItem__headCard__otherThings_like"> 123</span> */}
-            {/* </div> */}
-            {/* <div className="oneCardItem__headCard__view"> */}
-            {/* <i className="fa fa-eye" aria-hidden="true"></i> */}
-            {/* <span className="oneCardItem__headCard__view_items"> 123</span> */}
-            {/* </div> */}
-            {/* </div> */}
-            {/* </div> */}
-
-            {/* <div className="oneCardItem__imageBody"> */}
-            {/* <img src={`/img-static/${card.photo[0]}`} alt=""/> */}
-            {/* </div> */}
-
-            {/* <div className="oneCardItem__bottomCard"> */}
-            {/* <div className="oneCardItem__bottomCard__shortText"> */}
-            {/* <span className="oneCardItem__bottomCard__shortText_dots">Короткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давайКороткое описание товара, очень крутое описание овара, купи меня, я очень вкусный товар, бесплатно почти, с большой скидкой, давай, давай</span> */}
-            {/* </div> */}
-            {/* <div className="oneCardItem__bottomCard__status">В наличии</div> */}
-            {/* <div className="oneCardItem__bottomCard__buy"><span>В КОРЗИНУ</span></div> */}
-            {/* </div> */}
-
-            {/* <div className="oneCardItem__bottomCard_sale"><span>-15%</span></div> */}
-            {/* <div className="oneCardItem__bottomCard_new">NEW<span></span></div> */}
-            {/* </div> */}
           </div>
         </section>
-        {/* <section id="mainCardContainer__tabs_content-tab3"> */}
-        {/*    <div className="containerInTabs"> */}
-        {/*        {!card.comments.length */}
-        {/*            ? <div>Комментариев нет</div> */}
-        {/*            : card.comments.map((el, index)=> { */}
-        {/*            return <Comment key={el._id} comment={el}/> */}
-        {/*        }) */}
-        {/*        } */}
-
-        {/*    </div> */}
-        {/* </section> */}
+        <section id='mainCardContainer__tabs_content-tab3'>
+          <div className='containerInTabs'>
+            {card.length === 0 || card[0].comments.length === 0 ? (
+              <div>Комментариев нет</div>
+            ) : (
+              card[0].comments.map((el) => {
+                return <Comment key={el._id} comment={el} />;
+              })
+            )}
+          </div>
+        </section>
       </div>
-
-      {/* TABS LIBRARRY BOTTOM */}
     </div>
   );
 };
 
-// export default withRouterz(ContainerForCardAdditional);
 export default ContainerForCardAdditional;
