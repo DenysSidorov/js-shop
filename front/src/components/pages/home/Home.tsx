@@ -196,6 +196,4 @@ class Home extends React.Component<IHome, StateHome> {
   }
 }
 
-// export default withRouter(Home);
 export default Home;
-// export default connect(null, {push})(Home);

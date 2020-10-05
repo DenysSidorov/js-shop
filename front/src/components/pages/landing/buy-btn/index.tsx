@@ -19,7 +19,6 @@ const BuyBtn: FC<IBuyBtn> = ({text = 'Заказать!'}) => {
     },
     [isShowOneClickModal]
   );
-  console.log('RENDER Buy-BTN');
   return (
     <div className='buyNowContBodyTextContent2' onClick={() => showHandler(true)}>
       <div className='buyNow2_arrow'>
