@@ -16,7 +16,7 @@ export interface ICartReducerItem {
   model: string;
   size: number[];
   count: number;
-  comments: IComment[]; //[{name: '', date: '', message: ''}, {...}, {..}]
+  comments: IComment[]; // [{name: '', date: '', message: ''}, {...}, {..}]
   views: number;
   likes: number;
   price: number;
