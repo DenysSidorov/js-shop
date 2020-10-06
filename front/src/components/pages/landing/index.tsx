@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './index.less';
 import './hoverBlock.less';
@@ -7,12 +7,15 @@ import './hoverBlock.less';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import BuyBtn from './buy-btn';
 import Price from './Price';
+import {IServiceReducer} from '../../../redux/reducers/service-app';
+import {IReducersState} from '../../../redux/reducers';
 
-interface ILanding {
-  number1: string;
-}
+interface ILanding {}
 
-const Landing: FC<ILanding> = ({number1}) => {
+const Landing: FC<ILanding> = () => {
+  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
+  const {number1} = serviceReducer;
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Картины на дереве в стиле лофт, Украина');
@@ -676,13 +679,4 @@ const Landing: FC<ILanding> = ({number1}) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    number1: state.serviceReducer.number1
-    // cart: state.cart.items,
-  };
-};
-
-const f = connect(mapStateToProps)(Landing);
-
-export default f;
+export default Landing;
