@@ -1,8 +1,9 @@
 import React, {FC, useEffect} from 'react';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
+import {IHistory} from '../../../interfaces';
 
-interface IVerifyEmail {
+interface IVerifyEmail extends IHistory {
   history: any;
 }
 

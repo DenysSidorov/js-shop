@@ -12,6 +12,7 @@ export interface IHistory extends RouteComponentProps {
   location: H.Location;
   history: H.History;
   staticContext?: any;
+  state?: any;
   match: match<any>;
 }
 
