@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect, useReducer, useState} from 'react';
 import './index.scss';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {connect} from 'react-redux';
@@ -22,16 +22,43 @@ interface SLogup {
   serverGet: boolean;
 }
 
-class Logup extends React.Component<ILogup, SLogup> {
-  state = {
-    login: '',
-    pass: '',
-    repPass: '',
-    nick: '',
-    normal: false,
-    // press: false,
-    serverGet: false
-  };
+
+function reducerFu(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    case 'reset':
+      return init(action.payload);
+    default:
+      throw new Error();
+  }
+}
+
+const initialState = {
+  login: '',
+  pass: '',
+  repPass: '',
+  nick: '',
+  normal: false,
+  // press: false,
+  serverGet: false
+};
+
+const Logup = () => {
+  // const [login, setLogin] = useState<string>('');
+  // const [pass, setPass] = useState<string>('');
+  // const [repPass, setRepPass] = useState<string>('');
+  // const [nick, setNick] = useState<string>('');
+
+  const [state, updateState /*dispatch*/] = useReducer(reducerFu, initialState);
+
+
+  useEffect(()=>{
+
+  }, []);
+
 
   UNSAFE_componentWillMount() {
     this.props.delErrorMessage();
