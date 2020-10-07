@@ -31,7 +31,6 @@ function reducerFu(state: SLogup, action: any) {
     case 'UPDATE_SERVERGET':
       return {...state, serverGet: action.payload};
     case 'UPDATE_REPPASS':
-      console.log('1_1');
       return {...state, repPass: action.payload};
     default:
       return state;

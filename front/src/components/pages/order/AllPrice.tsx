@@ -1,12 +1,14 @@
 import React, {FC} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {IReducersState} from '../../../redux/reducers';
 
-interface IAllPrice {
-  cart: any;
-}
+interface IAllPrice {}
 
-const AllPrice: FC<IAllPrice> = ({cart}) => {
-  const goods = cart;
+const AllPrice: FC<IAllPrice> = () => {
+  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+
+  const goods = cartItems;
   const price = goods.reduce(
     (prev: number, cur: any) => prev + Math.floor((cur.price / 100) * (100 - cur.sail) * cur.count),
     0
@@ -21,10 +23,4 @@ const AllPrice: FC<IAllPrice> = ({cart}) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    cart: state.cartReducer.items
-  };
-};
-
-export default connect(mapStateToProps)(AllPrice);
+export default AllPrice;
