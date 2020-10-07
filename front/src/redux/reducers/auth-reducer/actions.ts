@@ -183,7 +183,7 @@ export function signupUser(login: string, password: string, nick: string) {
         dispatch(hideLoading());
 
         console.log('auth reducer /verify-email');
-        history.push('/verify-email');
+        history.push({pathname: '/verify-email', state: response.data});
         // dispatch(
         //   push({
         //     pathname: '/verify-email',

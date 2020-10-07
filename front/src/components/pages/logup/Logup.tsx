@@ -1,16 +1,13 @@
-import React, {ChangeEvent, useEffect, useReducer, useState} from 'react';
+import React, {ChangeEvent, useCallback, useEffect, useReducer} from 'react';
 import './index.scss';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {signupUser, deleteErrorMessage} from '../../../redux/reducers/auth-reducer/actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  signupUser as signupUserRedux,
+  deleteErrorMessage as deleteErrorMessageRedux
+} from '../../../redux/reducers/auth-reducer/actions';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-
-interface ILogup {
-  delErrorMessage: Function;
-  signupUser: Function;
-  authReducer: any;
-}
+import {IReducersState} from '../../../redux/reducers';
 
 interface SLogup {
   login: string;
@@ -18,211 +15,208 @@ interface SLogup {
   repPass: string;
   nick: string;
   normal: boolean;
-  // press: boolean;
   serverGet: boolean;
 }
 
-
-function reducerFu(state, action) {
+function reducerFu(state: SLogup, action: any) {
   switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
-    case 'reset':
-      return init(action.payload);
+    case 'UPDATE_LOGIN':
+      return {...state, login: action.payload};
+    case 'UPDATE_PASSWORD':
+      return {...state, pass: action.payload};
+    case 'UPDATE_NICK':
+      return {...state, nick: action.payload};
+    case 'UPDATE_NORMAL':
+      return {...state, normal: action.payload};
+    case 'UPDATE_SERVERGET':
+      return {...state, serverGet: action.payload};
+    case 'UPDATE_REPPASS':
+      console.log('1_1');
+      return {...state, repPass: action.payload};
     default:
-      throw new Error();
+      return state;
   }
 }
 
 const initialState = {
   login: '',
   pass: '',
-  repPass: '',
   nick: '',
+  repPass: '',
   normal: false,
-  // press: false,
   serverGet: false
 };
 
 const Logup = () => {
-  // const [login, setLogin] = useState<string>('');
-  // const [pass, setPass] = useState<string>('');
-  // const [repPass, setRepPass] = useState<string>('');
-  // const [nick, setNick] = useState<string>('');
+  const [state, updateState /* dispatch */] = useReducer(reducerFu, initialState);
+  const authReducer = useSelector((globState: IReducersState) => globState.authReducer);
+  const dispatch = useDispatch();
 
-  const [state, updateState /*dispatch*/] = useReducer(reducerFu, initialState);
+  const deleteErrorMessage = useCallback(() => {
+    dispatch(deleteErrorMessageRedux());
+  }, [dispatch]);
 
+  const signupUser = useCallback(
+    (login, password, nick) => {
+      dispatch(signupUserRedux(login, password, nick));
+    },
+    [dispatch]
+  );
 
-  useEffect(()=>{
-
-  }, []);
-
-
-  UNSAFE_componentWillMount() {
-    this.props.delErrorMessage();
+  useEffect(() => {
+    deleteErrorMessage();
     setTitle('Регистрация');
     setMetaTag('description', 'Регистрация в магазине doshki.com');
     setMetaTag(
       'keywords',
       'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
     );
+  }, [deleteErrorMessage]);
 
-    // window.st= this.props.store;
-    // this.props.store.dispatch(deleteErrorMessage());
-    // dispatch(deleteErrorMessage());
-  }
+  const sendData = useCallback(() => {
+    const {login, nick, pass} = state;
+    signupUser(login, pass, nick);
 
-  sendData = () => {
-    console.log('send2');
-    const {nick, login, pass} = this.state;
-    console.log(nick, login, pass, 'req111111');
-    this.props.signupUser(login, pass, nick);
-    this.setState({repPass: '', pass: '', normal: false});
-    // Отправить данные о пользователе
-    // Запустить прелоадер
+    updateState({type: 'UPDATE_REPPASS', payload: ''});
+    updateState({type: 'UPDATE_PASSWORD', payload: ''});
+    updateState({type: 'UPDATE_NORMAL', payload: false});
+  }, [state, signupUser]);
 
-    // Если ошибка очистить данные
-    // Отключить прелоадер
-    // Вывести уведомление пользователю об ошибке
-
-    // Если все нормально выключить прелоадер
-    // Сохранить токен
-    // Перенаправить на другую страницу
-  };
-
-  // chPress = () => {
-  //   this.setState({
-  //     press: !this.state.press
-  //   });
-  // }
-
-  chLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    if (val.length < 70) {
-      this.setState({login: val}, this.validateData);
-    }
-  };
-
-  chPassRepeat = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value, 'repeat');
-    const val = e.target.value;
-    if (val.length < 70) {
-      this.setState({repPass: val}, this.validateData);
-    }
-  };
-
-  chNickName = (e: ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    console.log(val, 'chNickName');
-    if (val.length < 70) {
-      this.setState({nick: val}, this.validateData);
-    }
-  };
-
-  chPass = (e: ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    if (val.length < 70) {
-      this.setState({pass: val}, this.validateData);
-    }
-  };
-
-  validateData = () => {
+  const validateData = useCallback(() => {
     // eslint-disable-next-line no-useless-escape
     const emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const {login, nick, pass, repPass} = this.state;
+    const {login, nick, pass, repPass} = state;
     if (emailRegExp.test(login) && nick.length >= 4 && pass.length >= 4 && pass === repPass) {
-      this.setState({normal: true});
+      updateState({type: 'UPDATE_NORMAL', payload: true});
     } else {
-      this.setState({normal: false});
+      updateState({type: 'UPDATE_NORMAL', payload: false});
     }
-  };
+  }, [state]);
 
-  render() {
-    return (
-      <div className='loginPage_container'>
-        {this.state.serverGet && (
-          <div className='loginPage_container_block'>
-            <span>
-              <i className='fa fa-briefcase fa-spin' />
-            </span>
-          </div>
-        )}
-        <form className='formRegistration' action=''>
-          <h1 className='h1Registration'>Регистрация в системе</h1>
-          <h2 className='h1RegistrationRules'>Все поля должны иметь более 4-х символов</h2>
-          <label htmlFor='login'>Введите свой Email:</label>
-          <br />
-          <input value={this.state.login} onChange={this.chLogin} name='login' type='text' placeholder='Ваш логин' />
-          <br /> <br />
-          <label htmlFor='pass'>Введите свой Пароль:</label>
-          <br />
-          <input value={this.state.pass} onChange={this.chPass} name='pass' type='password' placeholder='Ваш пароль' />
-          <br />
-          <br />
-          <label htmlFor='passRepeat'>Важно повторить пароль:</label>
-          <br />
-          <input
-            value={this.state.repPass}
-            onChange={this.chPassRepeat}
-            name='passRepeat'
-            type='password'
-            placeholder='Повторите пароль'
-          />
-          <br />
-          <br />
-          <label htmlFor='nickName'>Введите своё имя в системе:</label>
-          <br />
-          <input
-            value={this.state.nick}
-            onChange={this.chNickName}
-            name='nickName'
-            type='text'
-            placeholder='Ваш никнэйм'
-          />
-          <br />
-          <br />
-          <br />
-          {this.state.normal ? (
-            <ReactCSSTransitionGroup
-              transitionName='example'
-              transitionAppear
-              transitionAppearTimeout={300}
-              transitionEnterTimeout={300}
-              transitionLeaveTimeout={300}
-            >
-              <div className='btnInLoginDis' onClick={this.sendData}>
-                <span>Подтвердить</span>
-              </div>
-            </ReactCSSTransitionGroup>
-          ) : (
-            <div className='btnInLoginIn'>
+  /** setState function in Classes had callback as second parameter,
+   * but useState or useReduce doesn't have that callback:(
+   * That's why I use useEffect as a huck under this text. I could do it with some external library, but didn't do it.
+   *  */
+  useEffect(() => {
+    validateData();
+  }, [state.normal]);
+
+  useEffect(() => {
+    validateData();
+  }, [state.pass]);
+  useEffect(() => {
+    validateData();
+  }, [state.login]);
+
+  useEffect(() => {
+    validateData();
+  }, [state.nick]);
+
+  useEffect(() => {
+    validateData();
+  }, [state.repPass]);
+
+  const chLogin = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      if (val.length < 70) {
+        updateState({type: 'UPDATE_LOGIN', payload: val});
+        validateData();
+      }
+    },
+    [validateData]
+  );
+
+  const chPassRepeat = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      if (val.length < 70) {
+        updateState({type: 'UPDATE_REPPASS', payload: val});
+        validateData();
+      }
+    },
+    [validateData]
+  );
+
+  const chNickName = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (val.length < 70) {
+      updateState({type: 'UPDATE_NICK', payload: val});
+    }
+  }, []);
+
+  const chPass = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      if (val.length < 70) {
+        updateState({type: 'UPDATE_PASSWORD', payload: val});
+        validateData();
+      }
+    },
+    [validateData]
+  );
+
+  const {login, nick, pass, repPass, serverGet, normal} = state;
+
+  return (
+    <div className='loginPage_container'>
+      {serverGet && (
+        <div className='loginPage_container_block'>
+          <span>
+            <i className='fa fa-briefcase fa-spin' />
+          </span>
+        </div>
+      )}
+      <form className='formRegistration' action=''>
+        <h1 className='h1Registration'>Регистрация в системе</h1>
+        <h2 className='h1RegistrationRules'>Все поля должны иметь более 4-х символов</h2>
+        <label htmlFor='login'>Введите свой Email:</label>
+        <br />
+        <input value={login} onChange={chLogin} name='login' type='text' placeholder='Ваш логин' />
+        <br /> <br />
+        <label htmlFor='pass'>Введите свой Пароль:</label>
+        <br />
+        <input value={pass} onChange={chPass} name='pass' type='password' placeholder='Ваш пароль' />
+        <br />
+        <br />
+        <label htmlFor='passRepeat'>Важно повторить пароль:</label>
+        <br />
+        <input
+          value={repPass}
+          onChange={chPassRepeat}
+          name='passRepeat'
+          type='password'
+          placeholder='Повторите пароль'
+        />
+        <br />
+        <br />
+        <label htmlFor='nickName'>Введите своё имя в системе:</label>
+        <br />
+        <input value={nick} onChange={chNickName} name='nickName' type='text' placeholder='Ваш никнэйм' />
+        <br />
+        <br />
+        <br />
+        {normal ? (
+          <ReactCSSTransitionGroup
+            transitionName='example'
+            transitionAppear
+            transitionAppearTimeout={300}
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={300}
+          >
+            <div className='btnInLoginDis' onClick={sendData}>
               <span>Подтвердить</span>
             </div>
-          )}
-          <div style={{margin: '15px', color: 'red', fontSize: '1.5rem'}}>{this.props.authReducer.error}</div>
-        </form>
-      </div>
-    );
-  }
-}
-
-// {error:'', authenticated: false, message: ''}
-const mapStateToProps = (state: any) => {
-  return {
-    authReducer: state.authReducer
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      signupUser: (login, password, nick) => signupUser(login, password, nick),
-      delErrorMessage: () => deleteErrorMessage()
-    },
-    dispatch
+          </ReactCSSTransitionGroup>
+        ) : (
+          <div className='btnInLoginIn'>
+            <span>Подтвердить</span>
+          </div>
+        )}
+        <div style={{margin: '15px', color: 'red', fontSize: '1.5rem'}}>{authReducer.error}</div>
+      </form>
+    </div>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logup);
+export default Logup;
