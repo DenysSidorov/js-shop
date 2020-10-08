@@ -1,9 +1,8 @@
 import React, {FC} from 'react';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
+import {IHistory} from '../../../interfaces';
 
-interface INotFound {
-  location: any;
-}
+interface INotFound extends IHistory {}
 
 const NotFound: FC<INotFound> = ({location}) => {
   window.scrollTo(0, 0);
@@ -14,6 +13,6 @@ const NotFound: FC<INotFound> = ({location}) => {
     'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
   );
 
-  return <h1>404 Sorry! Not Found Page with route: {location.pathname}</h1>;
+  return <h1>Извините, но странице не найдена! Адрес: {location.pathname}</h1>;
 };
 export default NotFound;
