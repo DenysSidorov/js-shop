@@ -1,20 +1,43 @@
-import React, {FC} from 'react';
-import {connect} from 'react-redux';
+import React, {FC, useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {bindActionCreators} from 'redux';
 import './index.less';
-import {pushToCart, deleteFromCart, incrementItem, decrementItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {
+  deleteFromCart,
+  incrementItem,
+  decrementItem,
+  ICartReducerItem
+} from '../../../redux/reducers/cart-reducer/cartReducer';
 import AllPrice from './AllPrice';
+import {IReducersState} from '../../../redux/reducers';
 
-interface IGoodsTable {
-  cart: any;
-  decrementItemFu: Function;
-  incrementItemFu: Function;
-  deleteItemFu: Function;
-}
+interface IGoodsTable {}
 
-const GoodsTable: FC<IGoodsTable> = ({cart, decrementItemFu, incrementItemFu, deleteItemFu}) => {
-  const goods = cart;
+const GoodsTable: FC<IGoodsTable> = () => {
+  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  const goods = cartItems;
+  const dispatch = useDispatch();
+
+  const decrementItemFu = useCallback(
+    (id: number | string) => {
+      dispatch(decrementItem(id));
+    },
+    [dispatch]
+  );
+
+  const incrementItemFu = useCallback(
+    (id: number | string) => {
+      dispatch(incrementItem(id));
+    },
+    [dispatch]
+  );
+
+  const deleteItemFu = useCallback(
+    (item: ICartReducerItem) => {
+      dispatch(deleteFromCart(item));
+    },
+    [dispatch]
+  );
   return (
     <div className='itemsInCart'>
       <div className='tableWrapperInOrder'>
@@ -95,22 +118,4 @@ const GoodsTable: FC<IGoodsTable> = ({cart, decrementItemFu, incrementItemFu, de
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    cart: state.cartReducer.items
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      deleteItemFu: (item) => deleteFromCart(item),
-      addItemFu: (item) => pushToCart(item),
-      incrementItemFu: (id) => incrementItem(id),
-      decrementItemFu: (id) => decrementItem(id)
-    },
-    dispatch
-  );
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GoodsTable);
+export default GoodsTable;
