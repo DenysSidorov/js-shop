@@ -1,5 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import Dropdown from 'react-dropdown';
 import {bindActionCreators} from 'redux';
 // import axios from 'axios';
@@ -13,9 +13,12 @@ import {
   // deleteFromCart as deleteFromCartFu,
   // incrementItem as incrementItemFu,
   // decrementItem as decrementItemFu,
-  deleteAll as deleteAllFu
+  deleteAll as deleteAllFu,
+  ICartReducerItem
 } from '../../../redux/reducers/cart-reducer/cartReducer';
 import GoodsTable from './GoodsTable';
+import {IReducersState} from '../../../redux/reducers';
+import {IHistory} from "../../../interfaces";
 
 type PaymentObject = {
   value: string;
@@ -47,10 +50,10 @@ interface SWaysDevPay {
  deleteAll
  * */
 
-interface IHistory extends RouteComponentProps<any> {
-  location: any;
-  history: any;
-}
+// interface IHistory extends RouteComponentProps<any> {
+//   location: any;
+//   history: any;
+// }
 
 interface IWaysDevPay extends IHistory {
   cart: any;
@@ -66,13 +69,12 @@ interface IWaysDevPay extends IHistory {
 }
 
 const WaysDevPay = ({history}) => {
-  const phoneV: any = useRef();
+  const phoneV: any = useRef<HTMLInputElement>(null);
+  const addressV: any = useRef<HTMLInputElement>(null);
+  const nameV: any = useRef<HTMLInputElement>(null);
+  const emailV: any = useRef<HTMLInputElement>(null);
 
-  const addressV: any = useRef();
-
-  const nameV: any = useRef();
-
-  const emailV: any = useRef();
+  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
 
   const initialState = {
     payment: {value: 'predo', label: 'Предоплата на карту'},
@@ -92,40 +94,51 @@ const WaysDevPay = ({history}) => {
 
   const [state, setState] = useState<SWaysDevPay>(initialState);
 
-  const chName = useCallback((e: any) => {
-    if (e.target.value.length < 70) {
-      setState(prev => ({...prev, name: e.target.value}));
-      validateData();
-      // this.setState({name: e.target.value}, this.validateData());
-    }
-  }, []);
+  const chName = useCallback(
+    (e: any) => {
+      if (e.target.value.length < 70) {
+        setState((prev) => ({...prev, name: e.target.value}));
+        validateData();
+        // this.setState({name: e.target.value}, this.validateData());
+      }
+    },
+    [validateData]
+  );
 
-  const chPhone = useCallback((e: any) => {
-    if (e.target.value.length < 70) {
-      setState(prev => ({...prev, phone: e.target.value}));
-      validateData();
-      // this.setState({phone: e.target.value}, this.validateData());
-    }
-  }, []);
+  const chPhone = useCallback(
+    (e: any) => {
+      if (e.target.value.length < 70) {
+        setState((prev) => ({...prev, phone: e.target.value}));
+        validateData();
+        // this.setState({phone: e.target.value}, this.validateData());
+      }
+    },
+    [validateData]
+  );
 
-  const chAddress = useCallback((e: any) => {
-    if (e.target.value.length < 70) {
-      setState(prev => ({...prev, address: e.target.value}));
-      validateData();
-      // this.setState({address: e.target.value}, this.validateData());
-    }
-  }, []);
+  const chAddress = useCallback(
+    (e: any) => {
+      if (e.target.value.length < 70) {
+        setState((prev) => ({...prev, address: e.target.value}));
+        validateData();
+        // this.setState({address: e.target.value}, this.validateData());
+      }
+    },
+    [validateData]
+  );
 
-  const chEmail = useCallback((e: any) => {
-    if (e.target.value.length < 70) {
-      setState(prev => ({...prev, email: e.target.value}));
-      validateData();
-      // this.setState({email: e.target.value});
-    }
-  };
+  const chEmail = useCallback(
+    (e: any) => {
+      if (e.target.value.length < 70) {
+        setState((prev) => ({...prev, email: e.target.value}));
+        validateData();
+        // this.setState({email: e.target.value});
+      }
+    },
+    [validateData]
+  );
 
   const validateData = useCallback((): any => {
-
     // const {phone, address, name} = state;
     const phone = phoneV.current.value;
     const address = addressV.current.value;
@@ -151,13 +164,13 @@ const WaysDevPay = ({history}) => {
     // this.setState({orderInputErrors: [...orderInputErrors, nameErr]})
 
     if (localArr.length > 0) {
-      setState(prevState => ({...prevState, isNormal: false, orderInputErrors: [...localArr]}));
+      setState((prevState) => ({...prevState, isNormal: false, orderInputErrors: [...localArr]}));
       // this.setState({
       //   isNormal: false,
       //   orderInputErrors: [...localArr]
       // });
     } else {
-      setState(prevState => ({...prevState, isNormal: true, orderInputErrors: []}));
+      setState((prevState) => ({...prevState, isNormal: true, orderInputErrors: []}));
       // this.setState({
       //   isNormal: true,
       //   orderInputErrors: []
@@ -166,38 +179,48 @@ const WaysDevPay = ({history}) => {
   }, []);
 
   const handleConfirmUnmount = useCallback(() => {
-    setState(prevState => ({...prevState, isShowConfirm: false}));
+    setState((prevState) => ({...prevState, isShowConfirm: false}));
   }, []);
 
-  const chPayment = useCallback((paymentObj: any) => {
-    const {paymentVariants} = state;
-    setState(prevState => ({
-      ...prevState,
-      payment: paymentObj,
-      paymentVariants: [paymentVariants[1], paymentVariants[0]]
-    }));
-  }, []);
+  const chPayment = useCallback(
+    (paymentObj: any) => {
+      const {paymentVariants} = state;
+      setState((prevState) => ({
+        ...prevState,
+        payment: paymentObj,
+        paymentVariants: [paymentVariants[1], paymentVariants[0]]
+      }));
+    },
+    [state]
+  );
 
   const dispatchData = useCallback(() => {
-    if (cart.length) {
-      setState(prevState => ({...prevState, isShowConfirm: true}))
+    if (cartItems.length) {
+      setState((prevState) => ({...prevState, isShowConfirm: true}));
       // this.setState({
       //   isShowConfirm: true
       // });
     }
 
     // console.log(this.state);
-  }, []);
+  }, [cartItems.length]);
 
   const chDelivery = useCallback((kind: string) => {
     // console.log(kind, 'k');
-    setState(prevState => ({...prevState, delivery: kind}))
-  };
+    setState((prevState) => ({...prevState, delivery: kind}));
+  }, []);
+
+  const changePage = useCallback(
+    (id: number) => {
+      history.push('/great', id);
+    },
+    [history]
+  );
 
   const sendDataToServer = useCallback(() => {
     const getData = async () => {
-      const price = cart.reduce(
-        (prev: number, cur: any) => prev + Math.floor((cur.price / 100) * (100 - cur.sail) * cur.count),
+      const price = cartItems.reduce(
+        (prev: number, cur: ICartReducerItem) => prev + Math.floor((cur.price / 100) * (100 - cur.sail) * cur.count),
         0
       );
       const order: any = {
@@ -210,7 +233,7 @@ const WaysDevPay = ({history}) => {
         phone: state.phone,
         goods: []
       };
-      cart.forEach((item: any) => {
+      cartItems.forEach((item: any) => {
         const curGood: any = {};
         curGood._id = item._id;
         curGood.count = item.count;
@@ -229,7 +252,6 @@ const WaysDevPay = ({history}) => {
           // push('/about-us');
           changePage(response._id);
         }
-
       } catch (e) {
         console.log(e);
       } finally {
@@ -237,15 +259,10 @@ const WaysDevPay = ({history}) => {
       }
     };
     getData();
-  }, []);
-
-
-  const changePage = useCallback((id: number) => {
-    history.push('/great', id);
-  };
+  }, [state, cartItems, changePage]);
 
   // const goods = this.props.cart;
-  const {paymentVariants, delivery, name, address, email, phone, payment} = this.state;
+  const {paymentVariants, delivery, name, address, email, phone, payment} = state;
   // let payment = [{value: 'predo', label: 'Предоплата на карту'},
   //   {value: 'naloj', label: 'Наложенный платеж'}]
   return (
@@ -267,7 +284,7 @@ const WaysDevPay = ({history}) => {
             <label onClick={() => chDelivery('newpost')} className='accordion_trigger' htmlFor='toggle-01'>
               Доставка по Украине "Новая Почта"
             </label>
-            <label htmlFor='toggle-01'/>
+            <label htmlFor='toggle-01' />
             <div className='accordion_target'>
               <p className=''>
                 Быстрый и удобный способ доставки службой Новая Почта в любой населенный пункт Украины.
@@ -295,7 +312,7 @@ const WaysDevPay = ({history}) => {
           Способ оплаты
         </div>
         <div className='paymentWayOrder'>
-          <Dropdown options={paymentVariants} onChange={chPayment} value={paymentVariants[0]}/>
+          <Dropdown options={paymentVariants} onChange={chPayment} value={paymentVariants[0]} />
         </div>
 
         <div className='tittleWAyName' data-count='3'>
@@ -308,8 +325,8 @@ const WaysDevPay = ({history}) => {
           </p>
           <input
             value={state.name}
-            onChange={this.chName.bind(this)}
-            ref={nameV }
+            onChange={chName}
+            ref={nameV}
             type='text'
             className='orderWaysInput'
             id='nameInput'
@@ -318,12 +335,10 @@ const WaysDevPay = ({history}) => {
             <span className='red'>*</span> Мобильный телефон
           </p>
           <input
-            value={wstate.phone}
-            onChange={this.chPhone.bind(this)}
+            value={state.phone}
+            onChange={chPhone}
             type='text'
-            ref={(v) => {
-              this.phoneV = v;
-            }}
+            ref={phoneV}
             className='orderWaysInput'
             id='phoneInput'
           />
@@ -331,35 +346,31 @@ const WaysDevPay = ({history}) => {
             <span className='red'>*</span> Адресс доставки
           </p>
           <input
-            value={this.state.address}
-            onChange={this.chAddress.bind(this)}
-            ref={(v) => {
-              this.addressV = v;
-            }}
+            value={state.address}
+            onChange={chAddress}
+            ref={addressV}
             type='text'
             className='orderWaysInput'
             id='cityInput'
           />
           <p>Электронная почта</p>
           <input
-            value={this.state.email}
-            onChange={this.chEmail.bind(this)}
-            ref={(v) => {
-              this.emailV = v;
-            }}
+            value={state.email}
+            onChange={chEmail}
+            ref={emailV}
             type='text'
             className='orderWaysInput'
             id='mailInput'
           />
         </div>
         <ul className='orderBadNotifications'>
-          {this.state.orderInputErrors.map((el, ind) => {
+          {state.orderInputErrors.map((el, ind) => {
             // eslint-disable-next-line react/no-array-index-key
             return <li key={el + ind}>{el}</li>;
           })}
         </ul>
-        {this.state.isNormal ? (
-          <div onClick={this.dispatchData.bind(this)} className='orderWaysConfirmBtn'>
+        {state.isNormal ? (
+          <div onClick={dispatchData} className='orderWaysConfirmBtn'>
             <span>Подтвердить</span>
           </div>
         ) : (
@@ -368,11 +379,11 @@ const WaysDevPay = ({history}) => {
           </div>
         )}
       </div>
-      {this.state.isShowConfirm && (
+      {state.isShowConfirm && (
         <Confirm
-          okHandler={this.sendDataToServer}
-          cancelHandler={this.handleConfirmUnmount}
-          unmountConfirm={this.handleConfirmUnmount}
+          okHandler={sendDataToServer}
+          cancelHandler={handleConfirmUnmount}
+          unmountConfirm={handleConfirmUnmount}
         >
           <ul>
             <li>
@@ -403,15 +414,15 @@ const WaysDevPay = ({history}) => {
             </li>
           </ul>
           <div className='maskForGoodsTableInOrder'>
-            <div className='maskForGoodsTableInOrder-mask'/>
+            <div className='maskForGoodsTableInOrder-mask' />
             {/* <GoodsTable cart={goods} /> */}
-            <GoodsTable/>
+            <GoodsTable />
           </div>
         </Confirm>
       )}
     </div>
   );
-}
+};
 
 const mapStateToProps = (state: any) => {
   return {
