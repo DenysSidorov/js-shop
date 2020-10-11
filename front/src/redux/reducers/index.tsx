@@ -5,14 +5,14 @@ import serviceReducer, {IServiceReducer} from './service-app';
 import cartReducer, {ICartReducerState} from './cart-reducer/cartReducer';
 import authReducer, {IAuthReducerState} from './auth-reducer/authReducer';
 import confirmsCard, {IConfirmsCard} from './confirm-in-card';
-import panelReducer from './panel-reducer/adminPanelReducer';
+import panelReducer, {IAdminPanel} from './panel-reducer/adminPanelReducer';
 
 export interface IReducersState {
   serviceReducer: IServiceReducer;
   cartReducer: ICartReducerState;
   authReducer: IAuthReducerState;
   confirmsCard: IConfirmsCard;
-  panelReducer: any;
+  panelReducer: IAdminPanel;
   notifications: any;
   loadingBar: any;
 }

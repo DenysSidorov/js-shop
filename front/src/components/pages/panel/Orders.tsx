@@ -4,7 +4,7 @@ import axios from 'axios';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import ReactDropdown from 'react-dropdown';
-import Filtres from './Filtres';
+import Filters from './Filters';
 import urlApi from '../../../api/urlApi';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 
@@ -187,7 +187,7 @@ class Orders extends React.Component<IOrders> {
     }
     return (
       <div className=' left'>
-        <Filtres />
+        <Filters />
         {isShowNoGoods && <h1 className='h1InPanelTittle'> ЗАКАЗОВ ЭТОЙ КАТЕГОРИИ НЕТ</h1>}
         {!this.state.orders.length && !isShowNoGoods && (
           <div className='adminPanelSpinner'>

@@ -6,7 +6,7 @@ import urlApi from '../../../api/urlApi';
 
 // eslint-disable-next-line import/prefer-default-export
 export function getTypes(token: string) {
-  return async function (dispatch: any) {
+  return async function (dispatch: Function) {
     dispatch(showLoading());
     try {
       const result = await axios.get(`${urlApi}/api/orders/get-types`, {

@@ -1,19 +1,23 @@
-import React, {FC, useEffect} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React, {FC, useCallback, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
-import {pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
 import {changeConfirm} from '../../../redux/reducers/confirm-in-card';
+import {IReducersState} from '../../../redux/reducers';
+import {AdminPanelStateType} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
 
-interface IFilters {
-  addItemFu: Function;
-  changeKindFu: Function;
-  getTypeFu: Function;
-  countTypes: any;
-}
+interface IFilters {}
 
-const Filters: FC<IFilters> = ({getTypeFu, countTypes}) => {
+const Filters: FC<IFilters> = () => {
+  const countTypes: AdminPanelStateType = useSelector((state: IReducersState) => state.panelReducer.countTypes);
+  const dispatch = useDispatch();
+
+  const getTypeFu = useCallback(
+    (kind: string) => {
+      dispatch(changeConfirm(kind));
+    },
+    [dispatch]
+  );
+
   useEffect(() => {
     let token;
     try {
@@ -83,21 +87,4 @@ const Filters: FC<IFilters> = ({getTypeFu, countTypes}) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    countTypes: state.panelReducer.countTypes
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      addItemFu: (item) => pushToCart(item),
-      changeKindFu: (kind) => changeConfirm(kind),
-      getTypeFu: (token) => getTypes(token)
-    },
-    dispatch
-  );
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+export default Filters;
