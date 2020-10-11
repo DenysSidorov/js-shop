@@ -1,19 +1,20 @@
 import React, {FC, useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {changeConfirm} from '../../../redux/reducers/confirm-in-card';
 import {IReducersState} from '../../../redux/reducers';
-import {AdminPanelStateType} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
+import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
+import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 
 interface IFilters {}
 
 const Filters: FC<IFilters> = () => {
-  const countTypes: AdminPanelStateType = useSelector((state: IReducersState) => state.panelReducer.countTypes);
+  const panelReducer: IAdminPanel = useSelector((state: IReducersState) => state.panelReducer);
+  const {countTypes} = panelReducer;
   const dispatch = useDispatch();
 
   const getTypeFu = useCallback(
-    (kind: string) => {
-      dispatch(changeConfirm(kind));
+    (token: string) => {
+      dispatch(getTypes(token));
     },
     [dispatch]
   );
