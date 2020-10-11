@@ -22,7 +22,6 @@ interface IOrdersState {
 }
 
 const initState: IOrdersState = {
-  // content: null,
   orders: [],
   token: '',
   orderTypes: [
@@ -74,7 +73,6 @@ const Orders = () => {
       }
 
       if (!token) {
-        // this.setState({content: 'Нужно авторизироваться'});
       } else {
         setState((prevState) => ({...prevState, token}));
         const param = getActualPathFromReduxRouter(location.search)['type'];
@@ -82,7 +80,6 @@ const Orders = () => {
         if (param) {
           try {
             orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
-              // timeout: 1000,
               headers: {authorization: token}
             });
             setState((prevState) => ({...prevState, orders: orders.data}));
@@ -93,14 +90,12 @@ const Orders = () => {
         } else {
           try {
             orders = await axios.get(`${urlApi}/api/orders`, {
-              // timeout: 1000,
               headers: {authorization: token}
             });
             setState((prevState) => ({...prevState, orders: orders.data}));
           } catch (error) {
             setState((prevState) => ({...prevState, orders}));
             console.log(error.response);
-            // this.setState({content: error.response.data.message})
           }
         }
       }
@@ -111,11 +106,11 @@ const Orders = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getOrders();
-  }, [getOrders]);
+  }, []);
 
   useEffect(() => {
     getOrders();
-  }, [location.search, getOrders]);
+  }, [countTypes, getOrders, location.search, getActualPathFromReduxRouter]);
 
   const _changeTypeOrder = useCallback(
     (id: string | number, type: any) => {
@@ -134,6 +129,7 @@ const Orders = () => {
           );
           console.log(res.data, 'res');
           if (res.data && state.token) {
+            console.log('getTypeFu', res.data, state.token);
             getTypeFu(state.token);
           }
         } catch (err) {
@@ -146,7 +142,6 @@ const Orders = () => {
     [getTypeFu, state.token]
   );
 
-  // const param = getActualPathFromReduxRouter(location.search)['type'];
   const param = getActualPathFromReduxRouter(location.search)['type'];
   let isShowNoGoods = false;
   if (param) {
