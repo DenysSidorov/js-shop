@@ -22,3 +22,5 @@ export interface IComment {
   message: string;
   date: string;
 }
+
+export type Token = string | null;

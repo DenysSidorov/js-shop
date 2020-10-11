@@ -5,9 +5,7 @@ import AdminInfo from './AdminForPage';
 import Header from './Header';
 import Orders from './Orders';
 import LeftMenu from './LeftMenu';
-// import {useRouteMatch} from "react-router";
-
-type Token = string | null;
+import {Token} from '../../../interfaces';
 
 const Panel = () => {
   const [token, setToken] = useState<Token>('');
