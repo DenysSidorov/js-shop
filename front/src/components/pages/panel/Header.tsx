@@ -6,6 +6,7 @@ const Header: FC = () => {
   useEffect(() => {
     menu();
   }, []);
+
   return (
     <div className='adminPanHeader'>
       <div className='adminPanHeader__left'>

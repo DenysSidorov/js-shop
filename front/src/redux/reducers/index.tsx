@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {loadingBarReducer} from 'react-redux-loading-bar';
+import {loadingBarReducer, LoadingBar} from 'react-redux-loading-bar';
 import {reducer as notifications} from 'react-notification-system-redux';
 import serviceReducer, {IServiceReducer} from './service-app';
 import cartReducer, {ICartReducerState} from './cart-reducer/cartReducer';
@@ -14,7 +14,7 @@ export interface IReducersState {
   confirmsCard: IConfirmsCard;
   panelReducer: IAdminPanel;
   notifications: any;
-  loadingBar: any;
+  loadingBar: LoadingBar;
 }
 
 const reducersState = combineReducers<IReducersState>({
