@@ -192,7 +192,7 @@ const Landing: FC<ILanding> = () => {
         <div className='buyNowContBodyText2'>
           <h2 className='buyNowContBodyTextTitle2'>ПОДАРОК К ПРАЗДНИКУ</h2>
           <div className='buyNowContBodyTextContent2_cont' id='buyNow1'>
-            {/* <BuyBtn/> */}
+             <BuyBtn />
           </div>
         </div>
         {/* <img src="/img-static/buy2.jpg"> */}

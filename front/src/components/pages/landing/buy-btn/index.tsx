@@ -3,7 +3,7 @@ import React, {FC, useCallback, useState} from 'react';
 import OneClickModal from '../../../parts/modals/one-click-modal/OneClickModal';
 
 interface IBuyBtn {
-  text: string;
+  text?: string;
 }
 
 const BuyBtn: FC<IBuyBtn> = ({text = 'Заказать!'}) => {
