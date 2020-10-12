@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Notifications from 'react-notification-system-redux';
+import {IReducersState} from '../../../redux/reducers';
 
-interface INotificationsWrap {
-  notifications: Array<any>;
-}
+interface INotificationsWrap {}
 
-const NotificationsWrapper: FC<INotificationsWrap> = ({notifications}) => (
-  <Notifications notifications={notifications} />
-);
+const NotificationsWrapper: FC<INotificationsWrap> = () => {
+  const notifications: Array<any> = useSelector((state: IReducersState) => state.notifications);
+  return <Notifications notifications={notifications} />;
+};
 
-export default connect((state: any) => ({notifications: state.notifications}))(NotificationsWrapper);
+export default NotificationsWrapper;

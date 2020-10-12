@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './index.scss';
 
-const Guarantee = () => {
+const Guarantee: FC = () => {
   return (
     <div className='exchangeContainer'>
       <div className='exchangeContainer__title'>Качество и гарантия</div>

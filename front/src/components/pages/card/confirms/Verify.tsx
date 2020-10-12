@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './index.scss';
 
-const Verify = () => {
+const Verify: FC = () => {
   return (
     <div className='exchangeContainer'>
       <div className='exchangeContainer__title'>Проверка товара</div>

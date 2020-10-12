@@ -1,6 +1,5 @@
 import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-// import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Phone from './Phone';
@@ -9,13 +8,7 @@ import {signoutUser, isAdminFunc} from '../../../redux/reducers/auth-reducer/act
 import {IReducersState} from '../../../redux/reducers';
 import {IAuthReducerState} from '../../../redux/reducers/auth-reducer/authReducer';
 
-interface IMenuInfoSection {
-  // isAdminFuncInternal: Function;
-  // signoutUserInternal: Function;
-  // authenticated: boolean;
-  // isAdmin: boolean;
-  // serviceReducer: any;
-}
+interface IMenuInfoSection {}
 
 const MenuInfoSection: FC<IMenuInfoSection> = () => {
   // Redux part START

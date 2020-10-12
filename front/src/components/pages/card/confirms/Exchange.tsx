@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './index.scss';
 
-const ExchangeConfirm = () => {
+const ExchangeConfirm: FC = () => {
   return (
     <div className='exchangeContainer'>
       <div className='exchangeContainer__title'>Обмен и возврат</div>

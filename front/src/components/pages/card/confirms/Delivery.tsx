@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './index.scss';
 
-const Delivery = () => {
+const Delivery: FC = () => {
   return (
     <div className='exchangeContainer'>
       <div className='exchangeContainer__title'>Быстрая доставка</div>

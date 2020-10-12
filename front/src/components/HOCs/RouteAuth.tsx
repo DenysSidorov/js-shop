@@ -2,11 +2,9 @@ import React, {FC} from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {IReducersState} from '../../redux/reducers';
-import {IAuthReducerState} from '../../redux/reducers/auth-reducer/authReducer';
 
 interface IRouteAuth {
   component: React.ElementType;
-  authReducer?: IAuthReducerState;
   path: string;
 }
 

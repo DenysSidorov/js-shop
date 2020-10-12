@@ -8,6 +8,7 @@ interface IContacts {}
 
 const Contacts: FC<IContacts> = () => {
   const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Контакты');
