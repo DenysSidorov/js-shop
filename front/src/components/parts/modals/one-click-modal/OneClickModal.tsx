@@ -1,16 +1,9 @@
 import React, {ChangeEvent, FC, useState} from 'react';
-import MaskedInput from 'react-maskedinput';
-// import uuidv1 from 'uuid';
-// import uuidv1 from 'uuid/v4';
-// import {connect} from "react-redux";
-// import {bindActionCreators} from "redux";
+import InputMask from 'react-input-mask';
 import axios from 'axios';
 import './index.scss';
 import urlApi from '../../../../api/urlApi';
 import BasicModalWindowPB from '../basic-modal-pb/BasicModalWindowPB';
-// upload files! - import UploadFileField from "../../upload-file-field/index";
-// import OneGoodItemInList from "./OneGoodInList/index";
-// import {deleteAll} from "../../../../../reducers/cart";
 
 interface IOneClickModal {
   close: Function;
@@ -45,27 +38,16 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
   // };
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
-    // e.preventDefault();
     if (e.currentTarget.value) {
       setState({...state, name: e.currentTarget.value});
     }
   };
 
-  // fireClose = () => {
-  //   this.setState({randomNumber: uuidv1()});
-  // };
-
-  // chPhone(e) {
-  //   if (e.target.value.length < 70) {
-  //     this.setState({phone: e.target.value});
-  //   }
-  // }
-
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const phone: string = e.target.value;
     setState({
       ...state,
-      // [e.target.name]: e.target.value,
-      phone: e.target.value,
+      phone,
       phoneErr: false
     });
   };
@@ -82,12 +64,11 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
         let response = await axios.post(`${urlApi}/api/orders/land`, order);
         if (response) {
           response = response.data;
-          // console.log(response, 'response1');
+          console.log(response);
           setState({...state, isSend: true});
         }
       } catch (e) {
         console.log(e);
-        // throw e;
         alert('Не удалось отправить сообщение, позвоните нам по номеру указанном в контактах!');
       }
     } else {
@@ -110,10 +91,9 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
               Телефон<span className='redColor'>*</span>
             </div>
             +38
-            <MaskedInput
-              mask='(111)111-11-11'
-              name='phone'
-              id='leading'
+            <InputMask
+              mask='(999)-999-99-99'
+              value={state.phone}
               onChange={onChange}
               className='oneClickModal_inputPhone'
             />
@@ -175,11 +155,3 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
 };
 
 export default OneClickModal;
-
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return bindActionCreators({
-//     deleteAll,
-//   }, dispatch)
-// }
-//
-// export default connect(null, mapDispatchToProps)(OneClickModal);
