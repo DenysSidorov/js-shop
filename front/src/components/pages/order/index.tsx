@@ -28,16 +28,6 @@ const OrderPage: FC<IOrderPage> = () => {
     );
   }, [initCard]);
 
-  // componentDidMount() {
-  //   this.initCadd();
-  //   setTitle('Корзина');
-  //   setMetaTag('description', 'Корзина ваших товаров');
-  //   setMetaTag(
-  //     'keywords',
-  //     'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
-  //   );
-  // }
-
   const handleShowOneClick = useCallback((state?: boolean | undefined) => {
     if (state === undefined) {
       setIsShowOneClickModal((prevState) => !prevState);
@@ -45,16 +35,6 @@ const OrderPage: FC<IOrderPage> = () => {
       setIsShowOneClickModal(state);
     }
   }, []);
-
-  // handleShowOneClick = (state: any) => {
-  //   if (state === undefined) {
-  //     this.setState((prevState) => ({isShowOneClickModal: !prevState.isShowOneClickModal}));
-  //   } else {
-  //     this.setState({
-  //       isShowOneClickModal: state
-  //     });
-  //   }
-  // };
 
   const styles: CSSProperties = {
     display: 'flex',
@@ -67,8 +47,8 @@ const OrderPage: FC<IOrderPage> = () => {
     <div style={styles}>
       {/* <MenuInfoSection /> */}
       {goods.length > 0 && (
-        <div className='orderPage_fast'>
-          <span onClick={() => handleShowOneClick()}>Купить без заполнения формы!</span>
+        <div className='orderPage_fast' onClick={() => handleShowOneClick()}>
+          <span>Купить без заполнения формы!</span>
         </div>
       )}
       {!goods.length ? (

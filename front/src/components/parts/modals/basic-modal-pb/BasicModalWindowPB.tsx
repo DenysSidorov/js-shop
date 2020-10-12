@@ -1,91 +1,77 @@
-import React, {Component} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './index.scss';
 import ModalPortalReact from '../modal-portal';
 
 interface IBasicModalWindowPB {
   randomNumber: number;
   close: Function;
-  children?: any;
+  children?: React.ReactNode;
   height?: string;
   width?: string;
   maxWidth?: string;
 }
 
-class BasicModalWindowPB extends Component<IBasicModalWindowPB, {}> {
-  timeHideShow = 300;
+const BasicModalWindowPB = ({close, height, width, maxWidth, children}: IBasicModalWindowPB) => {
+  const [timeHideShow] = useState(300);
+  const contentHtml = useRef<HTMLDivElement>(null);
+  const containerHtml = useRef<HTMLDivElement>(null);
 
-  contentHtml: HTMLDivElement = document.createElement('div', {});
+  const toggleViewClasses = useCallback(() => {
+    if (contentHtml.current) {
+      contentHtml.current.classList.toggle('basicModalWindowPBMax');
+    }
 
-  containerHtml: HTMLDivElement = document.createElement('div', {});
+    if (containerHtml.current) {
+      containerHtml.current.classList.toggle('basicModalWindowPBContainerMax');
+    }
+  }, []);
 
-  componentDidMount() {
+  useEffect(() => {
     setTimeout(() => {
-      this.toggleViewClasses();
+      toggleViewClasses();
     }, 0);
-  }
+  }, []);
 
-  UNSAFE_componentWillReceiveProps(nextProps: {randomNumber: number}) {
-    const {randomNumber} = this.props;
-    if (nextProps.randomNumber !== randomNumber) {
-      this.close();
-    }
-  }
-
-  toggleViewClasses = () => {
-    if (this.contentHtml) {
-      this.contentHtml.classList.toggle('basicModalWindowPBMax');
-    }
-
-    if (this.containerHtml) {
-      this.containerHtml.classList.toggle('basicModalWindowPBContainerMax');
-    }
-  };
-
-  close = () => {
-    const {close} = this.props;
-    this.toggleViewClasses();
+  const _close = useCallback(() => {
+    toggleViewClasses();
     setTimeout(() => {
       close();
-    }, this.timeHideShow);
-  };
+    }, timeHideShow);
+  }, [toggleViewClasses, timeHideShow, close]);
 
-  clickOutside = (event: any) => {
-    const t: HTMLElement = event.target;
-    if (t.className.indexOf('basicModalWindowPB ') !== -1) {
-      this.close();
-    }
-  };
+  const clickOutside = useCallback(
+    (event: any) => {
+      const t: HTMLElement = event.target;
+      if (t.className.indexOf('basicModalWindowPB ') !== -1) {
+        _close();
+      }
+    },
+    [_close]
+  );
 
-  render() {
-    const {height, width, maxWidth, children} = this.props;
-    return (
-      <ModalPortalReact>
+  return (
+    <ModalPortalReact>
+      <div
+        className='basicModalWindowPB basicModalWindowPBContainerMin'
+        style={{zIndex: 9999999}}
+        onClick={clickOutside}
+        ref={containerHtml}
+      >
         <div
-          className='basicModalWindowPB basicModalWindowPBContainerMin'
-          style={{zIndex: 9999999}}
-          onClick={this.clickOutside}
-          ref={(val: HTMLDivElement) => {
-            this.containerHtml = val;
+          className='basicModalWindowPB__cont basicModalWindowPBMin'
+          ref={contentHtml}
+          style={{
+            height: height || '',
+            width: width || '40vw',
+            maxWidth: maxWidth || ''
           }}
         >
-          <div
-            className='basicModalWindowPB__cont basicModalWindowPBMin'
-            ref={(val: HTMLDivElement) => {
-              this.contentHtml = val;
-            }}
-            style={{
-              height: height || '',
-              width: width || '40vw',
-              maxWidth: maxWidth || ''
-            }}
-          >
-            <i className='fa fa-times basicModalWindowPB_close' onClick={this.close} />
-            {children}
-          </div>
+          <i className='fa fa-times basicModalWindowPB_close' onClick={_close} />
+          {children}
         </div>
-      </ModalPortalReact>
-    );
-  }
-}
+      </div>
+    </ModalPortalReact>
+  );
+};
 
 export default BasicModalWindowPB;
