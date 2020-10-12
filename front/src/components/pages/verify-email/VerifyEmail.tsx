@@ -1,13 +1,12 @@
 import React, {FC, useEffect} from 'react';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-import {IHistory} from '../../../interfaces';
+import {IHistory} from "../../../interfaces";
 
-interface IVerifyEmail extends IHistory {
-  history: any;
-}
+interface IVerifyEmail extends IHistory{}
 
 const VerifyEmail: FC<IVerifyEmail> = ({history}) => {
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setTitle('Проверка почты');
@@ -18,11 +17,20 @@ const VerifyEmail: FC<IVerifyEmail> = ({history}) => {
     );
   }, []);
 
+  const getHistoryValue = () => {
+    const internalState = history.location.state;
+    if ((internalState as any).email) {
+        return <span style={{color: 'green'}}> {(internalState as any).email}</span>
+    } else {
+      return null;
+    }
+  }
+
   return (
     <div className='verifyEmailContainer'>
       <p>
         Подтвердите свою почту, письмо с ссылкой о подтверждении отправленно на
-        {history.location.state.email && <span style={{color: 'green'}}> {history.location.state.email}</span>}
+        {getHistoryValue()}
       </p>
     </div>
   );
