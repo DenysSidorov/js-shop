@@ -38,7 +38,6 @@ const MainContainerForCard = (props: IMainContainerForCard) => {
 
   const [cardItem, setCardItem] = useState(props.card);
 
-  // componentWillReceiveProps
   useEffect(() => {
     if (props.card._id !== cardItem._id) {
       setCardItem(props.card);
