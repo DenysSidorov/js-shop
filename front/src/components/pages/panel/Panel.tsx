@@ -12,7 +12,6 @@ const Panel = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     try {
       const tokenFromStorage: Token = localStorage.getItem('info');
       setToken(tokenFromStorage);
