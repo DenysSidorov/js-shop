@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import './mainContainerForCard.less';
 import Gallery from '../../modules/image-gallery/ImageGallery';
 import Confirm from '../../modules/confirm-block-in-card/ConfirmBlock';
 import {ICartReducerItem, pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
@@ -13,6 +12,7 @@ import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
 import Price from '../landing/Price';
 import {IReducersState} from '../../../redux/reducers';
+import './mainContainerForCard.less';
 
 interface IMainContainerForCard {
   card: ICartReducerItem;
