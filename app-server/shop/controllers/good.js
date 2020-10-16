@@ -14,14 +14,12 @@ export async function getAll(req, resp, next) {
     if (filter && filter != 'main') {
       let goodsResponse;
       if (pageSize && numberPage) {
-        console.log(111);
         goodsResponse = await Good
           .find({category: {$in: [filter]}})
           .sort()
           .skip(pageSize * (numberPage - 1))
           .limit(pageSize)
       } else {
-        console.log(222);
         goodsResponse = await Good.find({category: {$in: [filter]}}).sort().limit(50);
       }
       let countResponse = await Good.find({category: {$in: [filter]}}).count();
@@ -30,10 +28,8 @@ export async function getAll(req, resp, next) {
 
       let goodsResponse;
       if (pageSize && numberPage) {
-        console.log(333);
         goodsResponse = await Good.find({}).sort().skip(pageSize * (numberPage - 1)).limit(pageSize)
       } else {
-        console.log(444);
         goodsResponse = await Good.find({}).sort().limit(50);
       }
       let countResponse = await Good.find({}).count();
