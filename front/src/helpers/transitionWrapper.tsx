@@ -12,10 +12,15 @@ interface ITransitionWrapper {
   transitionLeaveTimeout: any;
   transitionAppearTimeout: any;
   transitionAppear: any;
+  time: any;
+}
+
+interface Document {
+  documentMode?: any;
 }
 
 const TransitionWrapper = (props: ITransitionWrapper) => {
-  if (window.document && window.document.documentMode) {
+  if (window.document && (window.document as Document).documentMode) {
     return props.children || null;
   }
   if (props.children === null || props.children === false) {
@@ -39,3 +44,4 @@ const TransitionWrapper = (props: ITransitionWrapper) => {
 };
 
 export default TransitionWrapper;
+console.log(2);
