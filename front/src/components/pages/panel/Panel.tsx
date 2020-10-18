@@ -22,7 +22,7 @@ const Panel = () => {
 
   const match = useRouteMatch('/panel/test');
   if (!token) return <div>Отказано в доступе</div>;
-
+  console.log(match ? match.params: '');
   return (
     <div className='adminPanContainer fullWidth left'>
       <Header />
@@ -35,7 +35,7 @@ const Panel = () => {
             <Route path='/panel/orders' component={Orders} />
             <Route path='/panel/admin' component={AdminInfo} />
           </Switch>
-          {match ? <h1>Hello user 2 {match.params.toString()}!</h1> : null}
+          {match ? <h1>Hello user!</h1> : null}
         </div>
       </div>
     </div>

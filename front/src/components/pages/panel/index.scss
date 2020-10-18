@@ -295,7 +295,7 @@ $colorYellow: #bbba16;
 }
 
 // animation top
-@keyframes "leftMenuShow" {
+@keyframes leftMenuShow {
   0% {
     transform: translateX(-200px);
     opacity: 0;
@@ -308,7 +308,7 @@ $colorYellow: #bbba16;
   }
 }
 
-@keyframes "leftMenuHide" {
+@keyframes leftMenuHide {
   0% {
     transform: translateX(0px);
     opacity: 1;
