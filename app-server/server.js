@@ -17,17 +17,17 @@ import httpsMiddleWare from './middlewares/httpToHttps';
 import rdRoute from './shop/routes/rdRoute';
 import createGoods from './shop/routes/createGoods';
 
-const cors = require("cors");
+const cors = require('cors');
 
-const cluster = require("cluster");
-const https = require("https");
-const http = require("http");
+const cluster = require('cluster');
+const https = require('https');
+const http = require('http');
 
 // process.env.NODE_ENV = 'production';
 
 const privateKey = fs.readFileSync('./sslcert/private.key', 'utf8');
 const certificate = fs.readFileSync('./sslcert/certificate.crt', 'utf8');
-const credentials = { key: privateKey, cert: certificate };
+const credentials = {key: privateKey, cert: certificate};
 
 // app.use(cors() // for all app
 
@@ -38,23 +38,23 @@ const credentials = { key: privateKey, cert: certificate };
 //     } else return value;
 // }
 
-console.log('DEV MODE = ', config['NODE_ENV']);
+console.log('DEV MODE = ', config.NODE_ENV);
 
 mongoose.Promise = require('bluebird');
 // Для асинхронного кода, а не колбэков которые по умолчанию
-if (config['NODE_ENV'] == 'development') {
+if (config.NODE_ENV == 'development') {
   // mongoose.set('debug', true); // выводить в консоль все запросы
 }
 
 mongoose.connect(
-  config['MONGODB_URI'],
+  config.MONGODB_URI,
   {
     // useMongoClient: true,
-    reconnectTries: 30,
+    reconnectTries: 30
   },
   (err) => {
     if (err) throw err;
-    console.log("Mongo connected!");
+    console.log('Mongo connected!');
   }
 );
 
@@ -80,13 +80,11 @@ const app = express(); // Запуск приложения
 app.disable('x-powered-by'); // Отключить определение, что это express
 
 // app.use(require('prerender-node'));
-app.use(
-  require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3')
-);
+app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
 // app.use(httpsMiddleWare);
 
 /** Запуск приожения на порте */
-console.log(config['PORT'], 'port');
+console.log(config.PORT, 'port');
 
 // app.listen(config.backend.port, (err) => {
 //   if (err) throw err;
@@ -97,7 +95,7 @@ console.log(config['PORT'], 'port');
 app.use(express.static(path.join(__dirname, '/www/')));
 app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
 app.use(bodyParse.json());
-app.use(bodyParse.urlencoded({ extended: true }));
+app.use(bodyParse.urlencoded({extended: true}));
 // set the view engine to ejs
 // app.engine('ejs', engine);
 app.set('view engine', 'ejs');
@@ -130,7 +128,7 @@ app.use('/api/users', userRoute);
 // });
 
 app.get('*', (req, res) => {
-  res.render(path.join(`${__dirname}/www/index.ejs`), { assets });
+  res.render(path.join(`${__dirname}/www/index.ejs`), {assets});
   // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
 
@@ -138,7 +136,7 @@ app.use(errorMiddleWare); // Обработчик ошибок должен бы
 // todo сделать на фронте таблицу с ошибками 500, 404
 app.all('*', (req, resp) =>
   resp.status(404).json({
-    message: "Resource not found, API-SHOP",
+    message: 'Resource not found, API-SHOP',
     type: 404
   })
 );
@@ -179,9 +177,9 @@ process.on('uncaughtException', function (err) {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-app.listen(config['PORT'], (err) => {
+app.listen(config.PORT, (err) => {
   if (err) throw err;
-  console.log('Server listening on port ' + config['PORT']);
+  console.log(`Server listening on port ${config.PORT}`);
 });
 
 // httpServer.listen(8080);
