@@ -2,7 +2,7 @@ import React, {FC, useCallback, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {saveUserToken} from '../../../redux/reducers/auth-reducer/actions';
 import queryParams from '../../../helpers/libs/queryParams';
-import {useLocation} from "react-router-dom";
+import {useLocation} from 'react-router-dom';
 
 interface IVerifyUser {}
 
@@ -26,8 +26,5 @@ const VerifyUser: FC<IVerifyUser> = () => {
   }, []);
   return <div className='verifyUserContainer' />;
 };
-
-
-
 
 export default VerifyUser;
