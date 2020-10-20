@@ -37,49 +37,23 @@ const app = express();
 app.disable('x-powered-by'); // disable server's name
 app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
 
-console.log(config.PORT, 'port');
-
-// app configs
-app.use(express.static(path.join(__dirname, '/www/')));
-app.use(morgan('tiny')); // Настройка логирования, см. документация на npmjs.com
+app.use(express.static(path.join(__dirname, '/www/'))); // static files
+app.use(morgan('tiny')); // logs
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({extended: true}));
-// set the view engine to ejs
-// app.engine('ejs', engine);
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // template-engine by default
 
-/* TODO make async function */
-// var expiryDate = new Date( Date.now() + 3600000 ); // 1 hour
-// app.use(session({
-//     resave: true,
-//     saveUninitialized: true,
-//     secret: config.backend.secretWord,
-//     // TODO проверить защиту кук
-//     // cookie: { secure: true,
-//     //     httpOnly: true,
-//     //     domain: 'example.com',
-//     //     path: 'foo/bar',
-//     //     expires: expiryDate
-//     // }
-// }));
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users', userRoute);
-// app.use('/api', checkToken,  userRoute); // get user route
-// app.use('/api', checkToken,  pageRoute); // Use API if all normal
-
-// app.get('/', (req, res)=>{
-//   res.render(path.join(__dirname + '/www/main.ejs'));
-// });
 
 app.get('*', (req, res) => {
   res.render(path.join(`${__dirname}/www/index.ejs`), {assets});
-  // res.sendFile(path.join(__dirname+'/www/index.ejs'));
 });
 
-app.use(errorMiddleWare); // Обработчик ошибок должен быть последним
-// todo сделать на фронте таблицу с ошибками 500, 404
+app.use(errorMiddleWare); // errors handler should be place in the end
+
 app.all('*', (req, resp) =>
   resp.status(404).json({
     message: 'Resource not found, API-SHOP',
