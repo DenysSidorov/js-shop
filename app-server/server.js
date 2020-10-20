@@ -10,7 +10,7 @@ import https from 'https';
 
 import assets from './assets.json';
 import config from './config';
-import authRoute from './routes/auth';
+import authRoute from './shop/routes/auth';
 import userRoute from './shop/routes/user';
 import goodRoute from './shop/routes/goodRoute';
 import orderRoute from './shop/routes/orderRoute';
@@ -28,10 +28,18 @@ if (config.NODE_ENV === 'development') {
   // mongoose.set('debug', true); // выводить в консоль все запросы
 }
 
-mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
-  if (err) throw err;
-  console.log('Mongo connected!');
-});
+mongoose.connect(
+  config.MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('Mongo connected!');
+  }
+);
 
 const app = express();
 app.disable('x-powered-by'); // disable server's name
