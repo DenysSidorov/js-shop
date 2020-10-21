@@ -14,7 +14,10 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'import/prefer-default-export': 'off',
     'prettier/prettier': 'error',
+    'consistent-return': 'off',
+    'no-underscore-dangle': 'off',
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
     camelcase: 'off',

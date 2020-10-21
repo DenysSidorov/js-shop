@@ -1,4 +1,6 @@
-import randomNumber from './randomNumber';
+const randomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 export default (arr) => {
   if (!Array.isArray(arr)) throw new Error('This is not an Array');

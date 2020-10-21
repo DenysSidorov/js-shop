@@ -1,42 +1,43 @@
-import Good from "../models/good";
-
+import Good from '../models/good';
 
 export async function getAll(req, resp, next) {
-  var filter = req.query && req.query.sort ? req.query.sort : null;
+  const filter = req.query && req.query.sort ? req.query.sort : null;
   // db.users.find().skip(pagesize*(n-1)).limit(pagesize)
-  var pageSize = req.query && req.query.pagesize ? req.query.pagesize : null;
-  var numberPage = req.query && req.query.numberpage ? req.query.numberpage : null;
+  let pageSize = req.query && req.query.pagesize ? req.query.pagesize : null;
+  let numberPage = req.query && req.query.numberpage ? req.query.numberpage : null;
   pageSize = Number(pageSize);
   numberPage = Number(numberPage);
-  console.log(filter, pageSize, numberPage);
+  let goods = {goods: [], count: 0};
+
   try {
-    var goods;
-    if (filter && filter != 'main') {
+    if (filter && filter !== 'main') {
       let goodsResponse;
       if (pageSize && numberPage) {
-        goodsResponse = await Good
-          .find({category: {$in: [filter]}})
+        goodsResponse = await Good.find({category: {$in: [filter]}})
           .sort()
           .skip(pageSize * (numberPage - 1))
-          .limit(pageSize)
+          .limit(pageSize);
       } else {
-        goodsResponse = await Good.find({category: {$in: [filter]}}).sort().limit(50);
+        goodsResponse = await Good.find({category: {$in: [filter]}})
+          .sort()
+          .limit(50);
       }
-      let countResponse = await Good.find({category: {$in: [filter]}}).count();
-      goods = {goods: goodsResponse, count: countResponse}
+      const countResponse = await Good.find({category: {$in: [filter]}}).count();
+      goods = {goods: goodsResponse, count: countResponse};
+      console.log('++', goods);
     } else {
-
       let goodsResponse;
       if (pageSize && numberPage) {
-        goodsResponse = await Good.find({}).sort().skip(pageSize * (numberPage - 1)).limit(pageSize)
+        goodsResponse = await Good.find({})
+          .sort()
+          .skip(pageSize * (numberPage - 1))
+          .limit(pageSize);
       } else {
         goodsResponse = await Good.find({}).sort().limit(50);
       }
-      let countResponse = await Good.find({}).count();
-      goods = {goods: goodsResponse, count: countResponse}
+      const countResponse = await Good.find({}).count();
+      goods = {goods: goodsResponse, count: countResponse};
     }
-
-
   } catch ({message}) {
     return next({
       status: 500,
@@ -47,14 +48,14 @@ export async function getAll(req, resp, next) {
 }
 
 export async function getById(req, resp, next) {
-  var id = req.params.id;
+  const {id} = req.params;
+  let goods = [];
   try {
-    var good = await Good.find({_id: id});
-    console.log('============', id, good);
-    if (good) {
+    goods = await Good.find({_id: id});
+    if (goods) {
       setTimeout(async () => {
         try {
-          var climbResult = await Good.update({_id: id}, {$inc: {"views": 1}});
+          await Good.update({_id: id}, {$inc: {views: 1}});
         } catch ({message}) {
           console.log(message);
         }
@@ -66,13 +67,14 @@ export async function getById(req, resp, next) {
       message
     });
   }
-  resp.json(good);
+  resp.json(goods);
 }
 
 export async function getSimilar(req, resp, next) {
-  var categoryArr = req.body.params.category;
+  const categoryArr = req.body.params.category;
+  let goods = [];
   try {
-    var goods = await Good.find({category: {$in: categoryArr}}).limit(10);
+    goods = await Good.find({category: {$in: categoryArr}}).limit(10);
   } catch ({message}) {
     return next({
       status: 500,
@@ -85,33 +87,29 @@ export async function getSimilar(req, resp, next) {
 export async function getUniqCategory(req, resp, next) {
   let result = {};
   try {
-    // var goods = await Good.distinct('category');
+    // let goods = await Good.distinct('category');
     // let resMongo = await Order.find({},{_id:false, type: true});
-    let resMongo = await Good.aggregate([
+    result = await Good.aggregate([
       {
         $match: {
           category: {$not: {$size: 0}}
         }
       },
-      {$unwind: "$category"},
+      {$unwind: '$category'},
       {
         $group: {
           _id: {$toLower: '$category'},
-          count: {$sum: 1,}
+          count: {$sum: 1}
         }
       },
       {
         $project: {
           _id: 0,
-          name: "$_id",
-          count: 1,
+          name: '$_id',
+          count: 1
         }
       }
-
     ]);
-    // console.log(resMongo, 'resMongo');
-    result = resMongo;
-
   } catch ({message}) {
     return next({
       status: 500,
@@ -119,49 +117,36 @@ export async function getUniqCategory(req, resp, next) {
     });
   }
   resp.json(result);
-  // try {
-  //       var goods = await Good.distinct('category');
-  //   } catch ({message}) {
-  //       return next({
-  //           status: 500,
-  //           message
-  //       });
-  //   }
-  //   resp.json(goods);
 }
 
-// /categories-with-top-products'
+/** categories-with-top-products' */
 export async function getCategoriesWithTopProducts(req, resp, next) {
-
   let result = {};
   try {
     // var goods = await Good.distinct('category');
     // let resMongo = await Order.find({},{_id:false, type: true});
-    let resMongo = await Good.aggregate([
-      { // поиск по критерию
+    result = await Good.aggregate([
+      {
+        // search by criteria
         $match: {
           category: {$not: {$size: 0}}
         }
       },
-      {$unwind: "$category"}, // разбивает массив на отдельные документы
+      {$unwind: '$category'}, // split array on distinct parts
       {
-        $group: { // ...
+        $group: {
           _id: {$toLower: '$category'},
-          count: {$sum: 1,}
+          count: {$sum: 1}
         }
       },
       {
         $project: {
           _id: 0,
-          name: "$_id",
-          count: 1,
+          name: '$_id',
+          count: 1
         }
       }
-
     ]);
-    // console.log(resMongo, 'resMongo');
-    result = resMongo;
-
   } catch ({message}) {
     return next({
       status: 500,
@@ -169,29 +154,17 @@ export async function getCategoriesWithTopProducts(req, resp, next) {
     });
   }
   resp.json(result);
-  // try {
-  //       var goods = await Good.distinct('category');
-  //   } catch ({message}) {
-  //       return next({
-  //           status: 500,
-  //           message
-  //       });
-  //   }
-  //   resp.json(goods);
 }
 
 export async function getPopular(req, resp, next) {
-  const category = req.query.category;
+  const {category} = req.query;
   let items = req.query.items || 7;
   items = Number.parseInt(items, 10);
-  // console.log('===========', category);
+  let goods = [];
   try {
-    // Your logic
-    var goods = await Good
-      .find(category ? { category: {$in: [category]}} : {})
+    goods = await Good.find(category ? {category: {$in: [category]}} : {})
       .sort('views')
       .limit(items);
-    // var goods = await Good.find({}).limit(6);
     // var goods = await Good.aggregate([
     //   // {cursor: { batchSize: 1024 }},
     //   {$sort: {views: -1}},
@@ -207,15 +180,15 @@ export async function getPopular(req, resp, next) {
 }
 
 export async function create(req, resp, next) {
-  var name = req.body.name;
-
+  const {name} = req.body;
+  let newItemName = '';
   try {
-    var name = await Good.create({name: name});
+    newItemName = await Good.create({name});
   } catch ({message}) {
     return next({
       status: 400,
       message
     });
   }
-  resp.json(name);
+  resp.json(newItemName);
 }

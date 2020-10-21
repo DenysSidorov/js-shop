@@ -4,7 +4,6 @@ import config from '../../config';
 import * as UserService from '../services/userService';
 import {sendMailForSingup} from '../services/sendMailAuth';
 
-// import getUser from '../shop/middlewares/getUser'; // Найти пользователя по токену
 export const singup = (req, resp, next) => {
   const credentials = req.body; // Вытащим данные от юзера из формы.
   // console.log(req, 'REQ');
@@ -111,7 +110,6 @@ export const singin = async (req, resp, next) => {
     next({status: 400, message: 'You need have password and login'});
   }
 };
-
 export async function checkTokenFromEmail(req, resp, next) {
   if (req.query.t) {
     jwt.verify(req.query.t, config.SECRET_WORD, function (err, credentials) {
@@ -170,8 +168,6 @@ export async function checkTokenFromEmail(req, resp, next) {
 
   // resp.json({email: req.query.t, after: 0})
 }
-
-// для страницы пользователя полезно
 export async function findUserByToken(req, resp, next) {
   console.log(req.body, 'req.body');
   const token = req.body.authtoken;
