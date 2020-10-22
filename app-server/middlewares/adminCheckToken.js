@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from '../config';
-import User from '../shop/models/user';
+import User from '../models/user';
 
 /**
  Middleware which check admin's role and add it to app if it exists

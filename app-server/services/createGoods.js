@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import random from '../../tools/randomArrElement';
+import random from '../tools/randomArrElement';
 import Good from '../models/good';
 
 export default (req, resp, next) => {

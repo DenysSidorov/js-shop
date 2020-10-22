@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
-import config from '../../config';
+import config from '../config';
 import {sendMailForSignUp} from '../services/sendMailAuth';
 
 export const signUp = (req, resp, next) => {

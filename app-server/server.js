@@ -11,10 +11,10 @@ import https from 'https';
 
 import assets from './assets.json';
 import config from './config';
-import authRoute from './shop/routes/auth';
-import userRoute from './shop/routes/user';
-import goodRoute from './shop/routes/goodRoute';
-import orderRoute from './shop/routes/orderRoute';
+import authRoute from './routes/auth';
+import userRoute from './routes/user';
+import goodRoute from './routes/goodRoute';
+import orderRoute from './routes/orderRoute';
 import errorMiddleWare from './middlewares/errors';
 
 const privateKey = fs.readFileSync('./sslcert/private.key', 'utf8');

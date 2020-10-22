@@ -1,5 +1,5 @@
 import express from 'express';
-import adminCheck from '../../middlewares/adminCheckToken';
+import adminCheck from '../middlewares/adminCheckToken';
 import * as OrderController from '../controllers/order';
 
 const router = express.Router();
