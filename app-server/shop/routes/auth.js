@@ -3,10 +3,10 @@ import * as AuthController from '../controllers/auth';
 
 const router = express.Router();
 
-router.post('/signin', AuthController.singin); // Проверка/Ввойти
-router.post('/signup', AuthController.singup); // Создание
-router.post('/isadmin', AuthController.isadmin); // Создание
-router.get('/ct', AuthController.checkTokenFromEmail); // Создание
-router.post('/find-user-by-token', AuthController.findUserByToken); // Создание
+router.post('/signin', AuthController.signIn);
+router.post('/signup', AuthController.signUp);
+router.post('/isadmin', AuthController.isAdmin);
+router.get('/ct', AuthController.checkTokenFromEmail);
+router.post('/find-user-by-token', AuthController.findUserByToken);
 
 export default router;

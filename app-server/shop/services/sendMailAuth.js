@@ -7,7 +7,7 @@ const mailSettings = config['MAIL_SETTINGS'];
 // https://nodemailer.com/about/
 
 // Generate SMTP service account from ethereal.email
-// export const sendMailForSingup = ({email, nick, link})=> {
+// export const sendMailForSignUp = ({email, nick, link})=> {
 //     nodemailer.createTestAccount((err, account) => {
 //         if (err) {
 //             console.error('Failed to create a testing account');
@@ -63,7 +63,7 @@ const mailSettings = config['MAIL_SETTINGS'];
 //     });
 // }
 
-export const sendMailForSingup = ({email, nick, link})=> {
+export const sendMailForSignUp = ({email, nick, link})=> {
 console.log(mailSettings, 'mailSettings.backend');
     let smtpTransport = nodemailer.createTransport(mailSettings);
 

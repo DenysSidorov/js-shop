@@ -33,8 +33,6 @@ export async function create(req, resp, next) {
   order.site = 'doshki.com';
   try {
     const newOrder = await Order.create(order);
-    console.log(newOrder, 'New Order');
-
     setTimeout(() => {
       sendMailWithOrder({email: undefined, order: newOrder});
     }, 0);
@@ -71,11 +69,9 @@ export const changeType = async (req, resp, next) => {
   const orderId = req.body._id;
   const orderType = req.body.type;
   if (['new', 'progress', 'done', 'delivery'].indexOf(orderType) !== -1) {
-    console.log(req.token._id, "admin's token id");
     let result = false;
     try {
-      const resMongo = await Order.update({_id: orderId}, {type: orderType});
-      console.log(resMongo, 'resMongo');
+      await Order.update({_id: orderId}, {type: orderType});
       result = true;
     } catch ({message}) {
       return next({
