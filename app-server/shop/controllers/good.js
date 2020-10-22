@@ -24,7 +24,6 @@ export async function getAll(req, resp, next) {
       }
       const countResponse = await Good.find({category: {$in: [filter]}}).count();
       goods = {goods: goodsResponse, count: countResponse};
-      console.log('++', goods);
     } else {
       let goodsResponse;
       if (pageSize && numberPage) {

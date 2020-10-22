@@ -1,49 +1,37 @@
+import jwt from 'jsonwebtoken';
 import config from '../config';
 import User from '../shop/models/user';
-import userService from '../shop/services/userService';
-import jwt from 'jsonwebtoken';
 
-// Создадим middleware проверяющие наличие токена
-export default (req, resp, next)=>{
-    // Будем хранить в заголовке токен авторизации
-    // Вытащим токен из заголовка, если он там есть
-    const token = req.headers['authorization'];
-    console.log(token, 'TTTOOOKEEN');
-    // Если токена нет:;
-    if(!token || token === 'undefined'){
-        console.log('нет токена?');
+/**
+ Middleware which check admin's role and add it to app if it exists
+ */
 
-        return next({
-
-            status: 403,
-            message: 'Forbidden. No Admin Token'
-        })
-    }
-
-    // Если токен есть - проверяем его с секретным словом
-    jwt.verify(token, config['SECRET_WORD'], async function(err, decoded) {
-        if(err){
-            const {message} = err;
-            console.log('токен не подходит');
-            return next({
-                status: 400,
-                message
-            })
-        }
-        // Если токен нормальный - пропускаем - все ок
-        console.log(decoded._id, 'devv');
-        // Делаем проверку на админа
-        let user = await User.findOne({_id: decoded._id}, {password: 0})
-        console.log(user);
-        if(user.isAdmin){
-            req.token = decoded; // ТЕПЕРЬ ВЕЗДЕ В REQUEST ЕСТЬ TOKEN
-            next();
-        } else {
-            return next({
-                status: 403,
-                message: 'Forbidden. No Admin Access'
-            })
-        }
-
+export default (req, resp, next) => {
+  const token = req.headers.authorization;
+  if (!token || token === 'undefined') {
+    return next({
+      status: 403,
+      message: 'Forbidden. No Admin Token'
     });
-}
+  }
+
+  jwt.verify(token, config.SECRET_WORD, async function (err, decoded) {
+    if (err) {
+      const {message} = err;
+      return next({
+        status: 400,
+        message
+      });
+    }
+    const user = await User.findOne({_id: decoded._id}, {password: 0});
+    if (user.isAdmin) {
+      req.token = decoded;
+      next();
+    } else {
+      return next({
+        status: 403,
+        message: 'Forbidden. No Admin Access'
+      });
+    }
+  });
+};

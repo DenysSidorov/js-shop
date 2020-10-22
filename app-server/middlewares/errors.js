@@ -1,4 +1,4 @@
-const errors = function (err, req, resp, next) {
+function errors(err, req, resp, next) {
   const {status = 500, message = 'Server Error'} = err;
   if (!err) {
     next();
@@ -7,6 +7,6 @@ const errors = function (err, req, resp, next) {
       message
     });
   }
-};
+}
 
 export default errors;

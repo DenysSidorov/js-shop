@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import config from '../../config';
-import * as UserService from '../services/userService';
 import {sendMailForSignUp} from '../services/sendMailAuth';
 
 export const signUp = (req, resp, next) => {
@@ -72,7 +71,6 @@ export const signIn = async (req, resp, next) => {
     next({status: 400, message: 'You need have password and login'});
   }
 };
-
 export async function checkTokenFromEmail(req, resp, next) {
   if (req.query.t) {
     jwt.verify(req.query.t, config.SECRET_WORD, function (error, credentials) {
@@ -105,21 +103,5 @@ export async function checkTokenFromEmail(req, resp, next) {
     });
   } else {
     next({status: 400, message: 'You don not have normal token'});
-  }
-}
-
-export async function findUserByToken(req, resp, next) {
-  const token = req.body.authtoken;
-  if (token) {
-    UserService.getUserByToken(token)
-      .then((user) => {
-        resp.json(user);
-      })
-      .catch((er) => {
-        const {message} = er;
-        next({message, status: 500});
-      });
-  } else {
-    next({status: 400, message: 'Please, set correct token'});
   }
 }
