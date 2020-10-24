@@ -62,8 +62,6 @@ export function isValidToken(token) {
                 token = localStorage.getItem('info');
             }
             let isValid = await axios.post(`${urlApi}/api/find-user-by-token`, {authtoken: token});
-            console.log(isAdmin.data.isadmin, 'isValid');
-
             if (isValid.data.isadmin) {
                 dispatch({type: AUTH_USER});
             } else {
