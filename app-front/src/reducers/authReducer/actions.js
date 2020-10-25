@@ -13,7 +13,7 @@ import urlApi from "../../api/urlApi";
 import async from "../../components/shop/helpers/middlewares/async";
 
 export function deleteErrorMessage() {
-    return {type: DELETE_ERROR_MESSAGE};
+  return {type: DELETE_ERROR_MESSAGE};
 
 }
 
@@ -56,48 +56,48 @@ export function saveUserToken(token) {
 // }
 
 export function isValidToken(token) {
-    return async function (dispatch) {
-        try {
-            if (!token) {
-                token = localStorage.getItem('info');
-            }
-            let isValid = await axios.post(`${urlApi}/api/find-user-by-token`, {authtoken: token});
-            if (isValid.data.isadmin) {
-                dispatch({type: AUTH_USER});
-            } else {
-                dispatch({type: UNAUTH_USER});
-            }
-        } catch (er) {
-            dispatch({type: UNAUTH_USER});
-            dispatch({type: DISAPPEAR_LIKE_ADMIN});
-            console.log(er);
-        }
+  return async function (dispatch) {
+    try {
+      if (!token) {
+        token = localStorage.getItem('info');
+      }
+      const isValid = await axios.post(`${urlApi}/api/find-user-by-token`, {authtoken: token});
+      if (isValid.data.isadmin) {
+        dispatch({type: AUTH_USER});
+      } else {
+        dispatch({type: UNAUTH_USER});
+      }
+    } catch (er) {
+      dispatch({type: UNAUTH_USER});
+      dispatch({type: DISAPPEAR_LIKE_ADMIN});
+      console.log(er);
     }
+  }
 }
 
 
 export function isAdminFunc(token) {
   return async function (dispatch) {
-      try {
-        if (!token) {
-          token = localStorage.getItem('info');
-        }
-        let isAdmin = await axios.post(`${urlApi}/api/isadmin`, {authtoken: token});
-        console.log(isAdmin.data.isadmin, 'isamin');
-
-        if (isAdmin.data.isadmin) {
-          dispatch({type: APPEAR_LIKE_ADMIN});
-          dispatch({type: AUTH_USER});
-        } else {
-          // dispatch({type: UNAUTH_USER});
-          dispatch({type: DISAPPEAR_LIKE_ADMIN});
-        }
-      } catch (er) {
-          dispatch({type: UNAUTH_USER});
-          dispatch({type: DISAPPEAR_LIKE_ADMIN});
-        console.log(er);
+    try {
+      if (!token) {
+        token = localStorage.getItem('info');
       }
+      let isAdmin = await axios.post(`${urlApi}/api/isadmin`, {authtoken: token});
+      console.log(isAdmin.data.isadmin, 'isamin');
+
+      if (isAdmin.data.isadmin) {
+        dispatch({type: APPEAR_LIKE_ADMIN});
+        dispatch({type: AUTH_USER});
+      } else {
+        // dispatch({type: UNAUTH_USER});
+        dispatch({type: DISAPPEAR_LIKE_ADMIN});
+      }
+    } catch (er) {
+      dispatch({type: UNAUTH_USER});
+      dispatch({type: DISAPPEAR_LIKE_ADMIN});
+      console.log(er);
     }
+  }
 }
 
 
