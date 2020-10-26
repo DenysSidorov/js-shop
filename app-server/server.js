@@ -57,10 +57,6 @@ app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
 app.use('/api/users', userRoute);
 
-app.get('*', (req, res) => {
-  res.render(path.join(`${__dirname}/www/index.ejs`), {assets});
-});
-
 app.use(errorMiddleWare); // errors handler should be place in the end
 
 app.all('*', (req, resp) =>
