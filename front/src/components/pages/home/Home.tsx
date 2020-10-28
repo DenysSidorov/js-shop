@@ -34,7 +34,6 @@ const Home = ({location, history}: IHome) => {
       let popularCards: any = [];
       let uniqCategory: any = [];
 
-      // set new title
       if (param) {
         setTitle(`Картины на дереве - ${param}`);
         setMetaTag('description');
@@ -84,14 +83,12 @@ const Home = ({location, history}: IHome) => {
 
     const getData = async () => {
       window.scrollTo(0, 0);
-      // получение обьекта параметров запроса
 
       const params = linkParams(history.location.search);
       const param = params.sort;
       const pageSize = params.pagesize;
       const numberPage = params.numberpage;
 
-      // set new title
       if (param) {
         setTitle(`Картины на дереве - ${param}`);
       } else {
