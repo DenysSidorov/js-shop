@@ -2,23 +2,20 @@
 
 Main tools:
 
-- MongoDB 
 - Node
 - Express
-- Mongoose
-- MVC
-- Redux/Middleware
-- ReactJS/Libraries/Router4
+- MongoDB / Mongoose
+- Redux / Middlewares
+- TypeScript
+- ReactJS/Hooks/Libraries/Router
 - SASS / LESS
-- EJS
-- JQuery
 - Webpack
 
 
 
 Not implemented :
 
-- _hot **SEARCH** from hight menu, AUTOCOMPLETE_
+- _hot **SEARCH** from top menu, AUTOCOMPLETE_
 - _~~login/logout~~_
 - _~~logup~~_
 - _~~delivery/payment/conditions pages~~_
@@ -28,7 +25,7 @@ Not implemented :
 - _**~~IMAGE COMPONENT~~**_
 - _**~~REDUX STORE FOR CART~~**_
 - _~~confirm for user in card~~_
-- _quickly buy_
+- _fasr buy products_
 - _~~react inputs~~_
 - _~~images from GOOGLE CLOUD STORAGE~~_
 - _blog_
