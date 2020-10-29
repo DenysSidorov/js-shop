@@ -4,20 +4,18 @@ Armageddon application
 
 Front
 
-- Last React 16-17/ Async
+Done - Last React 16-17/ Async
 Done - React-Router 4
 Done - Redux
-- React Hooks
-- TypeScript
+Done - React Hooks
+Done - TypeScript
 Done - SASS
-- CSS-grids?
-- Webpack 4 latest
-- Done floats
-- Done - flexes
-- grids
+Done - Webpack 4 latest
+Done floats
+Done - flexes
 - Tests Enzyme/Jasmine
+- CSS-grids?
 - Apollo
-
 - ReactNative
 - mobx?
 
