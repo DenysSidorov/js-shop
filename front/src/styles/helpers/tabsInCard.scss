@@ -1,7 +1,7 @@
-@robotoLight: 'Roboto-Light';
-@robotoMedium: 'Roboto-Medium';
-@robotoRegular: 'Roboto-Regular';
-@mainBgColor: #2EA9FD;
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+$mainBgColor: #2EA9FD;
 
 .containerForCardAdditional {
   /* TABS LIBRARRY TOP */
@@ -16,7 +16,7 @@
   //max-width: 800px;
   padding: 0px;
   margin: 0 auto;
-  font: 1.4rem/1.6rem @robotoRegular;
+  font: 1.4rem/1.6rem $robotoRegular;
 }
 /* Стили секций с содержанием */
 .mainCardContainer__tabs>section {
@@ -62,7 +62,7 @@
   border-width: 1px 1px 1px 1px;
   background: #f1f1f1;
   border-radius: 3px 3px 0 0;
-  font: 1.6rem/2.2rem @robotoMedium;
+  font: 1.6rem/2.2rem $robotoMedium;
 
 }
 /* Шрифт-иконки от Font Awesome в формате Unicode */
@@ -92,7 +92,7 @@
 /* Стили для активной вкладки */
 .mainCardContainer__tabs>input:checked+label {
   color: #555;
-  border-top: 2px solid @mainBgColor;
+  border-top: 2px solid $mainBgColor;
   border-bottom: 1px solid #fff;
   background: #fff;
 }

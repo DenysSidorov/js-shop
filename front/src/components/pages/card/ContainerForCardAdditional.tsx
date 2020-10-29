@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment';
 import Card from '../../modules/card/Card';
-import '../../../styles/helpers/tabsInCard.less';
+import '../../../styles/helpers/tabsInCard.scss';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 
 interface IContainerForCardAdditional {
