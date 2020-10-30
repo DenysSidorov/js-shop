@@ -14,7 +14,7 @@ services:
       dockerfile: Dockerfile
     image: vikasraj/awesome_web
     ports:
-      - "3000:3000"
+      - "3000:3001"
     volumes:
       - ./client:/usr/src/app
   backend:
@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
     image: vikasraj/awesome_server
     ports:
-      - "5000:5000" ${P}:${P}
+      - "5000:5001" ${P}:${P}
     volumes:
       - ./server:/usr/src/app
     depends_on:
