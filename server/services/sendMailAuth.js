@@ -16,7 +16,7 @@ export const sendMailForSignUp = ({email, nick, link}) => {
             <p>Вы прошли регистрацию в онлайн магазине. Остался последний этап!</p>
             <a href="${urlApi}/api/ct?t=${link}">
             Для подтверждения нажмите на ссылку...</a>
-        </div>` // html body
+        </div>`
   };
 
   smtpTransport.sendMail(mailOptions, function (error, info) {
