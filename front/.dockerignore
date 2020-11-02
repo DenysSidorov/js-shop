@@ -1,3 +1,7 @@
 .git
 node_modules
 npm-debug.log
+
+.dockerignore
+Dockerfile
+Dockerfile.prod
