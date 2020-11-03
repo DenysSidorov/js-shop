@@ -14,7 +14,9 @@
     "build": "node_modules/.bin/webpack -p",
     "lint": "node_modules/.bin/eslint  --quiet src/**/*.{js,ts,tsx}",
     "lint-fix": "node_modules/.bin/eslint --fix src/**/*.{js,ts,tsx}",
-    "prettier": "prettier --write src/**/*.{tsx}"
+    "prettier": "prettier --write src/**/*.{tsx}",
+    "docker": "docker build -t react-docker .",
+    "react-docker": "docker run -p 3000:80 react-docker"
   },
   "husky": {
     "hooks": {
