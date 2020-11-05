@@ -1,8 +1,15 @@
+import {Action} from 'redux';
+
 export const CHANGE_NAME_CONFIRM = 'card-confirm/CHANGE_NAME_CONFIRM';
 
 export type IConfirmsCard = string;
 
-export default (state: IConfirmsCard = '', action: {type: string; payload: string}): IConfirmsCard => {
+interface IConfirmsCardAction extends Action {
+  type: string;
+  payload: string;
+}
+
+export default (state: IConfirmsCard = '', action: IConfirmsCardAction): IConfirmsCard => {
   switch (action.type) {
     case CHANGE_NAME_CONFIRM:
       return action.payload;

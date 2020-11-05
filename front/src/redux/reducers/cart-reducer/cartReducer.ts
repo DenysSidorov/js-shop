@@ -35,38 +35,6 @@ export interface ICartReducerItem {
 export interface ICartReducerState {
   items: Array<ICartReducerItem>;
 }
-/**
-const initialState = {
-  items: [
-    {
-      _id: 3,
-      name: 'Школьный',
-      model: 'Classic',
-      size: [28, 35],
-      count: 2,
-      comments: [
-        {
-          _id: 1,
-          message: 'Купили малышу в школу, остались очень довольны'
-        }
-      ],
-      views: 23,
-      likes: 5,
-      price: 480,
-      photo: ['3.png'],
-      code: '68003',
-      'desc-short': 'Школьный портфель на детей',
-      'desc-full': 'Отличный подарок вашему чаду! Школьный портфель на детей',
-      tags: ['портфель', 'черный', 'школа'],
-      sail: 15,
-      category: ['мужской', 'городской', 'школа'],
-      isExists: true,
-      producer: 'Ukraine',
-      isNewGood: true
-    }
-  ]
-};
-*/
 
 export default (state: ICartReducerState = getFromLocalData('cart'), action: any): ICartReducerState => {
   switch (action.type) {
@@ -191,3 +159,36 @@ export const decrementItem = (id: string | number) => {
 export const deleteAll = () => {
   return {type: DELETE_ALL_ITEM_IN_CART};
 };
+
+/**
+ const initialState = {
+  items: [
+    {
+      _id: 3,
+      name: 'Школьный',
+      model: 'Classic',
+      size: [28, 35],
+      count: 2,
+      comments: [
+        {
+          _id: 1,
+          message: 'Купили малышу в школу, остались очень довольны'
+        }
+      ],
+      views: 23,
+      likes: 5,
+      price: 480,
+      photo: ['3.png'],
+      code: '68003',
+      'desc-short': 'Школьный портфель на детей',
+      'desc-full': 'Отличный подарок вашему чаду! Школьный портфель на детей',
+      tags: ['портфель', 'черный', 'школа'],
+      sail: 15,
+      category: ['мужской', 'городской', 'школа'],
+      isExists: true,
+      producer: 'Ukraine',
+      isNewGood: true
+    }
+  ]
+};
+ */

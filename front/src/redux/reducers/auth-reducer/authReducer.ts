@@ -1,3 +1,5 @@
+import {Action} from 'redux';
+
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -15,7 +17,7 @@ export interface IAuthReducerState {
   isAdmin: boolean;
 }
 
-export interface IActionAuthReducerPayloadString {
+export interface IActionAuthReducerPayloadString extends Action {
   type: string;
   payload: string;
 }
