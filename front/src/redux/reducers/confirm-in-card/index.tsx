@@ -9,7 +9,7 @@ interface IConfirmsCardAction extends Action {
   payload: string;
 }
 
-export default (state: IConfirmsCard = '', action: IConfirmsCardAction): IConfirmsCard => {
+const ConfirmInCartReducer = (state: IConfirmsCard = '', action: IConfirmsCardAction): IConfirmsCard => {
   switch (action.type) {
     case CHANGE_NAME_CONFIRM:
       return action.payload;
@@ -17,6 +17,8 @@ export default (state: IConfirmsCard = '', action: IConfirmsCardAction): IConfir
       return state;
   }
 };
+
+export default ConfirmInCartReducer;
 
 export const changeConfirm = (type: string): Object => {
   return {type: CHANGE_NAME_CONFIRM, payload: type};

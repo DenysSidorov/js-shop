@@ -36,7 +36,7 @@ const initialState: IAuthReducerState = {
   isAdmin: false
 };
 
-export default function (state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState {
+function AuthReducer(state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState {
   switch (action.type) {
     case AUTH_USER: {
       return {...state, error: '', authenticated: true};
@@ -64,3 +64,5 @@ export default function (state: IAuthReducerState = initialState, action: IActio
       return state;
   }
 }
+
+export default AuthReducer;
