@@ -1,4 +1,5 @@
 import {Action} from 'redux';
+import {produce, Draft} from 'immer';
 
 import {
   AUTH_USER,
@@ -36,83 +37,41 @@ const initialState: IAuthReducerState = {
   isAdmin: false
 };
 
-/**
- const reducer = (state, action) => produce(state, draft => {
-    switch(action.type) {
-        case UPDATE_USER:
-            draft.name = action.name;
-            break;
-    }
-});
-------
-
- or
-
---------
- const curriedProduce = produce((draft, action) => {
-  switch (action.type) {
-
-  // add a new package to the starting state
-const nextState = curriedProduce(initState, {
-  type: 'ADD_PACKAGE',
-  package: newPackage,
-
-});
-
--------
-
- or
-
---------
-const byId = produce((draft, action) => {
-  switch (action.type) {
-    case RECEIVE_PRODUCTS:
-      action.products.forEach(product => {
-        draft[product.id] = product
-      })
-      break
-  }
-})
-
- ------
-
- or
-
---------
-import {produce, Draft} from 'immer';
-const AuthReducer = produce((draft: Draft<DAtMYtype>, action: any) => {
-
-}, initialData)
-
- * */
-
-const AuthReducer = (state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState => {
+const AuthReducer = produce((draft: Draft<IAuthReducerState>, action: IActionAuthReducer) => {
+  /* eslint-disable default-case */
   switch (action.type) {
     case AUTH_USER: {
-      return {...state, error: '', authenticated: true};
+      draft.error = '';
+      draft.authenticated = true;
+      break;
     }
     case UNAUTH_USER: {
-      return {...state, authenticated: false, isAdmin: false};
+      draft.authenticated = false;
+      draft.isAdmin = false;
+      break;
     }
     case AUTH_ERROR: {
-      return {...state, error: action.payload};
+      draft.error = action.payload;
+      break;
     }
     case FETCH_MESSAGE: {
-      return {...state, message: action.payload};
+      draft.message = action.payload;
+      break;
     }
     case DELETE_ERROR_MESSAGE: {
-      return {...state, error: ''};
+      draft.error = '';
+      break;
     }
 
     case APPEAR_LIKE_ADMIN: {
-      return {...state, isAdmin: true};
+      draft.isAdmin = true;
+      break;
     }
     case DISAPPEAR_LIKE_ADMIN: {
-      return {...state, isAdmin: false};
+      draft.isAdmin = false;
+      break;
     }
-    default:
-      return state;
   }
-};
+}, initialState);
 
 export default AuthReducer;
