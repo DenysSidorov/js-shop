@@ -36,7 +36,7 @@ function getConfig(env = {}) {
     },
     devServer: {
       inline: true,
-      port: 50000,
+      port: 3002,
       hot: true,
       contentBase: path.resolve(__dirname, './www/'),
       historyApiFallback: true

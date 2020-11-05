@@ -36,7 +36,57 @@ const initialState: IAuthReducerState = {
   isAdmin: false
 };
 
-function AuthReducer(state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState {
+/**
+ const reducer = (state, action) => produce(state, draft => {
+    switch(action.type) {
+        case UPDATE_USER:
+            draft.name = action.name;
+            break;
+    }
+});
+------
+
+ or
+
+--------
+ const curriedProduce = produce((draft, action) => {
+  switch (action.type) {
+
+  // add a new package to the starting state
+const nextState = curriedProduce(initState, {
+  type: 'ADD_PACKAGE',
+  package: newPackage,
+
+});
+
+-------
+
+ or
+
+--------
+const byId = produce((draft, action) => {
+  switch (action.type) {
+    case RECEIVE_PRODUCTS:
+      action.products.forEach(product => {
+        draft[product.id] = product
+      })
+      break
+  }
+})
+
+ ------
+
+ or
+
+--------
+import {produce, Draft} from 'immer';
+const AuthReducer = produce((draft: Draft<DAtMYtype>, action: any) => {
+
+}, initialData)
+
+ * */
+
+const AuthReducer = (state: IAuthReducerState = initialState, action: IActionAuthReducer): IAuthReducerState => {
   switch (action.type) {
     case AUTH_USER: {
       return {...state, error: '', authenticated: true};
@@ -63,6 +113,6 @@ function AuthReducer(state: IAuthReducerState = initialState, action: IActionAut
     default:
       return state;
   }
-}
+};
 
 export default AuthReducer;
