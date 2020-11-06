@@ -15,3 +15,8 @@ services:
      environment:
        - PORT=3000
        - HOST=http://my-prod.com/
+       - MONGO_URL=mongodb://t-db:27017/api
+     depends_on:
+       - t-db
+   t-db:
+     image: mongo:latest
