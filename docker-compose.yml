@@ -9,5 +9,9 @@ services:
    t-server:
      build: ./test-server
      command: npm run start
+     restart: unless-stopped
      ports:
        - "3000:3000"
+     environment:
+       - PORT=3000
+       - HOST=http://my-prod.com/
