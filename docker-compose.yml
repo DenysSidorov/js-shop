@@ -1,53 +1,66 @@
 version: '3'
 
 services:
-#  front:
-#    build: ./front
-#    command: npm run start
-#    ports:
-#      - "3002:3002"
-   t-server:
-     build: ./test-server
-     container_name: test-server-cont
-     command: npm run start
-     restart: unless-stopped
-     ports:
-       - "3000:3000"
-     environment:
-       - PORT=3000
-       - HOST=http://my-prod.com/
-       - MONGO_URL=mongodb://t-db-api:27017/api
-     depends_on:
-       - t-db-api
+  #  front:
+  #    build: ./front
+  #    command: npm run start
+  #    ports:
+  #      - "3002:3002"
 
-   t-server-auth:
-     build: ./test-auth
-     container_name: test-server-auth-cont
-     command: npm run start
-     restart: unless-stopped
-     ports:
-       - "3001:3001"
-     environment:
-       - PORT=3001
-       - HOST=http://my-prod.com/
-       - MONGO_URL=mongodb://t-db-auth:27017/auth
-     depends_on:
-       - t-db-auth
+  frontend:
+    build: ./test-front
+    container_name: test-front-cont
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    command: npm run start
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./test-front/src:/usr/src/app/src
 
-   t-db-api:
-     image: mongo:latest
-     container_name: test-db-api-cont
-     volumes:
-#      local volume: path to container's folder
-       - mongodb_api:/data/db
+  t-server:
+    build: ./test-server
+    container_name: test-server-cont
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - HOST=http://my-prod.com/
+      - MONGO_URL=mongodb://t-db-api:27017/api
+    depends_on:
+      - t-db-api
 
-   t-db-auth:
-     image: mongo:latest
-     container_name: test-db-auth-cont
-     volumes:
-       - mongodb_auth:/data/db
+  t-server-auth:
+    build: ./test-auth
+    container_name: test-server-auth-cont
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - HOST=http://my-prod.com/
+      - MONGO_URL=mongodb://t-db-auth:27017/auth
+    depends_on:
+      - t-db-auth
+
+  t-db-api:
+    image: mongo:latest
+    container_name: test-db-api-cont
+    volumes:
+      #      local volume: path to container's folder
+      - mongodb_api:/data/db
+
+  t-db-auth:
+    image: mongo:latest
+    container_name: test-db-auth-cont
+    volumes:
+      - mongodb_auth:/data/db
 
 volumes:
-# set some service's local volume to global scope
+  # set some service's local volume to global scope
   mongodb_api:
   mongodb_auth:

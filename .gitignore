@@ -1,5 +1,7 @@
 .idea
 node_modules/
+test-front/node_modules/
+test-front/build
 *npm-debug.log
 *.DS_Store
 dist/bundle.js
