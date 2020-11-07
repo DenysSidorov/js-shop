@@ -20,3 +20,9 @@ services:
        - t-db
    t-db:
      image: mongo:latest
+     volumes:
+#      local volume: path to container's folder
+       - mongodb_api:/data/db
+volumes:
+# set some service's local volume to global scope
+  mongodb_api:

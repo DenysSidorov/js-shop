@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  t-server:
+    command: npm run dev
+    volumes:
+      - ./test-server/src:/usr/src/app/src

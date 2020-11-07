@@ -5,7 +5,7 @@ const { saveUser } = require("./models/User");
 const app = express();
 
 app.get("/test", (req, res) => {
-  res.send("Our api server is working correctly");
+  res.send("Our api server is working correctly!!!!");
 });
 
 const startServer = () => {
