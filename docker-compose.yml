@@ -13,11 +13,7 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
-    command: npm run start
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./test-front/src:/usr/src/app/src
+    command: serve -s build -l 3000
 
   t-server:
     build: ./test-server
