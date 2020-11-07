@@ -8,6 +8,7 @@ services:
 #      - "3002:3002"
    t-server:
      build: ./test-server
+     container_name: test-server-cont
      command: npm run start
      restart: unless-stopped
      ports:
@@ -15,14 +16,38 @@ services:
      environment:
        - PORT=3000
        - HOST=http://my-prod.com/
-       - MONGO_URL=mongodb://t-db:27017/api
+       - MONGO_URL=mongodb://t-db-api:27017/api
      depends_on:
-       - t-db
-   t-db:
+       - t-db-api
+
+   t-server-auth:
+     build: ./test-auth
+     container_name: test-server-auth-cont
+     command: npm run start
+     restart: unless-stopped
+     ports:
+       - "3001:3001"
+     environment:
+       - PORT=3001
+       - HOST=http://my-prod.com/
+       - MONGO_URL=mongodb://t-db-auth:27017/auth
+     depends_on:
+       - t-db-auth
+
+   t-db-api:
      image: mongo:latest
+     container_name: test-db-api-cont
      volumes:
 #      local volume: path to container's folder
        - mongodb_api:/data/db
+
+   t-db-auth:
+     image: mongo:latest
+     container_name: test-db-auth-cont
+     volumes:
+       - mongodb_auth:/data/db
+
 volumes:
 # set some service's local volume to global scope
   mongodb_api:
+  mongodb_auth:
