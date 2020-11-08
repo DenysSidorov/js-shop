@@ -17,7 +17,7 @@ import './mainContainerForCard.less';
 interface IMainContainerForCard {
   card: ICartReducerItem;
 }
-
+// todo rewrite useSelector with selector
 const MainContainerForCard = (props: IMainContainerForCard) => {
   const confirmKind = useSelector((state: IReducersState) => state.confirmsCard);
   const dispatch = useDispatch();
