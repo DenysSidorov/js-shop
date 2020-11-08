@@ -2,12 +2,12 @@ import React, {FC, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {IServiceReducer} from '../../../redux/reducers/service-app';
-import {IReducersState} from '../../../redux/reducers';
+import {selectServiceReducer} from '../../../redux/reducers/service-app/selectors';
 
 interface IContacts {}
 
 const Contacts: FC<IContacts> = () => {
-  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
+  const serviceReducer: IServiceReducer = useSelector(selectServiceReducer);
 
   useEffect(() => {
     window.scrollTo(0, 0);

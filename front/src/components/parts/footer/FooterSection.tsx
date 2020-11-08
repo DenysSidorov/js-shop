@@ -1,13 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {IServiceReducer} from '../../../redux/reducers/service-app';
 import './index.scss';
-import {IReducersState} from '../../../redux/reducers';
+import {selectServiceNumber1} from '../../../redux/reducers/service-app/selectors';
 
 const FooterSection = () => {
-  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
-  const {number1} = serviceReducer;
+  const number1 = useSelector(selectServiceNumber1);
   return (
     <div className='footerSection left fullWidth '>
       <div className='container'>
