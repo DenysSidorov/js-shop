@@ -6,8 +6,8 @@ import axios from 'axios';
 import Confirm from '../../parts/modals/confirm-cart-modal/ConfirmBlock';
 import {deleteAll as deleteAllFu, ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 import GoodsTable from './GoodsTable';
-import {IReducersState} from '../../../redux/reducers';
 import urlApi from '../../../api/urlApi';
+import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 
 type PaymentObject = {
   value: string;
@@ -34,7 +34,7 @@ const WaysDevPay = () => {
   const nameV: any = useRef<HTMLInputElement>(null);
   const emailV: any = useRef<HTMLInputElement>(null);
 
-  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  const cartItems: Array<ICartReducerItem> = useSelector(selectCartItems);
 
   const dispatch = useDispatch();
 

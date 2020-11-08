@@ -11,15 +11,15 @@ import Verify from './confirms/Verify';
 import Payment from './confirms/Payment';
 import Delivery from './confirms/Delivery';
 import Price from '../landing/Price';
-import {IReducersState} from '../../../redux/reducers';
 import './mainContainerForCard.less';
+import {selectConfirmReducer} from '../../../redux/reducers/confirm-in-card/selectors';
 
 interface IMainContainerForCard {
   card: ICartReducerItem;
 }
 // todo rewrite useSelector with selector
 const MainContainerForCard = (props: IMainContainerForCard) => {
-  const confirmKind = useSelector((state: IReducersState) => state.confirmsCard);
+  const confirmKind = useSelector(selectConfirmReducer);
   const dispatch = useDispatch();
 
   const addItem = useCallback(

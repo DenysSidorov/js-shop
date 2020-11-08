@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
 import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
-
 interface ILeftMenu {}
 
 const LeftMenu: FC<ILeftMenu> = () => {

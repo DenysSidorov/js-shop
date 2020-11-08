@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
-import {IServiceReducer} from '../index';
-import {IReducersState} from '../../index';
+import {IServiceReducer} from './index';
+import {IReducersState} from '../index';
 
 export const selectState = (state: IReducersState): IReducersState => state;
 

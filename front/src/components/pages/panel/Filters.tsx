@@ -1,14 +1,14 @@
 import React, {FC, useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {IReducersState} from '../../../redux/reducers';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
+import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
 
 interface IFilters {}
 
 const Filters: FC<IFilters> = () => {
-  const panelReducer: IAdminPanel = useSelector((state: IReducersState) => state.panelReducer);
+  const panelReducer: IAdminPanel = useSelector(selectPanelReducer);
   const {countTypes} = panelReducer;
   const dispatch = useDispatch();
 
