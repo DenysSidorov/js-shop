@@ -8,7 +8,7 @@ import urlApi from '../../../api/urlApi';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 import {Token} from '../../../interfaces';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
-import {IReducersState} from '../../../redux/reducers';
+import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
 
 interface IOrderTypes {
   value: string;
@@ -36,7 +36,7 @@ const Orders = () => {
   const [state, setState] = useState(initState);
 
   const location = useLocation();
-  const panelReducer: IAdminPanel = useSelector((reduxState: IReducersState) => reduxState.panelReducer);
+  const panelReducer: IAdminPanel = useSelector(selectPanelReducer);
   const {countTypes} = panelReducer;
 
   const dispatch = useDispatch();

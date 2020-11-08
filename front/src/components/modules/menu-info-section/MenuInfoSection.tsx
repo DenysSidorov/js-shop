@@ -5,14 +5,13 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Phone from './Phone';
 import './index.less';
 import {signoutUser, isAdminFunc} from '../../../redux/reducers/auth-reducer/actions';
-import {IAuthReducerState} from '../../../redux/reducers/auth-reducer/authReducer';
 import {selectServiceReducer} from '../../../redux/reducers/service-app/selectors';
 import {selectAuthReducer} from '../../../redux/reducers/auth-reducer/selectors';
 
 interface IMenuInfoSection {}
 
 const MenuInfoSection: FC<IMenuInfoSection> = () => {
-  const authReducer: IAuthReducerState = useSelector(selectAuthReducer);
+  const authReducer = useSelector(selectAuthReducer);
   const serviceReducer = useSelector(selectServiceReducer);
   const {authenticated, isAdmin} = authReducer;
 

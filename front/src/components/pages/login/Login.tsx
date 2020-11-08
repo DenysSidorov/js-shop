@@ -7,7 +7,7 @@ import {
   deleteErrorMessage as deleteErrorMessageRedux
 } from '../../../redux/reducers/auth-reducer/actions';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-import {IReducersState} from '../../../redux/reducers';
+import {selectAuthReducer} from '../../../redux/reducers/auth-reducer/selectors';
 
 interface ILogin {}
 
@@ -17,7 +17,7 @@ const Login: FC<ILogin> = () => {
   const [normal, setNormal] = useState<boolean>(false);
   const [serverGet] = useState<boolean>(false);
 
-  const authReducer = useSelector((state: IReducersState) => state.authReducer);
+  const authReducer = useSelector(selectAuthReducer);
   const dispatch = useDispatch();
 
   const signinUser = useCallback(

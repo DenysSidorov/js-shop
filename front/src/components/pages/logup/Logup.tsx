@@ -7,7 +7,7 @@ import {
   deleteErrorMessage as deleteErrorMessageRedux
 } from '../../../redux/reducers/auth-reducer/actions';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-import {IReducersState} from '../../../redux/reducers';
+import {selectAuthReducer} from '../../../redux/reducers/auth-reducer/selectors';
 
 interface SLogup {
   login: string;
@@ -48,7 +48,7 @@ const initialState = {
 
 const Logup = () => {
   const [state, updateState /* dispatch */] = useReducer(reducerFu, initialState);
-  const authReducer = useSelector((globState: IReducersState) => globState.authReducer);
+  const authReducer = useSelector(selectAuthReducer);
   const dispatch = useDispatch();
 
   const deleteErrorMessage = useCallback(() => {

@@ -9,12 +9,12 @@ import {
   ICartReducerItem
 } from '../../../redux/reducers/cart-reducer/cartReducer';
 import AllPrice from './AllPrice';
-import {IReducersState} from '../../../redux/reducers';
+import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 
 interface IGoodsTable {}
 
 const GoodsTable: FC<IGoodsTable> = () => {
-  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  const cartItems: Array<ICartReducerItem> = useSelector(selectCartItems);
   const goods = cartItems;
   const dispatch = useDispatch();
 

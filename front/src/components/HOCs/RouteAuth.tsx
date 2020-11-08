@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {IReducersState} from '../../redux/reducers';
+import {selectAuthReducer} from '../../redux/reducers/auth-reducer/selectors';
 
 interface IRouteAuth {
   component: React.ElementType;
@@ -9,7 +9,7 @@ interface IRouteAuth {
 }
 
 const RouteAuth: FC<IRouteAuth> = ({component: Comp, ...rest}) => {
-  const authReducer = useSelector((state: IReducersState) => state.authReducer);
+  const authReducer = useSelector(selectAuthReducer);
   return (
     <Route
       {...rest}

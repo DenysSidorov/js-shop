@@ -2,12 +2,12 @@ import React, {FC} from 'react';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
-import {IReducersState} from '../../../redux/reducers';
+import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
 
 interface ILeftMenu {}
 
 const LeftMenu: FC<ILeftMenu> = () => {
-  const panelReducer: IAdminPanel = useSelector((state: IReducersState) => state.panelReducer);
+  const panelReducer: IAdminPanel = useSelector(selectPanelReducer);
   const {countTypes} = panelReducer;
   return (
     <div className='adminPan__mainContent_menu leftMenuSection left'>

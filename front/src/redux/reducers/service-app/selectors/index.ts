@@ -4,10 +4,7 @@ import {IReducersState} from '../../index';
 
 export const selectState = (state: IReducersState): IReducersState => state;
 
-export const selectServiceReducer = createSelector(
-  selectState,
-  (state: IReducersState): IServiceReducer => state.serviceReducer
-);
+export const selectServiceReducer = (state: IReducersState): IServiceReducer => selectState(state).serviceReducer;
 
 export const selectServiceNumber1 = createSelector(
   selectServiceReducer,

@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import {useSelector} from 'react-redux';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
-import {IReducersState} from '../../../redux/reducers';
+import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 
 interface IAllPrice {}
 
 const AllPrice: FC<IAllPrice> = () => {
-  const cartItems: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  const cartItems: Array<ICartReducerItem> = useSelector(selectCartItems);
 
   const goods = cartItems;
   const price = goods.reduce(

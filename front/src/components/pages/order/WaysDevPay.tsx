@@ -45,9 +45,9 @@ const WaysDevPay = () => {
   const initialState = {
     payment: {value: 'predo', label: 'Предоплата на карту'},
     delivery: 'newpost',
-    name: '12345678',
-    phone: '12312453',
-    address: '123123',
+    name: '',
+    phone: '',
+    address: '',
     email: '',
     isNormal: false,
     isShowConfirm: false,

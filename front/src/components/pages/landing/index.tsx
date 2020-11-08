@@ -8,12 +8,12 @@ import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import BuyBtn from './buy-btn';
 import Price from './Price';
 import {IServiceReducer} from '../../../redux/reducers/service-app';
-import {IReducersState} from '../../../redux/reducers';
+import {selectServiceReducer} from '../../../redux/reducers/service-app/selectors';
 
 interface ILanding {}
 
 const Landing: FC<ILanding> = () => {
-  const serviceReducer: IServiceReducer = useSelector((state: IReducersState) => state.serviceReducer);
+  const serviceReducer: IServiceReducer = useSelector(selectServiceReducer);
   const {number1} = serviceReducer;
 
   useEffect(() => {

@@ -6,13 +6,13 @@ import OneClickModal from '../../parts/modals/one-click-modal/OneClickModal';
 import './index.less';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
-import {IReducersState} from '../../../redux/reducers';
+import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 
 interface IOrderPage {}
 
 const OrderPage: FC<IOrderPage> = () => {
   const [isShowOneClickModal, setIsShowOneClickModal] = useState<boolean>(false);
-  const goods: Array<ICartReducerItem> = useSelector((state: IReducersState) => state.cartReducer.items);
+  const goods: Array<ICartReducerItem> = useSelector(selectCartItems);
 
   const initCard = useCallback(() => {
     window.scrollTo(0, 0);
