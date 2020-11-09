@@ -2,7 +2,7 @@
   "name": "js-shop",
   "version": "3.0.0",
   "description": "shop and admin panel for users",
-  "main": "webpack.config.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/sidorovdenis/js-shop.git"
