@@ -48,8 +48,8 @@ app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'))
 
 app.use(express.static(path.join(__dirname, '/www/'))); // static files
 app.use(morgan('tiny')); // logs
-app.use(bodyParse.json());
-app.use(bodyParse.urlencoded({extended: true}));
+app.use(bodyParse.json()); // parse json
+app.use(bodyParse.urlencoded({extended: true})); // parse forms
 app.set('view engine', 'ejs'); // template-engine by default
 
 app.use('/api/goods', cors(), goodRoute);

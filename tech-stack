@@ -45,11 +45,12 @@ Done - Express/Koa
 - Cache
 - Logs
 
+refactoring server.js
 Done - using .env file how - in app!
-Update webpack
-Update nodejs/npm
-Update React to latest
-Update Redux to latest
-Update React-router to latest
-compare with work-project, if find something - will add it!
+Done - Update webpack
+Done - Update nodejs/npm
+Done - Update React to latest
+Done - Update Redux to latest
+Done - Update React-router to latest
+Done - compare with work-project, if find something - will add it!
 using app in docker/redis/ on real linux-server
