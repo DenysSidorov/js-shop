@@ -1,0 +1,19 @@
+server {
+  listen 80;
+
+  server_name my-prod.com;
+
+  location / {
+    proxy_pass http://frontend:3000;
+  }
+
+  location /api {
+    proxy_pass http://t-server:3001;
+    rewrite ^/api/(.*) /$1 break;
+  }
+
+  location /auth/api {
+    proxy_pass http://t-server-auth:3002;
+    rewrite ^/auth/api/(.*) /$1 break;
+  }
+}
