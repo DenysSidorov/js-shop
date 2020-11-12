@@ -3,6 +3,6 @@ node_modules
 npm-debug.log
 
 .dockerignore
-Dockerfile
+Dockerfile.prod
 build
 Dockerfile.prod

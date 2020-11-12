@@ -8,7 +8,9 @@ services:
   #      - "3002:3002"
 
   frontend:
-    build: ./test-front
+    build:
+      dockerfile: Dockerfile.prod
+      context: ./test-front
     container_name: test-front-cont
 #    ports:
 #      - "3000:3000"

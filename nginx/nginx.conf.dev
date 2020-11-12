@@ -1,0 +1,23 @@
+server {
+  listen 80;
+
+  server_name my-prod.local;
+
+  location / {
+    proxy_pass http://frontend:3000;
+    # Needed for sockets
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+
+  location /api {
+    proxy_pass http://t-server:3001;
+    rewrite ^/api/(.*) /$1 break;
+  }
+
+  location /auth/api {
+    proxy_pass http://t-server-auth:3002;
+    rewrite ^/api/(.*) /$1 break;
+  }
+}

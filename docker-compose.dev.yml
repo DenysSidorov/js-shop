@@ -2,6 +2,9 @@ version: '3'
 
 services:
   frontend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./test-front
     command: npm run start
     stdin_open: true
     tty: true
@@ -11,3 +14,13 @@ services:
     command: npm run dev
     volumes:
       - ./test-server/src:/usr/src/app/src
+
+  t-server-auth:
+    command: npm run dev
+    volumes:
+      - ./test-auth/src:/usr/src/app/src
+
+  nginx:
+    volumes:
+      - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf
+
