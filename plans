@@ -1,4 +1,5 @@
 Переделать server.js рефакторинг
+Добавить гифки и описания в shop's github + чекбоксы технологий
 Express -> Koa
 Переделать Readme c чекбоксами вместо зачеркнутого
 VanilaJS -> Typescript на Node
