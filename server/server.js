@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import bodyParse from 'body-parser';
 import cors from 'cors';
+import helmet from 'helmet';
 
 import fs from 'fs';
 import path from 'path';
@@ -44,6 +45,7 @@ mongoose.connect(
 
 const app = express();
 app.disable('x-powered-by'); // disable server's name
+app.use(helmet());
 app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
 
 // app.use(express.static(path.join(__dirname, '/www/'))); // static files
