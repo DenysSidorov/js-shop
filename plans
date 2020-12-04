@@ -3,6 +3,8 @@ add ts
 add tests
 add apollo/graphql
 add redux-saga
+create temp local folder with plans
+new stack on the panel
 
 Добавить гифки и описания в shop's github + чекбоксы технологий
 Express -> Koa
