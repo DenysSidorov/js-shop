@@ -5,6 +5,7 @@ add apollo/graphql
 add redux-saga, and after it add tests (Jest) Unit -> Integration -> End2End
 create temp local folder with plans
 new stack on the panel
+настроить или уже закончить eslint-husky-prettier-precommit
 
 Добавить гифки и описания в shop's github + чекбоксы технологий
 Express -> Koa
