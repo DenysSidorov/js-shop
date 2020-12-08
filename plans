@@ -1,8 +1,8 @@
 add next.js
 add ts
-add tests
+
 add apollo/graphql
-add redux-saga
+add redux-saga, and after it add tests (Jest) Unit -> Integration -> End2End
 create temp local folder with plans
 new stack on the panel
 
