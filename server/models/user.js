@@ -24,8 +24,8 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-UserSchema.methods.comparePassword = (password) => {
-  return Promise.resolve(password === this.password);
-};
+// UserSchema.methods.comparePassword = (password) => {
+//   return Promise.resolve(password === this.password);
+// };
 
 export default mongoose.model('User', UserSchema);
