@@ -211,7 +211,7 @@ const Orders = () => {
                     <span>{ord.address}</span>
                   </td>
                   <td data-label='Mail'>
-                    <span>{ord.mail}</span>
+                    <span>{ord.email}</span>
                   </td>
                   <td data-label='Оплата'>
                     <span>{ord.payment ? ord.payment.value : 'No'}</span>

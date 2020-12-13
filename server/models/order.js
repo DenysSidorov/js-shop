@@ -1,23 +1,25 @@
 import mongoose, {Schema} from 'mongoose';
 
 const OrderSchema = new Schema({
-  payment: {type: Object, require: true, default: {}},
-  price: {type: Number, require: true, default: 0},
-  delivery: {type: String, require: true, default: '-'},
-  name: {type: String, require: true, default: '-'},
-  address: {type: String, require: true, default: '-'},
-  phone: {type: String, require: true},
-  email: {type: String},
-  createdAt: {type: Date, require: true, default: Date.now},
-  type: {type: String, require: true, default: 'new'}, // TYPES: new, progress, done, delivery
+  payment: {type: Object, required: true, default: {}},
+  price: {type: Number, required: true, default: 0},
+  name: {type: String, required: true},
+  phone: {type: String, required: true},
+  createdAt: {type: Date, required: true, default: Date.now},
+  type: {type: String, required: true, default: 'new'}, // TYPES: new, progress, done, delivery
+  delivery: {type: String, default: '-'},
+  address: {type: String, default: '-'},
+  email: {type: String, default: '-'},
   goods: [
     {
-      _id: {type: String, require: true},
-      count: {type: Number, require: true},
-      name: {type: String, require: true},
-      model: {type: String, require: true},
-      sail: {type: Number, require: true},
-      price: {type: Number, require: true}
+      type: Schema.Types.ObjectId,
+      ref: 'Good',
+      // _id: {type: String, required: true},
+      // count: {type: Number, required: true},
+      // name: {type: String},
+      // model: {type: String, required: true},
+      // sail: {type: Number, required: true},
+      // price: {type: Number, required: true}
     }
   ]
 });

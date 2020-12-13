@@ -1,23 +1,24 @@
 import mongoose, {Schema} from 'mongoose';
 
 const GoodSchema = new Schema({
-  _id: {type: String, required: true},
-  name: {type: String, require: true},
-  model: {type: String, require: true},
+  // _id: {type: String, required: true, index: true, unique: true}, // mongoose.ObjectId
+  _id:  mongoose.ObjectId,
+  name: {type: String, required: true},
+  model: {type: String, required: true},
   createdAt: {type: Date, default: Date.now},
-  size: {type: Array, require: true},
-  comments: {type: Array, require: true},
-  price: {type: Number, require: true},
-  photo: {type: Array, require: true},
-  code: {type: String, require: true},
-  'desc-short': {type: String, require: true},
-  'desc-full': {type: String, require: true},
-  tags: {type: Array, require: true},
-  sail: {type: Number, require: true},
-  isNewGood: {type: Boolean, require: true},
-  category: {type: Array, require: true},
-  isExists: {type: Boolean, require: true},
-  producer: {type: String, require: true},
+  price: {type: Number, required: true},
+  code: {type: String, required: true},
+  category: {type: Array, required: true},
+  size: {type: Array},
+  comments: {type: Array},
+  photo: {type: Array},
+  'desc-short': {type: String},
+  'desc-full': {type: String},
+  tags: {type: Array},
+  sail: {type: Number, default: 0},
+  isNewGood: {type: Boolean},
+  isExists: {type: Boolean},
+  producer: {type: String},
   views: {type: Number, default: 0}
 });
 
