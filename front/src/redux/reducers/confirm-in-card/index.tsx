@@ -1,4 +1,5 @@
 import {Action} from 'redux';
+import {produce, Draft} from 'immer';
 
 export const CHANGE_NAME_CONFIRM = 'card-confirm/CHANGE_NAME_CONFIRM';
 
@@ -9,14 +10,14 @@ interface IConfirmsCardAction extends Action {
   payload: string;
 }
 
-const ConfirmInCartReducer = (state: IConfirmsCard = '', action: IConfirmsCardAction): IConfirmsCard => {
+const initialState: IConfirmsCard = '';
+
+const ConfirmInCartReducer = produce((draft: Draft<IConfirmsCard>, action: IConfirmsCardAction): IConfirmsCard | void=> {
   switch (action.type) {
     case CHANGE_NAME_CONFIRM:
       return action.payload;
-    default:
-      return state;
   }
-};
+}, initialState);
 
 export default ConfirmInCartReducer;
 

@@ -37,7 +37,7 @@ const initialState: IAuthReducerState = {
   isAdmin: false
 };
 
-const AuthReducer = produce((draft: Draft<IAuthReducerState>, action: IActionAuthReducer) => {
+const AuthReducer = produce((draft: Draft<IAuthReducerState>, action: IActionAuthReducer): IAuthReducerState | void => {
   /* eslint-disable default-case */
   switch (action.type) {
     case AUTH_USER: {

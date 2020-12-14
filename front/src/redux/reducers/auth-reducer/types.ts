@@ -1,3 +1,5 @@
+
+
 export const AUTH_USER: string = 'authReducer/AUTH_USER';
 export const UNAUTH_USER: string = 'authReducer/UNAUTH_USER';
 export const AUTH_ERROR: string = 'authReducer/AUTH_ERROR';

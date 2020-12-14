@@ -14,7 +14,7 @@ describe('Todo', () => {
   it('should dispatch TOGGLE_TODO action on click', () => {
     var todoData = {
       id: 199,
-      text: 'Write todo.test.jsx test',
+      text: 'Write todo.temp-test.tsx.jsx test',
       completed: true
     };
     var spy = expect.createSpy();

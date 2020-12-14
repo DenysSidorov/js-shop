@@ -7,6 +7,7 @@ import {Router} from 'react-router-dom';
 
 import store, {history} from './redux/store/configureStore';
 import Wrapper from './components/index';
+// import WrapperTest from './components/test';
 
 const App = hot(Wrapper);
 
