@@ -1,3 +1,5 @@
+import {produce, Draft} from 'immer';
+
 export interface IServiceReducer {
   number1: string;
   email1?: string;
@@ -8,6 +10,6 @@ const initialState: IServiceReducer = {
   email1: 'doshki.craft@gmail.com'
 };
 
-export default (state = initialState /* ,action */): IServiceReducer => {
-  return state;
-};
+export default produce((draft: Draft<IServiceReducer> /* ,action */): IServiceReducer | void=> {
+
+}, initialState);
