@@ -3,12 +3,14 @@ import {info} from 'react-notification-system-redux';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
 import {history} from '../../store/configureStore';
 import {IComment} from '../../../interfaces';
+import {
+  ADD_ITEM_IN_CART,
+  DELETE_ITEM_IN_CART,
+  INCREMENT_ITEM_IN_CART,
+  DECREMENT_ITEM_IN_CART,
+  DELETE_ALL_ITEM_IN_CART
+} from './types';
 
-export const ADD_ITEM_IN_CART: string = 'cart/ADD_ITEM_IN_CART';
-export const DELETE_ITEM_IN_CART: string = 'cart/DELETE_ITEM_IN_CART';
-export const INCREMENT_ITEM_IN_CART: string = 'cart/INCREMENT_ITEM_IN_CART';
-export const DECREMENT_ITEM_IN_CART: string = 'cart/DECREMENT_ITEM_IN_CART';
-export const DELETE_ALL_ITEM_IN_CART: string = 'cart/DELETE_ALL_ITEM_IN_CART';
 
 export interface ICartReducerItem {
   _id: number;

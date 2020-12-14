@@ -1,7 +1,6 @@
 import {Action} from 'redux';
 import {produce, Draft} from 'immer';
-
-export const CHANGE_NAME_CONFIRM = 'card-confirm/CHANGE_NAME_CONFIRM';
+import {CHANGE_NAME_CONFIRM} from './types';
 
 export type IConfirmsCard = string;
 
