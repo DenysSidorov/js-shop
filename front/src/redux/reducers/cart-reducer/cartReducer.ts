@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import {info} from 'react-notification-system-redux';
+import {produce, Draft, current} from 'immer';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
 import {history} from '../../store/configureStore';
 import {IComment} from '../../../interfaces';
@@ -38,94 +39,60 @@ export interface ICartReducerState {
   items: Array<ICartReducerItem>;
 }
 
-export default (state: ICartReducerState = getFromLocalData('cart'), action: any): ICartReducerState => {
+const initialState: ICartReducerState = getFromLocalData();
+
+export default produce((draft: Draft<ICartReducerState>, action: any): ICartReducerState | void => {
   switch (action.type) {
     case ADD_ITEM_IN_CART: {
-      let result: ICartReducerState = {items: []};
-      let newArr: Array<ICartReducerItem> = [];
-      if (state.items.some((el: ICartReducerItem) => el._id === action.payload._id)) {
-        state.items.forEach((el: ICartReducerItem) => {
+      if (draft.items.some((el: ICartReducerItem) => el._id === action.payload._id)) {
+        draft.items.forEach((el: ICartReducerItem, index) => {
           if (el._id === action.payload._id) {
-            const newEl = {...el};
-            newEl.count++;
-            newArr.push(newEl);
-          } else {
-            newArr.push(el);
+            draft.items[index].count = draft.items[index].count + 1;
           }
         });
       } else {
-        const newPayload = {...action.payload};
-        newPayload.count = 1;
-        newArr = [...state.items, newPayload];
+        draft.items.push({...action.payload, count: 1});
       }
-      result = {...state, items: newArr};
-      setInLocalData(result);
-      return result;
+      setInLocalData(current(draft));
+      break;
     }
     case DELETE_ITEM_IN_CART: {
-      const newState: ICartReducerState = {...state};
-      const result = {
-        ...newState,
-        items: state.items.filter((el: ICartReducerItem) => el._id !== action.payload._id)
-      };
-      setInLocalData(result);
-      return result;
+      const filteredDraftItems = draft.items.filter((el: ICartReducerItem) => el._id !== action.payload._id);
+      draft.items = filteredDraftItems;
+      setInLocalData(current(draft));
+      break;
     }
     case DELETE_ALL_ITEM_IN_CART: {
-      const result: ICartReducerState = {
-        ...state,
-        items: []
-      };
-      setInLocalData(result);
-      return result;
+      draft.items = [];
+      setInLocalData(current(draft));
+      break;
     }
     case INCREMENT_ITEM_IN_CART: {
-      const newState: ICartReducerState = {...state};
-      const newArr: Array<ICartReducerItem> = [];
-      if (newState.items.some((el: ICartReducerItem) => el._id === action.payload)) {
-        newState.items.forEach((el: ICartReducerItem) => {
+      if (draft.items.some((el: ICartReducerItem) => el._id === action.payload)) {
+        draft.items.forEach((el: ICartReducerItem, index) => {
           if (el._id === action.payload) {
-            const newEl: ICartReducerItem = {...el};
-            newEl.count++;
-            newArr.push(newEl);
-          } else {
-            newArr.push(el);
+            draft.items[index].count = draft.items[index].count + 1;
           }
         });
-        const result: ICartReducerState = {...newState, items: newArr};
-        setInLocalData(result);
-        return result;
       }
-      setInLocalData(newState);
-      return newState;
+      setInLocalData(current(draft));
+      break;
     }
-
     case DECREMENT_ITEM_IN_CART: {
-      const newState: ICartReducerState = {...state};
-      const newArr: Array<ICartReducerItem> = [];
-      if (newState.items.some((el: ICartReducerItem) => el._id === action.payload)) {
-        newState.items.forEach((el: ICartReducerItem) => {
+      if (draft.items.some((el: ICartReducerItem) => el._id === action.payload)) {
+        draft.items.forEach((el: ICartReducerItem, index) => {
           if (el._id === action.payload) {
-            const newEl: ICartReducerItem = {...el};
-            if (newEl.count > 1) {
-              newEl.count--;
+            if (el.count > 1) {
+              draft.items[index].count = draft.items[index].count - 1;
             }
-            newArr.push(newEl);
-          } else {
-            newArr.push(el);
           }
         });
-        const result: ICartReducerState = {...newState, items: newArr};
-        setInLocalData(result);
-        return result;
       }
-      setInLocalData(newState);
-      return newState;
+      setInLocalData(current(draft));
+      break;
     }
-    default:
-      return state;
   }
-};
+}, initialState);
 
 export const pushToCart = (item: ICartReducerItem) => {
   return function (dispatch: Function) {
@@ -147,6 +114,7 @@ export const pushToCart = (item: ICartReducerItem) => {
 };
 
 export const deleteFromCart = (item: ICartReducerItem) => {
+  console.log('delete item', item);
   return {type: DELETE_ITEM_IN_CART, payload: item};
 };
 
@@ -161,6 +129,8 @@ export const decrementItem = (id: string | number) => {
 export const deleteAll = () => {
   return {type: DELETE_ALL_ITEM_IN_CART};
 };
+
+// TODO update local state in 100 ms, after actions will be fired;
 
 /**
  const initialState = {
