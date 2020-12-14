@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import {info} from 'react-notification-system-redux';
 import {produce, Draft, current} from 'immer';
 import {setInLocalData, getFromLocalData} from './local-data-helper';
