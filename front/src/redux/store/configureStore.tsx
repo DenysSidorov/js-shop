@@ -3,11 +3,12 @@ import {Store, createStore, applyMiddleware, compose} from 'redux';
 import {createBrowserHistory} from 'history';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
+import saveCartState from '../middlewares/saveCartInUserStorage';
 
 export const history = createBrowserHistory();
 const initialState = {};
 const enhancers: any[] = [];
-const middleware = [thunk];
+const middleware = [saveCartState, thunk];
 const isDevMode = process.env.NODE_ENV === 'development';
 
 function setDevTools() {

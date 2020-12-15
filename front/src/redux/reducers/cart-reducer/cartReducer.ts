@@ -1,6 +1,6 @@
 import {info} from 'react-notification-system-redux';
-import {produce, Draft, current} from 'immer';
-import {setInLocalData, getFromLocalData} from './local-data-helper';
+import {produce, Draft} from 'immer';
+import {getFromLocalData} from './local-data-helper';
 import {history} from '../../store/configureStore';
 import {IComment} from '../../../interfaces';
 import {
@@ -52,18 +52,15 @@ export default produce((draft: Draft<ICartReducerState>, action: any): ICartRedu
       } else {
         draft.items.push({...action.payload, count: 1});
       }
-      setInLocalData(current(draft));
       break;
     }
     case DELETE_ITEM_IN_CART: {
       const filteredDraftItems = draft.items.filter((el: ICartReducerItem) => el._id !== action.payload._id);
       draft.items = filteredDraftItems;
-      setInLocalData(current(draft));
       break;
     }
     case DELETE_ALL_ITEM_IN_CART: {
       draft.items = [];
-      setInLocalData(current(draft));
       break;
     }
     case INCREMENT_ITEM_IN_CART: {
@@ -74,7 +71,6 @@ export default produce((draft: Draft<ICartReducerState>, action: any): ICartRedu
           }
         });
       }
-      setInLocalData(current(draft));
       break;
     }
     case DECREMENT_ITEM_IN_CART: {
@@ -87,7 +83,6 @@ export default produce((draft: Draft<ICartReducerState>, action: any): ICartRedu
           }
         });
       }
-      setInLocalData(current(draft));
       break;
     }
   }
