@@ -13,6 +13,7 @@ Express -> Koa Не особо нужно
 Typescript на Node
 prepare redux before sagas
 
+ибавиться от dependabot notifications
 Сделать обращения к серверу, при наличии токена для панели (токен в хедеры)
 
 Back - Страница  с отзывами c меню ссылка!!!!!!
