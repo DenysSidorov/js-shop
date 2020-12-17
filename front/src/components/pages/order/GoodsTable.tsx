@@ -2,12 +2,8 @@ import React, {FC, useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './index.less';
-import {
-  deleteFromCart,
-  incrementItem,
-  decrementItem,
-  ICartReducerItem
-} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {deleteFromCart, incrementItem, decrementItem} from '../../../redux/reducers/cart-reducer/actions';
 import AllPrice from './AllPrice';
 import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 

@@ -1,7 +1,8 @@
 import React, {useCallback, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {ICartReducerItem, pushToCart} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {pushToCart} from '../../../redux/reducers/cart-reducer/actions';
 import OneClickModal from '../../parts/modals/one-click-modal/OneClickModal';
 import {checkTextLength} from '../../../helpers/libs/utils';
 import './index.less';

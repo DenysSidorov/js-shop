@@ -1,7 +1,7 @@
-import {info} from 'react-notification-system-redux';
+// import {info} from 'react-notification-system-redux';
 import {produce, Draft} from 'immer';
 import {getFromLocalData} from './local-data-helper';
-import {history} from '../../store/configureStore';
+// import {history} from '../../store/configureStore';
 import {IComment} from '../../../interfaces';
 import {
   ADD_ITEM_IN_CART,
@@ -87,44 +87,6 @@ export default produce((draft: Draft<ICartReducerState>, action: any): ICartRedu
     }
   }
 }, initialState);
-
-export const pushToCart = (item: ICartReducerItem) => {
-  return function (dispatch: Function) {
-    console.log(item, 'ITEM');
-    const notificationOpts = {
-      title: 'Товар добавлен в корзину',
-      message: `${item.name} ${item.model}`,
-      autoDismiss: 3,
-      action: {
-        label: 'В корзину',
-        callback: () => history.push('/order')
-      },
-      position: 'br'
-    };
-    // @ts-ignore
-    dispatch(info(notificationOpts));
-    dispatch({type: ADD_ITEM_IN_CART, payload: item});
-  };
-};
-
-export const deleteFromCart = (item: ICartReducerItem) => {
-  console.log('delete item', item);
-  return {type: DELETE_ITEM_IN_CART, payload: item};
-};
-
-export const incrementItem = (id: string | number) => {
-  return {type: INCREMENT_ITEM_IN_CART, payload: id};
-};
-
-export const decrementItem = (id: string | number) => {
-  return {type: DECREMENT_ITEM_IN_CART, payload: id};
-};
-
-export const deleteAll = () => {
-  return {type: DELETE_ALL_ITEM_IN_CART};
-};
-
-// TODO update local state in 100 ms, after actions will be fired;
 
 /**
  const initialState = {
