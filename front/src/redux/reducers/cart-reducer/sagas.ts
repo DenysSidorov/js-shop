@@ -25,7 +25,7 @@ function* addItem(action: any) {
     yield put(info(notification));
     yield put({type: ADD_ITEM_IN_CART, payload: action.payload});
   } catch (e) {
-    yield put({type: "USER_FETCH_FAILED", message: e.message});
+    // yield put({type: TYPE_EXAMPLE, message: e.message});
   }
 }
 
