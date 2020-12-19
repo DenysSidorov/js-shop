@@ -1,14 +1,17 @@
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Store, createStore, applyMiddleware, compose} from 'redux';
+import createSagaMiddleware from 'redux-saga'
 import {createBrowserHistory} from 'history';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 import saveCartState from '../middlewares/saveCartInUserStorage';
+import {cartSaga} from '../reducers/cart-reducer/sagas';
 
 export const history = createBrowserHistory();
 const initialState = {};
 const enhancers: any[] = [];
-const middleware = [saveCartState, thunk];
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware, thunk, saveCartState];
 const isDevMode = process.env.NODE_ENV === 'development';
 
 function setDevTools() {
@@ -31,5 +34,8 @@ let composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
 composedEnhancers = isDevMode ? composeWithDevTools(composedEnhancers) : composedEnhancers;
 
 const store: Store = createStore(rootReducer, initialState, composedEnhancers);
+
+sagaMiddleware.run(cartSaga);
+console.log(cartSaga);
 
 export default store;

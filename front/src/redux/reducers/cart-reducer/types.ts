@@ -1,5 +1,7 @@
 import {cartReducerIdentificator as identificator} from '../reducerIdentificators';
 
+export const ADD_ITEM_IN_CART_SAGA_REQUESTED: string = `${identificator}/ADD_ITEM_IN_CART_SAGA_REQUESTED`;
+
 export const ADD_ITEM_IN_CART: string = `${identificator}/ADD_ITEM_IN_CART`;
 export const DELETE_ITEM_IN_CART: string = `${identificator}/DELETE_ITEM_IN_CART`;
 export const INCREMENT_ITEM_IN_CART: string = `${identificator}/INCREMENT_ITEM_IN_CART`;

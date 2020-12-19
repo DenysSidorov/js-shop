@@ -1,3 +1,4 @@
+/**
 import React from "react";
 // import style from './mainBodyCard.less';
 // import {bindActionCreators} from 'redux';
@@ -55,3 +56,4 @@ function randomInteger(min, max) {
   rand = Math.floor(rand);
   return rand;
 }
+*/
