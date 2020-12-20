@@ -5,7 +5,7 @@ import {createBrowserHistory} from 'history';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 import saveCartState from '../middlewares/saveCartInUserStorage';
-import {cartSaga} from '../reducers/cart-reducer/sagas';
+import rootSaga from './rootSaga';
 
 export const history = createBrowserHistory();
 const initialState = {};
@@ -35,7 +35,6 @@ composedEnhancers = isDevMode ? composeWithDevTools(composedEnhancers) : compose
 
 const store: Store = createStore(rootReducer, initialState, composedEnhancers);
 
-sagaMiddleware.run(cartSaga);
-console.log(cartSaga);
+sagaMiddleware.run(rootSaga);
 
 export default store;
