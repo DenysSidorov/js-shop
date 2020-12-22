@@ -1,4 +1,4 @@
-import {GET_TYPES} from './types';
+import  * as types from './types';
 import {produce, Draft} from 'immer';
 
 export type AdminPanelStateType = {
@@ -17,7 +17,7 @@ const initialState: IAdminPanel = {countTypes: {new: 0, progress: 0, done: 0, de
 
 const adminPanelReducer = produce((draft: Draft<IAdminPanel>, action: any): IAdminPanel | void => {
   switch (action.type) {
-    case GET_TYPES: {
+    case types.GET_TYPES: {
 
       const nullState: AdminPanelStateType = {new: 0, progress: 0, done: 0, delivery: 0};
 

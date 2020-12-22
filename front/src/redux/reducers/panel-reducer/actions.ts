@@ -1,9 +1,8 @@
 import axios from 'axios';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
-import {GET_TYPES} from './types';
+import * as types from './types';
 import urlApi from '../../../api/urlApi';
 
-// eslint-disable-next-line import/prefer-default-export
 export function getTypes(token: string) {
   return async function (dispatch: Function) {
     dispatch(showLoading());
@@ -12,7 +11,7 @@ export function getTypes(token: string) {
         headers: {authorization: token}
       });
       dispatch(hideLoading());
-      dispatch({type: GET_TYPES, payload: result.data});
+      dispatch({type: types.GET_TYPES, payload: result.data});
     } catch (err) {
       dispatch(hideLoading());
       console.log(err.message || err);
