@@ -1,6 +1,9 @@
-import axios, {apiBaseURL} from './axiosConfig';
+import axios from './axiosConfig';
 
-setTimeout( function badExample() {
-  console.log(axios, apiBaseURL);
-}, 99999999);
-
+export const getTypesAPI = async (token: string) => {
+  return axios({
+    method: 'get',
+    url: '/orders/get-types',
+    headers: {authorization: token}
+  });
+};
