@@ -25,7 +25,7 @@ Not implemented :
 - _**~~IMAGE COMPONENT~~**_
 - _**~~REDUX STORE FOR CART~~**_
 - _~~confirm for user in card~~_
-- _fasr buy products_
+- _fast buy products_
 - _~~react inputs~~_
 - _~~images from GOOGLE CLOUD STORAGE~~_
 - _blog_
