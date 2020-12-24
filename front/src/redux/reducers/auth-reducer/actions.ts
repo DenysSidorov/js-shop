@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import {history} from '../../store/configureStore';
 import {
   AUTH_USER,
@@ -8,7 +7,7 @@ import {
   DELETE_ERROR_MESSAGE,
   APPEAR_LIKE_ADMIN,
   DISAPPEAR_LIKE_ADMIN,
-  UNAUTH_USER_SAGA_REQUESTED, SIGN_IN_SAGA_REQUESTED
+  UNAUTH_USER_SAGA_REQUESTED, SIGN_IN_SAGA_REQUESTED, SIGN_UP_SAGA_REQUESTED
 } from './types';
 import urlApi from '../../../api/urlApi';
 
@@ -82,27 +81,34 @@ export function signinUser(login: string, password: string) {
   return {type: SIGN_IN_SAGA_REQUESTED, payload: {login, password}}
 }
 
-export function signupUser(login: string, password: string, nick: string) {
-  console.log(login, password, nick, 'REQUEST');
-  return function (dispatch: Function) {
-    // Submit email/password to the server
-    dispatch(showLoading());
-    axios
-      .post(`${urlApi}/api/signup`, {login, password, nick})
-      .then((response: any) => {
-        console.log(response.message, 'response.message');
-        dispatch(hideLoading());
-        console.log('auth reducer /verify-email');
-        history.push({pathname: '/verify-email', state: response.data});
-      })
-      .catch((error) => {
-        dispatch(hideLoading());
-        dispatch(authError(error.response.data.message));
-      });
-  };
+// interface ISignUp {
+//   login: string, password: string, nick: string
+// }
+export type ISignUpFunction = (login: string, password: string, nick: string) => void;
+
+// export const signupUser: ISignUpFunction = function (login, password, nick) {
+//   console.log(login, password, nick, 'REQUEST');
+//   return function (dispatch: Function) {
+//     dispatch(showLoading());
+//     axios
+//       // .post(`${urlApi}/api/signup`, {login, password, nick})
+//       .post(`${urlApi}/api/signup`, {login, password, nick})
+//       .then((response: any) => {
+//         console.log(response.message, 'response.message');
+//         dispatch(hideLoading());
+//         console.log('auth reducer /verify-email');
+//         history.push({pathname: '/verify-email', state: response.data});
+//       })
+//       .catch((error) => {
+//         dispatch(hideLoading());
+//         dispatch(authError(error.response.data.message));
+//       });
+//   };
+// }
+
+export const signupUser: ISignUpFunction = function (login, password, nick) {
+  return {type: SIGN_UP_SAGA_REQUESTED, payload: {login, password, nick}};
 }
-
-
 
 export function signoutUser() {
   return {type: UNAUTH_USER_SAGA_REQUESTED};

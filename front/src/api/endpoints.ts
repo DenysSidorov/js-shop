@@ -1,4 +1,5 @@
 import axios from './axiosConfig';
+import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 
 export const getTypesAPI = async (token: string) => {
   return axios({
@@ -13,6 +14,14 @@ export const signIn = async (login: any, password: any) => {
     method: 'post',
     url: '/signin',
     data: {login, password}
+  });
+};
+
+export const signUp: ISignUpFunction = async (login, password, nick) => {
+  return axios({
+    method: 'post',
+    url: '/signup',
+    data: {login, password, nick}
   });
 };
 
