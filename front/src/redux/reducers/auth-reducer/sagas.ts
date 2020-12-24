@@ -56,6 +56,15 @@ export const signUpUserSaga = function* (action:any) {
   }
 }
 
+export function* saveUserTokenSaga(action: any) {
+  // dispatch({type: AUTH_USER});
+  yield put({type: types.AUTH_USER});
+  // localStorage.setItem('info', token);
+  yield call([localStorage, localStorage.setItem], 'info', action.payload);
+  // history.push('/shop');
+  yield call(history.push, '/shop');
+}
+
 
 function* signoutUserSaga() {
   yield call([localStorage, localStorage.removeItem], 'info');
@@ -66,6 +75,7 @@ export function* authSaga() {
   yield all([
     takeLatest(types.UNAUTH_USER_SAGA_REQUESTED, signoutUserSaga),
     takeLatest(types.SIGN_IN_SAGA_REQUESTED, signInUserSaga),
-    takeLatest(types.SIGN_UP_SAGA_REQUESTED, signUpUserSaga)
+    takeLatest(types.SIGN_UP_SAGA_REQUESTED, signUpUserSaga),
+    takeLatest(types.AUTH_USER_SAGA_REQUESTED, saveUserTokenSaga)
   ]);
 }

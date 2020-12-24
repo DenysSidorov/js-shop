@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {history} from '../../store/configureStore';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -7,7 +6,7 @@ import {
   DELETE_ERROR_MESSAGE,
   APPEAR_LIKE_ADMIN,
   DISAPPEAR_LIKE_ADMIN,
-  UNAUTH_USER_SAGA_REQUESTED, SIGN_IN_SAGA_REQUESTED, SIGN_UP_SAGA_REQUESTED
+  UNAUTH_USER_SAGA_REQUESTED, SIGN_IN_SAGA_REQUESTED, SIGN_UP_SAGA_REQUESTED, AUTH_USER_SAGA_REQUESTED
 } from './types';
 import urlApi from '../../../api/urlApi';
 
@@ -17,15 +16,6 @@ export function deleteErrorMessage() {
 
 export function authError(error: any) {
   return {type: AUTH_ERROR, payload: error};
-}
-
-
-export function saveUserToken(token: string) {
-  return function (dispatch: Function) {
-    dispatch({type: AUTH_USER});
-    localStorage.setItem('info', token);
-    history.push('/shop');
-  };
 }
 
 export function isValidToken(token: string | null) {
@@ -105,6 +95,10 @@ export type ISignUpFunction = (login: string, password: string, nick: string) =>
 //       });
 //   };
 // }
+
+export function saveUserToken(token: string) {
+    return {type: AUTH_USER_SAGA_REQUESTED, payload: token}
+}
 
 export const signupUser: ISignUpFunction = function (login, password, nick) {
   return {type: SIGN_UP_SAGA_REQUESTED, payload: {login, password, nick}};
