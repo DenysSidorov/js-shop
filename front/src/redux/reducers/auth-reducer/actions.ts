@@ -7,13 +7,19 @@ import {
   AUTH_ERROR,
   DELETE_ERROR_MESSAGE,
   APPEAR_LIKE_ADMIN,
-  DISAPPEAR_LIKE_ADMIN
+  DISAPPEAR_LIKE_ADMIN,
+  UNAUTH_USER_SAGA_REQUESTED, SIGN_IN_SAGA_REQUESTED
 } from './types';
 import urlApi from '../../../api/urlApi';
 
 export function deleteErrorMessage() {
   return {type: DELETE_ERROR_MESSAGE};
 }
+
+export function authError(error: any) {
+  return {type: AUTH_ERROR, payload: error};
+}
+
 
 export function saveUserToken(token: string) {
   return function (dispatch: Function) {
@@ -70,46 +76,10 @@ export function isAdminFunc(token?: string | null) {
   };
 }
 
-export function authError(error: any) {
-  return {
-    type: AUTH_ERROR,
-    payload: error
-  };
-}
+
 
 export function signinUser(login: string, password: string) {
-  console.log(login, password, 'REQUEST222');
-  return function (dispatch: Function) {
-    // Submit email/password to the server
-    dispatch(showLoading());
-    axios
-      .post(`${urlApi}/api/signin`, {login, password})
-      .then((response) => {
-        dispatch({type: AUTH_USER});
-        localStorage.setItem('info', response.data);
-        dispatch(hideLoading());
-        history.push('/shop');
-        return response.data;
-      })
-      .then(async (token) => {
-        try {
-          const isAdmin = await axios.post(`${urlApi}/api/isadmin`, {authtoken: token});
-          console.log(isAdmin.data.isadmin, 'isamin');
-          if (isAdmin.data.isadmin) {
-            dispatch({type: APPEAR_LIKE_ADMIN});
-          } else {
-            dispatch({type: DISAPPEAR_LIKE_ADMIN});
-          }
-        } catch (er) {
-          console.log(er);
-        }
-      })
-      .catch((error) => {
-        console.log(error.response, 'error.response');
-        dispatch(hideLoading());
-        dispatch(authError(error.response.data.message));
-      });
-  };
+  return {type: SIGN_IN_SAGA_REQUESTED, payload: {login, password}}
 }
 
 export function signupUser(login: string, password: string, nick: string) {
@@ -132,7 +102,8 @@ export function signupUser(login: string, password: string, nick: string) {
   };
 }
 
+
+
 export function signoutUser() {
-  localStorage.removeItem('info');
-  return {type: UNAUTH_USER};
+  return {type: UNAUTH_USER_SAGA_REQUESTED};
 }
