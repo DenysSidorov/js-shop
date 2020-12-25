@@ -2,16 +2,23 @@
 
 Main tools:
 
-- Node
-- Express
-- MongoDB / Mongoose
-- Redux / Middlewares
+FRONT-END
+- React 16-17, new features
+- React Hooks
+- React-Router 4
+- Redux, 
+- Redux-Saga
+- Reselect
+- Immer
 - TypeScript
-- ReactJS/Hooks/Libraries/Router
-- SASS / LESS
-- Webpack
+- SASS, SCSS, flexboxes
+- Webpack 4 own config
 
-
+BACK-END
+- Node
+- MongoDB, Mongoose
+- Express, Router
+- Docker
 
 Not implemented :
 
