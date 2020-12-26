@@ -6,9 +6,13 @@ import {getTypesAPI} from '../../../api/endpoints';
 function* getTypes(action: any) {
   yield put(showLoading());
   try {
-    const result = yield call(getTypesAPI, action.payload);
-    yield put({type: types.GET_TYPES, payload: result.data});
-    yield put(hideLoading());
+    const response = yield call(getTypesAPI, action.payload);
+    if (response.status && response.status === 200) {
+      yield put({type: types.GET_TYPES, payload: response.data});
+      yield put(hideLoading());
+    } else {
+      throw response;
+    }
   } catch (err) {
     yield put(hideLoading());
     console.log(err.message || err);

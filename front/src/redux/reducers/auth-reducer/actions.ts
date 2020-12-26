@@ -1,6 +1,8 @@
 import * as types from './types';
 
-export function deleteErrorMessage() {
+interface IDeleteErrorMessage {type: typeof types.DELETE_ERROR_MESSAGE}
+
+export function deleteErrorMessage(): IDeleteErrorMessage{
   return {type: types.DELETE_ERROR_MESSAGE};
 }
 
