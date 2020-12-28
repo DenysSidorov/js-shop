@@ -1,15 +1,7 @@
 import {Action} from 'redux';
 import {produce, Draft} from 'immer';
 
-import {
-  AUTH_USER,
-  UNAUTH_USER,
-  AUTH_ERROR,
-  FETCH_MESSAGE,
-  DELETE_ERROR_MESSAGE,
-  APPEAR_LIKE_ADMIN,
-  DISAPPEAR_LIKE_ADMIN
-} from './types';
+import * as types from './types';
 
 export interface IAuthReducerState {
   error: string;
@@ -40,34 +32,34 @@ const initialState: IAuthReducerState = {
 const AuthReducer = produce((draft: Draft<IAuthReducerState>, action: IActionAuthReducer): IAuthReducerState | void => {
   /* eslint-disable default-case */
   switch (action.type) {
-    case AUTH_USER: {
+    case types.AUTH_USER: {
       draft.error = '';
       draft.authenticated = true;
       break;
     }
-    case UNAUTH_USER: {
+    case types.UNAUTH_USER: {
       draft.authenticated = false;
       draft.isAdmin = false;
       break;
     }
-    case AUTH_ERROR: {
+    case types.AUTH_ERROR: {
       draft.error = action.payload;
       break;
     }
-    case FETCH_MESSAGE: {
+    case types.FETCH_MESSAGE: {
       draft.message = action.payload;
       break;
     }
-    case DELETE_ERROR_MESSAGE: {
+    case types.DELETE_ERROR_MESSAGE: {
       draft.error = '';
       break;
     }
 
-    case APPEAR_LIKE_ADMIN: {
+    case types.APPEAR_LIKE_ADMIN: {
       draft.isAdmin = true;
       break;
     }
-    case DISAPPEAR_LIKE_ADMIN: {
+    case types.DISAPPEAR_LIKE_ADMIN: {
       draft.isAdmin = false;
       break;
     }
