@@ -4,7 +4,7 @@ const GoodSchema = new Schema({
   _id: {type: String, required: true},
   name: {type: String},
   model: {type: String},
-  createdAt: {type: Date, default: Date.now},
+  createdAt: {type: Date, default: Date.now}, // timestamps: true - will add createdAt, updatedAt
   size: {type: Array},
   comments: {type: Array},
   price: {type: Number},
