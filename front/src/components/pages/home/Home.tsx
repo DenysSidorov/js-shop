@@ -12,6 +12,7 @@ import HeadBanner from '../../modules/head-banner/HeadBanner';
 import LinksToImages from '../../modules/links-to-images/LinksToImages';
 import SimilarGoodsSection from '../../modules/similar-goods-section/SimilarGoodsSection';
 import {IHistory} from '../../../interfaces';
+import HomePageSpinner from './HomePageSpinner';
 
 interface IHome extends IHistory {}
 
@@ -64,6 +65,9 @@ const Home = ({location, history}: IHome) => {
         }
         popularCards = await axios.get(`${urlApi}/api/goods/popular`);
         uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
+
+
+
       } catch (e) {
         console.log(e);
       } finally {
@@ -148,11 +152,7 @@ const Home = ({location, history}: IHome) => {
         />
       ) : null}
       {cardsState && cardsState.length ? <LinksToImages /> : null}
-      {!cardsState.length ? (
-        <div className='adminPanelSpinner'>
-          <i className='fa fa-spinner' />
-        </div>
-      ) : null}
+      {!cardsState.length ? <HomePageSpinner/> : null}
       {popularCardsState && popularCardsState.length > 0 ? (
         <SimilarGoodsSection cards={popularCardsState} title='Популярные' />
       ) : null}
