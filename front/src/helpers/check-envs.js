@@ -1,4 +1,5 @@
-/* eslint no-console: 0 */
+// WEBPACK service which checks all envs were gotten by application
+
 const checkENVs = (envs, inProduction) => {
   // List variables which will be checked
   const arrForCheckEnvs = []; // ['hostname', 'DOMAIN_SETTINGS', 'API', 'PUBLISH',

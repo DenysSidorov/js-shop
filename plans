@@ -13,6 +13,7 @@ Express -> Koa Не особо нужно
 Typescript на Node
 prepare redux before sagas
 
+перенести формирование метатегов (title, description, keywords) в HOC или еще куда-нибудь
 ибавиться от dependabot notifications
 Сделать обращения к серверу, при наличии токена для панели (токен в хедеры)
 
