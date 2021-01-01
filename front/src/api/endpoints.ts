@@ -9,7 +9,7 @@ export const getTypesAPI = async (token: string) => {
   });
 };
 
-export const signIn = async (login: any, password: any) => {
+export const signInAPI = async (login: any, password: any) => {
   return axios({
     method: 'post',
     url: '/signin',
@@ -17,7 +17,7 @@ export const signIn = async (login: any, password: any) => {
   });
 };
 
-export const signUp: ISignUpFunction = async (login, password, nick) => {
+export const signUpAPI: ISignUpFunction = async (login, password, nick) => {
   return axios({
     method: 'post',
     url: '/signup',
@@ -25,7 +25,7 @@ export const signUp: ISignUpFunction = async (login, password, nick) => {
   });
 };
 
-export const isAdmin = async (token: string) => {
+export const isAdminAPI = async (token: string) => {
   return axios({
     method: 'post',
     url: '/isadmin',

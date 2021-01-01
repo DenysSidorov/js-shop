@@ -1,7 +1,7 @@
 import {takeLatest, all, put, call, fork} from 'redux-saga/effects';
 import {get} from 'lodash';
 import {hideLoading, showLoading} from 'react-redux-loading-bar';
-import {signIn, isAdmin, signUp} from '../../../api/endpoints';
+import {signInAPI, isAdminAPI, signUpAPI} from '../../../api/endpoints';
 import {history} from '../../store/configureStore';
 import * as types from './types';
 import {authError} from './actions';
@@ -9,7 +9,7 @@ import {authError} from './actions';
 function* signInUserSaga(action: any) {
   yield put(showLoading());
   try {
-    const response = yield call(signIn, action.payload.login, action.payload.password);
+    const response = yield call(signInAPI, action.payload.login, action.payload.password);
     if (response.status && response.status === 200) {
       yield put({type: types.AUTH_USER});
       yield call([localStorage, localStorage.setItem], 'info', response.data);
@@ -29,7 +29,7 @@ export const signUpUserSaga = function* (action:any) {
   yield put(showLoading());
 
   try {
-    const response = yield call(signUp, action.payload.login, action.payload.password, action.payload.nick);
+    const response = yield call(signUpAPI, action.payload.login, action.payload.password, action.payload.nick);
     if (response.status && response.status === 200) {
       yield put(hideLoading());
       yield call(history.push, {pathname: '/verify-email', state: response.data});
@@ -45,7 +45,7 @@ export const signUpUserSaga = function* (action:any) {
 function* isAdminSaga() {
   try {
     const token = yield call([localStorage, localStorage.getItem], 'info');
-    const response = yield call(isAdmin, token);
+    const response = yield call(isAdminAPI, token);
     if (get(response, 'data.isadmin', null)) {
       yield put({type: types.APPEAR_LIKE_ADMIN});
       yield put({type: types.AUTH_USER});
