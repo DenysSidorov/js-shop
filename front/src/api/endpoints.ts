@@ -1,5 +1,26 @@
 import axios from './axiosConfig';
 import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
+import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
+import {IGetGoodsParams} from './interfaces';
+
+export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
+  let sort: string = '';
+  let pagesize: string = '';
+  let numberpage: string = '';
+
+  if (objParam) {
+    sort = objParam.sort;
+    pagesize = objParam.pagesize;
+    numberpage = objParam.numberpage;
+  }
+
+  const paramsURL = composeUrlStringFromObj({sort, pagesize, numberpage});
+
+  return axios({
+    method: 'get',
+    url: `/goods/${paramsURL}`,
+  });
+};
 
 export const getTypesAPI = async (token: string) => {
   return axios({
@@ -9,7 +30,7 @@ export const getTypesAPI = async (token: string) => {
   });
 };
 
-export const signInAPI = async (login: any, password: any) => {
+export const signInAPI = async (login: string, password: string) => {
   return axios({
     method: 'post',
     url: '/signin',

@@ -13,6 +13,7 @@ import LinksToImages from '../../modules/links-to-images/LinksToImages';
 import SimilarGoodsSection from '../../modules/similar-goods-section/SimilarGoodsSection';
 import {IHistory} from '../../../interfaces';
 import HomePageSpinner from './HomePageSpinner';
+import {getGoodsAPI} from '../../../api/endpoints';
 
 interface IHome extends IHistory {}
 
@@ -24,15 +25,12 @@ const Home = ({location, history}: IHome) => {
   const [countState, setCount] = useState<number>(1);
 
   useEffect(() => {
-
-    // setCards([]);
-
     const getData = async () => {
       window.scrollTo(0, 0);
       const params = linkParams(history.location.search);
       const sort = params.sort;
-      const pageSize = params.pagesize;
-      const numberPage = params.numberpage;
+      const pagesize = params.pagesize;
+      const numberpage = params.numberpage;
 
       let cards: any = [];
       let popularCards: any = [];
@@ -55,26 +53,15 @@ const Home = ({location, history}: IHome) => {
       }
 
       try {
-        if (sort) {
-          if (pageSize && numberPage) {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${sort}&pagesize=${pageSize}&numberpage=${numberPage}`);
-          } else {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${sort}`);
-          }
-        } else if (pageSize && numberPage) {
-          cards = await axios.get(`${urlApi}/api/goods?pagesize=${pageSize}&numberpage=${numberPage}`);
-        } else {
-          cards = await axios.get(`${urlApi}/api/goods`);
-        }
+        cards = await getGoodsAPI({sort, pagesize, numberpage});
         popularCards = await axios.get(`${urlApi}/api/goods/popular`);
         uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
-
       } catch (e) {
         console.log(e);
       } finally {
         setCount(cards.data.count);
         setCards(cards.data.goods);
-        setPaginationPageActive((numberPage && numberPage - 1) || 0);
+        setPaginationPageActive((numberpage && numberpage - 1) || 0);
         setPopularCards(popularCards.data);
         setUniqCategory(uniqCategory.data);
       }
@@ -86,8 +73,8 @@ const Home = ({location, history}: IHome) => {
   useEffect(() => {
     const getData = async () => {
       const params = linkParams(history.location.search);
-      const numberPage = params.numberpage;
-      setPaginationPageActive((numberPage && numberPage - 1) || 0);
+      const numberpage = params.numberpage;
+      setPaginationPageActive((numberpage && numberpage - 1) || 0);
     };
     getData();
   }, [history.location.search]);

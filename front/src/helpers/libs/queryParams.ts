@@ -13,4 +13,23 @@ const params = function (locationSearch: string) {
   return result;
 };
 
+export const composeUrlStringFromObj = (obj: any) => {
+  if (Object.keys(obj).length === 0) return '';
+
+  let result = decodeURIComponent(
+    Object.keys(obj)
+      .reduce((prev, cur, index) => {
+        if (obj[cur] === undefined || obj[cur] === null || obj[cur] === '') {
+          return prev;
+        }
+        return `${prev}&${cur}=${obj[cur]}`;
+
+      }, ''));
+
+  if (result) {
+    result = `?${ result.slice(1)}`;
+  }
+  return result;
+};
+
 export default params;
