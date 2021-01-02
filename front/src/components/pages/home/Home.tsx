@@ -52,7 +52,7 @@ const Home = ({location, history}: IHome) => {
 
       try {
         cards = await getGoodsAPI({sort, pagesize, numberpage});
-        popularCards = await getPopularGoodsAPI()
+        popularCards = await getPopularGoodsAPI();
         uniqCategory = await getUniqCategoriesInGoodsAPI();
       } catch (e) {
         console.log(e);
@@ -105,7 +105,7 @@ const Home = ({location, history}: IHome) => {
       {cardsState && cardsState.length ? <LinksToImages /> : null}
       {!cardsState.length ? <HomePageSpinner/> : null}
       {popularCardsState && popularCardsState.length > 0 ? (
-        <SimilarGoodsSection cards={popularCardsState} title='Популярные' />
+        <SimilarGoodsSection cards={popularCardsState} title='Популярные' isShowAllSimilar={false}/>
       ) : null}
     </div>
   );

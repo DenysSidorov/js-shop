@@ -36,8 +36,6 @@ export const getUniqCategoriesInGoodsAPI = async () => {
   });
 };
 
-// uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
-
 export const getTypesAPI = async (token: string) => {
   return axios({
     method: 'get',

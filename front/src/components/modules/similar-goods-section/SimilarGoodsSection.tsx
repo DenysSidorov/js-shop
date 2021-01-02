@@ -9,10 +9,11 @@ import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer
 interface ISimilarGoodsSection {
   cards: Array<ICartReducerItem>;
   title: string;
+  isShowAllSimilar?: boolean;
 }
 
 const SimilarGoodsSection = (props: ISimilarGoodsSection) => {
-  const {cards, title} = props;
+  const {cards, title, isShowAllSimilar = true} = props;
   const settings = {
     infinite: true,
     speed: 300,
@@ -59,7 +60,7 @@ const SimilarGoodsSection = (props: ISimilarGoodsSection) => {
               </div>
             );
           })}
-          <div className='goToAllGoodsFromSimilar'>
+          {isShowAllSimilar && <div className='goToAllGoodsFromSimilar'>
             <Link
               to={{
                 pathname: '/shop',
@@ -71,7 +72,7 @@ const SimilarGoodsSection = (props: ISimilarGoodsSection) => {
             >
               Перейти ко всем похожим товарам
             </Link>
-          </div>
+          </div>}
         </Slider>
       </div>
     </div>
