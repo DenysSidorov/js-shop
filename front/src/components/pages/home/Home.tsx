@@ -1,7 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import axios from 'axios';
 import qs from 'query-string';
-import urlApi from '../../../api/urlApi';
 import linkParams from '../../../helpers/libs/queryParams';
 import CardsSection from '../../modules/cards-section/CardsSection';
 import TagsMainSection from '../../modules/tags-main-section/TagsMainSection';
@@ -13,7 +11,7 @@ import LinksToImages from '../../modules/links-to-images/LinksToImages';
 import SimilarGoodsSection from '../../modules/similar-goods-section/SimilarGoodsSection';
 import {IHistory} from '../../../interfaces';
 import HomePageSpinner from './HomePageSpinner';
-import {getGoodsAPI} from '../../../api/endpoints';
+import {getGoodsAPI, getPopularGoodsAPI, getUniqCategoriesInGoodsAPI} from '../../../api/endpoints';
 
 interface IHome extends IHistory {}
 
@@ -54,8 +52,8 @@ const Home = ({location, history}: IHome) => {
 
       try {
         cards = await getGoodsAPI({sort, pagesize, numberpage});
-        popularCards = await axios.get(`${urlApi}/api/goods/popular`);
-        uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
+        popularCards = await getPopularGoodsAPI()
+        uniqCategory = await getUniqCategoriesInGoodsAPI();
       } catch (e) {
         console.log(e);
       } finally {

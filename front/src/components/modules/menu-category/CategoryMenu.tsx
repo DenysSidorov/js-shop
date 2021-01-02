@@ -7,6 +7,7 @@ import onClickOutside from 'react-onclickoutside';
 import urlApi from '../../../api/urlApi';
 import MenuBody from './menu-body/MenuBody';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
+import {getUniqCategoriesInGoodsAPI} from '../../../api/endpoints';
 
 interface ICategoryMenu extends ICartReducerItem {
   sub2Items?: any;
@@ -18,7 +19,8 @@ const CategoryMenu: FC = () => {
 
   useEffect(() => {
     async function getCategory() {
-      const result = await axios.get(`${urlApi}/api/goods/tags`);
+      // const result = await axios.get(`${urlApi}/api/goods/tags`);
+      const result = await getUniqCategoriesInGoodsAPI();
       try {
         if (result.data && Array.isArray(result.data)) {
           setUniqCategory(result.data);

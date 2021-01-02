@@ -22,6 +22,22 @@ export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   });
 };
 
+export const getPopularGoodsAPI = async () => {
+  return axios({
+    method: 'get',
+    url: '/goods/popular',
+  });
+};
+
+export const getUniqCategoriesInGoodsAPI = async () => {
+  return axios({
+    method: 'get',
+    url: '/goods/uniq-categories',
+  });
+};
+
+// uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
+
 export const getTypesAPI = async (token: string) => {
   return axios({
     method: 'get',
