@@ -29,15 +29,12 @@ const Home = ({location, history}: IHome) => {
 
     const getData = async () => {
       window.scrollTo(0, 0);
-      // const params = linkParams(location.search);
       const params = linkParams(history.location.search);
-      console.log('params', params);
       const sort = params.sort;
       const pageSize = params.pagesize;
       const numberPage = params.numberpage;
 
       let cards: any = [];
-      console.log('useEffect 1111');
       let popularCards: any = [];
       let uniqCategory: any = [];
 
@@ -72,8 +69,6 @@ const Home = ({location, history}: IHome) => {
         popularCards = await axios.get(`${urlApi}/api/goods/popular`);
         uniqCategory = await axios.get(`${urlApi}/api/goods/tags`);
 
-
-
       } catch (e) {
         console.log(e);
       } finally {
@@ -86,7 +81,7 @@ const Home = ({location, history}: IHome) => {
     };
 
     getData();
-  }, [history.location.search, location.search]);
+  }, [history.location.search]);
 
   useEffect(() => {
     const getData = async () => {

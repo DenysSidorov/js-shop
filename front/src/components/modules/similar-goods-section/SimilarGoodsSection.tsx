@@ -52,7 +52,7 @@ const SimilarGoodsSection = (props: ISimilarGoodsSection) => {
       <h2 className='similarGoodsTitle'>{title || 'Связанные овары'}</h2>
       <div className='slickContainerSimilarGoods'>
         <Slider {...settings}>
-          {cards.map((el: any) => {
+          {cards.map((el: ICartReducerItem, index) => {
             return (
               <div className='slickContainerSimilarGoods_wrapperForOne' key={el.code}>
                 <CardMainPage card={el} width='100%' />
@@ -63,7 +63,7 @@ const SimilarGoodsSection = (props: ISimilarGoodsSection) => {
             <Link
               to={{
                 pathname: '/shop',
-                search: '?sort=main',
+                search: `?sort=${cards[0].category[0]}`,
                 hash: '',
                 state: {relo: true}
               }}

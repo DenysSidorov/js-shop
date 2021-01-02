@@ -8,7 +8,7 @@ const params = function (locationSearch: string) {
       newP[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
       return p;
     }, {});
-  console.log(result, 'locationSearch');
+  // console.log(result, 'locationSearch');
   delete result[''];
   return result;
 };
