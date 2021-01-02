@@ -10,14 +10,40 @@ import GoodsTable from './GoodsTable';
 import urlApi from '../../../api/urlApi';
 import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
 
+enum DeliveryValue {
+  newpost = 'newpost',
+  intime = 'intime'
+}
+
+enum PaymentValue {
+  predo = 'predo',
+  naloj = 'naloj'
+}
+
+enum PaymentLabel {
+  predo = 'Предоплата на карту',
+  naloj = 'Наложенный платеж'
+}
+
 type PaymentObject = {
-  value: string;
-  label: string;
+  value: PaymentValue;
+  label: PaymentLabel;
 };
+
+export interface IOrder {
+  name: string;
+  phone: string;
+  price?: number,
+  payment?: PaymentObject,
+  delivery?: DeliveryValue,
+  address?: string;
+  email?: string;
+  goods?: any[]
+}
 
 interface SWaysDevPay {
   payment: PaymentObject;
-  delivery: string;
+  delivery: DeliveryValue;
   name: string;
   phone: string;
   address: string;
@@ -44,8 +70,8 @@ const WaysDevPay = () => {
   }, [dispatch]);
 
   const initialState = {
-    payment: {value: 'predo', label: 'Предоплата на карту'},
-    delivery: 'newpost',
+    payment: {value: PaymentValue.predo, label: PaymentLabel.predo},
+    delivery: DeliveryValue.newpost,
     name: '',
     phone: '',
     address: '',
@@ -54,8 +80,8 @@ const WaysDevPay = () => {
     isShowConfirm: false,
     orderInputErrors: [],
     paymentVariants: [
-      {value: 'predo', label: 'Предоплата на карту'},
-      {value: 'naloj', label: 'Наложенный платеж'}
+      {value: PaymentValue.predo, label: PaymentLabel.predo},
+      {value: PaymentValue.naloj, label: PaymentLabel.naloj}
     ]
   };
 
@@ -158,7 +184,7 @@ const WaysDevPay = () => {
     }
   }, [cartItems.length]);
 
-  const chDelivery = useCallback((kind: string) => {
+  const chDelivery = useCallback((kind: DeliveryValue) => {
     setState((prevState) => ({...prevState, delivery: kind}));
   }, []);
 
@@ -175,7 +201,7 @@ const WaysDevPay = () => {
         (prev: number, cur: ICartReducerItem) => prev + Math.floor((cur.price / 100) * (100 - cur.sail) * cur.count),
         0
       );
-      const order: any = {
+      const order: IOrder = {
         price,
         payment: state.payment,
         delivery: state.delivery,
@@ -193,8 +219,9 @@ const WaysDevPay = () => {
         curGood.model = item.model;
         curGood.sail = item.sail;
         curGood.price = item.price;
-
-        order.goods.push(curGood);
+        if (order.goods) {
+          order.goods.push(curGood);
+        }
       });
 
       try {
@@ -230,7 +257,7 @@ const WaysDevPay = () => {
               id='toggle-01'
               defaultChecked={delivery === 'newpost'}
             />
-            <label onClick={() => chDelivery('newpost')} className='accordion_trigger' htmlFor='toggle-01'>
+            <label onClick={() => chDelivery(DeliveryValue.newpost)} className='accordion_trigger' htmlFor='toggle-01'>
               Доставка по Украине "Новая Почта"
             </label>
             <label htmlFor='toggle-01' />
@@ -248,7 +275,7 @@ const WaysDevPay = () => {
               id='toggle-02'
               defaultChecked={delivery === 'intime'}
             />
-            <label onClick={() => chDelivery('intime')} className='accordion_trigger' htmlFor='toggle-02'>
+            <label onClick={() => chDelivery(DeliveryValue.intime)} className='accordion_trigger' htmlFor='toggle-02'>
               Доставка по Украине "Интайм"
             </label>
             <div className='accordion_target'>
@@ -265,7 +292,7 @@ const WaysDevPay = () => {
         </div>
 
         <div className='tittleWAyName' data-count='3'>
-          Способ доставки
+          Реквизиты
         </div>
 
         <div className='userDataForOrder'>

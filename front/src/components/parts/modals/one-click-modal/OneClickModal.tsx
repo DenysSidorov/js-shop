@@ -4,6 +4,7 @@ import axios from 'axios';
 import './index.scss';
 import urlApi from '../../../../api/urlApi';
 import BasicModalWindowPB from '../basic-modal-pb/BasicModalWindowPB';
+import {IOrder} from '../../../pages/order/WaysDevPay';
 
 interface IOneClickModal {
   close: Function;
@@ -55,7 +56,7 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
   const sendOneClick = async () => {
     const {name, phone} = state;
 
-    const order = {
+    const order: IOrder = {
       name,
       phone
     };

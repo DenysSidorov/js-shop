@@ -3,6 +3,17 @@ import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
 import {IGetGoodsParams} from './interfaces';
 
+
+// let response = await axios.post(`${urlApi}/api/orders/land`, order);
+
+export const createOrderFromLandAPI = async (order: any) => {
+  return axios({
+    method: 'post',
+    url: '/orders/land',
+    data: {order}
+  });
+};
+
 export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   let sort: string = '';
   let pagesize: string = '';
