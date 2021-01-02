@@ -24,23 +24,29 @@ const Home = ({location, history}: IHome) => {
   const [countState, setCount] = useState<number>(1);
 
   useEffect(() => {
+
+    // setCards([]);
+
     const getData = async () => {
       window.scrollTo(0, 0);
-      const params = linkParams(location.search);
-      const param = params.sort;
+      // const params = linkParams(location.search);
+      const params = linkParams(history.location.search);
+      console.log('params', params);
+      const sort = params.sort;
       const pageSize = params.pagesize;
       const numberPage = params.numberpage;
 
       let cards: any = [];
+      console.log('useEffect 1111');
       let popularCards: any = [];
       let uniqCategory: any = [];
 
-      if (param) {
-        setTitle(`Картины на дереве - ${param}`);
+      if (sort) {
+        setTitle(`Картины на дереве - ${sort}`);
         setMetaTag('description');
         setMetaTag(
           'keywords',
-          `интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины ${param}`
+          `интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, картины украина, деревянные картины ${sort}`
         );
       } else {
         setTitle('Главная');
@@ -52,11 +58,11 @@ const Home = ({location, history}: IHome) => {
       }
 
       try {
-        if (param) {
+        if (sort) {
           if (pageSize && numberPage) {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${param}&pagesize=${pageSize}&numberpage=${numberPage}`);
+            cards = await axios.get(`${urlApi}/api/goods?sort=${sort}&pagesize=${pageSize}&numberpage=${numberPage}`);
           } else {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
+            cards = await axios.get(`${urlApi}/api/goods?sort=${sort}`);
           }
         } else if (pageSize && numberPage) {
           cards = await axios.get(`${urlApi}/api/goods?pagesize=${pageSize}&numberpage=${numberPage}`);
@@ -80,49 +86,14 @@ const Home = ({location, history}: IHome) => {
     };
 
     getData();
-  }, [location.search]);
+  }, [history.location.search, location.search]);
 
   useEffect(() => {
-    setCards([]);
-
     const getData = async () => {
-      window.scrollTo(0, 0);
-
       const params = linkParams(history.location.search);
-      const param = params.sort;
-      const pageSize = params.pagesize;
       const numberPage = params.numberpage;
-
-      if (param) {
-        setTitle(`Картины на дереве - ${param}`);
-      } else {
-        setTitle('Главная');
-      }
-
-      let cards: any = [];
-      try {
-        if (param) {
-          if (pageSize && numberPage) {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${param}&pagesize=${pageSize}&numberpage=${numberPage}`);
-          } else {
-            cards = await axios.get(`${urlApi}/api/goods?sort=${param}`);
-          }
-        } else if (pageSize && numberPage) {
-          cards = await axios.get(`${urlApi}/api/goods?pagesize=${pageSize}&numberpage=${numberPage}`);
-        } else {
-          cards = await axios.get(`${urlApi}/api/goods`);
-        }
-      } catch (e) {
-        console.log(e);
-      } finally {
-        const res = (numberPage && numberPage - 1) || 0;
-
-        setPaginationPageActive(res);
-        setCount(cards.data.count);
-        setCards(cards.data.goods);
-      }
+      setPaginationPageActive((numberPage && numberPage - 1) || 0);
     };
-
     getData();
   }, [history.location.search]);
 
