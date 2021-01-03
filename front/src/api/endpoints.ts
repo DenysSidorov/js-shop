@@ -12,6 +12,15 @@ export const createFastOrderAPI = async (order: IOrder) => {
   });
 };
 
+export const changeOrderTypeAPI = async (token: string, data: any) => {
+  return axios({
+    method: 'post',
+    url: '/orders/change-type',
+    data,
+    headers: {authorization: token}
+  });
+};
+
 export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   let sort: string = '';
   let pagesize: string = '';

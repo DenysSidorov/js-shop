@@ -1,15 +1,15 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import ReactDropdown from 'react-dropdown';
 import Filters from './Filters';
-import urlApi from '../../../api/urlApi';
+// import urlApi from '../../../api/urlApi';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 import {Token} from '../../../interfaces';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
 import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
-import {getOrdersAPI} from '../../../api/endpoints';
+import {changeOrderTypeAPI, getOrdersAPI} from '../../../api/endpoints';
 
 interface IOrderTypes {
   value: string;
@@ -68,7 +68,7 @@ const Orders = () => {
       let token: Token = '';
 
       try {
-        token = localStorage.getItem('info');
+        token = localStorage.getItem('info') || '';
       } catch (error) {
         console.error(error);
       }
@@ -116,18 +116,11 @@ const Orders = () => {
     (id: string | number, type: any) => {
       const getData = async (idInternal: string | number, typeInternal: any) => {
         try {
-          const res = await axios.post(
-            `${urlApi}/api/orders/change-type`,
-            {
-              type: typeInternal.value,
-              _id: idInternal
-            },
-            {
-              timeout: 3000,
-              headers: {authorization: state.token}
-            }
-          );
-          console.log(res.data, 'res');
+          const data = {
+            type: typeInternal.value,
+            _id: idInternal
+          }
+          const res = await changeOrderTypeAPI(state.token as string, data);
           if (res.data && state.token) {
             console.log('getTypeFu', res.data, state.token);
             getTypeFu(state.token);
