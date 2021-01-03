@@ -1,10 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-// import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import ReactDropdown from 'react-dropdown';
 import Filters from './Filters';
-// import urlApi from '../../../api/urlApi';
 import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 import {Token} from '../../../interfaces';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
@@ -55,7 +53,6 @@ const Orders = () => {
       .split('&')
       .reduce(function (p: any, e: any) {
         const a = e.split('=');
-        // eslint-disable-next-line no-param-reassign
         p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
         return p;
       }, {});
@@ -80,9 +77,6 @@ const Orders = () => {
         let orders: any = [];
         if (param) {
           try {
-            // orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
-            //   headers: {authorization: token}
-            // });
             orders = await getOrdersAPI(token, param);
             setState((prevState) => ({...prevState, orders: orders.data}));
           } catch (error) {
