@@ -2,8 +2,9 @@ import axios from './axiosConfig';
 import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
 import {IGetGoodsParams} from './interfaces';
+import {IOrder} from '../components/pages/order/WaysDevPay';
 
-export const createFastOrderAPI = async (order: any) => {
+export const createFastOrderAPI = async (order: IOrder) => {
   return axios({
     method: 'post',
     url: '/orders/land',
@@ -27,6 +28,14 @@ export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   return axios({
     method: 'get',
     url: `/goods/${paramsURL}`,
+  });
+};
+
+export const createOrderAPI = async (order: IOrder) => {
+  return axios({
+    method: 'post',
+    url: '/orders',
+    data: {...order}
   });
 };
 

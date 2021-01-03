@@ -2,13 +2,12 @@ import React, {useCallback, useRef, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Dropdown from 'react-dropdown';
-import axios from 'axios';
 import Confirm from '../../parts/modals/confirm-cart-modal/ConfirmBlock';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
 import {deleteAll as deleteAllFu} from '../../../redux/reducers/cart-reducer/actions';
 import GoodsTable from './GoodsTable';
-import urlApi from '../../../api/urlApi';
 import {selectCartItems} from '../../../redux/reducers/cart-reducer/selectors';
+import {createOrderAPI} from '../../../api/endpoints';
 
 enum DeliveryValue {
   newpost = 'newpost',
@@ -31,6 +30,7 @@ type PaymentObject = {
 };
 
 export interface IOrder {
+  _id?: string | number
   name: string;
   phone: string;
   price?: number,
@@ -88,7 +88,6 @@ const WaysDevPay = () => {
   const [state, setState] = useState<SWaysDevPay>(initialState);
 
   const validateData = useCallback((): any => {
-    // const {phone, address, name} = state;
     const phone = phoneV.current.value;
     const address = addressV.current.value;
     const name = nameV.current.value;
@@ -225,10 +224,10 @@ const WaysDevPay = () => {
       });
 
       try {
-        let response: any = await axios.post(`${urlApi}/api/orders`, order);
+        let response: any = await createOrderAPI(order);
         if (response) {
           deleteAll();
-          response = response.data;
+          response = response.data as IOrder;
           changePage(response._id);
         }
       } catch (e) {
