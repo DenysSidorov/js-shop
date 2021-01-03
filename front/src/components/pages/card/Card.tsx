@@ -6,7 +6,7 @@ import SimilarGoodsSection from '../../modules/similar-goods-section/SimilarGood
 import ContainerForCardAdditional from './ContainerForCardAdditional';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {IHistory} from '../../../interfaces';
-import {getGoodByIdAPI} from '../../../api/endpoints';
+import {getGoodByIdAPI, getSimilarGoodsByIdAPI} from '../../../api/endpoints';
 
 interface ICardComponent extends IHistory {}
 
@@ -40,9 +40,7 @@ const CardComponent = ({match}: ICardComponent) => {
         try {
           cardInternal = await getGoodByIdAPI(id);
           if (cardInternal.data.length) {
-            similarCategoryInternal = await axios.post(`${urlApi}/api/goods/${id}/similar`, {
-              params: {category: cardInternal.data[0].category}
-            });
+            similarCategoryInternal = await getSimilarGoodsByIdAPI(id, cardInternal.data[0].category);
           }
           popularCardsInternal = await axios.get(`${urlApi}/api/goods/popular`);
         } catch (e) {

@@ -31,6 +31,20 @@ export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   });
 };
 
+export const getSimilarGoodsByIdAPI = async (id: string | number, categories: string[]) => {
+  if (id === undefined) {
+    throw new Error('Please, set correct id in getSimilarGoodsByIdAPI endpoint')
+  }
+
+  return axios({
+    method: 'post',
+    url: `/goods/${id}/similar`,
+    data: {
+      params: {categories: categories}
+    }
+  });
+};
+
 export const getGoodByIdAPI = async (id: string | number) => {
   if (id === undefined) {
     throw new Error('Please, set correct id in getGoodByIdAPI endpoint')

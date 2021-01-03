@@ -70,7 +70,7 @@ export async function getById(req, resp, next) {
 }
 
 export async function getSimilar(req, resp, next) {
-  const categoryArr = req.body.params.category;
+  const categoryArr = req.body.params.categories;
   let goods = [];
   try {
     goods = await Good.find({category: {$in: categoryArr}}).limit(10);
