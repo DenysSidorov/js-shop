@@ -9,6 +9,7 @@ import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 import {Token} from '../../../interfaces';
 import {IAdminPanel} from '../../../redux/reducers/panel-reducer/adminPanelReducer';
 import {selectPanelReducer} from '../../../redux/reducers/panel-reducer/selectors';
+import {getOrdersAPI} from '../../../api/endpoints';
 
 interface IOrderTypes {
   value: string;
@@ -89,9 +90,7 @@ const Orders = () => {
           }
         } else {
           try {
-            orders = await axios.get(`${urlApi}/api/orders`, {
-              headers: {authorization: token}
-            });
+            orders = await getOrdersAPI(token);
             setState((prevState) => ({...prevState, orders: orders.data}));
           } catch (error) {
             setState((prevState) => ({...prevState, orders}));

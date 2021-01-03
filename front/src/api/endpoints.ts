@@ -71,12 +71,18 @@ export const getPopularGoodsAPI = async (category?: string, items?: number) => {
   });
 };
 
-// const result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}&items=10`);
-
 export const getCurrentUserByTokenAPI = async (token: string) => {
   return axios({
     method: 'get',
     url: '/users/current',
+    headers: {authorization: token}
+  });
+};
+
+export const getOrdersAPI = async (token: string) => {
+  return axios({
+    method: 'get',
+    url: '/orders',
     headers: {authorization: token}
   });
 };

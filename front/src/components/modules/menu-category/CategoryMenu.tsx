@@ -17,7 +17,6 @@ const CategoryMenu: FC = () => {
 
   useEffect(() => {
     async function getCategory() {
-      // const result = await axios.get(`${urlApi}/api/goods/tags`);
       const result = await getUniqCategoriesInGoodsAPI();
       try {
         if (result.data && Array.isArray(result.data)) {
