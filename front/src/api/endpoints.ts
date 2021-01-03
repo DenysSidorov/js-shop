@@ -63,12 +63,15 @@ export const createOrderAPI = async (order: IOrder) => {
   });
 };
 
-export const getPopularGoodsAPI = async () => {
+export const getPopularGoodsAPI = async (category?: string, items?: number) => {
   return axios({
     method: 'get',
     url: '/goods/popular',
+    params: {category, items}
   });
 };
+
+// const result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}&items=10`);
 
 export const getCurrentUserByTokenAPI = async (token: string) => {
   return axios({

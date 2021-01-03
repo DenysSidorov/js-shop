@@ -2,12 +2,10 @@ import React, {FC, useCallback, useEffect, useState} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './index.less';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import onClickOutside from 'react-onclickoutside';
-import urlApi from '../../../api/urlApi';
 import MenuBody from './menu-body/MenuBody';
 import {ICartReducerItem} from '../../../redux/reducers/cart-reducer/cartReducer';
-import {getUniqCategoriesInGoodsAPI} from '../../../api/endpoints';
+import {getPopularGoodsAPI, getUniqCategoriesInGoodsAPI} from '../../../api/endpoints';
 
 interface ICategoryMenu extends ICartReducerItem {
   sub2Items?: any;
@@ -58,7 +56,7 @@ const CategoryMenu: FC = () => {
     (oneItem: ICategoryMenu) => {
       async function getData(el: ICategoryMenu) {
         try {
-          const result = await axios.get(`${urlApi}/api/goods/popular?category=${el.name}&items=10`);
+          const result = await getPopularGoodsAPI(el.name, 10);
 
           if (result.data && Array.isArray(result.data)) {
             let items: ICategoryMenu[] = [].concat(uniqCategory);
