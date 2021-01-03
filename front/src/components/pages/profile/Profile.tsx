@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import urlApi from '../../../api/urlApi';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
+import {getCurrentUserByTokenAPI} from '../../../api/endpoints';
 
 interface SPanel {
   user: any;
@@ -27,10 +26,8 @@ const Panel = () => {
     );
     (async () => {
       try {
-        const token = localStorage.getItem('info');
-        const result = await axios.get(`${urlApi}/api/users/current`, {
-          headers: {authorization: token}
-        });
+        const token = localStorage.getItem('info') || '';
+        const result = await getCurrentUserByTokenAPI(token);
         console.log(result.data, 'data');
         // setState({user: result.data, isGotUser: true});
         setState((prevState) => ({...prevState, user: result.data, isGotUser: true}));

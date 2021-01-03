@@ -70,6 +70,14 @@ export const getPopularGoodsAPI = async () => {
   });
 };
 
+export const getCurrentUserByTokenAPI = async (token: string) => {
+  return axios({
+    method: 'get',
+    url: '/users/current',
+    headers: {authorization: token}
+  });
+};
+
 export const getUniqCategoriesInGoodsAPI = async () => {
   return axios({
     method: 'get',
