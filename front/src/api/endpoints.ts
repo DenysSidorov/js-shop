@@ -79,11 +79,12 @@ export const getCurrentUserByTokenAPI = async (token: string) => {
   });
 };
 
-export const getOrdersAPI = async (token: string) => {
+export const getOrdersAPI = async (token: string, type?: string) => {
   return axios({
     method: 'get',
     url: '/orders',
-    headers: {authorization: token}
+    headers: {authorization: token},
+    params: {type}
   });
 };
 

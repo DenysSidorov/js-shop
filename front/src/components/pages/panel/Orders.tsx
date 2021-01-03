@@ -80,9 +80,10 @@ const Orders = () => {
         let orders: any = [];
         if (param) {
           try {
-            orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
-              headers: {authorization: token}
-            });
+            // orders = await axios.get(`${urlApi}/api/orders?type=${param}`, {
+            //   headers: {authorization: token}
+            // });
+            orders = await getOrdersAPI(token, param);
             setState((prevState) => ({...prevState, orders: orders.data}));
           } catch (error) {
             setState((prevState) => ({...prevState, orders}));
