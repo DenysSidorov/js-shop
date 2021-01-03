@@ -1,10 +1,9 @@
 import React, {ChangeEvent, FC, useState} from 'react';
 import InputMask from 'react-input-mask';
-import axios from 'axios';
 import './index.scss';
-import urlApi from '../../../../api/urlApi';
 import BasicModalWindowPB from '../basic-modal-pb/BasicModalWindowPB';
 import {IOrder} from '../../../pages/order/WaysDevPay';
+import {createFastOrderAPI} from '../../../../api/endpoints';
 
 interface IOneClickModal {
   close: Function;
@@ -62,7 +61,7 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
     };
     if (order.phone.length && !order.phone.includes('_')) {
       try {
-        let response = await axios.post(`${urlApi}/api/orders/land`, order);
+        let response = await createFastOrderAPI(order);
         if (response) {
           response = response.data;
           console.log(response);
