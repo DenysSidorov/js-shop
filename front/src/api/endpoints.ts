@@ -3,8 +3,9 @@ import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
 import {IGetGoodsParams} from './interfaces';
 import {IOrder} from '../components/pages/order/WaysDevPay';
+import {AxiosResponse} from 'axios';
 
-export const createFastOrderAPI = async (order: IOrder) => {
+export const createFastOrderAPI = async (order: IOrder): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/orders/land',
@@ -12,7 +13,7 @@ export const createFastOrderAPI = async (order: IOrder) => {
   });
 };
 
-export const changeOrderTypeAPI = async (token: string, data: any) => {
+export const changeOrderTypeAPI = async (token: string, data: any): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/orders/change-type',
@@ -21,7 +22,7 @@ export const changeOrderTypeAPI = async (token: string, data: any) => {
   });
 };
 
-export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
+export const getGoodsAPI = async (objParam?: IGetGoodsParams): Promise<AxiosResponse> => {
   let sort: string = '';
   let pagesize: string = '';
   let numberpage: string = '';
@@ -40,7 +41,7 @@ export const getGoodsAPI = async (objParam?: IGetGoodsParams) => {
   });
 };
 
-export const getSimilarGoodsByIdAPI = async (id: string | number, categories: string[]) => {
+export const getSimilarGoodsByIdAPI = async (id: string | number, categories: string[]): Promise<AxiosResponse> => {
   if (id === undefined) {
     throw new Error('Please, set correct id in getSimilarGoodsByIdAPI endpoint')
   }
@@ -54,7 +55,7 @@ export const getSimilarGoodsByIdAPI = async (id: string | number, categories: st
   });
 };
 
-export const getGoodByIdAPI = async (id: string | number) => {
+export const getGoodByIdAPI = async (id: string | number): Promise<AxiosResponse> => {
   if (id === undefined) {
     throw new Error('Please, set correct id in getGoodByIdAPI endpoint')
   }
@@ -72,7 +73,7 @@ export const createOrderAPI = async (order: IOrder) => {
   });
 };
 
-export const getPopularGoodsAPI = async (category?: string, items?: number) => {
+export const getPopularGoodsAPI = async (category?: string, items?: number): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/goods/popular',
@@ -80,7 +81,7 @@ export const getPopularGoodsAPI = async (category?: string, items?: number) => {
   });
 };
 
-export const getCurrentUserByTokenAPI = async (token: string) => {
+export const getCurrentUserByTokenAPI = async (token: string): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/users/current',
@@ -88,7 +89,7 @@ export const getCurrentUserByTokenAPI = async (token: string) => {
   });
 };
 
-export const getOrdersAPI = async (token: string, type?: string) => {
+export const getOrdersAPI = async (token: string, type?: string): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/orders',
@@ -97,14 +98,14 @@ export const getOrdersAPI = async (token: string, type?: string) => {
   });
 };
 
-export const getUniqCategoriesInGoodsAPI = async () => {
+export const getUniqCategoriesInGoodsAPI = async (): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/goods/uniq-categories',
   });
 };
 
-export const getTypesAPI = async (token: string) => {
+export const getTypesAPI = async (token: string): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/orders/get-types',
@@ -112,7 +113,7 @@ export const getTypesAPI = async (token: string) => {
   });
 };
 
-export const signInAPI = async (login: string, password: string) => {
+export const signInAPI = async (login: string, password: string): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/signin',
@@ -120,7 +121,7 @@ export const signInAPI = async (login: string, password: string) => {
   });
 };
 
-export const signUpAPI: ISignUpFunction = async (login, password, nick) => {
+export const signUpAPI: ISignUpFunction = async (login, password, nick): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/signup',
@@ -128,7 +129,7 @@ export const signUpAPI: ISignUpFunction = async (login, password, nick) => {
   });
 };
 
-export const isAdminAPI = async (token: string) => {
+export const isAdminAPI = async (token: string): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/isadmin',
