@@ -19,6 +19,8 @@ import goodRoute from './routes/goodRoute';
 import orderRoute from './routes/orderRoute';
 import errorMiddleWare from './middlewares/errors';
 
+import {serverApollo} from './graphql/config';
+
 const privateKey = fs.readFileSync('./sslcert/private.key', 'utf8');
 const certificate = fs.readFileSync('./sslcert/certificate.crt', 'utf8');
 const credentials = {key: privateKey, cert: certificate};
@@ -56,6 +58,7 @@ app.use(bodyParse.json()); // parse json
 app.use(bodyParse.urlencoded({extended: true})); // parse forms
 app.set('view engine', 'ejs'); // template-engine by default
 
+serverApollo.applyMiddleware({ app, path: '/graphql' });
 app.use('/api/goods', cors(), goodRoute);
 app.use('/api/orders', cors(), orderRoute);
 app.use('/api/', cors(), authRoute); // singin singup
