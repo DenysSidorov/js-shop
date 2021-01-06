@@ -2,10 +2,10 @@ import mongoose, {Schema} from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema({
-  login: {type: String, unique: true, index: true},
-  password: {type: String, minlength: 4},
-  nick: {type: String, minlength: 4},
-  isAdmin: {type: Boolean, default: false}
+  login: {type: String, unique: true, required: true, index: true},
+  password: {type: String, required: true, minlength: 4},
+  nick: {type: String, required: true, minlength: 4},
+  isAdmin: {type: Boolean, default: false, required: true}
 });
 
 UserSchema.pre('save', function (next) {
