@@ -48,7 +48,7 @@ mongoose.connect(
 
 const app = express();
 app.disable('x-powered-by'); // disable server's name
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: (config.NODE_ENV === 'production') ? undefined : false }));
 app.use(compression());
 app.use(require('prerender-node').set('prerenderToken', 'nVFIY5P2oHmWGlW1r6B3'));
 
