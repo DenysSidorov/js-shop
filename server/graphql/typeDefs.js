@@ -7,16 +7,11 @@ const typeDefs = gql`
     }
 
     type User {
-        id:String!,
+        _id:String!,
         login:String!,
-        password:String!,
+        password:String,
         nick:String!,
         isAdmin: Boolean!
     }`;
 
 export default typeDefs;
-
-// login: {type: String, unique: true, required: true, index: true},
-// password: {type: String, required: true, minlength: 4},
-// nick: {type: String, required: true, minlength: 4},
-// isAdmin: {type: Boolean, default: false, required: true}

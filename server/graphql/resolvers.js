@@ -1,35 +1,25 @@
 import User from '../models/user';
+import mongoose from 'mongoose';
+import getIdFromToken from './helpers/getIdFromToken';
 
 const resolvers = {
   Query: {
     greet: () => {
       return "Hello from GraphQl side"
     },
-    getUser: (parent, args, context, info) => {
-      // User.findOne({_id}, {password: 0});
-      console.log('-----parent------');
-      console.log(parent);
-      console.log('-----args------');
-      console.log(args);
-      console.log('-----context------');
-      console.log(context);
-      console.log('-----info------');
-      console.log(info);
-      console.log('------end-----');
-      return makeAsync({
-        id: 'id',
-        login: 'login',
-        password: 'password2',
-        nick: 'nick',
-        isAdmin: false
-      });
-
+    getUser: async (parent, args, context, info) => {
+      const _id = await getIdFromToken(args.token);
+      if (mongoose.Types.ObjectId.isValid(_id)){
+        return User.findOne({_id}, {password: 0});
+      } else {
+        throw new Error('Token is not valid');
+      }
     }
   }
 };
 
-function makeAsync(data, timeout = 1000) {
-  return new Promise((resolve) => setTimeout(() => resolve(data), timeout));
-}
+// function makeAsync(data, timeout = 1000) {
+//   return new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+// }
 
 export default resolvers;
