@@ -4,7 +4,12 @@ import typeDefs from './typeDefs';
 
 export const serverApollo = new ApolloServer({
   typeDefs: typeDefs,
-  resolvers: resolvers
+  resolvers: resolvers,
+  context: async ({ req }) => {
+    return {
+      myProperty: true
+    };
+  },
 });
 
 // const app = express();

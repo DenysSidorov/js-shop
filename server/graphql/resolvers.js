@@ -1,13 +1,25 @@
+import User from '../models/user';
+
 const resolvers = {
   Query: {
     greet: () => {
       return "Hello from GraphQl side"
     },
     getUser: (parent, args, context, info) => {
+      // User.findOne({_id}, {password: 0});
+      console.log('-----parent------');
+      console.log(parent);
+      console.log('-----args------');
+      console.log(args);
+      console.log('-----context------');
+      console.log(context);
+      console.log('-----info------');
+      console.log(info);
+      console.log('------end-----');
       return makeAsync({
         id: 'id',
         login: 'login',
-        password: 'password',
+        password: 'password2',
         nick: 'nick',
         isAdmin: false
       });
