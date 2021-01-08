@@ -7,6 +7,7 @@ const resolvers = {
     greet: () => {
       return "Hello from GraphQl side"
     },
+    /** getUser and userByIdFromREST have the same functionality*/
     getUser: async (parent, args, context, info) => {
       const _id = await getIdFromToken(args.token);
       if (mongoose.Types.ObjectId.isValid(_id)){
