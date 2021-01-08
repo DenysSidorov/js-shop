@@ -1,6 +1,6 @@
 const example = `{
   getUser(token: ""){
-  _id,
+    _id,
     login,
     nick,
     password,

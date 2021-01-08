@@ -15,6 +15,9 @@ const resolvers = {
         throw new Error('Token is not valid');
       }
     }
+    // getGoods: async () => {
+    //
+    // }
   }
 };
 
