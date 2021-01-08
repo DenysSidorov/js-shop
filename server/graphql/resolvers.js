@@ -14,10 +14,10 @@ const resolvers = {
       } else {
         throw new Error('Token is not valid');
       }
+    },
+    userByIdFromREST: async (_source, { token }, { dataSources }) => {
+      return dataSources.usersAPI.getUser(token);
     }
-    // getGoods: async () => {
-    //
-    // }
   }
 };
 

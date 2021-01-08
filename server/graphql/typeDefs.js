@@ -2,8 +2,9 @@ const {gql} = require('apollo-server-express');
 
 const typeDefs = gql`
     type Query {
-        greet: String!
+        greet: String!,
         getUser(token: String): User
+        userByIdFromREST(token: String): User
     }
 
     type User {
