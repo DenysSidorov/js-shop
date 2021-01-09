@@ -1,0 +1,21 @@
+@import "variables";
+
+.shopInput {
+  font: 1.7rem/1.7rem $robotoLight;
+  color: #00416f;
+  padding: 2px 8px;
+  align-items: center;
+  margin-top: 3px;
+  //margin-left: 30px;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  height: 4rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:focus, &:hover {
+    border-color: $mainBgColor
+  }
+}

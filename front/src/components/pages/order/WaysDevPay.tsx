@@ -303,7 +303,7 @@ const WaysDevPay = () => {
             onChange={chName}
             ref={nameV}
             type='text'
-            className='orderWaysInput'
+            className='shopInput'
             id='nameInput'
           />
           <p>
@@ -314,7 +314,7 @@ const WaysDevPay = () => {
             onChange={chPhone}
             type='text'
             ref={phoneV}
-            className='orderWaysInput'
+            className='shopInput'
             id='phoneInput'
           />
           <p>
@@ -325,7 +325,7 @@ const WaysDevPay = () => {
             onChange={chAddress}
             ref={addressV}
             type='text'
-            className='orderWaysInput'
+            className='shopInput'
             id='cityInput'
           />
           <p>Электронная почта</p>
@@ -334,7 +334,7 @@ const WaysDevPay = () => {
             onChange={chEmail}
             ref={emailV}
             type='text'
-            className='orderWaysInput'
+            className='shopInput'
             id='mailInput'
           />
         </div>

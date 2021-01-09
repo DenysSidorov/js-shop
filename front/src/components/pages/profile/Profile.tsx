@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {getCurrentUserByTokenAPI} from '../../../api/endpoints';
@@ -41,14 +41,14 @@ const Panel = () => {
   if (!isGotUser) {
     return (
       <div className='adminPanelSpinner'>
-        <i className='fa fa-spinner' />
+        <i className='fa fa-spinner'/>
       </div>
     );
   }
   return (
     <div className='profileContainer'>
       <div className='profileContainer_logo'>
-        <img src='/img-static/profileUser.jpg' alt='' />
+        <img src='/img-static/profileUser.jpg' alt=''/>
       </div>
       {user.isAdmin ? (
         <div className='profileContainer_rowInfo'>
@@ -71,27 +71,56 @@ const Panel = () => {
         <span className='profileContainer_rowInfo_item'>Ник</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.nick || 'Не определенно'}</span>
+        <ProfileEditRowPart value={user.nick}/>
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Телефон</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.phone || 'Не определенно'}</span>
+        <ProfileEditRowPart value={user.phone}/>
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Возраст</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.age || 'Не определенно'}</span>
+        <ProfileEditRowPart value={user.age}/>
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.male || 'Не определенно'}</span>
-      </div>
-      <div className='profileContainer_editBtn'>
-        <span className='profileContainer_editBtn_btn'>Редактировать</span>
+        <ProfileEditRowPart value={user.male}/>
       </div>
     </div>
   );
 };
 
 export default Panel;
+
+const ProfileEditRowPart = ({value}: {value: string | number}) => {
+  const [isEdit, changeIsEdit] = useState<boolean>();
+  return (
+    <Fragment>
+      {!isEdit && <span
+        className='profileContainer_editBtn_btn'
+        onClick={() => {
+          changeIsEdit(true);
+        }}
+      >Редактировать</span>}
+      {isEdit && <Fragment>
+        <input
+          value={value}
+          onChange={() => {
+          }}
+          type='text'
+          className='shopInput profileContainer_input'
+        />
+        <span className='profileContainer_editBtn_btn'
+              onClick={() => {
+                changeIsEdit(false);
+              }}>Отмена</span>
+        <span className='profileContainer_editBtn_btn'>Сохранить</span>
+      </Fragment>}
+    </Fragment>
+  );
+};

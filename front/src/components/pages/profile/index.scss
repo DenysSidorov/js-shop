@@ -42,12 +42,6 @@ $colorYellow: #bbba16;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-  }
-  .profileContainer_editBtn{
-    display: flex;
-    justify-content: center;
-    height: 35px;
-    margin-top: 25px;
     .profileContainer_editBtn_btn{
       background-color: $mainColor;
       color: white;
@@ -56,16 +50,20 @@ $colorYellow: #bbba16;
       border: 1px solid transparent;
       transition: all 0.3s ease;
       height: 33px;
-      display: flex;
       padding: 5px;
-      justify-content: center;
-      align-items: center;
+      margin-left: 8px;
       &:hover{
-        cursor: not-allowed;
+        cursor: pointer;
         color: $mainColor;
         background-color: white;
         border-color: $mainColor!important;
       }
     }
+  }
+  .profileContainer_input{
+    border-color: #808080;
+    width: 250px;
+    margin-left: 12px;
+    height: 3.2rem;
   }
 }
