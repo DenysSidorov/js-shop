@@ -12,7 +12,14 @@ const typeDefs = gql`
         login:String!,
         password:String,
         nick:String!,
-        isAdmin: Boolean!
+        isAdmin: Boolean!,
+        age: Int,
+        sex: AllowedSex
+    }
+
+    enum AllowedSex {
+        male
+        female
     }
     
     type Comment {

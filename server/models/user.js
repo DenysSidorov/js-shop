@@ -1,11 +1,14 @@
 import mongoose, {Schema} from 'mongoose';
 import bcrypt from 'bcrypt';
 
+const sex = ['male', 'female'];
 const UserSchema = new Schema({
   login: {type: String, unique: true, required: true, index: true},
   password: {type: String, required: true, minlength: 4},
   nick: {type: String, required: true, minlength: 4},
-  isAdmin: {type: Boolean, default: false, required: true}
+  isAdmin: {type: Boolean, default: false, required: true},
+  age: {type: Number},
+  sex: {type: String, default: sex[0]}
 });
 
 UserSchema.pre('save', function (next) {
