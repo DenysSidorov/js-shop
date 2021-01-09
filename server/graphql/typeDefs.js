@@ -14,7 +14,8 @@ const typeDefs = gql`
         nick:String!,
         isAdmin: Boolean!,
         age: Int,
-        sex: AllowedSex
+        sex: AllowedSex,
+        phone: String
     }
 
     enum AllowedSex {

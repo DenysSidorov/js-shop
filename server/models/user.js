@@ -8,7 +8,8 @@ const UserSchema = new Schema({
   nick: {type: String, required: true, minlength: 4},
   isAdmin: {type: Boolean, default: false, required: true},
   age: {type: Number},
-  sex: {type: String, default: sex[0]}
+  sex: {type: String, default: sex[0]},
+  phone: {type: String}
 });
 
 UserSchema.pre('save', function (next) {
