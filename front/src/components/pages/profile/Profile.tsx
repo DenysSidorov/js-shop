@@ -3,6 +3,7 @@ import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
 import {editUserAPI, getCurrentUserByTokenAPI} from '../../../api/endpoints';
 import {Token} from '../../../interfaces';
+import Preloader from '../../parts/preloader';
 
 // import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 
@@ -82,6 +83,7 @@ const Panel = () => {
         <span className='profileContainer_rowInfo_item'>Ник</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.nick || 'Не определенно'}</span>
+
         <ProfileEditRowPart
           dataType='nick'
           value={user.nick || ''}
@@ -121,6 +123,7 @@ interface IProfileEditRowPart {
 const ProfileEditRowPart = ({value, dataType}: IProfileEditRowPart) => {
   const [isEdit, changeIsEdit] = useState<boolean>();
   const [defValue, changeDefValue] = useState<string | number>(value);
+  const [isFetching] = useState<boolean>(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeDefValue(e.target.value)
@@ -144,6 +147,9 @@ const ProfileEditRowPart = ({value, dataType}: IProfileEditRowPart) => {
         }}
       >Редактировать</span>}
       {isEdit && <Fragment>
+        {isFetching && <div className="profileContainer_row_preloader">
+          <Preloader height="24px" borderWidth="2px"/>
+        </div>}
         <input
           value={defValue}
           onChange={handleInput}

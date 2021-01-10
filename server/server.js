@@ -30,7 +30,7 @@ console.log('DEV MODE = ', config.NODE_ENV);
 mongoose.Promise = require('bluebird'); // for async code, not callbacks
 
 if (config.NODE_ENV === 'development') {
-  mongoose.set('debug', true); // выводить в консоль все запросы
+  // mongoose.set('debug', true);
 }
 
 mongoose.connect(

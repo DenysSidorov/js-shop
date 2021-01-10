@@ -1474,6 +1474,41 @@ html {
   }
 }
 
+.preloaderContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loader {
+    border: 10px solid #dddbdb;
+    border-radius: 50%;
+    border-top: 10px solid #40b75b;
+    -webkit-animation: spinRd 1.1s linear infinite; /* Safari */
+    animation: spinRd 1.1s linear infinite;
+
+    // spiner animation
+    @keyframes spinRd {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    /* Safari */
+    @-webkit-keyframes spinRd {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+  }
+}
+
 .menu_one_telFooter {
   display: flex;
   align-items: center;
