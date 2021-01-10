@@ -1,9 +1,10 @@
 import axios from './axiosConfig';
 import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
-import {IGetGoodsParams} from './interfaces';
+import {IEditUser, IGetGoodsParams} from './interfaces';
 import {IOrder} from '../components/pages/order/WaysDevPay';
 import {AxiosResponse} from 'axios';
+import {Token} from '../interfaces';
 
 export const createFastOrderAPI = async (order: IOrder): Promise<AxiosResponse> => {
   return axios({
@@ -105,7 +106,7 @@ export const getUniqCategoriesInGoodsAPI = async (): Promise<AxiosResponse> => {
   });
 };
 
-export const getTypesAPI = async (token: string): Promise<AxiosResponse> => {
+export const getTypesAPI = async (token: Token): Promise<AxiosResponse> => {
   return axios({
     method: 'get',
     url: '/orders/get-types',
@@ -118,6 +119,15 @@ export const signInAPI = async (login: string, password: string): Promise<AxiosR
     method: 'post',
     url: '/signin',
     data: {login, password}
+  });
+};
+``
+export const editUserAPI = async (token: Token, data: IEditUser): Promise<AxiosResponse> => {
+  return axios({
+    method: 'patch',
+    url: '/users/update',
+    headers: {authorization: token},
+    data: data
   });
 };
 

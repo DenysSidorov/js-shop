@@ -1,7 +1,10 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-import {getCurrentUserByTokenAPI} from '../../../api/endpoints';
+import {editUserAPI, getCurrentUserByTokenAPI} from '../../../api/endpoints';
+import {Token} from '../../../interfaces';
+
+// import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
 
 interface SPanel {
   user: any;
@@ -37,6 +40,13 @@ const Panel = () => {
     })();
   }, []);
 
+  const changeParent = useCallback(
+    (value: string | number) => {
+      console.log('value in parent ', value);
+    },
+    []
+  );
+
   const {isGotUser, user} = state;
   if (!isGotUser) {
     return (
@@ -45,6 +55,7 @@ const Panel = () => {
       </div>
     );
   }
+
   return (
     <div className='profileContainer'>
       <div className='profileContainer_logo'>
@@ -71,25 +82,29 @@ const Panel = () => {
         <span className='profileContainer_rowInfo_item'>Ник</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.nick || 'Не определенно'}</span>
-        <ProfileEditRowPart value={user.nick}/>
+        <ProfileEditRowPart
+          dataType='nick'
+          value={user.nick || ''}
+          changeParent={changeParent}
+        />
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Телефон</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.phone || 'Не определенно'}</span>
-        <ProfileEditRowPart value={user.phone}/>
+        {/*<ProfileEditRowPart value={user.phone || ''}/>*/}
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Возраст</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.age || 'Не определенно'}</span>
-        <ProfileEditRowPart value={user.age}/>
+        {/*<ProfileEditRowPart value={user.age || ''}/>*/}
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.male || 'Не определенно'}</span>
-        <ProfileEditRowPart value={user.male}/>
+        {/*<ProfileEditRowPart value={user.male || ''}/>*/}
       </div>
     </div>
   );
@@ -97,8 +112,29 @@ const Panel = () => {
 
 export default Panel;
 
-const ProfileEditRowPart = ({value}: {value: string | number}) => {
+interface IProfileEditRowPart {
+  dataType: string;
+  value: string | number;
+  changeParent: Function;
+}
+
+const ProfileEditRowPart = ({value, dataType}: IProfileEditRowPart) => {
   const [isEdit, changeIsEdit] = useState<boolean>();
+  const [defValue, changeDefValue] = useState<string | number>(value);
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    changeDefValue(e.target.value)
+  }
+
+  // changeParent
+  const editValueWithAPI = async () => {
+    try {
+      const token: Token = localStorage.getItem('info');
+      await editUserAPI(token, {[dataType]: defValue as string});
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <Fragment>
       {!isEdit && <span
@@ -109,9 +145,8 @@ const ProfileEditRowPart = ({value}: {value: string | number}) => {
       >Редактировать</span>}
       {isEdit && <Fragment>
         <input
-          value={value}
-          onChange={() => {
-          }}
+          value={defValue}
+          onChange={handleInput}
           type='text'
           className='shopInput profileContainer_input'
         />
@@ -119,7 +154,10 @@ const ProfileEditRowPart = ({value}: {value: string | number}) => {
               onClick={() => {
                 changeIsEdit(false);
               }}>Отмена</span>
-        <span className='profileContainer_editBtn_btn'>Сохранить</span>
+        <span
+          className='profileContainer_editBtn_btn'
+          onClick={editValueWithAPI}
+        >Сохранить</span>
       </Fragment>}
     </Fragment>
   );
