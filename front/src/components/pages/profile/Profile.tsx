@@ -44,6 +44,7 @@ const Panel = () => {
   const changeParent = useCallback(
     (value: string | number) => {
       console.log('value in parent ', value);
+      setState(prevState => ({...prevState, user: value}))
     },
     []
   );
@@ -105,7 +106,7 @@ const Panel = () => {
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
         <span className='profileContainer_rowInfo_del'> : </span>
-        <span className='profileContainer_rowInfo_value'>{user.male || 'Не определенно'}</span>
+        <span className='profileContainer_rowInfo_value'>{user.sex || 'Не определенно'}</span>
         {/*<ProfileEditRowPart value={user.male || ''}/>*/}
       </div>
     </div>
@@ -120,10 +121,10 @@ interface IProfileEditRowPart {
   changeParent: Function;
 }
 
-const ProfileEditRowPart = ({value, dataType}: IProfileEditRowPart) => {
+const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart) => {
   const [isEdit, changeIsEdit] = useState<boolean>();
   const [defValue, changeDefValue] = useState<string | number>(value);
-  const [isFetching] = useState<boolean>(false);
+  const [isFetching, changeIsFetching] = useState<boolean>(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeDefValue(e.target.value)
@@ -132,9 +133,15 @@ const ProfileEditRowPart = ({value, dataType}: IProfileEditRowPart) => {
   // changeParent
   const editValueWithAPI = async () => {
     try {
+      changeIsFetching(true);
       const token: Token = localStorage.getItem('info');
-      await editUserAPI(token, {[dataType]: defValue as string});
+      const response = await editUserAPI(token, {[dataType]: defValue as string});
+      changeIsFetching(false);
+      if (response.status && response.data){
+        changeParent(response.data);
+      }
     } catch (error) {
+      changeIsFetching(false);
       console.error(error);
     }
   }

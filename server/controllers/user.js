@@ -20,7 +20,7 @@ export function getCurrentUser(req, res, next) {
 
 export async function updateCurrentUser(req, res, next) {
   const {token} = req;
-   const body = pick(req.body, ['login', 'nick', 'phone', 'age', 'male']);
+   const body = pick(req.body, ['login', 'nick', 'phone', 'age', 'sex']);
   if (token) {
     try {
       const user = await UserService.getUserByToken(token);

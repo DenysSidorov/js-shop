@@ -12,5 +12,5 @@ export interface IEditUser {
   nick?: string;
   phone?: string;
   age?: number;
-  male?: IUserSex
+  sex?: IUserSex
 }
