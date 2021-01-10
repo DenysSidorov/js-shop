@@ -84,7 +84,6 @@ const Panel = () => {
         <span className='profileContainer_rowInfo_item'>Ник</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.nick || 'Не определенно'}</span>
-
         <ProfileEditRowPart
           dataType='nick'
           value={user.nick || ''}
@@ -95,19 +94,26 @@ const Panel = () => {
         <span className='profileContainer_rowInfo_item'>Телефон</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.phone || 'Не определенно'}</span>
-        {/*<ProfileEditRowPart value={user.phone || ''}/>*/}
+        <ProfileEditRowPart
+          dataType='phone'
+          value={user.phone || ''}
+          changeParent={changeParent}
+        />
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Возраст</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.age || 'Не определенно'}</span>
-        {/*<ProfileEditRowPart value={user.age || ''}/>*/}
+        <ProfileEditRowPart
+          dataType='age'
+          value={user.age || ''}
+          changeParent={changeParent}
+        />
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
         <span className='profileContainer_rowInfo_del'> : </span>
-        <span className='profileContainer_rowInfo_value'>{user.sex || 'Не определенно'}</span>
-        {/*<ProfileEditRowPart value={user.male || ''}/>*/}
+        <span className='profileContainer_rowInfo_value'>{'Мужской' || user.sex || 'Не определенно'}</span>
       </div>
     </div>
   );
@@ -139,6 +145,7 @@ const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart
       changeIsFetching(false);
       if (response.status && response.data){
         changeParent(response.data);
+        changeIsEdit(false);
       }
     } catch (error) {
       changeIsFetching(false);
