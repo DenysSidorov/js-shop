@@ -19,7 +19,17 @@ const resolvers = {
     userByIdFromREST: async (_source, { token }, { dataSources }) => {
       return dataSources.usersAPI.getUser(token);
     }
-  }
+  },
+  Mutation: {
+    editUserByIdFromREST: async (_source, args, { dataSources }) => {
+      const data = {...args.data};
+      return dataSources.usersAPI.updateUser(args.token, data);
+    }
+    // renameEvent: (_, { id, title }) => {
+    //   eventsMap[id].title = title
+    //   return makeAsync(eventsMap[id])
+    // }
+  },
 };
 
 // function makeAsync(data, timeout = 1000) {

@@ -7,6 +7,19 @@ const typeDefs = gql`
         userByIdFromREST(token: String): User
     }
 
+    type Mutation {
+        editUserByIdFromREST(token: String, data: EditUserInput): User
+    }
+
+    input EditUserInput {
+        login: String,
+        nick: String,
+        phone: String,
+        age: Int,
+        isAdmin: Boolean,
+        sex: AllowedSex
+    }
+
     type User {
         _id:ID!,
         login:String!,

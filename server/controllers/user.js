@@ -20,7 +20,7 @@ export function getCurrentUser(req, res, next) {
 
 export async function updateCurrentUser(req, res, next) {
   const {token} = req;
-   const body = pick(req.body, ['login', 'nick', 'phone', 'age', 'sex']);
+   const body = pick(req.body, ['login', 'nick', 'phone', 'age', 'sex', 'isAdmin']);
   if (token) {
     try {
       const user = await UserService.getUserByToken(token);
@@ -43,17 +43,4 @@ export async function updateCurrentUser(req, res, next) {
       message: 'Token not found!'
     });
   }
-
-
-  const user = await UserService.getUserByToken(token)
-    // .then((user) => {
-    //   return res.json(user);
-    // })
-    .catch((error) => {
-      const {message} = error;
-      next({
-        status: 500,
-        message
-      });
-    });
 }

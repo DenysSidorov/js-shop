@@ -12,6 +12,10 @@ class UsersAPI extends RESTDataSource {
   async getUser(token) {
     return await this.get('/api/users/current', {}, {headers: {authorization: token}});
   }
+
+  async updateUser(token, body) {
+    return await this.patch('/api/users/update', body, {headers: {authorization: token}});
+  }
 }
 
 export default UsersAPI;

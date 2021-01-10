@@ -66,7 +66,7 @@ export const getGoodByIdAPI = async (id: string | number): Promise<AxiosResponse
   });
 };
 
-export const createOrderAPI = async (order: IOrder) => {
+export const createOrderAPI = async (order: IOrder): Promise<AxiosResponse> => {
   return axios({
     method: 'post',
     url: '/orders',
@@ -121,7 +121,7 @@ export const signInAPI = async (login: string, password: string): Promise<AxiosR
     data: {login, password}
   });
 };
-``
+
 export const editUserAPI = async (token: Token, data: IEditUser): Promise<AxiosResponse> => {
   return axios({
     method: 'patch',
