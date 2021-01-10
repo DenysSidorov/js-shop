@@ -32,18 +32,16 @@ const Panel = () => {
       try {
         const token = localStorage.getItem('info') || '';
         const result = await getCurrentUserByTokenAPI(token);
-        console.log(result.data, 'data');
         // setState({user: result.data, isGotUser: true});
         setState((prevState) => ({...prevState, user: result.data, isGotUser: true}));
       } catch (err) {
-        console.log(err.message || err);
+        console.error(err.message || err);
       }
     })();
   }, []);
 
   const changeParent = useCallback(
     (value: string | number) => {
-      console.log('value in parent ', value);
       setState(prevState => ({...prevState, user: value}))
     },
     []
