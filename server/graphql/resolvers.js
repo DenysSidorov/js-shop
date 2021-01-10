@@ -25,10 +25,6 @@ const resolvers = {
       const data = {...args.data};
       return dataSources.usersAPI.updateUser(args.token, data);
     }
-    // renameEvent: (_, { id, title }) => {
-    //   eventsMap[id].title = title
-    //   return makeAsync(eventsMap[id])
-    // }
   },
 };
 
