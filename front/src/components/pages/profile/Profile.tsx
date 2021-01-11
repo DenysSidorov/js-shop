@@ -5,8 +5,6 @@ import {editUserAPI, getCurrentUserByTokenAPI} from '../../../api/endpoints';
 import {Token} from '../../../interfaces';
 import Preloader from '../../parts/preloader';
 
-// import {getTypes} from '../../../redux/reducers/panel-reducer/actions';
-
 interface SPanel {
   user: any;
   isGotUser: boolean;
@@ -32,7 +30,6 @@ const Panel = () => {
       try {
         const token = localStorage.getItem('info') || '';
         const result = await getCurrentUserByTokenAPI(token);
-        // setState({user: result.data, isGotUser: true});
         setState((prevState) => ({...prevState, user: result.data, isGotUser: true}));
       } catch (err) {
         console.error(err.message || err);
@@ -132,9 +129,8 @@ const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeDefValue(e.target.value)
-  }
+  };
 
-  // changeParent
   const editValueWithAPI = async () => {
     try {
       changeIsFetching(true);
@@ -149,7 +145,8 @@ const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart
       changeIsFetching(false);
       console.error(error);
     }
-  }
+  };
+
   return (
     <Fragment>
       {!isEdit && <span
