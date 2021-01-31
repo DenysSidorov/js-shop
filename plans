@@ -1,5 +1,6 @@
 add next.js
 add ts  on server
+add rate limit on serve (connect limitation)
 
 add apollo/graphql
 add redux-saga, and after it add tests (Jest) Unit -> Integration -> End2End
@@ -12,6 +13,7 @@ Express -> Koa Не особо нужно
 Переделать Readme c чекбоксами вместо зачеркнутого контента
 Typescript на Node
 prepare redux before sagas
+ra
 
 
 перенести формирование метатегов (title, description, keywords) в HOC или еще куда-нибудь
