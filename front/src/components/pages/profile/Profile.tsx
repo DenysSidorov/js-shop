@@ -107,10 +107,12 @@ const Panel = () => {
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
         <span className='profileContainer_rowInfo_del'> : </span>
-        <span className='profileContainer_rowInfo_value'>{'Мужской' || user.sex || 'Не определенно'}</span>
+        <span className='profileContainer_rowInfo_value'>{defineSex(user.sex) || 'Не определенно'}</span>
       </div>
     </div>
   );
 };
+
+const defineSex = (sex: string) => sex === 'female'? 'Женщина' : 'Мужчина';
 
 export default Panel;
