@@ -12,7 +12,7 @@ import authRoute from '../routes/auth';
 import userRoute from '../routes/user';
 import goodRoute from '../routes/goodRoute';
 import orderRoute from '../routes/orderRoute';
-import errorMiddleWare from '../middlewares/errors';
+import errorMiddleWare from '../middlewares/routeError';
 
 // import {serverApollo} from '../graphql/config';
 // console.log(serverApollo.graphqlPath);
@@ -29,17 +29,18 @@ export const application = () => {
   const app = express();
   initGlobalMiddlewares(app);
 
+  // initRoutes(app);
   app.use('/api/goods', cors(), goodRoute);
   app.use('/api/orders', cors(), orderRoute);
   app.use('/api/', cors(), authRoute); // singin singup
   app.use('/api/users', userRoute);
-  app.use(errorMiddleWare); // errors handler should be place in the end
   app.all('*', (req, resp) =>
     resp.status(404).json({
       message: 'Resource not found, API-SHOP',
       type: 404
     })
   );
+  app.use(errorMiddleWare); // errors handler should be place in the end
 
   process.on('uncaughtException', function (err) {
     console.error(`${new Date().toUTCString()} uncaughtException:`, err.message);

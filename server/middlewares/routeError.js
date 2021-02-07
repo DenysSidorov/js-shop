@@ -1,4 +1,4 @@
-function errors(err, req, resp, next) {
+function routeError(err, req, resp, next) {
   const {status = 500, message = 'Server Error'} = err;
   if (!err) {
     next();
@@ -9,4 +9,4 @@ function errors(err, req, resp, next) {
   }
 }
 
-export default errors;
+export default routeError;

@@ -13,6 +13,6 @@ const NotFound: FC<INotFound> = ({location}) => {
     'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
   );
 
-  return <h1>Извините, но странице не найдена! Адрес: {location.pathname}</h1>;
+  return <h1>Извините, но страница не найдена! Адрес: {location.pathname}</h1>;
 };
 export default NotFound;
