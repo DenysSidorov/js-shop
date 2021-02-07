@@ -7,7 +7,7 @@ import {serverApollo} from '../graphql/config';
 // import path from 'path';
 // import express from 'express';
 
-const addMiddlewares = (app) => {
+const initGlobalMiddlewares = (app) => {
   app.disable('x-powered-by'); // disable server's name
   // app.use(helmet({ contentSecurityPolicy: (config.NODE_ENV === 'production') ? undefined : false }));
   app.use(compression());
@@ -19,4 +19,4 @@ const addMiddlewares = (app) => {
   serverApollo.applyMiddleware({app, path: '/graphql'});
 };
 
-export default addMiddlewares;
+export default initGlobalMiddlewares;

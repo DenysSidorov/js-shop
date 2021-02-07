@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import addMiddlewares from './enhancersMiddlewares';
+import initGlobalMiddlewares from './globalMiddlewares';
 import fs from 'fs';
 
 import http from 'http';
@@ -27,8 +27,7 @@ console.log('DEV MODE = ', config.NODE_ENV);
 
 export const application = () => {
   const app = express();
-
-  addMiddlewares(app);
+  initGlobalMiddlewares(app);
 
   app.use('/api/goods', cors(), goodRoute);
   app.use('/api/orders', cors(), orderRoute);
