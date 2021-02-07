@@ -1,9 +1,8 @@
-import axios from './axiosConfig';
+import axios, {AxiosResponse} from './axiosConfig';
 import {ISignUpFunction} from '../redux/reducers/auth-reducer/actions';
 import {composeUrlStringFromObj} from '../helpers/libs/queryParams';
 import {IEditUser, IGetGoodsParams} from './interfaces';
 import {IOrder} from '../components/pages/order/WaysDevPay';
-import {AxiosResponse} from 'axios';
 import {Token} from '../interfaces';
 
 export const createFastOrderAPI = async (order: IOrder): Promise<AxiosResponse> => {
