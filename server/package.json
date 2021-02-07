@@ -37,7 +37,7 @@
     "lodash": "^4.17.4",
     "mocha": "~3.5.0",
     "mongoose": "^5.4.19",
-    "morgan": "~1.7.0",
+    "morgan": "~1.9.1",
     "nodemailer": "~4.1.0",
     "nodemon": "~1.11.0",
     "prop-types": "^15.6.2",
