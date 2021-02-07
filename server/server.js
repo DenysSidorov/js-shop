@@ -1,11 +1,11 @@
 import {application} from './environment';
 import Database from './environment/dbConnection';
 
-export default function start() {
+function run() {
   new Database('MongoDB').connect(application);
-};
+}
 
-start();
+run();
 
 // import express from 'express';
 // import mongoose from 'mongoose';
