@@ -20,11 +20,11 @@ export default class ServerCreator {
       http.createServer(app);
     }
 
-    app.listen(config.PORT, (err) => {
+    app.listen(config.SERVER_PORT, (err) => {
       if (err) throw err;
       console.log(
         '🚀 Server ready at',
-        `${config.SERVER_DOMAIN}:${config.PORT}${serverApollo.graphqlPath}`
+        `${config.SERVER_DOMAIN}:${config.SERVER_PORT}${serverApollo.graphqlPath}`
       )
     });
   }

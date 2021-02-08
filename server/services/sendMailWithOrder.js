@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import config from '../config';
+import {serverApollo} from '../graphql/config';
 
 const mailSettings = config.MAIL_SETTINGS;
 
@@ -16,7 +17,7 @@ const showGoods = (goods) => {
 export const sendMailWithOrder = ({email = [], order}) => {
   const smtpTransport = nodemailer.createTransport(mailSettings);
   // setup e-mail data with unicode symbols
-  const urlApi = config.NODE_ENV === 'development' ? `http://127.0.0.1:${config.FRONT_PORT}` : config.SERVER_DOMAIN;
+  const urlApi = config.NODE_ENV === 'development' ? `${config.SERVER_DOMAIN}:${config.FRONT_PORT}` : config.SERVER_DOMAIN;
   email = ['000scorpions000@gmail.com', 'doshki.craft@gmail.com'];
   const html = `<div>
             <p>Name: <b>${order.name}</b></p>

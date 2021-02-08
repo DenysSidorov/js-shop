@@ -6,7 +6,7 @@ import {RESTDataSource} from 'apollo-datasource-rest';
 class UsersAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = config.NODE_ENV === 'development' ? `http://127.0.0.1:${config.PORT}` : `${config.SERVER_DOMAIN}:${config.PORT}`;
+    this.baseURL = `${config.SERVER_DOMAIN}:${config.SERVER_PORT}`;
   }
 
   async getUser(token) {

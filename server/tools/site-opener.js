@@ -5,7 +5,7 @@ require('dotenv').config();
 export default () => {
   let times = 0;
   const getSite = function q() {
-    request(process.env.SITE, function (error, response, body) {
+    request(process.env.URL_AUTO_OPEN, function (error, response, body) {
       if (error) {
         console.log(`Error: ${error}`);
       }

@@ -41,7 +41,14 @@ export const isAdmin = (req, resp, next) => {
         });
       }
       const user = await User.findOne({_id: decoded._id}, {password: 0});
-      resp.json({isadmin: user.isAdmin});
+      if (user) {
+        resp.json({isadmin: user.isAdmin});
+      } else {
+        return next({
+          status: 404,
+          message: 'User not found.'
+        });
+      }
     });
   }
 };
@@ -71,6 +78,7 @@ export const signIn = async (req, resp, next) => {
     next({status: 400, message: 'You need have password and login'});
   }
 };
+
 export async function checkTokenFromEmail(req, resp, next) {
   if (req.query.t) {
     jwt.verify(req.query.t, config.SECRET_WORD, function (error, credentials) {
@@ -89,7 +97,7 @@ export async function checkTokenFromEmail(req, resp, next) {
               const userResult = await User.create(credentials);
               const token = jwt.sign({_id: userResult._id}, config.SECRET_WORD, {expiresIn: '2d'});
               const urlApi =
-                config.NODE_ENV === 'development' ? `http://127.0.0.1:${config.FRONT_PORT}` : config.SERVER_DOMAIN;
+                config.NODE_ENV === 'development' ? `${config.SERVER_DOMAIN}:${config.FRONT_PORT}` : config.SERVER_DOMAIN;
               resp.redirect(`${urlApi}/verify-user?t=${token}`);
             } catch ({message}) {
               return next({

@@ -4,9 +4,10 @@ import config from '../config';
 const mailSettings = config.MAIL_SETTINGS;
 
 export const sendMailForSignUp = ({email, nick, link}) => {
+  console.log('mailSettingsmailSettingsmailSettings', mailSettings);
   const smtpTransport = nodemailer.createTransport(mailSettings);
   // setup e-mail data with unicode symbols
-  const urlApi = config.NODE_ENV === 'development' ? `http://127.0.0.1:${config.PORT}` : config.SERVER_DOMAIN;
+  const urlApi = config.NODE_ENV === 'development' ? `${config.SERVER_DOMAIN}:${config.SERVER_PORT}` : config.SERVER_DOMAIN;
   const mailOptions = {
     from: '"Online-shop" <1qazxsw23edccde30@gmail.com>', // sender address
     to: email,
