@@ -1,6 +1,10 @@
 add next.js
 add ts  on server
 add rate limit on serve (connect limitation)
+update database for real app
+add apollo on frontend
+
+
 
 add apollo/graphql
 add redux-saga, and after it add tests (Jest) Unit -> Integration -> End2End
