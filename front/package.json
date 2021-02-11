@@ -100,11 +100,14 @@
     "webpack-obfuscator": "^0.28.4"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
     "@hot-loader/react-dom": "^16.13.0",
+    "apollo-boost": "^0.4.9",
     "axios": "^0.19.2",
     "connected-react-router": "^6.8.0",
     "dotenv": "^8.2.0",
     "formdata-polyfill": "^3.0.19",
+    "graphql": "^15.5.0",
     "history": "^4.10.1",
     "immer": "^7.0.14",
     "lodash": "^4.17.20",
