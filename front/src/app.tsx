@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Router} from 'react-router-dom';
 import {ApolloProvider} from '@apollo/react-hooks';
 // import {BrowserRouter as Router} from 'react-router-dom';
-import {client} from './apollo';
+import {client} from './apollo/apollo-configuration';
 import store, {history} from './redux/store/configureStore';
 import Wrapper from './components/index';
 
