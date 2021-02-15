@@ -1,37 +1,41 @@
 import React, {Fragment, useState} from 'react';
-import {Token} from '../../../interfaces';
-import {editUserAPI} from '../../../api/endpoints';
 import Preloader from '../../parts/preloader';
+import {useMutation} from '@apollo/react-hooks';
+import {EDIT_USER_BY_TOKEN} from '../../../apollo/queries/user';
+import {Token} from '../../../interfaces';
 
 interface IProfileEditRowPart {
   dataType: string;
   value: string | number;
   changeParent: Function;
+  token: Token
 }
 
-const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart) => {
+const ProfileEditRowPart = ({value, dataType, changeParent, token}: IProfileEditRowPart) => {
+
   const [isEdit, changeIsEdit] = useState<boolean>();
   const [defValue, changeDefValue] = useState<string | number>(value);
-  const [isFetching, changeIsFetching] = useState<boolean>(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeDefValue(e.target.value)
+    changeDefValue(e.target.value);
   };
 
-  const editValueWithAPI = async () => {
-    try {
-      changeIsFetching(true);
-      const token: Token = localStorage.getItem('info');
-      const response = await editUserAPI(token, {[dataType]: defValue as string});
-      changeIsFetching(false);
-      if (response.status && response.data){
-        changeParent(response.data);
-        changeIsEdit(false);
-      }
-    } catch (error) {
-      changeIsFetching(false);
-      console.error(error);
+  const [editUser, {loading}] = useMutation(EDIT_USER_BY_TOKEN, {
+    onCompleted: (d) => {
+      changeParent(d.editUserByIdFromREST);
+      changeIsEdit(false);
     }
+  });
+
+  const editValueWithAPI = () => {
+    editUser({
+      variables: {
+        token,
+        data: {
+          [dataType]: defValue
+        }
+      }
+    });
   };
 
   return (
@@ -43,9 +47,9 @@ const ProfileEditRowPart = ({value, dataType, changeParent}: IProfileEditRowPart
         }}
       >Редактировать</span>}
       {isEdit && <Fragment>
-        {isFetching && <div className="profileContainer_row_preloader">
+         {loading && <div className="profileContainer_row_preloader">
           <Preloader height="24px" borderWidth="2px"/>
-        </div>}
+         </div>}
         <input
           value={defValue}
           onChange={handleInput}

@@ -1,21 +1,39 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './index.scss';
 import {setMetaTag, setTitle} from '../../../helpers/libs/utils';
-import {getCurrentUserByTokenAPI} from '../../../api/endpoints';
+import {useQuery} from '@apollo/react-hooks';
 import ProfileEditRowPart from './ProfileEditRowPart';
+import {GET_USER_BY_TOKEN} from '../../../apollo/queries/user';
+import {Token} from '../../../interfaces';
+import {defineSex, initialToken} from './helper';
 
 interface SPanel {
   user: any;
-  isGotUser: boolean;
+  token: Token
 }
 
 const initialState: SPanel = {
   user: Object.create(null),
-  isGotUser: false
+  token: initialToken()
 };
 
-const Panel = () => {
+const Profile = () => {
+
   const [state, setState] = useState<SPanel>(initialState);
+
+  const changeParent = useCallback(
+    (value: string | number) => {
+      setState(prevState => ({...prevState, user: value}));
+    },
+    []
+  );
+
+  const {loading, error} = useQuery(GET_USER_BY_TOKEN,
+    {
+      variables: {token: state.token},
+      onCompleted: (data) => changeParent(data.getUser),
+      fetchPolicy: 'network-only'
+    });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,32 +43,19 @@ const Panel = () => {
       'keywords',
       'интернет-магазин картин, украинские картины, картины для интерьера, картины на дереве, картины на досках, doshki.com, doshki.kom, картины украина, деревянные картины'
     );
-    (async () => {
-      try {
-        const token = localStorage.getItem('info') || '';
-        const result = await getCurrentUserByTokenAPI(token);
-        setState((prevState) => ({...prevState, user: result.data, isGotUser: true}));
-      } catch (err) {
-        console.error(err.message || err);
-      }
-    })();
   }, []);
 
-  const changeParent = useCallback(
-    (value: string | number) => {
-      setState(prevState => ({...prevState, user: value}))
-    },
-    []
-  );
+  if (error) return <p>ERROR...</p>;
 
-  const {isGotUser, user} = state;
-  if (!isGotUser) {
+  if (loading) {
     return (
       <div className='adminPanelSpinner'>
         <i className='fa fa-spinner'/>
       </div>
     );
   }
+
+  const {user} = state;
 
   return (
     <div className='profileContainer'>
@@ -82,6 +87,7 @@ const Panel = () => {
           dataType='nick'
           value={user.nick || ''}
           changeParent={changeParent}
+          token={state.token}
         />
       </div>
       <div className='profileContainer_rowInfo'>
@@ -92,17 +98,13 @@ const Panel = () => {
           dataType='phone'
           value={user.phone || ''}
           changeParent={changeParent}
+          token={state.token}
         />
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Возраст</span>
         <span className='profileContainer_rowInfo_del'> : </span>
         <span className='profileContainer_rowInfo_value'>{user.age || 'Не определенно'}</span>
-        <ProfileEditRowPart
-          dataType='age'
-          value={user.age || ''}
-          changeParent={changeParent}
-        />
       </div>
       <div className='profileContainer_rowInfo'>
         <span className='profileContainer_rowInfo_item'>Пол</span>
@@ -113,6 +115,5 @@ const Panel = () => {
   );
 };
 
-const defineSex = (sex: string) => sex === 'female'? 'Женщина' : 'Мужчина';
 
-export default Panel;
+export default Profile;

@@ -24,8 +24,9 @@ export default class ServerCreator {
       if (err) throw err;
       console.log(
         '🚀 Server ready at',
-        `${config.SERVER_DOMAIN}:${config.SERVER_PORT}${serverApollo.graphqlPath}`
+        `${config.SERVER_DOMAIN}:${config.SERVER_PORT}`
       )
+      console.log(`GraphQL server is available on path - ${serverApollo.graphqlPath} `);
     });
   }
 }
