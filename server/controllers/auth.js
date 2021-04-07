@@ -29,6 +29,7 @@ export const signUp = (req, resp, next) => {
     next({status: 400, message: 'You have bad credentials'});
   }
 };
+
 export const isAdmin = (req, resp, next) => {
   const tok = req.body.authtoken;
   if (tok) {
@@ -52,6 +53,7 @@ export const isAdmin = (req, resp, next) => {
     });
   }
 };
+
 export const signIn = async (req, resp, next) => {
   const {login, password} = req.body;
   if (login && password) {
