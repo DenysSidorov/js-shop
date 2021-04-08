@@ -3,9 +3,6 @@ import bodyParse from 'body-parser';
 import morgan from 'morgan';
 import {serverApollo} from '../graphql/config';
 // import helmet from 'helmet';
-// import config from '../config';
-// import path from 'path';
-// import express from 'express';
 
 const initGlobalMiddlewares = (app) => {
   app.disable('x-powered-by'); // disable server's name
