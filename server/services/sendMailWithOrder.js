@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 import config from '../config';
-import {serverApollo} from '../graphql/config';
 
 const mailSettings = config.MAIL_SETTINGS;
 

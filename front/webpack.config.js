@@ -31,8 +31,6 @@ function getConfig(env = {}) {
       chunkFilename: isProduction ? '[name].[hash].js' : '[id].js',
       filename: isProduction ? '[name].bundle.[hash].js' : '[name].bundle.js',
       publicPath: '/assets/' // for dev-mode
-
-      // filename: '[name].bundle.[hash].js',
     },
     devServer: {
       inline: true,
@@ -44,7 +42,7 @@ function getConfig(env = {}) {
     resolve: {
       extensions: ['.js', '.jsx', '.css', 'less', '.scss', '.ts', '.tsx'],
       alias: {
-        'react-dom': '@hot-loader/react-dom' // react-hot-reloading for new React features
+        'react-dom': '@hot-loader/react-dom'
       }
     },
     module: {
