@@ -1,6 +1,10 @@
 {
   "name": "my-app",
   "version": "2.0.0",
+  "node": {
+    "node": "14.16.1",
+    "npm": "6.14.12"
+  },
   "scripts": {
     "start": "webpack serve --config webpack.dev.config.ts",
     "build": "webpack --config webpack.prod.config.ts",
