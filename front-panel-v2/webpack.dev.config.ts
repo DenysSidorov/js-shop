@@ -56,7 +56,7 @@ const config = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
-                include: /\.module\.css$/
+                // include: /\.module\.css$/
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
