@@ -1,19 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import { Heading } from "./Heading";
-import { Content } from "./Content";
+import React from 'react';
+import ReactDOM from 'react-dom';
+// import './index.css';
+import App from './App';
+import MyApp from './MyApp';
 
-const App = () => (
-  <>
-    <Heading />
-    <Content />
-  </>
-);
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <MyApp/>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

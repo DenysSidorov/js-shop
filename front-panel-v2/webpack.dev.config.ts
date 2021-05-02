@@ -26,9 +26,37 @@ const config = {
                     }
                 }
             },
+            // {
+            //     test: /\.module\.s(a|c)ss$/,
+            //     use: ['style-loader', 'css-loader', 'sass-loader'],
+            // },
+            {
+                // test: /\.module\.s(a|c)ss$/,
+                test:/\.module\.(scss|sass)$/,
+
+                // test:/\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            sourceMap: true
+                        }
+                    },
+                    // 'postcss-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader'],
+                include: /\.module\.css$/
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
