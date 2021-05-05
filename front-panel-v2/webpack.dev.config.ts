@@ -30,11 +30,32 @@ const config = {
             //     test: /\.module\.s(a|c)ss$/,
             //     use: ['style-loader', 'css-loader', 'sass-loader'],
             // },
+            // {
+            //     test: /\.(scss|css)$/,
+            //     exclude: /\.module.(s(a|c)ss)$/,
+            //     use: ['style-loader', 'css-loader', 'sass-loader'],
+            // },
             {
-                // test: /\.module\.s(a|c)ss$/,
-                test:/\.module\.(scss|sass)$/,
-
-                // test:/\.scss$/,
+                test: /\.s(a|c)ss$/,
+                exclude: /\.module.(s(a|c)ss)$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.module\.s(a|c)ss$/,
                 use: [
                     'style-loader',
                     {
@@ -55,7 +76,7 @@ const config = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
                 // include: /\.module\.css$/
             },
             {
@@ -65,7 +86,7 @@ const config = {
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js', '.scss']
     },
     plugins: [
         new HtmlWebpackPlugin({
