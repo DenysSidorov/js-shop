@@ -3,17 +3,27 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
+import HtmlWebpackHardDiskPlugin from 'html-webpack-harddisk-plugin';
+
+export const tsJSXRegExp = /\.(ts|js)x?$/i;
+export const sassRegExp = /\.s(a|c)ss$/;
+export const sassModuleRegExp = /\.module.(s(a|c)ss)$/;
+export const cssRegExp = /\.css$/;
+export const cssModuleRegExp = /\.module\.css$/;
+export const imageRegExp = /\.(png|svg|jpg|jpeg|gif)$/i;
 
 const config = {
     mode: 'development',
     output: {
-        publicPath: '/'
+        path: path.resolve(__dirname, "www/assets"),
+        publicPath: '/assets/'
     },
     entry: './src/index.tsx',
     module: {
         rules: [
             {
-                test: /\.(ts|js)x?$/i,
+                test: tsJSXRegExp,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -26,18 +36,9 @@ const config = {
                     }
                 }
             },
-            // {
-            //     test: /\.module\.s(a|c)ss$/,
-            //     use: ['style-loader', 'css-loader', 'sass-loader'],
-            // },
-            // {
-            //     test: /\.(scss|css)$/,
-            //     exclude: /\.module.(s(a|c)ss)$/,
-            //     use: ['style-loader', 'css-loader', 'sass-loader'],
-            // },
             {
-                test: /\.s(a|c)ss$/,
-                exclude: /\.module.(s(a|c)ss)$/,
+                test: sassRegExp,
+                exclude: sassModuleRegExp,
                 use: [
                     'style-loader',
                     {
@@ -55,7 +56,7 @@ const config = {
                 ]
             },
             {
-                test: /\.module\.s(a|c)ss$/,
+                test: sassModuleRegExp,
                 use: [
                     'style-loader',
                     {
@@ -75,12 +76,29 @@ const config = {
                 ]
             },
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
-                // include: /\.module\.css$/
+                test: cssRegExp,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: true
+                        }
+                    }
+                ],
+                include: cssModuleRegExp
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: cssRegExp,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ],
+                exclude: cssModuleRegExp
+            },
+            {
+                test: imageRegExp,
                 type: 'asset/resource'
             }
         ]
@@ -89,8 +107,27 @@ const config = {
         extensions: ['.tsx', '.ts', '.js', '.scss']
     },
     plugins: [
+        // 'www/assets/*.*', 'www/index.html'
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+                path.join(__dirname, 'www/assets/*.*'),
+                path.join(__dirname, 'www/index.html')
+            ],
+            dangerouslyAllowCleanPatternsOutsideProject: true,
+            // cleanStaleWebpackAssets: false,
+            // dry: true
+        }),
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            // template: path.resolve(__dirname, 'www/template.html'),
+            // filename: 'index.html',
+            // template: 'src/index.html'
+            template: 'src/index.html',
+            filename: '../index.html',
+            minify: false,
+            alwaysWriteToDisk: true
+        }),
+        new HtmlWebpackHardDiskPlugin({
+            outputPath: path.resolve(__dirname, 'www/assets/')
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ForkTsCheckerWebpackPlugin({
@@ -102,7 +139,7 @@ const config = {
     ],
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'build'),
+        contentBase: path.join(__dirname, 'www'),
         historyApiFallback: true,
         port: 4000,
         open: true,

@@ -4,13 +4,15 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import {cssModuleRegExp, cssRegExp, imageRegExp, sassModuleRegExp, sassRegExp} from './webpack.dev.config';
 
 const config = {
   mode: "production",
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "www/assets"),
+    filename: "[name].[hash].js",
+    chunkFilename: '[id].[hash].js',
     publicPath: "",
   },
   module: {
@@ -30,13 +32,68 @@ const config = {
         },
       },
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: sassRegExp,
+        exclude: sassModuleRegExp,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+          }
+        ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: sassModuleRegExp,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          // 'postcss-loader',
+          {
+            loader: 'sass-loader',
+          }
+        ]
       },
+      {
+        test: cssRegExp,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          }
+        ],
+        include: cssModuleRegExp
+      },
+      {
+        test: cssRegExp,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ],
+        exclude: cssModuleRegExp
+      },
+      {
+        test: imageRegExp,
+        type: 'asset/resource'
+      }
+      // {
+      //   test: /\.css$/i,
+      //   use: [MiniCssExtractPlugin.loader, "css-loader"],
+      // },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   type: "asset/resource",
+      // },
     ],
   },
   resolve: {
@@ -44,7 +101,9 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: 'src/index.html',
+      filename: '../index.html',
+      minify: false
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
@@ -54,7 +113,8 @@ const config = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename: "[name].[hash].css",
+      chunkFilename: "[id].[hash].css"
     }),
   ],
 };

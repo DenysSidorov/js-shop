@@ -1,3 +1,6 @@
+/www/index.html
+www/assets/*
+
 # dependencies
 /node_modules
 /.pnp
