@@ -4,7 +4,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {cssModuleRegExp, cssRegExp, imageRegExp, sassModuleRegExp, sassRegExp} from './webpack.dev.config';
+import {cssModuleRegExp, cssRegExp, fontRegExp, imageRegExp, sassModuleRegExp, sassRegExp} from './webpack.dev.config';
 
 const config = {
   mode: "production",
@@ -85,7 +85,11 @@ const config = {
       {
         test: imageRegExp,
         type: 'asset/resource'
-      }
+      },
+      {
+        test: fontRegExp,
+        type: 'asset/inline',
+      },
       // {
       //   test: /\.css$/i,
       //   use: [MiniCssExtractPlugin.loader, "css-loader"],

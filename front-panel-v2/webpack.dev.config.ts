@@ -12,6 +12,7 @@ export const sassModuleRegExp = /\.module.(s(a|c)ss)$/;
 export const cssRegExp = /\.css$/;
 export const cssModuleRegExp = /\.module\.css$/;
 export const imageRegExp = /\.(png|svg|jpg|jpeg|gif)$/i;
+export const fontRegExp = /\.(woff(2)?|eot|ttf|otf|svg|)$/;
 
 const config = {
     mode: 'development',
@@ -100,7 +101,11 @@ const config = {
             {
                 test: imageRegExp,
                 type: 'asset/resource'
-            }
+            },
+            {
+                test: fontRegExp,
+                type: 'asset/inline',
+            },
         ]
     },
     resolve: {
