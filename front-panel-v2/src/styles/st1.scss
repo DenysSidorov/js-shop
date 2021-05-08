@@ -1,7 +1,10 @@
 
 #d4 {
-  color: #ffc829;
+  color: rgba(255, 0, 209, 0.74);
 }
 span {
   color: #a1a9ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

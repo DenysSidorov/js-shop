@@ -119,13 +119,14 @@ const config = {
                 path.join(__dirname, 'www/index.html')
             ],
             dangerouslyAllowCleanPatternsOutsideProject: true,
-            // cleanStaleWebpackAssets: false,
-            // dry: true
         }),
         new HtmlWebpackPlugin({
             // template: path.resolve(__dirname, 'www/template.html'),
             // filename: 'index.html',
             // template: 'src/index.html'
+            // template: 'src/index.html',
+            // filename: '../index.html'
+
             template: 'src/index.html',
             filename: '../index.html',
             minify: false,
