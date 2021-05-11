@@ -149,7 +149,8 @@ const config = {
         historyApiFallback: true,
         port: 4000,
         open: true,
-        hot: true
+        hot: true,
+        watchContentBase: true
     }
 };
 
