@@ -3,6 +3,7 @@ import s from './styles/styles.module.css';
 import s2 from './styles/st.module.scss';
 import './styles/st.css';
 import './styles/st1.scss';
+import img from './img.png'
 
 const MyApp = () => {
     return (
@@ -12,6 +13,7 @@ const MyApp = () => {
             <div className="divClass3">MyApp3333</div>
             <div className="d4" id="d4">3333</div>
             <span>span</span>
+            <img src={img} alt=""/>
         </>
     )
 };

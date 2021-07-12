@@ -41,6 +41,9 @@ const config = {
           },
           {
             loader: 'sass-loader',
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       },
@@ -57,6 +60,9 @@ const config = {
           // 'postcss-loader',
           {
             loader: 'sass-loader',
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       },
@@ -70,6 +76,9 @@ const config = {
               importLoaders: 1,
               modules: true
             }
+          },
+          {
+            loader: 'postcss-loader'
           }
         ],
         include: cssModuleRegExp
@@ -78,7 +87,10 @@ const config = {
         test: cssRegExp,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader'
+          'css-loader',
+          {
+            loader: 'postcss-loader'
+          }
         ],
         exclude: cssModuleRegExp
       },
@@ -107,7 +119,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: '../index.html',
-      minify: false
+      minify: true
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
