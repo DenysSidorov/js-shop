@@ -118,8 +118,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      filename: '../index.html',
-      minify: true
+      filename: '../index.html'
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
