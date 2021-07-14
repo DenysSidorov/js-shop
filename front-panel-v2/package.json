@@ -11,8 +11,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "history": "^5.0.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -28,6 +32,7 @@
     "@types/mini-css-extract-plugin": "^1.2.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.8",
     "@types/webpack": "^4.41.25",
     "@types/webpack-dev-server": "^3.11.1",
     "@types/webpack-env": "^1.16.0",
