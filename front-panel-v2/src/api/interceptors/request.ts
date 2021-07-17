@@ -1,12 +1,12 @@
 import {AxiosRequestConfig, AxiosError} from 'axios';
 
 export default {
-  onFulfilled(request: AxiosRequestConfig) {
+    onFulfilled(request: AxiosRequestConfig) {
     // Do something before request is sent
-    return request;
-  },
-  onRejected: (error: AxiosError) => {
+        return request;
+    },
+    onRejected: (error: AxiosError) => {
     // Do something with request error
-    return Promise.reject(error);
-  },
+        return Promise.reject(error);
+    },
 };
