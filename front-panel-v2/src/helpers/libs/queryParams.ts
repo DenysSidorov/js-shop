@@ -17,7 +17,7 @@ export const composeUrlStringFromObj = (obj: any) => {
   if (Object.keys(obj).length === 0) return '';
 
   let result = decodeURIComponent(
-    Object.keys(obj).reduce((prev, cur, index) => {
+    Object.keys(obj).reduce((prev, cur) => {
       if (obj[cur] === undefined || obj[cur] === null || obj[cur] === '') {
         return prev;
       }

@@ -10,7 +10,9 @@
     "build": "webpack --config webpack.prod.config.ts",
     "test": "jest",
     "prettier": "prettier 'src/**/*.ts'",
-    "prettier:fix": "prettier --write 'src/**/*.ts'"
+    "prettier:fix": "prettier --write 'src/**/*.ts'",
+    "eslint": "eslint 'src/**/*.ts'",
+    "eslint:fix": "eslint --fix 'src/**/*.ts'"
   },
   "dependencies": {
     "axios": "^0.21.1",

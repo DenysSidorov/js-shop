@@ -2,7 +2,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "react-hooks"],
   "extends": [
@@ -10,10 +11,19 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
+    "func-names": "off",
+    "object-curly-spacing": "off",
+    "arrow-body-style": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/indent": ["error", 4],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "react": {

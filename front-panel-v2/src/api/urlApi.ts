@@ -1,3 +1,3 @@
-import config from '../config';
-const urlApi: string = '';
+// import config from '../config';
+const urlApi = '';
 export default urlApi;
