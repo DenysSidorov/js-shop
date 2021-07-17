@@ -8,14 +8,14 @@ import Wrapper from './components/index';
 export const history = createBrowserHistory();
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Router history={history}>
-            <Wrapper />
-        </Router>
-    </React.StrictMode>,
-    document.getElementById('root'),
+  <React.StrictMode>
+    <Router history={history}>
+      <Wrapper />
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
 
 if (module.hot) {
-    module.hot.accept();
+  module.hot.accept();
 }
