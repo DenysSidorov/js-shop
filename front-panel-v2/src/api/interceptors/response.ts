@@ -1,5 +1,4 @@
 import {AxiosResponse, AxiosError} from 'axios';
-
 import exampleMiddleware from '../middlewares/example';
 
 export default {
