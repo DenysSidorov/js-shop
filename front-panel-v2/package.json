@@ -8,7 +8,9 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.config.ts",
     "build": "webpack --config webpack.prod.config.ts",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier 'src/**/*.ts'",
+    "prettier:fix": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -54,6 +56,7 @@
     "node-sass": "^5.0.0",
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "2.3.2",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "ts-node": "^9.1.1",

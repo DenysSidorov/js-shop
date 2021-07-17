@@ -5,5 +5,5 @@ export interface IEditUser {
   nick?: string;
   phone?: string;
   age?: number;
-  sex?: IUserSex
+  sex?: IUserSex;
 }

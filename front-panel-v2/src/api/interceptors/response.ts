@@ -10,5 +10,5 @@ export default {
   onRejected: (error: AxiosError) => {
     // Do something with response error
     return Promise.reject(error);
-  }
+  },
 };

@@ -6,6 +6,6 @@ export const changeOrderTypeAPI = async (token: string, data: any): Promise<Axio
     method: 'post',
     url: '/orders/change-type',
     data,
-    headers: {authorization: token}
+    headers: {authorization: token},
   });
 };

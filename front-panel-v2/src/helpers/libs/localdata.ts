@@ -25,7 +25,7 @@ export default {
     } else {
       date = new Date();
       year = date.getFullYear();
-      if(date.setYear) {
+      if (date.setYear) {
         this.setCookie(key, value, {expires: date.setYear(year + 1), path: '/'}, undefined);
       }
     }
@@ -87,17 +87,22 @@ export default {
   },
   getCookie(key: any) {
     const matches = document.cookie.match(
-      new RegExp(`(?:^|; )${key.replace(/([\.$?*|{}\(\)\[\]\\\/\+\^])/g, '\\$1')}=([^;]*)`)
+      new RegExp(`(?:^|; )${key.replace(/([\.$?*|{}\(\)\[\]\\\/\+\^])/g, '\\$1')}=([^;]*)`),
     );
 
     return matches ? decodeURIComponent(matches[1]) : undefined;
   },
   deleteCookie(key: any, path: any) {
     path = path || '/';
-    this.setCookie(key, '', {
-      path,
-      expires: -1
-    }, undefined);
+    this.setCookie(
+      key,
+      '',
+      {
+        path,
+        expires: -1,
+      },
+      undefined,
+    );
   },
   isLocalStorageAvailable() {
     try {
@@ -107,5 +112,5 @@ export default {
     } catch (exception) {
       return false;
     }
-  }
+  },
 };

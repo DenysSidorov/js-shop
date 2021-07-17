@@ -10,4 +10,4 @@ axios.interceptors.request.use(reqInterceptor.onFulfilled, reqInterceptor.onReje
 axios.interceptors.response.use(respInterceptor.onFulfilled, respInterceptor.onRejected);
 
 export {AxiosResponse};
-export default axios
+export default axios;
