@@ -1,5 +1,5 @@
 import {AxiosRequestConfig, AxiosError} from 'axios';
-const a;
+const a;;
 
 export default {
   onFulfilled(request: AxiosRequestConfig) {

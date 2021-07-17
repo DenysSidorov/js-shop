@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import './index.scss';
 
 const FooterSection = () => {
-  const number1 = 5;;
+  const number1 = 5;
   return (
     <div className='footerSection left fullWidth '>
       <div className='container'>
