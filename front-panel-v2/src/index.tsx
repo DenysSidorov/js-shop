@@ -10,10 +10,11 @@ export const history = createBrowserHistory();
 ReactDOM.render(
     <React.StrictMode>
         <Router history={history}>
-            <Wrapper/>
+            <Wrapper />
         </Router>
     </React.StrictMode>,
-    document.getElementById('root'));
+    document.getElementById('root'),
+);
 
 if (module.hot) {
     module.hot.accept();
