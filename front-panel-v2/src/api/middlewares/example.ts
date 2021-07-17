@@ -1,5 +1,5 @@
 import {AxiosResponse} from 'axios';
 
-export default function (response: AxiosResponse) {
+export default function fu(response: AxiosResponse) {
   return response;
 }
