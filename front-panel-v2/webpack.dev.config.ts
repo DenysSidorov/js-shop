@@ -140,7 +140,8 @@ const config = {
             async: false
         }),
         new ESLintPlugin({
-            extensions: ['js', 'jsx', 'ts', 'tsx']
+            extensions: ['js', 'jsx', 'ts', 'tsx'],
+            failOnWarning: false
         })
     ],
     devtool: 'inline-source-map',
