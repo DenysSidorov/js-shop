@@ -1,5 +1,0 @@
-/www/*
-webpack.dev.config.ts
-webpack.prod.config.ts
-postcss.config.js
-jest-setup.ts
