@@ -287,7 +287,9 @@ const WaysDevPay = () => {
           Способ оплаты
         </div>
         <div className='paymentWayOrder'>
-          <Dropdown options={paymentVariants} onChange={chPayment} value={paymentVariants[0]} />
+          <>
+            <Dropdown options={paymentVariants} onChange={chPayment} value={paymentVariants[0]} />
+          </>
         </div>
 
         <div className='tittleWAyName' data-count='3'>

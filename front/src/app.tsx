@@ -14,17 +14,15 @@ const App = hot(Wrapper);
 const container = document.getElementById('main');
 if (container) {
   ReactDom.render(
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client}>л
       <Provider store={store}>
         <div>
           <Router history={history}>
-            <App/>
+            <App />
           </Router>
         </div>
       </Provider>
-    </ApolloProvider>
-    ,
-
+    </ApolloProvider>,
     container
   );
 }

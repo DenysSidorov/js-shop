@@ -26,9 +26,13 @@
     "baseUrl": "src",
     "noImplicitAny": true,
     "checkJs": false,
-    "typeRoots" : ["node_modules/@types", "src/types"]
+    "typeRoots" : ["node_modules/@types", "src/types"],
+    "paths": {
+      "react": [ "./node_modules/@types/react" ]
+    }
   },
   "exclude": [
-  "/helpers/libs/**.*"
-]
+  "/helpers/libs/**.*",
+    "./node_modules/**/**.*",
+  ]
 }

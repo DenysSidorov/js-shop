@@ -28,6 +28,7 @@ const AppWrapper: FC = (props: any) => {
     <div className='wrapper'>
       <div className='content'>
         {/* <ConfirmBlock/> */}
+        {/* tslint:disable-next-line */}
         <MainMenu {...props} />
         {/* <CategoryMenu/> */}
         <MainContent {...props}>

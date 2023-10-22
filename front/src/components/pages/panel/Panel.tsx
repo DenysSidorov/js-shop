@@ -31,9 +31,11 @@ const Panel = () => {
         <LeftMenu />
         <div className='adminPan__mainContent_content left'>
           <Switch>
-            <Route exact path='/panel' component={Orders} />
-            <Route path='/panel/orders' component={Orders} />
-            <Route path='/panel/admin' component={AdminInfo} />
+            <>
+              <Route exact path='/panel' component={Orders} />
+              <Route path='/panel/orders' component={Orders} />
+              <Route path='/panel/admin' component={AdminInfo} />
+            </>
           </Switch>
           {match ? <h1>Hello user!</h1> : null}
         </div>

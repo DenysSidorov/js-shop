@@ -225,11 +225,13 @@ const Orders = () => {
                   </td>
                   <td data-label='Статус'>
                     <span className='dropdownPanelOrders'>
-                      <ReactDropdown
-                        options={state.orderTypes}
-                        value={initType}
-                        onChange={(ee: any) => _changeTypeOrder(ord._id, ee)}
-                      />
+                      <>
+                        <ReactDropdown
+                            options={state.orderTypes}
+                            value={initType}
+                            onChange={(ee: any) => _changeTypeOrder(ord._id, ee)}
+                        />
+                      </>
                     </span>
                   </td>
                   <td data-label='Статус'>

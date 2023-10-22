@@ -91,12 +91,14 @@ const OneClickModal: FC<IOneClickModal> = (props) => {
               Телефон<span className='redColor'>*</span>
             </div>
             +38
-            <InputMask
-              mask='(999)-999-99-99'
-              value={state.phone}
-              onChange={onChange}
-              className='oneClickModal_inputPhone'
-            />
+            <>
+              <InputMask
+                mask='(999)-999-99-99'
+                value={state.phone}
+                onChange={onChange}
+                className='oneClickModal_inputPhone'
+              />
+            </>
           </div>
           {phoneErr ? <div className='oneClickModal_userError'>Укажите правильный номер телефона!</div> : null}
           <div className='oneClickModal_userDate'>

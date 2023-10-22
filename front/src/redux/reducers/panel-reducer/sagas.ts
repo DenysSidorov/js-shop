@@ -15,7 +15,7 @@ function* getTypes(action: any) {
     }
   } catch (err) {
     yield put(hideLoading());
-    console.log(err.message || err);
+    console.log(err ? err.message : '');
   }
 }
 

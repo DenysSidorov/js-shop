@@ -7,7 +7,11 @@ interface INotificationsWrap {}
 
 const NotificationsWrapper: FC<INotificationsWrap> = () => {
   const notifications: Array<any> = useSelector((state: IReducersState) => state.notifications);
-  return <Notifications notifications={notifications} />;
+  return (
+    <>
+      <Notifications notifications={notifications} />
+    </>
+  );
 };
 
 export default NotificationsWrapper;
