@@ -1,0 +1,12 @@
+"husky": {
+    "hooks": {
+      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+      "pre-commit": "npm lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts*": [
+      "eslint --fix --max-warnings 0",
+      "git add"
+    ]
+  },

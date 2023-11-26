@@ -1,0 +1,84 @@
+//@import "./slick-slider";
+
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+$mainBgColor: #2EA9FD;
+
+.slickMainContainerAnchorFromReact {
+  .slick-next, .slick-prev {
+    background-color: #77b7ff;
+    width: 30px;
+    height: 30px;
+  }
+
+  .slick-list {
+    .slick-track {
+      .slick-slide {
+        div {
+          .goToAllGoodsFromSimilar {
+          }
+        }
+      }
+    }
+  }
+}
+
+.similarGoodsContainer {
+  //width: 95%;
+  width: 100%;
+  margin: 0 auto;
+
+  .similarGoodsTitle {
+    color: #000;
+    margin-top: 15px;
+    font: 3rem / 3.5rem $robotoMedium;
+    margin-bottom: 13px;
+
+  }
+
+  .slickContainerSimilarGoods {
+    margin-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .goToAllGoodsFromSimilar {
+      width: calc(100% - 20px) !important;
+      background-color: rgba(255, 255, 0, 0.31);
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      height: 358px;
+      text-align: center;
+      transition: background-color 0.5s ease;
+      position: relative;
+      margin-bottom: 3.2rem;
+      overflow: hidden;
+      border: 1px solid #eee;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      .goToAllGoodsFromSimilar_text {
+        font: 1.6rem / 2.3rem $robotoMedium;
+        color: #2cb6ff;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .slickContainerSimilarGoods_wrapperForOne {
+    }
+
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .slick-next, .slick-prev {
+    display: none !important;
+  }
+}

@@ -1,0 +1,90 @@
+$robotoLight: 'Roboto-Light';
+$robotoMedium: 'Roboto-Medium';
+$robotoRegular: 'Roboto-Regular';
+$greyText: #d6d6d6;
+$mainColor: #2EA9FD;
+$colorRed: #ff7867;
+$colorGreen: #17b87f;
+$colorViolet: #9a51bb;
+$colorYellow: #bbba16;
+
+.profileContainer {
+  font-size: 1.6rem;
+  font-family: $robotoRegular;
+  position: relative;
+
+  .profileContainer_logo {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      border: 2px solid $mainColor;
+    }
+  }
+
+  .profileContainer_rowInfo {
+    margin-top: 25px;
+    position: relative;
+
+    .profileContainer_row_preloader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .profileContainer_rowInfo_item {
+      font: 1.6rem/1.8rem $robotoMedium;
+      color: black;
+
+    }
+
+    .profileContainer_rowInfo_del {
+      font: 1.4rem/1.8rem $robotoMedium;
+    }
+
+    .profileContainer_rowInfo_value {
+      font: 1.4rem/1.8rem $robotoMedium;
+      color: grey;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profileContainer_editBtn_btn {
+      background-color: $mainColor;
+      color: white;
+      font: 1.6rem/1.8rem $robotoMedium;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      height: 33px;
+      padding: 5px;
+      margin-left: 8px;
+
+      &:hover {
+        cursor: pointer;
+        color: $mainColor;
+        background-color: white;
+        border-color: $mainColor !important;
+      }
+    }
+  }
+
+  .profileContainer_input {
+    border-color: #808080;
+    width: 250px;
+    margin-left: 12px;
+    height: 3.2rem;
+  }
+}

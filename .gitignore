@@ -1,4 +1,6 @@
 .idea
+shop/www/assets/*
+shop/node_modules/
 node_modules/
 test-front/node_modules/
 test-front/build

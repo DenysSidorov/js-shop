@@ -18,17 +18,6 @@
     "docker": "docker build -t react-docker .",
     "react-docker": "docker run -p 3000:80 react-docker"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --allow-empty"
-    }
-  },
-  "lint-staged": {
-    "./src/**/*.{tsx}": [
-      "npm run prettier",
-      "npm run lint"
-    ]
-  },
   "browserslist": [
     "> 1%",
     "ie >= 8"

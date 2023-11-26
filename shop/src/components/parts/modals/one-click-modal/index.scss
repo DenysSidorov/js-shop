@@ -1,0 +1,190 @@
+$robotoRegular: 'Roboto-Regular';
+$robotoLight: 'Roboto-Light';
+
+.oneClickModal {
+  .oneClickModal_title {
+    padding-right: 40px;
+    color: #2C3642;
+    font-family: $robotoRegular, "Helvetica Neue", Helvetica;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 23px;
+    margin-left: 16px;
+    margin-top: 24px;
+  }
+
+  .oneClickModal_describe {
+    padding-right: 30px;
+    color: #777979;
+    font-family: $robotoLight, "Helvetica Neue", Helvetica;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 13px;
+    margin-left: 16px;
+    margin-top: 3px;
+  }
+
+  .oneClickModal_userError {
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 2px 18px;
+    color: red;
+  }
+
+  .oneClickModal_userDate {
+    display: flex;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 10px;
+    font-size: 25px;
+    align-items: center;
+
+    .oneClickModal_phone {
+      .redColor {
+        color: #d32f00;
+        font-size: 18px;
+      }
+
+      color: #2C3642;
+      min-width: 60px;
+      font-family: "Helvetica Neue", Helvetica;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 16px;
+      margin-right: 17px;
+    }
+
+    .oneClickModal_inputPhone {
+      font: 2.5rem/2.5rem $robotoLight;
+      color: #00416f;
+      padding: 2px 8px;
+      align-items: center;
+      margin-top: 3px;
+
+      //margin-left: 30px;
+      border: 1px solid transparent;
+      transition: all 0.5s ease;
+      border-radius: 4px;
+      height: 4rem;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      border-color: #2EA9FD;
+    }
+  }
+
+  .oneClickModal_titleName {
+    color: #2C3642;
+    min-width: 60px;
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 16px;
+    margin: 20px 20px 0;
+  }
+
+  .oneClickModal_file {
+
+  }
+
+  .oneClickModal_sendBtn {
+    margin-left: 16px;
+    margin-top: 1.5rem;
+    background-color: #f84500;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    width: 30%;
+    min-width: 135px;
+    cursor: pointer;
+    height: 40px;
+    display: -webkit-box;
+    display: flexbox;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+
+    &:hover {
+      span {
+        color: #f7f7f7;
+      }
+    }
+
+    span {
+      transition: all 0.2s ease;
+
+      //font: 1.6rem/3rem $robotoRegular;
+      font: 2.2rem/2.2rem $robotoRegular;
+      color: #fff;
+    }
+  }
+
+  .oneClickModal_gList {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 100%;
+    font: 1.3rem/1.4rem $robotoLight;
+    color: #00416f;
+
+    //margin-left: 30px;
+    transition: all 0.5s ease;
+    margin-bottom: 13px;
+
+    .oneClickModal_gList_item {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+
+      .oneClickModal_gList_item_logo {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 8px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+.oneClickModal_wasSend {
+  margin-left: 16px;
+
+  .oneClickModal_wasSend_title {
+    padding-right: 40px;
+    color: #2C3642;
+    font-family: $robotoRegular, "Helvetica Neue", Helvetica;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 23px;
+    margin-top: 24px;
+  }
+
+  .oneClickModal_wasSend_text {
+    font-family: $robotoLight, "Helvetica Neue", Helvetica;
+    padding-right: 30px;
+    color: #646565;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 15px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .oneClickModal_userDate {
+    flex-wrap: wrap;
+  }
+}
