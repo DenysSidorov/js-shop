@@ -3,7 +3,7 @@ import config from '../config';
 import User from '../models/user';
 
 /**
- Middleware which check admin's role and add it to app if it exists
+ Middleware which checks admin's role and add it to app if it exists
  */
 
 export default (req, resp, next) => {

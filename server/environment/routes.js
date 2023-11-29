@@ -16,7 +16,7 @@ export default function initRoutes(app){
       type: 404
     })
   );
-  app.use(errorMiddleWare); // errors handler should be place in the end
+  app.use(errorMiddleWare); // errors handler should be placed at the end
 
   // last server's job before die
   process.on('uncaughtException', function (err) {

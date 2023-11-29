@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 
 /**
- Middleware which check token and add it to app if it exists
+ Middleware which checks token and add it to app if it exists
  */
 
 export default (req, resp, next) => {

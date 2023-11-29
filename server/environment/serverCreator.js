@@ -30,5 +30,3 @@ export default class ServerCreator {
     });
   }
 }
-
-// todo remove all 127.0.0.1:3000 to ${config.SERVER_DOMAIN}:${config.PORT}
